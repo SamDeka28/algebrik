@@ -28,7 +28,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::175707725647:role/frontend-github-actions-role
+          role-to-assume: arn:aws:iam::326271077406:role/github_action_frontendrole 
           aws-region: ap-south-1
 
       - name: Deploy latest build
