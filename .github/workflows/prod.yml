@@ -42,9 +42,18 @@ jobs:
           echo ::set-output name=target::$TARGET
         id: deploy
 
-      - name: Invalidate CDN cache
+      - name: Invalidate CDN cache www.algebrik.com
         run: |
           TARGET=${{ steps.deploy.outputs.target }}
+          echo TARGET:$TARGET
+          DISTRIBUTION_ID=$(aws cloudfront list-distributions --output json | jq -r '.DistributionList.Items[] | select(.Aliases and .Aliases.Items and (.Aliases.Items | any(. == "'$TARGET'"))) | .Id')
+          echo DISTRIBUTION_ID:$DISTRIBUTION_ID
+          INVALIDATION_ID=`aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*" --output json | jq -r .Invalidation.Id`
+          echo INVALIDATION_ID:$INVALIDATION_ID
+          aws cloudfront wait invalidation-completed --distribution-id $DISTRIBUTION_ID --id $INVALIDATION_ID
+      - name: Invalidate CDN cache www.algebrik.ai
+        run: |
+          TARGET='www.algebrik.ai'
           echo TARGET:$TARGET
           DISTRIBUTION_ID=$(aws cloudfront list-distributions --output json | jq -r '.DistributionList.Items[] | select(.Aliases and .Aliases.Items and (.Aliases.Items | any(. == "'$TARGET'"))) | .Id')
           echo DISTRIBUTION_ID:$DISTRIBUTION_ID
