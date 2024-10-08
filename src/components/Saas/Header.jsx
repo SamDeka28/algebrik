@@ -8,7 +8,7 @@ const Header = () => {
       <div className="container section-head style-5 py-lg-0 pt-4 pt-md-0 ">
         <div className="row gap-5 gap-lg-0 align-items-center">
           <div className="col-lg-6 col-md-12 col-12 col-sm-12 ">
-            <h1 className=""><span className='text_blue'>Personalized digital onboarding starts here</span></h1>
+            <h1 className=""><span className='text_blue'>Personalized digital lending starts here</span></h1>
             <h3 className="heading_sec mt-lg-3 my-2">Take prospects from<br></br>
                 <span className="fw-bold fst-italic">Looked to Booked </span> in minutes,<br></br>
                 not days</h3>
