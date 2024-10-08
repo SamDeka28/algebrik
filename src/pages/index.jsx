@@ -25,7 +25,7 @@ const HomeSaasTechnology = () => {
   return (
     <>
       <Head>
-        <title>ALGEBRIK -Personalized digital lending starts here</title>
+        <title>Algebrik - Personalized digital lending starts here</title>
       </Head>
 
       <MainLayout>
