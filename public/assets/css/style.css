@@ -2136,6 +2136,17 @@ footer{
     visibility: visible; }
 
 @media screen and (max-width: 480px) {
+  .form-container {
+    flex-direction: column;
+  }
+  .demo-bg{
+    width: 100% !important;
+    border-radius: 20px !important;
+  }
+  .form-block {
+    width: 100% !important;
+    padding: 10px 10px !important;
+  }
   .side_menu.style-7 {
     width: 100%; }
     .side_menu.style-7 .pages_links {
@@ -9788,6 +9799,21 @@ header.style-15 {
 			[ * contact Section ] 
 ================================================================*/
 /* --------------- contact style-1 --------------- */
+
+.form-container {
+  display: flex;
+  border: 1px solid #c9c9c9;
+  border-radius: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.form-block {
+  width: 50%;
+  margin: auto;
+  padding: 30px 0px;
+}
+
 .demo-bg{
   background-image: url(../img/algebrik/demo-bg.png) !important;
   background-position: center center; /* Centers the background image */
@@ -9796,7 +9822,9 @@ header.style-15 {
   display: flex;
   align-items: center; /* Centers content vertically */
   justify-content: center; 
-  border-radius: 20px !important;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 45%;
 }
 .demo-btn{
   background-color: white;
