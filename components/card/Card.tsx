@@ -77,10 +77,10 @@ const Card = ({
         >
           <Image
             src={imageSrc}
-            alt={title}
+            alt={title || "Card image"}
             className={`object-cover rounded-md ${customStyles?.image || ""}`}
-            width={imageWidth}   // Use custom width for the image
-            height={imageHeight}  // Use custom height for the image
+            width={imageWidth}
+            height={imageHeight}
             style={{ objectFit: "cover" }}
           />
         </div>
