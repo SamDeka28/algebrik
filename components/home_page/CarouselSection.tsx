@@ -2,7 +2,8 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import GlassCard from "./GlassCard";
+import GlassCard from "../GlassCard";
+
 
 export default function CarouselSection() {
   const news = [

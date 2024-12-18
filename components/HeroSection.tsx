@@ -15,11 +15,11 @@ export default function HeroSection() {
     >
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-end pt-16 gap-16 ">
         <div className="flex flex-col gap-6 max-w-[500px] w-full">
-          <h1 className="text-white text-[56px] font-normal leading-tight">
+          <h1 className="text-white text-[56px] font-plus-jakarta font-normal leading-tight">
             Transform Lending into an{" "}
             <span className="font-semibold">Experience</span>
           </h1>
-          <p className="text-white text-[18px] font-light opacity-80 leading-relaxed">
+          <p className="text-white text-[18px] font-plus-jakarta font-light opacity-80 leading-relaxed">
             The World’s first AI and Cloud Native LOS makes lending journeys
             what they should be – Fast, Intuitive, Seamless.
           </p>
@@ -27,9 +27,9 @@ export default function HeroSection() {
             <input
               type="email"
               placeholder="Enter your work email"
-              className="w-full sm:w-[353px] h-[48px] px-4 py-2 bg-[#C1DAFF] placeholder-white text-white text-[14px] font-medium rounded-[31px] focus:outline-none"
+              className="w-full sm:w-[353px] h-[48px] font-plus-jakarta px-4 py-2 bg-[#3E6296] placeholder-white text-[#C1DAFF] text-[14px] font-medium rounded-[31px] focus:outline-none"
             />
-            <button className="absolute right-0 bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white text-[14px] font-medium rounded-[31px] px-6 py-2 border border-[#2F9AFB] hover:opacity-90 transition-all">
+            <button className="absolute w-[143px] h-[48px] font-plus-jakarta right-0 bg-[#1C8DEA] text-white text-[14px] font-medium rounded-[31px] px-6 py-2 border border-[#2F9AFB] hover:opacity-90 transition-all">
               Book a Demo
             </button>
           </div>
