@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
@@ -8,21 +8,41 @@ import Image from "next/image";
 import logo from "@/public/logo.png";
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-0 inset-x-0 z-50 backdrop-blur-lg md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto "
-      style={{ background: "none" }}
+      className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${
+        isScrolled
+          ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF]  to-[#043071] rounded-[88px] drop-shadow-xl "
+          : "bg-transparent"
+      } transition-all duration-300`}
     >
-      <div className="container mx-auto  px-6 py-16 flex justify-between items-center">
+      <div className="container mx-auto px-6 py-6 flex justify-between items-center">
         <Link href="/">
           <Image src={logo} alt="logo" className="w-[157px] h-[40px]" />
         </Link>
@@ -65,7 +85,6 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="md:hidden text-white"
-          style={{ background: "none" }} 
         >
           <Link
             href="/"
@@ -86,7 +105,7 @@ export default function Navbar() {
             onClick={toggleMenu}
             className="block px-6 py-3 hover:bg-blue-700"
           >
-            Data Center
+            Resource Center
           </Link>
           <Link
             href="/about"
