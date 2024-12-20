@@ -2,7 +2,7 @@
 
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Image from "next/image";
-import Articles from "../Articles";
+import Articles from "./Articles";
 import Marquee from "react-fast-marquee";
 
 const integrations = [

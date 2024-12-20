@@ -55,7 +55,7 @@ export default function Navbar() {
           <Link href="/solutions" className="hover:text-blue-300 transition">
             Solutions
           </Link>
-          <Link href="/data-center" className="hover:text-blue-300 transition">
+          <Link href="/resource_center" className="hover:text-blue-300 transition">
             Resource Center
           </Link>
           <Link href="/about" className="hover:text-blue-300 transition">

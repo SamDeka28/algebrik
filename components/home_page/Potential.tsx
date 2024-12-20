@@ -103,7 +103,7 @@ export default function Potential() {
 
       <div className="relative flex flex-wrap justify-center gap-6 p-6 ">
         {/* Background Gradient */}
-        <div className="absolute drop-shadow-2xl backdrop-blur-xl w-3/4 h-2/6 blur-3xl inset-40 mx-auto my-auto bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#cde1f1] via-[#66B3B0] to-[#BE95FF]"></div>
+        <div className="absolute drop-shadow-2xl backdrop-blur-xl w-3/4 h-2/6 blur-3xl inset-40 mx-auto my-auto bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-300 via-[#66B3B0] to-[#BE95FF]"></div>
 
         {data.cardData.map((card, index) => (
           <div

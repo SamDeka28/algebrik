@@ -1,5 +1,6 @@
 
 import CardsContainer from "@/components/card";
+
 import FooterCards from "@/components/FooterCards";
 import HeroSection from "@/components/home_page/HeroSection";
 import LendingJourney from "@/components/home_page/LendingJourney";

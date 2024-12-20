@@ -32,7 +32,13 @@ export default function FeaturesSection() {
             repeat: Infinity,
           }}
         >
-          {[...features, ...features, ...features, ...features, ...features].map((feature, index) => (
+          {[
+            ...features,
+            ...features,
+            ...features,
+            ...features,
+            ...features,
+          ].map((feature, index) => (
             <div
               key={index}
               className="flex flex-col items-center justify-between min-w-[112px] h-[100px] p-4 gap-[9px]"
@@ -47,7 +53,8 @@ export default function FeaturesSection() {
                   quality={100}
                 />
               </div>
-              <h3 className="text-[#868687] text-[14px] font-medium text-center leading-tight hover:font-extrabold hover:text-[16px] hover:text-[#2A5FAC] hover:cursor-pointer">
+              <h3 
+              className="text-[#868687] text-[14px] font-medium text-center leading-tight hover:font-extrabold hover:text-[16px] hover:text-[#2A5FAC] hover:cursor-pointer">
                 {feature.title}
               </h3>
             </div>

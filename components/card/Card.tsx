@@ -57,7 +57,7 @@ const Card = ({
             {number}
           </p>
           <p
-            className={`text-[#2A5FAC] text-[16px] font-semibold uppercase ${customStyles?.subtitle || ""}`}
+            className={`text-[#8BB0EE] text-[16px] font-semibold uppercase ${customStyles?.subtitle || ""}`}
           >
             {subtitle}
           </p>
