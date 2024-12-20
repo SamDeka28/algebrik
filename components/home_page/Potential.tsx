@@ -2,16 +2,68 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { useEffect, useRef, useState } from "react";
 
-const PercentageCard = ({ title, percentage }: { title: string; percentage: number }) => (
-  <div className="flex flex-col items-center justify-center bg-white rounded-[10px] max-w-[237px] max-h-[118px] gap-[8px]">
-    <p className="text-[44px] font-bold font-plus-jakarta text-[#2A5FAC]">{percentage}%</p>
-    <h3 className="text-[20px] font-normal text-center leading-[30px] font-plus-jakarta text-[#606060]">
-      {title}
-    </h3>
-  </div>
-);
+const PercentageCard = ({ title, percentage }: { title: string; percentage: number }) => {
+  const [currentPercentage, setCurrentPercentage] = useState<number | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    let start = 0;
+    const duration = 1000;
+    const step = Math.ceil((percentage / duration) * 16);
+
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= percentage) {
+        setCurrentPercentage(percentage);
+        clearInterval(timer);
+      } else {
+        setCurrentPercentage(start);
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [percentage, hasAnimated]);
+
+  return (
+    <div
+      ref={cardRef}
+      className="flex flex-col items-center justify-center bg-white rounded-[10px] max-w-[237px] max-h-[118px] gap-[8px]"
+    >
+      <p className="text-[44px] font-bold font-plus-jakarta text-[#2A5FAC]">
+        {currentPercentage !== null ? `${currentPercentage}%` : "0%"}
+      </p>
+      <h3 className="text-[20px] font-normal text-center leading-[30px] font-plus-jakarta text-[#606060]">
+        {title}
+      </h3>
+    </div>
+  );
+};
 export default function Potential() {
   const data = {
     cardData: [

@@ -12,7 +12,7 @@ type ButtonProps = {
     isActive,
     onClick,
     // variant = "primary",
-    // size = "medium",
+    // size = "medium", 
     customClass = "",
   }: ButtonProps) => {
     const baseStyle = `relative rounded-full font-medium transition-all duration-300 ease-in-out overflow-hidden`;
@@ -37,15 +37,15 @@ type ButtonProps = {
     return (
       <button
         onClick={onClick}
-        className={`${baseStyle} ${activeStyle} ${customClass}`}
+        className={`${baseStyle} ${activeStyle} ${customClass} h-[100%] flex-1`}
       >
         {/* Slide Animation */}
         <span
-          className={`absolute left-0 top-0 w-0 h-full bg-white transition-all duration-300 ease-in-out ${
-            isActive ? "w-[204px] h-[44px] " : ""
+          className={`left-0 top-0 w-0 h-full bg-white transition-all duration-300 ease-in-out ${
+            isActive ? "" : ""
           }`}
         ></span>
-        <span className="relative z-10">{text}</span>
+        <span className="z-10 font-plus-jakarta">{text}</span>
       </button>
     );
   };

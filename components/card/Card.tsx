@@ -38,7 +38,7 @@ const Card = ({
   return (
     <div
       className={`
-        px-6 py-8 rounded-[20px] shadow-lg backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-end
+        px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-end
         ${isLarge ? "md:h-[755px] md:w-[558.16px] h-[501px] w-[369.86px]" : "md:w-[558.16px] md:h-[361.58px] w-[369.86px] h-[326px]"}
         ${customStyles?.container || ""}
       `}
@@ -49,7 +49,7 @@ const Card = ({
       <div className="mb-4">
         <div className="flex items-baseline gap-4 mb-4">
           <p
-            className={`text-[64px] font-bold leading-none font-plus-jakarta text-[#D3E5FF] ${customStyles?.number || ""}`}
+            className={`text-[72px] font-bold leading-none font-plus-jakarta text-[#D3E5FF] ${customStyles?.number || ""}`}
             style={{
               WebkitTextStroke: "2px rgb(28, 141, 234, 100%)",
             }}

@@ -7,6 +7,7 @@ import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/global/Navbar";
 import LendingJourney from "@/components/home_page/LendingJourney";
 import Potential from "@/components/home_page/Potential";
+import IntegrationsSection from "@/components/home_page/IntegrationsSection";
 
 
 
@@ -20,6 +21,7 @@ export default function Home() {
         <LendingJourney/>
         <Potential />
         <CardsContainer/>
+        <IntegrationsSection />
         <FooterCards/>
       </main>
       <Footer />

@@ -27,7 +27,7 @@ export default function LendingJourneyDesign() {
           )}
         </div>
   
-        <div className="relative mx-auto flex w-[416px] h-[52px] bg-[#E1ECFD] border-[#CEE2FF] rounded-[48px] justify-around items-center gap-4">
+        <div className="relative mx-auto flex w-[416px] h-[52px] bg-[#E1ECFD] border-[#CEE2FF] rounded-[48px] justify-around items-center gap-4 p-[2px]">
           <Button
             text="With Algebrik"
             isActive={isWithAlgebrik}
