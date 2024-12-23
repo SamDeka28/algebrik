@@ -15,6 +15,8 @@ type CardProps = {
     button?: string;
     imageContainer?: string;
     image?: string;
+    width?: string; // Add width to customStyles
+    height?: string; // Add height to customStyles
     [key: string]: string | undefined;
   };
   buttonText?: string;
@@ -30,20 +32,20 @@ const Card = ({
   description,
   isLarge,
   customStyles,
-  buttonText = "Know More",
+  buttonText,
   imageSrc,
   imageWidth = 500,
   imageHeight = 300,
 }: CardProps) => {
   return (
     <div
-      className={`
-        px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-end
+      className={`px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-end
         ${isLarge ? "md:h-[755px] md:w-[558.16px] h-[501px] w-[369.86px]" : "md:w-[558.16px] md:h-[361.58px] w-[369.86px] h-[326px]"}
-        ${customStyles?.container || ""}
-      `}
+        ${customStyles?.container || ""}`}
       style={{
         background: "linear-gradient(80deg, rgba(255, 255, 255, 0.7), rgba(230, 245, 255, 0.5))",
+        width: customStyles?.width,
+        height: customStyles?.height,
       }}
     >
       <div className="mb-4">
@@ -57,15 +59,21 @@ const Card = ({
             {number}
           </p>
           <p
-            className={`text-[#8BB0EE] text-[16px] font-semibold uppercase ${customStyles?.subtitle || ""}`}
+            className={`text-[#8BB0EE] text-[16px] font-plus-jakarta font-semibold uppercase ${customStyles?.subtitle || ""}`}
           >
             {subtitle}
           </p>
         </div>
-        <h2 className={`text-[#2A5FAC] text-[20px] font-bold mb-2 ${customStyles?.title || ""}`}>
+        <h2
+          className={`text-[#2A5FAC] text-[24px] font-plus-jakarta font-bold mb-2 ${customStyles?.title || ""}`}
+          style={{ marginTop: "16px", marginBottom: "8px" }} // Ensure margin is applied here
+        >
           {title}
         </h2>
-        <p className={`text-[#292929] text-[14px] leading-6 ${customStyles?.description || ""}`}>
+        <p
+          className={`text-[#292929] text-[16px] font-plus-jakarta leading-6 ${customStyles?.description || ""}`}
+          style={{ paddingTop: "8px" }} // Ensure padding is applied here
+        >
           {description}
         </p>
       </div>
@@ -86,11 +94,13 @@ const Card = ({
         </div>
       )}
 
-      <button
-        className={`mt-4 w-[139px] h-[41px] border-2 border-[#2A5FAC] text-[#2A5FAC] text-[14px] font-medium py-2 px-6 rounded-full transition hover:bg-[#2A5FAC] hover:text-white ${customStyles?.button || ""}`}
-      >
-        {buttonText}
-      </button>
+      {buttonText && (
+        <button
+          className={`mt-4 w-[139px] h-[41px] font-plus-jakarta border-2 border-[#2A5FAC] text-[#2A5FAC] text-[14px] font-medium py-2 px-6 rounded-full transition hover:bg-[#2A5FAC] hover:text-white ${customStyles?.button || ""}`}
+        >
+          {buttonText}
+        </button>
+      )}
     </div>
   );
 };

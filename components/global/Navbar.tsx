@@ -49,7 +49,7 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8 text-white">
-          <Link href="/" className="hover:text-blue-300 transition">
+          <Link href="/platform" className="hover:text-blue-300 transition">
             Platform
           </Link>
           <Link href="/solutions" className="hover:text-blue-300 transition">

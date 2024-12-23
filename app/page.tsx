@@ -9,6 +9,7 @@ import FeaturesSection from "@/components/home_page/FeaturesSection";
 
 
 
+
 export default function Home() {
   return (
     <>

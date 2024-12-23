@@ -1,8 +1,7 @@
 // "use client";
 
-// import { useRef } from "react";
-// import { motion, useScroll, useTransform } from "framer-motion";
-// import Image from "next/image";
+
+// import { CustomHeader, CustomSubtitle } from "./CustomHeader";
 
 // const data = [
 //   {
@@ -37,89 +36,21 @@
 // ];
 
 // export default function BorrowerJourney() {
-//   const sectionRef = useRef<HTMLDivElement>(null);
-//   const { scrollYProgress } = useScroll({
-//     target: sectionRef,
-//     offset: ["start start", "end end"],
-//   });
-
-//   // Calculate step-based animations for each category and subcategory
-//   const categorySteps = data.map((_, i) => [
-//     i / data.length,
-//     (i + 0.7) / data.length,
-//     (i + 1) / data.length,
-//   ]);
-
+  
 //   return (
-//     <section
-//       ref={sectionRef}
-//       className="relative h-[500vh] bg-gradient-to-b from-white to-gray-50"
-//     >
-//       <div className="flex h-full">
-//         {/* Sidebar */}
-//         <aside className="sticky top-0 h-screen w-[25%] bg-white shadow-lg p-6 overflow-hidden">
-//           {data.map((category, i) => {
-//             const categoryOpacity = useTransform(
-//               scrollYProgress,
-//               categorySteps[i],
-//               [0, 1, 0]
-//             );
-
-//             return (
-//               <motion.div
-//                 key={i}
-//                 style={{ opacity: categoryOpacity }}
-//                 className="mb-8"
-//               >
-//                 <h2 className="text-lg font-bold text-gray-800 mb-2">
-//                   {category.category}
-//                 </h2>
-//                 <ul>
-//                   {category.subcategories.map((sub, j) => (
-//                     <motion.li
-//                       key={j}
-//                       className="py-2 pl-4 text-gray-600 border-l-2 border-gray-300 hover:text-blue-600 hover:border-blue-600 transition"
-//                     >
-//                       {sub.name}
-//                     </motion.li>
-//                   ))}
-//                 </ul>
-//               </motion.div>
-//             );
-//           })}
-//         </aside>
-
-//         {/* Content Section */}
-//         <div className="relative w-[75%] flex flex-col">
-//           {data.map((category, i) => (
-//             <div key={i} className="h-screen flex flex-col justify-center">
-//               {category.subcategories.map((sub, j) => {
-//                 const subOpacity = useTransform(
-//                   scrollYProgress,
-//                   categorySteps[i],
-//                   [0, 1, 0]
-//                 );
-
-//                 return (
-//                   <motion.div
-//                     key={j}
-//                     style={{ opacity: subOpacity }}
-//                     className="h-screen flex items-center justify-center"
-//                   >
-//                     <Image
-//                       src={sub.image}
-//                       alt={sub.name}
-//                       width={700}
-//                       height={500}
-//                       className="rounded-lg shadow-lg"
-//                     />
-//                   </motion.div>
-//                 );
-//               })}
-//             </div>
-//           ))}
+//     <div className="container mx-auto p-4 md:p-8 flex flex-col gap-12">
+//     <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-8 md:px-36">
+//       <CustomHeader text="Building Better Borrower Journeys" />
+//       <CustomSubtitle text="From borrower onboarding to loan closure, Algebrik combines AI-driven automation, intelligent insights, and seamless workflows to transform every stage of the loan lifecycle." />
+//     </div>
+//     <div className="flex gap-[45px]">
+//         <div className="flex flex-wrap justify-center gap-6 p-6 w-[250px] h-[551px] bg-white">
+// s
 //         </div>
-//       </div>
-//     </section>
+//         <div className="flex flex-wrap justify-center gap-6 p-6 ">
+
+//         </div>
+//     </div>
+//     </div>
 //   );
 // }

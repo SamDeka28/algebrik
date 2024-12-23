@@ -1,5 +1,5 @@
 type HeaderProps = {
-    text: string;
+  text: React.ReactNode;
     className?: string;
   };
   

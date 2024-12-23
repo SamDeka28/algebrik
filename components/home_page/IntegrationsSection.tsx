@@ -56,8 +56,7 @@ export default function IntegrationsSection() {
                   alt={`Integration ${index}`}
                   width={100}
                   height={100}
-                  objectFit="contain"
-                  quality={100}
+                  className="object-scale-down"
                 />
               </div>
             ))}
@@ -72,9 +71,9 @@ export default function IntegrationsSection() {
                 <Image
                   src={integration.image}
                   alt={`Integration ${index}`}
-                  width={150}
-                  height={75}
-                  className="object-contain"
+                  width={100}
+                  height={100}
+                  className="object-scale-down"
                 />
               </div>
             ))}

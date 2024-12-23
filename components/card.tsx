@@ -9,12 +9,14 @@ import Card from "./card/Card";
             subtitle="For Credit Unions"
             title="Seamless Experiences for your Members."
             description="Deliver seamless, personalized experiences that enhance member satisfaction and loyalty."
+            buttonText="Know More"
           />
           <Card
             number="02"
             subtitle="For SMB Lenders"
             title="Streamline Lending for Growth."
             description="Accelerate loan approvals and reduce costs with AI-powered automation."
+            buttonText="Know More"
           />
         </div>
         <Card
@@ -22,6 +24,7 @@ import Card from "./card/Card";
           subtitle="For Auto Lenders"
           title="Lending Transformed for Auto Lenders"
           description="Leverage cutting-edge AI and composable workflows to empower your auto lending setup."
+          buttonText="Know More"
           isLarge
         />
       </div>

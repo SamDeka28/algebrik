@@ -52,6 +52,18 @@ export default function Articles() {
       role: "Marketing",
       link: "#",
     },
+    {
+      title: "Breaking Down Lending Bottlenecks: A Guide to Faster Approvals",
+      author: "Prateek Samantaray",
+      role: "Marketing",
+      link: "#",
+    },
+    {
+      title: "Breaking Down Lending Bottlenecks: A Guide to Faster Approvals",
+      author: "Prateek Samantaray",
+      role: "Marketing",
+      link: "#",
+    },
   ];
 
   return (
