@@ -1,12 +1,8 @@
 
-import CardsContainer from "@/components/card";
 
 import FooterCards from "@/components/FooterCards";
-import HeroSection from "@/components/home_page/HeroSection";
-import LendingJourney from "@/components/home_page/LendingJourney";
-import Potential from "@/components/home_page/Potential";
-import IntegrationsSection from "@/components/home_page/IntegrationsSection";
-import FeaturesSection from "@/components/home_page/FeaturesSection";
+import ChallengesSection from "@/components/solutions/ChallengesSection";
+import FAQs from "@/components/solutions/FAQs";
 
 
 
@@ -14,13 +10,9 @@ export default function Home() {
   return (
     <>
       <main>
-        <HeroSection />
-        <FeaturesSection />
-        <LendingJourney/>
-        <Potential />
-        <CardsContainer/>
-        <IntegrationsSection />
-        <FooterCards/>
+        <ChallengesSection />
+        <FooterCards />
+    <FAQs/>
       </main>
     </>
   );

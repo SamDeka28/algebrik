@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 type CardProps = {
@@ -15,14 +17,17 @@ type CardProps = {
     button?: string;
     imageContainer?: string;
     image?: string;
-    width?: string; // Add width to customStyles
-    height?: string; // Add height to customStyles
     [key: string]: string | undefined;
   };
   buttonText?: string;
   imageSrc?: string;
   imageWidth?: number;
   imageHeight?: number;
+  responsive?: {
+    container?: string; // Add responsive classes for container
+    width?: string; // Add responsive width
+    height?: string; // Add responsive height
+  };
 };
 
 const Card = ({
@@ -31,6 +36,7 @@ const Card = ({
   title,
   description,
   isLarge,
+  responsive = {},
   customStyles,
   buttonText,
   imageSrc,
@@ -39,13 +45,12 @@ const Card = ({
 }: CardProps) => {
   return (
     <div
-      className={`px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-end
+      className={`relative px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-end
         ${isLarge ? "md:h-[755px] md:w-[558.16px] h-[501px] w-[369.86px]" : "md:w-[558.16px] md:h-[361.58px] w-[369.86px] h-[326px]"}
-        ${customStyles?.container || ""}`}
+        ${customStyles?.container || ""} ${responsive?.container || ""}`}
       style={{
-        background: "linear-gradient(80deg, rgba(255, 255, 255, 0.7), rgba(230, 245, 255, 0.5))",
-        width: customStyles?.width,
-        height: customStyles?.height,
+        background:
+          "linear-gradient(80deg, rgba(255, 255, 255, 0.7), rgba(230, 245, 255, 0.5))",
       }}
     >
       <div className="mb-4">
@@ -66,13 +71,13 @@ const Card = ({
         </div>
         <h2
           className={`text-[#2A5FAC] text-[24px] font-plus-jakarta font-bold mb-2 ${customStyles?.title || ""}`}
-          style={{ marginTop: "16px", marginBottom: "8px" }} // Ensure margin is applied here
+          style={{ marginTop: "16px", marginBottom: "8px" }}
         >
           {title}
         </h2>
         <p
           className={`text-[#292929] text-[16px] font-plus-jakarta leading-6 ${customStyles?.description || ""}`}
-          style={{ paddingTop: "8px" }} // Ensure padding is applied here
+          style={{ paddingTop: "8px" }}
         >
           {description}
         </p>
@@ -80,16 +85,30 @@ const Card = ({
 
       {imageSrc && (
         <div
-          className={`mb-4 ${customStyles?.imageContainer || ""}`}
+          className={`relative ${customStyles?.imageContainer || ""}`}
           style={{ maxWidth: "100%", height: "auto", overflow: "hidden" }}
         >
           <Image
             src={imageSrc}
             alt={title || "Card image"}
-            className={`object-cover rounded-md ${customStyles?.image || ""}`}
+            className={`object-cover rounded-md transition-all duration-300 ease-in-out
+              ${customStyles?.image || ""}`}
             width={imageWidth}
             height={imageHeight}
-            style={{ objectFit: "cover" }}
+            style={{
+              objectFit: "cover",
+              filter: "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
+              opacity: 0.5,
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.filter = "none";
+              e.currentTarget.style.opacity = "1";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.filter =
+                "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))";
+              e.currentTarget.style.opacity = "0.5";
+            }}
           />
         </div>
       )}

@@ -7,9 +7,9 @@ export default function HeroSection() {
   return (
     <div className=" w-full h-max">
       <div
-        className="w-full h-[758px] flex items-center justify-center overflow-hidden relative"
+        className="w-full h-[758px] flex items-center bg-blue-900 rounded-bl-[19%] rounded-br-[19%] justify-center overflow-hidden relative"
         style={{
-          backgroundImage: "url('/background_images/platform_hero.png')",
+          backgroundImage: "url('/background_images/modern_lender.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
