@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import hero from "@/public/section_images/platform_hero.png";
+import hero from "@/public/section_images/sol_hero.png";
 
 export default function HeroSection() {
   return (
@@ -17,20 +17,26 @@ export default function HeroSection() {
         <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[40px]">
           <div className="flex flex-col gap-[20px]">
             <CustomHeader
-              text="Lending just got easier"
-              className="text-[56px] text-white text-center"
+              
+                    text={
+                        <>
+                          <span>Simplify Lending.</span>
+                          <span>Delight Members. Drive Growth.</span>
+                        </>
+                      }
+              className="text-[56px] text-white text-center flex flex-col"
             />
             <CustomSubtitle
-              text="Experience the future of lending: a fully automated, AI-First platform that simplifies workflows, improves decision accuracy, and creates personalized borrower journeys at scale"
-              className="text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[293px]"
+              text="Empower your credit union to reduce approval times, boost member satisfaction, and lower operational costs—all with Algebrik AI’s cloud-native, AI-powered solutions tailored to your needs."
+              className="text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[193px] mb-[20px]"
             />
           </div>
           <BookADemo />
         </div>
       </div>
 
-      <div className="relative -mt-[250px] flex justify-center">
-        <div className=" bg-white/70 backdrop-blur-sm rounded-[32px] m-0 p-0 shadow-lg overflow-hidden">
+      <div className="relative -mt-[150px] flex justify-center">
+        <div className="  backdrop-blur-sm rounded-[32px] m-0 p-0 shadow-lg overflow-hidden">
           <div className="relative">
             <Image
               src={hero}
@@ -41,14 +47,7 @@ export default function HeroSection() {
               objectFit="fill"
               alt="algebrik platform hero image"
             />
-            <div className="absolute inset-0 flex flex-col justify-center items-center gap-6">
-              <span className="text-white text-[32px] font-bold px-4 py-2 bg-opacity-60 rounded-full shadow-md">
-                See Algebrik in Action
-              </span>
-              <button className="rounded-[31px] bg-gradient-to-tr from-blue-400 to-blue-800 hover:bg-blue-600 text-white px-6 py-3">
-                Watch Tour
-              </button>
-            </div>
+           
           </div>
         </div>
       </div>

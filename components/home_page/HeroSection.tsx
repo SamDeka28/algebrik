@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import heroImage from "@/public/section_images/hero_section_home.png";
+import heroImage from "@/public/section_images/hero.png";
 import BookADemo from "../BookADemo";
 
 export default function HeroSection() {
