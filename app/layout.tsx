@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakartaSans.variable} ${dmSans.variable} antialiased`}
+        className={`${plusJakartaSans.variable} ${dmSans.variable} antialiased !bg-white`}
       >
       <Navbar />
         {children}

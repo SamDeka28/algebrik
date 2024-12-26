@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
-import { MdOutlinePauseCircleOutline } from "react-icons/md";
-import { PiPlusCircleBold } from "react-icons/pi";
+import { PiMinusCircleBold, PiPlusCircleBold } from "react-icons/pi";
+
 
 type FAQItem = {
   question: string;
@@ -62,46 +62,46 @@ const FAQs = () => {
   };
 
   return (
-    <section className="px-6 md:px-16 py-12 bg-gray-50">
+    <section className="px-6 md:px-16 py-12">
       <div className="max-w-6xl mx-auto font-plus-jakarta flex gap-[46px]">
-        {/* Left Section */}
+
         <div className="flex flex-col gap-[16px] md:w-[328px] md:h-[389px]">
           <CustomHeader text="Frequently Asked Questions" className="text-[40px] pr-10"/>
           <CustomSubtitle
-            className="text-[18px] font-light text-[#292929] leading-[30px]"
+            className="text-[18px] font-normal text-[#292929] leading-[30px]"
             text="Everything you need to know about the Auto lenders. Can’t find your questions here? Please ask your questions below."
           />
           <Button text="Ask your Questions" 
-            customClass="px-[1px] text-[14px] text-[#292929] font-bold leading-[150%] border border-[#1C8DEA]"
+            customClass="px-[1px] md:mt-[20px] text-[14px] md:w-[200px] md:h-[41px] text-[#292929] font-bold leading-[150%] border-2 border-[#1C8DEA]"
           />
         </div>
 
-        {/* FAQ Section */}
         <div className="flex-1 space-y-4">
           {faqData.map((item, index) => (
             <div
               key={index}
-              className={`border rounded-lg p-4 bg-white shadow-md ${
-                activeIndex === index ? "border-blue-500" : "border-gray-300"
+              className={`border rounded-[16px] bg-white shadow-lg ${
+                activeIndex === index ? "" : "border-gray-300"
               }`}
             >
               <div
-                className="flex justify-between items-center cursor-pointer"
+                className="flex justify-between px-[24px] py-[18px] items-center cursor-pointer"
                 onClick={() => toggleFAQ(index)}
               >
-                <h3 className="font-semibold text-[#292929] text-[18px] border-b font-plus-jakarta leading-[28px]">
+                <h3 className="font-semibold text-[#292929] text-[18px]  font-plus-jakarta leading-[28px]">
                   {item.question}
                 </h3>
                 <span className="text-xl">
                   {activeIndex === index ? (
-                    <MdOutlinePauseCircleOutline className="text-blue-500" />
+                    <PiMinusCircleBold  className="text-blue-500" />
                   ) : (
                     <PiPlusCircleBold className="text-gray-500" />
                   )}
                 </span>
               </div>
+              <hr className="w-full" />
               {activeIndex === index && (
-                <p className="mt-2 text-[#838383] font-plus-jakarta leading-[28px] text-[16px]">{item.answer}</p>
+                <p className="mt-2 text-[#838383] px-[24px] py-[14px] font-plus-jakarta leading-[28px] text-[16px]">{item.answer}</p>
               )}
             </div>
           ))}

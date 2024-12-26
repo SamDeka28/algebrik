@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import hero from "@/public/section_images/platform_hero.png";
+import hero from "@/public/section_images/platform.png";
 
 export default function HeroSection() {
   return (
@@ -10,9 +10,12 @@ export default function HeroSection() {
         className="w-full h-[758px] flex items-center justify-center overflow-hidden relative"
         style={{
           backgroundImage: "url('/background_images/platform_hero.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: '100%',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundPositionY: 'bottom',
         }}
+        
       >
         <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[40px]">
           <div className="flex flex-col gap-[20px]">
@@ -30,7 +33,7 @@ export default function HeroSection() {
       </div>
 
       <div className="relative -mt-[250px] flex justify-center">
-        <div className=" bg-white/70 backdrop-blur-sm rounded-[32px] m-0 p-0 shadow-lg overflow-hidden">
+        <div className="cursor-pointer">
           <div className="relative">
             <Image
               src={hero}
@@ -41,14 +44,14 @@ export default function HeroSection() {
               objectFit="fill"
               alt="algebrik platform hero image"
             />
-            <div className="absolute inset-0 flex flex-col justify-center items-center gap-6">
+            {/* <div className="absolute inset-0 flex flex-col justify-center items-center gap-6">
               <span className="text-white text-[32px] font-bold px-4 py-2 bg-opacity-60 rounded-full shadow-md">
                 See Algebrik in Action
               </span>
               <button className="rounded-[31px] bg-gradient-to-tr from-blue-400 to-blue-800 hover:bg-blue-600 text-white px-6 py-3">
                 Watch Tour
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

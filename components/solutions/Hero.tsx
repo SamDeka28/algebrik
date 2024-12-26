@@ -9,10 +9,12 @@ export default function HeroSection() {
       <div
         className="w-full h-[758px] flex items-center justify-center overflow-hidden relative"
         style={{
-          backgroundImage: "url('/background_images/platform_hero.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+            backgroundImage: "url('/background_images/platform_hero.png')",
+            backgroundSize: '100%',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            backgroundPositionY: 'bottom',
+          }}
       >
         <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[40px]">
           <div className="flex flex-col gap-[20px]">
@@ -36,7 +38,7 @@ export default function HeroSection() {
       </div>
 
       <div className="relative -mt-[150px] flex justify-center">
-        <div className="  backdrop-blur-sm rounded-[32px] m-0 p-0 shadow-lg overflow-hidden">
+        <div className="">
           <div className="relative">
             <Image
               src={hero}

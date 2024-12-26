@@ -41,9 +41,9 @@ const ModernLender = () => {
       <div className="container relative md:w-full flex gap-[24.42px] justify-center mt-[42px]">
         {/* Background gradient ellipses */}
         <div className="relative opacity-[30%] z-[-1]">
-          <div className="absolute top-24 md:left-[246px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[668.64px] md:h-[542.11px] blur-3xl animate-fadeIn" />
-          <div className="absolute top-36 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[228px] -z-10 animate-fadeIn delay-200" />
-          <div className="absolute top-48 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[951.48px] md:h-[542.11px] blur-[228px] z-[-1] animate-fadeIn delay-400" />
+          <div className="absolute top-24 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[668.64px] md:h-[542.11px] blur-[100px] animate-fadeIn" />
+          <div className="absolute top-36 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10 animate-fadeIn delay-200" />
+          <div className="absolute top-48 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[951.48px] md:h-[542.11px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
         </div>
 
         <div className="grid grid-rows-2 md:grid-rows-1 gap-[24px]">
