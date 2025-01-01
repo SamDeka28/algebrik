@@ -1,11 +1,11 @@
+import HeroSection from "@/components/about_page/Hero_Section";
+import MissionSection from "@/components/about_page/Mission";
+import News from "@/components/about_page/news";
+import OurStory from "@/components/about_page/OurStory";
+import OurTeam from "@/components/about_page/OurTeam";
+import ReadyToGo from "@/components/about_page/ReadyToGo";
+import WhatWeStriveFor from "@/components/about_page/WhatWeStriveFor";
 
-import CardsContainer from "@/components/card";
-
-import FooterCards from "@/components/FooterCards";
-import HeroSection from "@/components/home_page/HeroSection";
-import LendingJourney from "@/components/home_page/LendingJourney";
-import Potential from "@/components/home_page/Potential";
-import IntegrationsSection from "@/components/home_page/IntegrationsSection";
 
 
 
@@ -14,12 +14,12 @@ export default function Home() {
     <>
       <main>
         <HeroSection />
-
-        <LendingJourney/>
-        <Potential />
-        <CardsContainer/>
-        <IntegrationsSection />
-        <FooterCards/>
+        <MissionSection />
+        <WhatWeStriveFor />
+        <OurStory/>
+        <OurTeam/>
+        <News />
+        <ReadyToGo />
       </main>
     </>
   );

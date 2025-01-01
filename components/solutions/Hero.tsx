@@ -16,7 +16,7 @@ export default function HeroSection() {
             backgroundPositionY: 'bottom',
           }}
       >
-        <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[40px]">
+        <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[20px]">
           <div className="flex flex-col gap-[20px]">
             <CustomHeader
               
@@ -30,14 +30,14 @@ export default function HeroSection() {
             />
             <CustomSubtitle
               text="Empower your credit union to reduce approval times, boost member satisfaction, and lower operational costs—all with Algebrik AI’s cloud-native, AI-powered solutions tailored to your needs."
-              className="text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[193px] mb-[20px]"
+              className="text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[193px] mb-[10px]"
             />
           </div>
           <BookADemo />
         </div>
       </div>
 
-      <div className="relative -mt-[150px] flex justify-center">
+      <div className="relative -mt-[185px] flex justify-center">
         <div className="">
           <div className="relative">
             <Image
