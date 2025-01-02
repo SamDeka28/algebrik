@@ -3,6 +3,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { motion } from 'framer-motion';
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -49,10 +50,40 @@ export default function Contact() {
       </div>
       <div>
       <div className="container relative opacity-[30%] z-[-1]">
-          <div className="absolute -top-9 left-1 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[461.73px] md:h-[439.68px] blur-[80px] animate-fadeIn" />
-          <div className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[196.91px] md:h-[280.03px] blur-[100px] -z-10 animate-fadeIn delay-200" />
-          <div className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[526.24px] md:h-[539.68px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
-        </div>
+      <motion.div
+        className="absolute -top-9 left-1 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[461.73px] md:h-[439.68px] blur-[80px]"
+        animate={{
+          rotate: 360, // Rotate 360 degrees
+        }}
+        transition={{
+          duration: 20, // Adjust speed here
+          repeat: Infinity, // Infinite loop
+          ease: "linear", // Continuous rotation
+        }}
+      />
+      <motion.div
+        className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[196.91px] md:h-[280.03px] blur-[100px] -z-10"
+        animate={{
+          rotate: 360,
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+      <motion.div
+        className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[526.24px] md:h-[539.68px] blur-[100px] z-[-1]"
+        animate={{
+          rotate: 360,
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+    </div>
       <form
         onSubmit={formik.handleSubmit}
         className="w-[362px] md:w-[518px]  h-[716px] md:h-[512px] bg-white/90 backdrop-blur-sm rounded-[24px] p-8"

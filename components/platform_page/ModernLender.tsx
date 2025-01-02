@@ -1,24 +1,6 @@
-import Card from "../card/Card";
+import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 
-const cardData = [
-  {
-    title: "AI-Driven automation",
-    description: "Automate repetitive tasks, reduce errors, and accelerate loan approvals with advanced AI capabilities",
-  },
-  {
-    title: "Smarter Decisioning",
-    description: "Leverage real-time insights and confidence scoring to make faster, more informed lending decisions",
-  },
-  {
-    title: "Omnichannel Experience",
-    description: "Offer borrowers a seamless, unified experience across mobile, web, and in-branch",
-  },
-  {
-    title: "Scalable & Secure",
-    description: "Built on a robust cloud-native architecture to grow with your business and ensure data integrity",
-  },
-];
 
 const ModernLender = () => {
   return (
@@ -39,50 +21,46 @@ const ModernLender = () => {
       </div>
 
       <div className="container relative md:w-full flex gap-[24.42px] justify-center mt-[42px]">
-        {/* Background gradient ellipses */}
         <div className="relative opacity-[30%] z-[-1]">
           <div className="absolute top-24 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[668.64px] md:h-[542.11px] blur-[100px] animate-fadeIn" />
           <div className="absolute top-36 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10 animate-fadeIn delay-200" />
           <div className="absolute top-48 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[951.48px] md:h-[542.11px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
         </div>
 
-        <div className="grid grid-rows-2 md:grid-rows-1 gap-[24px]">
-          {cardData.slice(0, 2).map((card, index) => (
-            <Card
-              key={index}
-              title={card.title}
-              description={card.description}
-              customStyles={{
-                container: "flex flex-col item-end justify-end bg-white",
-                title: "flex items-start justify-start text-[#2A5FAC] text-[24px] font-bold",
-                description: "text-[#292929] text-[16px] font-normal",
-              }}
-              responsive={{
-                container: "w-[178.6px] md:w-[444.58px]",
-                height: "w-[327.46px] md:h-[327.46px]",
-              }}
-            />
-          ))}
+      <div className="flex flex-col gap-[30px]">
+        <div className="relative flex gap-[20px]">
+        <div className="bg-white px-[24px] py-[32px] md:w-[482px] md:h-[428px] rounded-[20px] flex flex-col gap-[8px] shadow-xl">
+            <CustomHeader text="AI-Driven automation" className="md:text-[24px]"/>
+            <CustomSubtitle 
+            text="Automate repetitive tasks, reduce errors, and accelerate loan approvals with advanced AI capabilities" 
+            className="md:text-[16px] md:leading-[30px]"/>
+            <Image src="/section_images/ai_driven.png" width={482} height={428} alt="AI-Driven automation"/>
+          </div>
+          <div className="relative top-24 bg-white px-[24px] py-[32px] md:w-[409px] md:h-[370px] rounded-[20px] flex flex-col-reverse gap-[8px] shadow-xl">
+            <CustomSubtitle 
+            text="Leverage real-time insights and confidence scoring to make faster, more informed lending decisions" 
+            className="md:text-[16px] md:leading-[30px]"/>
+            <CustomHeader text="Smarter Decisioning" className="md:text-[24px]"/>
+            <Image src="/section_images/smarter.png" width={482} height={428} alt="Smarter Decisioning"/>
+          </div>
         </div>
-
-        <div className="grid grid-rows-2 md:grid-rows-1 gap-[24px] transform translate-y-[13%]">
-          {cardData.slice(2, 4).map((card, index) => (
-            <Card
-              key={index}
-              title={card.title}
-              description={card.description}
-              customStyles={{
-                container: "flex flex-col item-end justify-end bg-white",
-                title: "flex items-start justify-start text-[#2A5FAC] text-[24px] font-bold",
-                description: "text-[#292929] text-[16px] font-normal",
-              }}
-              responsive={{
-                container: "w-[178.6px] md:w-[444.58px]",
-                height: "w-[327.46px] md:h-[327.46px]",
-              }}
-            />
-          ))}
+        <div className="flex gap-[22.42px]">
+        <div className="bg-white px-[24px] py-[32px] md:w-[444.58px] md:h-[327.46px] rounded-[20px] flex flex-col gap-[8px] shadow-xl">
+            <CustomHeader text="Omnichannel Experience" className="md:text-[24px]"/>
+            <CustomSubtitle 
+            text="Offer borrowers a seamless, unified experience across mobile, web, and in-branch" 
+            className="md:text-[16px] md:leading-[30px]"/>
+            <Image src="/section_images/omnichannel_experience.png" width={482} height={428} alt="Omnichannel Experience"/>
+          </div>
+          <div className="relative top-8 bg-white px-[24px] py-[32px] md:w-[445px] md:h-[351px] rounded-[20px] flex flex-col gap-[8px] shadow-xl">
+            <CustomHeader text="Scalable & Secure" className="md:text-[24px]"/>
+            <CustomSubtitle 
+            text="Built on a robust cloud-native architecture to grow with your business and ensure data integrity" 
+            className="md:text-[16px] md:leading-[30px]"/>
+            <Image src="/section_images/scalable.png" width={482} height={328} alt="Scalable & Secure" className="relative bottom-5"/>
+          </div>
         </div>
+      </div>
       </div>
     </div>
   );

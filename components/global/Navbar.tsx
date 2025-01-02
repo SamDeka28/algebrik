@@ -59,7 +59,12 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className={`hidden md:flex space-x-8 ${isScrolled ? (isContactPage ? "text-white" : "text-black") : "text-black"}`}>
+        <div className={`hidden md:flex space-x-8 ${isContactPage
+    ? isScrolled
+      ? "text-white"
+      : "text-black"
+    : "text-white"
+}`}>
 
           <Link href="/platform" className="hover:text-blue-300 transition">
             Platform
@@ -78,10 +83,10 @@ export default function Navbar() {
           href="/contact"
           className={`hidden md:inline-block px-6 py-2 rounded-full text-[14px] font-bold transition ${
             isScrolled
-              ? isContactPage
-                ? "bg-white text-black hover:bg-gray-700"
-                : "bg-white text-[#292929] hover:bg-blue-300"
-              : "bg-blue-500 text-white hover:bg-blue-700"
+    ? isContactPage
+      ? "bg-white text-[#292929] hover:bg-gray-700"
+      : "bg-white text-[#292929] hover:bg-blue-300"
+    : "bg-blue-500 text-white hover:bg-blue-700"
           }`}          
         >
           Contact Us

@@ -6,7 +6,7 @@ import LendingJourney from "@/components/home_page/LendingJourney";
 import Potential from "@/components/home_page/Potential";
 import IntegrationsSection from "@/components/home_page/IntegrationsSection";
 import FeaturesSection from "@/components/home_page/FeaturesSection";
-// import BorrowerJourney from "@/components/home_page/BorrowerJourney";
+import BorrowerJourney from "@/components/home_page/BorrowerJourney";
 
 
 
@@ -17,7 +17,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <FeaturesSection />
-        {/* <BorrowerJourney /> */}
+        <BorrowerJourney />
         <LendingJourney/>
         <Potential />
         <CardsContainer/>

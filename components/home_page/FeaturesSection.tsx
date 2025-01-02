@@ -19,7 +19,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-[63px] bg-white overflow-hidden">
+    <section className="py-[38px] font-plus-jakarta bg-white overflow-hidden">
       <div className="relative w-full">
         <motion.div
           className="flex gap-6"
@@ -43,12 +43,12 @@ export default function FeaturesSection() {
               key={index}
               className="flex flex-col items-center justify-between min-w-[112px] h-[100px] p-4 gap-[9px]"
             >
-              <div className="w-[55px] h-[55px] flex items-center justify-center bg-[#F2F6FF] rounded-[12px] p-4">
+              <div className="w-[60px] h-[60px] flex items-center justify-center bg-[#F2F6FF] rounded-[12px] p-4">
                 <Image
                   src={feature.icon}
                   alt={feature.title}
-                  width={21}
-                  height={21}
+                  width={55}
+                  height={55}
                   style={{ objectFit: "contain" }}
                   quality={100}
                 />
