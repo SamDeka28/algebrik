@@ -27,6 +27,8 @@ export default function LoanLifecycle() {
         setCurrentCategoryIndex((prev) => prev + 1);
       } else if (e.deltaY < 0 && currentCategoryIndex > 0) {
         setCurrentCategoryIndex((prev) => prev - 1);
+      } else if (e.deltaY > 0 && currentCategoryIndex === data.length - 1) {
+        setScrollLock(false);
       }
     }
   };
@@ -118,7 +120,6 @@ export default function LoanLifecycle() {
           )}
         </div>
       </div>
-
     </div>
   );
 }
