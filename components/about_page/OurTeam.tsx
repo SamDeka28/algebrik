@@ -9,21 +9,25 @@ const carouselDataOne = [
     image: "/team.png",
     name: "John Doe",
     title: "CEO & Founder",
+    place: "N/A",
   },
   {
     image: "/team.png",
     name: "Jane Smith",
     title: "CFO & Co-Founder",
+    place: "N/A",
   },
   {
     image: "/team.png",
     name: "Emily Johnson",
     title: "CTO",
+    place: "N/A",
   },
   {
     image: "/team.png",
     name: "Michael Brown",
     title: "Head of Marketing",
+    place: "N/A",
   },
 ];
 
@@ -69,7 +73,7 @@ function TeamMemberCard({
   image: string;
   name: string;
   title: string;
-  place: string;
+  place?: string;
 }) {
   return (
     <div

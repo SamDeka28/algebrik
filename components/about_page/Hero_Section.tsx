@@ -13,9 +13,9 @@ export default function HeroSection() {
         backgroundColor: "#000000",
       }}
     >
-      <div className="container md:h-[551px] flex flex-col justify-center items-center text-center gap-[20px] mx-auto">
+      <div className="container h-[551px] flex flex-col justify-center items-center text-center gap-[20px] mx-auto">
         <CustomHeader
-          className="text-[48px] text-white leading-[62px] flex flex-col"
+          className="text-[36px] md:text-[48px] text-white leading-[62px] flex flex-col"
           text={
             <>
               <span>Reshaping Lending,</span>
