@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 
 export default function NewsSection() {
   const newsArticles = [
@@ -40,11 +40,8 @@ export default function NewsSection() {
   ];
 
   return (
-    <div className="relative w-full max-w-[1160px] mx-auto bg-[#043071] rounded-[24px] py-8 px-6">
+    <div className="relative w-full font-plus-jakarta max-w-[1160px] mx-auto bg-[#043071] rounded-[24px] my-[88px] py-[40px] px-[40px]">
 
-      <div className="absolute inset-0 text-white opacity-10 text-[200px] font-extrabold leading-none z-0">
-        algebrik
-      </div>
 
       <div className="relative z-10">
         <h2 className="text-white text-[32px] font-bold mb-2">In the News</h2>
@@ -61,7 +58,7 @@ export default function NewsSection() {
             className="flex-shrink-0 w-[852px] h-[428px] bg-white rounded-[20px] shadow-md flex flex-col"
           >
 
-            <div className="flex flex-1 justify-center items-center p-6">
+            <div className="flex flex-1 justify-center items-start p-6">
               <div className="w-[273px] h-[380px] bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center">
                 <Image
                   src={article.image}
@@ -72,29 +69,20 @@ export default function NewsSection() {
                   quality={100}
                 />
               </div>
-              <div className="ml-6 md:w-[507px] flex flex-col justify-between">
-                <h6 className="text-gray-500 text-sm font-bold uppercase mb-2">
+              <div className="ml-6 md:w-[507px] flex flex-col justify-between gap-[16px]">
+                <h6 className="text-gray-500 text-[14px] font-bold tracking-[4px] uppercase mb-2">
                   News
                 </h6>
                 <p className="text-gray-900 font-bold text-[20px] mb-4">
                   {article.title}
                 </p>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 text-[16px] leading-[30px] mb-4">
                   {article.description}
                 </p>
-                <p className="text-gray-400 text-sm font-bold">
+                <p className="text-black text-[30px] font-bold">
                   {article.source}
                 </p>
               </div>
-            </div>
-
-            <div className="bg-white h-[54px] rounded-b-[20px] flex items-center justify-center">
-              <Link
-                href="#"
-                className="text-[#1A69DC] font-semibold text-sm"
-              >
-                Read More →
-              </Link>
             </div>
           </div>
         ))}

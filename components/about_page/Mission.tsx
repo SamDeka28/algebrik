@@ -1,32 +1,61 @@
+import { CustomHeader } from "../CustomHeader";
+
 export default function MissionSection() {
-    return (
-      <section className="container font-plus-jakarta mx-auto my-12 px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center gap-8">
-        {/* Left Content */}
-        <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-            Our mission.
-          </h2>
-          <p className="text-gray-700 mb-4">
-            While advancements in lending technology inspire us, the lending journey remains overly complicated. Disconnected systems create inefficiencies for lenders and barriers for borrowers.
+  return (
+    <div className="container mx-auto md:p-8 md:w-[1160px] md:my-[45px] flex flex-col md:flex-row gap-[30px] font-plus-jakarta justify-center items-center">
+      <div className="flex flex-col justify-start items-start gap-[24px]">
+        <CustomHeader text="Our mission." className="text-[40px] font-bold" />
+        <div className="flex flex-col gap-6 text-[16px] text-[#606060] leading-[30px] font-normal">
+          <p>
+            While advancements in lending technology inspire us, the lending
+            journey remains overly complicated. Disconnected systems create
+            inefficiencies for lenders and barriers for borrowers.
           </p>
-          <p className="text-gray-700 mb-4">
-            There has to be a better way to lend—this belief led to Algebrik AI. What began as a tool to streamline loan organizations has grown into a mission to help lenders deliver loans digitally when and where they are needed most.
-          </p>
-          <p className="text-gray-700 mb-4">
-            Our vision is to revolutionize loan origination, making it faster, simpler, and more inclusive, while enabling lenders to focus on helping people achieve their goals. Our ultimate goal is to transform lending into a seamless, transparent process, setting a new benchmark for financial services. We’re proud to work with lenders worldwide, creating meaningful financial impact together.
-          </p>
-        </div>
-  
-        {/* Right Callout */}
-        <div className="bg-blue-50 border-l-4 border-blue-500 shadow-lg p-6 rounded-md md:w-1/3">
-          <h3 className="text-lg font-semibold text-blue-600">
-            Transforming lending with
-          </h3>
-          <p className="text-blue-800 text-lg font-bold">
-            simplicity, accessibility, <br /> and seamless borrower experiences
+          <p>
+            There has to be a better way to lend—this belief led to Algebrik AI.
+            What began as a tool to streamline loan origination has grown into a
+            mission to help lenders deliver loans digitally when and where they
+            are needed most. Our vision is to revolutionize loan origination,
+            making it faster, simpler, and more inclusive, while enabling
+            lenders to focus on helping people achieve their goals. Our ultimate
+            goal is to transform lending into a seamless, transparent process,
+            setting a new benchmark for financial services. We’re proud to work
+            with lenders worldwide, creating meaningful financial impact
+            together.
           </p>
         </div>
-      </section>
-    );
-  }
-  
+      </div>
+
+      <div className="flex-1 flex flex-col items-center md:items-start  gap-6">
+        <div className="md:w-[500px] md:h-[286px] flex justify-center"
+        style={{
+          backgroundImage: "url('/section_images/mission_text.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          // borderRadius: "20px",
+          overflow: "hidden",
+          // boxShadow: "0px 0px 30px rgba(0, 0, 0, 0.2)",
+        }}
+        >
+        <CustomHeader className="text-[36px] gap-0 leading-snug"
+          text={
+            <>
+              <span className="text-[36px] text-black block">Transforming</span>
+              <span className="text-[36px] text-black block">lending with</span>
+              <span className="text-[36px] block">
+                simplicity, accessibility,
+              </span>
+              <span className="text-[36px] block">
+                and seamless borrower 
+              </span>
+              <span className="text-[36px] block">
+                experiences
+              </span>
+            </>
+          }
+          />
+          </div>
+      </div>
+    </div>
+  );
+}

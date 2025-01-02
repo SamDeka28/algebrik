@@ -10,7 +10,7 @@ export default function HeroSection() {
         backgroundImage: "url('/background_images/about_hero.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor: "#000000", // Fallback color
+        backgroundColor: "#000000",
       }}
     >
       <div className="container md:h-[551px] flex flex-col justify-center items-center text-center gap-[20px] mx-auto">
@@ -24,7 +24,7 @@ export default function HeroSection() {
           }
         />
         <CustomSubtitle
-          className="px-6 md:px-48 text-white text-[18px] font-normal pb-[40px]"
+          className="px-6 md:px-80 text-white text-[18px] font-normal pb-[40px]"
           text="Algebrik's cloud-native, AI-powered platform empowers lenders to simplify lending experiences and delight borrowers"
         />
         <BookADemo />

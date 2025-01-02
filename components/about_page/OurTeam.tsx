@@ -29,36 +29,57 @@ const carouselDataOne = [
 
 const carouselDataTwo = [
   {
-    image: "/team.png",
-    name: "Shane Doe",
-    title: "CEO & Founder",
+    image: "/team_images/michele.png",
+    name: "Michele Dean",
+    title: "Chief Executive Officer",
+    place: "Suffolk FCU, New York",
   },
   {
-    image: "/team.png",
-    name: "Alice Green",
-    title: "CFO & Co-Founder",
+    image: "/team_images/travis.png",
+    name: "Travis Bow",
+    title: "Chief Executive Officer",
+    place: "University of Hawaii FCU, Hawaii",
   },
   {
-    image: "/team.png",
-    name: "Mark Taylor",
-    title: "CTO",
+    image: "/team_images/leAnne.png",
+    name: "LeAnne Hixson",
+    title: "Chief Lending Officer",
+    place: "PFCU Credit Union, Michigan",
   },
   {
-    image: "/team.png",
-    name: "Sophia Davis",
-    title: "Head of Strategy",
+    image: "/team_images/david.png",
+    name: "David Libby",
+    title: "Chief Executive Officer",
+    place: "Town & Country FCU, Maine",
+  },
+  {
+    image: "/team_images/travisBow.png",
+    name: "Travis Bow",
+    title: "Chief Lending Officer",
+    place: "MidWest America FCU, Indiana",
   },
 ];
 
-function TeamMemberCard({ image, name, title }: { image: string; name: string; title: string }) {
+function TeamMemberCard({
+  image,
+  name,
+  title,
+  place,
+}: {
+  image: string;
+  name: string;
+  title: string;
+  place: string;
+}) {
   return (
     <div
-      className="md:w-[369.18px] md:h-[408.46px] relative rounded-[22.61px] flex flex-col items-center justify-end bg-cover bg-center shadow-lg"
+      className="md:w-[369.18px] md:h-[408.46px] font-plus-jakarta relative rounded-[22.61px] flex flex-col items-center justify-end bg-cover bg-center shadow-lg"
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="bg-white absolute bottom-6 px-28 py-5 rounded-[13.57px] flex flex-col items-center justify-center backdrop-blur-[25.94px] shadow-[0px_18.09px_32.57px_0px_rgba(10,64,108,0.1)]">
+      <div className="bg-white/80 backdrop-blur-sm absolute bottom-6 md:w-[349px] py-5 rounded-[13.57px] flex flex-col items-center justify-center shadow-[0px_18.09px_32.57px_0px_rgba(10,64,108,0.1)]">
         <h3 className="text-[16px] font-bold">{name}</h3>
         <p className="text-[14px] text-gray-600">{title}</p>
+        <p className="text-[14px] text-gray-600">{place}</p>
       </div>
     </div>
   );
@@ -69,42 +90,61 @@ function CarouselSection({
   headerText,
   subtitleText,
 }: {
-  data: { image: string; name: string; title: string }[];
+  data: { image: string; name: string; title: string; place: string }[];
   headerText: React.ReactNode;
   subtitleText: string;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 3 >= data.length ? 0 : prevIndex + 3));
+    setCurrentIndex((prevIndex) =>
+      prevIndex + 3 >= data.length ? 0 : prevIndex + 3
+    );
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? data.length - 3 : prevIndex - 3));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? data.length - 3 : prevIndex - 3
+    );
   };
 
   const visibleItems =
     data.slice(currentIndex, currentIndex + 3).length === 3
       ? data.slice(currentIndex, currentIndex + 3)
-      : [...data.slice(currentIndex), ...data.slice(0, 3 - data.slice(currentIndex).length)];
+      : [
+          ...data.slice(currentIndex),
+          ...data.slice(0, 3 - data.slice(currentIndex).length),
+        ];
 
   return (
     <div className="container md:w-[1160px] mx-auto p-8 flex flex-col gap-[32px] font-plus-jakarta justify-center items-center">
       <div className="flex flex-col gap-[26px]">
-        <div className="flex gap-[32px] justify-center">
+        <div className="flex gap-[32px] justify-center items-baseline">
           {visibleItems.map((item, index) => (
-            <TeamMemberCard key={index} image={item.image} name={item.name} title={item.title} />
+            <TeamMemberCard
+              key={index}
+              image={item.image}
+              name={item.name}
+              title={item.title}
+              place={item.place}
+            />
           ))}
         </div>
       </div>
-      <div className="flex gap-[39px] justify-between items-start mt-8">
+      <div className="flex flex-wrap md:flex-nowrap gap-[39px] justify-between items-baseline">
         <div>
-          <CustomHeader text={headerText} className="text-[40px] md:w-[317px] flex flex-col font-bold" />
+          <CustomHeader
+            text={headerText}
+            className="text-[28px] md:text-[40px] md:w-[317px] flex md:flex-col gap-[5px] font-bold"
+          />
         </div>
         <div>
-          <CustomSubtitle text={subtitleText} className="text-[20px] font-normal" />
+          <CustomSubtitle
+            text={subtitleText}
+            className="text-[14px] md:text-[20px] font-normal leading-[30px]"
+          />
         </div>
-        <div className="flex gap-[8px] justify-center mt-6">
+        <div className="flex gap-[8px] justify-center">
           <button
             onClick={handlePrevious}
             className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
@@ -125,13 +165,13 @@ function CarouselSection({
 
 export default function OurTeam() {
   return (
-    <>
+    <div className="flex flex-col gap-[88px]">
       <CarouselSection
         data={carouselDataOne}
         headerText={
           <>
             <span>Meet our team</span>
-            <span>members</span>
+            <span> members</span>
           </>
         }
         subtitleText="Our vision to reshape the way lending is done is backed by 100+ man years of experience in the field. Meet the people behind Algebrik!"
@@ -146,6 +186,6 @@ export default function OurTeam() {
         }
         subtitleText="Our Advisory Board brings together industry leaders and visionaries, guiding Algebrik AI with strategic insights, deep expertise, and a shared commitment to transforming lending into a seamless and inclusive experience."
       />
-    </>
+    </div>
   );
 }
