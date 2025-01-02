@@ -1,15 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
 import Image from "next/image";
 import logo from "@/public/logo.png";
+import blueLogo from "@/public/blue_logo.png";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -31,6 +34,8 @@ export default function Navbar() {
     };
   }, []);
 
+  const isContactPage = pathname === "/contact";
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -50 }}
@@ -38,17 +43,24 @@ export default function Navbar() {
       transition={{ duration: 0.8 }}
       className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${
         isScrolled
-          ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF]  to-[#043071] rounded-[88px] drop-shadow-xl "
+          ? isContactPage
+            ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
+            : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
           : "bg-transparent"
       } transition-all duration-300`}
     >
-      <div className="container mx-auto px-6 py-6 flex justify-between items-center">
+      <div className="container mx-auto px-10 py-6 flex justify-between items-center">
         <Link href="/">
-          <Image src={logo} alt="logo" className="w-[157px] h-[40px]" />
+          <Image
+            src={isScrolled ? logo : isContactPage ? blueLogo : logo}
+            alt="logo"
+            className="w-[157px] h-[40px]"
+          />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8 text-white">
+        <div className={`hidden md:flex space-x-8 ${isScrolled ? (isContactPage ? "text-white" : "text-black") : "text-black"}`}>
+
           <Link href="/platform" className="hover:text-blue-300 transition">
             Platform
           </Link>
@@ -64,7 +76,13 @@ export default function Navbar() {
         </div>
         <Link
           href="/contact"
-          className="hidden md:inline-block bg-white px-6 py-2 rounded-full text-[#292929] text-[14px] font-bold hover:bg-blue-300 transition"
+          className={`hidden md:inline-block px-6 py-2 rounded-full text-[14px] font-bold transition ${
+            isScrolled
+              ? isContactPage
+                ? "bg-white text-black hover:bg-gray-700"
+                : "bg-white text-[#292929] hover:bg-blue-300"
+              : "bg-blue-500 text-white hover:bg-blue-700"
+          }`}          
         >
           Contact Us
         </Link>
@@ -72,7 +90,9 @@ export default function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-white text-2xl focus:outline-none"
+          className={`md:hidden text-2xl focus:outline-none ${
+            isContactPage ? "text-black" : "text-white"
+          }`}
         >
           {isOpen ? <HiX /> : <HiOutlineMenu />}
         </button>
@@ -84,10 +104,10 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="md:hidden text-white"
+          className={`md:hidden ${isContactPage ? "text-black" : "text-white"}`}
         >
           <Link
-            href="/"
+            href="/platform"
             onClick={toggleMenu}
             className="block px-6 py-3 hover:bg-blue-700"
           >
@@ -101,7 +121,7 @@ export default function Navbar() {
             Solutions
           </Link>
           <Link
-            href="/data-center"
+            href="/resource_center"
             onClick={toggleMenu}
             className="block px-6 py-3 hover:bg-blue-700"
           >
@@ -117,7 +137,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={toggleMenu}
-            className="block px-6 py-3 bg-white text-blue-900 hover:bg-blue-300"
+            className="block px-6 py-3 bg-black text-white hover:bg-gray-700"
           >
             Connect
           </Link>
