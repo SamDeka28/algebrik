@@ -56,7 +56,8 @@ export default function IntegrationsSection() {
                   alt={`Integration ${index}`}
                   width={100}
                   height={100}
-                  className="object-scale-down"
+                  // className="object-scale-down"
+                  objectFit="contain"
                 />
               </div>
             ))}
@@ -73,7 +74,8 @@ export default function IntegrationsSection() {
                   alt={`Integration ${index}`}
                   width={100}
                   height={100}
-                  className="object-scale-down"
+                  // className="object-scale-down"
+                  objectFit="contain"
                 />
               </div>
             ))}

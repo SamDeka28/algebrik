@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 
@@ -7,19 +8,19 @@ const ChallengesSection = () => {
       title: "Streamlining Loan Processes",
       description:
         "Lengthy approval times and outdated workflows frustrate members and slow growth.",
-      image: "/section_images/challenges_1.png",
+      image: "/section_images/challenges_one.png",
     },
     {
       title: "Attracting the Next Generation",
       description:
         "Younger members expect digital-first, intuitive, and seamless experiences. Complex processes drive them away.",
-      image: "/section_images/challenges_1.png",
+      image: "/section_images/challenges_one.png",
     },
     {
       title: "Scaling Fast at Lower Costs",
       description:
         "Manual operations and siloed systems increase costs and hinder growth.",
-      image: "/section_images/challenges_1.png",
+      image: "/section_images/challenges_two.png",
     },
   ];
 
@@ -36,81 +37,65 @@ const ChallengesSection = () => {
         />
       </div>
 
-      <div className="flex flex-wrap justify-center items-start gap-6 lg:gap-10">
-        <div className="flex flex-col gap-[32px]">
-          <div className="relative flex flex-col backdrop-blur-[5px] md:flex-row justify-between p-6 bg-white shadow-lg rounded-[20px] max-w-[558px] h-[246px] w-full">
-            <div className="absolute top-0 right-0 opacity-[30%]">
-              <div className="bg-gradient-to-tr relative left-80 -top-10 from-[#66B3B0] to-[#149994] rounded-full w-[98.64px] h-[102.11px] blur-[80px] animate-fadeIn" />
-              <div className="bg-gradient-to-tl relative left-80 -top-10 from-[#1C8DEA] to-[#195BD7] rounded-full w-[158.35px] h-[103.38px] blur-[80px] animate-fadeIn delay-200" />
-              <div className="bg-[#BE95FF] rounded-full w-[451.48px] h-[42.11px] blur-[80px] animate-fadeIn delay-400" />
+      <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center gap-6 lg:gap-10 w-full max-w-[1200px]">
+        {/* Left Column */}
+        <div className="flex flex-col gap-6 lg:gap-10 w-full lg:w-1/2">
+          {cardData.slice(0, 2).map((card, index) => (
+            <div
+              key={index}
+              className={`relative flex justify-between p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[558px] ${
+                index === 0 ? "h-[246px]" : "h-[286px]"
+              }`}
+            >
+              {/* Gradient applied to the entire card */}
+              <div className="absolute w-52 h-52 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl" />
+              <div className="flex flex-col items-center justify-center z-10">
+                <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
+                  {card.title}
+                </h3>
+                <p className="text-sm md:text-[16px] font-normal font-plus-jakarta text-[#292929] mt-2 leading-5 md:leading-6">
+                  {card.description}
+                </p>
+              </div>
+              <div className="relative w-full h-[230px] rounded-[24px] overflow-hidden mt-4">
+                {/* Image inside the card */}
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  width={940}
+                  height={515}
+                  objectFit="cover"
+                  className="rounded-[24px] w-[900px] h-full"
+                />
+              </div>
             </div>
-            <div className="flex flex-col pr-10 justify-center">
-              <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
-                {cardData[0].title}
-              </h3>
-              <p className="text-sm md:text-[16px] pr-9 font-normal font-plus-jakarta text-[#292929] mt-2 leading-5 md:leading-6">
-                {cardData[0].description}
-              </p>
-            </div>
-            <div className="relative w-40 h-32 md:w-[558px] md:h-[246px] rounded-[24px] mt-4 md:mt-0 transition-opacity duration-300 opacity-0 hover:opacity-100">
-              <Image
-                src={cardData[0].image}
-                alt={cardData[0].title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-[24px]"
-              />
-            </div>
-          </div>
-
-          <div className="relative flex flex-col md:flex-col justify-end items-end p-6 bg-white shadow-lg rounded-[20px] max-w-[558px] md:[325.69px] w-full">
-            <div className="absolute opacity-[30%]">
-              <div className="bg-gradient-to-tr relative left-80 -top-10 from-[#66B3B0] to-[#149994] rounded-full w-[108.64px] h-[82.11px] blur-[50px] animate-fadeIn" />
-              <div className="bg-gradient-to-tr z-10 relative left-60 -top-10 from-[#1C8DEA] to-[#195BD7] rounded-full w-[208.35px] h-[153.38px] blur-[50px] animate-fadeIn delay-200" />
-              <div className="bg-[#BE95FF] rounded-full w-[451.48px] h-[42.11px] blur-[100px] animate-fadeIn delay-400" />
-            </div>
-            <div className="relative w-40 h-32 md:w-52 md:h-40 rounded-[20px] mt-4 md:mt-0 transition-opacity duration-300 opacity-0 hover:opacity-100">
-              <Image
-                src={cardData[1].image}
-                alt={cardData[1].title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-[24px]"
-              />
-            </div>
-            <div className="text-left mt-4 md:mt-0">
-              <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
-                {cardData[1].title}
-              </h3>
-              <p className="text-sm md:text-[16px] font-normal font-plus-jakarta text-[#292929] mt-2 leading-5 md:leading-6">
-                {cardData[1].description}
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
 
-        <div className="relative flex flex-col justify-between items-end p-6 bg-white shadow-lg rounded-[20px] max-w-[558px] h-[574px] w-full">
-          <div className="container relative opacity-[30%]">
-            <div className="bg-gradient-to-tr relative -right-80 from-[#66B3B0] to-[#149994] rounded-full w-[198.64px] h-[50.11px] blur-[70px] animate-fadeIn" />
-            <div className="bg-gradient-to-tr relative  -right-28 from-[#1C8DEA] to-[#195BD7] rounded-full w-[398.35px] h-[200.38px] blur-[70px] animate-fadeIn delay-200" />
-            <div className="bg-[#BE95FF] rounded-full w-[451.48px] h-[42.11px] blur-[100px] animate-fadeIn delay-400" />
-          </div>
-          <div className="relative -inset-11 md:w-52 md:h-40 rounded-[20px] transition-opacity duration-300 opacity-0 hover:opacity-100">
-            <Image
-              src={cardData[2].image}
-              alt={cardData[2].title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-[24px] w-full h-96"
-            />
-          </div>
-          <div className="text-left mt-4 md:mt-0">
-            <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
-              {cardData[2].title}
-            </h3>
-            <p className="text-sm md:text-[16px] font-normal font-plus-jakarta text-[#292929] mt-2 leading-5 md:leading-6">
-              {cardData[2].description}
-            </p>
+        {/* Right Column */}
+        <div className="flex flex-col items-center w-full lg:w-1/2">
+          <div className="relative flex flex-col-reverse justify-between p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[558px] h-[570px]">
+            {/* Gradient applied to the entire card */}
+            <div className="absolute w-80 h-96 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl" />
+            <div className="flex flex-col mt-4 z-10">
+              <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
+                {cardData[2].title}
+              </h3>
+              <p className="text-sm md:text-[16px] font-normal font-plus-jakarta text-[#292929] mt-2 leading-5 md:leading-6">
+                {cardData[2].description}
+              </p>
+            </div>
+            <div className="relative w-full h-[200px] md:h-[370px] rounded-[24px] overflow-hidden mt-4">
+              {/* Image inside the card */}
+              <Image
+                src={cardData[2].image}
+                alt={cardData[2].title}
+                width={700}
+                height={600}
+                objectFit="cover"
+                className="rounded-[24px] w-full h-full"
+              />
+            </div>
           </div>
         </div>
       </div>

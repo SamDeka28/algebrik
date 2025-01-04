@@ -24,9 +24,9 @@ type CardProps = {
   imageWidth?: number;
   imageHeight?: number;
   responsive?: {
-    container?: string; // Add responsive classes for container
-    width?: string; // Add responsive width
-    height?: string; // Add responsive height
+    container?: string; 
+    width?: string; 
+    height?: string; 
   };
 };
 
@@ -83,7 +83,7 @@ const Card = ({
         </p>
       </div>
 
-      {imageSrc && (
+      {/* {imageSrc && (
         <div
           className={`relative ${customStyles?.imageContainer || ""}`}
           style={{ maxWidth: "100%", height: "auto", overflow: "hidden" }}
@@ -111,7 +111,37 @@ const Card = ({
             }}
           />
         </div>
-      )}
+      )} */}
+
+{imageSrc && (
+  <div
+    className={`absolute top-4 right-4 ${customStyles?.imageContainer || ""}`}
+    style={{ width: "auto", height: "auto", overflow: "hidden" }}
+  >
+    <Image
+      src={imageSrc}
+      alt={title || "Card image"}
+      className={`object-cover rounded-md transition-all duration-300 ease-in-out ${customStyles?.image || ""}`}
+      width={imageWidth}
+      height={imageHeight}
+      style={{
+        objectFit: "cover",
+        filter: "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
+        opacity: 0.5,
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.filter = "none";
+        e.currentTarget.style.opacity = "1";
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.filter =
+          "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))";
+        e.currentTarget.style.opacity = "0.5";
+      }}
+    />
+  </div>
+)}
+
 
       {buttonText && (
         <button
