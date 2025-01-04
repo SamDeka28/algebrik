@@ -3,7 +3,7 @@ import Card from "./card/Card";
   const CardsContainer = () => {
     return (
       <div className="flex flex-col md:flex-row gap-8 justify-center items-start p-10">
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col justify-start items-start gap-8">
           <Card
             imageSrc="/section_images/credit_union.png"
             number="01"
@@ -13,6 +13,11 @@ import Card from "./card/Card";
             buttonText="Know More"
             imageHeight={392}
             imageWidth={392}
+            customStyles={{
+              container: "flex flex-col justify-start items-start md:items-start",
+              number: "flex flex-col justify-start items-start md:items-start",
+              title:"flex flex-col justify-start items-start md:items-start"
+            }}
           />
           <Card
             imageSrc="/section_images/smb_lending.png"
