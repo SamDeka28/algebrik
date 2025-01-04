@@ -3,6 +3,7 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const carouselDataOne = [
   {
@@ -99,14 +100,17 @@ function CarouselSection({
   subtitleText: string;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<'left' | 'right' | null>(null);
 
   const handleNext = () => {
+    setDirection('left');
     setCurrentIndex((prevIndex) =>
       prevIndex + 3 >= data.length ? 0 : prevIndex + 3
     );
   };
 
   const handlePrevious = () => {
+    setDirection('right');
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? data.length - 3 : prevIndex - 3
     );
@@ -123,17 +127,43 @@ function CarouselSection({
   return (
     <div className="container md:w-[1160px] mx-auto p-8 flex flex-col gap-[32px] font-plus-jakarta justify-center items-center">
       <div className="flex flex-col gap-[26px]">
-        <div className="flex gap-[32px] justify-center items-baseline">
+        <motion.div
+          className="flex gap-[32px] justify-center items-baseline"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
+          }}
+          style={{ display: "flex", flexDirection: "row" }}
+        >
           {visibleItems.map((item, index) => (
-            <TeamMemberCard
+            <motion.div
               key={index}
-              image={item.image}
-              name={item.name}
-              title={item.title}
-              place={item.place}
-            />
+              className="md:w-[369.18px] md:h-[408.46px]"
+              initial={{ opacity: 0, x: direction === 'left' ? 100 : -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{
+                opacity: 0,
+                x: direction === 'left' ? -100 : 100,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+              }}
+            >
+              <TeamMemberCard
+                image={item.image}
+                name={item.name}
+                title={item.title}
+                place={item.place}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
       <div className="flex flex-wrap md:flex-nowrap gap-[39px] justify-between items-baseline">
         <div>

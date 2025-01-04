@@ -38,7 +38,6 @@ const ChallengesSection = () => {
       </div>
 
       <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center gap-6 lg:gap-10 w-full max-w-[1200px]">
-        {/* Left Column */}
         <div className="flex flex-col gap-6 lg:gap-10 w-full lg:w-1/2">
           {cardData.slice(0, 2).map((card, index) => (
             <div
@@ -57,26 +56,23 @@ const ChallengesSection = () => {
                   {card.description}
                 </p>
               </div>
-              <div className="relative w-full h-[230px] rounded-[24px] overflow-hidden mt-4">
-                {/* Image inside the card */}
+              <div className="relative w-[880px] h-[234px] left-[22px] overflow-hidden mt-4">
                 <Image
                   src={card.image}
                   alt={card.title}
-                  width={940}
+                  width={950}
                   height={515}
                   objectFit="cover"
-                  className="rounded-[24px] w-[900px] h-full"
+                  className="rounded-br-lg w-[950px] h-full"
                 />
               </div>
             </div>
           ))}
         </div>
 
-        {/* Right Column */}
         <div className="flex flex-col items-center w-full lg:w-1/2">
           <div className="relative flex flex-col-reverse justify-between p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[558px] h-[570px]">
-            {/* Gradient applied to the entire card */}
-            <div className="absolute w-80 h-96 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl" />
+            <div className="absolute w-80 h-96 -top-0 -right-2 bg-gradient-to-tr from-blue-200 to-green-50 -z-10 rounded-[24px] blur-xl" />
             <div className="flex flex-col mt-4 z-10">
               <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
                 {cardData[2].title}
@@ -86,7 +82,6 @@ const ChallengesSection = () => {
               </p>
             </div>
             <div className="relative w-full h-[200px] md:h-[370px] rounded-[24px] overflow-hidden mt-4">
-              {/* Image inside the card */}
               <Image
                 src={cardData[2].image}
                 alt={cardData[2].title}

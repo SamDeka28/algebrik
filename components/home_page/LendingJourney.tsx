@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Lottie from "react-lottie";
+import dynamic from "next/dynamic";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
-import animationData from "@/public/lottie/With_algebrik_desktop.json";
-import lendingWithoutAlgebrik from "@/public/background_images/lendingWithoutAlgebrik.png";
 import Image from "next/image";
+import lendingWithoutAlgebrik from "@/public/background_images/lendingWithoutAlgebrik.png";
+
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
+
+import animationData from '@/public/lottie/With_algebrik_desktop.json'; 
 
 export default function LendingJourneyDesign() {
   const [isWithAlgebrik, setIsWithAlgebrik] = useState(true);

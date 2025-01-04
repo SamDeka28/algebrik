@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { motion } from "framer-motion";
 
 const carouselData = [
   {
@@ -51,7 +52,15 @@ export default function OurStory() {
           <div className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10 animate-fadeIn delay-200" />
           <div className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
         </div>
-        <div className="bg-white md:w-[1160px] md:h-[411px] rounded-[42px] flex justify-between gap-[95px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)] p-8">
+
+        <motion.div
+          className="bg-white md:w-[1160px] md:h-[411px] rounded-[42px] flex justify-between gap-[95px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)] p-8"
+          key={currentSlide.id}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
           <div className="md:w-[609px] flex flex-col justify-center">
             <h3 className="text-[20px] text-[#606060] font-bold">
               {currentSlide.title}
@@ -72,18 +81,17 @@ export default function OurStory() {
               className="md:w-[368px] md:h-[315px]"
             />
           </div>
-        </div>
+        </motion.div>
+
         <div className="flex gap-[8px] justify-center mt-6">
           <button
             onClick={handlePrevious}
-            className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
-          >
+            className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]">
             <IoIosArrowBack size={20} color="white" />
           </button>
           <button
             onClick={handleNext}
-            className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
-          >
+            className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]">
             <IoIosArrowForward size={20} color="white" />
           </button>
         </div>

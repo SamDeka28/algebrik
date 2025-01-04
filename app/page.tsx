@@ -1,4 +1,3 @@
-
 import CardsContainer from "@/components/card";
 import FooterCards from "@/components/FooterCards";
 import HeroSection from "@/components/home_page/HeroSection";
@@ -8,9 +7,6 @@ import IntegrationsSection from "@/components/home_page/IntegrationsSection";
 import FeaturesSection from "@/components/home_page/FeaturesSection";
 import BorrowerJourney from "@/components/home_page/BorrowerJourney";
 
-
-
-
 export default function Home() {
   return (
     <>
@@ -18,11 +14,11 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <BorrowerJourney />
-        <LendingJourney/>
+        <LendingJourney />
         <Potential />
-        <CardsContainer/>
+        <CardsContainer />
         <IntegrationsSection />
-        <FooterCards/>
+        <FooterCards />
       </main>
     </>
   );
