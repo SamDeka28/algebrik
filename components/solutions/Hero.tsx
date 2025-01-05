@@ -38,31 +38,18 @@ export default function HeroSection() {
       </div>
 
 
-<div className="relative mb-[485] flex justify-center">
+<div className="relative h-[458px] flex justify-center">
   <div className="cursor-pointer">
     <div className="relative -inset-y-40 right-[25px]">
       <div>
         <div
-          className="sl-embed"
-          style={{
-            position: "relative",
-   
-            width: "100%",
-            height: "0",
-            transform: "scale(1)",
-          }}
+      
         >
           <Image
             src="/section_images/solution_hero.png"
             alt="Solution Hero"
             width={865}
             height={555}
-            // style={{
-            //   border: "1px solid rgba(63,95,172,0.35)",
-            //   boxShadow: "0px 0px 18px rgba(26, 19, 72, 0.15)",
-            //   borderRadius: "10px",
-            //   boxSizing: "border-box",
-            // }}
           />
         </div>
       </div>
