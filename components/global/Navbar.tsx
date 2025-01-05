@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
+import { HiChevronDown } from "react-icons/hi";
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import blueLogo from "@/public/blue_logo.png";
@@ -12,10 +13,24 @@ import blueLogo from "@/public/blue_logo.png";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const openDropdown = () => {
+    if (dropdownTimeout) clearTimeout(dropdownTimeout);
+    setDropdownOpen(true);
+  };
+
+  const closeDropdown = () => {
+    const timeout = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 200);
+    setDropdownTimeout(timeout);
   };
 
   useEffect(() => {
@@ -59,20 +74,67 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className={`hidden md:flex space-x-8 ${isContactPage
-    ? isScrolled
-      ? "text-white"
-      : "text-black"
-    : "text-white"
-}`}>
-
+        <div
+          className={`hidden md:flex space-x-8 ${
+            isContactPage
+              ? isScrolled
+                ? "text-white"
+                : "text-black"
+              : "text-white"
+          }`}
+        >
           <Link href="/platform" className="hover:text-blue-300 transition">
             Platform
           </Link>
-          <Link href="/solutions" className="hover:text-blue-300 transition">
-            Solutions
-          </Link>
-          <Link href="/resource_center" className="hover:text-blue-300 transition">
+
+          {/* Solutions Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={openDropdown} 
+            onMouseLeave={closeDropdown} 
+          >
+            <Link
+              href="/solutions"
+              className="flex items-center hover:px-3  hover:bg-black hover:bg-opacity-50 rounded-[20px] hover:text-white transition"
+            >
+              Solutions
+              <HiChevronDown
+                className={`ml-2 transform transition-all ${
+                  dropdownOpen ? "rotate-180" : "rotate-0"
+                }`} 
+              />
+            </Link>
+            {dropdownOpen && (
+              <div
+                className="absolute p-[16px] top-full left-0 md:w-[303px] md:h-[176px] mt-2 bg-black bg-opacity-50 backdrop-blur-lg rounded-[20px] text-white shadow-lg"
+                onClick={closeDropdown}
+              >
+                <Link
+                  href="/solutions"
+                  className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
+                >
+                  Credit Unions
+                </Link>
+                <Link
+                  href="/solutions/solution2"
+                  className="block px-4 py-2  hover:bg-gray-200 hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
+                >
+                  Auto Lenders
+                </Link>
+                <Link
+                  href="/"
+                  className="block px-4 py-2  hover:bg-gray-200 hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
+                >
+                  Coming Soon
+                </Link>
+              </div>
+            )}
+          </div>
+
+          <Link
+            href="/resource_center"
+            className="hover:text-blue-300 transition"
+          >
             Resource Center
           </Link>
           <Link href="/about" className="hover:text-blue-300 transition">
@@ -83,11 +145,11 @@ export default function Navbar() {
           href="/contact"
           className={`hidden md:inline-block px-6 py-2 rounded-full text-[14px] font-bold transition ${
             isScrolled
-    ? isContactPage
-      ? "bg-white text-[#292929] hover:bg-gray-700"
-      : "bg-white text-[#292929] hover:bg-blue-300"
-    : "bg-blue-500 text-white hover:bg-blue-700"
-          }`}          
+              ? isContactPage
+                ? "bg-white text-[#292929] hover:bg-gray-700"
+                : "bg-white text-[#292929] hover:bg-blue-300"
+              : "bg-blue-500 text-white hover:bg-blue-700"
+          }`}
         >
           Contact Us
         </Link>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
@@ -6,15 +6,15 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
 import Image from "next/image";
 import lendingWithoutAlgebrik from "@/public/background_images/lendingWithoutAlgebrik.png";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 
 const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
-import animationData from '@/public/lottie/With_algebrik_desktop.json'; 
+import animationData from "@/public/lottie/With_algebrik_desktop.json";
 
 export default function LendingJourneyDesign() {
   const [isWithAlgebrik, setIsWithAlgebrik] = useState(true);
-  const [isZoomed, setIsZoomed] = useState(false); 
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const lottieOptions = {
     loop: true,
@@ -29,8 +29,8 @@ export default function LendingJourneyDesign() {
     setIsZoomed(true);
     setTimeout(() => {
       setIsWithAlgebrik(isAlgebrik);
-      setIsZoomed(false); 
-    }, 500); // Increased timeout for smoother transition
+      setIsZoomed(false);
+    }, 500);
   };
 
   return (
@@ -60,7 +60,7 @@ export default function LendingJourneyDesign() {
         <Button
           text="Without Algebrik"
           isActive={!isWithAlgebrik}
-          onClick={() => handleButtonClick(false)} 
+          onClick={() => handleButtonClick(false)}
           customClass="transition-transform transform ease-in-out duration-300"
         />
       </div>
@@ -68,33 +68,31 @@ export default function LendingJourneyDesign() {
       <motion.div
         className="flex justify-center items-center"
         initial={{ scale: 1 }}
-        animate={{ scale: isZoomed ? 1.1 : 1 }}  // Slightly larger scale for smoother zoom
-        transition={{ duration: 0.6, ease: "easeInOut" }} // Longer duration for smooth zoom
+        animate={{ scale: isZoomed ? 1.1 : 1 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
       >
         {isWithAlgebrik ? (
           <motion.div
             initial={{ scale: 1 }}
-            animate={{ scale: isZoomed ? 0.95 : 1 }} // Slightly smaller scale for zoom out
-            transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth zoom-in and zoom-out
+            animate={{ scale: isZoomed ? 0.95 : 1 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-[1282px] h-[687px]"
           >
-            <Lottie
-              options={lottieOptions}
-              height={687}
-              width={1282}
-            />
+            <Lottie options={lottieOptions} height={687} width={1282} />
           </motion.div>
         ) : (
           <motion.div
             initial={{ scale: 1 }}
-            animate={{ scale: isZoomed ? 0.95 : 1 }} // Zoom out effect
-            transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth transition
+            animate={{ scale: isZoomed ? 0.95 : 1 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-[1382px] h-[687px]"
           >
             <Image
               src={lendingWithoutAlgebrik}
               alt="Lending Without Algebrik"
-              width={1282}
+              width={1382}
               height={687}
-              className="w-full h-full object-contain"
+              className="md:w-[1382px] h-full object-cover"
             />
           </motion.div>
         )}
