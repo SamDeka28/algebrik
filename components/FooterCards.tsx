@@ -30,7 +30,7 @@ type CardProps = {
           backgroundColor: imageUrl ? undefined : "#f0f0f0",
         }}
       >
-        <div>
+        <div className='font-plus-jakarta'>
           <h2 className={`text-[36px] font-bold mb-4 ${!isPrimary ? "text-[#2A5FAC]" : ""}`}>{title}</h2>
           <p className={`mb-6 text-[18px] font-normal ${!isPrimary ? "text-[#2A5FAC]" : ""}`}>{description}</p>
         </div>
@@ -55,7 +55,7 @@ type CardProps = {
       }
     }, []);
     return (
-      <div className="relative">
+      <div className="relative font-plus-jakarta">
          <div className={`absolute top-1/2 left-0 w-full h-1/2 ${isSolutionsPage ? '' : 'bg-[#121212]'} -z-10`}></div>
         <div className="flex flex-col md:flex-row gap-6 mx-auto max-w-7xl px-4 py-28 relative z-10 justify-center">
           <Card
