@@ -7,22 +7,22 @@ import { motion } from "framer-motion";
 
 const carouselDataOne = [
   {
-    image: "/team.png",
-    name: "John Doe",
-    title: "CEO & Founder",
-    place: "N/A",
+    image: "/team_images/pankaj.png",
+    name: "PANKAJ JAIN ",
+    title: "Founder & CEO",
+    // place: "N/A",
   },
   {
-    image: "/team.png",
-    name: "Jane Smith",
-    title: "CFO & Co-Founder",
-    place: "N/A",
+    image: "/team_images/jesse.png",
+    name: "JESSE FRUGE",
+    title: "VP, PRODUCT",
+    // place: "N/A",
   },
   {
-    image: "/team.png",
-    name: "Emily Johnson",
-    title: "CTO",
-    place: "N/A",
+    image: "/team_images/andrea.png",
+    name: "ANDREA SILVERS",
+    title: "VP, BD & Partnerships",
+    // place: "N/A",
   },
   {
     image: "/team.png",

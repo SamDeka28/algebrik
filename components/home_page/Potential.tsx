@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const PercentageCard = ({ title, percentage }: { title: string; percentage: number }) => {
   const [currentPercentage, setCurrentPercentage] = useState<number | null>(null);
@@ -103,8 +104,47 @@ export default function Potential() {
 
       <div className="relative flex flex-wrap justify-center gap-6 p-6 ">
         {/* Background Gradient */}
-        <div className="absolute drop-shadow-2xl backdrop-blur-xl w-3/4 h-2/6 blur-3xl inset-40 mx-auto my-auto bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-300 via-[#66B3B0] to-[#BE95FF]"></div>
-
+        {/* <div className="absolute drop-shadow-2xl backdrop-blur-xl w-3/4 h-2/6 blur-3xl inset-40 mx-auto my-auto bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-300 via-[#66B3B0] to-[#BE95FF]"></div> */}
+        <div className="container relative opacity-[30%] z-[-1]">
+          <motion.div
+            className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
+            animate={{
+              y: [50, 30, 50],
+            }}
+            transition={{
+              duration: 2, 
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10"
+            animate={{
+              y: [50, 30, 60],
+            }}
+            transition={{
+              duration: 2,
+              delay: 0.2,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1]"
+            animate={{
+              y: [10, 90, 0],
+            }}
+            transition={{
+              duration: 2, 
+              delay: 0.4,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+          />
+        </div>
         {data.cardData.map((card, index) => (
           <div
             key={index}
