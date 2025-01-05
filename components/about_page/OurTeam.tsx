@@ -10,19 +10,19 @@ const carouselDataOne = [
     image: "/team_images/pankaj.png",
     name: "PANKAJ JAIN ",
     title: "Founder & CEO",
-    // place: "N/A",
+    place: "N/A",
   },
   {
     image: "/team_images/jesse.png",
     name: "JESSE FRUGE",
     title: "VP, PRODUCT",
-    // place: "N/A",
+    place: "N/A",
   },
   {
     image: "/team_images/andrea.png",
     name: "ANDREA SILVERS",
     title: "VP, BD & Partnerships",
-    // place: "N/A",
+    place: "N/A",
   },
   {
     image: "/team.png",
@@ -84,7 +84,7 @@ function TeamMemberCard({
       <div className="bg-white/80 backdrop-blur-sm absolute bottom-6 md:w-[349px] py-5 rounded-[13.57px] flex flex-col items-center justify-center shadow-[0px_18.09px_32.57px_0px_rgba(10,64,108,0.1)]">
         <h3 className="text-[16px] font-bold">{name}</h3>
         <p className="text-[14px] text-gray-600">{title}</p>
-        <p className="text-[14px] text-gray-600">{place}</p>
+        {place && place !== "N/A" && <p className="text-[14px] text-gray-600">{place}</p>}
       </div>
     </div>
   );
