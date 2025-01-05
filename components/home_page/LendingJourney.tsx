@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
@@ -30,7 +30,7 @@ export default function LendingJourneyDesign() {
     setTimeout(() => {
       setIsWithAlgebrik(isAlgebrik);
       setIsZoomed(false); 
-    }, 300); 
+    }, 500); // Increased timeout for smoother transition
   };
 
   return (
@@ -68,15 +68,14 @@ export default function LendingJourneyDesign() {
       <motion.div
         className="flex justify-center items-center"
         initial={{ scale: 1 }}
-        animate={{ scale: isZoomed ? 1.05 : 1 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        animate={{ scale: isZoomed ? 1.1 : 1 }}  // Slightly larger scale for smoother zoom
+        transition={{ duration: 0.6, ease: "easeInOut" }} // Longer duration for smooth zoom
       >
         {isWithAlgebrik ? (
-
           <motion.div
             initial={{ scale: 1 }}
-            animate={{ scale: isZoomed ? 1.05 : 1 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            animate={{ scale: isZoomed ? 0.95 : 1 }} // Slightly smaller scale for zoom out
+            transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth zoom-in and zoom-out
           >
             <Lottie
               options={lottieOptions}
@@ -87,8 +86,8 @@ export default function LendingJourneyDesign() {
         ) : (
           <motion.div
             initial={{ scale: 1 }}
-            animate={{ scale: isZoomed ? 1.05 : 1 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            animate={{ scale: isZoomed ? 0.95 : 1 }} // Zoom out effect
+            transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth transition
           >
             <Image
               src={lendingWithoutAlgebrik}
