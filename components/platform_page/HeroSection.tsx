@@ -1,7 +1,7 @@
-import Image from "next/image";
+// import Image from "next/image";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import hero from "@/public/section_images/platform.png";
+// import hero from "@/public/section_images/platform.png";
 
 export default function HeroSection() {
   return (
@@ -32,26 +32,42 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative -mt-[250px] flex justify-center">
+      <div className="relative mb-[355px]  flex justify-center">
         <div className="cursor-pointer">
-          <div className="relative">
-            <Image
-              src={hero}
-              width={865}
-              height={555}
-              quality={100}
-              className="rounded-[32px] object-fill"
-              objectFit="fill"
-              alt="algebrik platform hero image"
-            />
-            {/* <div className="absolute inset-0 flex flex-col justify-center items-center gap-6">
-              <span className="text-white text-[32px] font-bold px-4 py-2 bg-opacity-60 rounded-full shadow-md">
-                See Algebrik in Action
-              </span>
-              <button className="rounded-[31px] bg-gradient-to-tr from-blue-400 to-blue-800 hover:bg-blue-600 text-white px-6 py-3">
-                Watch Tour
-              </button>
-            </div> */}
+          <div className="relative -inset-y-56 right-[425px]">
+            <div>
+              <script async src="https://js.storylane.io/js/v2/storylane.js"></script>
+              <div
+                className="sl-embed"
+                style={{
+                  position: "relative",
+                  paddingBottom: "calc(66.44% + 25px)",
+                  width: "100%",
+                  height: "0",
+                  transform: "scale(1)",
+                }}
+              >
+                <iframe
+                  loading="lazy"
+                  className="sl-demo"
+                  src="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
+                  name="sl-embed"
+                  allow="fullscreen"
+                  allowFullScreen
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    width: "865px", // Set width to match image
+                    height: "555px", // Set height to match image
+                    border: "1px solid rgba(63,95,172,0.35)",
+                    boxShadow: "0px 0px 18px rgba(26, 19, 72, 0.15)",
+                    borderRadius: "10px",
+                    boxSizing: "border-box",
+                  }}
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </div>
