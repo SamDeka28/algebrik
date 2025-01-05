@@ -46,7 +46,7 @@ export default function HeroSection() {
           className="sl-embed"
           style={{
             position: "relative",
-            // paddingBottom: "calc(66.44% + 25px)",
+   
             width: "100%",
             height: "0",
             transform: "scale(1)",
