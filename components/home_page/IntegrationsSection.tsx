@@ -44,8 +44,15 @@ export default function IntegrationsSection() {
         <CustomHeader text="Seamlessly Connected, Effortlessly Scaled" />
         <CustomSubtitle text="Algebrik integrates with the tools and systems you already use, creating a unified, efficient lending ecosystem." />
 
-        <div className="relative my-[33px] flex flex-col gap-5">
-          <Marquee speed={50} gradient={false} pauseOnHover={true} direction="right">
+        <div className="relative my-[33px] mt-12 flex flex-col gap-5">
+
+          <Marquee
+            speed={50}
+            gradient={false}
+            pauseOnHover={true}
+            direction="left"
+            className="flex items-center overflow-hidden"
+          >
             {firstHalf.map((integration, index) => (
               <div
                 key={index}
@@ -54,16 +61,23 @@ export default function IntegrationsSection() {
                 <Image
                   src={integration.image}
                   alt={`Integration ${index}`}
-                  width={100}
-                  height={100}
-                  // className="object-scale-down"
-                  objectFit="contain"
+                  width={90}
+                  height={90}
+                  objectFit="scale-down"
+                  priority
+                  quality={100}
                 />
               </div>
             ))}
           </Marquee>
 
-          <Marquee speed={50} gradient={false} pauseOnHover={true} direction="left">
+          <Marquee
+            speed={50}
+            gradient={false}
+            pauseOnHover={true}
+            direction="right"
+            className="flex items-center overflow-hidden"
+          >
             {secondHalf.map((integration, index) => (
               <div
                 key={index}
@@ -72,10 +86,11 @@ export default function IntegrationsSection() {
                 <Image
                   src={integration.image}
                   alt={`Integration ${index}`}
-                  width={100}
-                  height={100}
-                  // className="object-scale-down"
-                  objectFit="contain"
+                  width={90}
+                  height={90}
+                  objectFit="scale-down"
+                  priority
+                  quality={100}
                 />
               </div>
             ))}

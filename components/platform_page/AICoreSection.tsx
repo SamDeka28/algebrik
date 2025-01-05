@@ -1,4 +1,7 @@
+"use client";
+
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { motion } from "framer-motion";
 
 const cardData = [
   {
@@ -53,14 +56,46 @@ const AICoreSection = () => {
       </div>
 
       <div className="container relative flex justify-center opacity-[30%] z-[-1]">
-        <div className="absolute top-32 left-[546px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[794.87px] h-[392.59px] blur-3xl animate-fadeIn" />
-        <div className="absolute top-36 left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[735.08px] h-[458.69px] blur-[228px] -z-10 animate-fadeIn delay-200" />
-        <div className="absolute top-48 bottom-[10px] bg-[#BE95FF] rounded-full w-[1131.09px] h-[392.59px] blur-[228px] z-[-1] animate-fadeIn delay-400" />
+      <motion.div
+  className="absolute top-32 left-[446px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[794.87px] h-[392.59px] blur-3xl"
+  initial={{ x: "-100%" }}
+  animate={{ x: ["0%", "20%", "-10%", "0%"] }}
+  transition={{
+    duration: 6,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
+
+<motion.div
+  className="absolute top-36 left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[735.08px] h-[458.69px] blur-[228px] -z-10"
+  initial={{ x: "100%" }}
+  animate={{ x: ["0%", "-10%", "10%", "0%"] }}
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+    delay: 0.2,
+  }}
+/>
+
+<motion.div  
+  className="absolute top-48 bottom-[10px] bg-[#BE95FF] rounded-full w-[1131.09px] h-[392.59px] blur-[228px] z-[-1]"
+  initial={{ x: "-100%" }}
+  animate={{ x: ["0%", "10%", "-10%", "0%"] }}
+  transition={{
+    duration: 10,
+    repeat: Infinity,
+    ease: "easeInOut",
+    delay: 0.4,
+  }}
+/>
+
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-center">
         {cardData.map((card, index) => (
-          <div
+          <motion.div
             key={index}
             className="relative px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-between"
             style={{
@@ -69,6 +104,9 @@ const AICoreSection = () => {
               background:
                 "linear-gradient(80deg, rgba(255, 255, 255, 0.7), rgba(230, 245, 255, 0.5))",
             }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div >
               <div className="flex items-center gap-4 justify-between mb-4">
@@ -86,7 +124,7 @@ const AICoreSection = () => {
                 {card.description}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

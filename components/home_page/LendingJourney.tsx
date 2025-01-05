@@ -6,6 +6,7 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
 import Image from "next/image";
 import lendingWithoutAlgebrik from "@/public/background_images/lendingWithoutAlgebrik.png";
+import { motion } from "framer-motion"; 
 
 const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
@@ -13,6 +14,7 @@ import animationData from '@/public/lottie/With_algebrik_desktop.json';
 
 export default function LendingJourneyDesign() {
   const [isWithAlgebrik, setIsWithAlgebrik] = useState(true);
+  const [isZoomed, setIsZoomed] = useState(false); 
 
   const lottieOptions = {
     loop: true,
@@ -21,6 +23,14 @@ export default function LendingJourneyDesign() {
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
+  };
+
+  const handleButtonClick = (isAlgebrik: boolean) => {
+    setIsZoomed(true);
+    setTimeout(() => {
+      setIsWithAlgebrik(isAlgebrik);
+      setIsZoomed(false); 
+    }, 300); 
   };
 
   return (
@@ -44,24 +54,42 @@ export default function LendingJourneyDesign() {
         <Button
           text="With Algebrik"
           isActive={isWithAlgebrik}
-          onClick={() => setIsWithAlgebrik(true)}
+          onClick={() => handleButtonClick(true)}
+          customClass="transition-transform transform ease-in-out duration-300"
         />
         <Button
           text="Without Algebrik"
           isActive={!isWithAlgebrik}
-          onClick={() => setIsWithAlgebrik(false)}
+          onClick={() => handleButtonClick(false)} 
+          customClass="transition-transform transform ease-in-out duration-300"
         />
       </div>
 
-      <div className="flex justify-center transition-opacity duration-500 ease-in-out">
+      <motion.div
+        className="flex justify-center items-center"
+        initial={{ scale: 1 }}
+        animate={{ scale: isZoomed ? 1.05 : 1 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
         {isWithAlgebrik ? (
-          <Lottie
-            options={lottieOptions}
-            height={687}
-            width={1282}
-          />
+
+          <motion.div
+            initial={{ scale: 1 }}
+            animate={{ scale: isZoomed ? 1.05 : 1 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <Lottie
+              options={lottieOptions}
+              height={687}
+              width={1282}
+            />
+          </motion.div>
         ) : (
-          <div className="w-full max-w-[1282px] h-[687px]">
+          <motion.div
+            initial={{ scale: 1 }}
+            animate={{ scale: isZoomed ? 1.05 : 1 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
             <Image
               src={lendingWithoutAlgebrik}
               alt="Lending Without Algebrik"
@@ -69,9 +97,9 @@ export default function LendingJourneyDesign() {
               height={687}
               className="w-full h-full object-contain"
             />
-          </div>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }

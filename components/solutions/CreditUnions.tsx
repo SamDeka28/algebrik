@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { motion } from "framer-motion";
 
 export default function CreditUnion() {
   const data = {
@@ -32,18 +33,53 @@ export default function CreditUnion() {
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader text="Built for Credit Unions, Designed for People" />
         <CustomSubtitle
-        className="text-[20px]"
-        text="Deliver seamless, personalised member experiences across every channel, while empowering your team with faster decisions and scalable solutions" />
+          className="text-[20px]"
+          text="Deliver seamless, personalised member experiences across every channel, while empowering your team with faster decisions and scalable solutions"
+        />
       </div>
 
-      <div className="relative flex flex-wrap justify-center gap-6 p-6 ">
-
-    {/* Background gradient ellipses */}
-    <div className="container relative opacity-[30%] z-[-1]">
-          <div className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px] animate-fadeIn" />
-          <div className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10 animate-fadeIn delay-200" />
-          <div className="absolute top-56  bg-[#BE95FF] rounded-full md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
+      <div className="relative flex flex-wrap justify-center gap-6 p-6">
+        <div className="container relative opacity-[30%] z-[-1]">
+          <motion.div
+            className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
+            animate={{
+              y: [50, 30, 50],
+            }}
+            transition={{
+              duration: 2, 
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10"
+            animate={{
+              y: [50, 30, 60],
+            }}
+            transition={{
+              duration: 2,
+              delay: 0.2,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1]"
+            animate={{
+              y: [10, 90, 0],
+            }}
+            transition={{
+              duration: 2, 
+              delay: 0.4,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+          />
         </div>
+
         {data.cardData.map((card, index) => (
           <div
             key={index}
@@ -65,9 +101,7 @@ export default function CreditUnion() {
             </p>
           </div>
         ))}
-      </div>     
+      </div>
     </div>
-
-    
   );
 }

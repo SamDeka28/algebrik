@@ -67,6 +67,7 @@ const ChallengesSection = () => {
                   style={{
                     filter: "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
                     opacity: 0, 
+                    transition: "opacity 0.5s ease, filter 0.5s ease", // Added smooth transition
                   }}
                   onMouseOver={(e) => {
                     e.currentTarget.style.filter = "none";
@@ -105,6 +106,7 @@ const ChallengesSection = () => {
                 style={{
                   filter: "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
                   opacity: 0,
+                  transition: "opacity 0.5s ease, filter 0.5s ease", // Added smooth transition
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.filter = "none";
