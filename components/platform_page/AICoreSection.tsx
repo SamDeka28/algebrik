@@ -56,48 +56,45 @@ const AICoreSection = () => {
       </div>
 
       <div className="container relative flex justify-center opacity-[30%] z-[-1]">
-      <motion.div
-  className="absolute top-32 left-[446px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[794.87px] h-[392.59px] blur-3xl"
-  initial={{ x: "-100%" }}
-  animate={{ x: ["0%", "20%", "-10%", "0%"] }}
-  transition={{
-    duration: 6,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-/>
-
-<motion.div
-  className="absolute top-36 left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[735.08px] h-[458.69px] blur-[228px] -z-10"
-  initial={{ x: "100%" }}
-  animate={{ x: ["0%", "-10%", "10%", "0%"] }}
-  transition={{
-    duration: 8,
-    repeat: Infinity,
-    ease: "easeInOut",
-    delay: 0.2,
-  }}
-/>
-
-<motion.div  
-  className="absolute top-48 bottom-[10px] bg-[#BE95FF] rounded-full w-[1131.09px] h-[392.59px] blur-[228px] z-[-1]"
-  initial={{ x: "-100%" }}
-  animate={{ x: ["0%", "10%", "-10%", "0%"] }}
-  transition={{
-    duration: 10,
-    repeat: Infinity,
-    ease: "easeInOut",
-    delay: 0.4,
-  }}
-/>
-
+        <motion.div
+          className="absolute top-32 left-[446px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[794.87px] h-[392.59px] blur-3xl"
+          initial={{ x: "-100%" }}
+          animate={{ x: ["0%", "20%", "-10%", "0%"] }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-36 left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[735.08px] h-[458.69px] blur-[228px] -z-10"
+          initial={{ x: "100%" }}
+          animate={{ x: ["0%", "-10%", "10%", "0%"] }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.2,
+          }}
+        />
+        <motion.div
+          className="absolute top-48 bottom-[10px] bg-[#BE95FF] rounded-full w-[1131.09px] h-[392.59px] blur-[228px] z-[-1]"
+          initial={{ x: "-100%" }}
+          animate={{ x: ["0%", "10%", "-10%", "0%"] }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.4,
+          }}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-center">
         {cardData.map((card, index) => (
           <motion.div
             key={index}
-            className="relative px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-between"
+            className="relative px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-between hover:scale-105 transition-all duration-300 ease-in-out"
             style={{
               width: "370px",
               height: "276px",
@@ -107,8 +104,12 @@ const AICoreSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.3 },
+            }}
           >
-            <div >
+            <div>
               <div className="flex items-center gap-4 justify-between mb-4">
                 <p
                   className="text-[72px] font-bold leading-none font-dm-sans text-[#D3E5FF]"
@@ -117,10 +118,10 @@ const AICoreSection = () => {
                   {card.number}
                 </p>
               </div>
-              <h2 className="text-[#2A5FAC] text-[24px] font-bold font-plus-jakarta leading-[34px] mt-[16px] mb-[8px]">
+              <h2 className="text-[#2A5FAC] text-[24px] font-bold font-plus-jakarta leading-[34px] mt-[16px] mb-[8px] hover:text-[#195BD7]">
                 {card.title}
               </h2>
-              <p className="text-[#292929] text-[16px] font-normal font-plus-jakarta leading-6">
+              <p className="text-[#292929] text-[16px] font-normal font-plus-jakarta leading-6 hover:text-[#195BD7]">
                 {card.description}
               </p>
             </div>

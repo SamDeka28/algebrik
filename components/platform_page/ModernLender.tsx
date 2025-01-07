@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 
-
 const ModernLender = () => {
   return (
     <div
@@ -27,40 +26,44 @@ const ModernLender = () => {
           <div className="absolute top-48 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[951.48px] md:h-[542.11px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
         </div>
 
-      <div className="flex flex-col gap-[30px]">
-        <div className="relative flex gap-[20px]">
-        <div className="bg-white px-[24px] py-[32px] md:w-[482px] md:h-[428px] rounded-[20px] flex flex-col gap-[8px] shadow-xl">
-            <CustomHeader text="AI-Driven automation" className="md:text-[24px]"/>
-            <CustomSubtitle 
-            text="Automate repetitive tasks, reduce errors, and accelerate loan approvals with advanced AI capabilities" 
-            className="md:text-[16px] md:leading-[30px]"/>
-            <Image src="/section_images/ai_driven.png" width={482} height={428} alt="AI-Driven automation"/>
+        <div className="flex flex-col gap-[30px]">
+          <div className="relative flex gap-[20px]">
+            <div className="bg-white px-[24px] py-[32px] md:w-[482px] md:h-[428px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
+              <CustomHeader text="AI-Driven automation" className="md:text-[24px]" />
+              <CustomSubtitle
+                text="Automate repetitive tasks, reduce errors, and accelerate loan approvals with advanced AI capabilities"
+                className="md:text-[16px] md:leading-[30px]"
+              />
+              <Image src="/section_images/ai_driven.png" width={482} height={428} alt="AI-Driven automation" />
+            </div>
+            <div className="relative top-24 bg-white px-[24px] py-[32px] md:w-[409px] md:h-[370px] rounded-[20px] flex flex-col-reverse gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
+              <CustomSubtitle
+                text="Leverage real-time insights and confidence scoring to make faster, more informed lending decisions"
+                className="md:text-[16px] md:leading-[30px]"
+              />
+              <CustomHeader text="Smarter Decisioning" className="md:text-[24px]" />
+              <Image src="/section_images/smarter.png" width={482} height={428} alt="Smarter Decisioning" />
+            </div>
           </div>
-          <div className="relative top-24 bg-white px-[24px] py-[32px] md:w-[409px] md:h-[370px] rounded-[20px] flex flex-col-reverse gap-[8px] shadow-xl">
-            <CustomSubtitle 
-            text="Leverage real-time insights and confidence scoring to make faster, more informed lending decisions" 
-            className="md:text-[16px] md:leading-[30px]"/>
-            <CustomHeader text="Smarter Decisioning" className="md:text-[24px]"/>
-            <Image src="/section_images/smarter.png" width={482} height={428} alt="Smarter Decisioning"/>
+          <div className="flex gap-[22.42px]">
+            <div className="bg-white px-[24px] py-[32px] md:w-[444.58px] md:h-[327.46px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
+              <CustomHeader text="Omnichannel Experience" className="md:text-[24px]" />
+              <CustomSubtitle
+                text="Offer borrowers a seamless, unified experience across mobile, web, and in-branch"
+                className="md:text-[16px] md:leading-[30px]"
+              />
+              <Image src="/section_images/omnichannel_experience.png" width={482} height={428} alt="Omnichannel Experience" />
+            </div>
+            <div className="relative top-8 bg-white px-[24px] py-[32px] md:w-[445px] md:h-[351px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
+              <CustomHeader text="Scalable & Secure" className="md:text-[24px]" />
+              <CustomSubtitle
+                text="Built on a robust cloud-native architecture to grow with your business and ensure data integrity"
+                className="md:text-[16px] md:leading-[30px]"
+              />
+              <Image src="/section_images/scalable.png" width={482} height={328} alt="Scalable & Secure" className="relative bottom-5" />
+            </div>
           </div>
         </div>
-        <div className="flex gap-[22.42px]">
-        <div className="bg-white px-[24px] py-[32px] md:w-[444.58px] md:h-[327.46px] rounded-[20px] flex flex-col gap-[8px] shadow-xl">
-            <CustomHeader text="Omnichannel Experience" className="md:text-[24px]"/>
-            <CustomSubtitle 
-            text="Offer borrowers a seamless, unified experience across mobile, web, and in-branch" 
-            className="md:text-[16px] md:leading-[30px]"/>
-            <Image src="/section_images/omnichannel_experience.png" width={482} height={428} alt="Omnichannel Experience"/>
-          </div>
-          <div className="relative top-8 bg-white px-[24px] py-[32px] md:w-[445px] md:h-[351px] rounded-[20px] flex flex-col gap-[8px] shadow-xl">
-            <CustomHeader text="Scalable & Secure" className="md:text-[24px]"/>
-            <CustomSubtitle 
-            text="Built on a robust cloud-native architecture to grow with your business and ensure data integrity" 
-            className="md:text-[16px] md:leading-[30px]"/>
-            <Image src="/section_images/scalable.png" width={482} height={328} alt="Scalable & Secure" className="relative bottom-5"/>
-          </div>
-        </div>
-      </div>
       </div>
     </div>
   );

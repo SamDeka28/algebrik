@@ -390,28 +390,20 @@ import Image from "next/image";
 
 const data = [
   {
-    title: "Verification",
-    cardHeader: "VERIFICATION",
-    cardTitle: "Accurate & Fast Borrower Validation",
-    cardSubtitle:
-      "Automate KYC, AML, and income verification with real-time processes that reduce risks and eliminate manual delays.",
-    image: "/section_images/platform_card_section/verification.png",
-  },
-  {
-    title: "Decisioning",
-    cardHeader: "DECISIONING",
-    cardTitle: "Faster and Smarter Decisions",
-    cardSubtitle:
-      "Harness AI-driven insights to approve loans quickly and accurately while minimizing risks.",
-    image: "/section_images/platform_card_section/decisioning.png",
-  },
-  {
     title: "Onboarding",
     cardHeader: "ONBOARDING",
     cardTitle: "Simplify Borrower Engagement",
     cardSubtitle:
       "Offer an intuitive application process with AI assistance, instant document uploads, and seamless digital experiences to increase completion rates.",
     image: "/section_images/platform_card_section/onboarding.png",
+  },
+  {
+    title: "Verification",
+    cardHeader: "VERIFICATION",
+    cardTitle: "Accurate & Fast Borrower Validation",
+    cardSubtitle:
+      "Automate KYC, AML, and income verification with real-time processes that reduce risks and eliminate manual delays.",
+    image: "/section_images/platform_card_section/verification.png",
   },
   {
     title: "Origination",
@@ -421,6 +413,16 @@ const data = [
       "Create tailored loan products in minutes with dynamic templates, automated credit checks, and adaptable workflows.",
     image: "/section_images/platform_card_section/origination.png",
   },
+  {
+    title: "Decisioning",
+    cardHeader: "DECISIONING",
+    cardTitle: "Faster and Smarter Decisions",
+    cardSubtitle:
+      "Harness AI-driven insights to approve loans quickly and accurately while minimizing risks.",
+    image: "/section_images/platform_card_section/decisioning.png",
+  },
+ 
+
   {
     title: "Closing",
     cardHeader: "CLOSING",
@@ -480,6 +482,55 @@ export default function LoanLifecycle() {
           ))}
         </div>
 
+<div >
+<motion.div
+          className="container relative md:w-full flex gap-[24.42px] justify-center mt-[2px]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="relative opacity-[30%] z-[-1]">
+            <motion.div
+              className="absolute top-0 -left-96 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[468.64px] md:h-[542.11px] blur-[100px]"
+              initial={{ x: "-50%" }}
+              animate={{
+                x: ["-30%", "30%", "-30%", "0%"],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute top-0 md:left-[20px] -left-96 bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10"
+              initial={{ x: "100%" }}
+              animate={{
+                x: ["10%", "-20%", "10%", "0%"],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute top-0 -left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[451.48px] md:h-[542.11px] blur-[100px] z-[-1]"
+              initial={{ x: "-50%" }}
+              animate={{
+                x: ["-30%", "40%", "-40%", "0%"],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </div>
+        </motion.div>
+
         <motion.div
           className="flex justify-center items-center p-6 w-full md:w-[932px] h-[531.96px] rounded-[42px] relative bg-white shadow-lg border border-gray-200"
           initial={{ opacity: 0 }}
@@ -509,7 +560,7 @@ export default function LoanLifecycle() {
                   alt={selectedCategory}
                   width={628}
                   height={900}
-                  className="rounded-[10px] md:h-[528px] object-contain"
+                  className="rounded-[10px] md:h-[528px] object-fill"
                   priority
                   quality={100}
                 />
@@ -518,6 +569,7 @@ export default function LoanLifecycle() {
           )}
         </motion.div>
       </div>
+    </div>
     </div>
   );
 }

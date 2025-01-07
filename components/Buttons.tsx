@@ -1,11 +1,14 @@
 "use client";
 
+import Link from "next/link";
+
 type ButtonProps = {
   text: string;
   isActive?: boolean;
   onClick?: () => void;
   customClass?: string;
-  activeStyle?: string; // Add this prop to customize active style
+  activeStyle?: string; 
+  link?: string;
 };
 
 const Button = ({
@@ -13,20 +16,17 @@ const Button = ({
   isActive,
   onClick,
   customClass = "",
-  activeStyle = "", // Default empty string for activeStyle
+  activeStyle = "",
+  link = "",
 }: ButtonProps) => {
   const baseStyle = `relative rounded-full font-medium transition-all duration-300 ease-in-out overflow-hidden`;
 
-  // If activeStyle is not passed, use default active styles
   const defaultActiveStyle = isActive
     ? "bg-white text-[#292929] font-semibold"
     : "text-[#474747] font-medium";
 
-  return (
-    <button
-      onClick={onClick}
-      className={`${baseStyle} ${activeStyle || defaultActiveStyle} ${customClass} h-[100%] flex-1`}
-    >
+  const content = (
+    <>
       {/* Slide Animation */}
       <span
         className={`left-0 top-0 w-full h-full bg-white transition-all duration-300 ease-in-out ${
@@ -34,6 +34,26 @@ const Button = ({
         }`}
       ></span>
       <span className="z-10 font-plus-jakarta">{text}</span>
+    </>
+  );
+
+  if (link) {
+    return (
+      <Link
+        href={link}
+        className={`${baseStyle} ${activeStyle || defaultActiveStyle} ${customClass} h-[100%] flex-1`}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      onClick={onClick}
+      className={`${baseStyle} ${activeStyle || defaultActiveStyle} ${customClass} h-[100%] flex-1`}
+    >
+      {content}
     </button>
   );
 };
