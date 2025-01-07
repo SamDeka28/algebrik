@@ -64,7 +64,7 @@ export default function Unlock() {
           </p> 
         </div>
 
-        <div className="flex flex-col md:flex-row gap-[24px] md:gap-[32px] w-full md:w-1/2">
+        <div className="flex flex-col md:flex-row gap-[24px] md:gap-[24px] w-full md:w-1/2">
         <div className="absolute opacity-[30%] -z-10">
           <motion.div
             className="absolute -top-9 left-1 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[461.73px] md:h-[439.68px] blur-[80px]"
@@ -100,16 +100,16 @@ export default function Unlock() {
             }}
           />
         </div>
-          <div className="flex flex-col gap-[24px] w-full md:w-1/2">
+          <div className="flex flex-col gap-[24px]">
             {data.slice(0, 2).map((item, index) => (
               <motion.div
                 key={index}
-                className="flex flex-col items-start justify-center p-6 bg-white bg-opacity-70 rounded-lg shadow-xl"
+                className="flex flex-col md:w-[327px] md:h-[290px] items-start justify-center p-6 bg-white bg-opacity-90 rounded-[20px] shadow-xl"
                 initial={{ opacity: 0, x: "-100%" }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.5 * index }}
               >
-                <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent mb-4">
+                <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
                   {count[index]}%
                 </div>
                 <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
@@ -121,12 +121,12 @@ export default function Unlock() {
             {data.slice(2, 4).map((item, index) => (
               <motion.div
                 key={index + 2}
-                className="flex flex-col md:w-[327px] md:h-[233px] items-start justify-center p-6 bg-white/90 rounded-[32px] backdrop-blur-3xl shadow-xl"
+                className="flex flex-col md:w-[327px] md:h-[290px] items-start justify-center p-6 bg-white/90 rounded-[20px] backdrop-blur-3xl shadow-xl"
                 initial={{ opacity: 0, x: "100%" }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.5 * index }}
               >
-                <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent mb-4">
+                <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
                   {count[index + 2]}%
                 </div>
                 <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>

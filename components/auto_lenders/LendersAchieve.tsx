@@ -98,39 +98,39 @@ export default function LendersAchieve() {
             }}
           />
         </div>
-          <div className="flex flex-col gap-[24px] w-full md:w-1/2">
-            {data.slice(0, 2).map((item, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col items-start justify-center p-6 bg-white bg-opacity-70 rounded-lg shadow-xl"
-                initial={{ opacity: 0, x: "-100%" }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.5 * index }}
-              >
-                <div className="text-[104px] font-bebas-neue font-normal bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent mb-4">
-                  {count[index]}%
-                </div>
-                <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-[24px] w-full md:w-1/2">
-            {data.slice(2, 4).map((item, index) => (
-              <motion.div
-                key={index + 2}
-                className="flex flex-col items-start justify-center p-6 bg-white bg-opacity-70 rounded-lg shadow-xl"
-                initial={{ opacity: 0, x: "100%" }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.5 * index }}
-              >
-                <div className="text-[104px] font-bebas-neue font-normal bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent mb-4">
-                  {count[index + 2]}%
-                </div>
-                <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
-              </motion.div>
-            ))}
-          </div>
+                <div className="flex flex-col gap-[24px]">
+                   {data.slice(0, 2).map((item, index) => (
+                     <motion.div
+                       key={index}
+                       className="flex flex-col md:w-[327px] md:h-[290px] items-start justify-center p-6 bg-white bg-opacity-90 rounded-[20px] shadow-xl"
+                       initial={{ opacity: 0, x: "-100%" }}
+                       animate={{ opacity: 1, x: 0 }}
+                       transition={{ duration: 1, delay: 0.5 * index }}
+                     >
+                       <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
+                         {count[index]}%
+                       </div>
+                       <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
+                     </motion.div>
+                   ))}
+                 </div>
+       
+                 <div className="flex flex-col gap-[24px] w-full md:w-1/2">
+                   {data.slice(2, 4).map((item, index) => (
+                     <motion.div
+                       key={index + 2}
+                       className="flex flex-col md:w-[327px] md:h-[290px] items-start justify-center p-6 bg-white/90 rounded-[20px] backdrop-blur-3xl shadow-xl"
+                       initial={{ opacity: 0, x: "100%" }}
+                       animate={{ opacity: 1, x: 0 }}
+                       transition={{ duration: 1, delay: 0.5 * index }}
+                     >
+                       <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
+                         {count[index + 2]}%
+                       </div>
+                       <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
+                     </motion.div>
+                   ))}
+                 </div>
         </div>
       </div>
     </div>

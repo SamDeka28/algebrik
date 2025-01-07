@@ -421,8 +421,6 @@ const data = [
       "Harness AI-driven insights to approve loans quickly and accurately while minimizing risks.",
     image: "/section_images/platform_card_section/decisioning.png",
   },
- 
-
   {
     title: "Closing",
     cardHeader: "CLOSING",
@@ -436,7 +434,6 @@ const data = [
 export default function LoanLifecycle() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setSelectedCategory(data[0].title);
@@ -444,15 +441,11 @@ export default function LoanLifecycle() {
 
   return (
     <div className="container mx-auto p-4 md:p-8 flex flex-col gap-12 overscroll-contain">
-
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-8 md:px-36">
         <CustomHeader text="Reimagining the Loan Lifecycle, End to End" />
       </div>
 
-      <div
-        ref={sectionRef}
-        className="flex justify-center items-center flex-wrap gap-[76px] w-full relative"
-      >
+      <div className="flex justify-center items-center flex-wrap gap-[76px] w-full relative">
         <div className="w-[168px] max-h-[500px] flex flex-col gap-[26px] rounded-[20px] overflow-y-auto">
           {data.map((item, index) => (
             <button
@@ -482,78 +475,29 @@ export default function LoanLifecycle() {
           ))}
         </div>
 
-<div >
-<motion.div
-          className="container relative md:w-full flex gap-[24.42px] justify-center mt-[2px]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="relative opacity-[30%] z-[-1]">
-            <motion.div
-              className="absolute top-0 -left-96 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[468.64px] md:h-[542.11px] blur-[100px]"
-              initial={{ x: "-50%" }}
-              animate={{
-                x: ["-30%", "30%", "-30%", "0%"],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <motion.div
-              className="absolute top-0 md:left-[20px] -left-96 bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10"
-              initial={{ x: "100%" }}
-              animate={{
-                x: ["10%", "-20%", "10%", "0%"],
-              }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <motion.div
-              className="absolute top-0 -left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[451.48px] md:h-[542.11px] blur-[100px] z-[-1]"
-              initial={{ x: "-50%" }}
-              animate={{
-                x: ["-30%", "40%", "-40%", "0%"],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </div>
-        </motion.div>
-
         <motion.div
           className="flex justify-center items-center p-6 w-full md:w-[932px] h-[531.96px] rounded-[42px] relative bg-white shadow-lg border border-gray-200"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          key={selectedCategory}
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -100, opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           {selectedCategory && (
             <div className="flex flex-col md:flex-row md:w-[932px] md:h-[531.96px]">
-              <div className="pl-[44px] pt-[52.59px] flex  flex-col justify-start font-plus-jakarta items-start gap-[12px] w-full md:w-1/2">
-                <h3 className="text-[#29292999] tracking-wider  font-bold text-[12px] uppercase">
+              <div className="pl-[44px] pt-[52.59px] flex flex-col justify-start font-plus-jakarta items-start gap-[12px] w-full md:w-1/2">
+                <h3 className="text-[#29292999] tracking-wider font-bold text-[12px] uppercase">
                   {data[currentCategoryIndex].cardHeader}
                 </h3>
                 <h2 className="text-[#292929] font-semibold text-[32px] leading-[42px]">
                   {data[currentCategoryIndex].cardTitle}
                 </h2>
-
-                <hr className="md:w-[71.69px] md:h-[3.58px] rounded-sm bg-[#C5DDFF]"/>
-   
+                <hr className="md:w-[71.69px] md:h-[3.58px] rounded-sm bg-[#C5DDFF]" />
                 <p className="text-[#292929] font-normal text-[16px] leading-[21.51px]">
                   {data[currentCategoryIndex].cardSubtitle}
                 </p>
               </div>
-            
+
               <div className="flex-1 justify-end items-end relative bottom-0 w-full md:w-[800px] md:h-[879px]">
                 <Image
                   src={data[currentCategoryIndex].image}
@@ -569,7 +513,6 @@ export default function LoanLifecycle() {
           )}
         </motion.div>
       </div>
-    </div>
     </div>
   );
 }
