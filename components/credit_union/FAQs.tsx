@@ -28,7 +28,7 @@ const FAQs = () => {
    
       setFaqData([]);
     }
-  }, [window.location.pathname]);
+  }, []);
 
   const toggleFAQ = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
