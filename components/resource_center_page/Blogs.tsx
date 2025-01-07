@@ -4,27 +4,43 @@ import { blogContent } from "../constant/blogs";
 
 const newsArticles = [
   {
-    title: "From Application to Disbursement in Minutes: The New Standard in Lending",
-    author: "Prateek Samantaray",
-    role: "Marketing",
-    link: "#",
+    title:
+    "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
+  author: "Prateek Samantaray",
+  role: "Marketing",
+  link: "https://www.fintechfutures.com/2024/09/scienaptic-ai-co-founder-steps-down-to-launch-new-venture-algebrik-ai/",
     image: "/icons/evan-gerdisch.png",
   },
   {
-    title: "Algebrik Secures $4M in Funding to Transform Lending",
+    title: "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
     author: "Prateek Samantaray",
     role: "Marketing",
-    link: "#",
+    link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market",
     image: "/icons/evan-gerdisch.png",
   },
   {
-    title: "Breaking Down Lending Bottlenecks: A Guide to Faster Approvals",
+    title: "Algebrik AI Expands Founding Leadership Team with the Appointment of Jesse Frugé as VP of Product Management",
     author: "Prateek Samantaray",
     role: "Marketing",
-    link: "#",
+    link: "https://finance.yahoo.com/news/algebrik-ai-expands-founding-leadership-120000953.html",
     image: "/icons/evan-gerdisch.png",
   },
+  {
+    title: "Algebrik AI Strengthens Founding Leadership with Appointment of Andrea Silvers as VP of Business Development & Partnerships",
+  author: "Prateek Samantaray",
+  role: "Marketing",
+  link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
+    image: "/icons/evan-gerdisch.png",
+  },
+  {
+    title: "Algebrik AI: $4 Million (Series A) Raised To Advance Cloud-Native Loan Origination Platform",
+    author: "Prateek Samantaray",
+    role: "Marketing",
+    link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
+    image: "/icons/evan-gerdisch.png",
+  }
 ];
+
 
 
 
@@ -56,10 +72,10 @@ export default function Blogs() {
                     quality={100}
                   />
                   <div className="flex flex-col justify-center pl-3">
-                    <p className="text-[#333333] text-[14px] font-extrabold">
+                    {/* <p className="text-[#333333] text-[14px] font-extrabold">
                       {article.author}
                     </p>
-                    <p className="text-gray-600 text-[12px]">{article.role}</p>
+                    <p className="text-gray-600 text-[12px]">{article.role}</p> */}
                   </div>
                 </div>
               </div>

@@ -503,13 +503,13 @@ export default function LoanLifecycle() {
                 </p>
               </div>
             
-              <div className="flex-1 w-full md:w-[800px] md:h-[879px]">
+              <div className="flex-1 justify-end items-end relative bottom-0 w-full md:w-[800px] md:h-[879px]">
                 <Image
                   src={data[currentCategoryIndex].image}
                   alt={selectedCategory}
                   width={628}
                   height={900}
-                  className="rounded-[10px] md:h-[528px] object-fill"
+                  className="rounded-[10px] md:h-[528px] object-contain"
                   priority
                   quality={100}
                 />
