@@ -11,13 +11,9 @@ import Card from "./card/Card";
             title="Seamless Experiences for your Members."
             description="Deliver seamless, personalized experiences that enhance member satisfaction and loyalty."
             buttonText="Know More"
-            imageHeight={392}
-            imageWidth={392}
-            customStyles={{
-              container: "flex flex-col justify-start items-start md:items-start",
-              number: "flex flex-col justify-start items-start md:items-start",
-              title:"flex flex-col justify-start items-start md:items-start"
-            }}
+            buttonLink="/solutions/credit_union"
+            imageHeight={322}
+            imageWidth={322}
           />
           <Card
             imageSrc="/section_images/smb_lending.png"
@@ -26,8 +22,9 @@ import Card from "./card/Card";
             title="Streamline Lending for Growth."
             description="Accelerate loan approvals and reduce costs with AI-powered automation."
             buttonText="Know More"
-            imageHeight={392}
-            imageWidth={392}
+            buttonLink="/solutions/smb_lenders"
+            imageHeight={312}
+            imageWidth={312}
           />
         </div>
         <Card
@@ -37,9 +34,10 @@ import Card from "./card/Card";
           title="Lending Transformed for Auto Lenders"
           description="Leverage cutting-edge AI and composable workflows to empower your auto lending setup."
           buttonText="Know More"
+          buttonLink="/solutions/auto_lenders"
           isLarge
-          imageHeight={708}
-          imageWidth={708}
+          imageHeight={658}
+          imageWidth={658}
         />
       </div>
     );

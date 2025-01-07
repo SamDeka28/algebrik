@@ -39,15 +39,15 @@ export default function LendingJourneyDesign() {
         <CustomHeader
           text={
             isWithAlgebrik
-              ? "The Difference Algebrik Makes"
+              ? "Making Lending Journeys Faster, Smarter, and Simpler"
               : "Making Lending Journeys Faster, Smarter, and Simpler"
           }
         />
-        {!isWithAlgebrik && (
+        {/* {!isWithAlgebrik && ( */}
           <CustomSubtitle
             text="Lending journeys are plagued by inefficiencies—disconnected systems, manual workflows, and borrower frustration. Algebrik transforms them with automation, AI, and seamless experiences."
           />
-        )}
+        {/*  )} */}
       </div>
 
       <div className="relative mx-auto flex w-[416px] h-[52px] bg-[#E1ECFD] border-[#CEE2FF] rounded-[48px] justify-around items-center gap-4 p-[2px]">
@@ -92,7 +92,7 @@ export default function LendingJourneyDesign() {
               alt="Lending Without Algebrik"
               width={1382}
               height={687}
-              className="md:w-[1382px] h-full object-cover"
+              className="md:w-[1382px] h-full object-coverx`"
             />
           </motion.div>
         )}

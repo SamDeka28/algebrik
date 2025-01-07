@@ -111,7 +111,7 @@ const AICoreSection = () => {
             <div >
               <div className="flex items-center gap-4 justify-between mb-4">
                 <p
-                  className="text-[72px] font-bold leading-none font-plus-jakarta text-[#D3E5FF]"
+                  className="text-[72px] font-bold leading-none font-dm-sans text-[#D3E5FF]"
                   style={{ WebkitTextStroke: "2px rgb(28, 141, 234, 100%)" }}
                 >
                   {card.number}

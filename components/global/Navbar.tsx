@@ -49,7 +49,7 @@ export default function Navbar() {
     };
   }, []);
 
-  const isContactPage = pathname === "/contact";
+  const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource_center";
 
   return (
     <motion.nav
@@ -58,7 +58,7 @@ export default function Navbar() {
       transition={{ duration: 0.8 }}
       className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${
         isScrolled
-          ? isContactPage
+          ? isContactOrResourcePage
             ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
             : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
           : "bg-transparent"
@@ -67,7 +67,7 @@ export default function Navbar() {
       <div className="container mx-auto px-10 py-6 flex justify-between items-center">
         <Link href="/">
           <Image
-            src={isScrolled ? logo : isContactPage ? blueLogo : logo}
+            src={isScrolled ? logo : isContactOrResourcePage ? blueLogo : logo}
             alt="logo"
             className="w-[157px] h-[40px]"
           />
@@ -76,7 +76,7 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div
           className={`hidden md:flex space-x-8 ${
-            isContactPage
+            isContactOrResourcePage
               ? isScrolled
                 ? "text-white"
                 : "text-black"
@@ -95,7 +95,7 @@ export default function Navbar() {
           >
             <Link
               href="/solutions"
-              className="flex items-center hover:px-3  hover:bg-black hover:bg-opacity-50 rounded-[20px] hover:text-white transition"
+              className="flex items-center   hover:bg-opacity-50 rounded-[20px] hover:text-white transition"
             >
               Solutions
               <HiChevronDown
@@ -106,26 +106,53 @@ export default function Navbar() {
             </Link>
             {dropdownOpen && (
               <div
-                className="absolute p-[16px] top-full left-0 md:w-[303px] md:h-[176px] mt-2 bg-black bg-opacity-50 backdrop-blur-lg rounded-[20px] text-white shadow-lg"
+                className="absolute p-[16px] top-full flex flex-col items-start justify-center left-0 md:w-[303px] md:h-[176px] mt-2 bg-black/50 backdrop-blur-3xl rounded-[20px] text-white shadow-lg"
                 onClick={closeDropdown}
               >
                 <Link
-                  href="/solutions"
-                  className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
+                  href="/solutions/credit_union"
+                  className="block px-4 py-2 hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
-                  Credit Unions
+                    <div className="flex items-center gap-2">
+      <Image
+        src="/icons/svg/bank.svg"
+        alt="Credit Unions Icon"
+        width={20}
+        height={20}
+        className="text-white"
+      />
+      Credit Unions
+    </div>
                 </Link>
                 <Link
-                  href="/solutions/solution2"
-                  className="block px-4 py-2  hover:bg-gray-200 hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
+                  href="/solutions/auto_lenders"
+                  className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
-                  Auto Lenders
+              <div className="flex items-center gap-2">
+      <Image
+        src="/icons/svg/car.svg"
+        alt="Auto Lenders Icon"
+        width={20}
+        height={20}
+        className="text-white"
+      />
+      Auto Lenders
+    </div>
                 </Link>
                 <Link
-                  href="/"
-                  className="block px-4 py-2  hover:bg-gray-200 hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
+                  href="/solutions/smb_lenders"
+                  className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
-                  Coming Soon
+                <div className="flex items-center gap-2">
+      <Image
+        src="/icons/svg/shop.svg"
+        alt="Coming Soon Icon"
+        width={20}
+        height={20}
+        className="text-white"
+      />
+      SMB Lenders
+    </div>
                 </Link>
               </div>
             )}
@@ -145,7 +172,7 @@ export default function Navbar() {
           href="/contact"
           className={`hidden md:inline-block px-6 py-2 rounded-full text-[14px] font-bold transition ${
             isScrolled
-              ? isContactPage
+              ? isContactOrResourcePage
                 ? "bg-white text-[#292929] hover:bg-gray-700"
                 : "bg-white text-[#292929] hover:bg-blue-300"
               : "bg-blue-500 text-white hover:bg-blue-700"
@@ -158,7 +185,7 @@ export default function Navbar() {
         <button
           onClick={toggleMenu}
           className={`md:hidden text-2xl focus:outline-none ${
-            isContactPage ? "text-black" : "text-white"
+            isContactOrResourcePage ? "text-black" : "text-white"
           }`}
         >
           {isOpen ? <HiX /> : <HiOutlineMenu />}
@@ -171,7 +198,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className={`md:hidden ${isContactPage ? "text-black" : "text-white"}`}
+          className={`md:hidden ${isContactOrResourcePage ? "text-black" : "text-white"}`}
         >
           <Link
             href="/platform"

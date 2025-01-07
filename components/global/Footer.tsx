@@ -13,24 +13,24 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-medium mb-[29px]">Product</h3>
           <ul className="space-y-1 text-[#787C91] text-[14px]">
-            <li>Platform</li>
-            <li>For Credit Unions</li>
-            <li>For SMB Lenders</li>
-            <li>For Auto Lenders</li>
+            <Link href="/platform" passHref> <li>Platform</li> </Link>
+            <Link href="/solutions/credit_union" passHref> <li>For Credit Unions</li></Link>
+            <Link href="/solutions/smb_lenders" passHref> <li>For SMB Lenders</li></Link>
+            <Link href="/solutions/auto_lenders" passHref> <li>For Auto Lenders</li></Link>
           </ul>
         </div>
         <div>
           <h3 className="text-white font-medium mb-[29px]">Resources</h3>
           <ul className="space-y-1 text-[#787C91] text-[14px]">
-            <li>Blog</li>
+          <Link href="/resource_center" passHref>  <li>Blog</li></Link>
             <li>Documentation</li>
           </ul>
         </div>
         <div>
           <h3 className="text-white font-medium mb-[29px]">Company</h3>
           <ul className="space-y-1 text-[#787C91] text-[14px]">
-            <li>About us</li>
-            <li>Contact us</li>
+          <Link href="/about" passHref>  <li>About us</li></Link>
+          <Link href="/contact" passHref>  <li>Contact us</li></Link>
           </ul>
         </div>
         <div>

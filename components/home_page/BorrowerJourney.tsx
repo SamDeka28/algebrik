@@ -167,6 +167,7 @@ import { useState, useEffect } from "react";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Image from "next/image";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 import borrowerData from "../constant/constant";
 
 export default function BorrowerJourney() {
@@ -174,6 +175,7 @@ export default function BorrowerJourney() {
   const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [, setCurrentSubcategoryIndex] = useState(0);
+  const [imageKey, setImageKey] = useState(Date.now());
 
   useEffect(() => {
     if (borrowerData.length > 0) {
@@ -182,6 +184,10 @@ export default function BorrowerJourney() {
     }
   }, []);
 
+  const handleImageChange = () => {
+    setImageKey(Date.now());
+  };
+
   return (
     <div className="container mx-auto p-4 md:p-8 flex flex-col gap-12 overscroll-contain">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-8 md:px-36">
@@ -189,7 +195,7 @@ export default function BorrowerJourney() {
         <CustomSubtitle text="From borrower onboarding to loan closure, Algebrik combines AI-driven automation, intelligent insights, and seamless workflows to transform every stage of the loan lifecycle." />
       </div>
       <div className="flex gap-[45px] justify-center items-start flex-wrap w-full">
-        <div className="w-[268px] max-h-[500px] items-start justify-start bg-white shadow-md rounded-[20px] overflow-y-auto">
+        <div className="w-[268px] h-[500px] items-start justify-start bg-white shadow-md rounded-[20px] overflow-y-auto">
           {borrowerData.map((item, index) => (
             <div key={item.category}>
               <button
@@ -200,7 +206,7 @@ export default function BorrowerJourney() {
                   setSelectedSubcategory(item.subcategories[0].name);
                 }}
                 aria-pressed={currentCategoryIndex === index}
-                className={`py-[16px] pl-[16px] w-full text-left font-bold text-[15.38px] mb-2 uppercase ${currentCategoryIndex === index ? "bg-white-100" : "border-b border-b-[#F1F1F1]"}`}
+                className={`py-[16px] pl-[16px] w-full font-plus-jakarta text-left text-black font-plus-jakarta font-bold text-[15.38px] mb-2 uppercase ${currentCategoryIndex === index ? "bg-white-100" : "border-b border-b-[#F1F1F1]"}`}
               >
                 {item.category}
               </button>
@@ -212,12 +218,20 @@ export default function BorrowerJourney() {
                       onClick={() => {
                         setSelectedSubcategory(sub.name);
                         setCurrentSubcategoryIndex(subIndex);
+                        handleImageChange();
                       }}
                       aria-pressed={selectedSubcategory === sub.name}
-                      className={`flex items-center gap-[8px] w-full py-[11px] px-[9px] ${selectedSubcategory === sub.name ? "bg-white border border-[#D8E7F5] shadow-md rounded-[10px] text-blue-600" : "text-gray-700"}`}
+                      className={`flex items-center font-plus-jakarta gap-[8px] w-full py-[11px] px-[9px] ${selectedSubcategory === sub.name ? "bg-white border border-[#D8E7F5] shadow-md rounded-[10px] text-blue-600" : "text-gray-700"}`}
                     >
-                      <Image src={selectedSubcategory === sub.name ? sub.activeIcons : sub.icons} alt={sub.name} width={24} height={24} />
-                      <span className="flex-1 text-left">{sub.name}</span>
+<div className="flex-shrink-0">
+  <Image
+    src={selectedSubcategory === sub.name ? sub.activeIcons : sub.icons}
+    alt={sub.name}
+    width={24}
+    height={24}
+    className="!md:w-[24px] !md:h-[24px]"
+  />
+</div>                      <span className="flex-1 text-left">{sub.name}</span>
                       {selectedSubcategory === sub.name && <FaLongArrowAltRight className="text-blue-600" />}
                     </button>
                   ))}
@@ -228,16 +242,24 @@ export default function BorrowerJourney() {
         </div>
         <div className="flex justify-center items-center p-6 w-full md:w-[865px] h-[522.43px] rounded-[20px]">
           {selectedSubcategory && (
-            <Image
-              src={borrowerData.flatMap((item) => item.subcategories).find((sub) => sub.name === selectedSubcategory)?.image || ""}
-              alt={selectedSubcategory}
-              className="w-full md:w-[865px] h-[300px] md:h-[522.43px] rounded"
-              width={865}
-              height={522.43}
-              objectFit="cover"
-              priority
-              quality={100}
-            />
+            <motion.div
+              key={imageKey}
+              initial={{ x: '20%', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: '-20%', opacity: 0 }} 
+              transition={{ type: 'spring', stiffness: 100, damping: 25 }}
+            >
+              <Image
+                src={borrowerData.flatMap((item) => item.subcategories).find((sub) => sub.name === selectedSubcategory)?.image || ""}
+                alt={selectedSubcategory}
+                className="w-full md:w-[865px] h-[300px] md:h-[522.43px] rounded"
+                width={865}
+                height={522.43}
+                objectFit="cover"
+                priority
+                quality={100}
+              />
+            </motion.div>
           )}
         </div>
       </div>

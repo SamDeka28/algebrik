@@ -15,6 +15,7 @@ export default {
       fontFamily: {
         "dm-sans": ["var(--font-dm-sans)", "sans-serif"],
         "plus-jakarta": ["var(--font-plus-jakarta-sans)", "sans-serif"],
+        "bebas-neue": ["var(--font-bebas-neue)", "sans-serif"],
       },
     },
   },

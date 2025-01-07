@@ -46,12 +46,11 @@ export default function Contact() {
           }
         />
         <CustomSubtitle
-          className=""
           text="Whether you’re looking to streamline your loan processes, enhance borrower experiences, or explore our AI-powered, cloud-native solutions, our team is here to help. Connect with us to start your journey toward a smarter, more efficient lending ecosystem."
         />
       </div>
 
-      <div className="relative w-full max-w-lg ">
+      <div className="relative w-full max-w-lg">
         <div className="absolute opacity-[30%] -z-10">
           <motion.div
             className="absolute -top-9 left-1 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[461.73px] md:h-[439.68px] blur-[80px]"
@@ -90,12 +89,12 @@ export default function Contact() {
 
         <form
           onSubmit={formik.handleSubmit}
-          className="relative z-10 w-[362px] md:w-[518px] h-[716px] md:h-[512px] bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
+          className="relative z-10 w-[362px] font-plus-jakarta md:w-[518px] bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
         >
           <div className="flex flex-col gap-[24px]">
             <div className="flex flex-col md:flex-row gap-[24px]">
               <div className="flex flex-col gap-[12px] w-full">
-                <label className="text-[#5D5A88] text-[14px] font-bold">
+                <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
                   Name
                 </label>
                 <input
@@ -105,14 +104,14 @@ export default function Contact() {
                   value={formik.values.name}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className="border border-gray-300 rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                  className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
                 />
                 {formik.touched.name && formik.errors.name && (
-                  <p className="text-red-500 text-sm">{formik.errors.name}</p>
+                  <p className="text-red-500 font-plus-jakarta text-sm">{formik.errors.name}</p>
                 )}
               </div>
               <div className="flex flex-col gap-[12px] w-full">
-                <label className="text-[#5D5A88] text-[14px] font-bold">
+                <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
                   Phone
                 </label>
                 <input
@@ -122,16 +121,16 @@ export default function Contact() {
                   value={formik.values.phone}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className="border border-gray-300 rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                  className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
                 />
                 {formik.touched.phone && formik.errors.phone && (
-                  <p className="text-red-500 text-sm">{formik.errors.phone}</p>
+                  <p className="text-red-500 font-plus-jakarta text-sm">{formik.errors.phone}</p>
                 )}
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-[24px]">
               <div className="flex flex-col gap-[12px] w-full">
-                <label className="text-[#5D5A88] text-[14px] font-bold">
+                <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
                   Email
                 </label>
                 <input
@@ -141,14 +140,14 @@ export default function Contact() {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className="border border-gray-300 rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                  className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
                 />
                 {formik.touched.email && formik.errors.email && (
-                  <p className="text-red-500 text-sm">{formik.errors.email}</p>
+                  <p className="text-red-500 font-plus-jakarta text-sm">{formik.errors.email}</p>
                 )}
               </div>
               <div className="flex flex-col gap-[12px] w-full">
-                <label className="text-[#5D5A88] text-[14px] font-bold">
+                <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
                   Company
                 </label>
                 <input
@@ -158,10 +157,10 @@ export default function Contact() {
                   value={formik.values.company}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  className="border border-gray-300 rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                  className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
                 />
                 {formik.touched.company && formik.errors.company && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500 font-plus-jakarta text-sm">
                     {formik.errors.company}
                   </p>
                 )}
@@ -169,7 +168,7 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-[12px]">
-              <label className="text-[#5D5A88] text-[14px] font-bold">
+              <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
                 Message
               </label>
               <textarea
@@ -178,16 +177,16 @@ export default function Contact() {
                 value={formik.values.message}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="border border-gray-300 rounded-[8px] p-2 w-full h-[142px] focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full h-[142px] focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
               />
               {formik.touched.message && formik.errors.message && (
-                <p className="text-red-500 text-sm">{formik.errors.message}</p>
+                <p className="text-red-500 font-plus-jakarta text-sm">{formik.errors.message}</p>
               )}
             </div>
 
             <button
               type="submit"
-              className="bg-[#1C8DEA] w-full text-white md:text-[16px] font-bold rounded-[31px] p-4 hover:bg-blue-600 transition"
+              className="bg-[#1C8DEA] w-full font-plus-jakarta text-white md:text-[16px] font-bold rounded-[31px] p-4 hover:bg-blue-600 transition"
             >
               Get in touch
             </button>

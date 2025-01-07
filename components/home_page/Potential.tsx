@@ -5,8 +5,16 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const PercentageCard = ({ title, percentage }: { title: string; percentage: number }) => {
-  const [currentPercentage, setCurrentPercentage] = useState<number | null>(null);
+const PercentageCard = ({
+  title,
+  percentage,
+}: {
+  title: string;
+  percentage: number;
+}) => {
+  const [currentPercentage, setCurrentPercentage] = useState<number | null>(
+    null
+  );
   const [hasAnimated, setHasAnimated] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -54,12 +62,12 @@ const PercentageCard = ({ title, percentage }: { title: string; percentage: numb
   return (
     <div
       ref={cardRef}
-      className="flex flex-col items-center justify-center bg-white rounded-[10px] max-w-[237px] max-h-[118px] gap-[8px]"
+      className="flex flex-col items-center justify-end  rounded-[10px] pt-3 max-w-[237px] max-h-[118px] gap-[8px]"
     >
-      <p className="text-[44px] font-bold font-plus-jakarta text-[#2A5FAC]">
+      <p className="text-[44px] font-bold font-plus-jakarta text-white">
         {currentPercentage !== null ? `${currentPercentage}%` : "0%"}
       </p>
-      <h3 className="text-[20px] font-normal text-center leading-[30px] font-plus-jakarta text-[#606060]">
+      <h3 className="text-[18px] font-normal text-center leading-[30px] font-plus-jakarta text-white">
         {title}
       </h3>
     </div>
@@ -88,7 +96,10 @@ export default function Potential() {
       },
     ],
     percentageData: [
-      { title: "Increase in Application to Funding Conversion", percentage: 300 },
+      {
+        title: "Increase in Application to Funding Conversion",
+        percentage: 300,
+      },
       { title: "Decrease in Approval Time", percentage: 90 },
       { title: "Decrease in Time to Launch New Products", percentage: 90 },
       { title: "Increase in Borrower Application Completion", percentage: 30 },
@@ -109,10 +120,12 @@ export default function Potential() {
           <motion.div
             className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
             animate={{
-              y: [50, 30, 50],
+              y: [0, -50, 50, 0],
+              rotate: [0, 10, -10, 0],
+              scale: [1, 1.05, 1],
             }}
             transition={{
-              duration: 2, 
+              duration: 5,
               repeat: Infinity,
               repeatType: "loop",
               ease: "easeInOut",
@@ -121,11 +134,13 @@ export default function Potential() {
           <motion.div
             className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10"
             animate={{
-              y: [50, 30, 60],
+              y: [0, -60, 60, 0],
+              rotate: [0, -15, 15, 0],
+              scale: [1, 1.07, 1],
             }}
             transition={{
-              duration: 2,
-              delay: 0.2,
+              duration: 4,
+              delay: 0.3,
               repeat: Infinity,
               repeatType: "loop",
               ease: "easeInOut",
@@ -134,21 +149,24 @@ export default function Potential() {
           <motion.div
             className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1]"
             animate={{
-              y: [10, 90, 0],
+              y: [0, -70, 70, 0],
+              rotate: [0, 20, -20, 0],
+              scale: [1, 1.1, 1],
             }}
             transition={{
-              duration: 2, 
-              delay: 0.4,
+              duration: 5,
+              delay: 0.5,
               repeat: Infinity,
               repeatType: "loop",
               ease: "easeInOut",
             }}
           />
         </div>
+
         {data.cardData.map((card, index) => (
           <div
             key={index}
-            className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[365px] h-[426px] flex flex-col items-center justify-start"
+            className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[365px] h-[426px] flex flex-col items-center justify-start transform transition-transform duration-300 hover:scale-105"
           >
             <div className="mb-4">
               <Image
@@ -160,7 +178,9 @@ export default function Potential() {
                 quality={100}
               />
             </div>
-            <h3 className="text-[#2A5FAC] text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">{card.title}</h3>
+            <h3 className="text-[#2A5FAC] text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
+              {card.title}
+            </h3>
             <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
               {card.description}
             </p>
@@ -168,15 +188,25 @@ export default function Potential() {
         ))}
       </div>
 
-      <div className="flex justify-center flex-wrap mt-8 gap-16">
+      <div className="container flex items-baseline align-center justify-center flex-wrap mt-[47px] text-white gap-16"
+       style={{
+        backgroundImage: "url('/section_images/percent.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        borderRadius: "32px",
+        width: "1160px",
+        height: "162px",
+        alignSelf: "center",
+      }}
+      >
         {data.percentageData.map((item, index) => (
-          <PercentageCard key={index} title={item.title} percentage={item.percentage} />
+          <PercentageCard
+            key={index}
+            title={item.title}
+            percentage={item.percentage}
+          />
         ))}
       </div>
-
-     
     </div>
-
-    
   );
 }

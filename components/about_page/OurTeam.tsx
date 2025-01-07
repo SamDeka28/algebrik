@@ -63,6 +63,12 @@ const carouselDataTwo = [
     title: "Chief Lending Officer",
     place: "MidWest America FCU, Indiana",
   },
+  {
+    image: "/team_images/hina.png",
+    name: "Hina Khalid",
+    title: "Chief Financial Officer",
+    place: "Labor Credit Union, Washington",
+  },
 ];
 
 function TeamMemberCard({
@@ -82,7 +88,7 @@ function TeamMemberCard({
       style={{ backgroundImage: `url(${image})` }}
     >
       <div className="bg-white/80 backdrop-blur-sm absolute bottom-6 md:w-[349px] py-5 rounded-[13.57px] flex flex-col items-center justify-center shadow-[0px_18.09px_32.57px_0px_rgba(10,64,108,0.1)]">
-        <h3 className="text-[16px] font-bold">{name}</h3>
+        <h3 className="text-[16px] text-black font-bold">{name}</h3>
         <p className="text-[14px] text-gray-600">{title}</p>
         {place && place !== "N/A" && <p className="text-[14px] text-gray-600">{place}</p>}
       </div>

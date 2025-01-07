@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 type CardProps = {
   number?: string;
@@ -28,6 +29,7 @@ type CardProps = {
     width?: string; 
     height?: string; 
   };
+  buttonLink?: string;
 };
 
 const Card = ({
@@ -42,6 +44,7 @@ const Card = ({
   imageSrc,
   imageWidth = 500,
   imageHeight = 300,
+  buttonLink,
 }: CardProps) => {
   return (
     <div
@@ -143,12 +146,14 @@ const Card = ({
 )}
 
 
-      {buttonText && (
+      {buttonText && buttonLink && (
+        <Link href={buttonLink} passHref>
         <button
           className={`mt-4 w-[139px] h-[41px] font-plus-jakarta border-2 border-[#2A5FAC] text-[#2A5FAC] text-[14px] font-medium py-2 px-6 rounded-full transition hover:bg-[#2A5FAC] hover:text-white ${customStyles?.button || ""}`}
         >
           {buttonText}
         </button>
+        </Link>
       )}
     </div>
   );

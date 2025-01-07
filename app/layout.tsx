@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, DM_Sans, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
@@ -12,6 +12,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
+});
+
+const bebas = Bebas_Neue({
+  variable: "--font-bebas-neue",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakartaSans.variable} ${dmSans.variable} antialiased !bg-white`}
+        className={`${plusJakartaSans.variable} ${dmSans.variable} ${bebas.variable} antialiased !bg-white`}
       >
       <Navbar />
         {children}
