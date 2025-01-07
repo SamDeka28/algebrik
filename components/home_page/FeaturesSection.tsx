@@ -2,19 +2,19 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import clock from "@/public/icons/clock.png";
-import doc from "@/public/icons/doc.png";
+
 
 const features = [
-  { title: "Agreement Generation", icon: clock },
-  { title: "Document Processing", icon: doc },
-  { title: "KYC Automation", icon: doc },
-  { title: "Origination", icon: doc },
-  { title: "Application Management", icon: doc },
-  { title: "AI-Lender Enablement", icon: doc },
-  { title: "Agreement Generation", icon: doc },
-  { title: "Document Processing", icon: doc },
-  { title: "KYC Automation", icon: doc },
+  { title: "Borrower Communication", icon: "/icons/home/bc.svg" },
+  { title: "Fund Disbursement", icon: "/icons/home/fu.svg" },
+  { title: "Borrower Verification", icon: "/icons/home/bv.svg" },
+  { title: "Origination", icon: "/icons/home/or.svg" },
+  { title: "Application Management", icon: "/icons/home/am.svg" },
+  { title: "AI-Lender Enablement", icon: "/icons/home/ai.svg" },
+  { title: "Agreement Generation", icon: "/icons/home/ag.svg" },
+  { title: "Document Processing", icon: "/icons/home/do.svg" },
+  { title: "KYC Automation", icon: "/icons/home/ka.svg" },
+  { title: "Credit Scoring", icon: "/icons/home/cs.svg"}
 ];
 
 export default function FeaturesSection() {

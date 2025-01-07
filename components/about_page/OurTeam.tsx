@@ -24,12 +24,12 @@ const carouselDataOne = [
     title: "VP, BD & Partnerships",
     place: "N/A",
   },
-  {
-    image: "/team.png",
-    name: "Michael Brown",
-    title: "Head of Marketing",
-    place: "N/A",
-  },
+  // {
+  //   image: "/team.png",
+  //   name: "Michael Brown",
+  //   title: "Head of Marketing",
+  //   place: "N/A",
+  // },
 ];
 
 const carouselDataTwo = [
@@ -59,7 +59,7 @@ const carouselDataTwo = [
   },
   {
     image: "/team_images/travisBow.png",
-    name: "Travis Bow",
+    name: "Shad Edwards",
     title: "Chief Lending Officer",
     place: "MidWest America FCU, Indiana",
   },
@@ -171,7 +171,7 @@ function CarouselSection({
           ))}
         </motion.div>
       </div>
-      <div className="flex flex-wrap md:flex-nowrap gap-[39px] justify-between items-baseline">
+      <div className="flex flex-wrap md:flex-nowrap gap-[39px] justify-between items-start">
         <div>
           <CustomHeader
             text={headerText}
@@ -184,6 +184,7 @@ function CarouselSection({
             className="text-[14px] md:text-[20px] font-normal leading-[30px]"
           />
         </div>
+        {data.length > 3 &&
         <div className="flex gap-[8px] justify-center">
           <button
             onClick={handlePrevious}
@@ -198,6 +199,7 @@ function CarouselSection({
             <IoIosArrowForward size={20} color="white" />
           </button>
         </div>
+}
       </div>
     </div>
   );

@@ -22,13 +22,13 @@ type HeaderProps = {
   
   export const CustomSubtitle = ({ text, className }: SubtitleProps) => {
     return (
-      <p
+      <div
         className={`text-[20px] font-normal font-plus-jakarta text-[#606060] leading-[30px] ${
           className || ""
         }`}
       >
         {text}
-      </p>
+      </div>
     );
   };
   

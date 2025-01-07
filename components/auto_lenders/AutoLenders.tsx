@@ -117,19 +117,21 @@ export default function AutoLenders() {
             </p>
           </motion.div>
         ))}
-        <div className="flex gap-[22px] w-[430px] md:mt-[66px]">
+         <div className="flex gap-[22px] w-[430px] md:mt-[66px]">
           <Button
             text="Get Started"
             isActive={true}
-            onClick={() => alert("Please provide the redirection page")}
-            customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[18px] text-[16px] font-bold hover:bg-blue-500 flex-1"
+            // onClick={() => alert("Please provide the redirection page")}
+            link="/contact"
+            customClass="text-center bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[18px] text-[16px] font-bold hover:bg-blue-500 flex-1"
             activeStyle="bg-white text-[#292929] font-bold"
           />
 
           <Button
-            text="Talk to Sales"
-            onClick={() => alert("Please provide the redirection page")}
-            customClass="py-[18px] text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA]"
+            text="See Us In Action"
+            // onClick={() => alert("Please provide the redirection page")}
+            link="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
+            customClass="text-center py-[18px] text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA]"
             activeStyle="text-[#1A69DC] font-bold"
           />
         </div>

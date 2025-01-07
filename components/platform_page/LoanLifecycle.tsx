@@ -475,6 +475,8 @@ export default function LoanLifecycle() {
           ))}
         </div>
 
+
+       
         <motion.div
           className="flex justify-center items-center p-6 w-full md:w-[932px] h-[531.96px] rounded-[42px] relative bg-white shadow-lg border border-gray-200"
           key={selectedCategory}
@@ -483,9 +485,49 @@ export default function LoanLifecycle() {
           exit={{ x: -100, opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
+           <div className="absolute top-0 opacity-[30%] z-[-1]">
+            <motion.div
+              className="absolute top-0 -left-96 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[468.64px] md:h-[542.11px] blur-[100px]"
+              initial={{ x: "-50%" }}
+              animate={{
+                x: ["-30%", "30%", "-30%", "0%"],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute top-0 md:left-[20px] -left-96 bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10"
+              initial={{ x: "100%" }}
+              animate={{
+                x: ["10%", "-20%", "10%", "0%"],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute top-0 -left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[451.48px] md:h-[542.11px] blur-[100px] z-[-1]"
+              initial={{ x: "-50%" }}
+              animate={{
+                x: ["-30%", "40%", "-40%", "0%"],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </div>
           {selectedCategory && (
             <div className="flex flex-col md:flex-row md:w-[932px] md:h-[531.96px]">
-              <div className="pl-[44px] pt-[52.59px] flex flex-col justify-start font-plus-jakarta items-start gap-[12px] w-full md:w-1/2">
+              <div className="pl-[44px] pt-[52.59px] flex flex-col justify-start font-plus-jakarta items-start gap-[12px] w-96">
                 <h3 className="text-[#29292999] tracking-wider font-bold text-[12px] uppercase">
                   {data[currentCategoryIndex].cardHeader}
                 </h3>
@@ -502,7 +544,7 @@ export default function LoanLifecycle() {
                 <Image
                   src={data[currentCategoryIndex].image}
                   alt={selectedCategory}
-                  width={628}
+                  width={728}
                   height={900}
                   className="rounded-[10px] md:h-[528px] object-fill"
                   priority

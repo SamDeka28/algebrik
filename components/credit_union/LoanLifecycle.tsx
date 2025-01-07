@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { CustomHeader } from "../CustomHeader";
 import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 export default function LoanLifecycle() {
   const cardData = [
@@ -76,6 +77,8 @@ export default function LoanLifecycle() {
       />
 
       <div className="container px-[25px] py-[4px] md:w-[1013px] md:h-[44px] bg-white flex justify-between items-center rounded-[36px] drop-shadow-[0_0_60px_rgba(0,0,0,0.25)]">
+
+     
         {cardData.map((item, index) => (
           <div
             key={index}
@@ -95,7 +98,7 @@ export default function LoanLifecycle() {
             />
             <div
               className={`${
-                index === activeIndex ? "bg-blue-500 text-white" : "bg-transparent"
+                index === activeIndex ? "bg-blue-500 text-white" : "bg-transparent text-[#8C8C8C]"
               } px-2 py-1 rounded-full transition-all duration-300`}
             >
               {item.title}
@@ -108,12 +111,53 @@ export default function LoanLifecycle() {
         className="md:w-[1096px] md:h-[526px] rounded-[42px] overflow-hidden"
         style={{ transition: "all 0.5s" }}
       >
+              <div className="absolute top-64 md:left-[560px] opacity-[30%] z-[-1]">
+            <motion.div
+              className="absolute top-0 -left-96 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[468.64px] md:h-[542.11px] blur-[100px]"
+              initial={{ x: "-50%" }}
+              animate={{
+                x: ["-30%", "30%", "-30%", "0%"],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute top-0 md:left-[20px] -left-96 bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10"
+              initial={{ x: "100%" }}
+              animate={{
+                x: ["10%", "-20%", "10%", "0%"],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute top-0 -left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[451.48px] md:h-[542.11px] blur-[100px] z-[-1]"
+              initial={{ x: "-50%" }}
+              animate={{
+                x: ["-30%", "40%", "-40%", "0%"],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </div>
         <div
           className="relative"
           // style={{
           //   marginLeft: activeIndex === 0 ? "0px" : "0",  
           // }}
         >
+          
           <Image
             key={activeIndex}
             src={cardData[activeIndex].image}

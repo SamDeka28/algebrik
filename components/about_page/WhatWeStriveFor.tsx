@@ -142,7 +142,7 @@ export default function WhatWeStriveFor() {
           {/* Third Row */}
           <div className="flex flex-col gap-6">
             <CustomHeader
-              className="flex flex-col"
+              className="flex flex-col text-[56px]"
               text={
                 <>
                   <span>What we</span>

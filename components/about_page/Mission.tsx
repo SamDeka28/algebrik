@@ -17,11 +17,7 @@ export default function MissionSection() {
             mission to help lenders deliver loans digitally when and where they
             are needed most. Our vision is to revolutionize loan origination,
             making it faster, simpler, and more inclusive, while enabling
-            lenders to focus on helping people achieve their goals. Our ultimate
-            goal is to transform lending into a seamless, transparent process,
-            setting a new benchmark for financial services. We’re proud to work
-            with lenders worldwide, creating meaningful financial impact
-            together.
+            lenders to focus on helping people achieve their goals.
           </p>
         </div>
       </div>

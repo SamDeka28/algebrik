@@ -24,7 +24,7 @@ const LendingExperience = () => {
           className="px-80 text-[24px] font-normal"
           text="Unlock the power of AI and automation to transform your lending operations. Deliver faster approvals, smarter decisions, and seamless borrower experiences—all with Algebrik at your side"
         />
-        <div className="flex gap-[22px] w-[430px] md:mt-[66px]">
+         <div className="flex gap-[22px] w-[430px] md:mt-[66px]">
           <Button
             text="Get Started"
             isActive={true}
@@ -35,9 +35,9 @@ const LendingExperience = () => {
           />
 
           <Button
-            text="Talk to Sales"
+            text="See Us In Action"
             // onClick={() => alert("Please provide the redirection page")}
-            link="/contact"
+            link="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
             customClass="py-[18px] text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA]"
             activeStyle="text-[#1A69DC] font-bold"
           />

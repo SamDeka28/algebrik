@@ -89,7 +89,7 @@ export default function Potential() {
         image: "/section_images/smart.png",
       },
       {
-        title: "Exceptional Borrower Experiences",
+        title: "Exceptional Experiences",
         description:
           "Delight borrowers with seamless onboarding, real-time updates, and simplified agreements.",
         image: "/section_images/exceptional.png",

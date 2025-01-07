@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
+import { blogContent } from "../constant/blogs";
+import Link from "next/link";
 
 type CarouselItem = {
   header: string;
@@ -13,16 +14,16 @@ type CarouselItem = {
   image: string;
 };
 
-
 const carouselData: CarouselItem[] = [
   {
     header: "Blogs",
     cardTitle: "BLOG",
-    title: "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
+    title:
+      "Beyond Decisioning: AI's Comprehensive Role in Lending",
     description:
-      "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
-    source: "BusinessWire",
-    image: "/section_images/place.png",
+      "\"The success of any financial system lies in its ability to adapt and serve its people,\" once said Mervyn King, former....",
+    source: "Prateek Samantaray   ",
+    image: "/section_images/blog/beyond.png",
   },
   {
     header: "Case Studies",
@@ -40,7 +41,7 @@ const carouselData: CarouselItem[] = [
     description:
       "Explore the latest updates and news stories about Algebrik AI and its impact on the global financial technology industry.",
     source: "BusinessWire",
-    image: "/section_images/place.png",
+    image: "/section_images/blog/bw.png",
   },
   {
     header: "One Pagers",
@@ -50,6 +51,49 @@ const carouselData: CarouselItem[] = [
       "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
     source: "BusinessWire",
     image: "/section_images/place.png",
+  },
+];
+
+const newsArticles = [
+  {
+    title:
+      "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
+    author: "Fintech Futures",
+    role: "Marketing",
+    link: "https://www.fintechfutures.com/2024/09/scienaptic-ai-co-founder-steps-down-to-launch-new-venture-algebrik-ai/",
+    image: "/section_images/blog/ff.jpg",
+  },
+  {
+    title:
+      "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
+    author: "BusinessWire",
+    role: "Marketing",
+    link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market",
+    image: "/section_images/blog/b.png",
+  },
+  {
+    title:
+      "Algebrik AI Expands Founding Leadership Team with the Appointment of Jesse Frugé as VP of Product Management",
+    author: "Yahoo Finance",
+    role: "Marketing",
+    link: "https://finance.yahoo.com/news/algebrik-ai-expands-founding-leadership-120000953.html",
+    image: "/section_images/blog/t.webp",
+  },
+  {
+    title:
+      "Algebrik AI Strengthens Founding Leadership with Appointment of Andrea Silvers as VP of Business Development & Partnerships",
+    author: "BusinessWire",
+    role: "Marketing",
+    link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
+    image: "/section_images/blog/b.png",
+  },
+  {
+    title:
+      "Algebrik AI: $4 Million (Series A) Raised To Advance Cloud-Native Loan Origination Platform",
+    author: "Pulse 2.0",
+    role: "Marketing",
+    link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
+    image: "/section_images/blog/p.jpg",
   },
 ];
 
@@ -71,7 +115,7 @@ export default function BlogCarousel() {
             onClick={() => handleHeaderClick(index)}
             className={`rounded-md font-plus-jakarta font-medium ${
               currentIndex === index
-                ? "bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] md:w-[168px] md:h-[40px] rounded-[96px] text-white"
+                ? "rounded-3xl bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] md:w-[168px] md:h-[40px]  text-white"
                 : "text-black"
             }`}
           >
@@ -79,7 +123,8 @@ export default function BlogCarousel() {
           </button>
         ))}
       </div>
-      <div>
+      {[0,2].includes(currentIndex) && 
+            <div>
         <motion.div
           className="bg-white p-[24px] border border-[#D5D5D5] md:w-[1160px] md:h-[428px] rounded-[20px] flex items-start justify-between gap-[24px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)]"
           key={currentIndex}
@@ -94,7 +139,7 @@ export default function BlogCarousel() {
               alt={`Image for ${currentSlide.header}`}
               width={551}
               height={380}
-              className="md:w-[551px] md:h-[380px]"
+              className="md:w-[551px] md:h-[380px] rounded-lg"
             />
           </div>
           <div className="md:w-[507px] pt-2 flex flex-col gap-[16px] justify-center">
@@ -113,6 +158,101 @@ export default function BlogCarousel() {
           </div>
         </motion.div>
       </div>
+}
+      <section className="container mx-auto max-w-[1160px] py-[40px] px-6 rounded-[36px] mt-10">
+        <div className="flex flex-col items-center justify-center font-plus-jakarta">
+     {currentIndex == 2 &&  
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {newsArticles.map((article, index) => (
+              <div
+                key={index}
+                className="bg-white max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
+              >
+                <div className="flex flex-col flex-grow">
+                  <div className="h-[269px]">
+                    <h6 className="text-gray-400 tracking-widest text-[14px] font-bold uppercase mb-2">
+                      News
+                    </h6>
+                    <p className="font-bold mb-4 text-[20px]">
+                      {article.title}
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <Image
+                      src={article.image}
+                      alt={`Image of ${article.author}`}
+                      width={60}
+                      height={60}
+                      className="object-cover rounded-full"
+                      quality={100}
+                    />
+                    <div className="flex flex-col justify-center pl-3">
+                       <p className="text-[#333333] text-[18px] font-extrabold">
+                      {article.author}
+                    </p>
+                   {/* <p className="text-gray-600 text-[12px]">{article.role}</p> */}
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 flex justify-center w-full bg-white text-center py-3 h-[54px] rounded-b-[20px]">
+                  <Link
+                    href={article.link}
+                    className="text-[#1A69DC] font-semibold" target="_blank"
+                  >
+                    Read More →
+                  </Link>
+                </div>
+              </div>
+            ))}
+            
+          </div>
+}
+        
+        {currentIndex == 0 && 
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+            {blogContent.map((blog, index) => (
+              <div
+                key={index}
+                className="bg-white max-w-[360px] h-[528px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
+              >
+                <div className="h-[269px]">
+                  <Image
+                    src={blog.blogImage}
+                    alt={`Image for ${blog.blogTitle}`}
+                    width={360}
+                    height={209}
+                    className="rounded-md object-cover"
+                    quality={100}
+                  />
+                  <h6 className="text-gray-400 tracking-widest text-[14px] font-bold uppercase md:mt-4 mb-2">
+                    Blog
+                  </h6>
+                  <p className="font-bold mt-4 text-[20px]">{blog.blogTitle}</p>
+                </div>
+                <div className="absolute bottom-0 left-0 flex justify-center w-full cursor-pointer bg-white text-center h-[54px] rounded-b-[20px]">
+                  <Link
+                    href={`/resource_center/${blog.blogSubtitle
+                      .toLowerCase()
+                      .replace(/ /g, "-")}`}
+                    className="text-[#1A69DC] font-semibold" rel="" target="_blank"
+                  >
+                    Read More →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+}
+        
+        
+{[1,3].includes(currentIndex) &&
+
+            <h2 className="text-black text-[56px] font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
+  
+
+}
+        </div>
+      </section>
     </div>
   );
 }

@@ -23,14 +23,16 @@ const ReadyToGo = () => {
           <Button
             text="Get Started"
             isActive={true}
-            onClick={() => alert("Please provide the redirection page")}
+            // onClick={() => alert("Please provide the redirection page")}
+            link="/contact"
             customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[18px] text-[16px] font-bold hover:bg-blue-500 flex-1"
             activeStyle="bg-white text-[#292929] font-bold"
           />
 
           <Button
-            text="Talk to Sales"
-            onClick={() => alert("Please provide the redirection page")}
+            text="See Us In Action"
+            // onClick={() => alert("Please provide the redirection page")}
+            link="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
             customClass="py-[18px] text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA]"
             activeStyle="text-[#1A69DC] font-bold"
           />

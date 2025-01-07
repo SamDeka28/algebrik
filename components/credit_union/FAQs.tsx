@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import Button from "../Buttons";
 import { PiMinusCircleBold, PiPlusCircleBold } from "react-icons/pi";
 import footerData from "../constant/footerData";
 
@@ -43,10 +42,10 @@ const FAQs = () => {
             className="text-[18px] font-normal text-[#292929] leading-[30px]"
             text="Everything you need to know about the Auto lenders. Can’t find your questions here? Please ask your questions below."
           />
-          <Button
+          {/* <Button
             text="Ask your Questions"
             customClass="px-[1px] md:mt-[20px] text-[14px] md:w-[200px] md:h-[41px] text-[#292929] font-bold leading-[150%] border-2 border-[#1C8DEA]"
-          />
+          /> */}
         </div>
 
         <div className="flex-1 space-y-4">

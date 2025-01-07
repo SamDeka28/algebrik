@@ -1,17 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 // import Link from "next/link";
 
 export default function NewsSection() {
   const newsArticles = [
     {
       title:
-        "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
+      "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
-      source: "BusinessWire",
-      image: "/place.png",
+      source: "Fintech Futures",
+      image: "/section_images/blog/ff.jpg",
+      link: "https://www.fintechfutures.com/2024/09/scienaptic-ai-co-founder-steps-down-to-launch-new-venture-algebrik-ai/"
     },
     {
       title:
@@ -19,24 +21,36 @@ export default function NewsSection() {
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
       source: "BusinessWire",
-      image: "/place.png",
+      image: "/section_images/blog/b.png",
+      link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market"
     },
     {
       title:
-        "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
+      "Algebrik AI Expands Founding Leadership Team with the Appointment of Jesse Frugé as VP of Product Management",
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
-      source: "BusinessWire",
-      image: "/place.png",
+      source: "Yahoo Finance",
+      image: "/section_images/blog/ya.png",
+      link: "https://finance.yahoo.com/news/algebrik-ai-expands-founding-leadership-120000953.html"
     },
     {
       title:
-        "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
+      "Algebrik AI Strengthens Founding Leadership with Appointment of Andrea Silvers as VP of Business Development & Partnerships",
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
       source: "BusinessWire",
-      image: "/place.png",
+      image: "/section_images/blog/b.png",
+      link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships"
     },
+    {
+      title:
+      "Algebrik AI: $4 Million (Series A) Raised To Advance Cloud-Native Loan Origination Platform",
+      description:
+        "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
+      source: "Pulse 2.0",
+      image: "/section_images/blog/p.jpg",
+      link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/"
+    }
   ];
 
   return (
@@ -51,7 +65,7 @@ export default function NewsSection() {
       </div>
 
 
-      <div className="relative z-10 mt-6 flex gap-4 overflow-x-auto custom-scrollbar">
+      <div className="relative z-10 mt-6 flex gap-4 overflow-scroll overflow-x-auto custom-scrollbar">
         {newsArticles.map((article, index) => (
           <div
             key={index}
@@ -59,11 +73,11 @@ export default function NewsSection() {
           >
 
             <div className="flex flex-1 justify-center items-start p-6">
-              <div className="w-[273px] h-[380px] bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center">
+              <div className="w-[273px] h-[380px] bg-white rounded-lg overflow-hidden flex items-center justify-center">
                 <Image
                   src={article.image}
                   alt={`News ${index}`}
-                  className="object-cover w-full h-full"
+                  className="object-contain w-full h-full"
                   width={273}
                   height={280}
                   quality={100}
@@ -73,12 +87,15 @@ export default function NewsSection() {
                 <h6 className="text-gray-500 text-[14px] font-bold tracking-[4px] uppercase mb-2">
                   News
                 </h6>
-                <p className="text-gray-900 font-bold text-[20px] mb-4">
+                <Link href={article.link} passHref target="_blank">
+                <p className="text-black text-[20px] font-bold leading-[30px] mb-4">
                   {article.title}
                 </p>
+                </Link>
                 <p className="text-gray-600 text-[16px] leading-[30px] mb-4">
                   {article.description}
                 </p>
+                
                 <p className="text-black text-[30px] font-bold">
                   {article.source}
                 </p>

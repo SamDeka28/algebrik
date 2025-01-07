@@ -11,15 +11,66 @@ const carouselData = [
     title: "If you're reading this, you probably know how important access to credit is—whether you're an individual chasing dreams or a business fueling growth.",
     description1: "But let's be honest: lending today feels stuck in the past. Applications get lost in a sea of paperwork, processes drag on for weeks, and borrowers are left frustrated.",
     description2: "Have you ever wondered why lending feels so slow and outdated? To answer that question—and to explain why we created Algebrik AI—we need to look back at how lending began.",
-    image: "/section_images/place.png",
+    image: "/section_images/story/if.png",
   },
   {
     id: 2,
-    title: "Lending is essential to economic growth.",
-    description1: "Yet the systems underpinning this vital process are outdated, often leading to inefficiencies and delays.",
-    description2: "With Algebrik AI, we're rethinking lending from the ground up to make it faster, simpler, and more accessible.",
-    image: "/section_images/place.png",
+    title: "The Origins of Lending",
+    description1: "Thousands of years ago, lending was simple. A handshake, a promise, and trust were all you needed.",
+    description2: <div>
+      <p>
+      But as societies grew, lending became more complex. Banks emerged to manage this trust at scale, and with them came mountains of paperwork and processes
+      </p>
+      <p>
+      Fast forward to the 20th century, and computers entered the scene. They promised speed and efficiency, but…
+      </p>
+    </div>,
+
+    image: "/section_images/story/ori.png",
   },
+  {
+    id: 3,
+    title: "A Revolution Interrupted",
+    description1: "Despite the introduction of technology, lending didn’t change much. Sure, we replaced ledgers with software, but the systems were designed to work like their paper ancestors: rigid, slow, and disconnected.",
+    description2: "By the 21st century, lenders were duct-taping together dozens of tools: old-school LOS, spreadsheets, CRM systems, compliance software—just to process a single loan. Borrowers? They were stuck waiting.",
+    image: "/section_images/story/revo.png",
+  },
+  {
+    id: 4,
+    title: "A New Era in Lending",
+    description1: "That’s where Algebrik AI comes in.",
+    description2: <div><p>We’re breaking away from these outdated systems and designing lending the way it was meant to be: adaptive, intuitive, and human-centric.</p>
+    <p>Inspired by the pioneers of modern computing, we’ve created the world’s first cloud-native, AI-powered Loan Origination System. It’s not just a tool—it’s a revolution in lending. With Algebrik AI, lenders can:</p>
+          <p>
+        <ul className="list-disc pl-8">
+          <li>
+          Launch new credit products in 30 minutes flat.
+          </li>
+          <li>
+          Reduce loan processing times by 70%.
+          </li>
+          <li>
+          Cut drop-offs by 80%.
+          </li>
+        </ul>,
+
+
+   </p>
+    </div>,
+    image: "/section_images/story/new.png",
+  },
+  {
+    id: 5,
+    title: "As a First Step, We’re Redefining Lending Workflows into an All-in-One Platform.",
+    description1: "Want to originate a personal loan? Launch a new credit product? Streamline your application review process?",
+    description2: <div>
+       <p>With Algebrik AI, it’s all in one place.</p>
+        <p>
+        We’ve built a platform that unites every step of the lending journey—from application to approval to disbursement—into a seamless, intuitive workflow.
+        And the best part? You can customize it to fit your unique lending needs using modular, drag-and-drop tools that feel as simple and flexible as LEGO blocks.        </p>
+    </div>,
+    image: "/section_images/story/ass.png",
+  }
 ];
 
 export default function OurStory() {
@@ -65,12 +116,12 @@ export default function OurStory() {
             <h3 className="text-[20px] text-[#606060] font-bold">
               {currentSlide.title}
             </h3>
-            <p className="text-[16px] font-normal text-[#606060] pt-[20px] leading-[30px]">
+            <div className="text-[16px] font-normal text-[#606060] pt-[20px] leading-[30px]">
               {currentSlide.description1}
-            </p>
-            <p className="text-[16px] font-normal text-[#606060] leading-[30px]">
+            </div>
+            <div className="text-[16px] font-normal text-[#606060] leading-[30px]">
               {currentSlide.description2}
-            </p>
+            </div>
           </div>
           <div className="md:w-[368px] md:h-[315px]">
             <Image

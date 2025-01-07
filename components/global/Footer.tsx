@@ -23,7 +23,7 @@ const Footer = () => {
           <h3 className="text-white font-medium mb-[29px]">Resources</h3>
           <ul className="space-y-1 text-[#787C91] text-[14px]">
           <Link href="/resource_center" passHref>  <li>Blog</li></Link>
-            <li>Documentation</li>
+            {/* <li>Documentation</li> */}
           </ul>
         </div>
         <div>
@@ -36,7 +36,7 @@ const Footer = () => {
         <div>
           <div className="mt-[50px] space-y-1 text-[#787C91] text-[14px]">
             <p>Follow on LinkedIn</p>
-            <p>Follow on X</p>
+            {/* <p>Follow on X</p> */}
           </div>
         </div>
       </div>
