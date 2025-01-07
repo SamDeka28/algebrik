@@ -17,7 +17,7 @@ const ChallengesSection = () => {
       description:
         "Younger members expect digital-first, intuitive, and seamless experiences. Complex processes drive them away.",
         hoverDescription: "Deliver seamless omnichannel interactions—mobile, web, and in-branch.",
-      image: "/section_images/challenges_one.png",
+      image: "/section_images/attract.png",
     },
     {
       title: "Scaling Fast at Lower Costs",
@@ -71,7 +71,7 @@ const ChallengesSection = () => {
                   objectFit="cover"
                   className="rounded-br-lg w-[950px] h-full"
                   style={{
-                    filter: "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
+                    filter: "blur(38px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
                     opacity: 0, 
                     transition: "opacity 0.5s ease, filter 0.5s ease",
                   }}

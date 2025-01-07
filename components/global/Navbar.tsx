@@ -95,6 +95,7 @@ export default function Navbar() {
           >
             <Link
               href="/solutions"
+              onClick={(e) => e.preventDefault()}
               className="flex items-center   hover:bg-opacity-50 rounded-[20px] hover:text-white transition"
             >
               Solutions
