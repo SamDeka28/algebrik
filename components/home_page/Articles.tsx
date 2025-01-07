@@ -35,34 +35,34 @@ export default function Articles() {
   const newsArticles = [
     {
       title:
-        "From Application to Disbursement in Minutes: The New Standard in Lending",
+        "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
       author: "Prateek Samantaray",
       role: "Marketing",
-      link: "#",
+      link: "https://www.fintechfutures.com/2024/09/scienaptic-ai-co-founder-steps-down-to-launch-new-venture-algebrik-ai/",
     },
     {
-      title: "Algebrik Secures $4M in Funding to Transform Lending",
+      title: "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
       author: "Prateek Samantaray",
       role: "Marketing",
-      link: "#",
+      link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market",
     },
     {
-      title: "Breaking Down Lending Bottlenecks: A Guide to Faster Approvals",
+      title: "Algebrik AI Expands Founding Leadership Team with the Appointment of Jesse Frugé as VP of Product Management",
       author: "Prateek Samantaray",
       role: "Marketing",
-      link: "#",
+      link: "https://finance.yahoo.com/news/algebrik-ai-expands-founding-leadership-120000953.html",
     },
     {
-      title: "Breaking Down Lending Bottlenecks: A Guide to Faster Approvals",
+      title: "Algebrik AI: $4 Million (Series A) Raised To Advance Cloud-Native Loan Origination Platform",
       author: "Prateek Samantaray",
       role: "Marketing",
-      link: "#",
+      link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
     },
     {
-      title: "Breaking Down Lending Bottlenecks: A Guide to Faster Approvals",
+      title: "Algebrik AI Strengthens Founding Leadership with Appointment of Andrea Silvers as VP of Business Development & Partnerships",
       author: "Prateek Samantaray",
       role: "Marketing",
-      link: "#",
+      link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
     },
   ];
 
@@ -120,12 +120,12 @@ export default function Articles() {
                   quality={100}
                 />
                 <div className="flex flex-col justify-center p-2">
-                  <p className="text-[#333333] font-plus-jakarta text-[14px] font-extrabold leading-[20px]">
+                  {/* <p className="text-[#333333] font-plus-jakarta text-[14px] font-extrabold leading-[20px]">
                     {article.author}
                   </p>
                   <p className="text-gray-600 text-[12px] font-plus-jakarta font-normal leading-[20px]">
                     {article.role}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
