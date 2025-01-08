@@ -14,7 +14,6 @@ const integrations = [
   { image: "/partner_icons/equifax.png" },
   { image: "/partner_icons/experian.png" },
   // { image: "/partner_icons/cuanswers.png" },
-  { image: "/partner_icons/cudl.png" },
   { image: "/partner_icons/dealertrack.png" },
   { image: "/partner_icons/docusign.png" },
   { image: "/partner_icons/fiserv.png" },
