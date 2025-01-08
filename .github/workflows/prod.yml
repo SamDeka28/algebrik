@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: '18.16'
+          node-version: '20.18'
 
       - name: Build
         env:
@@ -29,8 +29,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::326271077406:role/github_action_frontendrole 
-          aws-region: ap-south-1
+          role-to-assume: arn:aws:iam::779846782923:role/backend_githubaction_role
+          aws-region: us-east-1
 
       - name: Deploy latest build
         run: |
