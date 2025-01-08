@@ -173,7 +173,7 @@ export default function BlogCarousel() {
         </motion.div>
       </div>
 }
-      <section className="container mx-auto max-w-[1160px] py-[10px] rounded-[36px] flex justify-between">
+      <section className="container mx-auto max-w-[1160px] py-[10px] rounded-[36px] ">
 
 
         {/* News */}
@@ -266,7 +266,7 @@ export default function BlogCarousel() {
         
 {[1,3].includes(currentIndex) &&
 
-            <h2 className="text-black text-[56px] font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
+            <h2 className="text-black text-[56px] text-center font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
   
 
 }
