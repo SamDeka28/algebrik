@@ -150,9 +150,11 @@ export default function Articles() {
         ))}
       </div>
       <div className="flex justify-center my-[40px]">
+        <Link href="/resource_center" target="_blank">
         <button className="bg-white rounded-[32px] text-[#1A69DC] px-16 font-plus-jakarta border-[#195BD7] py-3 font-bold">
           View More
         </button>
+        </Link>
       </div>
     </div>
   );
