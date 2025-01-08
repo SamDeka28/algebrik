@@ -43,6 +43,29 @@ const footerData = {
         "answer": "Yes, Algebrik’s cloud-native infrastructure supports elastic scaling, allowing for increased transaction volumes, new feature rollouts, and regional expansion without additional setup."
       }
     ],
+    "SolutionsForSmbLenders": [
+      {
+        "question": "How does Algebrik help SMB lenders scale operations?",
+        "answer": "Algebrik’s cloud-native infrastructure supports growing loan volumes without additional IT overhead. Automated workflows reduce manual bottlenecks, ensuring seamless scalability as your business expands."
+      },
+      {
+        "question": "Can Algebrik improve borrower satisfaction for SMBs?",
+        "answer": "Yes, Algebrik offers a fully digital borrower journey, including real-time loan status updates, self-service portals, and instant feedback mechanisms to enhance engagement and satisfaction."
+      },
+      {
+        "question": "Does Algebrik simplify loan product setup?",
+        "answer": "Absolutely, our platform includes a drag-and-drop loan product builder, enabling SMB lenders to design and launch customized products instantly, tailored to specific borrower needs."
+      },
+      {
+        "question": "How does Algebrik streamline compliance for SMB lenders?",
+        "answer": "With integrated KYC, AML, and OFAC checks, Algebrik automates regulatory compliance. Real-time monitoring and validation ensure adherence to legal standards with minimal manual intervention."
+      },
+      {
+        "question": "Can Algebrik integrate with existing SMB tools and systems?",
+        "answer": "Yes, Algebrik integrates with key platforms like credit bureaus, income verification systems, and fraud detection tools via API, ensuring data flows seamlessly across your ecosystem"
+      }
+     ],
+      
     "HomePageFAQs": [
       {
         "question": "What is Algebrik AI?",

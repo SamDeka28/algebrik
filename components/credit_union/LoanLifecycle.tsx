@@ -164,7 +164,7 @@ export default function LoanLifecycle() {
             width={1096}
             height={526}
             alt={cardData[activeIndex].title}
-            className="rounded-[42px]"
+            className="rounded-[42px] md:h-[526px]"
           />
         </div>
       </div>

@@ -81,10 +81,18 @@ export default function CreditUnion() {
         </div>
 
         {data.cardData.map((card, index) => (
-          <div
+          <motion.div
             key={index}
             className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[365px] h-[426px] flex flex-col items-center justify-start"
-          >
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+            }}
+            transition={{
+              scale: { duration: 0.3 },
+              boxShadow: { duration: 0.3 },
+            }}
+         >
             <div className="mb-4">
               <Image
                 src={card.image}
@@ -99,7 +107,7 @@ export default function CreditUnion() {
             <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
               {card.description}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
