@@ -1,0 +1,66 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+
+const features = [
+  { title: "Borrower Communication", icon: "/icons/home/bc.svg" },
+  { title: "Fund Disbursement", icon: "/icons/home/fu.svg" },
+  { title: "Borrower Verification", icon: "/icons/home/bv.svg" },
+  { title: "Origination", icon: "/icons/home/or.svg" },
+  { title: "Application Management", icon: "/icons/home/am.svg" },
+  { title: "AI-Lender Enablement", icon: "/icons/home/ai.svg" },
+  { title: "Agreement Generation", icon: "/icons/home/ag.svg" },
+  { title: "Document Processing", icon: "/icons/home/do.svg" },
+  { title: "KYC Automation", icon: "/icons/home/ka.svg" },
+  { title: "Credit Scoring", icon: "/icons/home/cs.svg"}
+];
+
+export default function FeaturesSection() {
+  return (
+    <section className="py-[38px] font-plus-jakarta bg-white overflow-hidden">
+      <div className="relative w-full">
+        <motion.div
+          className="flex gap-6"
+          animate={{
+            x: ["0%", "-100%"],
+          }}
+          transition={{
+            ease: "linear",
+            duration: 20,
+            repeat: Infinity,
+          }}
+        >
+          {[
+            ...features,
+            ...features,
+            ...features,
+            ...features,
+            ...features,
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-between min-w-[112px] h-[100px] p-4 gap-[9px]"
+            >
+              <div className="w-[60px] h-[60px] flex items-center justify-center bg-[#F2F6FF] rounded-[12px] p-4">
+                <Image
+                  src={feature.icon}
+                  alt={feature.title}
+                  width={55}
+                  height={55}
+                  style={{ objectFit: "contain" }}
+                  quality={100}
+                />
+              </div>
+              <h3 
+              className="text-[#868687] text-[14px] font-medium text-center leading-tight hover:font-extrabold hover:text-[16px] hover:text-[#2A5FAC] hover:cursor-pointer">
+                {feature.title}
+              </h3>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
