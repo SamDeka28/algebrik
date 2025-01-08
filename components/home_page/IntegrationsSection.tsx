@@ -8,7 +8,7 @@ import Marquee from "react-fast-marquee";
 const integrations = [
   { image: "/partner_icons/allied.png" },
   { image: "/partner_icons/autoexam.png" },
-  { image: "/partner_icons/carleton.png" },
+  // { image: "/partner_icons/carleton.png" },
   { image: "/partner_icons/conductiv.png" },
   { image: "/partner_icons/corelation.png" },
   { image: "/partner_icons/equifax.png" },
