@@ -2,7 +2,7 @@ name: Algebrik-website-cicd
 on:
   push:
     branches:
-      - prodbkp
+      - prod
 
 
 
