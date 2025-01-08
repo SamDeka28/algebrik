@@ -1,0 +1,31 @@
+[
+  {
+   "img": "/assets/img/algebrik/loan-1.svg",
+   "info": "Credit Unions",
+   "title":"Solve Member Drop-Off in Onboarding using Seamless Digital Journeys",
+   "text": "Boost conversion rates by streamlining digital onboarding and automating loan approvals.",
+   "link": "Read more"
+  },
+  {
+    "img": "/assets/img/algebrik/loan-2.svg",
+    "info": "Mid-Tier Banks",
+   "title":"Solve Slow Product Launches Using Configurable Workflows",
+    "text": "Launch new loan products quickly and scale operations with flexible, no-code workflows.",
+    "link": "Read more"
+   },
+   {
+    "img": "/assets/img/algebrik/loan-3.svg",
+    "info": "Fintech Lenders",
+   "title":"Solve High Default Rates Using AI-Driven Underwriting",
+    "text": "Reduce borrower risk and defaults with AI-powered, data-driven loan decisioning.",
+    "link": "Read more"
+   },
+   {
+    "img": "/assets/img/algebrik/loan-4.svg",
+    "info": "Auto Lenders",
+   "title":"Solve Long Approval Times Using Instant Credit Checks",
+    "text": "Speed up auto loan approvals and provide personalized financing offers instantly.",
+    "link": "Read more"
+   }
+       
+]

@@ -1,0 +1,45 @@
+{
+  "services": [
+    { "link": "  ", "title": "Credit Unions" },
+    { "link": "  ", "title": "Mid-Tier Banks" },
+    { "link": "  ", "title": "Fintech Lenders" },
+    { "link": "  ", "title": "Auto Lenders" }
+  ],
+  "resources": [
+    { "link": "  ", "title": "Insights" },
+    { "link": "  ", "title": "In the News" },
+    { "link": "  ", "title": "Blog" }
+  ],
+  "company":[
+    { "link": "  ", "title": "About Us" },
+    { "link": "  ", "title": "Our Team" },
+    { "link": "  ", "title": "Careers" },
+    { "link": "  ", "title": "Contact Us" }
+  ],
+  "address":[
+    {"ads": "300 E 59th St. Suite 2801, New York, NY 10022", "icon": "bi bi-geo-alt-fill"},
+  {"ads": "+1 917 974 8905", "icon": "bi bi-telephone-fill"},
+  {"ads": "pankaj.jain@algebrik.com", "icon": "bi bi-envelope"}
+  ],
+  "usefulLink":[
+    {
+      "img": "/assets/img/algebrik/pay5.svg.svg",
+      "title": "Send & Receive Money"
+    },
+    {
+      "img": "/assets/img/algebrik/pay2.svg.svg",
+      "title": "Shop & Buy From Anywhere"
+    },
+    {
+      "img": "/assets/img/algebrik/pay3.svg.svg",
+      "title": "Deposite Your Money"
+    },
+    {
+      "img": "/assets/img/algebrik/pay4.svg.svg",
+      "title": "Control With Mobile App"
+    }
+  ]
+  
+  
+
+}
