@@ -2,7 +2,7 @@ name: Algebrik-website-cicd
 on:
   push:
     branches:
-      - prod-bkp
+      - prodbkp
 
 
 
@@ -24,7 +24,7 @@ jobs:
           NODE_OPTIONS: '--max-old-space-size=8192'
         run: |
           npm install
-          npm run export
+          npm run build
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
