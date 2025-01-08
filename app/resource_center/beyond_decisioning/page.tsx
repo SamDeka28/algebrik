@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const lendingData = {
   "title": "Beyond Decisioning: AI's Comprehensive Role in Lending",
-  "author": "Jesse Fruge",
+  "author": "Prateek Samantaray",
   "sections": [
     {
       "title": "The Expanding Horizons of AI in Lending",
