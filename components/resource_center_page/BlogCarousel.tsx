@@ -12,6 +12,8 @@ type CarouselItem = {
   description: string;
   source: string;
   image: string;
+  url: string;
+  target: string;
 };
 
 const carouselData: CarouselItem[] = [
@@ -24,6 +26,8 @@ const carouselData: CarouselItem[] = [
       "\"The success of any financial system lies in its ability to adapt and serve its people,\" once said Mervyn King, former....",
     source: "Prateek Samantaray   ",
     image: "/section_images/blog/beyond.png",
+    url: "/resource_center/beyond_decisioning",
+    target: "_self",
   },
   {
     header: "Case Studies",
@@ -33,15 +37,19 @@ const carouselData: CarouselItem[] = [
       "Learn how companies are leveraging Algebrik AI's platform to streamline loan origination processes, increase efficiency, and drive results in the financial sector.",
     source: "BusinessWire",
     image: "/section_images/place.png",
-  },
+    url: "",
+    target: "_self",
+  },  
   {
     header: "News Center",
     cardTitle: "NEWS CENTER",
-    title: "Algebrik AI in the News: Innovations in Loan Origination",
+    title: "Algebrik AI: $4 Million (Series A) Raised To Advance Cloud-Native Loan Origination Platform",
     description:
       "Explore the latest updates and news stories about Algebrik AI and its impact on the global financial technology industry.",
     source: "BusinessWire",
     image: "/section_images/blog/bw.png",
+    url: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
+    target: "_blank",
   },
   {
     header: "One Pagers",
@@ -51,6 +59,8 @@ const carouselData: CarouselItem[] = [
       "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
     source: "BusinessWire",
     image: "/section_images/place.png",
+    url: "",
+    target: "_self",
   },
 ];
 
@@ -143,12 +153,16 @@ export default function BlogCarousel() {
             />
           </div>
           <div className="md:w-[507px] pt-2 flex flex-col gap-[16px] justify-center">
-            <h3 className="text-[14px] text-black/35 font-plus-jakarta tracking-widest font-bold">
+          <h3 className=" text-[14px] text-black/35 font-plus-jakarta tracking-widest font-bold">
               {currentSlide.cardTitle}
             </h3>
-            <h3 className="text-[20px] text-[#606060] font-bold font-plus-jakarta leading-[28.13px]">
+          <Link
+                    href={currentSlide.url} target={currentSlide.target}> 
+            <h3 className="cursor-pointer text-[20px] text-[#606060] font-bold font-plus-jakarta leading-[28.13px]">
               {currentSlide.title}
             </h3>
+            </Link>
+        
             <p className="text-[16px] font-normal font-plus-jakarta text-[#606060] leading-[30px]">
               {currentSlide.description}
             </p>
@@ -159,14 +173,17 @@ export default function BlogCarousel() {
         </motion.div>
       </div>
 }
-      <section className="container mx-auto max-w-[1160px] py-[40px] px-6 rounded-[36px] mt-10">
+      <section className="container mx-auto max-w-[1160px] py-[10px] rounded-[36px] flex justify-between">
+
+
+        {/* News */}
         <div className="flex flex-col items-center justify-center font-plus-jakarta">
      {currentIndex == 2 &&  
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 content-between gap-9">
             {newsArticles.map((article, index) => (
               <div
                 key={index}
-                className="bg-white max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
+                className="bg-white border  max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
               >
                 <div className="flex flex-col flex-grow">
                   <div className="h-[269px]">
@@ -208,8 +225,10 @@ export default function BlogCarousel() {
           </div>
 }
         
+
+        {/* Blog */}
         {currentIndex == 0 && 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 content-between gap-9 ">
             {blogContent.map((blog, index) => (
               <div
                 key={index}
@@ -234,7 +253,7 @@ export default function BlogCarousel() {
                     href={`/resource_center/${blog.blogSubtitle
                       .toLowerCase()
                       .replace(/ /g, "-")}`}
-                    className="text-[#1A69DC] font-semibold" rel="" target="_blank"
+                    className="text-[#1A69DC] font-semibold" target="_blank"
                   >
                     Read More →
                   </Link>
