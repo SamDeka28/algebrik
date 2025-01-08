@@ -22,7 +22,7 @@ export default function HeroSection() {
         ),
         subtitle:
           "Empower your credit union to reduce approval times, boost member satisfaction, and lower operational costs—all with Algebrik AI’s cloud-native, AI-powered solutions tailored to your needs.",
-        sectionImage: "/section_images/plat_hero.png",
+        sectionImage: "/section_images/credit_hero.png",
         subtitleClass: "text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[193px] mb-[10px]",
       }
     : isAutoLenders
