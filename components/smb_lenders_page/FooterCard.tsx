@@ -47,7 +47,7 @@ type CardProps = {
     );
   };
   
-  const FooterCards = () => {
+  const FooterCard = () => {
     const [isSolutionsPage, setIsSolutionsPage] = useState(false);
 
     useEffect(() => {
@@ -63,7 +63,7 @@ type CardProps = {
          <div className={`absolute top-1/2 left-0 w-full h-1/2 ${isSolutionsPage ? '' : 'bg-[#121212]'} -z-10`}></div>
         <div className="flex flex-col md:flex-row gap-6 mx-auto max-w-7xl px-4 py-28 relative z-10 justify-center">
           <Card
-            title="Let’s Build the Future of Lending Together"
+            title="Let’s Scale your Lending Processes Together"
             description="Talk to our experts and explore how Algebrik can solve your unique lending challenges."
             buttonText="Schedule a Demo Call"
             buttonLink="/contact"
@@ -82,5 +82,5 @@ type CardProps = {
     );
   };
   
-  export default FooterCards;
+  export default FooterCard;
   

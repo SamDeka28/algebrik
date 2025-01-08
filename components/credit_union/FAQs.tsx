@@ -23,6 +23,7 @@ const FAQs = () => {
       setFaqData(footerData.SolutionsForCreditUnions);
     } else if (path === "/solutions/smb_lenders") {
       // setFaqData(footerData.SolutionsForSmbLenders); 
+      setFaqData(footerData.SolutionsForCreditUnions);
     } else {
    
       setFaqData([]);

@@ -1,7 +1,9 @@
 
 
 
+import FAQs from "@/components/credit_union/FAQs";
 import HeroSection from "@/components/credit_union/Hero";
+import FooterCard from "@/components/smb_lenders_page/FooterCard";
 import Multiple from "@/components/smb_lenders_page/Multiple";
 import SmbRevolutionize from "@/components/smb_lenders_page/SmbRevolutionize";
 import SmbRoadBlocks from "@/components/smb_lenders_page/SmbRoadblocks";
@@ -21,6 +23,8 @@ export default function SMBLenders() {
        <SmbRevolutionize />
        <Multiple />
        <Unlock />
+       <FooterCard />
+       <FAQs/>
       </main>
     </>
   );
