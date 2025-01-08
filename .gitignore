@@ -128,3 +128,32 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+node_modules/
+.cache/
+.next
+out
+src/gatsby-types.d.ts
+package-lock.json
+
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# System Files
+.DS_Store
+Thumbs.db
+
