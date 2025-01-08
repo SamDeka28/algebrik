@@ -12,11 +12,11 @@ const Header = () => {
             <h3 className="heading_sec mt-lg-3 my-2">Take prospects from<br></br>
                 <span className="fw-bold fst-italic">Looked to Booked </span> in minutes,<br></br>
                 not days</h3>
-            <a className='btn blue5-3Dbutn hover-blue2 btn-sm  text-white mt-lg-3 mt-2 ' href="#contact" >Read for demo</a>
+            <a className='btn blue5-3Dbutn hover-blue2 btn-sm  text-white mt-lg-3 mt-2 ' href="#contact" >Request for Demo</a>
           </div>
           <div className="col-lg-6 col-md-12 col-12 col-sm-12 order-0 order-lg-2 ">
             <div className="img main-img1">
-            <img src='/assets/img/algebrik/worlds-first-cloud.png' className="" /></div>
+            <img src='/assets/img/algebrik/Personalized_digital.png' className="" /></div>
           </div>
         </div>
       </div>

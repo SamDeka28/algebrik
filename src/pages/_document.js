@@ -13,8 +13,8 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="keywords" content="React Nextjs Template Iteck Multi-Purpose themeforest" />
-          <meta name="description" content="Iteck - Multi-Purpose React.js Next.js Template" />
+          <meta name="keywords" content="" />
+          <meta name="description" content="" />
           <meta name="author" content="" />
           <link rel="shortcut icon" href="/assets/img/fav.png" title="Favicon" sizes="16x16" />
 
