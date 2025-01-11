@@ -29,7 +29,8 @@ const ModernLender = () => {
         <div className="flex flex-col gap-[30px]">
           <div className="relative flex gap-[20px]">
             <div className="bg-white px-[24px] py-[32px] md:w-[482px] md:h-[428px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
-              <CustomHeader text="AI-Driven automation" className="md:text-[24px]" />
+            <CustomHeader text="AI-Driven automation" className="sm:text-[18px] lg:text-[24px]" />
+
               <CustomSubtitle
                 text="Automate repetitive tasks, reduce errors, and accelerate loan approvals with advanced AI capabilities"
                 className="md:text-[16px] md:leading-[30px]"
@@ -41,13 +42,13 @@ const ModernLender = () => {
                 text="Leverage real-time insights and confidence scoring to make faster, more informed lending decisions"
                 className="md:text-[16px] md:leading-[30px]"
               />
-              <CustomHeader text="Smarter Decisioning" className="md:text-[24px]" />
+              <CustomHeader text="Smarter Decisioning" className="md:text-md lg:text-[24px]" />
               <Image src="/section_images/smarter.png" width={482} height={428} alt="Smarter Decisioning" />
             </div>
           </div>
           <div className="flex gap-[22.42px]">
             <div className="bg-white px-[24px] py-[32px] md:w-[444.58px] md:h-[327.46px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
-              <CustomHeader text="Omnichannel Experience" className="md:text-[24px]" />
+              <CustomHeader text="Omnichannel Experience" className="sm:text-[18px] lg:text-[24px]" />
               <CustomSubtitle
                 text="Offer borrowers a seamless, unified experience across mobile, web, and in-branch"
                 className="md:text-[16px] md:leading-[30px]"
@@ -55,7 +56,7 @@ const ModernLender = () => {
               <Image src="/section_images/omnichannel_experience.png" width={482} height={428} alt="Omnichannel Experience" />
             </div>
             <div className="relative top-8 bg-white px-[24px] py-[32px] md:w-[445px] md:h-[351px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
-              <CustomHeader text="Scalable & Secure" className="md:text-[24px]" />
+              <CustomHeader text="Scalable & Secure" className="sm:text-[18px] lg:text-[24px]" />
               <CustomSubtitle
                 text="Built on a robust cloud-native architecture to grow with your business and ensure data integrity"
                 className="md:text-[16px] md:leading-[30px]"

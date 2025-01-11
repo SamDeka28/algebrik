@@ -396,6 +396,7 @@ const data = [
     cardSubtitle:
       "Offer an intuitive application process with AI assistance, instant document uploads, and seamless digital experiences to increase completion rates.",
     image: "/section_images/platform_card_section/onboarding.png",
+    mobImage: "/section_images/platform_card_section/mob_verification.png",
   },
   {
     title: "Verification",
@@ -446,7 +447,7 @@ export default function LoanLifecycle() {
       </div>
 
       <div className="flex justify-center items-center flex-wrap gap-[76px] w-full relative">
-        <div className="w-[168px] max-h-[500px] flex flex-col gap-[26px] rounded-[20px] overflow-y-auto">
+      <div className="w-full md:w-[168px] max-h-[500px] flex md:flex-col gap-[26px] rounded-[20px] overflow-y-auto md:overflow-y-visible">
           {data.map((item, index) => (
             <button
               key={item.title}
@@ -454,9 +455,9 @@ export default function LoanLifecycle() {
                 setSelectedCategory(item.title);
                 setCurrentCategoryIndex(index);
               }}
-              className={`flex items-center gap-2 font-plus-jakarta py-[10px] pl-[16px] w-full text-left font-bold text-[15.38px] mb-2 ${
+              className={`flex items-center gap-2 font-plus-jakarta py-[10px] pl-[16px] w-full text-left font-bold text-[14px] md:text-[15.38px] mb-2 ${
                 currentCategoryIndex === index
-                  ? "text-[#056CC1] border-2 rounded-[26px] bg-gradient-to-b from-[#D8E4FF80] to-[#D8E4FF] border-white"
+                  ? "text-[#056CC1] w-full border-2 rounded-[26px] bg-gradient-to-b from-[#D8E4FF80] to-[#D8E4FF] border-white"
                   : "text-[#8C8C8C] font-normal"
               }`}
             >
@@ -527,26 +528,35 @@ export default function LoanLifecycle() {
           </div>
           {selectedCategory && (
             <div className="flex flex-col md:flex-row md:w-[932px] md:h-[531.96px]">
-              <div className="pl-[44px] pt-[52.59px] flex flex-col justify-start font-plus-jakarta items-start gap-[12px] w-96">
+              <div className="pl-5 md:pl-[44px] pt-[52.59px] flex flex-col justify-start font-plus-jakarta items-start gap-[12px] w-96">
                 <h3 className="text-[#29292999] tracking-wider font-bold text-[12px] uppercase">
                   {data[currentCategoryIndex].cardHeader}
                 </h3>
-                <h2 className="text-[#292929] font-semibold text-[32px] leading-[42px]">
+                <h2 className="text-[#292929] font-semibold text-[25px] md:text-[32px] leading-[42px]">
                   {data[currentCategoryIndex].cardTitle}
                 </h2>
                 <hr className="md:w-[71.69px] md:h-[3.58px] rounded-sm bg-[#C5DDFF]" />
-                <p className="text-[#292929] font-normal text-[16px] leading-[21.51px]">
+                <p className="text-[#292929] font-normal text-[14px] md:text-[16px] leading-[21.51px]">
                   {data[currentCategoryIndex].cardSubtitle}
                 </p>
               </div>
 
-              <div className="flex-1 justify-end items-end relative bottom-0 w-full md:w-[800px] md:h-[879px]">
+              <div className="flex-1 justify-end items-end relative bottom-0 md:pl-0 w-9/12 h-[143px] md:w-[800px] md:h-[879px]">
                 <Image
                   src={data[currentCategoryIndex].image}
                   alt={selectedCategory}
                   width={728}
                   height={900}
-                  className="rounded-[10px] md:h-[528px] object-fill"
+                  className="hidden md:block rounded-[10px] md:h-[528px] object-fill"
+                  priority
+                  quality={100}
+                />
+                <Image
+                  src={data[currentCategoryIndex].image}
+                  alt={selectedCategory}
+                  width={350}
+                  height={243}
+                  className="md:hidden rounded-[10px] object-fill"
                   priority
                   quality={100}
                 />

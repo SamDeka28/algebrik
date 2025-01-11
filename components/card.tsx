@@ -14,6 +14,9 @@ import Card from "./card/Card";
             buttonLink="/solutions/credit_union"
             imageHeight={322}
             imageWidth={322}
+            customStyles={{
+              container: "md:w-[558.16px] md:h-[361.58px] w-[369.86px] h-[326px]",
+            }}
           />
           <Card
             imageSrc="/section_images/smb_lending.png"

@@ -169,6 +169,7 @@ import Image from "next/image";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import borrowerData from "../constant/constant";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 export default function BorrowerJourney() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -188,16 +189,43 @@ export default function BorrowerJourney() {
     setImageKey(Date.now());
   };
 
+  const handlePrevious = () => {
+    setCurrentCategoryIndex((prev) => (prev === 0 ? borrowerData.length - 1 : prev - 1));
+    setSelectedCategory(borrowerData[currentCategoryIndex === 0 ? borrowerData.length - 1 : currentCategoryIndex - 1].category);
+    setSelectedSubcategory(
+      borrowerData[currentCategoryIndex === 0 ? borrowerData.length - 1 : currentCategoryIndex - 1].subcategories[0].name
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentCategoryIndex((prev) => (prev === borrowerData.length - 1 ? 0 : prev + 1));
+    setSelectedCategory(borrowerData[currentCategoryIndex === borrowerData.length - 1 ? 0 : currentCategoryIndex + 1].category);
+    setSelectedSubcategory(
+      borrowerData[currentCategoryIndex === borrowerData.length - 1 ? 0 : currentCategoryIndex + 1].subcategories[0].name
+    );
+  };
+
   return (
     <div className="container mx-auto p-4 md:p-8 flex flex-col gap-12 overscroll-contain">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-8 md:px-36">
-        <CustomHeader text="Building Better Borrower Journeys" />
+        <CustomHeader className="px-5" text="Building Better Borrower Journeys" />
         <CustomSubtitle text="From borrower onboarding to loan closure, Algebrik combines AI-driven automation, intelligent insights, and seamless workflows to transform every stage of the loan lifecycle." />
       </div>
-      <div className="flex gap-[45px] justify-center items-start flex-wrap w-full">
-        <div className="w-[268px] h-[500px] items-start justify-start bg-white shadow-md rounded-[20px] overflow-y-auto">
+      <div className="flex flex-col md:flex-row gap-[45px] justify-center items-start flex-wrap w-full">
+        <div className="w-full h-[550px] md:w-[268px] md:h-[500px] items-start justify-start bg-white shadow-md rounded-[20px] overflow-y-auto">
+          {/* Mobile carousel navigation */}
+          <div className="flex md:hidden font-plus-jakarta justify-between items-center px-4 py-2 rounded-t-lg">
+            <button onClick={handlePrevious} aria-label="Previous Category" className="rounded-full w-[32px] h-[32px] bg-white flex items-center justify-center">
+              <MdNavigateBefore className="text-2xl text-[#2A5FAC]" />
+            </button>
+            <span className="text-[16px] font-bold font-plus-jakarta text-sm text-black">{selectedCategory}</span>
+            <button onClick={handleNext} aria-label="Next Category" className="rounded-full w-[32px] h-[32px] bg-white flex items-center justify-center">
+              <MdNavigateNext className="text-2xl text-[#2A5FAC]" />
+            </button>
+          </div>
+
           {borrowerData.map((item, index) => (
-            <div key={item.category}>
+            <div key={item.category} className={`${index === currentCategoryIndex ? "block" : "hidden"} md:block`}>
               <button
                 onClick={() => {
                   setSelectedCategory(item.category);
@@ -206,7 +234,9 @@ export default function BorrowerJourney() {
                   setSelectedSubcategory(item.subcategories[0].name);
                 }}
                 aria-pressed={currentCategoryIndex === index}
-                className={`py-[16px] pl-[16px] w-full font-plus-jakarta text-left text-black font-plus-jakarta font-bold text-[15.38px] mb-2 uppercase ${currentCategoryIndex === index ? "bg-white-100" : "border-b border-b-[#F1F1F1]"}`}
+                className={`hidden md:block py-[16px] pl-[16px] w-full font-plus-jakarta text-left text-black font-bold text-[15.38px] mb-2 uppercase ${
+                  currentCategoryIndex === index ? "bg-white-100" : "border-b border-b-[#F1F1F1]"
+                }`}
               >
                 {item.category}
               </button>
@@ -221,17 +251,22 @@ export default function BorrowerJourney() {
                         handleImageChange();
                       }}
                       aria-pressed={selectedSubcategory === sub.name}
-                      className={`flex items-center font-plus-jakarta gap-[8px] w-full py-[11px] px-[9px] ${selectedSubcategory === sub.name ? "bg-white border border-[#D8E7F5] shadow-md rounded-[10px] text-blue-600" : "text-gray-700"}`}
+                      className={`flex items-center font-plus-jakarta gap-[8px] w-full py-[11px] px-[9px] ${
+                        selectedSubcategory === sub.name
+                          ? "bg-white border border-[#D8E7F5] shadow-md rounded-[10px] text-blue-600"
+                          : "text-gray-700"
+                      }`}
                     >
-<div className="flex-shrink-0">
-  <Image
-    src={selectedSubcategory === sub.name ? sub.activeIcons : sub.icons}
-    alt={sub.name}
-    width={24}
-    height={24}
-    className="!md:w-[24px] !md:h-[24px]"
-  />
-</div>                      <span className="flex-1 text-left">{sub.name}</span>
+                      <div className="flex-shrink-0">
+                        <Image
+                          src={selectedSubcategory === sub.name ? sub.activeIcons : sub.icons}
+                          alt={sub.name}
+                          width={24}
+                          height={24}
+                          className="!w-[13px] h-[13px] md:w-[24px] !md:h-[24px]"
+                        />
+                      </div>
+                      <span className="flex-1 text-left">{sub.name}</span>
                       {selectedSubcategory === sub.name && <FaLongArrowAltRight className="text-blue-600" />}
                     </button>
                   ))}
@@ -240,82 +275,84 @@ export default function BorrowerJourney() {
             </div>
           ))}
         </div>
-        <div >
-<motion.div
-          className="container relative md:w-full flex gap-[24.42px] justify-center mt-[2px]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="relative opacity-[30%] z-[-1]">
-            <motion.div
-              className="absolute top-0 -left-96 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[468.64px] md:h-[542.11px] blur-[100px]"
-              initial={{ x: "-50%" }}
-              animate={{
-                x: ["-30%", "30%", "-30%", "0%"],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <motion.div
-              className="absolute top-0 md:left-[20px] -left-96 bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10"
-              initial={{ x: "100%" }}
-              animate={{
-                x: ["10%", "-20%", "10%", "0%"],
-              }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <motion.div
-              className="absolute top-0 -left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[451.48px] md:h-[542.11px] blur-[100px] z-[-1]"
-              initial={{ x: "-50%" }}
-              animate={{
-                x: ["-30%", "40%", "-40%", "0%"],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </div>
-        </motion.div>
-
-        <div className="flex justify-center items-center p-6 w-full md:w-[865px] h-[522.43px] rounded-[20px]">
-          
-          {selectedSubcategory && (
-            <motion.div
-              key={imageKey}
-              initial={{ x: '20%', opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: '-20%', opacity: 0 }} 
-              transition={{ type: 'spring', stiffness: 100, damping: 25 }}
-            >
-              <Image
-                src={borrowerData.flatMap((item) => item.subcategories).find((sub) => sub.name === selectedSubcategory)?.image || ""}
-                alt={selectedSubcategory}
-                className="w-full md:w-[865px] h-[300px] md:h-[522.43px] rounded"
-                width={865}
-                height={522.43}
-                objectFit="cover"
-                priority
-                quality={100}
+        <div>
+          <motion.div
+            className="container relative w-[500px] md:w-full flex gap-[24.42px] justify-center mt-[2px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <div className="relative opacity-[30%] z-[-1]">
+              <motion.div
+                className="absolute top-0 -left-6 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[468.64px] md:h-[542.11px] blur-[100px]"
+                initial={{ x: "-50%" }}
+                animate={{
+                  x: ["-30%", "30%", "-30%", "0%"],
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
-            </motion.div>
-          )}
+
+              <motion.div
+                className="absolute top-0 md:left-[20px] -left-6 bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10"
+                initial={{ x: "100%" }}
+                animate={{
+                  x: ["10%", "-20%", "10%", "0%"],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              <motion.div
+                className="absolute top-0 left-0 md:-left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[451.48px] md:h-[542.11px] blur-[100px] z-[-1]"
+                initial={{ x: "-50%" }}
+                animate={{
+                  x: ["-30%", "40%", "-40%", "0%"],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </div>
+          </motion.div>
+
+          <div className="absolute -translate-y-[280px] -translate-x-5 md:static md:translate-x-0 md:translate-y-0 flex justify-center items-center p-6 w-full h-[231px] md:w-[865px] md:h-[522.43px] rounded-[20px]">
+            {selectedSubcategory && (
+              <motion.div
+                key={imageKey}
+                initial={{ x: "20%", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: "-20%", opacity: 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 25 }}
+              >
+                <Image
+                  src={
+                    borrowerData
+                      .flatMap((item) => item.subcategories)
+                      .find((sub) => sub.name === selectedSubcategory)?.image || ""
+                  }
+                  alt={selectedSubcategory}
+                  className="w-[363px] h-[220] md:w-[865px] md:h-[522.43px] rounded-[16px] md:rounded"
+                  width={865}
+                  height={522.43}
+                  objectFit="cover"
+                  priority
+                  quality={100}
+                />
+              </motion.div>
+            )}
+          </div>
         </div>
       </div>
     </div>
-    </div>
   );
 }
-
 
