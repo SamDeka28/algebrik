@@ -15,7 +15,7 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <BorrowerJourney />
-        {/* <LendingJourney /> */}
+        <LendingJourney />
         <Potential />
         <CardsContainer />
         <IntegrationsSection />
