@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function BlogFour() {
   return (
     <>
-    <div className="container mx-auto py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
+    <div className="container mx-auto px-5 md:px-0 py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
       <div className="flex flex-col items-start text-left w-full gap-[16px]">
         <CustomHeader
           text="Out of the Lending Maze: Why Modern Lending Journeys need a GPS upgrade"
@@ -25,21 +25,22 @@ export default function BlogFour() {
         <div className="flex">
           <div className="flex justify-between items-center w-full border-t border-[#D3D3D3] border-b border-[#D3D3D3] py-5">
             <div className="flex gap-[16px] items-center">
-              <div className="rounded-full">
-                <Image
-                  src="/section_images/blog/jesse.png"
-                  className="rounded-full"
-                  width={48}
-                  height={48}
-                  alt=""
-                  priority
-                  quality={100}
-                />
-              </div>
-              <div className="flex flex-col">
-                <div>
-                  <h3>Prateek Samantaray</h3>
-                </div>
+              <div className=" object-cover">
+                              <Image
+                                src="/section_images/blog/pra.jpg"
+                                className="rounded-[184.59px] object-cover h-[48px]"
+                                objectFit="cover"
+                                width={48}
+                                height={48}
+                                alt=""
+                                priority
+                                quality={100}
+                              />
+                            </div>
+                            <div className="flex flex-col">
+                              <div>
+                                <h3>Prateek Samantaray          </h3>
+                              </div>
                 <div className="flex gap-4">
                   <h4>
                     Published in <span>The Startup</span>

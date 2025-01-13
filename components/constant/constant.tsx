@@ -3,7 +3,7 @@ const borrowerData = [
     category: "SIMPLIFIED APPLICATION",
     subcategories: [
       {
-        name: "Seemless Onboarding",
+        name: "Seamless Onboarding",
         image: "/section_images/seemlessOnboarding.png",
         icons: "/icons/svg/borrower/seem_n.svg",
         activeIcons: "/icons/svg/borrower/seem_c.svg",
