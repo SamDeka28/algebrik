@@ -37,7 +37,7 @@ export default function LendersAchieve() {
 
   return (
     <div
-      className="container mx-auto p-4 mt-20 md:mt-[106px] md:mb-12 flex items-center justify-center font-plus-jakarta"
+      className="container mx-auto mb-[48px] p-4 mt-20 md:mt-[106px] md:mb-12 flex items-center justify-center font-plus-jakarta"
       style={{
         backgroundImage: "url('/section_images/auto_lenders/lender_achive.png')",
         backgroundSize: "cover",
@@ -63,9 +63,9 @@ export default function LendersAchieve() {
         </div>
 
         {/* Cards */}
-        <div className="flex w-full md:w-1/2">
+        <div className="flex w-full h-auto md:w-1/2">
           {/* Mobile Slider */}
-          <div className="flex gap-4 overflow-x-auto md:hidden flex-nowrap p-2">
+          <div className="flex gap-4 overflow-x-auto overflow-hidden md:hidden flex-nowrap p-2">
             {data.map((item, index) => (
               <motion.div
                 key={index}

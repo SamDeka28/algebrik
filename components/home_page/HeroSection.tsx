@@ -8,15 +8,16 @@ import BookADemo from "../BookADemo";
 export default function HeroSection() {
   return (
     <div
-      className="w-full md:w-full md:h-[670px] flex items-center justify-center overflow-hidden rounded-b-[32px] md:rounded-b-none"
-      style={{
-        backgroundImage: "url('/background_images/hero_background.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="
+     
+
+      w-full md:w-full md:h-[670px] flex items-center justify-center overflow-hidden rounded-b-[32px] md:rounded-b-none
+    bg-[url('/background_images/hero_background.png')] bg-no-repeat bg-cover bg-[left_top_-9.5rem]
+     md:bg-cover md:bg-[left_top_0rem]"
+
     >
       <div className="container pt-[181px] text-center md:mx-auto md:px-6 flex flex-col md:flex-row items-center md:justify-end md:pt-16 gap-0 md:gap-16 ">
-        <div className="flex flex-col gap-6 px-16 md:px-0 max-w-[500px] w-full">
+        <div className="flex flex-col gap-6 px-16 md:px-0 max-w-[500px] h-72 w-full">
           <h1 className="text-white text-[36px] md:text-[56px] font-plus-jakarta font-normal leading-[45.36px] md:leading-tight">
             Transform Lending into an{" "}
             <span className="font-semibold">Experience</span>
@@ -25,7 +26,7 @@ export default function HeroSection() {
             The World’s first AI and Cloud Native LOS makes lending journeys
             what they should be – Fast, Intuitive, Seamless.
           </p>
-          <div className="relative md:static bottom-36 translate-y-80 md:translate-y-0">
+          <div className="relative md:static -bottom-48">
           <BookADemo />
           </div>
         </div>
@@ -37,7 +38,7 @@ export default function HeroSection() {
             className="block md:hidden"
             quality={100}
             priority
-            style={{ width: "422px", height: "280px",}}
+            style={{ width: "442px", height: "280px",}}
           />
           <Image
             src={heroImage}

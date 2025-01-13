@@ -113,13 +113,13 @@ export default function Potential() {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8 flex flex-col gap-12">
+    <div className="container mx-0 md:mx-auto  md:p-8 mt-5 flex flex-col gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-8 md:px-36">
         <CustomHeader text="Unlock Limitless Potential with Algebrik" />
         <CustomSubtitle text="Deliver faster approvals, smarter decisions, and exceptional borrower experiences with a platform designed to transform lending operations." />
       </div>
 
-      <div className="relative flex flex-row md:flex-wrap justify-center gap-6 md:p-6">
+      <div className="relative flex flex-row md:flex-wrap justify-center gap-6 p-0 md:p-6">
         <div className="md:container md:relative opacity-[30%] z-[-1]">
           <motion.div
             className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -196,7 +196,7 @@ export default function Potential() {
 </div>
 
 <div className="flex md:hidden  overflow-x-auto pb-4">
-  <div className="flex flex-nowrap gap-[30px]">
+  <div className="flex flex-nowrap gap-[16px] md:gap-[30px]">
     {data.cardData.map((card, index) => (
       <div
         key={index}

@@ -2,7 +2,7 @@ import Card from "./card/Card";
 
   const CardsContainer = () => {
     return (
-      <div className="flex flex-col md:flex-row gap-8 justify-center items-start p-10">
+      <div className="flex flex-col md:flex-row gap-8 justify-center items-start px-6 pt-[49px] md:pt-0 md:px-0 md:p-10">
         <div className="flex flex-col justify-start items-start gap-8">
           <Card
             imageSrc="/section_images/credit_union.png"
@@ -15,7 +15,8 @@ import Card from "./card/Card";
             imageHeight={322}
             imageWidth={322}
             customStyles={{
-              container: "md:w-[558.16px] md:h-[361.58px] w-[369.86px] h-[326px]",
+              container: "md:w-[558.16px] md:h-[361.58px] w-[100%] h-[386px]",
+              
             }}
           />
           <Card
@@ -28,6 +29,9 @@ import Card from "./card/Card";
             buttonLink="/solutions/smb_lenders"
             imageHeight={312}
             imageWidth={312}
+            customStyles={{
+              container: "md:w-[558.16px] md:h-[361.58px] w-[100%] h-[386px]"
+            }}
           />
         </div>
         <Card

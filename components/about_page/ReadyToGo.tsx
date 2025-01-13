@@ -7,7 +7,7 @@ import Button from "../Buttons";
 const ReadyToGo = () => {
   return (
     <section
-      className="bg-[#EBEEF5] mx-auto flex flex-col justify-center items-center gap-8 md:py-[13px]"
+      className="bg-[#EBEEF5] mx-auto hidden md:flex flex-col justify-center items-center gap-8 md:py-[13px]"
       aria-label="Build the Lending Experience of Tomorrow"
     >
       <div className="container flex flex-col justify-center items-center text-center gap-[24px] mx-auto px-6 py-12 md:px-[150px] md:py-[140px]">

@@ -30,7 +30,7 @@ export default function AutoLenders() {
   };
 
   return (
-    <div className="container mx-auto p-4 md:py-8 flex font-plus-jakarta flex-col gap-12">
+    <div className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex font-plus-jakarta flex-col gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader text="Optimized for Auto Lenders, Tailored for Auto Owners" />
         <CustomSubtitle

@@ -7,7 +7,7 @@ import Button from "../Buttons";
 const LendingExperience = () => {
   return (
     <section
-      className="mx-auto p-4 md:p-8 flex flex-col justify-center items-center gap-8 md:mb-[119px]"
+      className="mx-auto p-4 md:p-8 flex flex-col justify-center items-center gap-8 mb-[61px] md:mb-[119px]"
       aria-label="Build the Lending Experience of Tomorrow"
     >
       <div className="container flex flex-col justify-center items-center text-center gap-[24px] mx-auto p-4 md:p-[150px, 140px]">
@@ -30,7 +30,7 @@ const LendingExperience = () => {
             isActive={true}
             // onClick={() => alert("Please provide the redirection page")}
             link="/contact"
-            customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[18px] text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
+            customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
             activeStyle="bg-white text-[#292929] font-bold"
           />
 
@@ -38,7 +38,7 @@ const LendingExperience = () => {
             text="See Us In Action"
             // onClick={() => alert("Please provide the redirection page")}
             link="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
-            customClass="py-[18px] text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA] w-full md:w-auto"
+            customClass="py-[10px] text-[14px] md:text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA] w-full md:w-auto"
             activeStyle="text-[#1A69DC] font-bold"
           />
         </div>

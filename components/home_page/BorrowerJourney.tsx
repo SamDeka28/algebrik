@@ -215,11 +215,11 @@ export default function BorrowerJourney() {
         <div className="w-full h-[550px] md:w-[268px] md:h-[500px] items-start justify-start bg-white shadow-md rounded-[20px] overflow-y-auto">
           {/* Mobile carousel navigation */}
           <div className="flex md:hidden font-plus-jakarta justify-between items-center px-4 py-2 rounded-t-lg">
-            <button onClick={handlePrevious} aria-label="Previous Category" className="rounded-full w-[32px] h-[32px] bg-white flex items-center justify-center">
+            <button onClick={handlePrevious} aria-label="Previous Category" className="rounded-full w-[32px] h-[32px] bg-white border border-[#D8E7F5] shadow-2xl flex items-center justify-center">
               <MdNavigateBefore className="text-2xl text-[#2A5FAC]" />
             </button>
             <span className="text-[16px] font-bold font-plus-jakarta text-sm text-black">{selectedCategory}</span>
-            <button onClick={handleNext} aria-label="Next Category" className="rounded-full w-[32px] h-[32px] bg-white flex items-center justify-center">
+            <button onClick={handleNext} aria-label="Next Category" className="rounded-full w-[32px] h-[32px] bg-white border border-[#D8E7F5] shadow-2xl flex items-center justify-center">
               <MdNavigateNext className="text-2xl text-[#2A5FAC]" />
             </button>
           </div>
@@ -253,7 +253,7 @@ export default function BorrowerJourney() {
                       aria-pressed={selectedSubcategory === sub.name}
                       className={`flex items-center font-plus-jakarta gap-[8px] w-full py-[11px] px-[9px] ${
                         selectedSubcategory === sub.name
-                          ? "bg-white border border-[#D8E7F5] shadow-md rounded-[10px] text-blue-600"
+                          ? "bg-white/70 border border-[#D8E7F5] shadow-md rounded-[10px] text-[#056CC1] font-[600]"
                           : "text-gray-700"
                       }`}
                     >
@@ -275,9 +275,9 @@ export default function BorrowerJourney() {
             </div>
           ))}
         </div>
-        <div>
+        <div className="">
           <motion.div
-            className="container relative w-[500px] md:w-full flex gap-[24.42px] justify-center mt-[2px]"
+            className="container relative w-[500px] md:w-full hidden md:flex gap-[24.42px] justify-center mt-[2px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}

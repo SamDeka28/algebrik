@@ -37,17 +37,18 @@ export default function LendingJourneyDesign() {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8 flex flex-col gap-8">
-      <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-10 md:px-36">
+    <div className="container mx-0 md:mx-auto px-0 md:p-8 flex flex-col gap-8">
+      <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-[46px] md:px-36">
         <CustomHeader
           text="Making Lending Journeys Faster, Smarter, and Simpler"
+          className="px-7"
         />
         <CustomSubtitle
           text="Lending journeys are plagued by inefficiencies—disconnected systems, manual workflows, and borrower frustration. Algebrik transforms them with automation, AI, and seamless experiences."
         />
       </div>
 
-      <div className="relative mx-auto flex w-[416px] h-[52px] bg-[#E1ECFD] border-[#CEE2FF] rounded-[48px] justify-around items-center gap-4 p-[2px]">
+      <div className="relative mx-auto flex w-[370px] md:w-[416px] h-[52px] bg-[#E1ECFD] border-[#CEE2FF] rounded-[48px] justify-around items-center gap-4 p-[2px]">
         <Button
           text="With Algebrik"
           isActive={isWithAlgebrik}
@@ -58,7 +59,7 @@ export default function LendingJourneyDesign() {
           text="Without Algebrik"
           isActive={!isWithAlgebrik}
           onClick={() => handleButtonClick(false)}
-          customClass="transition-transform transform ease-in-out duration-300"
+          customClass=" transition-transform transform ease-in-out duration-300"
         />
       </div>
 
@@ -73,7 +74,7 @@ export default function LendingJourneyDesign() {
             initial={{ scale: 1 }}
             animate={{ scale: isZoomed ? 0.95 : 1 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`${
+            className={`hidden md:block  ${
               isMobile ? "w-[300px] h-[547px] object-none" : "md:w-[1282px] md:h-[687px]"
             }`}
           >
@@ -88,19 +89,20 @@ export default function LendingJourneyDesign() {
             initial={{ scale: 1 }}
             animate={{ scale: isZoomed ? 0.95 : 1 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`${
-              isMobile ? "w-[368px] h-[547px]" : "w-[1382px] h-[687px]"
+            className={`hidden md:block ${
+              isMobile ? "w-[408px] h-[547px]" : "w-[1382px] h-[687px]"
             }`}
           >
             <Image
               src={lendingWithoutAlgebrik}
               alt="Lending Without Algebrik"
-              width={isMobile ? 368 : 1382}
+              width={isMobile ? 268 : 1382}
               height={isMobile ? 547 : 687}
               className="object-cover md:object-cover"
             />
           </motion.div>
         )}
+        <Image src="/section_images/place.png" alt="" width={368} height={547} className="md:hidden"/>
       </motion.div>
     </div>
   );

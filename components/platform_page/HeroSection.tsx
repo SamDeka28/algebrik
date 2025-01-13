@@ -9,15 +9,16 @@ export default function HeroSection() {
       <div
   className="
     w-full h-[758px] flex items-center justify-center overflow-hidden relative 
-    bg-[url('/background_images/platform_hero.png')] bg-no-repeat bg-center 
-     md:bg-cover"
+    md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] 
+    bg-no-repeat bg-center bg-[bottom_left-30.5rem]
+     md:bg-cover bg-cover md:bg-[left_top_0rem] rounded-b-[32px] md:rounded-none"
 >
 
         <div className="absolute top-40 md:top-48 mx-auto flex flex-col items-center justify-center md:justify-start gap-[40px]">
           <div className="flex flex-col gap-[20px]">
             <CustomHeader
               text="Lending just got easier"
-              className="text-[36px] md:text-[56px] text-white text-center px-28 md:px-0"
+              className="text-[36px] md:text-[56px] text-white text-center px-20 leading-[45px] md:leading-none md:px-0"
             />
             <CustomSubtitle
               text="Experience the future of lending: a fully automated, AI-First platform that simplifies workflows, improves decision accuracy, and creates personalized borrower journeys at scale"

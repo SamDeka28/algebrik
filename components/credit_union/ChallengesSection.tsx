@@ -29,7 +29,7 @@ const ChallengesSection = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-center p-6 md:p-10">
+    <div className="flex flex-col gap-8 justify-center items-center my-[48px] md:my-0 p-4 md:p-10">
       <div className="flex flex-col justify-center items-center text-center gap-[24px]">
         <CustomHeader
           className="text-2xl md:text-3xl lg:text-4xl font-bold"

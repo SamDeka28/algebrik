@@ -28,7 +28,7 @@ export default function Revolutionize() {
   };
 
   return (
-    <div className="container mx-auto p-4 md:py-8 flex flex-col gap-12 font-plus-jakarta">
+    <div className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex flex-col gap-12 font-plus-jakarta">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
           className="flex flex-col"
@@ -40,7 +40,7 @@ export default function Revolutionize() {
           }
         />
         <CustomSubtitle
-          className="text-[20px]"
+          className="text-[14px] md:text-[20px]"
           text="Algebrik empowers auto lenders with smarter workflows, seamless integrations, and exceptional borrower experiences"
         />
       </div>
@@ -51,7 +51,7 @@ export default function Revolutionize() {
         {data.cardData.map((card, index) => (
           <div
             key={index}
-            className="relative w-[80%] md:w-[333.33px] !h-[295px] flex-shrink-0 md:flex-shrink flex flex-col items-center justify-between"
+            className="relative w-[80%] h-auto md:w-[333.33px] md:h-[295px] flex-shrink-0 md:flex-shrink flex flex-col items-center justify-between"
           >
             <div
               className="mb-4 rounded-[24px] shadow-[0px_-4px_6px_-1px_rgba(0,0,0,0.1),0px_-2px_4px_-2px_rgba(0,0,0,0.1)]"

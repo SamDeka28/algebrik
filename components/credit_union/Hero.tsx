@@ -16,21 +16,35 @@ export default function HeroSection() {
     ? {
         header: (
           <>
+            <div className="hidden md:flex flex-col">
             <span>Simplify Lending.</span>
             <span>Delight Members. Drive Growth.</span>
+            </div>
+            <div className="md:hidden flex flex-col px-[36px]">
+            <span>Simplify </span>
+            <span>Delight Lending.</span>
+            <span>Members. Drive Growth.</span>
+            </div>
           </>
         ),
         subtitle:
           "Empower your credit union to reduce approval times, boost member satisfaction, and lower operational costs—all with Algebrik AI’s cloud-native, AI-powered solutions tailored to your needs.",
         sectionImage: "/section_images/credit_hero.png",
-        subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-8 md:px-[193px] mb-[10px]",
+        subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px]",
       }
     : isAutoLenders
     ? {
         header: (
           <>
-            <span>Accelerate Lending,</span>
-            <span>Drive Customer Delight.</span>
+           <div className="hidden md:flex flex-col">
+           <span>Accelerate Lending,</span>
+           <span>Drive Customer Delight.</span>
+            </div>
+            <div className="md:hidden flex flex-col px-[36px]">
+            <span>Accelerate </span>
+            <span>Lending, Drive </span>
+            <span>Customer Delight.</span>
+            </div>
           </>
         ),
         subtitle:
@@ -42,8 +56,15 @@ export default function HeroSection() {
     ? {
         header: (
           <>
+            <div className="hidden md:flex flex-col">
             <span>Empowering SMB Lenders with</span>
             <span>Smarter Workflows</span>
+            </div>
+            <div className="md:hidden flex flex-col px-[6px]">
+            <span>Empowering </span>
+            <span> SMB Lenders</span>
+            <span>with Smarter Workflows</span>
+            </div>
           </>
         ),
         subtitle:
@@ -69,15 +90,15 @@ export default function HeroSection() {
         //   backgroundPositionY: "bottom",
         // }}
         className="    w-full h-[758px] flex items-center justify-center overflow-hidden relative 
-    bg-[url('/background_images/platform_hero.png')] bg-no-repeat bg-center 
-     md:bg-cover"
+    md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-center 
+    bg-cover"
 
       >
         <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[20px]">
           <div className="flex flex-col gap-[20px]">
             <CustomHeader
               text={heroContent.header}
-              className="text-[36px] md:text-[56px] text-white text-center flex flex-col"
+              className="text-[36px] md:text-[56px] text-white font-medium text-center  flex flex-col"
             />
             <CustomSubtitle
               text={heroContent.subtitle}

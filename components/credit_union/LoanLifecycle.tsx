@@ -69,7 +69,7 @@ export default function LoanLifecycle() {
     <section
       ref={sectionRef}
       id="loan-lifecycle-section"
-      className="container pt-[108px] mx-auto flex flex-col items-center justify-between gap-[48px] relative"
+      className="container pt-[108px] mx-auto hidden md:flex flex-col items-center justify-between gap-[48px] relative"
     >
       <CustomHeader
         className="text-center"

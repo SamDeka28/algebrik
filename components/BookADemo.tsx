@@ -56,7 +56,7 @@ export default function BookADemo() {
         <button className=" w-[326px] h-[52px] font-plus-jakarta bg-[#1C8DEA] text-white text-[16px] font-medium rounded-[31px] px-6 py-2 border border-[#2F9AFB] hover:opacity-90 transition-all">
           Book a Demo
         </button>
-        {pathname !== "/" && (
+        {pathname !== "/" && pathname !== "/about" && (
           <button className="w-[326px] h-[52px] border border-[#2F9AFB] bg-[#1D457F] text-white py-3 rounded-[31px] text-[16px] font-plus-jakarta font-medium">
             Watch a Demo
           </button>

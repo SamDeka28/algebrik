@@ -29,13 +29,13 @@ export default function CreditUnion() {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8 flex font-plus-jakarta flex-col gap-12">
+    <div className="container mx-auto py-[48px] md:py-0 md:p-8 flex font-plus-jakarta flex-col gap-[27px] md:gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
         className=""
         text="Built for Credit Unions, Designed for People" />
         <CustomSubtitle
-          className="text-[14px] md:text-[20px]"
+          className="text-[14px] md:text-[20px] px-10 md:px-0"
           text="Deliver seamless, personalised member experiences across every channel, while empowering your team with faster decisions and scalable solutions"
         />
       </div>

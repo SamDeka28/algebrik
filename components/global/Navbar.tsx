@@ -14,11 +14,16 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleSolutions = () => {
+    setIsSolutionsOpen(!isSolutionsOpen);
   };
 
   const openDropdown = () => {
@@ -199,43 +204,61 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className={`md:hidden ${isContactOrResourcePage ? "text-black" : "text-white"}`}
+          className={`md:hidden flex flex-col justify-between gap bg-white/80 font-plus-jakarta backdrop-blur-3xl py-6 h-[500px]
+            px-5 ${isContactOrResourcePage ? "text-black" : "text-black"}`}
         >
-          <Link
+         <div>
+         <Link
             href="/platform"
             onClick={toggleMenu}
-            className="block px-6 py-3 hover:bg-blue-700"
+            className="block px-6 py-3 text-[18px] font-plus-jakarta hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
           >
             Platform
           </Link>
-          <Link
-            href="/solutions"
-            onClick={toggleMenu}
-            className="block px-6 py-3 hover:bg-blue-700"
+          <div
+         
+            onClick={toggleSolutions}
+            className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
           >
             Solutions
-          </Link>
+          </div>
+          {isSolutionsOpen && (
+            <div className="pl-6">
+              <Link href="/solutions/credit_union" className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                Credit Union
+              </Link>
+              <Link href="/solutions/auto_lenders" className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                Auto Lenders
+              </Link>
+              <Link href="/solutions/smb_lenders" className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                SMB Lenders
+              </Link>
+            </div>
+          )}
           <Link
             href="/resource_center"
             onClick={toggleMenu}
-            className="block px-6 py-3 hover:bg-blue-700"
+            className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
           >
             Resource Center
           </Link>
           <Link
             href="/about"
             onClick={toggleMenu}
-            className="block px-6 py-3 hover:bg-blue-700"
+            className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
           >
             About Us
           </Link>
+         </div>
+          <div>
           <Link
             href="/contact"
             onClick={toggleMenu}
-            className="block px-6 py-3 bg-black text-white hover:bg-gray-700"
+            className="block px-6 py-4 border border-[#B4C7E1] text-[18px] w-full text-center bg-white shadow-2xl rounded-[36px] text-black hover:bg-gray-700"
           >
-            Connect
+            Contact Us
           </Link>
+          </div>
         </motion.div>
       )}
     </motion.nav>
