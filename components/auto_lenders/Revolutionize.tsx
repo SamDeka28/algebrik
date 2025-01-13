@@ -46,7 +46,7 @@ export default function Revolutionize() {
       </div>
 
       <div
-        className="relative flex md:flex-wrap md:items-center md:justify-center gap-6 p-6 overflow-x-scroll md:overflow-visible scrollbar-none"
+        className="relative flex md:flex-wrap md:items-center md:justify-center gap-6 md:p-6 overflow-x-scroll md:overflow-visible scrollbar-none"
       >
         {data.cardData.map((card, index) => (
           <div

@@ -146,7 +146,7 @@ export default function Navbar() {
     </div>
                 </Link>
                 <Link
-                  href="/solutions/smb_lenders"
+                  href="/solutions/banks"
                   className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
                 <div className="flex items-center gap-2">
@@ -157,7 +157,7 @@ export default function Navbar() {
         height={20}
         className="text-white"
       />
-      SMB Lenders
+      Banks
     </div>
                 </Link>
               </div>
@@ -230,8 +230,8 @@ export default function Navbar() {
               <Link href="/solutions/auto_lenders" className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                 Auto Lenders
               </Link>
-              <Link href="/solutions/smb_lenders" className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                SMB Lenders
+              <Link href="/solutions/banks" className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+              Banks
               </Link>
             </div>
           )}

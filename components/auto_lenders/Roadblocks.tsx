@@ -45,7 +45,7 @@ const RoadBlocks = () => {
         {/* Main Card */}
         <div className="flex flex-col items-center w-full lg:w-1/2">
           <div className="relative cursor-pointer flex flex-col-reverse justify-between p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[518px] h-auto sm:h-[580px] group">
-            <div className="absolute w-80 h-96 -top-0 -right-2 bg-gradient-to-tr from-blue-200 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
+            <div className="absolute w-80 h-44 md:h-96 -top-0 -right-2 bg-gradient-to-tr from-blue-200 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
             <div className="flex flex-col mt-4 z-10">
               <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
                 {cardData[2].title}
@@ -57,7 +57,8 @@ const RoadBlocks = () => {
                 </span>
               </p>
             </div>
-            <div className="relative w-full h-[200px] sm:h-[370px] rounded-[24px] overflow-hidden mt-4 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+            <div className="relative w-full h-[200px] sm:h-[370px] rounded-[24px] overflow-hidden 
+            mt-4 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
               <Image
                 src={cardData[2].image}
                 alt={cardData[2].title}

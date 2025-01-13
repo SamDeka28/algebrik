@@ -39,11 +39,11 @@ import Card from "./card/Card";
         imageSrc="/section_images/smb_lending.png"
  
           number="03"
-          subtitle="For SMB Lenders"
+          subtitle="For Banks"
           title="Streamline Lending for Growth."
           description="Accelerate loan approvals and reduce costs with AI-powered automation."
           buttonText="Know More"
-          buttonLink="/solutions/smb_lenders"
+          buttonLink="/solutions/banks"
           isLarge
           imageHeight={658}
           imageWidth={658}

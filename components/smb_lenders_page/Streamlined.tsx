@@ -40,7 +40,7 @@ export default function Streamlined() {
       </div>
 
       <div
-        className="relative flex flex-wrap justify-center gap-6 p-6"
+        className="relative flex flex-wrap justify-center md:gap-6 md:p-6"
         style={{
           backgroundImage: "url('/background_images/modern_lender.png')",
           backgroundSize: "cover",
@@ -151,17 +151,17 @@ export default function Streamlined() {
                 </div>
 
          {/* Buttons */}
-         <div className="flex flex-row gap-4 w-full md:w-[430px] mt-6">
+         <div className="flex flex-row gap-4 w-full md:w-[430px] mt-[28px] md:mt-6">
           <Button
             text="Get Started"
             link="/contact"
-            customClass="text-center bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[18px] text-[16px] font-bold hover:bg-blue-500 flex-1"
+            customClass="text-center bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[14px] md:py-[18px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 flex-1"
             activeStyle="bg-white text-[#292929] font-bold"
           />
           <Button
             text="See Us In Action"
             link="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
-            customClass="text-center py-[18px] text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA]"
+            customClass="text-center py-[14px] md:py-[18px] text-[14px] md:text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA]"
             activeStyle="text-[#1A69DC] font-bold"
           />
         </div>

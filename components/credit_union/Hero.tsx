@@ -10,7 +10,7 @@ export default function HeroSection() {
 
   const isCreditUnion = pathname.includes("credit_union");
   const isAutoLenders = pathname.includes("auto_lenders");
-  const isSmbLenders = pathname.includes("smb_lenders");
+  const isSmbLenders = pathname.includes("banks");
 
   const heroContent = isCreditUnion
     ? {
@@ -57,12 +57,12 @@ export default function HeroSection() {
         header: (
           <>
             <div className="hidden md:flex flex-col">
-            <span>Empowering SMB Lenders with</span>
+            <span>Empowering Banks with</span>
             <span>Smarter Workflows</span>
             </div>
             <div className="md:hidden flex flex-col px-[6px]">
-            <span>Empowering </span>
-            <span> SMB Lenders</span>
+            <span>Empowering Banks</span>
+          
             <span>with Smarter Workflows</span>
             </div>
           </>

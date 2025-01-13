@@ -12,17 +12,18 @@ import { motion } from "framer-motion";
 const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 import animationData from "@/public/lottie/With_algebrik_desktop.json";
+import animationMobileData from "@/public/lottie/With_algebrik_mobile.json";
 
 export default function LendingJourneyDesign() {
   const [isWithAlgebrik, setIsWithAlgebrik] = useState(true);
   const [isZoomed, setIsZoomed] = useState(false);
 
-  const isMobile = useMediaQuery({ maxWidth: 768 }); 
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const lottieOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
+    animationData: isMobile ? animationMobileData : animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -33,11 +34,15 @@ export default function LendingJourneyDesign() {
     setTimeout(() => {
       setIsWithAlgebrik(isAlgebrik);
       setIsZoomed(false);
-    }, 500);
+    }, 300);
   };
 
+  const containerClass = isMobile
+    ? "w-[300px] h-[547px]"
+    : "md:w-[1282px] md:h-[687px]";
+
   return (
-    <div className="container mx-0 md:mx-auto px-0 md:p-8 flex flex-col gap-8">
+    <div className="container mx-0 md:mx-auto px-0 md:p-8 flex flex-col gap-8 mb-[48px] md:mb-0">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-[46px] md:px-36">
         <CustomHeader
           text="Making Lending Journeys Faster, Smarter, and Simpler"
@@ -59,7 +64,7 @@ export default function LendingJourneyDesign() {
           text="Without Algebrik"
           isActive={!isWithAlgebrik}
           onClick={() => handleButtonClick(false)}
-          customClass=" transition-transform transform ease-in-out duration-300"
+          customClass="transition-transform transform ease-in-out duration-300"
         />
       </div>
 
@@ -67,42 +72,33 @@ export default function LendingJourneyDesign() {
         className="flex justify-center items-center"
         initial={{ scale: 1 }}
         animate={{ scale: isZoomed ? 1.1 : 1 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         {isWithAlgebrik ? (
           <motion.div
             initial={{ scale: 1 }}
             animate={{ scale: isZoomed ? 0.95 : 1 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`hidden md:block  ${
-              isMobile ? "w-[300px] h-[547px] object-none" : "md:w-[1282px] md:h-[687px]"
-            }`}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={`block ${containerClass}`}
           >
-            <Lottie
-              options={lottieOptions}
-              height={isMobile ? 300 : 687}
-              width={isMobile ? 547 : 1282}
-            />
+            <Lottie options={lottieOptions} />
           </motion.div>
         ) : (
           <motion.div
             initial={{ scale: 1 }}
             animate={{ scale: isZoomed ? 0.95 : 1 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`hidden md:block ${
-              isMobile ? "w-[408px] h-[547px]" : "w-[1382px] h-[687px]"
-            }`}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={`block ${containerClass}`}
           >
             <Image
               src={lendingWithoutAlgebrik}
               alt="Lending Without Algebrik"
-              width={isMobile ? 268 : 1382}
-              height={isMobile ? 547 : 687}
-              className="object-cover md:object-cover"
+              width={isMobile ? 547 : 1282}
+              height={isMobile ? 300 : 687} 
+              className="object-cover"
             />
           </motion.div>
         )}
-        <Image src="/section_images/place.png" alt="" width={368} height={547} className="md:hidden"/>
       </motion.div>
     </div>
   );
