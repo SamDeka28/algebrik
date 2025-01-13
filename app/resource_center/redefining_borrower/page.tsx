@@ -137,10 +137,10 @@ export default function BlogOne() {
         <div className="flex">
           <div className="flex justify-between items-center w-full border-t border-[#D3D3D3] border-b border-[#D3D3D3] py-5">
             <div className="flex gap-[16px] items-center">
-              <div className="rounded-full object-cover">
+              <div className=" object-cover">
                 <Image
                   src="/section_images/blog/pra.jpg"
-                  className="rounded-full object-cover"
+                  className="rounded-[184.59px] object-cover h-[48px]"
                   objectFit="cover"
                   width={48}
                   height={48}

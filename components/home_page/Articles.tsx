@@ -1,7 +1,7 @@
 // import Image from "next/image";
 // import evan from "@/public/icons/evan-gerdisch.png";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Articles() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -31,6 +31,24 @@ export default function Articles() {
       container.style.cursor = "grab";
     }
   };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollSpeed = 1; 
+    const scrollInterval = setInterval(() => {
+      if (container.dataset.isDragging === "true") return; 
+      container.scrollLeft += scrollSpeed;
+      if (
+        container.scrollLeft + container.offsetWidth >= container.scrollWidth
+      ) {
+        container.scrollLeft = 0; 
+      }
+    }, 20); 
+
+    return () => clearInterval(scrollInterval);
+  }, []);
 
   const newsArticles = [
     {

@@ -140,22 +140,22 @@ export default function BlogOne() {
         <div className="flex">
           <div className="flex justify-between items-center w-full border-t border-[#D3D3D3] border-b border-[#D3D3D3] py-5">
             <div className="flex flex-col md:flex-row gap-[16px] items-center">
-              <div className="rounded-full object-cover w-[48px] h-[48px]">
-                <Image
-                  src="/section_images/blog/pra.jpg"
-                  className="rounded-full object-cover"
-                  objectFit="cover"
-                  width={48}
-                  height={48}
-                  alt=""
-                  priority
-                  quality={100}
-                />
-              </div>
-              <div className="flex flex-col">
-                <div>
-                  <h3>Prateek Samantaray               </h3>
-                </div>
+              <div className=" object-cover">
+                              <Image
+                                src="/section_images/blog/pra.jpg"
+                                className="rounded-[184.59px] object-cover h-[48px]"
+                                objectFit="cover"
+                                width={48}
+                                height={48}
+                                alt=""
+                                priority
+                                quality={100}
+                              />
+                            </div>
+                            <div className="flex flex-col">
+                              <div>
+                                <h3>Prateek Samantaray          </h3>
+                              </div>
                 <div className="flex gap-4">
                   <h4>
                     Published in <span>The Startup</span>

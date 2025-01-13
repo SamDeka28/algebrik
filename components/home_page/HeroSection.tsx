@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import heroImage from "@/public/section_images/hero.png";
+import heroImage from "@/public/section_images/home_page/home_hero_2.png";
 import mobileHeroImage from "@/public/section_images/home_page/mobile_hero.png";
 import BookADemo from "../BookADemo";
 

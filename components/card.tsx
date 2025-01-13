@@ -20,13 +20,14 @@ import Card from "./card/Card";
             }}
           />
           <Card
-            imageSrc="/section_images/smb_lending.png"
+                     imageSrc="/section_images/auto_lenders.png"
             number="02"
-            subtitle="For SMB Lenders"
-            title="Streamline Lending for Growth."
-            description="Accelerate loan approvals and reduce costs with AI-powered automation."
+            subtitle="For Auto Lenders"
+            title="Lending Transformed for Auto Lenders"
+            description="Leverage cutting-edge AI and composable workflows to empower your auto lending setup."
             buttonText="Know More"
-            buttonLink="/solutions/smb_lenders"
+            buttonLink="/solutions/auto_lenders"
+     
             imageHeight={312}
             imageWidth={312}
             customStyles={{
@@ -35,13 +36,14 @@ import Card from "./card/Card";
           />
         </div>
         <Card
-          imageSrc="/section_images/auto_lenders.png"
+        imageSrc="/section_images/smb_lending.png"
+ 
           number="03"
-          subtitle="For Auto Lenders"
-          title="Lending Transformed for Auto Lenders"
-          description="Leverage cutting-edge AI and composable workflows to empower your auto lending setup."
+          subtitle="For SMB Lenders"
+          title="Streamline Lending for Growth."
+          description="Accelerate loan approvals and reduce costs with AI-powered automation."
           buttonText="Know More"
-          buttonLink="/solutions/auto_lenders"
+          buttonLink="/solutions/smb_lenders"
           isLarge
           imageHeight={658}
           imageWidth={658}

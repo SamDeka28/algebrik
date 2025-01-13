@@ -110,7 +110,7 @@ export default function HeroSection() {
       </div>
 
       <div className="hidden relative h-[458px] md:flex justify-center">
-        <div className="cursor-pointer">
+        <div className="">
           <div className="relative -inset-y-40 right-[25px]">
             <Image
               src={heroContent.sectionImage}
