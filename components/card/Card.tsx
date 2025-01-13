@@ -49,7 +49,7 @@ const Card = ({
   return (
     <div
       className={`relative px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-end
-        ${isLarge ? "md:h-[755px] md:w-[558.16px] h-[501px] w-[369.86px]" : "md:w-[558.16px] md:h-[361.58px] w-[369.86px] h-[326px]"}
+        ${isLarge ? "md:h-[755px] md:w-[558.16px] h-[501px] w-[100%]" : "md:w-[558.16px] md:h-[361.58px] w-[100%] h-[326px]"}
         ${customStyles?.container || ""} ${responsive?.container || ""}`}
       style={{
         background:
@@ -57,9 +57,9 @@ const Card = ({
       }}
     >
       <div className="mb-4">
-        <div className="flex items-baseline gap-4 mb-4">
+        <div className="flex flex-col md:flex-row items-baseline gap-4 mb-4">
           <p
-            className={`text-[72px] font-bold leading-none font-plus-jakarta text-[#D3E5FF] ${customStyles?.number || ""}`}
+            className={`text-[64px] md:text-[72px] font-bold leading-none font-plus-jakarta text-[#D3E5FF] ${customStyles?.number || ""}`}
             style={{
               WebkitTextStroke: "2px rgb(28, 141, 234, 100%)",
             }}
@@ -73,13 +73,13 @@ const Card = ({
           </p>
         </div>
         <h2
-          className={`text-[#2A5FAC] text-[24px] font-plus-jakarta font-bold mb-2 ${customStyles?.title || ""}`}
+          className={`text-[#2A5FAC] text-[20px] md:text-[24px] font-plus-jakarta font-bold mb-2 ${customStyles?.title || ""}`}
           style={{ marginTop: "16px", marginBottom: "8px" }}
         >
           {title}
         </h2>
         <p
-          className={`text-[#292929] text-[16px] font-plus-jakarta leading-6 ${customStyles?.description || ""}`}
+          className={`text-[#292929] text-[14px] md:text-[16px] font-plus-jakarta leading-6 ${customStyles?.description || ""}`}
           style={{ paddingTop: "8px" }}
         >
           {description}
@@ -149,7 +149,7 @@ const Card = ({
       {buttonText && buttonLink && (
         <Link href={buttonLink} passHref>
         <button
-          className={`mt-4 w-[139px] h-[41px] font-plus-jakarta border-2 border-[#2A5FAC] text-[#2A5FAC] text-[14px] font-medium py-2 px-6 rounded-full transition hover:bg-[#2A5FAC] hover:text-white ${customStyles?.button || ""}`}
+          className={`hidden md:block mt-4 w-[139px] h-[41px] font-plus-jakarta border-2 border-[#2A5FAC] text-[#2A5FAC] text-[14px] font-medium py-2 px-6 rounded-full transition hover:bg-[#2A5FAC] hover:text-white ${customStyles?.button || ""}`}
         >
           {buttonText}
         </button>

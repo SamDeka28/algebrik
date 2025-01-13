@@ -34,7 +34,8 @@ const FAQs = () => {
   };
 
   return (
-    <section className="px-6 md:px-16 py-12">
+    <>
+    <section className="hidden md:block px-6 md:px-16 py-12">
       <div className="max-w-6xl mx-auto font-plus-jakarta flex gap-[46px]">
         <div className="flex flex-col gap-[16px] md:w-[328px] md:h-[389px]">
           <CustomHeader text="Frequently Asked Questions" className="text-[40px] pr-10" />
@@ -80,6 +81,9 @@ const FAQs = () => {
         </div>
       </div>
     </section>
+
+    <section className="md:hidden py-10"></section>
+    </>
   );
 };
 

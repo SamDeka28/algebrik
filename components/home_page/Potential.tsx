@@ -4,6 +4,7 @@ import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 const PercentageCard = ({
   title,
@@ -62,7 +63,7 @@ const PercentageCard = ({
   return (
     <div
       ref={cardRef}
-      className="flex flex-col items-center justify-end  rounded-[10px] pt-3 max-w-[237px] max-h-[118px] gap-[8px]"
+      className="flex flex-col items-center justify-end rounded-[10px] pt-3 max-w-[237px] max-h-[118px] gap-[8px]"
     >
       <p className="text-[44px] font-bold font-plus-jakarta text-white">
         {currentPercentage !== null ? `${currentPercentage}%` : "0%"}
@@ -73,7 +74,12 @@ const PercentageCard = ({
     </div>
   );
 };
+
 export default function Potential() {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  // const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
+  // const isDesktop = useMediaQuery({ minWidth: 1025 });
+
   const data = {
     cardData: [
       {
@@ -107,16 +113,14 @@ export default function Potential() {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8 flex flex-col gap-12">
+    <div className="container mx-0 md:mx-auto  md:p-8 mt-5 flex flex-col gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-8 md:px-36">
         <CustomHeader text="Unlock Limitless Potential with Algebrik" />
         <CustomSubtitle text="Deliver faster approvals, smarter decisions, and exceptional borrower experiences with a platform designed to transform lending operations." />
       </div>
 
-      <div className="relative flex flex-wrap justify-center gap-6 p-6 ">
-        {/* Background Gradient */}
-        {/* <div className="absolute drop-shadow-2xl backdrop-blur-xl w-3/4 h-2/6 blur-3xl inset-40 mx-auto my-auto bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-300 via-[#66B3B0] to-[#BE95FF]"></div> */}
-        <div className="container relative opacity-[30%] z-[-1]">
+      <div className="relative flex flex-row md:flex-wrap justify-center gap-6 p-0 md:p-6">
+        <div className="md:container md:relative opacity-[30%] z-[-1]">
           <motion.div
             className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
             animate={{
@@ -163,41 +167,82 @@ export default function Potential() {
           />
         </div>
 
-        {data.cardData.map((card, index) => (
-          <div
-            key={index}
-            className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[365px] h-[426px] flex flex-col items-center justify-start transform transition-transform duration-300 hover:scale-105"
-          >
-            <div className="mb-4">
-              <Image
-                src={card.image}
-                alt={card.title}
-                className="object-contain rounded-md"
-                width={433}
-                height={355}
-                quality={100}
-              />
-            </div>
-            <h3 className="text-[#2A5FAC] text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
-              {card.title}
-            </h3>
-            <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
-              {card.description}
-            </p>
-          </div>
-        ))}
+        <div className="hidden md:flex flex-row md:flex-wrap justify-center gap-6 overflow-x-auto md:overflow-visible">
+  {data.cardData.map((card, index) => (
+    <div
+      key={index}
+      className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[338px] md:w-[365px] h-[426px] md:h-[426px] flex flex-col items-center justify-start transform transition-transform duration-300 hover:scale-105"
+    >
+      <div className="mb-4">
+        <Image
+          src={card.image}
+          alt={card.title}
+          className={`object-contain rounded-md ${
+            isMobile ? "w-[306px] h-[300px]" : "w-[433px] h-[236px]"
+          }`}
+          width={isMobile ? 306 : 433}
+          height={isMobile ? 300 : 236}
+          quality={100}
+        />
+      </div>
+      <h3 className="text-[#2A5FAC] text-[20px] md:text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
+        {card.title}
+      </h3>
+      <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
+        {card.description}
+      </p>
+    </div>
+  ))}
+</div>
+
+<div className="flex md:hidden  overflow-x-auto pb-4">
+  <div className="flex flex-nowrap gap-[16px] md:gap-[30px]">
+    {data.cardData.map((card, index) => (
+      <div
+        key={index}
+        className="relative p-4 backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-md w-[300px] h-auto flex flex-col items-center justify-start transform transition-transform duration-300 hover:scale-105"
+      >
+        <div className="mb-4">
+          <Image
+            src={card.image}
+            alt={card.title}
+            className="object-contain rounded-md w-full h-[200px]"
+            width={300}
+            height={250}
+            quality={100}
+          />
+        </div>
+        <h3 className="text-[#2A5FAC] text-[18px] font-plus-jakarta text-center font-bold mb-3 px-2">
+          {card.title}
+        </h3>
+        <p className="text-[#606060] text-[12px] text-center font-plus-jakarta px-2">
+          {card.description}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+
       </div>
 
-      <div className="container flex items-baseline align-center justify-center flex-wrap mt-[47px] text-white gap-16"
-       style={{
-        backgroundImage: "url('/section_images/percent.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        borderRadius: "32px",
-        width: "1160px",
-        height: "162px",
-        alignSelf: "center",
-      }}
+      <div
+        className={`container hidden md:flex ${
+          isMobile
+            ? "flex-col items-center text-center gap-8"
+            : "items-baseline justify-center flex-wrap gap-16"
+        } mt-[47px] text-white`}
+        style={{
+          backgroundImage: "url('/section_images/percent.png')",
+          backgroundSize: isMobile ? "contain" : "cover",
+          backgroundPosition: "center",
+          borderRadius: "32px",
+          width: isMobile ? "90%" : "1160px",
+          height: isMobile ? "500px" : "162px",
+          alignSelf: "center",
+          padding: isMobile ? "16px" : "0",
+        }}
       >
         {data.percentageData.map((item, index) => (
           <PercentageCard

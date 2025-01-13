@@ -31,7 +31,7 @@ const carouselData = [
   {
     id: 3,
     title: "A Revolution Interrupted",
-    description1: "Despite the introduction of technology, lending didn’t change much. Sure, we replaced ledgers with software, but the systems were designed to work like their paper ancestors: rigid, slow, and disconnected.",
+    description1: "Despite the introduction of technology, lending didn’t change much. Sure, we replaced ledgers with software, but the systems were designed to work like their paper ancestors: rigid, slow, and disconnected.",
     description2: "By the 21st century, lenders were duct-taping together dozens of tools: old-school LOS, spreadsheets, CRM systems, compliance software—just to process a single loan. Borrowers? They were stuck waiting.",
     image: "/section_images/story/revo.png",
   },
@@ -40,7 +40,7 @@ const carouselData = [
     title: "A New Era in Lending",
     description1: "That’s where Algebrik AI comes in.",
     description2: <div><p>We’re breaking away from these outdated systems and designing lending the way it was meant to be: adaptive, intuitive, and human-centric.</p>
-    <p>Inspired by the pioneers of modern computing, we’ve created the world’s first cloud-native, AI-powered Loan Origination System. It’s not just a tool—it’s a revolution in lending. With Algebrik AI, lenders can:</p>
+      <p>Inspired by the pioneers of modern computing, we’ve created the world’s first cloud-native, AI-powered Loan Origination System. It’s not just a tool—it’s a revolution in lending. With Algebrik AI, lenders can:</p>
           <p>
         <ul className="list-disc pl-8">
           <li>
@@ -53,8 +53,6 @@ const carouselData = [
           Cut drop-offs by 80%.
           </li>
         </ul>,
-
-
    </p>
     </div>,
     image: "/section_images/story/new.png",
@@ -70,7 +68,7 @@ const carouselData = [
         And the best part? You can customize it to fit your unique lending needs using modular, drag-and-drop tools that feel as simple and flexible as LEGO blocks.        </p>
     </div>,
     image: "/section_images/story/ass.png",
-  }
+  },
 ];
 
 export default function OurStory() {
@@ -90,22 +88,23 @@ export default function OurStory() {
 
   return (
     <div className="container mx-auto p-8 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center">
-      <div className="text-center flex flex-col gap-[24px]">
-        <CustomHeader text="Our Story" className="text-[40px]" />
+      <div className="text-center flex flex-col gap-[16px] md:gap-[24px]">
+        <CustomHeader text="Our Story" className="text-[28px] md:text-[40px]" />
         <CustomSubtitle
           text="Every transformative idea begins with a challenge. For us, it was the realization that lending was far too complex—both for lenders and borrowers."
-          className="px-80 text-[20px]"
+          className="px-4 md:px-80 text-[14px] md:text-[20px]"
         />
       </div>
       <div>
-        <div className="container relative opacity-[30%] z-[-1]">
-          <div className="absolute top-0 md:left-[196px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px] animate-fadeIn" />
-          <div className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10 animate-fadeIn delay-200" />
-          <div className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
+        <div className=" relative opacity-[30%] z-[-1]">
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 md:left-[196px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[50%] md:w-[861.73px] md:h-[239.68px] blur-[100px] animate-fadeIn" />
+          <div className="absolute top-20 left-1/2 transform -translate-x-1/2 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[50%] md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10 animate-fadeIn delay-200" />
+          <div className="absolute top-56 left-1/2 transform -translate-x-1/2 bg-[#BE95FF] rounded-full w-[50%] md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
         </div>
 
         <motion.div
-          className="bg-white md:w-[1160px] md:h-[411px] rounded-[42px] flex justify-between gap-[95px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)] p-8"
+          className="bg-white w-full md:w-[1160px] md:h-[411px] rounded-[42px] flex flex-col 
+          md:flex-row justify-between gap-[95px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)] p-[12px] md:p-8"
           key={currentSlide.id}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -129,7 +128,7 @@ export default function OurStory() {
               alt="Illustration of lending process"
               width={368}
               height={315}
-              className="md:w-[368px] md:h-[315px]"
+              className="w-full h-auto"
             />
           </div>
         </motion.div>
@@ -137,12 +136,14 @@ export default function OurStory() {
         <div className="flex gap-[8px] justify-center mt-6">
           <button
             onClick={handlePrevious}
-            className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]">
+            className="rounded-[34px] flex items-center justify-center p-[8px] w-[82px] h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
+          >
             <IoIosArrowBack size={20} color="white" />
           </button>
           <button
             onClick={handleNext}
-            className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]">
+            className="rounded-[34px] flex items-center justify-center p-[8px] w-[82px] h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
+          >
             <IoIosArrowForward size={20} color="white" />
           </button>
         </div>
