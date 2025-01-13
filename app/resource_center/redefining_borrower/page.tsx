@@ -119,7 +119,7 @@ const lendingData = {
 export default function BlogOne() {
   return (
     <>
-    <div className="container mx-auto py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
+    <div className="container mx-auto px-5 md:px-0 py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
       <div className="flex flex-col items-start text-left w-full gap-[16px]">
         <CustomHeader
           text="Redefining Borrower Experience in Lending

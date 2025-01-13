@@ -36,9 +36,7 @@ export default function Contact() {
   return (
     <section className="container md:w-[1160px] mx-auto mt-32 md:mb-28 md:p-8 
     flex flex-col md:flex-row font-plus-jakarta justify-center items-start gap-[43px] md:gap-[98px]">
-      <div className="flex flex-col text-center md:text-left gap-[20px] p-8 md-p-0
-      relative top-[80px]
-      md:w-[568px]">
+      <div className="flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative top-[80px] md:static md:top-0 md:w-[568px]">
         <CustomHeader
           className="md:text-[56px] font-bold flex flex-col gap-0"
           text={
