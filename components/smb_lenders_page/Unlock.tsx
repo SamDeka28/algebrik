@@ -52,7 +52,7 @@ export default function Unlock() {
               <>
                 <span>Unlock New </span>
                 <span>Possibilities with </span>
-                <span>Algebrik for SMB</span>
+                <span>Algebrik for banks</span>
                 <span>Lending</span>
               </>
             }

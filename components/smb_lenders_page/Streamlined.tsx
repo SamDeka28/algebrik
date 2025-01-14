@@ -32,10 +32,10 @@ export default function Streamlined() {
   return (
     <div className="container mx-auto p-4 py-[48px] md:py-8 flex font-plus-jakarta flex-col gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
-        <CustomHeader text="Streamlined Lending, Designed for SMBs"/>
+        <CustomHeader text="Streamlined Lending, Designed for banks"/>
         <CustomSubtitle
           className="text-[14px] md:text-[20px] leading-[24px] md:leading-none px-[24px] md:px-0"
-          text="Empower SMB Lending journeys with smarter tools to streamline processes, enhance decision-making, and accelerate lending workflows"
+          text="Empower bank journeys with smarter tools to streamline processes, enhance decision-making, and accelerate lending workflows"
         />
       </div>
 

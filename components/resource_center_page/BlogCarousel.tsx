@@ -125,7 +125,7 @@ export default function BlogCarousel() {
             onClick={() => handleHeaderClick(index)}
             className={`rounded-md font-plus-jakarta font-medium ${
               currentIndex === index
-                ? "!rounded-3xl bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] md:w-[168px] md:h-[40px]  text-white"
+                ? "!rounded-3xl bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] w-[100px] h-[40px] md:w-[168px] md:h-[40px]  text-white"
                 : "text-black"
             }`}
           >
