@@ -1,7 +1,7 @@
 // import Image from "next/image";
 // import evan from "@/public/icons/evan-gerdisch.png";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Articles() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -31,6 +31,24 @@ export default function Articles() {
       container.style.cursor = "grab";
     }
   };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollSpeed = 1; 
+    const scrollInterval = setInterval(() => {
+      if (container.dataset.isDragging === "true") return; 
+      container.scrollLeft += scrollSpeed;
+      if (
+        container.scrollLeft + container.offsetWidth >= container.scrollWidth
+      ) {
+        container.scrollLeft = 0; 
+      }
+    }, 20); 
+
+    return () => clearInterval(scrollInterval);
+  }, []);
 
   const newsArticles = [
     {
@@ -73,7 +91,7 @@ export default function Articles() {
 
   return (
     <div
-      className="container mx-auto max-w-[1160px] h-[717px] py-[40px] px-6 rounded-[36px] mt-10"
+      className="container mx-auto max-w-[1160px] md:h-[717px] py-[40px] px-6 rounded-none md:rounded-[36px] mt-10"
       style={{
         background:
           "radial-gradient(ellipse at right, var(--tw-gradient-stops))",
@@ -81,12 +99,12 @@ export default function Articles() {
         backgroundImage: "radial-gradient(ellipse at right, #7EB2FF, #043071)",
       }}
     >
-      <h2 className="text-center text-[32px] font-plus-jakarta font-bold mt-[10px] mb-[40px] text-white">
+      <h2 className="text-center text-[28px] md:text-[32px] font-plus-jakarta font-bold mt-[10px] mb-[40px] text-white">
         Check out the latest from the Originations Hub
       </h2>
       <div
         ref={scrollContainerRef}
-        className="flex gap-[32px] py-4 pl-[40px] overflow-x-scroll"
+        className="flex gap-[20px] md:gap-[32px] py-4 pl-[0px] md:pl-[40px] overflow-x-scroll"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseUp}
@@ -106,7 +124,7 @@ export default function Articles() {
         {newsArticles.map((article, index) => (
           <div
             key={index}
-            className="min-w-[360px] bg-slate-100 max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
+            className="min-w-[360px] bg-slate-100 max-w-[360px] h-full md:h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
           >
             <div className="flex flex-col flex-grow">
               <div className="h-[269px]">
