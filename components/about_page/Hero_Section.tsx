@@ -4,7 +4,7 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 export default function HeroSection() {
   return (
     <section
-      className="mx-auto md:pt-20 flex flex-col justify-center items-center"
+      className="mx-auto pt-[108px] md:pt-20 flex flex-col justify-center items-center"
       aria-label="Hero Section: Build the Lending Experience of Tomorrow"
       style={{
         backgroundImage: "url('/background_images/about_hero.png')",
@@ -15,7 +15,7 @@ export default function HeroSection() {
     >
       <div className="container h-[551px] flex flex-col justify-center items-center text-center gap-[20px] mx-auto">
         <CustomHeader
-          className="text-[36px] md:text-[48px] text-white leading-[62px] flex flex-col"
+          className="text-[36px] md:text-[48px] px-[27px] md:px-0  text-white leading-[62px] flex flex-col"
           text={
             <>
               <span>Reshaping Lending,</span>

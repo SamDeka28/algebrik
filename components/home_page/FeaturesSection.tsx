@@ -19,7 +19,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-[38px] font-plus-jakarta bg-white overflow-hidden">
+    <section className="pt-[32px] pb-[46px] md:pt-[38px] md:pb-[38px] font-plus-jakarta bg-white overflow-hidden">
       <div className="relative w-full">
         <motion.div
           className="flex gap-6"
