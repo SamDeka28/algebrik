@@ -31,7 +31,7 @@ export default function SmbRevolutionize() {
     <div className="container mx-auto my-[48px] md:my-0 p-4 md:pt-20 flex flex-col gap-12 font-plus-jakarta">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
-          className="flex flex-col"
+          className="flex flex-col px-6 md:px-0"
           text={
             <>
               <span>Revolutionize Auto Lending with </span>
@@ -91,7 +91,7 @@ export default function SmbRevolutionize() {
                     <Image
                       src={card.image}
                       alt={card.title}
-                      className="object-cover shadow-md rounded-[24px]"
+                      className=" md:object-cover shadow-md h-[255px] md:h[295px] rounded-[24px]"
                       width={333.33}
                       height={295}
                       quality={100}

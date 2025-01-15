@@ -486,7 +486,7 @@ export default function LoanLifecycle() {
           exit={{ x: -100, opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-           <div className="absolute top-0 opacity-[30%] z-[-1]">
+           <div className="hidden md:block absolute top-0 opacity-[30%] z-[-1]">
             <motion.div
               className="absolute top-0 -left-96 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[468.64px] md:h-[542.11px] blur-[100px]"
               initial={{ x: "-50%" }}
@@ -526,6 +526,48 @@ export default function LoanLifecycle() {
               }}
             />
           </div>
+
+          <div className="block md:hidden absolute top-0 opacity-[30%] z-[-1] w-[80%]">
+  <motion.div
+    className="absolute top-0 left-0 w-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full h-[350px] sm:w-[400px] sm:h-[450px] md:w-[468.64px] md:h-[542.11px] blur-[50px] sm:blur-[100px]"
+    initial={{ x: "0%" }}
+    animate={{
+      x: ["-10%", "10%", "-10%", "0%"],
+    }}
+    transition={{
+      duration: 10,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+
+  <motion.div
+    className="absolute top-0 left-0 w-full bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full h-[350px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[50px] sm:blur-[100px] -z-10"
+    initial={{ x: "0%" }}
+    animate={{
+      x: ["10%", "-10%", "10%", "0%"],
+    }}
+    transition={{
+      duration: 12,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+
+  <motion.div
+    className="absolute top-[300px] sm:top-0 left-0 w-full bg-[#BE95FF] rounded-full h-[300px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[50px] sm:blur-[100px] z-[-1]"
+    initial={{ x: "0%" }}
+    animate={{
+      x: ["-10%", "10%", "-10%", "0%"],
+    }}
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+</div>
+
           {selectedCategory && (
             <div className=" flex flex-col md:flex-row w-[100%] md:w-[932px] md:h-[531.96px]">
               <div className=" md:pl-[44px] pt-[0px] md:pt-[52.59px] flex flex-col justify-start font-plus-jakarta items-start gap-[12px] md:w-96">

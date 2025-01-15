@@ -41,7 +41,7 @@ export default function BlogFour() {
                               <div>
                                 <h3>Prateek Samantaray          </h3>
                               </div>
-                <div className="flex gap-4">
+                <div className="flex flex-col md:flex-row md:gap-4">
                   <h4>
                     Published in <span>The Startup</span>
                   </h4>

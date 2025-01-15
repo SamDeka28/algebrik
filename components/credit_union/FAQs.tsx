@@ -21,7 +21,7 @@ const FAQs = () => {
       setFaqData(footerData.SolutionsForAutoLenders);
     } else if (path === "/solutions/credit_union") {
       setFaqData(footerData.SolutionsForCreditUnions);
-    } else if (path === "/solutions/smb_lenders") {
+    } else if (path === "/solutions/banks") {
       setFaqData(footerData.SolutionsForSmbLenders); 
     } else {
    

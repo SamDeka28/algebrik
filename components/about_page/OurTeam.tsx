@@ -84,7 +84,8 @@ function TeamMemberCard({
 }) {
   return (
     <div
-      className="w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px] font-plus-jakarta relative rounded-[22.61px] flex flex-col-reverse md:flex-col items-center justify-end bg-cover bg-center shadow-lg"
+      className="w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px] font-plus-jakarta 
+      relative rounded-[22.61px] flex flex-col-reverse md:flex-col items-center justify-end bg-cover bg-center shadow-lg"
       style={{ backgroundImage: `url(${image})` }}
     >
       <div className="bg-white/80 backdrop-blur-sm absolute bottom-6 w-[291px] md:w-[349px] py-5 rounded-[13.57px] flex flex-col items-center justify-center shadow-[0px_18.09px_32.57px_0px_rgba(10,64,108,0.1)]">
@@ -146,7 +147,7 @@ function CarouselSection({
     flex-col-reverse md:flex-col gap-[30px] font-plus-jakarta md:justify-center items-center">
       <div className="w-[100%] md:w-full flex overflow-x-scroll md:overflow-x-hidden flex-col gap-[26px]">
         <motion.div
-          className="flex gap-[32px] mx-8 md:mx-0 md:justify-center items-baseline"
+          className="flex gap-[16px] md:gap-[32px] mx-4 md:mx-0 md:justify-center items-baseline"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
