@@ -7,6 +7,7 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
 import Image from "next/image";
 import lendingWithoutAlgebrik from "@/public/background_images/lendingWithoutAlgebrik.png";
+import lendingWithAlgebrik from "@/public/section_images/with.png"
 import { motion } from "framer-motion";
 
 const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
@@ -85,19 +86,30 @@ export default function LendingJourneyDesign() {
           </motion.div>
         ) : (
           <motion.div
-            initial={{ scale: 1 }}
-            animate={{ scale: isZoomed ? 0.95 : 1 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`block ${containerClass}`}
-          >
-            <Image
-              src={lendingWithoutAlgebrik}
-              alt="Lending Without Algebrik"
-              width={isMobile ? 547 : 1282}
-              height={isMobile ? 300 : 687} 
-              className="object-cover"
-            />
-          </motion.div>
+          initial={{ scale: 1 }}
+          animate={{ scale: isZoomed ? 0.95 : 1 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className={`block ${containerClass}`}
+        >
+          {/* Desktop Image */}
+          <Image
+            src={lendingWithoutAlgebrik}
+            alt="Lending Without Algebrik (Desktop)"
+            width={1282}
+            height={687}
+            className="object-cover hidden md:block"
+          />
+        
+          {/* Mobile Image */}
+          <Image
+            src={lendingWithAlgebrik}
+            alt="Lending With Algebrik (Mobile)"
+            width={547}
+            height={300}
+            className="object-cover w-[100%] md:hidden block"
+          />
+        </motion.div>
+        
         )}
       </motion.div>
     </div>

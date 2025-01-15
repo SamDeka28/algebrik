@@ -1,10 +1,13 @@
+"use client"
+
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { motion } from "framer-motion";
 
 const ModernLender = () => {
   return (
     <div
-      className="relative mx-auto p-2 md:p-8 flex flex-col justify-center items-center gap-8 mb-28 mt-16"
+      className="relative mx-auto p-2 md:p-8 flex flex-col justify-center items-center gap-4 md:gap-8 mb-28 mt-16"
       style={{
         backgroundImage: "url('/background_images/modern_lender.png')",
         backgroundSize: "cover",
@@ -19,12 +22,54 @@ const ModernLender = () => {
         />
       </div>
 
-      <div className="container relative md:w-full flex gap-0 md:gap-[24.42px] justify-center mt-[42px]">
-        <div className="relative opacity-[0%] z-[-1]">
-          <div className="absolute top-24 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[668.64px] md:h-[542.11px] blur-[100px] animate-fadeIn" />
-          <div className="absolute top-36 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10 animate-fadeIn delay-200" />
-          <div className="absolute top-48 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[951.48px] md:h-[542.11px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
-        </div>
+      <div className="container relative w-[100%] flex flex-col gap-0 md:gap-[24.42px] justify-center mt-[42px]">
+      <motion.div
+  className="container relative -inset-y-[250px] md:inset-0 w-[100%] flex gap-[24.42px] align-super md:justify-center mt-[2px]"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+>
+  <div className="relative opacity-[30%] z-[-1]">
+    <motion.div
+      className="absolute top-0 transform md:left-[96px] bg-gradient-to-b sm:bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[100%] h-[500px] sm:w-[100%] sm:h-[500px] md:w-[468.64px] md:h-[542.11px] blur-[50px] sm:blur-[100px]"
+      initial={{ x: "-50%" }}
+      animate={{
+        x: ["-30%", "30%", "-30%", "0%"],
+      }}
+      transition={{
+        duration: 10,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
+
+    <motion.div
+      className="absolute top-[200px] sm:top-0 transform md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[350px] h-[550px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[50px] sm:blur-[100px] -z-10"
+      initial={{ x: "100%" }}
+      animate={{
+        x: ["10%", "-20%", "10%", "0%"],
+      }}
+      transition={{
+        duration: 12,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
+
+    <motion.div
+      className="absolute top-[400px] sm:top-0 transform md:-left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full w-[250px] h-[450px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[50px] sm:blur-[100px] z-[-1]"
+      initial={{ x: "-50%" }}
+      animate={{
+        x: ["-30%", "40%", "-40%", "0%"],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
+  </div>
+</motion.div>
 
         <div className="flex flex-col items-center justify-center gap-[12px] md:gap-[30px]">
           <div className="relative flex gap-[12px] md:gap-[20px]">

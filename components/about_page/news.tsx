@@ -50,6 +50,15 @@ export default function NewsSection() {
       source: "Pulse 2.0",
       image: "/section_images/blog/p.jpg",
       link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/"
+    },
+    {
+      title:
+      "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
+      description:
+        "Pioneering the Future of Lending - This is a monumental step forward for Algebrik AI and the financial institutions we serve,” said Pankaj Jain, Founder and CEO...",
+      source: "BusinessWire",
+      image: "/section_images/blog/b.png",
+      link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
     }
   ];
 

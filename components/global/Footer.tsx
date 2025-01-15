@@ -23,7 +23,7 @@ const Footer = () => {
             </Link>
             <Link href="/solutions/smb_lenders" passHref>
               {" "}
-              <li>For SMB Lenders</li>
+              <li>For Banks</li>
             </Link>
             <Link href="/solutions/auto_lenders" passHref>
               {" "}
@@ -56,7 +56,7 @@ const Footer = () => {
               </Link>
               <Link href="/solutions/smb_lenders" passHref>
                 {" "}
-                <li>For SMB Lenders</li>
+                <li>For Banks</li>
               </Link>
               <Link href="/solutions/auto_lenders" passHref>
                 {" "}

@@ -273,13 +273,13 @@ export default function WhatWeStriveFor() {
           className=" md:hidden px-8 flex text-left flex-col text-[28px]"
           text="What we strive for!"
         />
-        <div className=" w-[100%]  overflow-x-scroll overflow-y-hidden flex font-plus-jakarta gap-[24px]">
+        <div className=" w-[100%]  overflow-x-scroll overflow-y-hidden flex font-plus-jakarta gap-[16px] md:gap-[24px]">
           {/* First Row */}
           <div
-            className="ml-8 bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] backdrop-blur-[7.34px] 
+            className="ml-4 bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] backdrop-blur-[7.34px] 
           border-2 p-[0.5px] rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]"
           >
-            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[246px]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
               <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] font pb-[17px] font-extrabold">
                 01
               </h2>
@@ -292,8 +292,9 @@ export default function WhatWeStriveFor() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] border-2 p-[0.5px] backdrop-blur-[7.34px] rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
-            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[246px]">
+          <div className="bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] border-2 p-[0.5px] backdrop-blur-[7.34px] 
+          rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
               <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] font pb-[17px] font-extrabold">
                 02
               </h2>
@@ -311,7 +312,7 @@ export default function WhatWeStriveFor() {
             className="bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] backdrop-blur-[7.34px] border-2 p-[0.5px] 
           rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]"
           >
-            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[246px]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
               <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] font pb-[17px] font-extrabold">
                 03
               </h2>
@@ -403,7 +404,7 @@ export default function WhatWeStriveFor() {
             </div>
           </div>
 
-          <div className="mr-8 bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] border-2 p-[0.5px] rounded-[34px] backdrop-blur-[7.34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
+          <div className="mr-4 bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] border-2 p-[0.5px] rounded-[34px] backdrop-blur-[7.34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
             <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
               <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] font pb-[17px] font-extrabold">
                 09
