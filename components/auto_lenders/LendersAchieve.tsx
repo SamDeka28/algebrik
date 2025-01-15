@@ -11,7 +11,7 @@ const data = [
   { percentage: 240, title: "Company growth" },
 ];
 
-export default function LendersAchieve() {
+export default function Unlock() {
   const [count, setCount] = useState(Array(data.length).fill(0));
 
   useEffect(() => {
@@ -37,35 +37,57 @@ export default function LendersAchieve() {
 
   return (
     <div
-      className="container mx-auto mb-[48px] p-4 mt-20 md:mt-[106px] md:mb-12 flex items-center justify-center font-plus-jakarta"
+      className="container mx-auto p-4 md:mt-[106px] mt-20 md:mb-12 flex items-center justify-center font-plus-jakarta relative"
       style={{
-        backgroundImage: "url('/section_images/auto_lenders/lender_achive.png')",
+        backgroundImage:
+          "url('/section_images/auto_lenders/lender_achive.png')",
         backgroundSize: "cover",
-        backgroundPosition: "right",
       }}
     >
-      <div className="flex flex-col md:items-center justify-center md:flex-row gap-5 md:gap-[92px] w-full">
+      <motion.div
+        className="absolute top-0 left-0 w-[50%] h-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full blur-[150px] opacity-[24%] z-[-1]"
+        animate={{
+          x: ["-10%", "10%", "-10%", "0%"],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <motion.div
+        className="absolute top-[300px] sm:top-0 left-0 w-full h-[20px] bg-[#BE95FF] rounded-full blur-[50px] opacity-[30%] z-[-1]"
+        animate={{
+          x: ["-10%", "10%", "-10%", "0%"],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <div className="flex flex-col items-start md:items-center md:justify-center md:flex-row gap-[24px] mb-[48px] md:mb-0 md:gap-[92px] w-full">
         <div className="flex flex-col gap-[8px]">
           <CustomHeader
             className="flex flex-col"
             text={
               <>
-                <span>What Lenders</span>
-                <span>achieve with</span>
-                <span>Algebrik AI</span>
+                {" "}
+                <span>What Lenders</span> <span>achieve with</span>{" "}
+                <span>Algebrik AI</span>{" "}
               </>
             }
-          />
+          />{" "}
           <p className="text-[18px] text-black flex flex-col">
-            <span>Some numbers to tell the impact of</span>
-            <span>using Algebrik AI</span>
-          </p>
+            {" "}
+            <span>Some numbers to tell the impact of</span>{" "}
+            <span>using Algebrik AI</span>{" "}
+          </p>{" "}
         </div>
-
-        {/* Cards */}
         <div className="flex w-full h-auto md:w-1/2">
-          {/* Mobile Slider */}
-          <div className="flex gap-4 overflow-x-auto overflow-hidden md:hidden flex-nowrap p-2">
+          <div className="flex gap-4 overflow-x-auto overflow-hidden md:hidden flex-nowrap p-2 ">
             {data.map((item, index) => (
               <motion.div
                 key={index}
@@ -77,12 +99,13 @@ export default function LendersAchieve() {
                 <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
                   {count[index]}%
                 </div>
-                <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
+                <div className="text-[#2A5FAC] font-bold text-[24px]">
+                  {item.title}
+                </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Desktop Grid */}
           <div className="hidden md:flex flex-col md:flex-row gap-[24px] md:gap-[32px] w-full">
             <div className="flex flex-col gap-[24px]">
               {data.slice(0, 2).map((item, index) => (
@@ -96,7 +119,9 @@ export default function LendersAchieve() {
                   <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
                     {count[index]}%
                   </div>
-                  <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
+                  <div className="text-[#2A5FAC] font-bold text-[24px]">
+                    {item.title}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -112,7 +137,9 @@ export default function LendersAchieve() {
                   <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
                     {count[index + 2]}%
                   </div>
-                  <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
+                  <div className="text-[#2A5FAC] font-bold text-[24px]">
+                    {item.title}
+                  </div>
                 </motion.div>
               ))}
             </div>
