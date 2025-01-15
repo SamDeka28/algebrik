@@ -31,7 +31,7 @@ export default function Revolutionize() {
     <div className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex flex-col gap-12 font-plus-jakarta">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
-          className="flex flex-col"
+          className="flex flex-col px-6 md:px-0"
           text={
             <>
               <span>Revolutionize Auto Lending with </span>

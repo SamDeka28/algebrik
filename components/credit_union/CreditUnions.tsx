@@ -29,7 +29,7 @@ export default function CreditUnion() {
   };
 
   return (
-    <div className="container mx-auto py-[48px] md:py-0 md:p-8 flex font-plus-jakarta flex-col gap-[27px] md:gap-12">
+    <div className="container mx-auto py-[48px] p-4 md:py-0 md:p-8 flex font-plus-jakarta flex-col gap-[27px] md:gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
         className=""
@@ -113,9 +113,8 @@ export default function CreditUnion() {
         ))}
       </div>
 
-
       <div className="flex md:hidden  overflow-x-auto pb-4">
-        <div className="flex flex-nowrap gap-[30px]">
+        <div className="flex flex-nowrap gap-[16px] md:gap-[30px]">
           {data.cardData.map((card, index) => (
             <div
               key={index}

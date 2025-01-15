@@ -105,6 +105,16 @@ const newsArticles = [
     link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
     image: "/section_images/blog/p.jpg",
   },
+
+
+  {
+    title:
+    "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
+      author: "BusinessWire",
+      role: "Marketing",
+    image: "/section_images/blog/b.png",
+    link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
+  }
 ];
 
 export default function BlogCarousel() {
@@ -125,8 +135,8 @@ export default function BlogCarousel() {
             onClick={() => handleHeaderClick(index)}
             className={`rounded-md font-plus-jakarta font-medium ${
               currentIndex === index
-                ? "!rounded-3xl bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] w-[100px] h-[40px] md:w-[168px] md:h-[40px]  text-white"
-                : "text-black"
+                ? "!rounded-3xl text-[12px] md:text-[16px] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] p-1 w-[80px] h-[40px] md:w-[168px] md:h-[40px]  text-white"
+                : "text-black text-[12px] md:text-[16px]"
             }`}
           >
             {item.header}

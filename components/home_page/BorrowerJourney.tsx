@@ -242,7 +242,7 @@ export default function BorrowerJourney() {
       <div className="flex flex-col md:flex-row gap-[45px] justify-center items-start flex-wrap w-full">
         <div className="w-full h-[550px] md:w-[268px] md:h-[500px] items-start justify-start bg-white shadow-md rounded-[20px] overflow-y-auto">
           {/* Mobile carousel navigation */}
-          <div className="flex md:hidden font-plus-jakarta justify-between items-center px-4 py-2 rounded-t-lg">
+          <div className="flex md:hidden font-plus-jakarta justify-between items-center px-4 py-4 rounded-t-lg">
             <button
               onClick={handlePrevious}
               aria-label="Previous Category"
@@ -346,7 +346,7 @@ export default function BorrowerJourney() {
         ease: "easeInOut",
       }}
     />
-sssss
+
     <motion.div
       className="absolute top-[200px] sm:top-0 left-1/2 transform -translate-x-1/2 sm:left-6 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[350px] h-[450px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[50px] sm:blur-[100px] -z-10"
       initial={{ x: "100%" }}
@@ -376,7 +376,7 @@ sssss
 </motion.div>
 
 
-          <div className="absolute -translate-y-[280px] -translate-x-5 md:static md:translate-x-0 md:translate-y-0 flex justify-center items-center p-6 w-full h-[231px] md:w-[865px] md:h-[522.43px] rounded-[20px]">
+          <div className="absolute -translate-y-[310px] -translate-x-5 md:static md:translate-x-0 md:-translate-y-[10px] flex justify-center items-center p-6 w-full h-[231px] md:w-[865px] md:h-[522.43px] rounded-[20px]">
             {selectedSubcategory && (
               <motion.div
                 key={imageKey}

@@ -106,7 +106,7 @@ export default function LendingJourneyDesign() {
             alt="Lending With Algebrik (Mobile)"
             width={547}
             height={300}
-            className="object-cover md:hidden block"
+            className="object-cover w-[100%] md:hidden block"
           />
         </motion.div>
         
