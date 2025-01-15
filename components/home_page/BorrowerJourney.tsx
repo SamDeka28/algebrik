@@ -326,7 +326,7 @@ export default function BorrowerJourney() {
             </div>
           ))}
         </div>
-        <div className="">
+        <div className="w-[20%]">
         <motion.div
   className="container relative -inset-y-[700px] md:inset-0 w-full flex gap-[24.42px] justify-center mt-[2px]"
   initial={{ opacity: 0 }}

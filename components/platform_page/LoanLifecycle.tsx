@@ -527,7 +527,7 @@ export default function LoanLifecycle() {
             />
           </div>
 
-          <div className="block md:hidden absolute top-0 opacity-[30%] z-[-1] w-full">
+          <div className="block md:hidden absolute top-0 opacity-[30%] z-[-1] w-[80%]">
   <motion.div
     className="absolute top-0 left-0 w-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full h-[350px] sm:w-[400px] sm:h-[450px] md:w-[468.64px] md:h-[542.11px] blur-[50px] sm:blur-[100px]"
     initial={{ x: "0%" }}
