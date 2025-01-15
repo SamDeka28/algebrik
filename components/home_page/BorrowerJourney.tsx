@@ -326,57 +326,56 @@ export default function BorrowerJourney() {
             </div>
           ))}
         </div>
-        <div className="w-[20%]">
-        <motion.div
-  className="container relative -inset-y-[700px] md:inset-0 w-full flex gap-[24.42px] justify-center mt-[2px]"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 1 }}
->
-  <div className="relative opacity-[30%] z-[-1]">
-    <motion.div
-      className="absolute top-0 left-1/2 transform  sm:-left-6 md:left-[96px] bg-gradient-to-b sm:bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[100%] h-[400px] sm:w-[100%] sm:h-[500px] md:w-[468.64px] md:h-[542.11px] blur-[50px] sm:blur-[100px]"
-      initial={{ x: "-50%" }}
-      animate={{
-        x: ["-30%", "30%", "-30%", "0%"],
-      }}
-      transition={{
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
+        <div className="">
+          <motion.div
+            className="container relative -inset-y-[700px] md:inset-0 w-full flex gap-[24.42px] justify-center mt-[2px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <div className="relative opacity-[30%] z-[-1]">
+              <motion.div
+                className="absolute top-0 left-1/2 transform  sm:-left-6 md:left-[96px] bg-gradient-to-b sm:bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[100%] h-[400px] sm:w-[100%] sm:h-[500px] md:w-[468.64px] md:h-[542.11px] blur-[50px] sm:blur-[100px]"
+                initial={{ x: "-50%" }}
+                animate={{
+                  x: ["-30%", "30%", "-30%", "0%"],
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
 
-    <motion.div
-      className="absolute top-[200px] sm:top-0 left-1/2 transform -translate-x-1/2 sm:left-6 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[350px] h-[450px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[50px] sm:blur-[100px] -z-10"
-      initial={{ x: "100%" }}
-      animate={{
-        x: ["10%", "-20%", "10%", "0%"],
-      }}
-      transition={{
-        duration: 12,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
+              <motion.div
+                className="absolute top-[200px] sm:top-0 left-1/2 transform -translate-x-1/2 sm:left-6 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[350px] h-[450px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[50px] sm:blur-[100px] -z-10"
+                initial={{ x: "100%" }}
+                animate={{
+                  x: ["10%", "-20%", "10%", "0%"],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
 
-    <motion.div
-      className="absolute top-[400px] sm:top-0 left-1/2 transform -translate-x-1/2 sm:left-10 md:-left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full w-[250px] h-[350px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[50px] sm:blur-[100px] z-[-1]"
-      initial={{ x: "-50%" }}
-      animate={{
-        x: ["-30%", "40%", "-40%", "0%"],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-  </div>
-</motion.div>
+              <motion.div
+                className="absolute top-[400px] sm:top-0 left-1/2 transform -translate-x-1/2 sm:left-10 md:-left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full w-[250px] h-[350px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[50px] sm:blur-[100px] z-[-1]"
+                initial={{ x: "-50%" }}
+                animate={{
+                  x: ["-30%", "40%", "-40%", "0%"],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </div>
+          </motion.div>
 
-
-          <div className="absolute -translate-y-[310px] -translate-x-5 md:static md:translate-x-0 md:-translate-y-[10px] flex justify-center items-center p-6 w-full h-[231px] md:w-[865px] md:h-[522.43px] rounded-[20px]">
+          <div className="absolute -translate-y-[310px] -translate-x-5 md:static  md:-translate-y-[10px] flex justify-center items-center p-6 w-full h-[231px] md:w-[865px] md:h-[522.43px] rounded-[20px]">
             {selectedSubcategory && (
               <motion.div
                 key={imageKey}
