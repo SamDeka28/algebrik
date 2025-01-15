@@ -122,7 +122,7 @@ export default function Streamlined() {
         </div>
 
 
-        <div className="block md:hidden relative w-[70%] h-full">
+        <div className="block md:hidden relative w-[50%] h-full">
   <motion.div
     className="absolute top-0 left-0 w-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full h-[350px] sm:w-[400px] sm:h-[450px] md:w-[468.64px] md:h-[542.11px] blur-[125px] opacity-30"
     initial={{ x: "0%" }}
