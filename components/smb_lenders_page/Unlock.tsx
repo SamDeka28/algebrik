@@ -41,7 +41,7 @@ export default function Unlock() {
       style={{
         backgroundImage: "url('/section_images/auto_lenders/lender_achive.png')",
         backgroundSize: "cover",
-        backgroundPosition: "right",
+        // backgroundPosition: "center",
       }}
     >
       <div className="flex flex-col items-start md:items-center md:justify-center md:flex-row gap-[24px] md:gap-[92px] w-full">
