@@ -139,7 +139,7 @@ export default function BlogOne() {
       <div className="flex flex-col text-black pt-[35px]">
         <div className="flex">
           <div className="flex justify-between items-center w-full border-t border-[#D3D3D3] border-b border-[#D3D3D3] py-5">
-            <div className="flex flex-col md:flex-row gap-[16px] items-center">
+            <div className="flex  md:flex-row gap-[16px] items-center">
               <div className=" object-cover">
                               <Image
                                 src="/section_images/blog/pra.jpg"
@@ -156,7 +156,7 @@ export default function BlogOne() {
                               <div>
                                 <h3>Prateek Samantaray          </h3>
                               </div>
-                <div className="flex gap-4">
+                <div className="flex flex-col md:flex-row md:gap-4">
                   <h4>
                     Published in <span>The Startup</span>
                   </h4>

@@ -87,6 +87,14 @@ export default function Articles() {
       source: "BusinessWire",
       link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
     },
+    {
+      title:
+      "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
+        author: "Prateek Samantaray",
+        role: "Marketing",
+      source: "BusinessWire",
+      link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
+    }
   ];
 
   return (
