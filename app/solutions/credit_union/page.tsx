@@ -12,7 +12,7 @@ import LoanLifecycle from "@/components/credit_union/LoanLifecycle";
 export default function CreditUnions() {
   return (
     <>
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
         <CreditUnion />
         <ChallengesSection />

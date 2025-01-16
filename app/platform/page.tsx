@@ -8,7 +8,7 @@ import ModernLender from "@/components/platform_page/ModernLender";
 export default function Home(){
     return(
         <>
-        <main>
+        <main className="overflow-x-hidden">
             <HeroSection />
             <ModernLender />
             <LoanLifecycle />

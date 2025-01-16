@@ -25,9 +25,9 @@ type CardProps = {
   imageWidth?: number;
   imageHeight?: number;
   responsive?: {
-    container?: string; 
-    width?: string; 
-    height?: string; 
+    container?: string;
+    width?: string;
+    height?: string;
   };
   buttonLink?: string;
 };
@@ -116,43 +116,43 @@ const Card = ({
         </div>
       )} */}
 
-{imageSrc && (
-  <div
-    className={`absolute top-4 right-4 ${customStyles?.imageContainer || ""}`}
-    style={{ width: "auto", height: "auto", overflow: "hidden" }}
-  >
-    <Image
-      src={imageSrc}
-      alt={title || "Card image"}
-      className={`object-cover rounded-md transition-all duration-300 ease-in-out ${customStyles?.image || ""}`}
-      width={imageWidth}
-      height={imageHeight}
-      style={{
-        objectFit: "cover",
-        filter: "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
-        opacity: 0.5,
-      }}
-      onMouseOver={(e) => {
-        e.currentTarget.style.filter = "none";
-        e.currentTarget.style.opacity = "1";
-      }}
-      onMouseOut={(e) => {
-        e.currentTarget.style.filter =
-          "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))";
-        e.currentTarget.style.opacity = "0.5";
-      }}
-    />
-  </div>
-)}
+      {imageSrc && (
+        <div
+          className={`absolute top-4 right-4 ${customStyles?.imageContainer || ""}`}
+          style={{ width: "auto", height: "auto", overflow: "hidden" }}
+        >
+          <Image
+            src={imageSrc}
+            alt={title || "Card image"}
+            className={`object-cover rounded-md transition-all duration-300 ease-in-out ${customStyles?.image || ""}`}
+            width={imageWidth}
+            height={imageHeight}
+            style={{
+              objectFit: "cover",
+              filter: "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
+              opacity: 0.5,
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.filter = "none";
+              e.currentTarget.style.opacity = "1";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.filter =
+                "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))";
+              e.currentTarget.style.opacity = "0.5";
+            }}
+          />
+        </div>
+      )}
 
 
       {buttonText && buttonLink && (
         <Link href={buttonLink} passHref>
-        <button
-          className={`hidden md:block mt-4 w-[139px] h-[41px] font-plus-jakarta border-2 border-[#2A5FAC] text-[#2A5FAC] text-[14px] font-medium py-2 px-6 rounded-full transition hover:bg-[#2A5FAC] hover:text-white ${customStyles?.button || ""}`}
-        >
-          {buttonText}
-        </button>
+          <button
+            className={`z-10 relative md:block mt-4 w-[139px] h-[41px] font-plus-jakarta border-2 border-[#2A5FAC] text-[#2A5FAC] text-[14px] font-medium py-2 px-6 rounded-full transition hover:bg-[#2A5FAC] hover:text-white ${customStyles?.button || ""}`}
+          >
+            {buttonText}
+          </button>
         </Link>
       )}
     </div>
