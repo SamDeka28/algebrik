@@ -16,7 +16,7 @@ import Unlock from "@/components/smb_lenders_page/Unlock";
 export default function SMBLenders() {
   return (
     <>
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
        <Streamlined />
        <SmbRoadBlocks/>

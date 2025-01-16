@@ -3,6 +3,7 @@
 import { ChangeEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function BookADemo() {
   const [clicked, setClicked] = useState(false);
@@ -81,22 +82,25 @@ export default function BookADemo() {
             </div>
 
           }
-          {!loading ? 
-          !clicked ? "Book a Demo" : "We'll get back to you" :''}
+          {!loading ?
+            !clicked ? "Book a Demo" : "We'll get back to you" : ''}
 
         </motion.button>
       </div>
 
       <div className="flex flex-col items-center justify-between gap-4 w-full md:hidden">
-        <button className=" w-[326px] h-[52px] font-plus-jakarta bg-[#1C8DEA] text-white text-[16px] font-medium rounded-[31px] px-6 py-2 border border-[#2F9AFB] hover:opacity-90 transition-all">
+        <Link href="/contact"><button className=" w-[326px] h-[52px] font-plus-jakarta bg-[#1C8DEA] text-white text-[16px] font-medium rounded-[31px] px-6 py-2 border border-[#2F9AFB] hover:opacity-90 transition-all">
           Book a Demo
         </button>
-        {pathname !== "/" && pathname !== "/about" && (
+      </Link>
+      {pathname !== "/" && pathname !== "/about" && (
+        <Link href="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline" target="_blank">
           <button className="w-[326px] h-[52px] border border-[#2F9AFB] bg-[#1D457F] text-white py-3 rounded-[31px] text-[16px] font-plus-jakarta font-medium">
             Watch a Demo
           </button>
-        )}
-      </div>
+        </Link>
+      )}
     </div>
+    </div >
   );
 }
