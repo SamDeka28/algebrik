@@ -161,8 +161,6 @@
 //   );
 // }
 
-
-
 import { useState, useEffect } from "react";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Image from "next/image";
@@ -173,7 +171,9 @@ import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 export default function BorrowerJourney() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(
+    null
+  );
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [, setCurrentSubcategoryIndex] = useState(0);
   const [imageKey, setImageKey] = useState(Date.now());
@@ -190,42 +190,85 @@ export default function BorrowerJourney() {
   };
 
   const handlePrevious = () => {
-    setCurrentCategoryIndex((prev) => (prev === 0 ? borrowerData.length - 1 : prev - 1));
-    setSelectedCategory(borrowerData[currentCategoryIndex === 0 ? borrowerData.length - 1 : currentCategoryIndex - 1].category);
+    setCurrentCategoryIndex((prev) =>
+      prev === 0 ? borrowerData.length - 1 : prev - 1
+    );
+    setSelectedCategory(
+      borrowerData[
+        currentCategoryIndex === 0
+          ? borrowerData.length - 1
+          : currentCategoryIndex - 1
+      ].category
+    );
     setSelectedSubcategory(
-      borrowerData[currentCategoryIndex === 0 ? borrowerData.length - 1 : currentCategoryIndex - 1].subcategories[0].name
+      borrowerData[
+        currentCategoryIndex === 0
+          ? borrowerData.length - 1
+          : currentCategoryIndex - 1
+      ].subcategories[0].name
     );
   };
 
   const handleNext = () => {
-    setCurrentCategoryIndex((prev) => (prev === borrowerData.length - 1 ? 0 : prev + 1));
-    setSelectedCategory(borrowerData[currentCategoryIndex === borrowerData.length - 1 ? 0 : currentCategoryIndex + 1].category);
+    setCurrentCategoryIndex((prev) =>
+      prev === borrowerData.length - 1 ? 0 : prev + 1
+    );
+    setSelectedCategory(
+      borrowerData[
+        currentCategoryIndex === borrowerData.length - 1
+          ? 0
+          : currentCategoryIndex + 1
+      ].category
+    );
     setSelectedSubcategory(
-      borrowerData[currentCategoryIndex === borrowerData.length - 1 ? 0 : currentCategoryIndex + 1].subcategories[0].name
+      borrowerData[
+        currentCategoryIndex === borrowerData.length - 1
+          ? 0
+          : currentCategoryIndex + 1
+      ].subcategories[0].name
     );
   };
 
   return (
     <div className="container mx-auto p-4 md:p-8 flex flex-col gap-12 overscroll-contain">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-8 md:px-36">
-        <CustomHeader className="px-5" text="Building Better Borrower Journeys" />
+        <CustomHeader
+          className="px-5"
+          text="Building Better Borrower Journeys"
+        />
         <CustomSubtitle text="From borrower onboarding to loan closure, Algebrik combines AI-driven automation, intelligent insights, and seamless workflows to transform every stage of the loan lifecycle." />
       </div>
+
       <div className="flex flex-col md:flex-row gap-[45px] justify-center items-start flex-wrap w-full">
         <div className="w-full h-[550px] md:w-[268px] md:h-[500px] items-start justify-start bg-white shadow-md rounded-[20px] overflow-y-auto">
           {/* Mobile carousel navigation */}
-          <div className="flex md:hidden font-plus-jakarta justify-between items-center px-4 py-2 rounded-t-lg">
-            <button onClick={handlePrevious} aria-label="Previous Category" className="rounded-full w-[32px] h-[32px] bg-white border border-[#D8E7F5] shadow-2xl flex items-center justify-center">
+          <div className="flex md:hidden font-plus-jakarta justify-between items-center px-4 py-4 rounded-t-lg">
+            <button
+              onClick={handlePrevious}
+              aria-label="Previous Category"
+              className="rounded-full w-[32px] h-[32px] bg-white border border-[#D8E7F5] shadow-2xl flex items-center justify-center"
+            >
               <MdNavigateBefore className="text-2xl text-[#2A5FAC]" />
             </button>
-            <span className="text-[16px] font-bold font-plus-jakarta text-sm text-black">{selectedCategory}</span>
-            <button onClick={handleNext} aria-label="Next Category" className="rounded-full w-[32px] h-[32px] bg-white border border-[#D8E7F5] shadow-2xl flex items-center justify-center">
+            <span className="text-[16px] font-bold font-plus-jakarta text-sm text-black">
+              {selectedCategory}
+            </span>
+            <button
+              onClick={handleNext}
+              aria-label="Next Category"
+              className="rounded-full w-[32px] h-[32px] bg-white border border-[#D8E7F5] shadow-2xl flex items-center justify-center"
+            >
               <MdNavigateNext className="text-2xl text-[#2A5FAC]" />
             </button>
           </div>
 
           {borrowerData.map((item, index) => (
-            <div key={item.category} className={`${index === currentCategoryIndex ? "block" : "hidden"} md:block`}>
+            <div
+              key={item.category}
+              className={`${
+                index === currentCategoryIndex ? "block" : "hidden"
+              } md:block`}
+            >
               <button
                 onClick={() => {
                   setSelectedCategory(item.category);
@@ -235,7 +278,9 @@ export default function BorrowerJourney() {
                 }}
                 aria-pressed={currentCategoryIndex === index}
                 className={`hidden md:block py-[16px] pl-[16px] w-full font-plus-jakarta text-left text-black font-bold text-[15.38px] mb-2 uppercase ${
-                  currentCategoryIndex === index ? "bg-white-100" : "border-b border-b-[#F1F1F1]"
+                  currentCategoryIndex === index
+                    ? "bg-white-100"
+                    : "border-b border-b-[#F1F1F1]"
                 }`}
               >
                 {item.category}
@@ -259,7 +304,11 @@ export default function BorrowerJourney() {
                     >
                       <div className="flex-shrink-0">
                         <Image
-                          src={selectedSubcategory === sub.name ? sub.activeIcons : sub.icons}
+                          src={
+                            selectedSubcategory === sub.name
+                              ? sub.activeIcons
+                              : sub.icons
+                          }
                           alt={sub.name}
                           width={24}
                           height={24}
@@ -267,7 +316,9 @@ export default function BorrowerJourney() {
                         />
                       </div>
                       <span className="flex-1 text-left">{sub.name}</span>
-                      {selectedSubcategory === sub.name && <FaLongArrowAltRight className="text-blue-600" />}
+                      {selectedSubcategory === sub.name && (
+                        <FaLongArrowAltRight className="text-blue-600" />
+                      )}
                     </button>
                   ))}
                 </div>
@@ -277,14 +328,14 @@ export default function BorrowerJourney() {
         </div>
         <div className="">
           <motion.div
-            className="container relative w-[500px] md:w-full hidden md:flex gap-[24.42px] justify-center mt-[2px]"
+            className="container relative -inset-y-[700px] md:inset-0 w-full flex gap-[24.42px] justify-center mt-[2px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
             <div className="relative opacity-[30%] z-[-1]">
               <motion.div
-                className="absolute top-0 -left-6 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[468.64px] md:h-[542.11px] blur-[100px]"
+                className="absolute top-0 left-1/2 transform  sm:-left-6 md:left-[96px] bg-gradient-to-b sm:bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[100%] h-[400px] sm:w-[100%] sm:h-[500px] md:w-[468.64px] md:h-[542.11px] blur-[50px] sm:blur-[100px]"
                 initial={{ x: "-50%" }}
                 animate={{
                   x: ["-30%", "30%", "-30%", "0%"],
@@ -297,7 +348,7 @@ export default function BorrowerJourney() {
               />
 
               <motion.div
-                className="absolute top-0 md:left-[20px] -left-6 bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[618.35px] md:h-[633.38px] blur-[100px] -z-10"
+                className="absolute top-[200px] sm:top-0 left-1/2 transform -translate-x-1/2 sm:left-6 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[350px] h-[450px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[50px] sm:blur-[100px] -z-10"
                 initial={{ x: "100%" }}
                 animate={{
                   x: ["10%", "-20%", "10%", "0%"],
@@ -310,7 +361,7 @@ export default function BorrowerJourney() {
               />
 
               <motion.div
-                className="absolute top-0 left-0 md:-left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full md:w-[451.48px] md:h-[542.11px] blur-[100px] z-[-1]"
+                className="absolute top-[400px] sm:top-0 left-1/2 transform -translate-x-1/2 sm:left-10 md:-left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full w-[250px] h-[350px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[50px] sm:blur-[100px] z-[-1]"
                 initial={{ x: "-50%" }}
                 animate={{
                   x: ["-30%", "40%", "-40%", "0%"],
@@ -324,7 +375,7 @@ export default function BorrowerJourney() {
             </div>
           </motion.div>
 
-          <div className="absolute -translate-y-[280px] -translate-x-5 md:static md:translate-x-0 md:translate-y-0 flex justify-center items-center p-6 w-full h-[231px] md:w-[865px] md:h-[522.43px] rounded-[20px]">
+          <div className="absolute -translate-y-[310px] -translate-x-5 md:static  md:-translate-y-[10px] flex justify-center items-center p-6 w-full h-[231px] md:w-[865px] md:h-[522.43px] rounded-[20px]">
             {selectedSubcategory && (
               <motion.div
                 key={imageKey}
@@ -337,7 +388,8 @@ export default function BorrowerJourney() {
                   src={
                     borrowerData
                       .flatMap((item) => item.subcategories)
-                      .find((sub) => sub.name === selectedSubcategory)?.image || ""
+                      .find((sub) => sub.name === selectedSubcategory)?.image ||
+                    ""
                   }
                   alt={selectedSubcategory}
                   className="w-[363px] h-[220] md:w-[865px] md:h-[522.43px] rounded-[16px] md:rounded"
@@ -355,4 +407,3 @@ export default function BorrowerJourney() {
     </div>
   );
 }
-

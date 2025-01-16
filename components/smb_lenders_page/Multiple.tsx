@@ -47,7 +47,7 @@ export default function Multiple() {
     // </div>
 
 
-   <div className="container mx-auto md:p-4 md:mt-[156px] flex items-center justify-center font-plus-jakarta">
+   <div className="container mx-auto md:p-4 md:mt-[26px] flex items-center justify-center font-plus-jakarta">
       <div className="flex flex-col md:w-[1160px] md:h-[526px] md:flex-row rounded-none md:rounded-[42px] backdrop-blur-sm 
       shadow-2xl bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 hover:scale-105 hover:shadow-lg 
       transition-transform duration-300 ease-in-out w-full md:max-w-none">
@@ -58,7 +58,7 @@ export default function Multiple() {
             Get over disjointed systems
             </h3>
             <p className="text-gray-300 font-plus-jakarta text-[14px] md:text-[16px] font-thin leading-[24px] md:leading-[26px] mt-2 pr-2 md:pr-10">
-            SMB lenders struggle with disjointed systems, causing inefficiencies and borrower dissatisfaction.
+            Banks struggle with disjointed systems, causing inefficiencies and borrower dissatisfaction.
             </p>
           </div>
           <div className="w-full flex justify-center items-center">
@@ -85,7 +85,7 @@ export default function Multiple() {
             One Platform. Multiple Integrations!
             </h3>
             <p className="text-gray-300 font-plus-jakarta text-[14px] md:text-[16px] font-thin leading-[24px] md:leading-[26px] mt-2 pr-2 md:pr-10">
-            Algebrik unifies tools and automates workflows, simplifying lending for SMB lenders effortlessly
+            Algebrik unifies tools and automates workflows, simplifying lending for banks effortlessly
             </p>
           </div>
           <div className="w-full flex justify-center items-center">

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { motion } from "framer-motion"
 
 export default function Revolutionize() {
   const data = {
@@ -28,10 +29,10 @@ export default function Revolutionize() {
   };
 
   return (
-    <div className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex flex-col gap-12 font-plus-jakarta">
+    <div className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex flex-col gap-[16px] md:gap-12 font-plus-jakarta">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
-          className="flex flex-col"
+          className="flex flex-col px-6 md:px-0"
           text={
             <>
               <span>Revolutionize Auto Lending with </span>
@@ -45,6 +46,46 @@ export default function Revolutionize() {
         />
       </div>
 
+      <div className="block md:hidden relative w-[20%] h-full">
+  <motion.div
+    className="absolute top-50 left-0 w-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full h-[50px] sm:w-[400px] sm:h-[450px] md:w-[468.64px] md:h-[542.11px] blur-[125px] opacity-30"
+    initial={{ x: "0%" }}
+    animate={{
+      x: ["-10%", "10%", "-10%", "0%"],
+    }}
+    transition={{
+      duration: 10,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+
+  <motion.div
+    className="absolute top-0 left-0 w-full bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full h-[80px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[125px] opacity-30 -z-10"
+    initial={{ x: "0%" }}
+    animate={{
+      x: ["10%", "-10%", "10%", "0%"],
+    }}
+    transition={{
+      duration: 12,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+
+  <motion.div
+    className="absolute top-[300px] sm:top-0 left-0 w-full bg-[#BE95FF] rounded-full h-[80px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[105px] opacity-30 z-[-1]"
+    initial={{ x: "0%" }}
+    animate={{
+      x: ["-10%", "10%", "-10%", "0%"],
+    }}
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+</div>
       <div
         className="relative flex md:flex-wrap md:items-center md:justify-center gap-6 md:p-6 overflow-x-scroll md:overflow-visible scrollbar-none"
       >

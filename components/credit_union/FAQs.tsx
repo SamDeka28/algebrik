@@ -15,19 +15,32 @@ const FAQs = () => {
   const [faqData, setFaqData] = useState<FAQItem[]>([]);
 
   useEffect(() => {
-    const path = window.location.pathname;
-
-    if (path === "/solutions/auto_lenders") {
-      setFaqData(footerData.SolutionsForAutoLenders);
-    } else if (path === "/solutions/credit_union") {
-      setFaqData(footerData.SolutionsForCreditUnions);
-    } else if (path === "/solutions/smb_lenders") {
-      setFaqData(footerData.SolutionsForSmbLenders); 
-    } else {
-   
-      setFaqData([]);
+    const path = window.location.pathname.replace(/\/$/, '');
+    console.log('Normalized path:', path);
+    let data: FAQItem[] = [];
+    switch (path) {
+      case '/solutions/auto_lenders':
+        data = footerData.SolutionsForAutoLenders;
+        break;
+      case '/solutions/credit_union':
+        data = footerData.SolutionsForCreditUnions;
+        break;
+      case '/solutions/banks':
+        data = footerData.SolutionsForSmbLenders;
+        break;
+      case '/home':
+        data = footerData.HomePageFAQs;
+        break;
+      case '/platform':
+        data = footerData.PlatformPageFAQs;
+        break;
+      default:
+        data = [];
     }
+    setFaqData(data);
   }, []);
+  
+
 
   const toggleFAQ = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
