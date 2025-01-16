@@ -9,6 +9,7 @@ import { HiChevronDown } from "react-icons/hi";
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import blueLogo from "@/public/blue_logo.png";
+import { link } from "fs";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,25 +55,48 @@ export default function Navbar() {
     };
   }, []);
 
-  const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource_center" || pathname === "/resource_center/out_of_the_lending_maze" || pathname === "/resource_center/from_fragmentation_to_seamlessness" || pathname === "/resource_center/beyond_decisioning" || pathname === "/resource_center/redefining_borrower";
+  // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource_center" || pathname === "/resource_center/out_of_the_lending_maze" || pathname === "/resource_center/from_fragmentation_to_seamlessness" || pathname === "/resource_center/beyond_decisioning" || pathname === "/resource_center/redefining_borrower";
 
+  const BlueLogoPaths = [
+    "/contact", "/contact/",
+    "/resource_center", "/resource_center/",
+    "/resource_center/out_of_the_lending_maze","/resource_center/out_of_the_lending_maze/",
+    "/resource_center/from_fragmentation_to_seamlessness","/resource_center/from_fragmentation_to_seamlessness/",
+    "/resource_center/beyond_decisioning","/resource_center/beyond_decisioning/",
+    "/resource_center/redefining_borrower","/resource_center/redefining_borrower/"
+  ]
+
+  const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
+
+  console.log({isContactOrResourcePage,pathname})
+
+  function getLogo() {
+    if (isScrolled) {
+      return logo;
+    } else {
+      if (isContactOrResourcePage) {
+        return blueLogo
+      } else {
+        return logo
+      }
+    }
+  }
   return (
     <motion.nav
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${
-        isScrolled
-          ? isContactOrResourcePage
-            ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
-            : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
-          : "bg-transparent"
-      } transition-all duration-300`}
+      className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${isScrolled
+        ? isContactOrResourcePage
+          ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
+          : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
+        : "bg-transparent"
+        } transition-all duration-300`}
     >
       <div className="container mx-auto px-10 py-6 flex justify-between items-center">
         <Link href="/">
           <Image
-            src={isScrolled ? logo : isContactOrResourcePage ? blueLogo : logo}
+            src={getLogo()}
             alt="logo"
             className="w-[157px] h-[40px]"
           />
@@ -80,13 +104,12 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div
-          className={`hidden md:flex space-x-8 ${
-            isContactOrResourcePage
-              ? isScrolled
-                ? "text-white"
-                : "text-black"
-              : "text-white"
-          }`}
+          className={`hidden md:flex space-x-8 ${isContactOrResourcePage
+            ? isScrolled
+              ? "text-white"
+              : "text-black"
+            : "text-white"
+            }`}
         >
           <Link href="/platform" className="hover:text-blue-300 transition">
             Platform
@@ -95,8 +118,8 @@ export default function Navbar() {
           {/* Solutions Dropdown */}
           <div
             className="relative"
-            onMouseEnter={openDropdown} 
-            onMouseLeave={closeDropdown} 
+            onMouseEnter={openDropdown}
+            onMouseLeave={closeDropdown}
           >
             <Link
               href="/solutions"
@@ -105,9 +128,8 @@ export default function Navbar() {
             >
               Solutions
               <HiChevronDown
-                className={`ml-2 transform transition-all ${
-                  dropdownOpen ? "rotate-180" : "rotate-0"
-                }`} 
+                className={`ml-2 transform transition-all ${dropdownOpen ? "rotate-180" : "rotate-0"
+                  }`}
               />
             </Link>
             {dropdownOpen && (
@@ -117,48 +139,49 @@ export default function Navbar() {
               >
                 <Link
                   href="/solutions/credit_union"
+                  onClick={toggleMenu}
                   className="block px-4 py-2 hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
-                    <div className="flex items-center gap-2">
-      <Image
-        src="/icons/svg/bank.svg"
-        alt="Credit Unions Icon"
-        width={20}
-        height={20}
-        className="text-white"
-      />
-      Credit Unions
-    </div>
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/icons/svg/bank.svg"
+                      alt="Credit Unions Icon"
+                      width={20}
+                      height={20}
+                      className="text-white"
+                    />
+                    Credit Unions
+                  </div>
                 </Link>
                 <Link
                   href="/solutions/auto_lenders"
                   className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
-              <div className="flex items-center gap-2">
-      <Image
-        src="/icons/svg/car.svg"
-        alt="Auto Lenders Icon"
-        width={20}
-        height={20}
-        className="text-white"
-      />
-      Auto Lenders
-    </div>
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/icons/svg/car.svg"
+                      alt="Auto Lenders Icon"
+                      width={20}
+                      height={20}
+                      className="text-white"
+                    />
+                    Auto Lenders
+                  </div>
                 </Link>
                 <Link
                   href="/solutions/banks"
                   className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
-                <div className="flex items-center gap-2">
-      <Image
-        src="/icons/svg/shop.svg"
-        alt="Coming Soon Icon"
-        width={20}
-        height={20}
-        className="text-white"
-      />
-      Banks
-    </div>
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/icons/svg/shop.svg"
+                      alt="Coming Soon Icon"
+                      width={20}
+                      height={20}
+                      className="text-white"
+                    />
+                    Banks
+                  </div>
                 </Link>
               </div>
             )}
@@ -176,13 +199,12 @@ export default function Navbar() {
         </div>
         <Link
           href="/contact"
-          className={`hidden md:inline-block px-6 py-2 rounded-full text-[14px] font-bold transition ${
-            isScrolled
-              ? isContactOrResourcePage
-                ? "bg-white text-[#292929] hover:bg-gray-700"
-                : "bg-white text-[#292929] hover:bg-blue-300"
-              : "bg-blue-500 text-white hover:bg-blue-700"
-          }`}
+          className={`hidden md:inline-block px-6 py-2 rounded-full text-[14px] font-bold transition ${isScrolled
+            ? isContactOrResourcePage
+              ? "bg-white text-[#292929] hover:bg-gray-700"
+              : "bg-white text-[#292929] hover:bg-blue-300"
+            : "bg-blue-500 text-white hover:bg-blue-700"
+            }`}
         >
           Contact Us
         </Link>
@@ -190,9 +212,8 @@ export default function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={toggleMenu}
-          className={`md:hidden text-2xl focus:outline-none ${
-            isContactOrResourcePage ? "text-black" : "text-white"
-          }`}
+          className={`md:hidden text-2xl focus:outline-none ${isScrolled? "text-white" : isContactOrResourcePage ? "text-black" : "text-white"
+            }`}
         >
           {isOpen ? <HiX /> : <HiOutlineMenu />}
         </button>
@@ -207,57 +228,57 @@ export default function Navbar() {
           className={`md:hidden flex flex-col justify-between gap bg-white font-plus-jakarta backdrop-blur-3xl py-6 h-[500px]
             px-5 ${isContactOrResourcePage ? "text-black" : "text-black"}`}
         >
-         <div>
-         <Link
-            href="/platform"
-            onClick={toggleMenu}
-            className="block px-6 py-3 text-[18px] font-plus-jakarta hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
-          >
-            Platform
-          </Link>
-          <div
-         
-            onClick={toggleSolutions}
-            className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
-          >
-            Solutions
-          </div>
-          {isSolutionsOpen && (
-            <div className="pl-6">
-              <Link href="/solutions/credit_union" className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                Credit Union
-              </Link>
-              <Link href="/solutions/auto_lenders" className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                Auto Lenders
-              </Link>
-              <Link href="/solutions/banks" className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-              Banks
-              </Link>
-            </div>
-          )}
-          <Link
-            href="/resource_center"
-            onClick={toggleMenu}
-            className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
-          >
-            Resource Center
-          </Link>
-          <Link
-            href="/about"
-            onClick={toggleMenu}
-            className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
-          >
-            About Us
-          </Link>
-         </div>
           <div>
-          <Link
-            href="/contact"
-            onClick={toggleMenu}
-            className="block px-6 py-4 border border-[#B4C7E1] text-[18px] w-full text-center bg-white shadow-2xl rounded-[36px] text-black hover:bg-gray-700"
-          >
-            Contact Us
-          </Link>
+            <Link
+              href="/platform"
+              onClick={toggleMenu}
+              className="block px-6 py-3 text-[18px] font-plus-jakarta hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
+            >
+              Platform
+            </Link>
+            <div
+
+              onClick={toggleSolutions}
+              className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
+            >
+              Solutions
+            </div>
+            {isSolutionsOpen && (
+              <div className="pl-6">
+                <Link href="/solutions/credit_union" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Credit Union
+                </Link>
+                <Link href="/solutions/auto_lenders" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Auto Lenders
+                </Link>
+                <Link href="/solutions/banks" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Banks
+                </Link>
+              </div>
+            )}
+            <Link
+              href="/resource_center"
+              onClick={toggleMenu}
+              className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
+            >
+              Resource Center
+            </Link>
+            <Link
+              href="/about"
+              onClick={toggleMenu}
+              className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
+            >
+              About Us
+            </Link>
+          </div>
+          <div>
+            <Link
+              href="/contact"
+              onClick={toggleMenu}
+              className="block px-6 py-4 border border-[#B4C7E1] text-[18px] w-full text-center bg-white shadow-2xl rounded-[36px] text-black hover:bg-gray-700"
+            >
+              Contact Us
+            </Link>
           </div>
         </motion.div>
       )}

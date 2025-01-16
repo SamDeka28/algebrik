@@ -15,7 +15,7 @@ import LendersAchieve from "@/components/auto_lenders/LendersAchieve";
 export default function AutoLenders() {
   return (
     <>
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
         <AutoLender/>
         <RoadBlocks/>
