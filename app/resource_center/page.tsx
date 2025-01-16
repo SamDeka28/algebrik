@@ -9,7 +9,7 @@ import Placeholder from "@/components/resource_center_page/Placeholder";
 export default function Home() {
   return (
     <>
-      <main>
+      <main className="overflow-x-hidden">
         <Hero/>
         <Placeholder />
         <BlogCarousel />

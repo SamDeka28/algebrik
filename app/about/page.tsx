@@ -11,8 +11,8 @@ import WhatWeStriveFor from "@/components/about_page/WhatWeStriveFor";
 
 export default function Home() {
   return (
-    <>
-      <main>
+     <>
+      <main className="overflow-x-hidden">
         <HeroSection />
         <MissionSection />
         <WhatWeStriveFor />
