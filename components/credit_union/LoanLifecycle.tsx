@@ -38,7 +38,7 @@ export default function LoanLifecycle() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isScrollLocked, setIsScrollLocked] = useState(false);
   const [firstTimeScrollLocked, setFirstTimeLocked] = useState(false);
-  const timingDelay = 100; // Delay after threshold is passed to trigger the next action (in milliseconds)
+  const timingDelay = 200; // Delay after threshold is passed to trigger the next action (in milliseconds)
   const [isHalfVisible, setIsHalfVisible] = useState(false);
   const [isDesktop,setIsDesktop]=useState(false);
 
