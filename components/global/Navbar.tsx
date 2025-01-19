@@ -9,7 +9,6 @@ import { HiChevronDown } from "react-icons/hi";
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import blueLogo from "@/public/blue_logo.png";
-import { link } from "fs";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
