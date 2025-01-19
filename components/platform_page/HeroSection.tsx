@@ -11,7 +11,7 @@ export default function HeroSection() {
     w-full h-[758px] flex items-center justify-center overflow-hidden relative 
     md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] 
     bg-no-repeat bg-center bg-[bottom_left-30.5rem]
-     md:bg-cover bg-cover md:bg-[left_top_0rem] rounded-b-[32px] md:rounded-none"
+     md:bg-cover bg-cover -md:bg-[left_top_10rem] rounded-b-[32px] md:rounded-none"
 >
 
         <div className="absolute top-40 md:top-48 mx-auto flex flex-col items-center justify-center md:justify-start gap-[40px]">
@@ -25,6 +25,7 @@ export default function HeroSection() {
               className="text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-10 md:px-[293px]"
             />
           </div>
+          
           <BookADemo />
         </div>
       </div>
