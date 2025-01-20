@@ -228,8 +228,17 @@ export default function LoanLifecycle() {
             }}
           />
         </div>
-        <div
+        <motion.div
+        key={activeIndex}
           className="relative"
+          animate={{opacity:1, scale:1, translateY: 0 }}
+          initial={{opacity:0,scale:1.3, translateY: `10%` }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
+          }}
         // style={{
         //   marginLeft: activeIndex === 0 ? "0px" : "0",  
         // }}
@@ -243,7 +252,7 @@ export default function LoanLifecycle() {
             alt={cardData[activeIndex].title}
             className="rounded-[42px] md:h-[526px]"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
