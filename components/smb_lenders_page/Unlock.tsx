@@ -45,26 +45,26 @@ export default function Unlock() {
     >
       <motion.div
         className="absolute top-0 left-0 w-[50%] h-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full blur-[150px] opacity-[24%] z-[-1]"
-        animate={{
-          x: ["-10%", "10%", "-10%", "0%"],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        // animate={{
+        //   x: ["-10%", "10%", "-10%", "0%"],
+        // }}
+        // transition={{
+        //   duration: 10,
+        //   repeat: Infinity,
+        //   ease: "easeInOut",
+        // }}
       />
 
       <motion.div
         className="absolute top-[300px] sm:top-0 left-0 w-full h-[20px] bg-[#BE95FF] rounded-full blur-[50px] opacity-[30%] z-[-1]"
-        animate={{
-          x: ["-10%", "10%", "-10%", "0%"],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        // animate={{
+        //   x: ["-10%", "10%", "-10%", "0%"],
+        // }}
+        // transition={{
+        //   duration: 8,
+        //   repeat: Infinity,
+        //   ease: "easeInOut",
+        // }}
       />
       
       <div className="flex flex-col items-start md:items-center md:justify-center md:flex-row gap-[24px] md:gap-[92px] w-full">

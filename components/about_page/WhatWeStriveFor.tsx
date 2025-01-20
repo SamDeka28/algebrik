@@ -270,7 +270,7 @@ export default function WhatWeStriveFor() {
         </div>
 
         <CustomHeader
-          className=" md:hidden px-8 flex text-left flex-col text-[28px]"
+          className=" md:hidden px-[20px] flex text-left flex-col text-[28px]"
           text="What we strive for!"
         />
         <div className=" w-[100%]  overflow-x-scroll overflow-y-hidden flex font-plus-jakarta gap-[16px] md:gap-[24px]">

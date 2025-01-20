@@ -93,7 +93,7 @@ export default function BookADemo() {
           Book a Demo
         </button>
       </Link>
-      {pathname !== "/" && pathname !== "/about" && (
+      {pathname !== "/" && pathname !== "/about/" && (
         <Link href="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline" target="_blank">
           <button className="w-[326px] h-[52px] border border-[#2F9AFB] bg-[#1D457F] text-white py-3 rounded-[31px] text-[16px] font-plus-jakarta font-medium">
             Watch a Demo

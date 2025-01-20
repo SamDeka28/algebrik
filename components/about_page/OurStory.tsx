@@ -87,7 +87,7 @@ export default function OurStory() {
   const currentSlide = carouselData[currentIndex];
 
   return (
-    <div className="container mx-auto p-8 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center">
+    <div className="container mx-auto px-4 md:py-[93px] flex flex-col gap-[56px] font-plus-jakarta justify-center items-center">
       <div className="text-center flex flex-col gap-[16px] md:gap-[24px]">
         <CustomHeader text="Our Story" className="text-[28px] md:text-[40px]" />
         <CustomSubtitle
@@ -97,9 +97,9 @@ export default function OurStory() {
       </div>
       <div>
         <div className=" relative opacity-[30%] z-[-1]">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 md:left-[196px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[50%] md:w-[861.73px] md:h-[239.68px] blur-[100px] animate-fadeIn" />
-          <div className="absolute top-20 left-1/2 transform -translate-x-1/2 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[50%] md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10 animate-fadeIn delay-200" />
-          <div className="absolute top-56 left-1/2 transform -translate-x-1/2 bg-[#BE95FF] rounded-full w-[50%] md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
+          <div className="absolute top-0 left-0 transform -md:translate-x-1/2 md:left-[196px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[100%] h-[800px] md:w-[861.73px] md:h-[239.68px] blur-[100px] animate-fadeIn" />
+          <div className="absolute top-0 left-0 transform -md:translate-x-1/2 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[100%] md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10 animate-fadeIn delay-200" />
+          <div className="absolute top-0 left-0 transform -md:translate-x-1/2 bg-[#BE95FF] rounded-full w-[100%] md:w-[1226.24px] h-[1000px] md:h-[239.68px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
         </div>
 
         <motion.div
@@ -111,7 +111,7 @@ export default function OurStory() {
           exit={{ opacity: 0, x: -100 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-          <div className="md:w-[609px] flex flex-col justify-center">
+          <div className="py-4 md:py-0 px-4 md:px-0 md:w-[609px] flex flex-col justify-center">
             <h3 className="text-[20px] text-[#606060] font-bold">
               {currentSlide.title}
             </h3>
@@ -122,7 +122,7 @@ export default function OurStory() {
               {currentSlide.description2}
             </div>
           </div>
-          <div className="md:w-[368px] md:h-[315px]">
+          <div className="md:w-[368px] md:h-[315px] md:flex md:justify-center md:flex-col">
             <Image
               src={currentSlide.image}
               alt="Illustration of lending process"
