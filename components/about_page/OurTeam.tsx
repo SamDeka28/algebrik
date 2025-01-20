@@ -92,7 +92,8 @@ function CarouselSection({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-
+  const [timeRef, setTimeRef] = useState<any>();
+  const [refresh,setRefresh] = useState(Date.now())
   useEffect(() => {
     // Check for mobile view
     const handleResize = () => {
@@ -106,20 +107,22 @@ function CarouselSection({
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    if (isMobile) {
-      interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-      }, 3000);
-    }
+    // if (isMobile) {
+    interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+    }, 3000);
+    // }
+
+    setTimeRef(interval);
     return () => clearInterval(interval);
-  }, [isMobile, data.length]);
-  
+  }, [isMobile, data.length,refresh]);
+
 
   const visibleItems = isMobile
     ? data
     : data.slice(currentIndex, currentIndex + 3).length === 3
-    ? data.slice(currentIndex, currentIndex + 3)
-    : [...data.slice(currentIndex), ...data.slice(0, 3 - data.slice(currentIndex).length)];
+      ? data.slice(currentIndex, currentIndex + 3)
+      : [...data.slice(currentIndex), ...data.slice(0, 3 - data.slice(currentIndex).length)];
 
   return (
     <div className="container w-[100%] md:w-min md:mx-auto  flex 
@@ -138,14 +141,11 @@ function CarouselSection({
         >
           {visibleItems.map((item, index) => (
             <motion.div
-              key={index}
+              key={`${currentIndex}-${index}`}
               className="w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px]"
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{
-                opacity: 0,
-                x: 100,
-              }}
+              animate={{ opacity: 1, scale: 1, translateX: 0 }}
+              initial={{ opacity: 0, translateX: `${100 * (index + 1)}%` }}
+              exit={{ opacity: 0, x: 100 }}
               transition={{
                 type: "spring",
                 stiffness: 300,
@@ -178,18 +178,24 @@ function CarouselSection({
         {!isMobile && data.length > 3 && (
           <div className="hidden md:flex gap-[8px] justify-center">
             <button
-              onClick={() =>
+              onClick={() =>{
+                clearInterval(timeRef)
+                setRefresh(Date.now())
                 setCurrentIndex((prevIndex) => (prevIndex === 0 ? data.length - 3 : prevIndex - 3))
+              }
               }
               className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
             >
               <IoIosArrowBack size={20} color="white" />
             </button>
             <button
-              onClick={() =>
+              onClick={() => {
+                clearInterval(timeRef)
+                setRefresh(Date.now())
                 setCurrentIndex((prevIndex) =>
                   prevIndex + 3 >= data.length ? 0 : prevIndex + 3
                 )
+              }
               }
               className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
             >
