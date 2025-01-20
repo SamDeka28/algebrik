@@ -6,11 +6,11 @@ import BookADemo from "../BookADemo";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import heroImage1 from "@/public/section_images/home_page/hero_1.png";
-import heroImage2 from "@/public/section_images/home_page/hero_2.png";
-import heroImage3 from "@/public/section_images/home_page/hero_3.png";
-import heroImage4 from "@/public/section_images/home_page/hero_4.png";
-import heroImage5 from "@/public/section_images/home_page/hero_5.png";
+import heroImage1 from "@/public/section_images/home_page/HiHowMuch.png";
+import heroImage2 from "@/public/section_images/home_page/Purpose.png";
+import heroImage3 from "@/public/section_images/home_page/Dashboard.png";
+import heroImage4 from "@/public/section_images/home_page/Profile.png";
+import heroImage5 from "@/public/section_images/home_page/EmailAssist.png";
 
 export default function HeroSection() {
   const [isRearranged, setIsRearranged] = useState(true);
@@ -41,11 +41,11 @@ export default function HeroSection() {
   ];
 
   const images = [
-    { src: heroImage1, width: 144, height: 314, zIndex: 10 },
-    { src: heroImage2, width: 133, height: 169, zIndex: 10 },
-    { src: heroImage3, width: 452, height: 297, zIndex: 0 },
-    { src: heroImage4, width: 212, height: 100, zIndex: 10 },
-    { src: heroImage5, width: 186, height: 153, zIndex: 0 },
+    { src: heroImage1, width: 144, height: 314, zIndex: 10, borderRadius: 20  },
+    { src: heroImage2, width: 133, height: 169, zIndex: 10, borderRadius: 20  },
+    { src: heroImage3, width: 452, height: 297, zIndex: 0, borderRadius: 20 },
+    { src: heroImage4, width: 212, height: 100, zIndex: 10, borderRadius: 20  },
+    { src: heroImage5, width: 186, height: 153, zIndex: 0, borderRadius: 20  },
   ];
 
   return (
@@ -89,7 +89,7 @@ export default function HeroSection() {
           animate={isRearranged ? rearrangedPositions[index] : initialPositions[index]}
           transition={{ duration: 1, ease: "easeInOut" }}
           className="absolute"
-          style={{ zIndex: image.zIndex }}
+          style={{ zIndex: image.zIndex, borderRadius: image.borderRadius }}
         >
           <Image
             src={image.src}
@@ -99,6 +99,7 @@ export default function HeroSection() {
             quality={100}
             priority
             objectFit="cover"
+            className="rounded-[12px]"
           />
         </motion.div>
       ))}
