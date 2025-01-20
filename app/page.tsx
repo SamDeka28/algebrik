@@ -53,7 +53,10 @@ const HubSpotPopup: React.FC = () => {
                     loading="lazy"
                     src="https://no-cache.hubspot.com/cta/default/47671281/interactive-184976867374.png"
                     style={{ height: '100%', width: '100%', objectFit: 'fill' }}
-                    onError={(e) => (e.target.style.display = 'none')}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
                   />
                 </a>
               </div>
