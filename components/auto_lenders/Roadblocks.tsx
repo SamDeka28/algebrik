@@ -32,7 +32,7 @@ const RoadBlocks = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-center px-4 sm:px-6 md:px-10">
+    <div className="flex flex-col gap-8 justify-center items-center px-4 md:py-[60px] sm:px-6 md:px-10">
       <div className="flex flex-col justify-center items-center text-center gap-[24px]">
         <CustomHeader className="text-2xl md:text-3xl lg:text-4xl font-bold" text="Overcoming Roadblocks in Auto Lending" />
         <CustomSubtitle
