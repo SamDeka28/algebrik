@@ -4,15 +4,15 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#121212] pt-[40px] px-[20px] md:px-0 pb-[20px] font-plus-jakarta">
+    <footer className="bg-[#121212] pt-[40px] px-[20px] md:px-0 pb-[20px] font-plus-jakarta md:border md:border-t-1 md:border-[#262932]">
       <hr className="w-full border-none md:border-t text-[#787C91] border-gray-700" />
-      <div className="container max-w-7xl mx-auto pt-[40px] grid grid-cols-1 md:grid-cols-5 gap-[40px] md:gap-[76px]">
+      <div className="container max-w-7xl mx-auto pt-[40px] grid grid-cols-1 md:grid-cols-5 gap-[40px] md:gap-[76px] justify-items-start md:justify-items-end">
         <div>
           <Image src={logo} alt="logo" width={157} height={40.19} />
         </div>
         <div className="hidden md:block">
           <h3 className="text-white font-medium mb-[29px]">Product</h3>
-          <ul className="space-y-1 text-[#787C91] text-[14px]">
+          <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap:[7px]">
             <Link href="/platform" passHref>
               {" "}
               <li>Platform</li>{" "}
@@ -45,7 +45,7 @@ const Footer = () => {
         <div className="md:hidden flex space-x-28">
           <div className="">
             <h3 className="text-white font-medium mb-[29px]">Product</h3>
-            <ul className="space-y-1 text-[#787C91] text-[14px]">
+            <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap-[7px]">
               <Link href="/platform" passHref>
                 {" "}
                 <li>Platform</li>{" "}
@@ -77,10 +77,10 @@ const Footer = () => {
         </div>
 
         {/* Desktop */}
-        <div className="hidden md:block">
+        <div className="hidden md:block ">
           <div>
             <h3 className="text-white font-medium mb-[29px]">Company</h3>
-            <ul className="space-y-1 text-[#787C91] text-[14px]">
+            <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap-[7px]">
               <Link href="/about" passHref>
                 {" "}
                 <li>About us</li>
@@ -91,7 +91,10 @@ const Footer = () => {
               </Link>
             </ul>
           </div>
-          <div>
+         
+        </div>
+
+        <div className="hidden md:block">
             <div className="mt-[50px] space-y-1 text-[#787C91] text-[14px]">
               <Link
                 href="https://www.linkedin.com/company/algebrik-ai/"
@@ -102,13 +105,12 @@ const Footer = () => {
               {/* <p>Follow on X</p> */}
             </div>
           </div>
-        </div>
 
         {/* Mobile */}
-        <div className="md:hidden flex space-x-28">
+        <div className="md:hidden flex space-x-28 md:space-x-0">
           <div>
             <h3 className="text-white font-medium mb-[29px]">Company</h3>
-            <ul className="space-y-1 text-[#787C91] text-[14px]">
+            <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap-[7px]">
               <Link href="/about" passHref>
                 {" "}
                 <li>About us</li>

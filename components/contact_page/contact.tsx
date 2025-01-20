@@ -18,6 +18,7 @@ const validationSchema = Yup.object({
   message: Yup.string().required("Message is required"),
 });
 
+
 export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -57,10 +58,12 @@ export default function Contact() {
     },
   });
 
+
+
   return (
     <section className="container md:w-[1160px] mx-auto mt-32 md:mb-28 md:p-8 
-    flex flex-col md:flex-row font-plus-jakarta justify-center items-start gap-[43px] md:gap-[98px]">
-      <div className="flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative top-[80px] md:static md:top-0 md:w-[568px]">
+    flex flex-col md:flex-row font-plus-jakarta justify-center items-start gap-[43px] md:gap-[98px] overflow-hidden">
+      <div className="flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative top-[80px] md:block md:top-0 md:w-[568px]">
         <CustomHeader
           className="md:text-[56px] font-bold flex flex-col gap-0"
           text={
@@ -75,10 +78,10 @@ export default function Contact() {
         />
       </div>
 
-      <div className="relative w-full max-w-lg">
-        <div className="absolute opacity-[30%] -z-10">
+      <div className="relative w-full max-w-lg pb-[20px] md:pb-0 ">
+        <div className="absolute top-[100px] opacity-[30%] -z-10">
           <motion.div
-            className="absolute -top-9 left-1 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[461.73px] md:h-[439.68px] blur-[80px]"
+            className="absolute -top-9 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[550px] h-[135px] md:w-[461.73px] md:h-[439.68px] blur-[80px]"
             animate={{
               x: ["0%", "30%", "-20%", "0%"],
             }}
@@ -89,7 +92,7 @@ export default function Contact() {
             }}
           />
           <motion.div
-            className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[196.91px] md:h-[280.03px] blur-[100px]"
+            className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[550px] h-[235px] md:w-[196.91px] md:h-[280.03px] blur-[100px]"
             animate={{
               x: ["0%", "-30%", "20%", "0%"],
             }}
@@ -100,7 +103,7 @@ export default function Contact() {
             }}
           />
           <motion.div
-            className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[526.24px] md:h-[539.68px] blur-[100px]"
+            className="absolute bottom-0 top-96 md:top-56 bg-[#BE95FF] rounded-full w-[530px] h-[405px] md:w-[526.24px] md:h-[439.68px] blur-[100px]"
             animate={{
               x: ["0%", "40%", "-20%", "0%"],
             }}
@@ -111,11 +114,12 @@ export default function Contact() {
             }}
           />
         </div>
-        <div className="md:hidden bg-[#121212] h-28 relative top-[726px] "></div>
-        <hr className="md:hidden relative top-[756px] border-b border-[#262932]" />
+        {/* <div className="md:hidden bg-[#121212] pt-18 absolute -bottom-7 w-full "></div> */}
+        {/* <hr className="md:hidden relative top-[756px] border-b border-[#262932]" /> */}
         <form
           onSubmit={formik.handleSubmit}
-          className="relative mx-auto z-10 w-[362px] font-plus-jakarta drop-shadow-2xl md:w-[518px] bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
+          className="relative mx-auto z-10 w-[362px] mt-[43px] md:mt-0 font-plus-jakarta drop-shadow-2xl md:w-[518px]
+           bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
         >
           <div className="flex flex-col gap-[24px]">
             <div className="flex flex-col md:flex-row gap-[24px]">
@@ -203,7 +207,8 @@ export default function Contact() {
                 value={formik.values.message}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full h-[142px] focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                className="border border-gray-300 font-plus-jakarta rounded-[8px]
+                 p-2 w-full h-[142px] focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
               />
               {formik.touched.message && formik.errors.message && (
                 <p className="text-red-500 font-plus-jakarta text-sm">{formik.errors.message as string}</p>
@@ -215,7 +220,8 @@ export default function Contact() {
               animate={{
                 backgroundColor: clicked && !loading ? "#5cb85c" : "#1C8DEA",
               }}
-              className="bg-[#1C8DEA] flex justify-center items-center w-full font-plus-jakarta text-white md:text-[16px] font-bold rounded-[31px] p-4 hover:bg-blue-600 transition"
+              className="bg-[#1C8DEA] flex justify-center items-center w-full font-plus-jakarta
+               text-white md:text-[16px] font-bold rounded-[31px] p-4 hover:bg-blue-600 transition"
             >
               {loading &&
 
