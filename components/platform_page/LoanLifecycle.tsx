@@ -221,12 +221,12 @@ export default function LoanLifecycle() {
 
 
         <motion.div
-          className="flex justify-center md:items-center p-[24px_24px_0_24px] md:p-6 w-full md:w-[932px] h-[531.96px] rounded-[36px] md:rounded-[42px] relative bg-white shadow-lg border border-gray-200"
+          className="flex justify-center md:items-center p-[24px_24px_0_24px] md:p-6 w-full md:w-[932px] h-[531.96px] rounded-[36px] md:rounded-[42px] relative bg-[rgba(255,255,255,0.7)] shadow-lg border border-gray-200"
           key={selectedCategory}
-          initial={{ x: 100, opacity: 0 }}
+          initial={{ x: 100, opacity: 1 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -100, opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="hidden md:block absolute top-0 opacity-[30%] z-[-1]">
             <motion.div
