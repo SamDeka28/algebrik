@@ -2,7 +2,7 @@
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const carouselDataOne = [
@@ -65,7 +65,17 @@ const carouselDataTwo = [
   },
 ];
 
-function TeamMemberCard({ image, name, title, place }: { image: string; name: string; title: string; place?: string }) {
+function TeamMemberCard({
+  image,
+  name,
+  title,
+  place,
+}: {
+  image: string;
+  name: string;
+  title: string;
+  place?: string;
+}) {
   return (
     <div
       className="w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px] font-plus-jakarta 
@@ -75,7 +85,9 @@ function TeamMemberCard({ image, name, title, place }: { image: string; name: st
       <div className="bg-white/80 backdrop-blur-sm absolute bottom-6 w-[291px] md:w-[349px] py-5 rounded-[13.57px] flex flex-col items-center justify-center shadow-[0px_18.09px_32.57px_0px_rgba(10,64,108,0.1)]">
         <h3 className="text-[16px] text-black font-bold">{name}</h3>
         <p className="text-[14px] text-gray-600">{title}</p>
-        {place && place !== "N/A" && <p className="text-[14px] text-gray-600">{place}</p>}
+        {place && place !== "N/A" && (
+          <p className="text-[14px] text-gray-600">{place}</p>
+        )}
       </div>
     </div>
   );
@@ -85,51 +97,69 @@ function CarouselSection({
   data,
   headerText,
   subtitleText,
+  autoScroll,
 }: {
   data: { image: string; name: string; title: string; place: string }[];
   headerText: React.ReactNode;
   subtitleText: string;
+  autoScroll?: boolean;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-
+  const [timeRef, setTimeRef] = useState<any>();
+  const [refresh, setRefresh] = useState(Date.now())
   useEffect(() => {
-    // Check for mobile view
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
-    window.addEventListener("resize", handleResize);
 
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
+    if (data.length > 3 && !isMobile) {
+      interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+      }, 4000);
+
+      setTimeRef(interval);
+    }
+
     if (isMobile) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-      }, 3000);
-    }
-    return () => clearInterval(interval);
-  }, [isMobile, data.length]);
-  
+      }, 4000);
 
-  const visibleItems = isMobile
-    ? data
-    : data.slice(currentIndex, currentIndex + 3).length === 3
+      setTimeRef(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [isMobile, data.length, refresh]);
+
+
+  // const visibleItems = isMobile
+  //   ? data
+  //   : data.slice(currentIndex, currentIndex + 3).length === 3
+  //     ? data.slice(currentIndex, currentIndex + 3)
+  //     : [...data.slice(currentIndex), ...data.slice(0, 3 - data.slice(currentIndex).length)];
+  const visibleItems = data.slice(currentIndex, currentIndex + 3).length === 3
     ? data.slice(currentIndex, currentIndex + 3)
     : [...data.slice(currentIndex), ...data.slice(0, 3 - data.slice(currentIndex).length)];
 
   return (
-    <div className="container w-[100%] md:w-min md:mx-auto  flex 
-    flex-col-reverse md:flex-col gap-[30px] font-plus-jakarta md:justify-center items-center">
-      <div className="w-[100%] md:w-full flex overflow-x-scroll md:overflow-x-hidden flex-col gap-[26px]">
+    <div
+      className="container w-[100%] md:w-min md:mx-auto  flex 
+    flex-col-reverse md:flex-col gap-[30px] font-plus-jakarta md:justify-center items-center"
+    >
+      <div
+        className={`w-[100%] md:w-full flex overflow-x-scroll md:overflow-x-hidden flex-col gap-[26px]`}
+      >
         <motion.div
           className={`flex gap-[16px] md:gap-[32px] mx-4 md:mx-0 md:justify-center items-baseline`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, x: isMobile ? 0 : -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: isMobile ? 0 : 100 }}
           transition={{
             type: "spring",
             stiffness: 300,
@@ -138,14 +168,11 @@ function CarouselSection({
         >
           {visibleItems.map((item, index) => (
             <motion.div
-              key={index}
+              key={`${currentIndex}-${index}`}
               className="w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px]"
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{
-                opacity: 0,
-                x: 100,
-              }}
+              animate={{ translateX: 0 }}
+              initial={{ translateX: `${100 * (index + 1)}%` }}
+              exit={{ opacity: 0, x: 100 }}
               transition={{
                 type: "spring",
                 stiffness: 300,
@@ -178,18 +205,24 @@ function CarouselSection({
         {!isMobile && data.length > 3 && (
           <div className="hidden md:flex gap-[8px] justify-center">
             <button
-              onClick={() =>
+              onClick={() => {
+                clearInterval(timeRef)
+                setRefresh(Date.now())
                 setCurrentIndex((prevIndex) => (prevIndex === 0 ? data.length - 3 : prevIndex - 3))
+              }
               }
               className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
             >
               <IoIosArrowBack size={20} color="white" />
             </button>
             <button
-              onClick={() =>
+              onClick={() => {
+                clearInterval(timeRef)
+                setRefresh(Date.now())
                 setCurrentIndex((prevIndex) =>
                   prevIndex + 3 >= data.length ? 0 : prevIndex + 3
                 )
+              }
               }
               className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
             >
@@ -221,6 +254,7 @@ export default function OurTeam() {
       />
       <CarouselSection
         data={carouselDataTwo}
+        autoScroll
         headerText={
           <>
             <div className="hidden md:flex flex-col">
@@ -228,7 +262,9 @@ export default function OurTeam() {
               <span>Best in the Field</span>
             </div>
 
-            <div className="block md:hidden">Guided by the best in the Field</div>
+            <div className="block md:hidden">
+              Guided by the best in the Field
+            </div>
           </>
         }
         subtitleText="Our Advisory Board brings together industry leaders and visionaries, guiding Algebrik AI with strategic insights, deep expertise, and a shared commitment to transforming lending into a seamless and inclusive experience."
