@@ -32,12 +32,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head><script
+        type="text/javascript"
+        id="hs-script-loader"
+        async
+        defer
+        src="//js.hs-scripts.com/47671281.js"
+      ></script></head>
       <body
         className={`${plusJakartaSans.variable} ${dmSans.variable} ${bebas.variable} antialiased !bg-white`}
       >
-      <Navbar />
+        <Navbar />
         {children}
-      <Footer/>
+        <Footer />
       </body>
     </html>
   );
