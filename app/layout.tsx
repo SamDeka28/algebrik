@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, DM_Sans, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
+import Script from "next/script";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -38,7 +39,24 @@ export default function RootLayout({
         async
         defer
         src="//js.hs-scripts.com/47671281.js"
-      ></script></head>
+      ></script>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-VE1K00BENT"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-VE1K00BENT');
+        `}
+        </Script>
+      </head>
+
       <body
         className={`${plusJakartaSans.variable} ${dmSans.variable} ${bebas.variable} antialiased !bg-white`}
       >
