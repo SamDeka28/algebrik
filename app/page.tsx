@@ -74,7 +74,7 @@ export default function Home() {
 
       <main className="overflow-x-hidden">
         <HeroSection />
-        <HubSpotPopup/>
+        {/* <HubSpotPopup/> */}
         <FeaturesSection />
         <BorrowerJourney />
         <LendingJourney />
