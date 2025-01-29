@@ -53,6 +53,22 @@ export default function Articles() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
+        author: "Prateek Samantaray",
+        role: "Marketing",
+      source: "BusinessWire",
+      link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
+    },
+    {
+      title:
+        "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
+        author: "Prateek Samantaray",
+        role: "Marketing",
+      source: "BusinessWire",
+      link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
+    },
+    {
+      title:
         "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
       author: "Prateek Samantaray",
       role: "Marketing",
@@ -94,7 +110,8 @@ export default function Articles() {
         role: "Marketing",
       source: "BusinessWire",
       link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
-    }
+    },
+   
   ];
 
   return (
