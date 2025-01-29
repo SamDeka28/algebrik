@@ -29,7 +29,7 @@ const HubSpotPopup: React.FC = () => {
         <div className="px-4 fixed min-w-full md:min-w-max inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-lg shadow-lg min-w-full md:min-w-max p-6">
             <div className="flex justify-between items-center">
-              <h2 className="text-lg font-semibold text-gray-800">Talk to us at AFSA!</h2>
+              <h2 className="text-lg font-semibold text-gray-800">Talk to us At CUES</h2>
               <button
                 onClick={handleClose}
                 className="text-gray-500 hover:text-gray-800 focus:outline-none"
