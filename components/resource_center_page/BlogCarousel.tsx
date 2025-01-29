@@ -114,6 +114,22 @@ const newsArticles = [
       role: "Marketing",
     image: "/section_images/blog/b.png",
     link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
+  },
+  {
+    title:
+    "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
+      author: "BusinessWire",
+      role: "Marketing",
+    image: "/section_images/blog/b.png",
+    link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
+  },
+  {
+    title:
+    "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
+      author: "BusinessWire",
+      role: "Marketing",
+    image: "/section_images/blog/b.png",
+    link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
   }
 ];
 

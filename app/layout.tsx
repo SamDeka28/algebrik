@@ -33,7 +33,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head><script
+      <head>
+        <script
         type="text/javascript"
         id="hs-script-loader"
         async

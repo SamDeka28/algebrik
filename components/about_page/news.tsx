@@ -8,6 +8,24 @@ export default function NewsSection() {
   const newsArticles = [
     {
       title:
+      "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
+      description:
+        "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital-era Loan...",
+      source: "BusinessWire",
+      image: "/section_images/blog/b.png",
+      link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
+    },
+    {
+      title:
+      "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
+      description:
+        "OTTOMOTO®, the leading embedded lending platform revolutionizing how dealers and lenders collaborate across auto, RV, powersports, marine, and aircraft industries, is proud to announce...",
+      source: "BusinessWire",
+      image: "/section_images/blog/b.png",
+      link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
+    },
+    {
+      title:
       "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
@@ -59,7 +77,8 @@ export default function NewsSection() {
       source: "BusinessWire",
       image: "/section_images/blog/b.png",
       link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
-    }
+    },
+  
   ];
 
   return (

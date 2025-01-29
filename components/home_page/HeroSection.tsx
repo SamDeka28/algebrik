@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import mobileHeroImage from "@/public/section_images/home_page/mobile_hero.png";
+import mobileHeroImage from "@/public/section_images/home_page/loan.png";
 import BookADemo from "../BookADemo";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
