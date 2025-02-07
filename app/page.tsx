@@ -36,7 +36,7 @@ const HubSpotPopup: React.FC = () => {
               >
                 <button
                   onClick={handleClose}
-                  className="text-gray-500 hover:text-gray-800 focus:outline-none absolute top-3 right-4"
+                  className="text-[#2a5fac] hover:text-gray-800 focus:outline-none absolute top-3 right-4"
                 >
                   ✖
                 </button>
