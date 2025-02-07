@@ -90,11 +90,11 @@ export default function LoanLifecycle() {
       }
     };
     if (isDesktop) {
-      window.addEventListener("wheel", handleWheel, { passive: false });
+      // window.addEventListener("wheel", handleWheel, { passive: false });
     }
     return () => {
       if (isDesktop) {
-        window.removeEventListener("wheel", handleWheel);
+        // window.removeEventListener("wheel", handleWheel);
       }
     };
   }, [isScrollLocked, activeIndex]);
@@ -123,11 +123,11 @@ export default function LoanLifecycle() {
     };
 
     // Attach the scroll event listener
-    window.addEventListener("scroll", handleScroll);
+    // window.addEventListener("scroll", handleScroll);
 
     // Cleanup the event listener
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      // window.removeEventListener("scroll", handleScroll);
     };
   }, [isHalfVisible]);
 
@@ -169,7 +169,7 @@ export default function LoanLifecycle() {
             }}
           >
             <Image
-              src={index === activeIndex ? "/icons/check.png" : "/icons/uncheck.png"}
+              src={index === activeIndex ? "/icons/solar_check-circle.svg" : "/icons/uncheck.png"}
               width={24}
               height={24}
               alt={index === activeIndex ? "Checked" : "Unchecked"}
