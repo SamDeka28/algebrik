@@ -27,22 +27,19 @@ const HubSpotPopup: React.FC = () => {
     <>
       {isVisible && (
         <div className="px-4 fixed min-w-full md:min-w-max inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg shadow-lg min-w-full md:min-w-max p-6">
-            <div className="flex justify-between items-center">
-              <h2 className="text-lg font-semibold text-gray-800">Talk to us At CUES</h2>
-              <button
-                onClick={handleClose}
-                className="text-gray-500 hover:text-gray-800 focus:outline-none"
-              >
-                ✖
-              </button>
-            </div>
+          <div className="bg-transparent rounded-lg shadow-lg min-w-full md:min-w-max p-6">
             <div className="mt-4 min-w-full md:min-w-max">
               <div
-                className="hs-cta-embed hs-cta-simple-placeholder hs-cta-embed-184976867374"
-                style={{ maxWidth: '100%', maxHeight: '100%', width: '688px' }}
+                className="hs-cta-embed hs-cta-simple-placeholder hs-cta-embed-184976867374 relative"
+                style={{ maxHeight: '100%' }}
                 data-hubspot-wrapper-cta-id="184976867374"
               >
+                <button
+                  onClick={handleClose}
+                  className="text-[#2a5fac] hover:text-gray-800 focus:outline-none absolute top-3 right-4"
+                >
+                  ✖
+                </button>
                 <a
                   href="https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLI%2F3grIyx%2BWJXwNDhkBL3iTj8ROdmO74%2B5P%2FE74veUJJghKZ%2FZ3VK9BbBM4lkPU7To2XktOKWDjqX%2FQ0oI49nBbgbFdaRYOPVHBFDNubt927%2BgItlHQec4raHVA7FxA16LrWC3XuSWeyP3rMxgkCBm%2FMXwTt7my52FxbeVaM1XgafhtUOkEzaKhTQhSvDJEUOGB9AYKWXE1YdbZ4b9cZg%3D%3D&webInteractiveContentId=184976867374&portalId=47671281"
                   target="_blank"
@@ -74,7 +71,7 @@ export default function Home() {
 
       <main className="overflow-x-hidden">
         <HeroSection />
-        <HubSpotPopup/>
+        <HubSpotPopup />
         <FeaturesSection />
         <BorrowerJourney />
         <LendingJourney />

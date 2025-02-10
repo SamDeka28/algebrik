@@ -131,11 +131,11 @@ export default function LoanLifecycle() {
       }
     };
     if (isDesktop) {
-      window.addEventListener("wheel", handleWheel, { passive: false });
+      // window.addEventListener("wheel", handleWheel, { passive: false });
     }
     return () => {
       if (isDesktop) {
-        window.removeEventListener("wheel", handleWheel);
+        // window.removeEventListener("wheel", handleWheel);
       }
     };
   }, [isScrollLocked, currentCategoryIndex]);
@@ -164,11 +164,11 @@ export default function LoanLifecycle() {
     };
 
     // Attach the scroll event listener
-    window.addEventListener("scroll", handleScroll);
+    // window.addEventListener("scroll", handleScroll);
 
     // Cleanup the event listener
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      // window.removeEventListener("scroll", handleScroll);
     };
   }, [isHalfVisible]);
 

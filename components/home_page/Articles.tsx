@@ -53,6 +53,15 @@ export default function Articles() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
+      // image: "/section_images/blog/b.png",
+    },
+    {
+      title:
         "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
         author: "Prateek Samantaray",
         role: "Marketing",
