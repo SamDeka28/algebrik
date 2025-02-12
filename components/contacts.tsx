@@ -2,11 +2,9 @@
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "@/public/logo.png";
 
 const validationSchema = Yup.object({
   firstname: Yup.string().required("Name is required"),
@@ -17,98 +15,56 @@ const validationSchema = Yup.object({
     .email("Invalid email address")
     .required("Email is required"),
   company: Yup.string().required("Company name is required"),
-  jobtitle: Yup.string().required("Job title is required"),
   message: Yup.string().required("Message is required"),
 });
 
-export default function Contact() {
-  const [loading, setLoading] = useState(false);
-  const [clicked, setClicked] = useState(false);
 
-  const formik = useFormik({
-    initialValues: {
-      firstname: "",
-      phone: "",
-      email: "",
-      company: "",
-      jobtitle: "",
-      // message: "",
-    },
-    validationSchema,
-    onSubmit: async (values) => {
-      setClicked(true);
-      setLoading(true);
-
-      try {
-        const res = await fetch(
-          "https://api.hsforms.com/submissions/v3/integration/submit/47671281/1d0e9c2e-5946-4f26-8de6-74a50198cc03",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              fields: Object.keys(values).map((key) => ({
-                name: key,
-                value: values[key],
-              })),
-            }),
+export default function ContactUs() {
+      const [loading, setLoading] = useState(false);
+      const [clicked, setClicked] = useState(false);
+      const formik = useFormik({
+        initialValues: {
+          firstname: "",
+          phone: "",
+          email: "",
+          company: "",
+          message: "",
+        },
+        validationSchema,
+        onSubmit: async (values: { [key: string]: string }) => {
+          console.log({ values });
+          setClicked(true);
+          setLoading(true);
+          const res = await fetch(
+            "https://api.hsforms.com/submissions/v3/integration/submit/47671281/42165c6a-f1e2-4626-9391-d384e354e6d1",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                fields: [
+                  ...Object.keys(values).map((key: string) => ({
+                    name: key,
+                    value: values[key],
+                  })),
+                ],
+              }),
+            }
+          );
+          setLoading(false);
+          if (res.ok) {
+            formik.resetForm();
+          } else {
+            alert("Failed to submit form.");
           }
-        );
+        },
+      });
 
-        if (res.ok) {
-          formik.resetForm();
-          alert("Form submitted successfully!");
-        } else {
-          alert("Failed to submit form. Please try again.");
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
-        alert("An error occurred. Please try again.");
-      } finally {
-        setLoading(false);
-      }
-    },
-  });
-
-  return (
-    <section className="container flex flex-col md:flex-row font-plus-jakarta items-center gap-[43px] md:gap-[98px] overflow-hidden">
-      <div className="bg-[url('/section_images/gac/gac.png')] md:h-[950px] object-cover bg-no-repeat bg-cover flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative md:block md:top-0 md:w-[723px]">
-        <div className="mx-auto md:px-[99px] pt-[50px] md:pt-[72px] pb-[73px] text-white flex flex-col gap-[40px] font-plus-jakarta">
-          <div className="">
-          <Link href="/" className="flex justify-center items-center md:block">
-          <Image
-            src={logo}
-            alt="logo"
-            className="w-[201px] h-[54.51px]"
-          />
-        </Link>
-          </div>
-          <div className="flex flex-col gap-[20px] ">
-            <h1 className="md:text-[56px] font-semibold">An Evening with Credit Union Leaders at GAC!</h1>
-            <p className="md:text-[18px] leading-[28px]">
-              A private dinner for Credit Union executives to unwind, connect,
-              and discuss the future of lending—over great food and even better
-              company
-            </p>
-          </div>
-          <div className="flex flex-col gap-[30px]">
-            <p className="md:text-[18px] leading-[28px]">
-              Join us for an invite-only dinner at GAC on March 2nd, where we’ll
-              gather over good food and great conversations. No sales
-              pitches—just an evening of insights and networking with your
-              peers.
-            </p>
-            <p className="md:text-[18px] leading-[28px]">What to Expect:</p>
-            <p className="md:text-[18px] leading-[28px]">
-              A Relaxed, invite-only setting with top CU leaders Meaningful
-              discussions on lending trends & technology A fun dining experience!
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative w-full max-w-lg pb-[20px] md:pb-0">
+    return(
+        <section className="container flex">
+           <div className="bg-[url('/section_images/gac/gac.png')] md:w-[723px] md:h-[861px] object-cover bg-no-repeat bg-cover">ss</div> 
+           <div className="relative w-full max-w-lg pb-[20px] md:pb-0 ">
         <div className="absolute top-[100px] opacity-[30%] -z-10">
           <motion.div
             className="absolute -top-9 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[550px] h-[135px] md:w-[461.73px] md:h-[439.68px] blur-[80px]"
@@ -144,10 +100,12 @@ export default function Contact() {
             }}
           />
         </div>
-
+        {/* <div className="md:hidden bg-[#121212] pt-18 absolute -bottom-7 w-full "></div> */}
+        {/* <hr className="md:hidden relative top-[756px] border-b border-[#262932]" /> */}
         <form
           onSubmit={formik.handleSubmit}
-          className="relative mx-auto z-10 w-[362px] mt-[43px] md:mt-0 font-plus-jakarta drop-shadow-2xl md:w-[518px] bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
+          className="relative mx-auto z-10 w-[362px] mt-[43px] md:mt-0 font-plus-jakarta drop-shadow-2xl md:w-[518px]
+           bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
         >
           <div className="flex flex-col gap-[24px]">
             <div className="flex flex-col md:flex-row gap-[24px]">
@@ -166,7 +124,7 @@ export default function Contact() {
                 />
                 {formik.touched.firstname && formik.errors.firstname && (
                   <p className="text-red-500 font-plus-jakarta text-sm">
-                    {formik.errors.firstname}
+                    {formik.errors.firstname as string}
                   </p>
                 )}
               </div>
@@ -185,12 +143,11 @@ export default function Contact() {
                 />
                 {formik.touched.phone && formik.errors.phone && (
                   <p className="text-red-500 font-plus-jakarta text-sm">
-                    {formik.errors.phone}
+                    {formik.errors.phone as string}
                   </p>
                 )}
               </div>
             </div>
-
             <div className="flex flex-col md:flex-row gap-[24px]">
               <div className="flex flex-col gap-[12px] w-full">
                 <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
@@ -207,7 +164,7 @@ export default function Contact() {
                 />
                 {formik.touched.email && formik.errors.email && (
                   <p className="text-red-500 font-plus-jakarta text-sm">
-                    {formik.errors.email}
+                    {formik.errors.email as string}
                   </p>
                 )}
               </div>
@@ -226,33 +183,13 @@ export default function Contact() {
                 />
                 {formik.touched.company && formik.errors.company && (
                   <p className="text-red-500 font-plus-jakarta text-sm">
-                    {formik.errors.company}
+                    {formik.errors.company as string}
                   </p>
                 )}
               </div>
             </div>
 
             <div className="flex flex-col gap-[12px]">
-              <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
-                Job Title
-              </label>
-              <input
-                type="text"
-                name="jobtitle"
-                placeholder="Please type your job title here..."
-                value={formik.values.jobtitle}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
-              />
-              {formik.touched.jobtitle && formik.errors.jobtitle && (
-                <p className="text-red-500 font-plus-jakarta text-sm">
-                  {formik.errors.jobtitle}
-                </p>
-              )}
-            </div>
-
-            {/* <div className="flex flex-col gap-[12px]">
               <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
                 Message
               </label>
@@ -262,26 +199,25 @@ export default function Contact() {
                 value={formik.values.message}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full h-[142px] focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                className="border border-gray-300 font-plus-jakarta rounded-[8px]
+                 p-2 w-full h-[142px] focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
               />
               {formik.touched.message && formik.errors.message && (
                 <p className="text-red-500 font-plus-jakarta text-sm">
-                  {formik.errors.message}
+                  {formik.errors.message as string}
                 </p>
               )}
-            </div> */}
+            </div>
 
-            
             <motion.button
               type="submit"
               animate={{
                 backgroundColor: clicked && !loading ? "#5cb85c" : "#1C8DEA",
               }}
-              className="bg-[#1C8DEA] flex justify-center !text-center items-center w-full font-plus-jakarta
+              className="bg-[#1C8DEA] flex justify-center items-center w-full font-plus-jakarta
                text-white md:text-[16px] font-bold rounded-[31px] p-4 hover:bg-blue-600 transition"
-              disabled={loading}
             >
-              {loading ? (
+              {loading && (
                 <div role="status">
                   <svg
                     aria-hidden="true"
@@ -300,15 +236,16 @@ export default function Contact() {
                     />
                   </svg>
                 </div>
-              ) : clicked ? (
-                "We'll get back to you"
-              ) : (
-                "Count Me In!"
               )}
+              {!loading
+                ? !clicked
+                  ? "Get in touch"
+                  : "We'll get back to you"
+                : ""}
             </motion.button>
           </div>
         </form>
       </div>
-    </section>
-  );
+        </section>
+    )
 }
