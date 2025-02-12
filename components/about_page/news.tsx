@@ -8,6 +8,14 @@ export default function NewsSection() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
+      source: "BusinessWire",
+      description:"NEW YORK--(BUSINESS WIRE)--Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native...",
+            link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
       "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital-era Loan...",
