@@ -7,6 +7,15 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/logo.png";
+import { useRouter } from "next/navigation";
+
+interface FormValues {
+  firstname: string;
+  phone: string;
+  email: string;
+  company: string;
+  jobtitle: string;
+}
 
 const validationSchema = Yup.object({
   firstname: Yup.string().required("Name is required"),
@@ -17,25 +26,24 @@ const validationSchema = Yup.object({
     .email("Invalid email address")
     .required("Email is required"),
   company: Yup.string().required("Company name is required"),
-  jobtitle: Yup.string().required("Job title is required"),
-  message: Yup.string().required("Message is required"),
+  jobtitle: Yup.string().required("Job title is required")
 });
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const router=useRouter();
 
-  const formik = useFormik({
+  const formik = useFormik<FormValues>({
     initialValues: {
       firstname: "",
       phone: "",
       email: "",
       company: "",
-      jobtitle: "",
-      // message: "",
+      jobtitle: ""
     },
     validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values :FormValues | any) => {
       setClicked(true);
       setLoading(true);
 
@@ -48,7 +56,7 @@ export default function Contact() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              fields: Object.keys(values).map((key) => ({
+              fields: Object.keys(values).map((key:string) => ({
                 name: key,
                 value: values[key],
               })),
@@ -58,7 +66,7 @@ export default function Contact() {
 
         if (res.ok) {
           formik.resetForm();
-          alert("Form submitted successfully!");
+          router.push("/thank_you")
         } else {
           alert("Failed to submit form. Please try again.");
         }
@@ -72,17 +80,17 @@ export default function Contact() {
   });
 
   return (
-    <section className="container flex flex-col md:flex-row font-plus-jakarta items-center gap-[43px] md:gap-[98px] overflow-hidden">
+    <section className="flex flex-col md:flex-row font-plus-jakarta items-center gap-[43px] md:gap-[98px] overflow-hidden">
       <div className="bg-[url('/section_images/gac/gac.png')] md:h-[950px] object-cover bg-no-repeat bg-cover flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative md:block md:top-0 md:w-[723px]">
         <div className="mx-auto md:px-[99px] pt-[50px] md:pt-[72px] pb-[73px] text-white flex flex-col gap-[40px] font-plus-jakarta">
           <div className="">
-          <Link href="/" className="flex justify-center items-center md:block">
-          <Image
-            src={logo}
-            alt="logo"
-            className="w-[201px] h-[54.51px]"
-          />
-        </Link>
+            <Link href="/" className="flex justify-center items-center md:block">
+              <Image
+                src={logo}
+                alt="logo"
+                className="w-[201px] h-[54.51px]"
+              />
+            </Link>
           </div>
           <div className="flex flex-col gap-[20px] ">
             <h1 className="md:text-[56px] font-semibold">An Evening with Credit Union Leaders at GAC!</h1>
@@ -101,8 +109,8 @@ export default function Contact() {
             </p>
             <p className="md:text-[18px] leading-[28px]">What to Expect:</p>
             <p className="md:text-[18px] leading-[28px]">
-              A Relaxed, invite-only setting with top CU leaders Meaningful
-              discussions on lending trends & technology A fun dining experience!
+              A Relaxed, invite-only setting with top CU leadersMeaningful
+              discussions on lending trends & technologyA fun dining experience!
             </p>
           </div>
         </div>
@@ -252,26 +260,6 @@ export default function Contact() {
               )}
             </div>
 
-            {/* <div className="flex flex-col gap-[12px]">
-              <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
-                Message
-              </label>
-              <textarea
-                name="message"
-                placeholder="Please type your message here..."
-                value={formik.values.message}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full h-[142px] focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
-              />
-              {formik.touched.message && formik.errors.message && (
-                <p className="text-red-500 font-plus-jakarta text-sm">
-                  {formik.errors.message}
-                </p>
-              )}
-            </div> */}
-
-            
             <motion.button
               type="submit"
               animate={{
