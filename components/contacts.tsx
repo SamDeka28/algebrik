@@ -19,51 +19,50 @@ const validationSchema = Yup.object({
 
 
 export default function ContactUs() {
-      const [loading, setLoading] = useState(false);
-      const [clicked, setClicked] = useState(false);
-      const formik = useFormik({
-        initialValues: {
-          firstname: "",
-          phone: "",
-          email: "",
-          company: "",
-          message: "",
-        },
-        validationSchema,
-        onSubmit: async (values: { [key: string]: string }) => {
-          console.log({ values });
-          setClicked(true);
-          setLoading(true);
-          const res = await fetch(
-            "https://api.hsforms.com/submissions/v3/integration/submit/47671281/42165c6a-f1e2-4626-9391-d384e354e6d1",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                fields: [
-                  ...Object.keys(values).map((key: string) => ({
-                    name: key,
-                    value: values[key],
-                  })),
-                ],
-              }),
-            }
-          );
-          setLoading(false);
-          if (res.ok) {
-            formik.resetForm();
-          } else {
-            alert("Failed to submit form.");
-          }
-        },
-      });
+  const [loading, setLoading] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const formik = useFormik({
+    initialValues: {
+      firstname: "",
+      phone: "",
+      email: "",
+      company: "",
+      message: "",
+    },
+    validationSchema,
+    onSubmit: async (values: { [key: string]: string }) => {
+      console.log({ values });
+      setClicked(true);
+      setLoading(true);
+      const res = await fetch(
+        "https://api.hsforms.com/submissions/v3/integration/submit/47671281/42165c6a-f1e2-4626-9391-d384e354e6d1",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fields: [
+              ...Object.keys(values).map((key: string) => ({
+                name: key,
+                value: values[key],
+              })),
+            ],
+          }),
+        }
+      );
+      setLoading(false);
+      if (res.ok) {
+        formik.resetForm();
+      } else {
+        alert("Failed to submit form.");
+      }
+    },
+  });
 
-    return(
-        <section className="container flex">
-           <div className="bg-[url('/section_images/gac/gac.png')] md:w-[723px] md:h-[861px] object-cover bg-no-repeat bg-cover">ss</div> 
-           <div className="relative w-full max-w-lg pb-[20px] md:pb-0 ">
+  return <section className="container flex">
+      <div className="bg-[url('/section_images/gac/gac.png')] md:w-[723px] md:h-[861px] object-cover bg-no-repeat bg-cover">ss</div>
+      <div className="relative w-full max-w-lg pb-[20px] md:pb-0 ">
         <div className="absolute top-[100px] opacity-[30%] -z-10">
           <motion.div
             className="absolute -top-9 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[550px] h-[135px] md:w-[461.73px] md:h-[439.68px] blur-[80px]"
@@ -245,6 +244,5 @@ export default function ContactUs() {
           </div>
         </form>
       </div>
-        </section>
-    )
+    </section>
 }
