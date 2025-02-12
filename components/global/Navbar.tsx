@@ -18,10 +18,6 @@ export default function Navbar() {
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
-  if(pathname === "/contact/"){
-    return <></>;
-  }
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -84,6 +80,9 @@ export default function Navbar() {
         return logo
       }
     }
+  }
+  if(pathname === "/contact/"){
+    return null;
   }
   return (
     <motion.nav
