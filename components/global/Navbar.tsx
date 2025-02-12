@@ -18,6 +18,10 @@ export default function Navbar() {
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
+  if(pathname === "/contact/"){
+    return <></>;
+  }
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -57,12 +61,13 @@ export default function Navbar() {
   // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource_center" || pathname === "/resource_center/out_of_the_lending_maze" || pathname === "/resource_center/from_fragmentation_to_seamlessness" || pathname === "/resource_center/beyond_decisioning" || pathname === "/resource_center/redefining_borrower";
 
   const BlueLogoPaths = [
-    "/contact", "/contact/",
+    // "/contact", "/contact/",
     "/resource_center", "/resource_center/",
     "/resource_center/out_of_the_lending_maze","/resource_center/out_of_the_lending_maze/",
     "/resource_center/from_fragmentation_to_seamlessness","/resource_center/from_fragmentation_to_seamlessness/",
     "/resource_center/beyond_decisioning","/resource_center/beyond_decisioning/",
-    "/resource_center/redefining_borrower","/resource_center/redefining_borrower/"
+    "/resource_center/redefining_borrower","/resource_center/redefining_borrower/",
+    "/thank_you/"
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
