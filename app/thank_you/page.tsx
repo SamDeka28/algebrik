@@ -71,7 +71,7 @@ const Card = ({
 
 export default function ThankYou() {
   return (
-    <section className="container flex flex-col justify-center items-center px-[16px] pt-40 md:pt-64 md:gap-[42px]">
+    <section className="flex flex-col justify-center items-center px-[16px] pt-40 md:pt-64 md:gap-[42px]">
       <div className="flex flex-col justify-center text-center items-center gap-[30px]">
         <CustomHeader
           className="md:text-[72px] !font-inter !font-medium"
@@ -191,7 +191,7 @@ export default function ThankYou() {
               title="Join the Conversation on LinkedIn"
               description="Be in the know how about the event and other Lending Trends!"
               buttonText="Follow Us on LinkedIn"
-              buttonLink="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
+              buttonLink="https://www.linkedin.com/company/algebrik-ai/"
               imageUrl="/background_images/algebrikFirsthand.png"
             />
           </div>

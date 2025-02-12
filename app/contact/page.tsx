@@ -1,3 +1,4 @@
+"use client";
 import Contact from "@/components/contact_page/contact";
 import ContactUs from "@/components/contacts";
 
