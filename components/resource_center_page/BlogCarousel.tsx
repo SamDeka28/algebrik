@@ -43,12 +43,12 @@ const carouselData: CarouselItem[] = [
   {
     header: "News Center",
     cardTitle: "NEWS CENTER",
-    title: "Algebrik AI: $4 Million (Series A) Raised To Advance Cloud-Native Loan Origination Platform",
+    title: "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
     description:
       "Explore the latest updates and news stories about Algebrik AI and its impact on the global financial technology industry.",
     source: "BusinessWire",
     image: "/section_images/blog/bw.png",
-    url: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
+    url: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
     target: "_blank",
   },
   {
@@ -65,6 +65,14 @@ const carouselData: CarouselItem[] = [
 ];
 
 const newsArticles = [
+  {
+    title:
+      "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
+    author: "BusinessWire",
+    role: "Marketing",
+    link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
+    image: "/section_images/blog/b.png",
+  },
   {
     title:
       "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
@@ -174,8 +182,8 @@ export default function BlogCarousel() {
               src={currentSlide.image}
               alt={`Image for ${currentSlide.header}`}
               width={551}
-              height={380}
-              className="md:w-[551px] md:h-[380px] rounded-lg"
+              height={380} 
+              className="md:w-[551px] md:h-[380px] rounded-lg object-cover"
             />
           </div>
           <div className="md:w-[507px] pt-2 flex flex-col gap-[16px] justify-center">

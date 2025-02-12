@@ -27,29 +27,26 @@ const HubSpotPopup: React.FC = () => {
     <>
       {isVisible && (
         <div className="px-4 fixed min-w-full md:min-w-max inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg shadow-lg min-w-full md:min-w-max p-6">
-            <div className="flex justify-between items-center">
-              <h2 className="text-lg font-semibold text-gray-800">Talk to us at AFSA!</h2>
-              <button
-                onClick={handleClose}
-                className="text-gray-500 hover:text-gray-800 focus:outline-none"
-              >
-                ✖
-              </button>
-            </div>
+          <div className="bg-transparent rounded-lg shadow-lg min-w-full md:min-w-max p-6">
             <div className="mt-4 min-w-full md:min-w-max">
               <div
-                className="hs-cta-embed hs-cta-simple-placeholder hs-cta-embed-184976867374"
-                style={{ maxWidth: '100%' }}
+                className="hs-cta-embed hs-cta-simple-placeholder hs-cta-embed-184976867374 relative"
+                style={{ maxHeight: '100%' }}
                 data-hubspot-wrapper-cta-id="184976867374"
               >
+                <button
+                  onClick={handleClose}
+                  className="text-[#2a5fac] hover:text-gray-800 focus:outline-none absolute top-3 right-4"
+                >
+                  ✖
+                </button>
                 <a
-                  href="https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKbB%2B%2BIfZAau5UkZvqH6zKoH6nSpnL3HBSqW%2BHN7L2z6KOyf6SbmE8h1dUCMR1POX8BVi%2BmeZIhB1seH3sfDMMuWlS1PBTDUOzT%2F5HQMowdkn3RD4npwpnweYS3w9G1ocmA57Erp5W5IdQTCI1%2B5hUkrsVhI0B6iy1q%2FzD4qx%2FgUaS4csBJjcO23XYkNWj0QVmIG0OFl8YRw8jCIilp8AS72rphy0HoBVp%2FSlA%3D&webInteractiveContentId=184976867374&portalId=47671281"
+                  href="https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLI%2F3grIyx%2BWJXwNDhkBL3iTj8ROdmO74%2B5P%2FE74veUJJghKZ%2FZ3VK9BbBM4lkPU7To2XktOKWDjqX%2FQ0oI49nBbgbFdaRYOPVHBFDNubt927%2BgItlHQec4raHVA7FxA16LrWC3XuSWeyP3rMxgkCBm%2FMXwTt7my52FxbeVaM1XgafhtUOkEzaKhTQhSvDJEUOGB9AYKWXE1YdbZ4b9cZg%3D%3D&webInteractiveContentId=184976867374&portalId=47671281"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
-                    alt="JOIN US AT AFSA VEHICLE FINANCE CONFERENCE! Explore smarter, faster lending with Algebrik AI at Booth #19."
+                    alt="CATCH UP WITH US AT THE 2025 CUES FUTURE SUMMIT (FEB 4-6) Experience the future of loan origination with Algebrik AI—built for speed, intelligence, and seamless borrower experiences. Bonus: Get an exclusive hands-on demo of the world’s first cloud-native, AI-powered LOS, designed to simplify workflows and drive results for modern lenders!"
                     loading="lazy"
                     src="https://no-cache.hubspot.com/cta/default/47671281/interactive-184976867374.png"
                     style={{ height: '100%', width: '100%', objectFit: 'fill' }}
@@ -74,7 +71,7 @@ export default function Home() {
 
       <main className="overflow-x-hidden">
         <HeroSection />
-        {/* <HubSpotPopup/> */}
+        <HubSpotPopup />
         <FeaturesSection />
         <BorrowerJourney />
         <LendingJourney />
