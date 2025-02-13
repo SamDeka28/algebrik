@@ -1,4 +1,6 @@
+"use client";
 import Contact from "@/components/contact_page/contact";
+import ContactUs from "@/components/contacts";
 
 
 export default function Home(){
@@ -6,6 +8,7 @@ export default function Home(){
      <>
      <main className="overflow-x-hidden">
         <Contact />
+        {/* <ContactUs /> */}
      </main>
      </>
     )

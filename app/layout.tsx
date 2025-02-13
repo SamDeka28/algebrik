@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, DM_Sans, Bebas_Neue } from "next/font/google";
+import { Plus_Jakarta_Sans, DM_Sans, Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
@@ -20,6 +20,11 @@ const bebas = Bebas_Neue({
   subsets: ["latin"],
   weight: "400",
 });
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+})
 
 export const metadata: Metadata = {
   title: "Algebrik",
@@ -56,10 +61,17 @@ export default function RootLayout({
           gtag('config', 'G-VE1K00BENT');
         `}
         </Script>
+        <Script
+          id="storylane-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){"use strict";function e(t: Document){var r=t.head;if(!r)return;var i=t.querySelector('script[src="https://js.storylane.io/js/v2/storylane.js"]'),n=t.querySelector('script[src="https://js.storylane.io/js/v1/storylane.js"]');if(i||n)return;var s=t.createElement("script");s.type="text/javascript",s.async=!0,s.src="https://js.storylane.io/js/v2/storylane.js",r.appendChild(s)}e(window.document)})()`
+          }}
+        />
       </head>
 
       <body
-        className={`${plusJakartaSans.variable} ${dmSans.variable} ${bebas.variable} antialiased !bg-white`}
+        className={`${plusJakartaSans.variable} ${dmSans.variable} ${bebas.variable} ${inter.variable} antialiased !bg-white`}
       >
         <Navbar />
         {children}
