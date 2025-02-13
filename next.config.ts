@@ -6,6 +6,12 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.devtool = "eval-source-map"; // ✅ Shows actual source files in errors
+    }
+    return config;
+  },
   /* config options here */
   images: {
     unoptimized: true,
