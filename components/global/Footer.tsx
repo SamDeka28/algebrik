@@ -139,7 +139,7 @@ const Footer = () => {
           <p>© 2024 Algebrik. All rights reserved.</p>
         </div>
         <div className="flex space-x-4 mt-2 md:mt-0">
-          <Link href="#" className="text-[#3E404C] text-[14px]">
+          <Link href="/privacy-policy" className="text-[#3E404C] text-[14px]">
             Privacy policy
           </Link>
           <Link href="#" className="text-[#3E404C] text-[14px]">

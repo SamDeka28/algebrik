@@ -8,6 +8,34 @@ export default function NewsSection() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
+      author: "Team Algebrik",
+      source: "Team Algebrik",
+      role: "Marketing",
+      description:"Algebrik AI Inc., today announced a strategic partnership with Conductiv, a leader in providing digital stipulations via permissioned data and AI. ",
+      link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+      image: "/section_images/blog/teamalgebrik.png",
+    },
+    {
+      title:
+        "Algebrik AI Partners with Carleton to Elevate Lending Accuracy and Compliance",
+        source: "BusinessWire",
+      role: "Marketing",
+      description:"NEW YORK--(BUSINESS WIRE)--Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced a strategic partnership with Carleton, Inc.",
+      link: "https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
+        "Algebrik AI and Corelation Announce Integration Agreement to Enhance Personalization, Drive Financial Inclusion & Improve Member Experience ",
+      source: "BusinessWire",
+      role: "Marketing",
+      description:"Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced an integration agreement with Corelation",
+      link: "https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
         "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
       source: "BusinessWire",
       description:"NEW YORK--(BUSINESS WIRE)--Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native...",
