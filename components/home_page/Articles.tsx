@@ -53,6 +53,33 @@ export default function Articles() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
+      author: "Team Algebrik",
+      source: "Team Algebrik",
+      role: "Marketing",
+      link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+      image: "/section_images/blog/teamalgebrik.png",
+    },
+    {
+      title:
+        "Algebrik AI Partners with Carleton to Elevate Lending Accuracy and Compliance",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
+        "Algebrik AI and Corelation Announce Integration Agreement to Enhance Personalization, Drive Financial Inclusion & Improve Member Experience ",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
         "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
       author: "BusinessWire",
       source: "BusinessWire",

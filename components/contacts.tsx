@@ -63,23 +63,7 @@ export default function Contact() {
   return (
     <section className="container md:w-[1160px] mx-auto mt-32 md:mb-28 md:p-8 
     flex flex-col md:flex-row font-plus-jakarta justify-center items-start gap-[43px] md:gap-[98px] overflow-hidden">
-      <div className="flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative top-[80px] md:block md:top-0 md:w-[568px]">
-        <CustomHeader
-          className="md:text-[56px] font-bold flex flex-col gap-0"
-          text={
-            <>
-              <span>We’d love to show </span>
-              <span>you around!</span>
-            </>
-          }
-        />
-        <CustomSubtitle
-          text="Whether you’re looking to streamline your loan processes, enhance borrower experiences, or explore our AI-powered, cloud-native solutions, our team is here to help. Connect with us to start your journey toward a smarter, more efficient lending ecosystem."
-        />
-      </div>
-
-      <div className="relative w-full max-w-lg pb-[20px] md:pb-0 ">
-        <div className="absolute top-[100px] opacity-[30%] -z-10">
+       <div className="absolute top-[100px] opacity-[30%] -z-10">
           <motion.div
             className="absolute -top-9 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[550px] h-[135px] md:w-[461.73px] md:h-[439.68px] blur-[80px]"
             animate={{
@@ -114,11 +98,27 @@ export default function Contact() {
             }}
           />
         </div>
+      <div className="flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative top-[80px] md:block md:top-0 md:w-[568px]">
+        <CustomHeader
+          className="md:text-[56px] font-bold flex flex-col gap-0"
+          text={
+            <>
+              <span>We’d love to show </span>
+              <span>you around!</span>
+            </>
+          }
+        />
+        <CustomSubtitle
+          text="Whether you’re looking to streamline your loan processes, enhance borrower experiences, or explore our AI-powered, cloud-native solutions, our team is here to help. Connect with us to start your journey toward a smarter, more efficient lending ecosystem."
+        />
+      </div>
+
+      <div className="relative w-full max-w-lg pb-[20px] md:pb-0 ">
         {/* <div className="md:hidden bg-[#121212] pt-18 absolute -bottom-7 w-full "></div> */}
         {/* <hr className="md:hidden relative top-[756px] border-b border-[#262932]" /> */}
         <form
           onSubmit={formik.handleSubmit}
-          className="relative mx-auto z-10 w-[362px] mt-[43px] md:mt-0 font-plus-jakarta drop-shadow-2xl md:w-[518px]
+          className="relative mx-auto z-10 w-[362px] mt-[43px] md:mt-0 font-plus-jakarta drop-shadow-xl md:w-[518px]
            bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
         >
           <div className="flex flex-col gap-[24px]">

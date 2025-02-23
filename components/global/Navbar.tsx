@@ -57,13 +57,19 @@ export default function Navbar() {
   // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource_center" || pathname === "/resource_center/out_of_the_lending_maze" || pathname === "/resource_center/from_fragmentation_to_seamlessness" || pathname === "/resource_center/beyond_decisioning" || pathname === "/resource_center/redefining_borrower";
 
   const BlueLogoPaths = [
-    "/contact", "/contact/",
+    "/contact", "/contact/","/privacy-policy","/privacy-policy/",
     "/resource_center", "/resource_center/",
     "/resource_center/out_of_the_lending_maze","/resource_center/out_of_the_lending_maze/",
     "/resource_center/from_fragmentation_to_seamlessness","/resource_center/from_fragmentation_to_seamlessness/",
     "/resource_center/beyond_decisioning","/resource_center/beyond_decisioning/",
     "/resource_center/redefining_borrower","/resource_center/redefining_borrower/",
-    "/thank_you/"
+    "/thank_you/",
+    "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+    "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting/",
+    "/resource_center/credit-union-mergers-are-at-an-all-time-high",
+    "/resource_center/credit-union-mergers-are-at-an-all-time-high/",
+    "/resource_center/how-digital-first-credit-unions-are-winning-member-loyalty",
+    "/resource_center/how-digital-first-credit-unions-are-winning-member-loyalty/"
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));

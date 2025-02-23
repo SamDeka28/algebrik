@@ -1,4 +1,24 @@
 export const blogContent = [
+  {
+    blogTitle: "Credit Union Mergers Are at an All-Time High—Are You Ready for the Fallout?",
+    blogSubtitle: "credit-union-mergers-are-at-an-all-time-high",
+    blogImage: "/section_images/blog/frag.png",
+    authorName: "Prateek Samantaray ",
+    authorImage: "/section_images/blog/pra.jpg",
+    publishedDate: "Feb 2, 2025",
+    readTime: "8 min read",
+    publication: "The Startup",
+  },
+  {
+    blogTitle: "The Death of the Branch? How Digital-First Credit Unions Are Winning Member Loyalty",
+    blogSubtitle: "how-digital-first-credit-unions-are-winning-member-loyalty",
+    blogImage: "/section_images/blog/6.png",
+    authorName: "Prateek Samantaray ",
+    authorImage: "/section_images/blog/pra.jpg",
+    publishedDate: "Feb 2, 2025",
+    readTime: "8 min read",
+    publication: "The Startup",
+  },
         {
           blogTitle: "Beyond Decisioning: AI's Comprehensive Role in Lending",
           blogSubtitle: "beyond_decisioning",

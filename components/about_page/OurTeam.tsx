@@ -121,7 +121,7 @@ function CarouselSection({
     if (data.length > 3 && !isMobile) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-      }, 4000);
+      }, 2000);
 
       setTimeRef(interval);
     }
@@ -129,7 +129,7 @@ function CarouselSection({
     if (isMobile) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-      }, 4000);
+      }, 2000);
 
       setTimeRef(interval);
     }
@@ -171,7 +171,7 @@ function CarouselSection({
               key={`${currentIndex}-${index}`}
               className="w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px]"
               animate={{ translateX: 0 }}
-              initial={{ translateX: `${100 * (index + 1)}%` }}
+              initial={{ translateX: `${100}%` }}
               exit={{ opacity: 0, x: 100 }}
               transition={{
                 type: "spring",
