@@ -190,7 +190,7 @@ export default function BlogOne() {
                 <p className="font-bold mt-4 text-[20px]">{blog.blogTitle}</p>
               </div>
               <div className="absolute bottom-0 left-0 flex justify-center w-full cursor-pointer bg-white text-center h-[54px] rounded-b-[20px]">
-                <Link href={`/resource_center/blogs/${blog.blogTitle.toLowerCase().replace(/ /g, "-")}`} className="text-[#1A69DC] font-semibold">
+                <Link href={`/resource_center/${blog.blogSubtitle.toLowerCase().replace(/ /g, "-")}`} className="text-[#1A69DC] font-semibold">
                   Read More →
                 </Link>
               </div>
