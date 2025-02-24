@@ -38,7 +38,7 @@ export default function ImageGallery({ images }: any) {
                   alt={`Gallery Image ${index + 1}`}
                   width={width}
                   height={height}
-                  className="h-full w-full object-cover rounded-lg cursor-pointer"
+                  className="h-full w-full object-cover rounded-lg cursor-pointer drop-shadow-md"
                   onClick={()=>{setOpen(true);setSelectedImage(src)}}
                 />
               </div>
@@ -57,7 +57,7 @@ export default function ImageGallery({ images }: any) {
                   alt={`Gallery Image ${index + 1}`}
                   width={width}
                   height={height}
-                  className="w-full h-full object-cover rounded-lg cursor-pointer"
+                  className="w-full h-full object-cover rounded-lg cursor-pointer drop-shadow-md"
                   onClick={()=>{setOpen(true);setSelectedImage(src)}}
                 />
               </div>
