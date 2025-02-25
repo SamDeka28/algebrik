@@ -26,8 +26,9 @@ export default function Home({}) {
         <OurStory/>
         <OurTeam/>
         <News />
-        <ReadyToGo /> 
+
         <ImageGallery images={images}/>
+        <ReadyToGo /> 
       </main>
     </>
   );
