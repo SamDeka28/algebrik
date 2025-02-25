@@ -12,7 +12,7 @@ const lendingData = {
     {
       title: "",
       paragraphs: [
-        <span><strong>New York, February XX, 2025:</strong> <a href="/">Algebrik AI Inc.</a>, a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced a strategic partnership with Conductiv, a leader in providing digital stipulations via permissioned data and AI. This collaboration aims to empower credit unions with enhanced data access, enabling more efficient, fair, and inclusive lending practices. </span>
+        <span><strong>New York, February 24, 2025:</strong> <a href="/">Algebrik AI Inc.</a>, a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced a strategic partnership with Conductiv, a leader in providing digital stipulations via permissioned data and AI. This collaboration aims to empower credit unions with enhanced data access, enabling more efficient, fair, and inclusive lending practices. </span>
         , "This partnership empowers credit unions to:",
         <ul className="list-disc ml-4">
           <li><strong>Increase Approval Rates:</strong> Access comprehensive, real-time income, cash flow, tax, and other consumer-permissioned data through Conductiv, integrated directly into Algebrik’s LOS for informed lending.</li>
