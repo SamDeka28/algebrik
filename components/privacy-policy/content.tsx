@@ -5,7 +5,7 @@ export default function Content() {
     return (
         <div className="container max-w-7xl mx-auto p-4 pt-36 md:pt-[160px] md:pb-20 flex items-center justify-center font-plus-jakarta flex-col">
             <CustomHeader text="Privacy Policy" className="md:pb-[20px] text-[32px] md:text-[56px] font-semibold" />
-            <div>
+            <div className="text-black">
                 <div className="flex flex-col gap-6">
                     <h5 className="text-2xl font-bold">1. Introduction</h5>
                     <p>Algebrik AI Inc. (collectively, "Algebrik," "we," "us," or "our") respect your privacy and are committed to protecting it through this Privacy Policy.</p>

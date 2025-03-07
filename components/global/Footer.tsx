@@ -9,6 +9,20 @@ const Footer = () => {
       <div className="container max-w-7xl mx-auto pt-[40px] grid grid-cols-1 md:grid-cols-5 gap-[40px] md:gap-[76px] justify-items-start md:justify-items-end">
         <div>
           <Image src={logo} alt="logo" width={157} height={40.19} />
+          <div className="mt-2 text-[#787C91]">
+            <p>Algebrik AI Inc</p>
+            <p>300 East 59th Street Suite 2801</p>
+            <p>New York, NY 10022</p>
+            <p>United States</p>
+            <p>Ph : <a href="tel:+1(917)974-8905">+1(917)974-8905</a></p>
+          </div>
+        </div>
+        <div>
+          <h3 className="text-white font-medium mb-[29px]">Branch Offices</h3>
+          <div className="mt-2 text-[#787C91]">
+            <p>Wayne, IN</p>
+            <p>Dallas, TX</p>
+          </div>
         </div>
         <div className="hidden md:block">
           <h3 className="text-white font-medium mb-[29px]">Product</h3>
@@ -91,20 +105,8 @@ const Footer = () => {
               </Link>
             </ul>
           </div>
-         
-        </div>
 
-        <div className="hidden md:block">
-            <div className="mt-[50px] space-y-1 text-[#787C91] text-[14px]">
-              <Link
-                href="https://www.linkedin.com/company/algebrik-ai/"
-                target="_blank"
-              >
-                <p>Follow on LinkedIn</p>
-              </Link>
-              {/* <p>Follow on X</p> */}
-            </div>
-          </div>
+        </div>
 
         {/* Mobile */}
         <div className="md:hidden flex space-x-28 md:space-x-0">
@@ -134,20 +136,30 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-8 pt-4 px-0 md:px-28 text-sm flex flex-col-reverse gap-2 md:flex-row justify-between items-center">
+      <div className=" mx-auto container mt-8 pt-4 px-0 md:px-28 text-sm flex flex-col-reverse gap-2 md:flex-row justify-between items-center">
         <div className="text-[#3E404C] text-[14.3px]">
           <p>© 2024 Algebrik. All rights reserved.</p>
         </div>
         <div className="flex space-x-4 mt-2 md:mt-0">
+          <div className="hidden md:block">
+            <Link
+              href="https://www.linkedin.com/company/algebrik-ai/"
+              target="_blank"
+              className="text-[#3E404C]"
+            >
+              <p>Follow on LinkedIn</p>
+            </Link>
+            {/* <p>Follow on X</p> */}
+          </div>
           <Link href="/privacy-policy" className="text-[#3E404C] text-[14px]">
             Privacy policy
           </Link>
-          <Link href="#" className="text-[#3E404C] text-[14px]">
+          {/* <Link href="#" className="text-[#3E404C] text-[14px]">
             GDPR
           </Link>
           <Link href="#" className="text-[#3E404C] text-[14px]">
             Terms of service
-          </Link>
+          </Link> */}
         </div>
       </div>
       <hr className="h-[7px] mt-[40px] bg-[#0281E0] border-0 dark:bg-gray-700 w-full" />
