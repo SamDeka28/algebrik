@@ -53,6 +53,15 @@ export default function Articles() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI Joins the Jack Henry™ Vendor Integration Program",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
         "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
       author: "Team Algebrik",
       source: "Team Algebrik",
