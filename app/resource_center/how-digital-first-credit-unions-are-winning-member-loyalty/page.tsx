@@ -119,7 +119,7 @@ export default function Blog() {
                       Published in <span>The Startup</span>
                     </h4>
                     <p>8 min read</p>
-                    <p>Apr 26, 2023</p>
+                    <p>Apr 26, 2025</p>
                   </div>
                 </div>
               </div>

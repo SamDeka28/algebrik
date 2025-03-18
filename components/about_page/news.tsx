@@ -8,6 +8,16 @@ export default function NewsSection() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI Joins the Jack Henry™ Vendor Integration Program",
+        description:"NEW YORK--(BUSINESS WIRE)--Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced that it has joined the Jack Henry™ Vendor Integration Program (VIP).",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
         "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
       author: "Team Algebrik",
       source: "Team Algebrik",
