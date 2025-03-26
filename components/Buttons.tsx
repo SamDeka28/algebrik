@@ -7,6 +7,7 @@ type ButtonProps = {
   isActive?: boolean;
   onClick?: () => void;
   customClass?: string;
+  disabled?:boolean;
   activeStyle?: string; 
   link?: string;
 };
@@ -15,6 +16,8 @@ const Button = ({
   text,
   isActive,
   onClick,
+  disabled=false,
+
   customClass = "",
   activeStyle = "",
   link = "",
@@ -52,6 +55,7 @@ const Button = ({
     <button
       onClick={onClick}
       className={`${baseStyle} ${activeStyle || defaultActiveStyle} ${customClass} h-[100%] flex-1`}
+      disabled={disabled}
     >
       {content}
     </button>
