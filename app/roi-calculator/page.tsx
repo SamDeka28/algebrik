@@ -291,12 +291,12 @@ export default function StepperForm() {
                                         {values[step]} {steps[step].unit}
                                     </div>
                                 </div>
-                            </> : <div className={`flex flex-wrap gap-4 justify-center items-center w-full ${steps[step]?.options?.length == 2 ? "flex-col" : "flex-row"}`}>
+                            </> : <div className={`flex flex-wrap gap-4 justify-center items-center w-full ${steps[step]?.options?.length == 2 ? "flex-col lg:flex-row" : "flex-row"}`}>
                                 {steps[step]?.options.map((option) => (
                                     <button
                                         key={option}
                                         onClick={() => handleCardSelect(option)}
-                                        className={`flex-1 lg:flex-none py-4 ${steps[step]?.options?.length == 2 ? "w-full" : "min-w-[156px]"} lg:p-6 rounded-lg border transition-all duration-300 text-lg font-bold font-plus-jakarta ${values[step] === option
+                                        className={`flex-1 lg:flex-none py-4 ${steps[step]?.options?.length == 2 ? "w-full lg:min-w-[156px] lg:w-max    " : "min-w-[156px]"} lg:p-6 rounded-lg border transition-all duration-300 text-lg font-bold font-plus-jakarta ${values[step] === option
                                             ? "bg-[#2A5FAC] border-[2px] border-[#61A1FF] text-white"
                                             : "bg-white text-gray-700 hover:bg-gray-200 border border-[#E8E7E7]"
                                             }`}
@@ -361,17 +361,17 @@ export default function StepperForm() {
                             Results
                         </h2>
 
-                        <div className={`mt-6 w-[50%] gap-[32px]  rounded-2xl p-4 flex ${steps[step].type == "slider" && "shadow-sm border border-[##E8E7E7] "}`}>
-                            <div className="flex justify-center py-[26px] items-center flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
-                                <p className="text-[#2A5FAC] text-4xl font-plus-jakarta font-extrabold">{result.approvalTimeSaved}</p>
-                                <p className="text-[18px] text-[#424242]">Days Saved</p>
+                        <div className={`mt-6 w-full lg:w-[50%] lg:flex-row flex-col gap-[32px]  rounded-2xl p-0 lg:p-4 flex ${steps[step].type == "slider" && "shadow-sm border border-[##E8E7E7] "}`}>
+                            <div className="flex  p-4 lg:p-0 lg:justify-center py-[26px] items-center flex-row-reverse justify-between lg:flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
+                                <p className="text-[#2A5FAC] text-4xl font-plus-jakarta font-extrabold">{result.approvalTimeSaved} <span className="lg:hidden">Days</span></p>
+                                <p className="text-[18px]  text-center text-[#424242]">Days Saved</p>
                             </div>
-                            <div className="flex justify-center py-[26px] items-center flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
+                            <div className="flex p-4 lg:justify-center items-center py-[26px]  flex-row-reverse justify-between lg:flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
                                 <p className="text-[#2A5FAC] text-4xl font-plus-jakarta font-extrabold">{formatCurrency(result.estimatedROI)}</p>
-                                <p className="text-[18px] text-[#424242]">Increase in Revenue</p>
+                                <p className="text-[18px] text-center text-[#424242]">Increase in Revenue</p>
                             </div>
                         </div>
-                        <p className="text-[#292929] font-medium text-[16px] w-[60%] text-center my-[32px]">{`With Algebrik AI, your CU could save ${result.estimatedSavings} per year OR free up ${result.totalProcessingDaysSaved} working days annually,
+                        <p className="text-[#292929] font-medium text-[16px] lg:w-[60%] text-center my-[32px]">{`With Algebrik AI, your CU could save ${result.estimatedSavings} per year OR free up ${result.totalProcessingDaysSaved} working days annually,
 while increasing borrower conversions by ${result.borrowerConversionIncrease} and cutting approval times by ${result.approvalTimeReduction}.`}</p>
 
                         <div className="flex flex-row gap-[22px] w-full md:w-[300px] md:mt-[66px]">
