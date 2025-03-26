@@ -147,7 +147,7 @@ export default function StepperForm() {
             borrowerConversionIncrease: (conversion * 100).toFixed(0) + "%",
             approvalTimeReduction: (approvalTime * 100).toFixed(0) + "%",
             totalProcessingDaysSaved: totalProcessingDaysSaved.toFixed(2),
-            approvalTimeSaved: approvalTimeSaved,
+            approvalTimeSaved: approvalTimeSaved.toFixed(2),
             estimatedROI: estimatedROI
         };
     };
@@ -371,7 +371,7 @@ export default function StepperForm() {
                                 <p className="text-[18px] text-center text-[#424242]">Increase in Revenue</p>
                             </div>
                         </div>
-                        <p className="text-[#292929] font-medium text-[16px] lg:w-[60%] text-center my-[32px]">{`With Algebrik AI, your CU could save ${result.estimatedSavings} per year OR free up ${result.totalProcessingDaysSaved} working days annually,
+                        <p className="text-[#292929] font-medium text-[16px] lg:w-[60%] text-center my-[32px]">{`With Algebrik AI, your CU could save ${result.estimatedSavings} per year,
 while increasing borrower conversions by ${result.borrowerConversionIncrease} and cutting approval times by ${result.approvalTimeReduction}.`}</p>
 
                         <div className="flex flex-row gap-[22px] w-full md:w-[300px] md:mt-[66px]">
