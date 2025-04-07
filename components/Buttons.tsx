@@ -45,7 +45,7 @@ const Button = ({
     return (
       <Link
         href={link}
-        className={`${baseStyle} ${activeStyle || defaultActiveStyle} ${customClass} h-[100%] flex-1`} target={openInBlank && "_blank"}
+        className={`${baseStyle} ${activeStyle || defaultActiveStyle} ${customClass} h-[100%] flex-1`} target={openInBlank ? "_blank" : "_self"}
       >
         {content}
       </Link>
