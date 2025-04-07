@@ -46,6 +46,9 @@ body {
   animation: infinite-scroll-reverse 20s linear infinite;
 }
 
+html{
+  scroll-behavior: smooth;
+}
 
 @keyframes fadeIn {
   0% {

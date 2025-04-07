@@ -10,6 +10,7 @@ type ButtonProps = {
   disabled?:boolean;
   activeStyle?: string; 
   link?: string;
+  openInBlank? : boolean,
 };
 
 const Button = ({
@@ -17,7 +18,7 @@ const Button = ({
   isActive,
   onClick,
   disabled=false,
-
+  openInBlank=true,
   customClass = "",
   activeStyle = "",
   link = "",
@@ -44,7 +45,7 @@ const Button = ({
     return (
       <Link
         href={link}
-        className={`${baseStyle} ${activeStyle || defaultActiveStyle} ${customClass} h-[100%] flex-1`} target="_blank"
+        className={`${baseStyle} ${activeStyle || defaultActiveStyle} ${customClass} h-[100%] flex-1`} target={openInBlank && "_blank"}
       >
         {content}
       </Link>

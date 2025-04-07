@@ -135,10 +135,11 @@ export default function SecureYourSpot() {
             </div>
             <p className="text-[#292929] text-lg px-6 text-center">Join industry leaders as they unveil strategies to engage next-gen borrowers and streamline lending workflows.</p>
             <Button
+            openInBlank={false}
               text="Secure Your Spot in Lending’s Next Era"
               isActive={true}
               // onClick={() => alert("Please provide the redirection page")}
-              link="/contact"
+              link="#form"
               customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
               activeStyle="bg-white text-[#292929] font-bold text-center max-w-max px-[34px] mt-[32px]"
             />
@@ -471,7 +472,7 @@ export default function SecureYourSpot() {
                 <div className="flex gap-6  items-center">
                   <Image src={"/background_images/tick.svg"} alt="tick" height={32} width={32} />
                   <div className="flex flex-col">
-                    <p className="text-base font-bold text-[#292929]">Master industry-relevant skills</p>
+                    <p className="text-base font-bold text-[#292929]"   id="form">Master industry-relevant skills</p>
                     <p className="text-sm font-medium text-[#656565]">Stay ahead in your field by learning strategies that address real-world challenges.</p>
                   </div>
                 </div>
