@@ -322,7 +322,7 @@ export default function SecureYourSpot() {
                 </div>
               </div>
             </div>
-            <div className="relative w-full pb-[20px] md:pb-0 mt-[47px]">
+            <div className="relative w-full pb-[20px] md:pb-0 mt-[47px]" id="form">
               <div className="md:hidden bg-[#121212] p-10 absolute bottom-0 w-[200%] left-[-10%] min-h-20 h-20"></div>
               <hr className="md:hidden absolute bottom-0 z-20 w-screen left-[-6%] border-b border-[#262932]" />
               <form
@@ -331,7 +331,7 @@ export default function SecureYourSpot() {
            bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
               >
                 <div className="flex flex-col gap-[24px] text-black">
-                  <h1 className="text-2xl font-bold text-[#2A5FAC] mb-[26px]">Reserve Your Seats Now</h1>
+                  <h1 className="text-2xl font-bold text-[#2A5FAC] mb-[26px]" >Reserve Your Seats Now</h1>
                   <div className="flex flex-col md:flex-row gap-[24px]">
                     <div className="flex flex-col gap-[12px] w-full ">
                       <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
