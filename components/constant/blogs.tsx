@@ -1,5 +1,29 @@
 export const blogContent = [
   {
+    blogTitle:"What’s Driving the Shift to Intelligent Lending?",
+    blogSubtitle: "whats-driving-the-shift-to-intelligent-lending",
+    blogImage: "/section_images/Blog 1.jpg",
+    authorName: "Team Algebrik",
+    authorImage: "/section_images/blog/pra.jpg",
+    publishedDate: "Aril 8, 2025",
+  },
+  {
+    blogTitle:"Beyond AI: Innovations Reshaping Lending Workflows.",
+   blogSubtitle: "innovations-reshaping-lending-workflows",
+    blogImage: "/section_images/Blog 2.jpg",
+    authorName: "Team Algebrik",
+    authorImage: "/section_images/blog/pra.jpg",
+    publishedDate: "Aril 8, 2025",
+  },
+  {
+    blogTitle:"What You’ll Learn in Our Intelligent Lending Roundtable",
+   blogSubtitle: "what-you-ll-learn-in-our-intelligent-lending-roundtable",
+    blogImage: "/section_images/Blog 3.jpg",
+    authorName: "Team Algebrik",
+    authorImage: "/section_images/blog/pra.jpg",
+    publishedDate: "Aril 8, 2025",
+  },
+  {
     blogTitle: "Credit Union Mergers Are at an All-Time High—Are You Ready for the Fallout?",
     blogSubtitle: "credit-union-mergers-are-at-an-all-time-high",
     blogImage: "/section_images/blog/frag.png",
