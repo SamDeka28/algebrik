@@ -1,9 +1,5 @@
-import ReadyToGo from "@/components/about_page/ReadyToGo";
-import BlogCarousel from "@/components/resource_center_page/BlogCarousel";
-import Hero from "@/components/resource_center_page/Hero";
-import Placeholder from "@/components/resource_center_page/Placeholder";
+
 import { Metadata } from "next";
-import { motion } from "framer-motion";
 import SecureYourSpot from "@/components/secure-your-spot";
 
 

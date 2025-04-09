@@ -71,15 +71,27 @@ const Card = ({
 
 export default function ThankYou() {
   return (
-    <section className="flex flex-col justify-center items-center px-[16px] pt-40 md:pt-64 md:gap-[42px]">
+    <section className="flex flex-col justify-center items-center px-[16px] pt-40 md:pt-64 md:gap-[42px] font-plus-jakarta">
       <div className="flex flex-col justify-center text-center items-center gap-[30px]">
         <CustomHeader
           className="md:text-[72px] !font-inter !font-medium"
-          text="Your Seat is Reserved!"
+          text="Your Seat’s Locked in"
         />
         <CustomSubtitle
           className="text-[14px] md:text-[24px] font-normal !font-inter"
-          text="We can’t wait to host you at our exclusive CU Leadership Dinner at GAC!"
+          text="You’re officially joining the room where the future of lending is being shaped."
+        />
+         <CustomSubtitle
+          className="text-[14px] md:text-[32px] !font-bold !font-inter mt-10"
+          text="This isn’t just another dinner."
+        />
+        <CustomSubtitle
+          className="text-[14px] md:text-[24px] font-normal!font-inter"
+          text="It’s a virtual table full of leaders asking the hard questions—and sharing the real answers."
+        />
+        <CustomSubtitle
+          className="text-[14px] md:text-[24px] font-normal!font-inter"
+          text="The conversations you won’t hear anywhere else start here."
         />
       </div>
       <div className="flex justify-center items-center flex-col gap-[32px]">
@@ -171,7 +183,11 @@ export default function ThankYou() {
         <div>
           <CustomSubtitle
             className=" text-[14px] text-center md:text-[24px] font-normal !font-inter"
-            text="📅 Date: March 02nd, 2025 | 📍 Venue & Time: Check your Inbox! | "
+            text="📅 April 24th, 2025 at 11:00 AM EDT"
+          />
+          <CustomSubtitle
+            className="text-[14px] text-center md:text-[24px] font-normal !font-inter mt-2"
+            text="📍Venue and Time: Details are waiting in your inbox—check your email for the full agenda and location. "
           />
         </div>
         <div className=" font-plus-jakarta">
@@ -180,18 +196,18 @@ export default function ThankYou() {
           md:px-4 md:pt-[53px] pb-[30px] md:pb-[75px] relative z-10 justify-center items-center"
           >
             <Card
-              title=" Have Questions about the Event?"
-              description="Share the link with them!"
-              buttonText="Hit us up!"
-              buttonLink="mailto:letschat@algebrik.com"
+              title="Want a Head Start?"
+              description="Grab our guide, “5 Moves to Modern Lending,” for quick wins you can use before the event. It’s short, practical, and built for busy credit union teams like yours."
+              buttonText="Download the Guide:"
+              buttonLink="https://hubs.ly/Q03gwGqS0"
               imageUrl="/background_images/futureLending.png"
               isPrimary
             />
             <Card
-              title="Join the Conversation on LinkedIn"
-              description="Be in the know how about the event and other Lending Trends!"
-              buttonText="Follow Us on LinkedIn"
-              buttonLink="https://www.linkedin.com/company/algebrik-ai/"
+              title="Join the Leaders on LinkedIn"
+              description="Want a front-row seat to what your peers are thinking? RSVP to the event and Follow Algebrik"
+              buttonText="RSVP on Linkedin"
+              buttonLink="https://www.linkedin.com/events/lending2030-beyondai-shapingthe7315351703766122496/"
               imageUrl="/background_images/algebrikFirsthand.png"
             />
           </div>
