@@ -5,17 +5,22 @@ import Image from "next/image";
 import * as Yup from "yup";
 import { useState } from "react";
 import { useFormik } from "formik";
+import Marquee from "react-fast-marquee";
+import { parsePhoneNumberFromString } from "libphonenumber-js"
+import { useRouter } from "next/navigation";
 
 const validationSchema = Yup.object({
   firstname: Yup.string().required("Name is required"),
   phone: Yup.string()
-    .matches(/^\d{10}$/, "Phone must be 10 digits")
+    .test("is-valid-phone", "Phone number is invalid", (value) =>
+      validatePhoneNumber(value || "")
+    )
     .required("Phone is required"),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
   company: Yup.string().required("Company name is required"),
-  message: Yup.string().required("Message is required"),
+  message: Yup.string().optional(),
 });
 
 const carouselDataTwo = [
@@ -51,9 +56,17 @@ const carouselDataTwo = [
   }
 ];
 
+const validatePhoneNumber = (value: string) => {
+  const phoneNumber = parsePhoneNumberFromString(value || "");
+  return phoneNumber && phoneNumber.isValid();
+};
+
 export default function SecureYourSpot() {
   const [loading, setLoading] = useState(false);
   const [clicked, setClicked] = useState(false);
+
+  const router=useRouter();
+
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -84,6 +97,7 @@ export default function SecureYourSpot() {
       setLoading(false)
       if (res.ok) {
         formik.resetForm()
+        router.push("/thank_you")
       } else {
         alert("Failed to submit form.");
       }
@@ -135,7 +149,7 @@ export default function SecureYourSpot() {
             </div>
             <p className="text-[#292929] text-lg px-6 text-center">Join industry leaders as they unveil strategies to engage next-gen borrowers and streamline lending workflows.</p>
             <Button
-            openInBlank={false}
+              openInBlank={false}
               text="Secure Your Spot in Lending’s Next Era"
               isActive={true}
               // onClick={() => alert("Please provide the redirection page")}
@@ -284,9 +298,9 @@ export default function SecureYourSpot() {
               <div className="border border-[#C9D2E0] rounded-[24px] p-6 flex flex-col gap-6 bg-white">
                 <h6 className="text-[#2A5FAC] text-xl font-bold">Get expert insights and practical solutions to stay competitive in a fast-evolving lending market.</h6>
                 <div className="flex gap-20 px-[10px] overflow-x-scroll hide-scrollbar h-[230px]">
-                  {carouselDataTwo.map((team, index) => {
-                    return <>
-                      <div className="relative">
+                  <Marquee>
+                    {carouselDataTwo.map((team, index) => {
+                      return <div className="relative  h-[230px] mr-20" key={`team-${index}`}>
                         <Image src={team.image} alt={team.name} height={138} width={138} className="min-w-[138px] aspect-square !z-20  object-cover overflow-hidden rounded-lg relative" />
                         <div className="bg-white px-2 pb-2 pt-[50px] w-[199px] h-[123px] rounded-[14px] border-[2px] border-[#E2E8F1] absolute left-[-10px] bottom-[10px] z-10">
                           <p className="text-[18px] font-bold text-[#292929] mb-[2px]">{team.name}</p>
@@ -294,8 +308,8 @@ export default function SecureYourSpot() {
                           <p className="text-xs text-[#656565] font-normal">{team.place}</p>
                         </div>
                       </div>
-                    </>
-                  })}
+                    })}
+                  </Marquee>
                 </div>
                 <div className="flex flex-col gap-4">
                   <div className="flex gap-6  items-center">
@@ -357,7 +371,7 @@ export default function SecureYourSpot() {
                       <input
                         type="text"
                         name="phone"
-                        placeholder="(123) 456 - 7890"
+                        placeholder="+1 (123) 456 7890"
                         value={formik.values.phone}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -453,11 +467,11 @@ export default function SecureYourSpot() {
           <div className="hidden lg:flex lg:flex-col flex-1 w-1/2">
             <div className="border border-[#C9D2E0] rounded-[24px] p-6 flex flex-col gap-6 bg-white">
               <h6 className="text-[#2A5FAC] text-xl font-bold">Get expert insights and practical solutions to stay competitive in a fast-evolving lending market.</h6>
-              <div className="flex gap-10 overflow-x-scroll hide-scrollbar h-[230px]">
-                {carouselDataTwo.map((team, index) => {
-                  return <>
-                    <div className="min-h-[123px] w-[199px]"></div>
-                    <div className="relative">
+              <div className="flex gap-0 overflow-x-scroll hide-scrollbar h-[230px]">
+                <Marquee className="overflow-x-scroll hide-scrollbar ]"
+                >
+                  {carouselDataTwo.map((team, index) => {
+                    return <div className="relative mr-20 h-[230px]" key={`idx-${index}`}>
                       <Image src={team.image} alt={team.name} height={138} width={138} className="min-w-[138px] aspect-square !z-20  object-cover overflow-hidden rounded-lg relative" />
                       <div className="bg-white px-2 pb-2 pt-[50px] w-[199px] h-[123px] rounded-[14px] border-[2px] border-[#E2E8F1] absolute left-[-10px] bottom-[10px] z-10">
                         <p className="text-[18px] font-bold text-[#292929] mb-[2px]">{team.name}</p>
@@ -465,14 +479,14 @@ export default function SecureYourSpot() {
                         <p className="text-xs text-[#656565] font-normal">{team.place}</p>
                       </div>
                     </div>
-                  </>
-                })}
+                  })}
+                </Marquee>
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex gap-6  items-center">
                   <Image src={"/background_images/tick.svg"} alt="tick" height={32} width={32} />
                   <div className="flex flex-col">
-                    <p className="text-base font-bold text-[#292929]"   id="form">Master industry-relevant skills</p>
+                    <p className="text-base font-bold text-[#292929]" id="form">Master industry-relevant skills</p>
                     <p className="text-sm font-medium text-[#656565]">Stay ahead in your field by learning strategies that address real-world challenges.</p>
                   </div>
                 </div>
