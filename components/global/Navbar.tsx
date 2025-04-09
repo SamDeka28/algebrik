@@ -75,8 +75,8 @@ export default function Navbar() {
     "/resource_center/innovations-reshaping-lending-workflows/",
     "/resource_center/what-driving-the-shift-to-intelligent-lending",
     "/resource_center/what-driving-the-shift-to-intelligent-lending/",
-    "/resource_center/what-you-wil-learn-in-our-Intelligent-lending-roundtable",
-    "/resource_center/what-you-wil-learn-in-our-Intelligent-lending-roundtable/",
+    "/resource_center/what-you-will-learn-in-our-intelligent-lending-roundtable",
+    "/resource_center/what-you-will-learn-in-our-intelligent-lending-roundtable/",
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));

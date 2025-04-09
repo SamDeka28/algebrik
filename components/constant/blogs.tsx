@@ -17,7 +17,7 @@ export const blogContent = [
   },
   {
     blogTitle:"What You’ll Learn in Our Intelligent Lending Roundtable",
-   blogSubtitle: "what-you-wil-learn-in-our-Intelligent-lending-roundtable",
+   blogSubtitle: "what-you-will-learn-in-our-intelligent-lending-roundtable",
     blogImage: "/section_images/Blog 3.jpg",
     authorName: "Team Algebrik",
     authorImage: "/section_images/blog/pra.jpg",
