@@ -83,7 +83,7 @@ export default function ThankYou() {
         />
          <CustomSubtitle
           className="text-[14px] md:text-[32px] !font-bold !font-inter mt-10"
-          text="This isn’t just another dinner."
+          text="This isn’t just another Webinar."
         />
         <CustomSubtitle
           className="text-[14px] md:text-[24px] font-normal!font-inter"

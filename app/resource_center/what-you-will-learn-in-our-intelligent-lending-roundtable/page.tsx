@@ -131,7 +131,7 @@ export default function Blog() {
       <div className="container mx-auto px-5 md:px-0 py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
         <div className="flex flex-col items-start text-left w-full gap-[16px]">
           <CustomHeader
-            text="From Traditional to Intelligent — Why Lending Needs a Makeover"
+            text="What You’ll Learn in Our Intelligent Lending Roundtable"
             className="w-full"
           />
           {/* Uncomment if needed */}
