@@ -69,7 +69,12 @@ export default function StepperForm() {
     const [step, setStep] = useState(0);
     const [values, setValues] = useState<(number | string)[]>(steps.map((s) => s.type === "slider" ? s.min : ""));
     const [showResult, setShowResult] = useState(false);
-    const [result, setResult] = useState<any>({})
+    const [summary,setSummary] = useState({
+        processingCostSavings:"",
+        conversion:"",
+        approvalTime:"",
+    })
+    const [result, setResult] = useState<any>([])
     const handleSliderChange = (value: any) => {
         setValues((prev) => {
             const newValues = [...prev];
@@ -101,7 +106,7 @@ export default function StepperForm() {
 
         const roiResults = calculateROI(userInputs);
         setShowResult(true);
-        setResult({ ...roiResults })
+        setResult(roiResults)
     };
 
 
@@ -115,7 +120,6 @@ export default function StepperForm() {
         monthlyRevenue
     }: ROIInputs) => {
 
-        // Define loan-type-specific AI impacts
         const loanTypeImpacts: any = {
             "Auto Loan": { approvalTime: 0.85, dropOff: 0.30, costSavings: 0.45, conversion: 0.25 },
             "Personal Loan": { approvalTime: 0.80, dropOff: 0.30, costSavings: 0.45, conversion: 0.25 },
@@ -125,32 +129,72 @@ export default function StepperForm() {
 
         const { approvalTime, dropOff, costSavings, conversion } = loanTypeImpacts[loanType] || loanTypeImpacts["Mixed Portfolio"];
 
-        // **AI-Optimized Values**
         const improvedProcessingTime = avgProcessingTime * (1 - approvalTime);
+        const approvalTimeSaved = avgProcessingTime - improvedProcessingTime;
+        const totalProcessingDaysSaved = approvalTimeSaved * monthlyLoanVolume * 12;
+
         const improvedDropOffRate = dropOffRate * (1 - dropOff);
         const improvedProcessingCost = processingCostPerLoan * (1 - costSavings);
-        const improvedMonthlyRevenue = monthlyRevenue * (1 + conversion);
+        const savingsPerLoan = processingCostPerLoan - improvedProcessingCost;
+        const processingCostSavings = savingsPerLoan * monthlyLoanVolume * 12;
 
-        // **Savings Calculation**
-        const processingCostSavings = (processingCostPerLoan - improvedProcessingCost) * monthlyLoanVolume * 12;
+        const improvedMonthlyRevenue = monthlyRevenue * (1 + conversion);
         const totalRevenueIncrease = improvedMonthlyRevenue - monthlyRevenue;
         const estimatedROI = totalRevenueIncrease + processingCostSavings;
 
-        // **Approval Time Savings**
-        const approvalTimeSaved = avgProcessingTime - improvedProcessingTime;
-        console.log({ approvalTimeSaved, avgProcessingTime, improvedProcessingTime, monthlyLoanVolume })
-        // **Annual Time Savings**
-        const totalProcessingDaysSaved = approvalTimeSaved * monthlyLoanVolume * 12;
+        const extraBorrowersPerMonth = Math.round(monthlyLoanVolume * dropOff);
 
-        return {
-            estimatedSavings: "$" + processingCostSavings.toLocaleString(),
-            borrowerConversionIncrease: (conversion * 100).toFixed(0) + "%",
-            approvalTimeReduction: (approvalTime * 100).toFixed(0) + "%",
-            totalProcessingDaysSaved: totalProcessingDaysSaved.toFixed(2),
-            approvalTimeSaved: approvalTimeSaved.toFixed(2),
-            estimatedROI: estimatedROI
+        const formatCurrency = (num: number) => {
+            return new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+                notation: "compact",
+                maximumFractionDigits: 0
+            }).format(num);
         };
+
+        setSummary({
+            processingCostSavings: formatCurrency(processingCostSavings),
+            conversion: `${(conversion * 100).toFixed(0)}%`,
+            approvalTime: `${(approvalTime * 100).toFixed(0)}%`,
+        })
+
+        return [
+            {
+                heading: {
+                    value: Math.round(totalProcessingDaysSaved),
+                    text: "days saved"
+                },
+                description: `Your CU could reduce loan approval times by up to ${(approvalTime * 100).toFixed(0)}%, bringing approval times down from ${avgProcessingTime} to ${improvedProcessingTime.toFixed(1)} days.`
+                , info: '"Spend less time on manual reviews and more time funding loans."'
+            },
+            {
+                heading: {
+                    value: formatCurrency(savingsPerLoan),
+                    text: "saved per loan"
+                },
+                description: `Your CU could save ${formatCurrency(savingsPerLoan)} per loan, translating to ${formatCurrency(processingCostSavings)} in operational costs annually.`
+                , info: '"Cut manual processing expenses while improving efficiency and compliance."'
+            },
+            {
+                heading: {
+                    value: extraBorrowersPerMonth,
+                    text: "more borrowers"
+                },
+                description: `Reduce borrower drop-off by ${(dropOff * 100).toFixed(0)}%, meaning ${extraBorrowersPerMonth} more borrowers complete their applications each month.`,
+                info: '"Every lost loan is lost revenue—AI ensures more applicants finish what they start."'
+            },
+            {
+                heading: {
+                    value: `${(conversion * 100).toFixed(0)}%`,
+                    text: "conversions increase"
+                },
+                description: `With AI-powered automation, your CU could see up to ${(conversion * 100).toFixed(0)}% more borrower applications convert into funded loans.`,
+                info: '"Seamless digital lending means fewer frustrated applicants and more completed loans."'
+            }
+        ];
     };
+
 
     const formatCurrency = (num: number) => {
         return new Intl.NumberFormat("en-US", {
@@ -160,6 +204,7 @@ export default function StepperForm() {
             maximumFractionDigits: 0
         }).format(num);
     };
+    console.log({ result })
 
 
     return (
@@ -353,28 +398,40 @@ export default function StepperForm() {
                             *Our Loan ROI calculator offers estimated monthly instalments which are indicative and tentative and are based upon the details populated by the user.
                         </div>
                     </div>
-                    : <div className=" bg-white shadow-2xl rounded-xl max-w-7xl w-full flex flex-col items-center bg-white/75 backdrop-blur-lg px-4 lg:px-0">
+                    : <div className=" bg-white shadow-2xl rounded-xl max-w-7xl w-full flex flex-col items-center bg-white/75 backdrop-blur-lg px-4 py-4 lg:p-6">
                         {/* Question Header */}
-                        <h2
-                            className="text-2xl text-center  font-plus-jakarta text-[#2A5FAC] font-bold m-6"
-                        >
-                            Results
-                        </h2>
-
-                        <div className={`mt-6 w-full lg:w-[50%] lg:flex-row flex-col gap-[32px]  rounded-2xl p-0 lg:p-4 flex ${steps[step].type == "slider" && "shadow-sm border border-[##E8E7E7] "}`}>
-                            <div className="flex  p-4 lg:p-0 lg:justify-center py-[26px] items-center flex-row-reverse justify-between lg:flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
-                                <p className="text-[#2A5FAC] text-4xl font-plus-jakarta font-extrabold">{result.approvalTimeSaved} <span className="lg:hidden">Days</span></p>
-                                <p className="text-[18px]  text-center text-[#424242]">Days Saved</p>
-                            </div>
-                            <div className="flex p-4 lg:justify-center items-center py-[26px]  flex-row-reverse justify-between lg:flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
-                                <p className="text-[#2A5FAC] text-4xl font-plus-jakarta font-extrabold">{formatCurrency(result.estimatedROI)}</p>
-                                <p className="text-[18px] text-center text-[#424242]">Increase in Revenue</p>
-                            </div>
+                        <div className="bg-custom-gradient w-full rounded-[12px] p-6 flex flex-col gap-2 font-plus-jakarta relative overflow-hidden">
+                            <img src={"/background_images/bg-2.svg"} className="absolute right-0 z-10" style={{top:"-100%" ,right:"-55%"}}/>
+                            <h2
+                                className="text-3xl font-plus-jakarta font-bold text-white"
+                            >
+                                Results based on your input:
+                            </h2>
+                            <p className="text-[#E5F3FF]">
+                            With Algebrik AI, your Credit Union could save {summary.processingCostSavings} per year while increasing borrower conversions by {(summary.conversion)} and cutting approval times by {(summary.approvalTime)}.   
+                            </p>
                         </div>
-                        <p className="text-[#292929] font-medium text-[16px] lg:w-[60%] text-center my-[32px]">{`With Algebrik AI, your CU could save ${result.estimatedSavings} per year,
-while increasing borrower conversions by ${result.borrowerConversionIncrease} and cutting approval times by ${result.approvalTimeReduction}.`}</p>
+                        <div className="h-[1px] bg-[#D4E2ED] my-6 w-full" />
+                        <div className={`w-full lg:flex-row flex-col justify-between gap-4  rounded-2xl p-0 flex ${steps[step].type == "slider" && "shadow-sm border border-[##E8E7E7] "}`}>
+                            {result?.map((result: any, index: number) => {
+                                let splited = result?.heading?.text?.split(" ");
+                                let textOne = splited[0];
+                                let textTwo = splited?.slice(1)?.join(" ");
+                                return <div className="flex  p-4 lg:p-3  py-[26px] items-center flex-col justify-between lg:flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
+                                    <div className="flex items-center !bg-[#EFF6FC] px-[6px] py-4 rounded-[6px] w-full gap-2">
+                                        <p className="text-[#2A5FAC] text-[56px] font-extrabold font-bebas-neue">{result?.heading?.value}</p>
+                                        <p className="text-[18px] font-semibold gap-2 text-[#2A5FAC] flex flex-col items-start text-left font-plus-jakarta mb-2">{textOne}<br />{textTwo}</p>
+                                    </div>
+                                        <p className="py-2 font-plus-jakarta font-medium lg:text-[#494949] text-black">{result?.description}</p>
+                                    <div className="mt-5 font-plus-jakarta">
+                                        <p className="text-[#656565] italic text-sm font-normal">{result?.info}</p>
+                                    </div>
+                                </div>
+                            })}
+                        </div>
+                        <p className="text-[#2A5FAC] font-semibold text-[18px] lg:w-[60%] text-center mt-[32px] font-plus-jakarta mb-[22px]">Ready to optimize your lending process?</p>
 
-                        <div className="flex flex-row gap-[22px] w-full md:w-[300px] md:mt-[66px]">
+                        <div className="flex flex-row gap-[22px] w-full md:w-[300px] ">
                             <Button
                                 text="Re-Calculate"
                                 isActive={true}

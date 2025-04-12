@@ -94,3 +94,9 @@ html{
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/* Custom Gradient Utility */
+.bg-custom-gradient {
+  background: radial-gradient(104.17% 277.39% at 50% -153.34%, #7EB2FF 0%, #043071 85%);
+}
+
