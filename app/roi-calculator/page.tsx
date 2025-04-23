@@ -162,8 +162,9 @@ export default function StepperForm() {
         return [
             {
                 heading: {
-                    value: Math.round(totalProcessingDaysSaved),
-                    text: "days saved"
+                    // value: Math.round(totalProcessingDaysSaved),
+                    value: improvedProcessingTime.toFixed(1),
+                    text: "approval days"
                 },
                 description: `Your CU could reduce loan approval times by up to ${(approvalTime * 100).toFixed(0)}%, bringing approval times down from ${avgProcessingTime} to ${improvedProcessingTime.toFixed(1)} days.`
                 , info: '"Spend less time on manual reviews and more time funding loans."'
