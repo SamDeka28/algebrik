@@ -4,8 +4,6 @@ import { headers } from "next/headers";
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     // const headersList = await headers();
     // const pathname = headersList.get("x-invoke-path") || "";
-    console.log("Hello world")
-    // console.log("pathname",pathname)
     const pageData = await fetchPageData(params.slug);
 
     if (!pageData) {

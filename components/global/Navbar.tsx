@@ -81,8 +81,6 @@ export default function Navbar() {
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
 
-  console.log({isContactOrResourcePage,pathname})
-
   function getLogo() {
     if (isScrolled) {
       return logo;

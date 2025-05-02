@@ -7,15 +7,21 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const validationSchema = Yup.object({
-  firstname: Yup.string().required("Name is required"),
+  firstname: Yup.string()
+    .matches(/^[a-zA-Z0-9\s]*$/, "Name should only contain letters, numbers, and spaces")
+    .required("Name is required"),
   phone: Yup.string()
     .matches(/^\d{10}$/, "Phone must be 10 digits")
     .required("Phone is required"),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
-  company: Yup.string().required("Company name is required"),
-  message: Yup.string().required("Message is required"),
+  company: Yup.string()
+    .matches(/^[a-zA-Z0-9\s]*$/, "Company name should only contain letters, numbers, and spaces")
+    .required("Company name is required"),
+  message: Yup.string()
+    .matches(/^[a-zA-Z0-9\s.,!?]*$/, "Message should only contain letters, numbers, spaces, and basic punctuation")
+    .required("Message is required"),
 });
 
 
@@ -32,7 +38,6 @@ export default function Contact() {
     },
     validationSchema,
     onSubmit: async (values: {[key:string]:string}) => {
-      console.log({ values })
       setClicked(true);
       setLoading(true);
       const res = await fetch(
@@ -103,13 +108,13 @@ export default function Contact() {
           className="md:text-[56px] font-bold flex flex-col gap-0"
           text={
             <>
-              <span>We’d love to show </span>
+              <span>We'd love to show </span>
               <span>you around!</span>
             </>
           }
         />
         <CustomSubtitle
-          text="Whether you’re looking to streamline your loan processes, enhance borrower experiences, or explore our AI-powered, cloud-native solutions, our team is here to help. Connect with us to start your journey toward a smarter, more efficient lending ecosystem."
+          text="Whether you're looking to streamline your loan processes, enhance borrower experiences, or explore our AI-powered, cloud-native solutions, our team is here to help. Connect with us to start your journey toward a smarter, more efficient lending ecosystem."
         />
       </div>
 
@@ -121,7 +126,7 @@ export default function Contact() {
           className="relative mx-auto z-10 w-[362px] mt-[43px] md:mt-0 font-plus-jakarta drop-shadow-xl md:w-[518px]
            bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
         >
-          <div className="flex flex-col gap-[24px]">
+          <div className="flex flex-col gap-[24px] !text-[#5D5A88] ">
             <div className="flex flex-col md:flex-row gap-[24px]">
               <div className="flex flex-col gap-[12px] w-full">
                 <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">

@@ -83,7 +83,6 @@ export default function StepperForm() {
         });
     };
 
-    console.log({ values })
 
     const handleCardSelect = (option: string) => {
         setValues((prev) => {
@@ -205,7 +204,6 @@ export default function StepperForm() {
             maximumFractionDigits: 0
         }).format(num);
     };
-    console.log({ result })
 
 
     return (

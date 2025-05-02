@@ -77,7 +77,6 @@ export default function SecureYourSpot() {
     },
     validationSchema,
     onSubmit: async (values: { [key: string]: string }) => {
-      console.log({ values })
       setClicked(true);
       setLoading(true);
       const res = await fetch(

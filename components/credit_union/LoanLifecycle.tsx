@@ -115,7 +115,6 @@ export default function LoanLifecycle() {
 
         if (isVisible !== isHalfVisible) {
           setIsHalfVisible(isVisible);
-          console.log({ firstTimeScrollLocked })
           if (!firstTimeScrollLocked)
             setIsScrollLocked(true)
         }
