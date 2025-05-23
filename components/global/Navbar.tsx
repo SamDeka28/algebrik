@@ -57,13 +57,13 @@ export default function Navbar() {
   // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource_center" || pathname === "/resource_center/out_of_the_lending_maze" || pathname === "/resource_center/from_fragmentation_to_seamlessness" || pathname === "/resource_center/beyond_decisioning" || pathname === "/resource_center/redefining_borrower";
 
   const BlueLogoPaths = [
-    "/roi-calculator","/roi-calculator/","/algebrik-webinar1","/algebrik-webinar1/",
-    "/contact", "/contact/","/privacy-policy","/privacy-policy/",
+    "/roi-calculator", "/roi-calculator/", "/algebrik-webinar1", "/algebrik-webinar1/",
+    "/contact", "/contact/", "/privacy-policy", "/privacy-policy/",
     "/resource_center", "/resource_center/",
-    "/resource_center/out_of_the_lending_maze","/resource_center/out_of_the_lending_maze/",
-    "/resource_center/from_fragmentation_to_seamlessness","/resource_center/from_fragmentation_to_seamlessness/",
-    "/resource_center/beyond_decisioning","/resource_center/beyond_decisioning/",
-    "/resource_center/redefining_borrower","/resource_center/redefining_borrower/",
+    "/resource_center/out_of_the_lending_maze", "/resource_center/out_of_the_lending_maze/",
+    "/resource_center/from_fragmentation_to_seamlessness", "/resource_center/from_fragmentation_to_seamlessness/",
+    "/resource_center/beyond_decisioning", "/resource_center/beyond_decisioning/",
+    "/resource_center/redefining_borrower", "/resource_center/redefining_borrower/",
     "/thank_you/",
     "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
     "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting/",
@@ -92,7 +92,7 @@ export default function Navbar() {
       }
     }
   }
-  if(pathname === "/gac-conference-dinner/"){
+  if (pathname === "/gac-conference-dinner/") {
     return null;
   }
   return (
@@ -148,7 +148,7 @@ export default function Navbar() {
             </Link>
             {dropdownOpen && (
               <div
-                className="absolute p-[16px] top-full flex flex-col items-start justify-center left-0 md:w-[303px] md:h-[176px] mt-2 bg-black/50 backdrop-blur-3xl rounded-[20px] text-white shadow-lg"
+                className="absolute p-[16px] top-full flex flex-col items-start justify-center left-0 md:w-[303px] mt-2 bg-black/50 backdrop-blur-3xl rounded-[20px] text-white shadow-lg"
                 onClick={closeDropdown}
               >
                 <Link
@@ -197,6 +197,36 @@ export default function Navbar() {
                     Banks
                   </div>
                 </Link>
+                <Link
+                  href="/solutions/decisioning"
+                  className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
+                >
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/icons/svg/shop.svg"
+                      alt="Coming Soon Icon"
+                      width={20}
+                      height={20}
+                      className="text-white"
+                    />
+                    Decisioning
+                  </div>
+                </Link>
+                <Link
+                  href="/solutions/omnichannel-point-of-sale"
+                  className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
+                >
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/icons/svg/shop.svg"
+                      alt="Coming Soon Icon"
+                      width={20}
+                      height={20}
+                      className="text-white"
+                    />
+                    Omnichannel point of sale
+                  </div>
+                </Link>
               </div>
             )}
           </div>
@@ -226,7 +256,7 @@ export default function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={toggleMenu}
-          className={`md:hidden text-2xl focus:outline-none ${isScrolled? "text-white" : isContactOrResourcePage ? "text-black" : "text-white"
+          className={`md:hidden text-2xl focus:outline-none ${isScrolled ? "text-white" : isContactOrResourcePage ? "text-black" : "text-white"
             }`}
         >
           {isOpen ? <HiX /> : <HiOutlineMenu />}
@@ -267,6 +297,12 @@ export default function Navbar() {
                 </Link>
                 <Link href="/solutions/banks" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Banks
+                </Link>
+                <Link href="/solutions/decisioning" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Decisioning
+                </Link>
+                <Link href="/solutions/omnichannel-point-of-sale" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Omnichannel point of sale
                 </Link>
               </div>
             )}
