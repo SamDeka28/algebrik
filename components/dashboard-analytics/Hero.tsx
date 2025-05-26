@@ -4,23 +4,23 @@ import Image from "next/image";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 
-export default function DecisioningHero() {
+export default function DashboardAnalyticsHero() {
   const heroContent = {
     header: (
       <>
         <div className="hidden md:flex flex-col">
-          <span>Make Every Credit Decision Smarter.</span>
-          <span>And Faster.</span>
+          <span>Know What’s </span>
+          <span>Fix What’s Not</span>
         </div>
         <div className="md:hidden flex flex-col px-[36px]">
-          <span>Make Every Credit</span>
-          <span>Decision Smarter.</span>
-          <span>And Faster.</span>
+          <span>Know What’s</span>
+          <span>Working. Fix</span>
+          <span>What’s Not.</span>
         </div>
       </>
     ),
     subtitle:
-      "From pre-approval to pricing, Algebrik's AI-powered Decisioning Engine puts you in control—with real-time simulations, no-code workflows, and compliance-first automation.",
+      "Track application flows, approval trends, and risk distribution—so you can optimize conversion and lending strategy before disbursement",
     sectionImage: "/section_images/credit_hero.png",
     subtitleClass:
       "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px] max-w-7xl",
@@ -42,7 +42,7 @@ export default function DecisioningHero() {
               className={heroContent.subtitleClass}
             />
           </div>
-          <button className="bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px]">See how it works live</button>
+          <button className="bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px]">See the Dashboard in Action</button>
         </div>
       </div>
       <div className="hidden relative h-[458px] md:flex justify-center">

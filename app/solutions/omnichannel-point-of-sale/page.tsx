@@ -119,7 +119,7 @@ export default function OmnichannelPOSPage() {
             <HeroSection />
 
             {/* Fragmented Lending Section */}
-            <section className="w-full max-w-5xl px-4 py-16 lg:px-0 flex flex-col items-center relative">
+            <section className="w-full max-w-6xl px-4 py-16 lg:px-0 flex flex-col items-center relative">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -174,18 +174,11 @@ export default function OmnichannelPOSPage() {
                             </h3>
                             <ul className={card.textClass} style={{ marginTop: "20px" }}>
                                 {card.items.map((item, i) => (
-                                    <li key={i} className="flex items-center gap-2">{card.type == "before" ?
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10.0013 18.3334C14.5846 18.3334 18.3346 14.5834 18.3346 10C18.3346 5.41669 14.5846 1.66669 10.0013 1.66669C5.41797 1.66669 1.66797 5.41669 1.66797 10C1.66797 14.5834 5.41797 18.3334 10.0013 18.3334Z" stroke="#606060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M10 6.66669V10.8334" stroke="#606060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M9.99609 13.3333H10.0036" stroke="#606060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        : <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10.0013 18.3334C14.5846 18.3334 18.3346 14.5834 18.3346 10C18.3346 5.41669 14.5846 1.66669 10.0013 1.66669C5.41797 1.66669 1.66797 5.41669 1.66797 10C1.66797 14.5834 5.41797 18.3334 10.0013 18.3334Z" stroke="#ACC7ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M6.45703 10L8.81536 12.3583L13.5404 7.64166" stroke="#ACC7ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-
-                                    } {item}</li>
+                                    <li key={i} className="flex items-center gap-2">{card.type === "before" ? (
+                                        <Image src="/icons/info-circle.svg" alt="Tick" width={20} height={20} />
+                                    ) : (
+                                        <Image src="/icons/tick-circle.svg" alt="Info" width={20} height={20} />
+                                    )} {item}</li>
                                 ))}
                             </ul>
                         </div>
@@ -217,7 +210,7 @@ export default function OmnichannelPOSPage() {
             </section>
 
             {/* Analytics Section */}
-            <section className="w-full max-w-5xl lg:px-4 lg:py-16 px-0 py-8 flex flex-col items-center">
+            <section className="w-full max-w-7xl lg:px-4 lg:py-16 px-0 py-8 flex flex-col items-center">
                 <div className="bg-gradient-to-br from-[#043071] to-[#7EB2FF] lg:rounded-3xl shadow-xl p-10 lg:pr-0 w-full flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="flex-1">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Track conversion, drop-offs, and channel health in one view</h2>
@@ -229,7 +222,7 @@ export default function OmnichannelPOSPage() {
                         </ul>
                     </div>
                     <div className="flex-1 flex justify-center">
-                        <div className="rounded-2xl w-full lg:w-[486px] lg:h-[296px] flex items-center justify-center">
+                        <div className="rounded-2xl w-full lg:w-[486px] lg:h-[296px] flex items-center justify-center lg:justify-end">
                             <Image src="/icons/conversion.png" alt="Analytics" width={486} height={296} className="hidden lg:block" />
                             <Image src="/icons/cv2.png" alt="Analytics" width={320} height={180} className="block lg:hidden" />
                         </div>

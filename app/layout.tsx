@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
 import Script from "next/script";
+import RouteLoader from "@/components/global/RouteLoader";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -41,12 +42,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
-        type="text/javascript"
-        id="hs-script-loader"
-        async
-        defer
-        src="//js.hs-scripts.com/47671281.js"
-      ></script>
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="//js.hs-scripts.com/47671281.js"
+        ></script>
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-VE1K00BENT"
@@ -74,9 +75,11 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} ${dmSans.variable} ${bebas.variable} ${inter.variable} antialiased !bg-white`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <RouteLoader>
+          <Navbar />
+          {children}
+          <Footer />
+        </RouteLoader>
       </body>
     </html>
   );

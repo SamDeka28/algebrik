@@ -61,7 +61,7 @@ export default function HeroSection() {
               className={heroContent.subtitleClass}
             />
           </div>
-          <BookADemo />
+          <button className="bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px]">See how it works live</button>
         </div>
       </div>
 
