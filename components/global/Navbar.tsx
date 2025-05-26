@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { HiChevronDown } from "react-icons/hi";
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import blueLogo from "@/public/blue_logo.png";
+import PortalDropdown from "./PortalDropdown";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
+  const solutionsRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -45,6 +47,7 @@ export default function Navbar() {
       } else {
         setIsScrolled(false);
       }
+      setDropdownOpen(false);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -134,6 +137,7 @@ export default function Navbar() {
             className="relative"
             onMouseEnter={openDropdown}
             onMouseLeave={closeDropdown}
+            ref={solutionsRef}
           >
             <Link
               href="/solutions"
@@ -147,12 +151,9 @@ export default function Navbar() {
               />
             </Link>
             {dropdownOpen && (
-              <div
-                className="absolute p-[16px] top-full flex flex-col items-start justify-center left-0 md:w-[303px] mt-2 bg-black/50 backdrop-blur-3xl rounded-[20px] text-white shadow-lg"
-                onClick={closeDropdown}
-              >
+              <PortalDropdown anchorRef={solutionsRef}>
                 <Link
-                  href="/solutions/credit_union"
+                  href="/solutions/credit-union"
                   onClick={toggleMenu}
                   className="block px-4 py-2 hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
@@ -168,7 +169,7 @@ export default function Navbar() {
                   </div>
                 </Link>
                 <Link
-                  href="/solutions/auto_lenders"
+                  href="/solutions/auto-lenders"
                   className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg"
                 >
                   <div className="flex items-center gap-2">
@@ -227,7 +228,35 @@ export default function Navbar() {
                     Omnichannel point of sale
                   </div>
                 </Link>
-              </div>
+                <Link
+                  href="/solutions/dashboard-analytics"
+                  className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/icons/svg/shop.svg"
+                      alt="Coming Soon Icon"
+                      width={20}
+                      height={20}
+                      className="text-white"
+                    />
+                    Dashboard Analytics
+                  </div>
+                </Link>
+                <Link
+                  href="/solutions/lender-cockpit"
+                  className="block px-4 py-2  hover:bg-gray-200 hover:w-full hover:bg-opacity-60 hover:backdrop-blur-2xl hover:rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/icons/svg/shop.svg"
+                      alt="Coming Soon Icon"
+                      width={20}
+                      height={20}
+                      className="text-white"
+                    />
+                    Lender Cockpit
+                  </div>
+                </Link>
+              </PortalDropdown>
             )}
           </div>
 
@@ -289,10 +318,10 @@ export default function Navbar() {
             </div>
             {isSolutionsOpen && (
               <div className="pl-6">
-                <Link href="/solutions/credit_union" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                <Link href="/solutions/credit-union" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Credit Union
                 </Link>
-                <Link href="/solutions/auto_lenders" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                <Link href="/solutions/auto-lenders" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Auto Lenders
                 </Link>
                 <Link href="/solutions/banks" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
@@ -303,6 +332,12 @@ export default function Navbar() {
                 </Link>
                 <Link href="/solutions/omnichannel-point-of-sale" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Omnichannel point of sale
+                </Link>
+                <Link href="/solutions/dashboard-analytics" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Dashboard Analytics
+                </Link>
+                <Link href="/solutions/lender-cockpit" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Lender Cockpit
                 </Link>
               </div>
             )}

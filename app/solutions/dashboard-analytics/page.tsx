@@ -4,8 +4,8 @@ import { CustomHeader } from "@/components/CustomHeader";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import DecisioningHero from "@/components/decisioning/Hero";
 import { useState } from "react";
+import DashboardAnalyticsHero from "@/components/dashboard-analytics/Hero";
 
 const beforeAfterData = [
     {
@@ -16,10 +16,10 @@ const beforeAfterData = [
         textClass: "text-gray-600 space-y-2 text-left",
         icon: null,
         items: [
-            "Rules scattered across spreadsheets, code, and legacy systems",
-            "Weeks to update score cutoffs or apply new pricing logic",
-            "No visibility into what's working or why",
-            "Risk of non-compliance and audit failures"
+            "Application funnel buried in disconnected reports",
+            "No insight into channel or branch performance",
+            "Risk mix unknown until post-review",
+            "Teams wait days for reports"
         ]
     },
     {
@@ -35,68 +35,58 @@ const beforeAfterData = [
             </svg>
         ),
         items: [
-            "All strategies managed from a single, no-code platform",
-            "Changes deployed in minutes—by business users",
-            "Champion-challenger testing and simulation built-in",
-            "Audit trails, fairness checks, and explainability baked in"
+            "See drop-offs, pull-through rates, and approval breakdowns live",
+            "Drill down by source, product, or geography instantly",
+            "Visualize scorecard distribution and pricing spread in real-time",
+            "Dashboards update in seconds across users and teams."
         ]
     }
 ];
 
 const featureCards = [
     {
-        icon: "/icons/cs-1.svg",
-        title: "No-Code Strategy Builder",
-        description: "Design and launch rule-based or model-driven decisions with a drag-and-drop interface."
-    },
-    {
-        icon: "/icons/cs-2.svg",
-        title: "Champion–Challenger Testing",
-        description: "Compare and optimize strategies live—without disrupting production."
-    },
-    {
-        icon: "/icons/cs-3.svg",
+        icon: "/icons/sales-funnel.svg",
         title: "Application Funnel Performance",
         description: "Track leads, drop-offs, approvals, and conversions by source or stage."
     },
     {
-        icon: "/icons/cs-4.svg",
-        title: "ML & Scorecard Deployment, No Dev Required",
-        description: "Easily deploy machine learning models and risk scorecards directly into flows."
+        icon: "/icons/risk.svg",
+        title: "Approval & Decline Trends",
+        description: "See how credit policy changes or market shifts affect outcomes"
     },
     {
-        icon: "/icons/cs-5.svg",
-        title: "Custom Pricing & Treatment Logic",
-        description: "Define loan terms, APR, and amounts with configurable rules or Python scripting."
+        icon: "/icons/analysis.svg",
+        title: "Risk Tier Distribution",
+        description: "Visualize approved vs declined loans by credit score bands or segments"
     },
     {
-        icon: "/icons/cs-6.svg",
-        title: "Built-In Simulation & Backtesting",
-        description: "Test strategies against historical data before go-live."
+        icon: "/icons/pricing.svg",
+        title: "Pricing Mix Visibility",
+        description: "Understand which APRs, terms, and amounts are being booked most often"
     },
     {
-        icon: "/icons/cs-7.svg",
-        title: "Compliance-First Design",
-        description: "Support Fair Lending, ECOA, UDAAP and more with explainability and audit logging."
+        icon: "/icons/service-time.svg",
+        title: "Turnaround Time Insights",
+        description: "Identify bottlenecks across teams, stages, or partner channels"
     }
 ];
 
 const flowsData = [
     {
-        icon: "/icons/ce1.png",
-        title: "Design approval logic, pricing bands, and eligibility flows visually."
+        icon: "/icons/das1.svg",
+        title: "Drop-offs reduced by 25% after pinpointing abandonment hotspots"
     },
     {
-        icon: "/icons/ce2.png",
-        title: "Test strategies on past applicants to predict impact."
+        icon: "/icons/das2.svg",
+        title: "Approval rate increased through real-time policy iteration tracking"
     },
     {
-        icon: "/icons/ce3.png",
-        title: "Compare rule sets live to see what performs best."
+        icon: "/icons/das3.svg",
+        title: "Risk tier skews detected early and adjusted mid-campaign"
     },
     {
-        icon: "/icons/ce4.png",
-        title: "Every decision is logged, explainable, and compliant."
+        icon: "/icons/das4.svg",
+        title: "Custom dashboards configured in minutes, no analyst required"
     }
 ];
 
@@ -119,7 +109,7 @@ export default function DecisioningPage() {
     return (
         <main className="bg-[#F8FAFF] min-h-screen w-full flex flex-col items-center font-plus-jakarta">
             {/* Hero Section */}
-            <DecisioningHero />
+            <DashboardAnalyticsHero />
 
             {/* Before/After Section */}
             <section className="w-full max-w-6xl px-4 py-16 flex flex-col items-center relative">
@@ -163,9 +153,9 @@ export default function DecisioningPage() {
                         }}
                     />
                 </div>
-                <CustomHeader text="From Rule Sprawl to Real-Time Lending" className="text-center text-[28px] md:text-[40px] font-bold" />
-                <p className="text-gray-600 text-center max-w-2xl mb-10 mt-6">
-                    Deliver seamless, personalized member experiences across every channel, while empowering your team with faster decisions and scalable solutions.
+                <CustomHeader text="From Gut Feel to Ground Truth" className="text-center text-[28px] md:text-[40px] font-bold" />
+                <p className="text-gray-600 text-center max-w-4xl mb-10 mt-6">
+                    Deliver seamless, personalised member experiences across every channel, while empowering your team with faster decisions and scalable solutions
                 </p>
                 <div className="flex flex-col md:flex-row gap-6 w-full justify-center z-10">
                     {beforeAfterData.map((card, idx) => (
@@ -189,65 +179,24 @@ export default function DecisioningPage() {
             </section>
 
             {/* Feature Cards Section */}
-            <section className="w-full px-4 py-16 flex flex-col items-center">
+            <section className="w-full py-16 flex flex-col items-center lg:px-0 px-6">
                 <CustomHeader text="A Smarter Way to Manage Credit Strategies" className="text-center text-[28px] md:text-[40px] font-bold" />
-                <div className="w-full flex flex-nowrap gap-4 pb-4 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
-                    {featureCards.map((item, idx) => (
-                        <div key={item.title} className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2">
-                            <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
-                                <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                <p className="text-gray-600 text-center max-w-4xl mb-10 mt-6">
+                    Funnel, Risk, and Pricing—Visualized in One Place
+                </p>
+                <div className="w-full overflow-x-auto scrollbar-hide hide-scrollbar px-4">
+                    <div className="flex flex-nowrap gap-4 pb-4 mt-8 justify-start mx-auto overflow-x-auto scrollbar-hide hide-scrollbar lg:w-full max-w-[1200px] lg:max-w-max" >
+                        {featureCards.map((item, idx) => (
+                            <div key={item.title} className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2">
+                                <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
+                                    <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                                </div>
+                                <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
+                                <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
                             </div>
-                            <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
-                            <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-                <p className="text-[#2A5FAC] text-[20px] font-medium text-center max-w-2xl mt-8">Borrowers can start, pause, and resume—anywhere.</p>
-            </section>
-
-            {/* Analytics Section */}
-            <section className="w-full max-w-7xl lg:px-4 lg:py-8 px-0 py-8 flex flex-col items-center relative">
-                <div className="container relative opacity-[30%] z-0">
-                    <motion.div
-                        className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
-                        animate={{
-                            y: [50, 30, 50],
-                        }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            ease: "easeInOut",
-                        }}
-                    />
-                    <motion.div
-                        className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10"
-                        animate={{
-                            y: [50, 30, 60],
-                        }}
-                        transition={{
-                            duration: 2,
-                            delay: 0.2,
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            ease: "easeInOut",
-                        }}
-                    />
-                    <motion.div
-                        className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1]"
-                        animate={{
-                            y: [10, 90, 0],
-                        }}
-                        transition={{
-                            duration: 2,
-                            delay: 0.4,
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            ease: "easeInOut",
-                        }}
-                    />
-                </div>
-                <Image src="/icons/lead.png" alt="Analytics" width={1000} height={1000} className="w-full z-10 shadow-2xl rounded-3xl" />
             </section>
 
             {/* Teams Section (Tabs/Pills) */}
@@ -300,67 +249,67 @@ export default function DecisioningPage() {
                             const teams = [
                                 {
                                     key: "credit",
-                                    label: "Credit & Risk",
+                                    label: "CLO / Lending Head",
                                     content: {
-                                        title: "Take control of scorecards and policy",
+                                        title: "Monitor daily application and approval metrics across branches and products",
                                         bullets: [
-                                            "Launch & tweak cutoffs instantly",
-                                            "Simulate strategy impact pre-launch",
-                                            "Reduce dependence on engineering teams"
+                                            "Track loan volume and approval trends daily",
+                                            "Compare product performance across branches",
+                                            "Monitor lending pipeline health in real-time"
                                         ],
-                                        image: "/icons/credit&risk.png"
+                                        image: "/icons/clo.png"
                                     }
                                 },
                                 {
                                     key: "product",
-                                    label: "Product & Lending",
+                                    label: "Credit Strategy",
                                     content: {
-                                        title: "Test and scale new loan ideas",
+                                        title: "Compare funnel performance before and after credit/policy changes",
                                         bullets: [
-                                            "Configure APR, term, and amount",
-                                            "Build flows per product line",
-                                            "Launch variations without writing code"
+                                            "Analyze score-tier level approval/decline ratios",
+                                            "Assess impact of recent rule or pricing changes",
+                                            "Identify gaps in policy coverage by segment"
                                         ],
-                                        image: "/icons/product&lending.png"
+                                        image: "/icons/cs.png"
                                     }
                                 },
                                 {
                                     key: "compliance",
-                                    label: "Compliance & Governance",
+                                    label: "Channel/Partner Ops",
                                     content: {
-                                        title: "Enforce fairness, transparency, and control",
+                                        title: "Track which partners or campaigns convert best",
                                         bullets: [
-                                            "Monitor all decisions in real-time",
-                                            "Ensure auditability across rule sets",
-                                            "Support Fair Lending and ECOA"
+                                            "Rank partners by completed application volume",
+                                            "Identify drop-offs by affiliate or dealer",
+                                            "Attribute conversions to campaigns or channels"
                                         ],
-                                        image: "/icons/complaince&governance.png"
+                                        image: "/icons/cpo.png"
                                     }
                                 },
                                 {
                                     key: "pricing",
-                                    label: "Pricing Analysts",
+                                    label: "Branch Leaders",
                                     content: {
-                                        title: "Deploy complex pricing strategies easily",
+                                        title: "See staff productivity and stage-level drop-offs",
                                         bullets: [
-                                            "Segment pricing logic by borrower",
-                                            "Use Python or visual rules",
-                                            "Adjust thresholds without IT support"
+                                            "See workload distribution across staff",
+                                            "Spot stuck files and SLA breaches",
+                                            "Monitor daily task and app completion rates"
                                         ],
-                                        image: "/icons/pricinganalyst.png"
+                                        image: "/icons/bl.png"
                                     }
                                 },
                                 {
                                     key: "ops",
-                                    label: "Lending Ops & Strategy",
+                                    label: "Compliance / Risk",
                                     content: {
-                                        title: "Scale what works, kill what doesn't",
+                                        title: "Review policy exceptions and score distribution for audit readiness",
                                         bullets: [
-                                            "Clone and test flows at scale",
-                                            "Track performance by segment",
-                                            "Optimize based on live results"
+                                            "Track policy exception rates and overrides",
+                                            "Track performance by segmentAudit rule execution and decision fairness",
+                                            "Segment approvals by risk and pricing tiers"
                                         ],
-                                        image: "/icons/lendingops&strategy.png"
+                                        image: "/icons/cr.png"
                                     }
                                 }
                             ];
@@ -435,8 +384,8 @@ export default function DecisioningPage() {
                 </div>
             </section>
 
-            {/* Flows Section */}
-            <section className="w-full max-w-7xl px-4 py-8 lg:py-16 flex flex-col items-center relative mt-[72px]">
+             {/* Analytics Section */}
+             <section className="w-full max-w-7xl lg:px-4 lg:py-8 px-0 py-8 flex flex-col items-center relative lg:px-0 px-6">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -477,39 +426,32 @@ export default function DecisioningPage() {
                         }}
                     />
                 </div>
-                <CustomHeader text="Control Every Decision. Without the Backlog" className="text-center z-10" />
-                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center pb-4 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
-                    {flowsData.map((item, idx) => (
-                        <div key={item.title} className="bg-white rounded-2xl min-w-[270px] flex-1 shadow-md p-4 flex flex-col items-center">
-                            <Image src={item.icon} alt={item.title} width={240} height={133} className="mb-3 w-full object-cover border border-[#BEBEBE5C] rounded-2xl" />
-                            <span className="text-base font-medium text-[#292929] text-left">{item.title}</span>
-                        </div>
-                    ))}
-                </div>
-                <p className="text-base lg:text-[20px] text-[#606060] font-semibold mt-8 lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
+                <CustomHeader text="Fits Your LOS. Feeds Your Tools. Powers Your Decisions" className="text-center z-10 mt-[64px] mb-[40px] lg:text-[40px] text-[28px] font-bold" />
+                <Image src="/icons/los.svg" alt="Analytics" width={1000} height={1000} className="w-full z-10 shadow-2xl rounded-3xl" />
             </section>
 
-            {/* Scale Section */}
-            <section className="w-full max-w-7xl px-4 py-8 lg:py-16 flex flex-col items-center">
-                <CustomHeader text="Built for Credit Strategy at Scale." className="text-center" />
-                <div className="w-full flex mt-[44px] flex-wrap gap-4 md:gap-8 justify-start md:justify-center pb-4">
-                    {scaleData.map((item, idx) => (
-                        <div key={item.title} className="flex-1 bg-white w-[300px] min-w-[300px] pb-[30px] rounded-2xl shadow-2xl p-4 flex flex-col items-start">
-                            <Image src={item.icon} alt={item.title} width={64} height={64} className="mb-3 w-[64px] h-[64px] object-cover" />
-                            <span className="text-base font-medium text-[#2A5FAC] text-left">{item.title}</span>
+            {/* Flows Section */}
+            <section className="w-full max-w-7xl px-4 py-8 lg:py-16 flex flex-col items-center relative mt-[72px]">
+                <CustomHeader text="Turning Origination Data into Actionable Strategy" className="text-center z-10" />
+                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center pb-8 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
+                    {flowsData.map((item, idx) => (
+                        <div key={item.title} className="bg-white rounded-2xl min-w-[270px] flex-1 shadow-lg p-4 flex flex-col items-start">
+                            <Image src={item.icon} alt={item.title} width={64} height={64} className="mb-3  w-[64px] h-[64px] object-cover rounded-2xl" />
+                            <span className="text-[18px] font-medium text-[#2A5FAC] text-left">{item.title}</span>
                         </div>
                     ))}
                 </div>
             </section>
+
 
             {/* Final CTA Section */}
-            <section className="w-full py-16 flex flex-col items-center text-center">
-                <CustomHeader text="Your Credit Strategy Shouldn't Wait for a Ticket" className="text-center text-2xl md:text-[44px] max-w-3xl leading-normal font-bold mb-4" />
+            <section className="w-full py-16 mb-24 flex flex-col items-center text-center">
+                <CustomHeader text="Lending Strategy Starts with Visibility" className="text-center text-2xl md:text-[44px] max-w-3xl leading-normal font-bold mb-4" />
                 <p className="max-w-5xl mx-auto text-sm lg:text-2xl px-6 lg:px-0 text-[#606060] mt-6">
-                    Algebrik gives your lending, risk, and compliance teams full control to test, launch, and scale decisions—faster than ever before
+                Know what’s moving through your origination pipeline—so you can act fast, stay efficient, and grow smarter.
                 </p>
                 <Link href="#demo" className="inline-block bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white font-semibold px-8 py-4 rounded-full transition mt-8 lg:mt-16">
-                    See how fast it can be
+                Talk to a Lending Funnel Expert
                 </Link>
             </section>
         </main>
