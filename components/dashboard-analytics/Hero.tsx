@@ -3,14 +3,14 @@
 import Image from "next/image";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-
+import { motion } from "framer-motion";
 export default function DashboardAnalyticsHero() {
   const heroContent = {
     header: (
       <>
         <div className="hidden md:flex flex-col">
-          <span>Know What’s </span>
-          <span>Fix What’s Not</span>
+          <span>Know What’s Working </span>
+          <span className="font-extrabold">Fix What’s Not</span>
         </div>
         <div className="md:hidden flex flex-col px-[36px]">
           <span>Know What’s</span>
@@ -21,7 +21,7 @@ export default function DashboardAnalyticsHero() {
     ),
     subtitle:
       "Track application flows, approval trends, and risk distribution—so you can optimize conversion and lending strategy before disbursement",
-    sectionImage: "/section_images/credit_hero.png",
+    sectionImage: "/icons/da-main.png",
     subtitleClass:
       "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px] max-w-7xl",
   };
@@ -42,7 +42,19 @@ export default function DashboardAnalyticsHero() {
               className={heroContent.subtitleClass}
             />
           </div>
-          <button className="bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px]">See the Dashboard in Action</button>
+          <motion.button 
+            className="relative bg-gradient-to-tr from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px] overflow-hidden group"
+            whileHover={{ 
+              boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+            }}
+            transition={{ 
+              duration: 0.5,
+              ease: "easeInOut"
+            }}
+          >
+            <span className="relative z-10">See the Dashboard in Action</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+          </motion.button>
         </div>
       </div>
       <div className="hidden relative h-[458px] md:flex justify-center">

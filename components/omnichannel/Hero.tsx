@@ -4,6 +4,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const pathname = usePathname();
@@ -13,20 +14,20 @@ export default function HeroSection() {
     header: (
       <>
         <div className="hidden md:flex flex-col">
-          <span>Lending shouldn’t be locked</span>
-          <span>in the branch</span>
+          <span>Lending shouldn't be locked</span>
+          <span className="font-extrabold">in the branch</span>
         </div>
         <div className="md:hidden flex flex-col px-[36px]">
           <span>Lending </span>
-          <span>shouldn’t be</span>
+          <span>shouldn't be</span>
           <span>locked in the</span>
           <span>branch</span>
         </div>
       </>
     ),
     subtitle:
-      "Algebrik’s Omnichannel POS Solutions let you launch seamless, high-converting lending experiences across every touchpoint-mobile, web, branch, dealer, and partner channels.",
-    sectionImage: "/section_images/credit_hero.png",
+      "Algebrik's Omnichannel POS Solutions let you launch seamless, high-converting lending experiences across every touchpoint-mobile, web, branch, dealer, and partner channels.",
+    sectionImage: "/icons/opos-main.png",
     subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px] max-w-7xl",
   }
 
@@ -61,7 +62,19 @@ export default function HeroSection() {
               className={heroContent.subtitleClass}
             />
           </div>
-          <button className="bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px]">See how it works live</button>
+          <motion.button 
+            className="relative bg-gradient-to-tr from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px] overflow-hidden group"
+            whileHover={{ 
+              boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+            }}
+            transition={{ 
+              duration: 0.5,
+              ease: "easeInOut"
+            }}
+          >
+            <span className="relative z-10">See how it works live</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+          </motion.button>
         </div>
       </div>
 
