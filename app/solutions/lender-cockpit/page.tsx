@@ -374,7 +374,15 @@ export default function DecisioningPage() {
                     <div className="w-full bg-white rounded-[36px] shadow-2xl px-8 py-10 flex flex-col items-center">
                         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#2A5FAC]">Built for the Teams Who Own Lending</h2>
                         {(() => {
-                            const teams = [
+                            const teams: {
+                                key: string;
+                                label: string;
+                                content: {
+                                    title?: string;
+                                    bullets: string[];
+                                    image: string;
+                                };
+                            }[] = [
                                 {
                                     key: "credit",
                                     label: "Loan Officers",
