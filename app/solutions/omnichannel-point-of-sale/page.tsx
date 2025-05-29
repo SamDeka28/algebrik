@@ -228,7 +228,7 @@ export default function OmnichannelPOSPage() {
                             <li>• Embedded analytics for A/B testing</li>
                         </ul>
                     </div>
-                    <div className="flex-1 flex justify-center">
+                    <div className="flex-1 flex justify-center lg:justify-end">
                         <div className="rounded-2xl w-full lg:w-[486px] lg:h-[296px] flex items-center justify-center lg:justify-end">
                             <Image src="/icons/conversion.png" alt="Analytics" width={486} height={296} className="hidden lg:block" />
                             <Image src="/icons/cv2.png" alt="Analytics" width={320} height={180} className="block lg:hidden" />
