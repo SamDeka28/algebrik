@@ -8,8 +8,8 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 export default function HeroSection() {
   const pathname = usePathname();
 
-  const isCreditUnion = pathname.includes("credit_union");
-  const isAutoLenders = pathname.includes("auto_lenders");
+  const isCreditUnion = pathname.includes("credit-union");
+  const isAutoLenders = pathname.includes("auto-lenders");
   const isSmbLenders = pathname.includes("banks");
 
   const heroContent = isCreditUnion
@@ -30,7 +30,7 @@ export default function HeroSection() {
         subtitle:
           "Empower your credit union to reduce approval times, boost member satisfaction, and lower operational costs—all with Algebrik AI’s cloud-native, AI-powered solutions tailored to your needs.",
         sectionImage: "/section_images/credit_hero.png",
-        subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px]",
+        subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-6  mb-[10px] max-w-7xl",
       }
     : isAutoLenders
     ? {
@@ -50,7 +50,7 @@ export default function HeroSection() {
         subtitle:
           "Streamline auto financing with a unified platform that integrates trusted services, simplifies workflows, and delights your borrowers and employees.",
         sectionImage: "/section_images/auto_lenders/hero.png",
-        subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center md:px-[400px] mb-[10px]",
+        subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-6 mb-[10px] max-w-4xl",
       }
     : isSmbLenders
     ? {
@@ -70,7 +70,7 @@ export default function HeroSection() {
         subtitle:
           "Simplify lending operations, improve decision-making, and deliver faster, seamless borrower experiences—all tailored for bank lenders",
         sectionImage: "/section_images/smb_lenders/hero.png",
-        subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center md:px-[430px] mb-[10px]",
+        subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center mb-[10px] px-6 max-w-4xl",
       }
     : null;
 
@@ -89,10 +89,7 @@ export default function HeroSection() {
         //   backgroundRepeat: "no-repeat",
         //   backgroundPositionY: "bottom",
         // }}
-        className="    w-full h-[758px] flex items-center justify-center overflow-hidden relative 
-    md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-center 
-    bg-cover"
-
+        className="w-full h-[758px] flex items-center justify-center overflow-hidden relative md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-bottom bg-cover"
       >
         <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[20px]">
           <div className="flex flex-col gap-[20px]">

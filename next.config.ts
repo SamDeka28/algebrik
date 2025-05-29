@@ -7,9 +7,9 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   webpack: (config, { dev }) => {
-    if (dev) {
-      config.devtool = "eval-source-map"; // ✅ Shows actual source files in errors
-    }
+    // if (dev) {
+    //   config.devtool = "eval-source-map"; // ✅ Shows actual source files in errors
+    // }
     return config;
   },
   /* config options here */

@@ -93,40 +93,40 @@ const AICoreSection = () => {
       </div>
 
       <div className="w-full h-max md:hidden">
-  <div className="relative overflow-x-scroll scrollbar-hide flex">
-    <div className="flex space-x-6">
-      {cardData.map((card, index) => (
-        <div
-          key={index}
-          className="px-6 py-8 rounded-[20px] drop-shadow-2xl md:shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg
+        <div className="relative overflow-x-scroll scrollbar-hide flex">
+          <div className="flex space-x-6">
+            {cardData.map((card, index) => (
+              <div
+                key={index}
+                className="px-6 py-8 rounded-[20px] drop-shadow-2xl md:shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg
           bg-white/80 md:bg-white/60 border-none md:border border-[#CAD3E0] flex flex-col justify-between 
            w-[274px] h-auto flex-shrink-0"
-          // style={{
-          //   background:
-          //     "linear-gradient(80deg, rgba(255, 255, 255, 0.7), rgba(230, 245, 255, 0.5))",
-          // }}
-        >
-          <div className="drop-shadow-2xl">
-            <div className="flex items-center gap-4 justify-between mb-[16px] md:mb-4">
-              <p
-                className="text-[56px] md:text-[72px] font-bold leading-none font-dm-sans text-[#D3E5FF]"
-                style={{ WebkitTextStroke: "2px rgb(28, 141, 234, 100%)" }}
+              // style={{
+              //   background:
+              //     "linear-gradient(80deg, rgba(255, 255, 255, 0.7), rgba(230, 245, 255, 0.5))",
+              // }}
               >
-                {card.number}
-              </p>
-            </div>
-            <h2 className="text-[#2A5FAC] text-[20px] md:text-[24px] font-bold font-plus-jakarta leading-[34px] mt-[16px] mb-[8px] hover:text-[#195BD7]">
-              {card.title}
-            </h2>
-            <p className="text-[#292929] text-[14px] md:text-[16px] font-normal font-plus-jakarta leading-6 hover:text-[#195BD7]">
-              {card.description}
-            </p>
+                <div className="drop-shadow-2xl">
+                  <div className="flex items-center gap-4 justify-between mb-[16px] md:mb-4">
+                    <p
+                      className="text-[56px] md:text-[72px] font-bold leading-none font-dm-sans text-[#D3E5FF]"
+                      style={{ WebkitTextStroke: "2px rgb(28, 141, 234, 100%)" }}
+                    >
+                      {card.number}
+                    </p>
+                  </div>
+                  <h2 className="text-[#2A5FAC] text-[20px] md:text-[24px] font-bold font-plus-jakarta leading-[34px] mt-[16px] mb-[8px] hover:text-[#195BD7]">
+                    {card.title}
+                  </h2>
+                  <p className="text-[#292929] text-[14px] md:text-[16px] font-normal font-plus-jakarta leading-6 hover:text-[#195BD7]">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
+      </div>
 
 
 
