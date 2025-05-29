@@ -3,16 +3,16 @@
 import { CustomHeader } from "@/components/CustomHeader";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 import DecisioningHero from "@/components/decisioning/Hero";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const beforeAfterData = [
     {
         type: "before",
         title: "Before Algebrik",
         titleClass: "mb-3 bg-[#E4E8ED] rounded-[40px] text-center text-[#292929] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-white rounded-2xl shadow-2xl p-6 flex-1 min-w-[260px]",
+        cardClass: "bg-white rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px]",
         textClass: "text-gray-600 space-y-2 text-left",
         icon: null,
         items: [
@@ -26,7 +26,7 @@ const beforeAfterData = [
         type: "after",
         title: "After Algebrik",
         titleClass: "flex justify-center items-center gap-1 mb-3 bg-[#5A94E7] rounded-[40px] text-center text-[#FDFEFE] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 flex-1 min-w-[260px] text-white",
+        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px] text-white border-[5px] border-[#5A94E7]",
         textClass: "space-y-2 text-left",
         icon: (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,6 +116,26 @@ const scaleData = [
 ];
 
 export default function DecisioningPage() {
+    const controls = useAnimation();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(containerRef);
+
+    useEffect(() => {
+        if (isInView) {
+            controls.start({
+                x: [0, -1000],
+                transition: {
+                    x: {
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        duration: 20,
+                        ease: "linear",
+                    },
+                },
+            });
+        }
+    }, [isInView, controls]);
+
     return (
         <main className="bg-[#F8FAFF] min-h-screen w-full flex flex-col items-center font-plus-jakarta">
             {/* Hero Section */}
@@ -191,18 +211,46 @@ export default function DecisioningPage() {
             {/* Feature Cards Section */}
             <section className="w-full px-4 py-16 flex flex-col items-center">
                 <CustomHeader text="A Smarter Way to Manage Credit Strategies" className="text-center text-[28px] md:text-[40px] font-bold" />
-                <div className="w-full flex flex-nowrap gap-4 pb-4 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
-                    {featureCards.map((item, idx) => (
-                        <div key={item.title} className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2">
-                            <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
-                                <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
-                            </div>
-                            <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
-                            <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
-                        </div>
-                    ))}
+                <div ref={containerRef} className="w-full overflow-hidden">
+                    <motion.div
+                        className="flex gap-4 pb-4 mt-8"
+                        animate={controls}
+                        style={{
+                            transition: "transform 20s linear infinite",
+                            transform: "translateX(-100%)",
+                        }}
+                    >
+                        {featureCards.map((item, idx) => (
+                            <motion.div
+                                key={item.title}
+                                className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
+                                    <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                                </div>
+                                <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
+                                <span className="text-[#606060] text-base leading-snug">{item.description}</span>
+                            </motion.div>
+                        ))}
+                        {/* Duplicate cards for seamless loop */}
+                        {featureCards.map((item, idx) => (
+                            <motion.div
+                                key={`duplicate-${item.title}`}
+                                className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
+                                    <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                                </div>
+                                <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
+                                <span className="text-[#606060] text-base leading-snug">{item.description}</span>
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </div>
-                <p className="text-[#2A5FAC] text-[20px] font-medium text-center max-w-2xl mt-8">Borrowers can start, pause, and resume—anywhere.</p>
             </section>
 
             {/* Analytics Section */}
@@ -308,7 +356,7 @@ export default function DecisioningPage() {
                                             "Simulate strategy impact pre-launch",
                                             "Reduce dependence on engineering teams"
                                         ],
-                                        image: "/icons/credit&risk.png"
+                                        image: "/icons/dat-1.png"
                                     }
                                 },
                                 {
@@ -321,7 +369,7 @@ export default function DecisioningPage() {
                                             "Build flows per product line",
                                             "Launch variations without writing code"
                                         ],
-                                        image: "/icons/product&lending.png"
+                                        image: "/icons/dat-2.png"
                                     }
                                 },
                                 {
@@ -334,7 +382,7 @@ export default function DecisioningPage() {
                                             "Ensure auditability across rule sets",
                                             "Support Fair Lending and ECOA"
                                         ],
-                                        image: "/icons/complaince&governance.png"
+                                        image: "/icons/dat-3.png"
                                     }
                                 },
                                 {
@@ -347,7 +395,7 @@ export default function DecisioningPage() {
                                             "Use Python or visual rules",
                                             "Adjust thresholds without IT support"
                                         ],
-                                        image: "/icons/pricinganalyst.png"
+                                        image: "/icons/dat-4.png"
                                     }
                                 },
                                 {
@@ -360,7 +408,7 @@ export default function DecisioningPage() {
                                             "Track performance by segment",
                                             "Optimize based on live results"
                                         ],
-                                        image: "/icons/lendingops&strategy.png"
+                                        image: "/icons/dat-5.png"
                                     }
                                 }
                             ];
@@ -372,8 +420,11 @@ export default function DecisioningPage() {
                                     <div className="flex flex-row flex-wrap justify-center gap-2 md:gap-4 mb-8 border-[2px] rounded-lg lg:rounded-full border-[#467AC6] p-[6px] bg-[#1F3048]">
                                         {teams.map(team => (
                                             selected === team.key ? (
-                                                <div
+                                                <motion.div
                                                     key={team.key}
+                                                    initial={{ opacity: 0, x: 20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ duration: 0.3, ease: "easeOut" }}
                                                     style={{
                                                         padding: 2,
                                                         borderRadius: '9999px',
@@ -392,42 +443,56 @@ export default function DecisioningPage() {
                                                     >
                                                         {team.label}
                                                     </button>
-                                                </div>
+                                                </motion.div>
                                             ) : (
-                                                <button
+                                                <motion.button
                                                     key={team.key}
                                                     onClick={() => setSelected(team.key)}
                                                     className="px-6 py-2 rounded-full transition font-medium text-base focus:outline-none min-w-[170px] text-center bg-transparent text-white border-white/40 hover:bg-white/10"
-                                                    style={{
-
-                                                    }}
+                                                    whileHover={{ scale: 1.05 }}
+                                                    transition={{ duration: 0.2 }}
                                                 >
                                                     {team.label}
-                                                </button>
+                                                </motion.button>
                                             )
                                         ))}
                                     </div>
                                     {/* Two-column layout: image left, text right */}
-                                    <div className="flex flex-row flex-wrap gap-8 w-full">
-                                        {/* Placeholder image with white border */}
-                                        <div className="rounded-2xl p-2" >
-                                            <div className="w-full lg:w-[460px] lg:h-[320px] flex items-center justify-center rounded-xl">
-                                                <Image src={current?.content.image as string} alt="Credit" width={460} height={320} className="w-full lg:h-full object-cover rounded-xl" />
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={selected}
+                                            initial={{ opacity: 0, x: 40 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -40 }}
+                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                            className="flex flex-row flex-wrap gap-8 w-full"
+                                        >
+                                            {/* Placeholder image with white border */}
+                                            <div className="rounded-2xl p-2" >
+                                                <div className="w-full lg:w-[460px] lg:h-[320px] flex items-center justify-center rounded-xl">
+                                                    <Image src={current?.content.image as string} alt="Credit" width={460} height={320} className="w-full lg:h-full object-contain rounded-xl" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        {/* Content */}
-                                        <div className="flex-1 flex flex-col items-start max-w-xl pt-6">
-                                            <h3 className="text-white text-2xl font-semibold mb-4">{current?.content.title}</h3>
-                                            <ul className="text-[#C7D6F3] text-lg space-y-2">
-                                                {current?.content.bullets.map((b, i) => (
-                                                    <li key={i} className="flex items-center gap-2">
-                                                        <span className=" w-2 h-2 bg-white rounded-full inline-block"></span>
-                                                        <span>{b}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
+                                            {/* Content */}
+                                            <div className="flex-1 flex flex-col items-start max-w-xl pt-6">
+                                                <h3 className="text-white text-2xl font-semibold mb-4">{current?.content.title}</h3>
+                                                <ul className="text-[#C7D6F3] text-lg space-y-2">
+                                                    {current?.content.bullets.map((b, i) => (
+                                                        <motion.li
+                                                            key={i}
+                                                            className="flex items-center gap-2"
+                                                            initial={{ opacity: 0, y: 10 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            transition={{ duration: 0.3, delay: i * 0.1 }}
+                                                        >
+                                                            <span className="w-2 h-2 bg-white rounded-full inline-block"></span>
+                                                            <span>{b}</span>
+                                                        </motion.li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </motion.div>
+                                    </AnimatePresence>
                                 </div>
                             );
                         })()}
@@ -436,7 +501,7 @@ export default function DecisioningPage() {
             </section>
 
             {/* Flows Section */}
-            <section className="w-full max-w-7xl px-4 py-8 lg:py-16 flex flex-col items-center relative mt-[72px]">
+            <section className="w-full max-w-[1380px] px-4 py-8 lg:py-16 flex flex-col items-center relative mt-[72px]">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -478,12 +543,22 @@ export default function DecisioningPage() {
                     />
                 </div>
                 <CustomHeader text="Control Every Decision. Without the Backlog" className="text-center z-10" />
-                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center pb-4 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
+                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center py-10 overflow-x-auto scrollbar-hide hide-scrollbar">
                     {flowsData.map((item, idx) => (
-                        <div key={item.title} className="bg-white rounded-2xl min-w-[270px] flex-1 shadow-md p-4 flex flex-col items-center">
+                        <motion.div
+                            key={item.title}
+                            className="bg-white rounded-2xl min-w-[270px] max-w-[270px] flex-1 shadow-lg p-4 flex flex-col items-center"
+                            whileHover={{
+                                scale: 1.05,
+                            }}
+                            transition={{
+                                duration: 0.3,
+                                ease: "easeOut"
+                            }}
+                        >
                             <Image src={item.icon} alt={item.title} width={240} height={133} className="mb-3 w-full object-cover border border-[#BEBEBE5C] rounded-2xl" />
                             <span className="text-base font-medium text-[#292929] text-left">{item.title}</span>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
                 <p className="text-base lg:text-[20px] text-[#606060] font-semibold mt-8 lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
@@ -494,10 +569,20 @@ export default function DecisioningPage() {
                 <CustomHeader text="Built for Credit Strategy at Scale." className="text-center" />
                 <div className="w-full flex mt-[44px] flex-wrap gap-4 md:gap-8 justify-start md:justify-center pb-4">
                     {scaleData.map((item, idx) => (
-                        <div key={item.title} className="flex-1 bg-white w-[300px] min-w-[300px] pb-[30px] rounded-2xl shadow-2xl p-4 flex flex-col items-start">
+                        <motion.div
+                            key={item.title}
+                            className="flex-1 bg-white w-[300px] min-w-[300px] pb-[30px] rounded-2xl shadow-2xl p-4 flex flex-col items-start"
+                            whileHover={{
+                                scale: 1.05,
+                            }}
+                            transition={{
+                                duration: 0.3,
+                                ease: "easeOut"
+                            }}
+                        >
                             <Image src={item.icon} alt={item.title} width={64} height={64} className="mb-3 w-[64px] h-[64px] object-cover" />
                             <span className="text-base font-medium text-[#2A5FAC] text-left">{item.title}</span>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </section>
@@ -508,9 +593,19 @@ export default function DecisioningPage() {
                 <p className="max-w-5xl mx-auto text-sm lg:text-2xl px-6 lg:px-0 text-[#606060] mt-6">
                     Algebrik gives your lending, risk, and compliance teams full control to test, launch, and scale decisions—faster than ever before
                 </p>
-                <Link href="#demo" className="inline-block bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white font-semibold px-8 py-4 rounded-full transition mt-8 lg:mt-16">
-                    See how fast it can be
-                </Link>
+                <motion.button
+                    className="relative bg-gradient-to-tr from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px] overflow-hidden group mt-8 lg:mt-16"
+                    whileHover={{
+                        boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "easeInOut"
+                    }}
+                >
+                    <span className="relative z-10">See how it works live</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+                </motion.button>
             </section>
         </main>
     );

@@ -13,7 +13,7 @@ const beforeAfterData = [
         type: "before",
         title: "Before Algebrik",
         titleClass: "mb-3 bg-[#E4E8ED] rounded-[40px] text-center text-[#292929] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-white rounded-2xl shadow-2xl p-6 flex-1 min-w-[260px]",
+        cardClass: "bg-white rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px]",
         textClass: "text-gray-600 space-y-2 text-left",
         icon: null,
         items: [
@@ -27,7 +27,7 @@ const beforeAfterData = [
         type: "after",
         title: "After Algebrik",
         titleClass: "flex justify-center items-center gap-1 mb-3 bg-[#5A94E7] rounded-[40px] text-center text-[#FDFEFE] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 flex-1 min-w-[260px] text-white",
+        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px] text-white border-[5px] border-[#5A94E7]",
         textClass: "space-y-2 text-left",
         icon: (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -131,26 +131,35 @@ const lendingTimeline = [
             "Sees flagged applications that need immediate attention or documents"
         ],
         variant: "primary",
-        flex: 3
+        flex: 1
     },
     {
         time: "11:30 AM",
         title: "Collaborate with Credit Analyst",
-        details: [],
+        details: [
+            "Shares file directly from the Cockpit with contextual notes",
+            "Real-time status tracking ensures no back-and-forth emails"
+        ],
         variant: "secondary",
         flex: 1
     },
     {
         time: "2:00 PM",
         title: "Respond to a Borrower",
-        details: [],
+        details: [
+            "Uses the in-app messaging panel to send a pre-built response",
+            "Uploads or requests documents without leaving the screen"
+        ],
         variant: "secondary",
         flex: 1
     },
     {
         time: "4:00 PM",
         title: "Review End-of-Day Pipeline",
-        details: [],
+        details: [
+            "Views a dashboard of loans in progress, SLAs met, and tasks completed",
+            "Escalates a delayed file with a single click to Lending Ops"
+        ],
         variant: "secondary",
         flex: 1
     }
@@ -164,6 +173,19 @@ const clarityBullets = [
 ];
 
 export default function DecisioningPage() {
+    const [activeCard, setActiveCard] = useState(0);
+    const [showPoints, setShowPoints] = useState(true);
+
+    const handleCardHover = (idx: number) => {
+        if (activeCard !== idx) {
+            setShowPoints(false);
+            setActiveCard(idx);
+            setTimeout(() => {
+                setShowPoints(true);
+            }, 500); // Match the transition duration
+        }
+    };
+
     return (
         <main className="bg-[#F8FAFF] min-h-screen w-full flex flex-col items-center font-plus-jakarta">
             {/* Hero Section */}
@@ -237,28 +259,77 @@ export default function DecisioningPage() {
             </section>
 
             {/* Feature Cards Section */}
-            <section className="w-full py-16 flex flex-col items-center px-6 lg:px-0">
+            <section className="w-full py-16 flex flex-col items-center lg:px-0 px-6">
                 <CustomHeader text="What Makes the Cockpit Work for Loan Teams" className="text-center text-[28px] md:text-[40px] font-bold" />
-                <p className="text-gray-600 text-center max-w-4xl mb-10 mt-6">
+                <p className="text-gray-600 text-center max-w-4xl mt-6">
                     Every Task. Every Stage. Every Borrower—Right Where You Need Them.
                 </p>
                 <div className="w-full overflow-x-auto scrollbar-hide hide-scrollbar px-4">
-                    <div className="flex flex-nowrap gap-4 pb-4 mt-8 justify-start mx-auto overflow-x-auto scrollbar-hide hide-scrollbar lg:w-full max-w-[1200px] lg:max-w-max" >
-                        {featureCards.map((item, idx) => (
-                            <div key={item.title} className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2">
-                                <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
-                                    <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
-                                </div>
-                                <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
-                                <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
-                            </div>
-                        ))}
+                    <div className="relative overflow-hidden">
+                        <div 
+                            className="flex flex-nowrap gap-4 py-10 mt-8 justify-start mx-auto lg:w-full max-w-[1200px] lg:max-w-max"
+                            style={{
+                                animation: "scroll 20s linear infinite",
+                            }}
+                        >
+                            {featureCards.map((item, idx) => (
+                                <motion.div 
+                                    key={item.title} 
+                                    className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2"
+                                    style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                                    whileHover={{ 
+                                        scale: 1.05
+                                    }}
+                                    transition={{ 
+                                        duration: 0.3,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
+                                        <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                                    </div>
+                                    <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
+                                    <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
+                                </motion.div>
+                            ))}
+                            {/* Duplicate cards for seamless loop */}
+                            {featureCards.map((item, idx) => (
+                                <motion.div 
+                                    key={`duplicate-${item.title}`} 
+                                    className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2"
+                                    style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                                    whileHover={{ 
+                                        scale: 1.05
+                                    }}
+                                    transition={{ 
+                                        duration: 0.3,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
+                                        <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                                    </div>
+                                    <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
+                                    <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
+                <style jsx>{`
+                    @keyframes scroll {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+                `}</style>
             </section>
 
             {/* Teams Section (Tabs/Pills) */}
-            <section className="w-full flex flex-col items-center justify-center py-8 md:py-20  md:mt-[72px] relative">
+            <section className="w-full flex flex-col items-center justify-center py-8 md:pt-10 relative">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -345,7 +416,7 @@ export default function DecisioningPage() {
                                     key: "pricing",
                                     label: "Lending Ops",
                                     content: {
-                                        title: "See staff productivity and stage-level drop-offs",
+                                        // title: "See staff productivity and stage-level drop-offs",
                                         bullets: [
                                             "See workload distribution across staff",
                                             "Spot stuck files and SLA breaches",
@@ -358,7 +429,7 @@ export default function DecisioningPage() {
                                     key: "ops",
                                     label: "Compliance / Risk",
                                     content: {
-                                        title: "Review policy exceptions and score distribution for audit readiness",
+                                        // title: "Review policy exceptions and score distribution for audit readiness",
                                         bullets: [
                                             "Track policy exception rates and overrides",
                                             "Track performance by segmentAudit rule execution and decision fairness",
@@ -447,7 +518,7 @@ export default function DecisioningPage() {
             </section>
 
             {/* Lending Timeline Section */}
-            <section className="w-full flex flex-col items-center py-16  relative px-6">
+            <section className="w-full flex flex-col items-center py-16 relative px-6">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -490,25 +561,40 @@ export default function DecisioningPage() {
                 </div>
                 <CustomHeader text="What Lending looks like when you can do it all in one tab" className="z-10 text-center" />
                 <p className="text-[#606060] text-lg text-center mb-10 max-w-3xl z-10">The Cockpit brings structure, automation, and visibility to every hour of your loan officers' day—so they can focus on lending, not logistics.</p>
-                <div className="flex flex-col md:flex-row gap-4 w-full max-w-7xl justify-center z-10">
+                <div 
+                    className="flex flex-col md:flex-row gap-4 w-full max-w-7xl justify-center z-10"
+                    onMouseLeave={() => {
+                        setActiveCard(0);
+                        setShowPoints(true);
+                    }}
+                >
                     {lendingTimeline.map((item, idx) => (
                         <div
                             key={item.time}
                             className={
-                                item.variant === "primary"
-                                    ? `min-w-[260px] bg-[radial-gradient(89.87%_256.74%_at_50%_-132.69%,_#7EB2FF_0%,_#043071_98.49%)] text-white rounded-2xl p-6 shadow-lg flex flex-col flex-${item.flex}`
-                                    : "min-w-[180px] bg-white border border-[#C7D6F3] rounded-2xl p-6 shadow-sm flex flex-col bg-[url('/icons/patt.svg')] bg-no-repeat bg-right-bottom"
+                                activeCard === idx
+                                    ? `min-w-[50%] lg:h-[220px] bg-[radial-gradient(89.87%_256.74%_at_50%_-132.69%,_#7EB2FF_0%,_#043071_98.49%)] text-white rounded-2xl p-6 shadow-lg flex flex-col flex-3 transition-none duration-500 ease-in-out`
+                                    : "lg:max-w-[16.66%] lg:min-w-[20%] lg:h-[220px] w-full bg-white border border-[#C7D6F3] rounded-2xl p-6 shadow-sm flex flex-col bg-[url('/icons/patt.svg')] bg-no-repeat bg-right-bottom flex-1"
                             }
+                            style={{
+                                cursor: 'pointer',
+                            }}
+                            onMouseEnter={() => handleCardHover(idx)}
                         >
-                            <span className={" font-bebas-neue mb-2 " + (item.variant === "primary" ? "text-white text-3xl md:text-[56px]" : "text-[#689BE8] text-2xl md:text-[48px]")}>{item.time}</span>
-                            <span className={"text-lg font-medium mb-2 " + (item.variant === "primary" ? "text-white" : "text-[#606060]")}>{item.title}</span>
-                            {item.details && item.details.length > 0 && (
-                                <ul className="mt-2 text-[#ACC7ED] text-base list-disc list-inside space-y-1">
+                            <span className={"font-bebas-neue mb-2 " + (activeCard === idx ? "text-white text-3xl md:text-[56px]" : "text-[#689BE8] text-2xl md:text-[48px]")}>{item.time}</span>
+                            <span className={"text-lg font-medium mb-2 " + (activeCard === idx ? "text-white" : "text-[#606060]")}>{item.title}</span>
+                            {activeCard === idx && (
+                                <ul className={`mt-2 text-[#ACC7ED] text-base list-disc list-inside space-y-1 hidden lg:block transition-none duration-2000 ease-in-out ${true ? 'opacity-100' : 'opacity-0'}`}>
                                     {item.details.map((d, i) => (
                                         <li key={i}>{d}</li>
                                     ))}
                                 </ul>
                             )}
+                            <ul className="mt-2 text-[#ACC7ED] text-base list-disc list-inside space-y-1 block lg:hidden">
+                                {item.details.map((d, i) => (
+                                    <li key={i} className={`text-[#606060] text-sm ${activeCard === idx ? "text-white" : ""}`}>{d}</li>
+                                ))}
+                            </ul>
                         </div>
                     ))}
                 </div>
@@ -601,9 +687,19 @@ export default function DecisioningPage() {
                 <p className="max-w-5xl mx-auto text-sm lg:text-2xl px-6 lg:px-0 text-[#606060] mt-6">
                     Your lending teams drive your business. It's time they had the tools to do it with speed, visibility, and confidence.
                 </p>
-                <Link href="#demo" className="inline-block bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white font-semibold px-8 py-4 rounded-full transition mt-8 lg:mt-16">
-                    See the Cockpit in Action
-                </Link>
+                <motion.button
+                    className="relative bg-gradient-to-tr from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px] overflow-hidden group mt-8 lg:mt-16"
+                    whileHover={{
+                        boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "easeInOut"
+                    }}
+                >
+                    <span className="relative z-10">See the Cockpit in Action</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+                </motion.button>
             </section>
         </main>
     );

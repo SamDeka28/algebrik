@@ -12,7 +12,7 @@ const beforeAfterData = [
         type: "before",
         title: "Before Algebrik",
         titleClass: "mb-3 bg-[#E4E8ED] rounded-[40px] text-center text-[#292929] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-white rounded-2xl shadow-2xl p-6 flex-1 min-w-[260px]",
+        cardClass: "bg-white rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px]",
         textClass: "text-gray-600 space-y-2 text-left",
         icon: null,
         items: [
@@ -26,7 +26,7 @@ const beforeAfterData = [
         type: "after",
         title: "After Algebrik",
         titleClass: "flex justify-center items-center gap-1 mb-3 bg-[#5A94E7] rounded-[40px] text-center text-[#FDFEFE] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 flex-1 min-w-[260px] text-white",
+        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px] text-white  border-[5px] border-[#5A94E7]",
         textClass: "space-y-2 text-left",
         icon: (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -181,22 +181,71 @@ export default function DecisioningPage() {
             {/* Feature Cards Section */}
             <section className="w-full py-16 flex flex-col items-center lg:px-0 px-6">
                 <CustomHeader text="A Smarter Way to Manage Credit Strategies" className="text-center text-[28px] md:text-[40px] font-bold" />
-                <p className="text-gray-600 text-center max-w-4xl mb-10 mt-6">
+                {/* <p className="text-gray-600 text-center max-w-4xl mb-10 mt-6">
                     Funnel, Risk, and Pricing—Visualized in One Place
-                </p>
-                <div className="w-full overflow-x-auto scrollbar-hide hide-scrollbar px-4">
-                    <div className="flex flex-nowrap gap-4 pb-4 mt-8 justify-start mx-auto overflow-x-auto scrollbar-hide hide-scrollbar lg:w-full max-w-[1200px] lg:max-w-max" >
-                        {featureCards.map((item, idx) => (
-                            <div key={item.title} className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2">
-                                <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
-                                    <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
-                                </div>
-                                <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
-                                <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
-                            </div>
-                        ))}
+                </p> */}
+                <div className="w-full overflow-x-auto scrollbar-hide hide-scrollbar px-4 mt-5">
+                    <div className="relative overflow-hidden">
+                        <div 
+                            className="flex flex-nowrap gap-4 py-5 mt-8 justify-start mx-auto lg:w-full max-w-[1200px] lg:max-w-max"
+                            style={{
+                                animation: "scroll 20s linear infinite",
+                            }}
+                        >
+                            {featureCards.map((item, idx) => (
+                                <motion.div 
+                                    key={item.title} 
+                                    className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2"
+                                    style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                                    whileHover={{ 
+                                        scale: 1.05
+                                    }}
+                                    transition={{ 
+                                        duration: 0.3,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
+                                        <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                                    </div>
+                                    <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
+                                    <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
+                                </motion.div>
+                            ))}
+                            {/* Duplicate cards for seamless loop */}
+                            {featureCards.map((item, idx) => (
+                                <motion.div 
+                                    key={`duplicate-${item.title}`} 
+                                    className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2"
+                                    style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                                    whileHover={{ 
+                                        scale: 1.05
+                                    }}
+                                    transition={{ 
+                                        duration: 0.3,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
+                                        <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                                    </div>
+                                    <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
+                                    <span className="text-[#606060] text-base leading-snug ">{item.description}</span>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
+                <style jsx>{`
+                    @keyframes scroll {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+                `}</style>
             </section>
 
             {/* Teams Section (Tabs/Pills) */}
@@ -357,9 +406,15 @@ export default function DecisioningPage() {
                                         ))}
                                     </div>
                                     {/* Two-column layout: image left, text right */}
-                                    <div className="flex flex-row flex-wrap gap-8 w-full">
+                                    <motion.div 
+                                        key={selected}
+                                        initial={{ opacity: 0, x: 100 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                        className="flex flex-row flex-wrap gap-8 w-full"
+                                    >
                                         {/* Placeholder image with white border */}
-                                        <div className="rounded-2xl p-2" >
+                                        <div className="rounded-2xl p-2">
                                             <div className="w-full lg:w-[460px] lg:h-[320px] flex items-center justify-center rounded-xl">
                                                 <Image src={current?.content.image as string} alt="Credit" width={460} height={320} className="w-full lg:h-full object-cover rounded-xl" />
                                             </div>
@@ -370,13 +425,13 @@ export default function DecisioningPage() {
                                             <ul className="text-[#C7D6F3] text-lg space-y-2">
                                                 {current?.content.bullets.map((b, i) => (
                                                     <li key={i} className="flex items-center gap-2">
-                                                        <span className=" w-2 h-2 bg-white rounded-full inline-block"></span>
+                                                        <span className="w-2 h-2 bg-white rounded-full inline-block"></span>
                                                         <span>{b}</span>
                                                     </li>
                                                 ))}
                                             </ul>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 </div>
                             );
                         })()}
@@ -427,19 +482,32 @@ export default function DecisioningPage() {
                     />
                 </div>
                 <CustomHeader text="Fits Your LOS. Feeds Your Tools. Powers Your Decisions" className="text-center z-10 mt-[64px] mb-[40px] lg:text-[40px] text-[28px] font-bold" />
-                <Image src="/icons/los.svg" alt="Analytics" width={1000} height={1000} className="w-full z-10 shadow-2xl rounded-3xl" />
+                <Image src="/icons/los.svg" alt="Analytics" width={1000} height={1000} className="w-full z-10  rounded-3xl hidden lg:block" />
+                <Image src="/icons/los-mobile.svg" alt="Analytics" width={1000} height={1000} className="w-full z-10  rounded-3xl block lg:hidden" />
             </section>
 
             {/* Flows Section */}
             <section className="w-full max-w-7xl px-4 py-8 lg:py-16 flex flex-col items-center relative mt-[72px]">
                 <CustomHeader text="Turning Origination Data into Actionable Strategy" className="text-center z-10" />
                 <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center pb-8 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
-                    {flowsData.map((item, idx) => (
-                        <div key={item.title} className="bg-white rounded-2xl min-w-[270px] flex-1 shadow-lg p-4 flex flex-col items-start">
-                            <Image src={item.icon} alt={item.title} width={64} height={64} className="mb-3  w-[64px] h-[64px] object-cover rounded-2xl" />
-                            <span className="text-[18px] font-medium text-[#2A5FAC] text-left">{item.title}</span>
-                        </div>
-                    ))}
+                    <div className="flex gap-4 md:gap-8 px-4">
+                        {flowsData.map((item, idx) => (
+                            <motion.div 
+                                key={item.title} 
+                                className="bg-white rounded-2xl min-w-[270px] flex-1 shadow-lg p-4 flex flex-col items-start"
+                                whileHover={{ 
+                                    scale: 1.05
+                                }}
+                                transition={{ 
+                                    duration: 0.3,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                <Image src={item.icon} alt={item.title} width={64} height={64} className="mb-3 w-[64px] h-[64px] object-cover rounded-2xl" />
+                                <span className="text-[18px] font-medium text-[#2A5FAC] text-left">{item.title}</span>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -448,11 +516,21 @@ export default function DecisioningPage() {
             <section className="w-full py-16 mb-24 flex flex-col items-center text-center">
                 <CustomHeader text="Lending Strategy Starts with Visibility" className="text-center text-2xl md:text-[44px] max-w-3xl leading-normal font-bold mb-4" />
                 <p className="max-w-5xl mx-auto text-sm lg:text-2xl px-6 lg:px-0 text-[#606060] mt-6">
-                Know what’s moving through your origination pipeline—so you can act fast, stay efficient, and grow smarter.
+                Know what's moving through your origination pipeline—so you can act fast, stay efficient, and grow smarter.
                 </p>
-                <Link href="#demo" className="inline-block bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white font-semibold px-8 py-4 rounded-full transition mt-8 lg:mt-16">
-                Talk to a Lending Funnel Expert
-                </Link>
+                <motion.button
+                    className="relative bg-gradient-to-tr from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px] overflow-hidden group mt-8 lg:mt-16"
+                    whileHover={{
+                        boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "easeInOut"
+                    }}
+                >
+                    <span className="relative z-10"> Talk to a Lending Funnel Expert</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+                </motion.button>
             </section>
         </main>
     );

@@ -42,12 +42,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
-          type="text/javascript"
-          id="hs-script-loader"
-          async
-          defer
-          src="//js.hs-scripts.com/47671281.js"
-        ></script>
+        type="text/javascript"
+        id="hs-script-loader"
+        async
+        defer
+        src="//js.hs-scripts.com/47671281.js"
+      ></script>
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-VE1K00BENT"
@@ -76,9 +76,9 @@ export default function RootLayout({
         className={`${plusJakartaSans.variable} ${dmSans.variable} ${bebas.variable} ${inter.variable} antialiased !bg-white`}
       >
         <RouteLoader>
-          <Navbar />
-          {children}
-          <Footer />
+        <Navbar />
+        {children}
+        <Footer />
         </RouteLoader>
       </body>
     </html>

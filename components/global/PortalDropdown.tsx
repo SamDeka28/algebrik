@@ -32,12 +32,14 @@ export default function PortalDropdown({ anchorRef, children }: PortalDropdownPr
     <div
       style={{
         position: "absolute",
-        top: coords.top,
-        left: coords.left,
-        width: "303px",
+        top: coords.top + 20,
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "100%",
+        maxWidth: "1260px",
         zIndex: 9999,
       }}
-      className="mt-2 p-[16px] rounded-[20px] shadow-lg backdrop-blur-3xl bg-black/50 text-white flex flex-col items-start"
+      className="mt-2 rounded-[20px] shadow-lg backdrop-blur-3xl bg-black/50 text-white flex flex-col items-start w-full max-w-[1260px] mx-auto"
     >
       {children}
     </div>,

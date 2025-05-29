@@ -12,7 +12,7 @@ const beforeAfterData = [
         type: "before",
         title: "Before Algebrik",
         titleClass: "mb-3 bg-[#E4E8ED] rounded-[40px] text-center text-[#292929] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-white rounded-2xl shadow-2xl p-6 flex-1 min-w-[260px]",
+        cardClass: "bg-white rounded-2xl shadow-2xl p-6 pb-20 flex-1 min-w-[260px]",
         textClass: "text-gray-600 space-y-2 text-left",
         icon: null,
         items: [
@@ -26,7 +26,7 @@ const beforeAfterData = [
         type: "after",
         title: "After Algebrik",
         titleClass: "flex justify-center items-center gap-1 mb-3 bg-[#5A94E7] rounded-[40px] text-center text-[#FDFEFE] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 flex-1 min-w-[260px] text-white",
+        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 pb-20 flex-1 min-w-[260px] text-white border-[5px] border-[#5A94E7]",
         textClass: "space-y-2 text-left",
         icon: (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +119,7 @@ export default function OmnichannelPOSPage() {
             <HeroSection />
 
             {/* Fragmented Lending Section */}
-            <section className="w-full max-w-6xl px-4 py-16 lg:px-0 flex flex-col items-center relative">
+            <section className="w-full max-w-6xl px-4 py-16 flex flex-col items-center relative">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -191,10 +191,17 @@ export default function OmnichannelPOSPage() {
                 <CustomHeader text="Launch a borrower experience that fits wherever lending happens." className="text-center max-w-3xl text-[28px] md:text-[40px] font-bold" />
                 <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center pb-4 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
                     {borrowerExperienceData.map((item, idx) => (
-                        <div
+                        <motion.div
                             key={item.title}
-                            className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] shadow-md p-4 min-w-[240px] md:min-w-[280px] max-w-[380px] md:max-w-[400px] gap-6"
+                            className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[240px] md:min-w-[280px] max-w-[380px] md:max-w-[400px] gap-6"
                             style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                            whileHover={{ 
+                                scale: 1.05
+                            }}
+                            transition={{ 
+                                duration: 0.3,
+                                ease: "easeInOut"
+                            }}
                         >
                             <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl">
                                 <Image src={item.icon} alt={item.title} width={78} height={78} className="w-[78px] h-[78px] object-contain" />
@@ -203,10 +210,10 @@ export default function OmnichannelPOSPage() {
                                 <span className="font-bold text-[#2A5FAC] text-lg md:text-xl mb-1">{item.title}</span>
                                 <span className="text-[#606060] text-base md:text-lg leading-snug">{item.description}</span>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-                <p className="text-gray-600 text-center max-w-2xl mt-8">Borrowers can start, pause, and resume—anywhere.</p>
+                {/* <p className="text-gray-600 text-center max-w-2xl mt-8 font-extrabold">Borrowers can start, pause, and resume—anywhere.</p> */}
             </section>
 
             {/* Analytics Section */}
@@ -233,12 +240,23 @@ export default function OmnichannelPOSPage() {
             {/* POS Flows Section */}
             <section className="w-full px-4 py-8 lg:py-16 flex flex-col items-center">
                 <CustomHeader text="POS Flows that Don't Take a Quarter to Go Live" className="text-center" />
-                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center pb-4 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
+                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center py-8 overflow-x-auto scrollbar-hide hide-scrollbar">
                     {posFlowsData.map((item, idx) => (
-                        <div key={item.title} className="bg-white w-[300px] min-w-[300px] rounded-2xl shadow-md p-4 flex flex-col items-center">
+                        <motion.div 
+                            key={item.title} 
+                            className="bg-white w-[300px] min-w-[300px] rounded-2xl shadow-md p-4 flex flex-col items-center"
+                            style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                            whileHover={{ 
+                                scale: 1.05
+                            }}
+                            transition={{ 
+                                duration: 0.3,
+                                ease: "easeInOut"
+                            }}
+                        >
                             <Image src={item.icon} alt={item.title} width={120} height={120} className="mb-3 w-full aspect-square object-cover border border-[#BEBEBE5C] rounded-2xl" />
                             <span className="text-base font-medium text-[#292929]">{item.title}</span>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
                 <p className="text-base lg:text-[20px] text-[#606060] font-semibold mt-8 text-center lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
@@ -249,7 +267,18 @@ export default function OmnichannelPOSPage() {
                 <CustomHeader text="Tested. Tuned. Ready to Scale." className="text-center" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-6 mt-8">
                     {resultsData.map((item, idx) => (
-                        <div key={item.title + idx} className="bg-white rounded-2xl shadow-xl p-6 flex flex-col lg:flex-row lg:items-center gap-6">
+                        <motion.div 
+                            key={item.title + idx} 
+                            className="bg-white rounded-2xl shadow-xl p-6 flex flex-col lg:flex-row lg:items-center gap-6"
+                            style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                            whileHover={{ 
+                                scale: 1.05
+                            }}
+                            transition={{ 
+                                duration: 0.3,
+                                ease: "easeInOut"
+                            }}
+                        >
                             <div className="flex-shrink-0 w-[64px] h-[64px] md:w-[80px] md:h-[80px] flex items-center justify-center rounded-2xl">
                                 <Image src={item.image} alt={item.title} width={64} height={64} className="object-contain w-[48px] h-[48px] md:w-[64px] md:h-[64px]" />
                             </div>
@@ -257,7 +286,7 @@ export default function OmnichannelPOSPage() {
                                 <span className="font-bold text-lg mb-2 text-[#2A5FAC]">{item.title}</span>
                                 <span className="text-xs text-gray-500">{item.description}</span>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </section>
@@ -270,9 +299,19 @@ export default function OmnichannelPOSPage() {
                 <p className="max-w-5xl mx-auto text-sm lg:text-2xl px-6 lg:px-0 text-[#606060] mt-6">
                     From mobile apps to dealer desks, Algebrik's POS Lending helps you show up where your borrowers need you most—seamlessly, instantly, intelligently.
                 </p>
-                <Link href="#demo" className="inline-block bg-[#1C8DEA] from-[#1C8DEA] to-[#195BD7] text-white font-semibold px-8 py-4 rounded-full transition mt-8 lg:mt-16">
-                    Plan Your POS Rollout With Us
-                </Link>
+                <motion.button
+                    className="relative bg-gradient-to-tr from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px] overflow-hidden group mt-8 lg:mt-16"
+                    whileHover={{
+                        boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "easeInOut"
+                    }}
+                >
+                    <span className="relative z-10">Plan Your POS Rollout With Us</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+                </motion.button>
             </section>
         </main>
     );
