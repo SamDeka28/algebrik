@@ -46,6 +46,21 @@ body {
   animation: infinite-scroll-reverse 20s linear infinite;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
+.sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @keyframes fadeIn {
   0% {
@@ -69,3 +84,19 @@ body {
     animation-delay: 0.4s;
   }
 }
+
+/* In your global stylesheet */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Custom Gradient Utility */
+.bg-custom-gradient {
+  background: radial-gradient(104.17% 277.39% at 50% -153.34%, #7EB2FF 0%, #043071 85%);
+}
+

@@ -1,7 +1,7 @@
 // import Image from "next/image";
 // import evan from "@/public/icons/evan-gerdisch.png";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Articles() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -32,7 +32,86 @@ export default function Articles() {
     }
   };
 
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollSpeed = 1; 
+    const scrollInterval = setInterval(() => {
+      if (container.dataset.isDragging === "true") return; 
+      container.scrollLeft += scrollSpeed;
+      if (
+        container.scrollLeft + container.offsetWidth >= container.scrollWidth
+      ) {
+        container.scrollLeft = 0; 
+      }
+    }, 20); 
+
+    return () => clearInterval(scrollInterval);
+  }, []);
+
   const newsArticles = [
+    {
+      title:
+        "Algebrik AI Joins the Jack Henry™ Vendor Integration Program",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
+        "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
+      author: "Team Algebrik",
+      source: "Team Algebrik",
+      role: "Marketing",
+      link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+      image: "/section_images/blog/teamalgebrik.png",
+    },
+    {
+      title:
+        "Algebrik AI Partners with Carleton to Elevate Lending Accuracy and Compliance",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
+        "Algebrik AI and Corelation Announce Integration Agreement to Enhance Personalization, Drive Financial Inclusion & Improve Member Experience ",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience",
+      image: "/section_images/blog/b.png",
+    },
+    {
+      title:
+        "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
+      author: "BusinessWire",
+      source: "BusinessWire",
+      role: "Marketing",
+      link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
+      // image: "/section_images/blog/b.png",
+    },
+    {
+      title:
+        "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
+        author: "Prateek Samantaray",
+        role: "Marketing",
+      source: "BusinessWire",
+      link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
+    },
+    {
+      title:
+        "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
+        author: "Prateek Samantaray",
+        role: "Marketing",
+      source: "BusinessWire",
+      link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
+    },
     {
       title:
         "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
@@ -69,11 +148,20 @@ export default function Articles() {
       source: "BusinessWire",
       link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
     },
+    {
+      title:
+      "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
+        author: "Prateek Samantaray",
+        role: "Marketing",
+      source: "BusinessWire",
+      link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
+    },
+   
   ];
 
   return (
     <div
-      className="container mx-auto max-w-[1160px] h-[717px] py-[40px] px-6 rounded-[36px] mt-10"
+      className="container mx-auto max-w-[1160px] md:h-[717px] py-[40px] px-6 rounded-none md:rounded-[36px] mt-10"
       style={{
         background:
           "radial-gradient(ellipse at right, var(--tw-gradient-stops))",
@@ -81,12 +169,12 @@ export default function Articles() {
         backgroundImage: "radial-gradient(ellipse at right, #7EB2FF, #043071)",
       }}
     >
-      <h2 className="text-center text-[32px] font-plus-jakarta font-bold mt-[10px] mb-[40px] text-white">
+      <h2 className="text-center text-[28px] md:text-[32px] font-plus-jakarta font-bold mt-[10px] mb-[40px] text-white">
         Check out the latest from the Originations Hub
       </h2>
       <div
         ref={scrollContainerRef}
-        className="flex gap-[32px] py-4 pl-[40px] overflow-x-scroll"
+        className="flex gap-[20px] md:gap-[32px] py-4 pl-[0px] md:pl-[40px] overflow-x-scroll"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseUp}
@@ -106,7 +194,7 @@ export default function Articles() {
         {newsArticles.map((article, index) => (
           <div
             key={index}
-            className="min-w-[360px] bg-slate-100 max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
+            className="min-w-[360px] bg-slate-100 max-w-[360px] h-full md:h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
           >
             <div className="flex flex-col flex-grow">
               <div className="h-[269px]">
