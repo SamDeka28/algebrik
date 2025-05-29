@@ -7,33 +7,31 @@ export default function HeroSection() {
   return (
     <div className=" w-full h-max">
       <div
-        className="w-full h-[758px] flex items-center justify-center overflow-hidden relative"
-        style={{
-          backgroundImage: "url('/background_images/platform_hero.png')",
-          backgroundSize: '100%',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-          backgroundPositionY: 'bottom',
-        }}
-        
-      >
-        <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[40px]">
+  className="
+    w-full h-[758px] flex items-center justify-center overflow-hidden relative 
+    md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] 
+    bg-no-repeat bg-center bg-[bottom_left-30.5rem]
+     md:bg-cover bg-cover -md:bg-[left_top_10rem] rounded-b-[32px] md:rounded-none"
+>
+
+        <div className="absolute top-40 md:top-48 mx-auto flex flex-col items-center justify-center md:justify-start gap-[40px]">
           <div className="flex flex-col gap-[20px]">
             <CustomHeader
               text="Lending just got easier"
-              className="text-[56px] text-white text-center"
+              className="text-[36px] md:text-[56px] text-white text-center px-20 leading-[45px] md:leading-none md:px-0"
             />
             <CustomSubtitle
               text="Experience the future of lending: a fully automated, AI-First platform that simplifies workflows, improves decision accuracy, and creates personalized borrower journeys at scale"
-              className="text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[293px]"
+              className="text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-10 md:px-[293px]"
             />
           </div>
+          
           <BookADemo />
         </div>
       </div>
-      <div className="relative mb-[355px] flex justify-center">
+      <div className="relative md:mb-[355px] flex justify-center">
       <div className="cursor-pointer">
-  <div className="relative -inset-y-56 right-[425px]">
+  <div className="hidden md:block relative -inset-y-56 right-[425px]">
     <div>
       <script async src="https://js.storylane.io/js/v2/storylane.js"></script>
       <div

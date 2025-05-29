@@ -76,7 +76,7 @@ const lendingData = {
 export default function BlogOne() {
   return (
     <>
-    <div className="container mx-auto py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
+    <div className="container mx-auto px-5 md:px-0 py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
       <div className="flex flex-col items-start text-left w-full gap-[16px]">
         <CustomHeader
           text="From Fragmentation to Seamlessness: Streamlining Lending Journeys"
@@ -93,27 +93,28 @@ export default function BlogOne() {
         <div className="flex">
           <div className="flex justify-between items-center w-full border-t border-[#D3D3D3] border-b border-[#D3D3D3] py-5">
             <div className="flex gap-[16px] items-center">
-              <div className="rounded-full">
-                <Image
-                  src="/section_images/blog/jesse.png"
-                  className="rounded-full"
-                  width={48}
-                  height={48}
-                  alt=""
-                  priority
-                  quality={100}
-                />
-              </div>
-              <div className="flex flex-col">
-                <div>
-                  <h3>Prateek Samantaray</h3>
-                </div>
-                <div className="flex gap-4">
+              <div className=" object-cover">
+                              <Image
+                                src="/section_images/blog/pra.jpg"
+                                className="rounded-[184.59px] object-cover h-[48px]"
+                                objectFit="cover"
+                                width={48}
+                                height={48}
+                                alt=""
+                                priority
+                                quality={100}
+                              />
+                            </div>
+                            <div className="flex flex-col">
+                              <div>
+                                <h3>Prateek Samantaray          </h3>
+                              </div>
+                <div className="flex flex-col md:flex-row md:gap-4">
                   <h4>
                     Published in <span>The Startup</span>
                   </h4>
                   <p>8 min read</p>
-                  <p>Apr 26, 2023</p>
+                  <p>Jan 26, 2025</p>
                 </div>
               </div>
             </div>
@@ -189,7 +190,7 @@ export default function BlogOne() {
                 <p className="font-bold mt-4 text-[20px]">{blog.blogTitle}</p>
               </div>
               <div className="absolute bottom-0 left-0 flex justify-center w-full cursor-pointer bg-white text-center h-[54px] rounded-b-[20px]">
-                <Link href={`/resource_center/blogs/${blog.blogTitle.toLowerCase().replace(/ /g, "-")}`} className="text-[#1A69DC] font-semibold">
+                <Link href={`/resource_center/${blog.blogSubtitle.toLowerCase().replace(/ /g, "-")}`} className="text-[#1A69DC] font-semibold">
                   Read More →
                 </Link>
               </div>
