@@ -101,7 +101,7 @@ const resultsData = [
         description: "→ Lead forms, CRM inputs, doc collection tools, and application portals—streamlined."
     },
     {
-        image: "/icons/rs-3.svg",
+        image: "/icons/sub-60.svg",
         title: "Sub-60 second application kickoff in guided, staff-assisted flows",
         description: "→ Optimized for branch, kiosk, and dealer use cases."
     },

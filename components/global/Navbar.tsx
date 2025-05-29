@@ -178,7 +178,7 @@ export default function Navbar() {
                       Auto Lenders
                     </Link>
                     <Link href="/solutions/banks" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                      <Image src="/icons/svg/shop.svg" alt="Banks Icon" width={20} height={20} />
+                    <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
                       Banks
                     </Link>
                   </div>
@@ -186,19 +186,19 @@ export default function Navbar() {
                   <div className="flex flex-col min-w-[260px] gap-3">
                       <div className="text-[18px]  p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">By Usecase</div>
                       <Link href="/solutions/omnichannel-point-of-sale" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/svg/shop.svg" alt="Point of Sale Icon" width={20} height={20} />
+                        <Image src="/icons/pos.svg" alt="Point of Sale Icon" width={20} height={20} />
                         Point of Sale
                       </Link>
                       <Link href="/solutions/decisioning" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/svg/shop.svg" alt="Decisioning Engine Icon" width={20} height={20} />
+                        <Image src="/icons/de.svg" alt="Decisioning Engine Icon" width={20} height={20} />
                         Decisioning Engine
                       </Link>
                       <Link href="/solutions/dashboard-analytics" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/svg/shop.svg" alt="Dashboard Analytics Icon" width={20} height={20} />
+                        <Image src="/icons/da.svg" alt="Dashboard Analytics Icon" width={20} height={20} />
                         Dashboard Analytics
                       </Link>
                       <Link href="/solutions/lender-cockpit" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/svg/shop.svg" alt="Lender Cockpit Icon" width={20} height={20} />
+                        <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
                         Lender Cockpit
                       </Link>
                   </div>
