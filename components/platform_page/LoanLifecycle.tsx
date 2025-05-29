@@ -95,10 +95,8 @@ export default function LoanLifecycle() {
     // Determine scroll direction
     if (e.deltaY > 0) {
       //check cateogry
-      console.log({ currentCategoryIndex })
       if (currentCategoryIndex <= data.length - 1) {
         const isLast = (currentCategoryIndex) === data.length - 1
-        console.log({ isLast })
         if (isLast) {
           setIsScrollLocked(false)
           setFirstTimeLocked(true)
@@ -156,7 +154,6 @@ export default function LoanLifecycle() {
 
         if (isVisible !== isHalfVisible) {
           setIsHalfVisible(isVisible);
-          console.log({ firstTimeScrollLocked })
           if (!firstTimeScrollLocked)
             setIsScrollLocked(true)
         }
