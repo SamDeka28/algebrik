@@ -4,7 +4,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CustomHeader, CustomSubtitle } from "./CustomHeader";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect,useRef } from "react";
+
+declare global {
+  interface Window {
+    HubSpotMeetings: {
+      loadMeetings: () => void;
+    };
+  }
+}
 
 const validationSchema = Yup.object({
   firstname: Yup.string()
@@ -63,10 +71,20 @@ export default function Contact() {
     },
   });
 
-
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!document.getElementById("hs-meetings-embed-script")) {
+        const script = document.createElement("script");
+        script.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+        script.type = "text/javascript";
+        script.id = "hs-meetings-embed-script";
+        document.getElementById("hubspot-meetings-embed")?.appendChild(script);
+      }
+    }
+  }, []);
 
   return (
-    <section className="container md:w-[1160px] mx-auto mt-32 md:mb-28 md:p-8 
+    <section className="container md:max-w-7xl w-full mx-auto mt-32 md:mb-28 md:p-8 
     flex flex-col md:flex-row font-plus-jakarta justify-center items-start gap-[43px] md:gap-[98px] overflow-hidden">
        <div className="absolute top-[100px] opacity-[30%] -z-10">
           <motion.div
@@ -103,7 +121,8 @@ export default function Contact() {
             }}
           />
         </div>
-      <div className="flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative top-[80px] md:block md:top-0 md:w-[568px]">
+        <HubspotMeetingEmbed />
+      {/* <div className="flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative top-[80px] md:block md:top-0 md:w-[568px]">
         <CustomHeader
           className="md:text-[56px] font-bold flex flex-col gap-0"
           text={
@@ -116,11 +135,9 @@ export default function Contact() {
         <CustomSubtitle
           text="Whether you're looking to streamline your loan processes, enhance borrower experiences, or explore our AI-powered, cloud-native solutions, our team is here to help. Connect with us to start your journey toward a smarter, more efficient lending ecosystem."
         />
-      </div>
+      </div> */}
 
-      <div className="relative w-full max-w-lg pb-[20px] md:pb-0 ">
-        {/* <div className="md:hidden bg-[#121212] pt-18 absolute -bottom-7 w-full "></div> */}
-        {/* <hr className="md:hidden relative top-[756px] border-b border-[#262932]" /> */}
+      {/* <div className="relative w-full max-w-lg pb-[20px] md:pb-0 ">
         <form
           onSubmit={formik.handleSubmit}
           className="relative mx-auto z-10 w-[362px] mt-[43px] md:mt-0 font-plus-jakarta drop-shadow-xl md:w-[518px]
@@ -243,7 +260,61 @@ export default function Contact() {
             </motion.button>
           </div>
         </form>
-      </div>
+        <section className="mt-8">
+          <div
+            className="meetings-iframe-container"
+            data-src="https://meetings-na2.hubspot.com/algebrik?embed=true"
+            id="hubspot-meetings-embed"
+          ></div>
+        </section>
+      </div> */}
     </section>
   );
 }
+
+
+import Script from 'next/script';
+
+const HubspotMeetingEmbed = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const loadMeetings = () => {
+      if (window.HubSpotMeetings) {
+        window.HubSpotMeetings.loadMeetings();
+      } else {
+        setTimeout(loadMeetings, 1000); // Retry after 1 second if not loaded
+      }
+    };
+
+    // Load the script
+    if (!document.getElementById('hs-meetings-embed-script')) {
+      const script = document.createElement('script');
+      script.id = 'hs-meetings-embed-script';
+      script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+      script.async = true;
+      script.onload = loadMeetings;
+      document.body.appendChild(script);
+    } else {
+      loadMeetings();
+    }
+
+    // Cleanup
+    return () => {
+      const script = document.getElementById('hs-meetings-embed-script');
+      if (script) {
+        script.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="meetings-iframe-container"
+      data-src="https://meetings-na2.hubspot.com/algebrik?embed=true"
+      style={{ minHeight: '700px', width: '100%' }}
+    />
+  );
+};
+
