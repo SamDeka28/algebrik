@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 import DecisioningHero from "@/components/decisioning/Hero";
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const beforeAfterData = [
     {
@@ -119,7 +120,7 @@ export default function DecisioningPage() {
     const controls = useAnimation();
     const containerRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(containerRef);
-
+    const router = useRouter();
     useEffect(() => {
         if (isInView) {
             controls.start({
@@ -474,7 +475,7 @@ export default function DecisioningPage() {
                                                 </div>
                                             </div>
                                             {/* Content */}
-                                            <div className="flex-1 flex flex-col items-start max-w-xl pt-6">
+                                            <div className="flex-1 flex flex-col justify-center items-start max-w-xl">
                                                 <h3 className="text-white text-2xl font-semibold mb-4">{current?.content.title}</h3>
                                                 <ul className="text-[#C7D6F3] text-lg space-y-2">
                                                     {current?.content.bullets.map((b, i) => (
@@ -561,7 +562,6 @@ export default function DecisioningPage() {
                         </motion.div>
                     ))}
                 </div>
-                <p className="text-base lg:text-[20px] text-[#606060] font-semibold mt-8 lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
             </section>
 
             {/* Scale Section */}
@@ -601,6 +601,9 @@ export default function DecisioningPage() {
                     transition={{
                         duration: 0.5,
                         ease: "easeInOut"
+                    }}
+                    onClick={() => {
+                        router.push("/contact");
                     }}
                 >
                     <span className="relative z-10">See how it works live</span>

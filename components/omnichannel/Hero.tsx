@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const pathname = usePathname();
-
+  const router = useRouter();
 
   const heroContent = {
     header: (
@@ -70,6 +70,9 @@ export default function HeroSection() {
             transition={{ 
               duration: 0.5,
               ease: "easeInOut"
+            }}
+            onClick={() => {
+              router.push("/contact");
             }}
           >
             <span className="relative z-10">See how it works live</span>

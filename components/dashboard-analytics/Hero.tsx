@@ -4,6 +4,7 @@ import Image from "next/image";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 export default function DashboardAnalyticsHero() {
   const heroContent = {
     header: (
@@ -25,7 +26,7 @@ export default function DashboardAnalyticsHero() {
     subtitleClass:
       "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px] max-w-7xl",
   };
-
+  const router = useRouter();
   return (
     <div className="w-full h-max">
       <div
@@ -50,6 +51,9 @@ export default function DashboardAnalyticsHero() {
             transition={{ 
               duration: 0.5,
               ease: "easeInOut"
+            }}
+            onClick={() => {
+              router.push("/contact");
             }}
           >
             <span className="relative z-10">See the Dashboard in Action</span>
