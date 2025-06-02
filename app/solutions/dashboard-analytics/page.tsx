@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import DashboardAnalyticsHero from "@/components/dashboard-analytics/Hero";
+import { useRouter } from "next/navigation";
 
 const beforeAfterData = [
     {
@@ -106,6 +107,7 @@ const scaleData = [
 ];
 
 export default function DecisioningPage() {
+    const router = useRouter();
     return (
         <main className="bg-[#F8FAFF] min-h-screen w-full flex flex-col items-center font-plus-jakarta">
             {/* Hero Section */}
@@ -420,7 +422,7 @@ export default function DecisioningPage() {
                                             </div>
                                         </div>
                                         {/* Content */}
-                                        <div className="flex-1 flex flex-col items-start max-w-xl pt-6">
+                                        <div className="flex-1 flex flex-col justify-center items-start max-w-xl">
                                             <h3 className="text-white text-2xl font-semibold mb-4">{current?.content.title}</h3>
                                             <ul className="text-[#C7D6F3] text-lg space-y-2">
                                                 {current?.content.bullets.map((b, i) => (
@@ -526,6 +528,9 @@ export default function DecisioningPage() {
                     transition={{
                         duration: 0.5,
                         ease: "easeInOut"
+                    }}
+                    onClick={() => {
+                        router.push("/contact");
                     }}
                 >
                     <span className="relative z-10"> Talk to a Lending Funnel Expert</span>

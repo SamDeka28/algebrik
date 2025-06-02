@@ -4,8 +4,9 @@ import Image from "next/image";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { motion } from "framer-motion";
-
+import { useRouter } from "next/navigation";
 export default function DecisioningHero() {
+  const router = useRouter();
   const heroContent = {
     header: (
       <>
@@ -51,6 +52,9 @@ export default function DecisioningHero() {
             transition={{ 
               duration: 0.5,
               ease: "easeInOut"
+            }}
+            onClick={() => {
+              router.push("/contact");
             }}
           >
             <span className="relative z-10">See how it works live</span>

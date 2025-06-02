@@ -5,8 +5,9 @@ import HeroSection from "@/components/omnichannel/Hero";
 import Image from "next/image";
 import Link from "next/link";
 import borrowerData from "@/components/constant/constant";
-import { motion } from "framer-motion";
-
+import { motion, useAnimation } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 const beforeAfterData = [
     {
         type: "before",
@@ -113,6 +114,82 @@ const resultsData = [
 ];
 
 export default function OmnichannelPOSPage() {
+    const [cardSets, setCardSets] = useState(2); // Start with 2 sets
+    const controls = useAnimation();
+    const trackRef = useRef<HTMLDivElement>(null);
+    const setWidthRef = useRef(0);
+    const [setWidth, setSetWidth] = useState(0);
+    const router = useRouter();
+    // Function to measure width of one set
+    const measureSetWidth = () => {
+        const track = trackRef.current;
+        if (!track) return 0;
+        const children = Array.from(track.children);
+        const setLength = borrowerExperienceData.length;
+        let width = 0;
+        for (let i = 0; i < setLength; i++) {
+            const el = children[i] as HTMLElement;
+            const style = getComputedStyle(el);
+            width += el.offsetWidth + parseFloat(style.marginRight || "0");
+        }
+        return width;
+    };
+
+    // Start or update animation
+    const startAnimation = (width: number, sets: number) => {
+        if (width > 0) {
+            controls.start({
+                x: [0, -width * (sets - 1)],
+                transition: {
+                    x: {
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        duration: 20 * sets, // proportional to number of sets
+                        ease: "linear",
+                    },
+                },
+            });
+        }
+    };
+
+    // Measure and animate on mount and resize
+    useEffect(() => {
+        function handleResize() {
+            const width = measureSetWidth();
+            setSetWidth(width);
+            setWidthRef.current = width;
+            startAnimation(width, cardSets);
+        }
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+        // eslint-disable-next-line
+    }, [cardSets]);
+
+    // Append a new set when the first card of the last set is visible at the left
+    useEffect(() => {
+        if (!setWidth) return;
+        let animationFrame: number;
+        function checkAndAppend() {
+            const track = trackRef.current;
+            if (!track) return;
+            // Get the first card of the last set
+            const children = Array.from(track.children);
+            const setLength = borrowerExperienceData.length;
+            const firstOfLastSet = children[setLength * (cardSets - 1)] as HTMLElement;
+            if (firstOfLastSet) {
+                const rect = firstOfLastSet.getBoundingClientRect();
+                const parentRect = track.parentElement?.getBoundingClientRect();
+                if (parentRect && rect.left <= parentRect.left + 1) {
+                    setCardSets(s => s + 1);
+                }
+            }
+            animationFrame = requestAnimationFrame(checkAndAppend);
+        }
+        animationFrame = requestAnimationFrame(checkAndAppend);
+        return () => cancelAnimationFrame(animationFrame);
+    }, [setWidth, cardSets]);
+
     return (
         <main className="bg-[#F8FAFF] min-h-screen w-full flex flex-col items-center font-plus-jakarta">
             {/* Hero Section */}
@@ -189,29 +266,30 @@ export default function OmnichannelPOSPage() {
             {/* Borrower Experience Section */}
             <section className="w-full px-4 py-[20] md:py-16 flex flex-col items-center">
                 <CustomHeader text="Launch a borrower experience that fits wherever lending happens." className="text-center max-w-3xl text-[28px] md:text-[40px] font-bold" />
-                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center pb-4 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
-                    {borrowerExperienceData.map((item, idx) => (
-                        <motion.div
-                            key={item.title}
-                            className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[240px] md:min-w-[280px] max-w-[380px] md:max-w-[400px] gap-6"
-                            style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
-                            whileHover={{ 
-                                scale: 1.05
-                            }}
-                            transition={{ 
-                                duration: 0.3,
-                                ease: "easeInOut"
-                            }}
-                        >
-                            <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl">
-                                <Image src={item.icon} alt={item.title} width={78} height={78} className="w-[78px] h-[78px] object-contain" />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                                <span className="font-bold text-[#2A5FAC] text-lg md:text-xl mb-1">{item.title}</span>
-                                <span className="text-[#606060] text-base md:text-lg leading-snug">{item.description}</span>
-                            </div>
-                        </motion.div>
-                    ))}
+                <div className="w-full overflow-x-hidden">
+                    <motion.div
+                        ref={trackRef}
+                        className="flex flex-nowrap gap-4 md:gap-8 justify-start md:justify-center pb-4 mt-8"
+                        animate={controls}
+                    >
+                        {Array(cardSets).fill(0).flatMap((_, setIdx) =>
+                            borrowerExperienceData.map((item, idx) => (
+                                <div
+                                    key={item.title + setIdx + idx}
+                                    className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[400px] max-w-[400px] gap-6"
+                                    style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                                >
+                                    <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl">
+                                        <Image src={item.icon} alt={item.title} width={78} height={78} className="w-[78px] h-[78px] object-contain" />
+                                    </div>
+                                    <div className="flex flex-col items-start justify-center">
+                                        <span className="font-bold text-[#2A5FAC] text-lg md:text-xl mb-1">{item.title}</span>
+                                        <span className="text-[#606060] text-base md:text-lg leading-snug">{item.description}</span>
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                    </motion.div>
                 </div>
                 {/* <p className="text-gray-600 text-center max-w-2xl mt-8 font-extrabold">Borrowers can start, pause, and resume—anywhere.</p> */}
             </section>
@@ -259,7 +337,7 @@ export default function OmnichannelPOSPage() {
                         </motion.div>
                     ))}
                 </div>
-                <p className="text-base lg:text-[20px] text-[#606060] font-semibold mt-8 text-center lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
+                <p className="text-base lg:text-[20px]  text-[#2A5FAC] font-bold  mt-8 text-center lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
             </section>
 
             {/* Results Section */}
@@ -307,6 +385,9 @@ export default function OmnichannelPOSPage() {
                     transition={{
                         duration: 0.5,
                         ease: "easeInOut"
+                    }}
+                    onClick={() => {
+                        router.push("/contact");
                     }}
                 >
                     <span className="relative z-10">Plan Your POS Rollout With Us</span>

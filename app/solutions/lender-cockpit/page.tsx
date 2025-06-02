@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import DashboardAnalyticsHero from "@/components/dashboard-analytics/Hero";
 import LenderCockpitHero from "@/components/lender-cockpit/Hero";
-
+import { useRouter } from "next/navigation";
 const beforeAfterData = [
     {
         type: "before",
@@ -176,6 +176,7 @@ export default function DecisioningPage() {
     const [activeCard, setActiveCard] = useState(0);
     const [showPoints, setShowPoints] = useState(true);
 
+    const router = useRouter();
     const handleCardHover = (idx: number) => {
         if (activeCard !== idx) {
             setShowPoints(false);
@@ -192,7 +193,7 @@ export default function DecisioningPage() {
             <LenderCockpitHero />
 
             {/* Before/After Section */}
-            <section className="w-full max-w-6xl px-4 py-16 flex flex-col items-center relative">
+            <section className="w-full max-w-6xl px-4 pb-16 pt-16 lg:pt-0 flex flex-col items-center relative">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -704,6 +705,7 @@ export default function DecisioningPage() {
                         duration: 0.5,
                         ease: "easeInOut"
                     }}
+                    onClick={() => router.push("/contact")}
                 >
                     <span className="relative z-10">See the Cockpit in Action</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
