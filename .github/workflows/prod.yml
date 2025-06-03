@@ -25,12 +25,11 @@ jobs:
         run: |
           npm install
           npm run build
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::326271077406:role/github_action_frontendrole 
-          aws-region: ap-south-1
+          role-to-assume: arn:aws:iam::779846782923:role/github_action_role
+          aws-region: us-east-1
 
       - name: Deploy latest build
         run: |
@@ -44,18 +43,20 @@ jobs:
 
       - name: Invalidate CDN cache www.algebrik.com
         run: |
-          TARGET=${{ steps.deploy.outputs.target }}
-          echo TARGET:$TARGET
-          DISTRIBUTION_ID=$(aws cloudfront list-distributions --output json | jq -r '.DistributionList.Items[] | select(.Aliases and .Aliases.Items and (.Aliases.Items | any(. == "'$TARGET'"))) | .Id')
+          # TARGET=${{ steps.deploy.outputs.target }}
+          # echo TARGET:$TARGET
+          # DISTRIBUTION_ID=$(aws cloudfront list-distributions --output json | jq -r '.DistributionList.Items[] | select(.Aliases and .Aliases.Items and (.Aliases.Items | any(. == "'$TARGET'"))) | .Id')
+          DISTRIBUTION_ID=E3T710U4WVTQ47
           echo DISTRIBUTION_ID:$DISTRIBUTION_ID
           INVALIDATION_ID=`aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*" --output json | jq -r .Invalidation.Id`
           echo INVALIDATION_ID:$INVALIDATION_ID
           aws cloudfront wait invalidation-completed --distribution-id $DISTRIBUTION_ID --id $INVALIDATION_ID
       - name: Invalidate CDN cache www.algebrik.ai
         run: |
-          TARGET='www.algebrik.ai'
-          echo TARGET:$TARGET
-          DISTRIBUTION_ID=$(aws cloudfront list-distributions --output json | jq -r '.DistributionList.Items[] | select(.Aliases and .Aliases.Items and (.Aliases.Items | any(. == "'$TARGET'"))) | .Id')
+          # TARGET='www.algebrik.ai'
+          # echo TARGET:$TARGET
+          # DISTRIBUTION_ID=$(aws cloudfront list-distributions --output json | jq -r '.DistributionList.Items[] | select(.Aliases and .Aliases.Items and (.Aliases.Items | any(. == "'$TARGET'"))) | .Id')
+          DISTRIBUTION_ID=E1UG2HN8EB2BC6
           echo DISTRIBUTION_ID:$DISTRIBUTION_ID
           INVALIDATION_ID=`aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*" --output json | jq -r .Invalidation.Id`
           echo INVALIDATION_ID:$INVALIDATION_ID
