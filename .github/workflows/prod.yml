@@ -46,7 +46,7 @@ jobs:
           # TARGET=${{ steps.deploy.outputs.target }}
           # echo TARGET:$TARGET
           # DISTRIBUTION_ID=$(aws cloudfront list-distributions --output json | jq -r '.DistributionList.Items[] | select(.Aliases and .Aliases.Items and (.Aliases.Items | any(. == "'$TARGET'"))) | .Id')
-          DISTRIBUTION_ID=E3T710U4WVTQ47
+          DISTRIBUTION_ID=E1UG2HN8EB2BC6
           echo DISTRIBUTION_ID:$DISTRIBUTION_ID
           INVALIDATION_ID=`aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*" --output json | jq -r .Invalidation.Id`
           echo INVALIDATION_ID:$INVALIDATION_ID
