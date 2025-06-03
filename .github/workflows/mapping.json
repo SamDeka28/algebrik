@@ -1,3 +1,4 @@
 {
-  "test": "www.algebrik.com-backup"
+  "test": "www.algebrik.com-backup",
+  "prod": "www.algebrik.com"
 }
