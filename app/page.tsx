@@ -95,7 +95,8 @@ export default function Home() {
   );
 }
 
-export function Conversation() {
+
+function Conversation() {
   const [showTerms, setShowTerms] = useState(false);
   const [accepted, setAccepted] = useState(false);
   const [showWidget, setShowWidget] = useState(true);
