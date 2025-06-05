@@ -28,6 +28,18 @@ const carouselDataOne = [
 
 const carouselDataTwo = [
   {
+    image: "/team_images/Michael.jpeg",
+    name: "Michael Barnhardt Jr",
+    title: "Chief Lending Office",
+    place: "Oklahoma Central Credit Union, Oklahoma",
+  },
+  {
+    image: "/team_images/SherryWu.jpg",
+    name: "Sherry Wu",
+    title: "Chief Technology Officer",
+    place: "University of Michigan Credit Union, Michigan",
+  },
+  {
     image: "/team_images/michele.png",
     name: "Michele Dean",
     title: "Chief Executive Officer",
