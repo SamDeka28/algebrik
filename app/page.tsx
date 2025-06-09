@@ -19,6 +19,9 @@ import dynamic from "next/dynamic";
 
 const LazyIntegrationsSection = dynamic(() => import("@/components/home_page/IntegrationsSection"), { ssr: false, loading: () => <div /> });
 const LazyFooterCards = dynamic(() => import("@/components/FooterCards"), { ssr: false, loading: () => <div /> });
+const LazyBorrowerJourney = dynamic(() => import("@/components/home_page/BorrowerJourney"), { ssr: false, loading: () => <div /> });
+const LazyLendingJourney = dynamic(() => import("@/components/home_page/LendingJourney"), { ssr: false, loading: () => <div /> });
+const LazyPotential = dynamic(() => import("@/components/home_page/Potential"), { ssr: false, loading: () => <div /> });
 
 const HubSpotPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -100,9 +103,9 @@ export default function Home() {
         <HeroSection />
         {/* <HubSpotPopup /> */}
         <FeaturesSection />
-        <BorrowerJourney />
-        <LendingJourney />
-        <Potential />
+        <LazyBorrowerJourney />
+        <LazyLendingJourney />
+        <LazyPotential />
         <CardsContainer />
         <div className="lg:py-20 py-10">
           <CarouselSection
