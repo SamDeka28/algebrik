@@ -43,6 +43,9 @@ export default function RootLayout({
       <head>
       <link rel="preload" as="image" href="/background_images/hero_background.webp" />
       <link rel="preload" as="image" href="/blue_logo.webp" />
+      <link rel="preload" as="image" href="/background_images/modern_lender.webp" />
+      <link rel="preload" as="image" href="/background_images/ml-single.webp" />
+      <link rel="preload" as="image" href="/section_images/home_page/loan.webp" />
         {/* <script
           type="text/javascript"
           id="hs-script-loader"
