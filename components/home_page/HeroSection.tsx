@@ -20,7 +20,7 @@ export default function HeroSection() {
       setIsRearranged((prev) => !prev);
     }, 5000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
 
@@ -41,20 +41,23 @@ export default function HeroSection() {
   ];
 
   const images = [
-    { src: heroImage1, width: 144, height: 314, zIndex: 10, borderRadius: 20  },
-    { src: heroImage2, width: 133, height: 169, zIndex: 10, borderRadius: 20  },
+    { src: heroImage1, width: 144, height: 314, zIndex: 10, borderRadius: 20 },
+    { src: heroImage2, width: 133, height: 169, zIndex: 10, borderRadius: 20 },
     { src: heroImage3, width: 452, height: 297, zIndex: 0, borderRadius: 20 },
-    { src: heroImage4, width: 212, height: 100, zIndex: 10, borderRadius: 20  },
-    { src: heroImage5, width: 186, height: 153, zIndex: 0, borderRadius: 20  },
+    { src: heroImage4, width: 212, height: 100, zIndex: 10, borderRadius: 20 },
+    { src: heroImage5, width: 186, height: 153, zIndex: 0, borderRadius: 20 },
   ];
 
   return (
     <div
       className="
-      w-full md:w-full md:h-[670px] flex items-center justify-center overflow-hidden rounded-b-[32px] md:rounded-b-none
-      bg-[url('/background_images/hero_background.webp')] bg-no-repeat bg-cover bg-[left_top_-9.5rem]
-      md:bg-cover md:bg-[left_top_0rem]"
+      w-full md:w-full md:h-[670px] flex items-center justify-center overflow-hidden rounded-b-[32px] md:rounded-b-none relative"
+      style={{
+        background: "radial-gradient(128.68% 367.63% at 50% -243.57%, #7EB2FF 0%, #043071 85%)"
+      }}
     >
+      <Image src="/background_images/modern_lender.webp" alt="Hero Background" fill className="hidden md:block absolute top-0 left-0 object-cover w-full h-full" priority/>
+      <Image src="/background_images/ml-single.svg" alt="Hero Background" fill className="lg:hidden absolute top-0 left-0 object-cover w-full h-full" priority/>
       <div className="container pt-[181px] text-center md:mx-auto md:px-6 flex flex-col md:flex-row items-center md:justify-end md:pt-16 gap-0 md:gap-16">
 
         <div className="flex flex-col gap-6 px-16 md:px-0 max-w-[500px] h-72 w-full">
@@ -82,27 +85,27 @@ export default function HeroSection() {
             style={{ width: "442px", height: "280px" }}
           />
           <div className="relative hidden md:block w-[780px] h-[520px] overflow-hidden">
-          {images.map((image, index) => (
-        <motion.div
-          key={index}
-          initial={initialPositions[index]}
-          animate={isRearranged ? rearrangedPositions[index] : initialPositions[index]}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className="absolute"
-          style={{ zIndex: image.zIndex, borderRadius: image.borderRadius }}
-        >
-          <Image
-            src={image.src}
-            alt={`Hero Image ${index + 1}`}
-            width={image.width}
-            height={image.height}
-            quality={100}
-            priority
-            objectFit="cover"
-            className="rounded-[12px]"
-          />
-        </motion.div>
-      ))}
+            {images.map((image, index) => (
+              <motion.div
+                key={index}
+                initial={initialPositions[index]}
+                animate={isRearranged ? rearrangedPositions[index] : initialPositions[index]}
+                transition={{ duration: 1, ease: "easeInOut" }}
+                className="absolute"
+                style={{ zIndex: image.zIndex, borderRadius: image.borderRadius }}
+              >
+                <Image
+                  src={image.src}
+                  alt={`Hero Image ${index + 1}`}
+                  width={image.width}
+                  height={image.height}
+                  quality={100}
+                  priority
+                  objectFit="cover"
+                  className="rounded-[12px]"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
