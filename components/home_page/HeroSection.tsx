@@ -113,7 +113,7 @@ export default function HeroSection() {
                     width={image.width}
                     height={image.height}
                     quality={100}
-                    priority
+                    priority={true}
                     objectFit="cover"
                     className="rounded-[12px]"
                   />
