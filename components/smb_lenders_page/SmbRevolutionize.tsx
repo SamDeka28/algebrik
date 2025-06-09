@@ -22,7 +22,7 @@ export default function SmbRevolutionize() {
         title: "Setup Loan Products in Minutes",
         description:
           "Configure, customize, and launch loan offerings instantly without technical complexity.",
-        image: "/section_images/auto_lenders/faster.png",
+        image: "/section_images/auto_lenders/faster.webp",
       },
     ],
   };

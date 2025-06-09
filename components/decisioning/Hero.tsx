@@ -23,7 +23,7 @@ export default function DecisioningHero() {
     ),
     subtitle:
       "From pre-approvals to pricing, Algebrik's AI-powered Decisioning Engine puts you in control—with real-time simulations, no-code workflows, and compliance-first automation.",
-    sectionImage: "/icons/dcs-main.png",
+    sectionImage: "/icons/dcs-main.webp",
     subtitleClass:
       "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px] max-w-7xl",
   };
@@ -31,7 +31,7 @@ export default function DecisioningHero() {
   return (
     <div className="w-full h-max">
       <div
-        className="w-full h-[758px] flex items-center justify-center overflow-hidden relative md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-bottom bg-cover"
+        className="w-full h-[758px] flex items-center justify-center overflow-hidden relative md:bg-[url('/background_images/platform_hero.webp')] bg-[url('/background_images/mobile_solutions.webp')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-bottom bg-cover"
       >
         <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[20px]">
           <div className="flex flex-col gap-[20px]">

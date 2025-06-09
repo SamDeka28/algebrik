@@ -169,13 +169,13 @@ export default function Blog() {
               </div>
               <div className="flex gap-[8px]">
                 <Image
-                  src="/section_images/blog/play.svg"
+                  src="/section_images/blog/play.webp"
                   width={24}
                   height={24}
                   alt=""
                 />
                 <Image
-                  src="/section_images/blog/share.svg"
+                  src="/section_images/blog/share.webp"
                   width={24}
                   height={24}
                   alt=""

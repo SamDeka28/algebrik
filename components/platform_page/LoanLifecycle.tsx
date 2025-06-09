@@ -203,8 +203,8 @@ export default function LoanLifecycle() {
               <Image
                 src={
                   currentCategoryIndex === index
-                    ? "/icons/check.png"
-                    : "/icons/uncheck.png"
+                    ? "/icons/check.webp"
+                    : "/icons/uncheck.webp"
                 }
                 width={24}
                 height={24}

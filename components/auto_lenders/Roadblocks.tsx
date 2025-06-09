@@ -11,7 +11,7 @@ const RoadBlocks = () => {
         "Juggling relationships with numerous data providers adds complexity and slows operations.",
       hoverDescription:
         "Algebrik unifies trusted services in one platform, minimizing friction and enhancing decision-making.",
-      image: "/section_images/auto_lenders/managing.png",
+      image: "/section_images/auto_lenders/managing.webp",
     },
     {
       title: "Evolving Compliance & Accuracy",
@@ -19,7 +19,7 @@ const RoadBlocks = () => {
         "Evolving regulations and inaccurate valuations create compliance risks.",
       hoverDescription:
         "Seamless integrations and real-time updates ensure your operations remain accurate and compliant.",
-      image: "/section_images/auto_lenders/evolving.png",
+      image: "/section_images/auto_lenders/evolving.webp",
     },
     {
       title: "Operational Inefficiencies",
@@ -27,7 +27,7 @@ const RoadBlocks = () => {
         "Cumbersome manual processes lead to delays and lost opportunities.",
       hoverDescription:
         "Algebrik automates workflows, reducing approval times and enabling faster service.",
-      image: "/section_images/auto_lenders/operational.png",
+      image: "/section_images/auto_lenders/operational.webp",
     },
   ];
 

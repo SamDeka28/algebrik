@@ -50,7 +50,7 @@ export default function Placeholder() {
       
         </div>
         <Image
-          src="/section_images/blog/res.png"
+          src="/section_images/blog/res.webp"
           className=""
           alt=""
           width={857}

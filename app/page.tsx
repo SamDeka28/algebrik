@@ -14,6 +14,7 @@ import { useConversation } from '@elevenlabs/react';
 import React, { useEffect, useState, useCallback } from 'react';
 import Script from "next/script";
 import { motion, AnimatePresence } from 'framer-motion';
+import CarouselSection from "@/components/about_page/CarouselSection";
 
 const HubSpotPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,7 +54,7 @@ const HubSpotPopup: React.FC = () => {
                   <img
                     alt="CATCH UP WITH US AT THE 2025 CUES FUTURE SUMMIT (FEB 4-6) Experience the future of loan origination with Algebrik AI—built for speed, intelligence, and seamless borrower experiences. Bonus: Get an exclusive hands-on demo of the world's first cloud-native, AI-powered LOS, designed to simplify workflows and drive results for modern lenders!"
                     loading="lazy"
-                    src="https://no-cache.hubspot.com/cta/default/47671281/interactive-184976867374.png"
+                    src="https://no-cache.hubspot.com/cta/default/47671281/interactive-184976867374.webp"
                     style={{ height: '100%', width: '100%', objectFit: 'fill' }}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -82,6 +83,75 @@ export default function Home() {
         <LendingJourney />
         <Potential />
         <CardsContainer />
+        <div className="lg:py-20 py-10">
+          <CarouselSection
+            data={[
+              {
+                image: "/team_images/Michael.webp",
+                name: "Michael Barnhardt Jr",
+                title: "Chief Lending Office",
+                place: "Oklahoma Central Credit Union, Oklahoma",
+              },
+              {
+                image: "/team_images/SherryWu.webp",
+                name: "Sherry Wu",
+                title: "Chief Technology Officer",
+                place: "University of Michigan Credit Union, Michigan",
+              },
+              {
+                image: "/team_images/michele.webp",
+                name: "Michele Dean",
+                title: "Chief Executive Officer",
+                place: "Suffolk FCU, New York",
+              },
+              {
+                image: "/team_images/travis.webp",
+                name: "Travis Bow",
+                title: "Chief Executive Officer",
+                place: "University of Hawaii FCU, Hawaii",
+              },
+              {
+                image: "/team_images/leAnne.webp",
+                name: "LeAnne Hixson",
+                title: "Chief Lending Officer",
+                place: "PFCU Credit Union, Michigan",
+              },
+              {
+                image: "/team_images/david.webp",
+                name: "David Libby",
+                title: "Chief Executive Officer",
+                place: "Town & Country FCU, Maine",
+              },
+              {
+                image: "/team_images/travisBow.webp",
+                name: "Shad Edwards",
+                title: "Chief Lending Officer",
+                place: "MidWest America FCU, Indiana",
+              },
+              {
+                image: "/team_images/hina.webp",
+                name: "Hina Khalid",
+                title: "Chief Financial Officer",
+                place: "Labor Credit Union, Washington",
+              },
+            ]
+            }
+            autoScroll
+            headerText={
+              <>
+                <div className="hidden md:flex flex-col">
+                  <span>Guided by the</span>
+                  <span>Best in the Field</span>
+                </div>
+
+                <div className="block md:hidden">
+                  Guided by the best in the Field
+                </div>
+              </>
+            }
+            subtitleText="Our Advisory Board brings together industry leaders and visionaries, guiding Algebrik AI with strategic insights, deep expertise, and a shared commitment to transforming lending into a seamless and inclusive experience."
+          />
+        </div>
         <IntegrationsSection />
         <FooterCards />
         <Conversation />
@@ -236,7 +306,7 @@ function Conversation() {
           whileTap={{ scale: 0.97 }}
         >
           <img
-            src="https://storage.googleapis.com/eleven-public-cdn/convai/agent_01jwdd48b1e17rkf0dngh470mv/avatar.png"
+            src="https://storage.googleapis.com/eleven-public-cdn/convai/agent_01jwdd48b1e17rkf0dngh470mv/avatar.webp"
             alt="algebrik"
             className="absolute inset-0 rounded-full w-full h-full object-cover"
           />
@@ -284,7 +354,7 @@ function Conversation() {
                 whileTap={{ scale: 0.97 }}
               >
                 {micMuted ? (
-                  <svg height="1em" width="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10 14a4 4 0 0 0 4-4V7a4 4 0 1 0-8 0v3a4 4 0 0 0 4 4zm5-4a1 1 0 1 1 2 0 6 6 0 0 1-6 6v2a1 1 0 1 1-2 0v-2a6 6 0 0 1-6-6 1 1 0 1 1 2 0 4 4 0 0 0 8 0z"/><line x1="4" y1="4" x2="16" y2="16" stroke="red" strokeWidth="2"/></svg>
+                  <svg height="1em" width="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10 14a4 4 0 0 0 4-4V7a4 4 0 1 0-8 0v3a4 4 0 0 0 4 4zm5-4a1 1 0 1 1 2 0 6 6 0 0 1-6 6v2a1 1 0 1 1-2 0v-2a6 6 0 0 1-6-6 1 1 0 1 1 2 0 4 4 0 0 0 8 0z" /><line x1="4" y1="4" x2="16" y2="16" stroke="red" strokeWidth="2" /></svg>
                 ) : (
                   <svg height="1em" width="1em" viewBox="0 0 19 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M9.50008 1.5C7.42901 1.5 5.75008 3.17893 5.75008 5.25V8.25C5.75008 10.3211 7.42901 12 9.50008 12C11.5712 12 13.2501 10.3211 13.2501 8.25V5.25C13.2501 3.17893 11.5712 1.5 9.50008 1.5Z"></path><path d="M4.88997 10.8417C4.66448 10.4943 4.20002 10.3954 3.85256 10.6209C3.50509 10.8463 3.40621 11.3108 3.63169 11.6583C4.47442 12.9569 6.08493 14.6838 8.75008 14.9616V15.75C8.75008 16.1642 9.08587 16.5 9.50008 16.5C9.9143 16.5 10.2501 16.1642 10.2501 15.75V14.9616C12.9152 14.6838 14.5257 12.9569 15.3685 11.6583C15.594 11.3108 15.4951 10.8463 15.1476 10.6209C14.8001 10.3954 14.3357 10.4943 14.1102 10.8417C13.3305 12.0432 11.9002 13.5 9.50008 13.5C7.1 13.5 5.66968 12.0432 4.88997 10.8417Z"></path></svg>
                 )}

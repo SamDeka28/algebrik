@@ -8,7 +8,7 @@ export default function CreditUnion() {
   const data = {
     cardData: [
       {
-        image: "/section_images/accelarated.png",
+        image: "/section_images/accelarated.webp",
         title: "Accelerated Lending",
         description:
           "Our AI Loan Officer reduces manual tasks, enabling faster approvals.",
@@ -17,13 +17,13 @@ export default function CreditUnion() {
         title: "Omnichannel Experiences",
         description:
           "Borrowers can apply, track, and manage loans across mobile, web, and in-branch seamlessly.",
-        image: "/section_images/omnichannel.png",
+        image: "/section_images/omnichannel.webp",
       },
       {
         title: "Cost-Effective Scaling",
         description:
           "A cloud-native platform that grows with you.",
-        image: "/section_images/cost.png",
+        image: "/section_images/cost.webp",
       },
     ],
   };

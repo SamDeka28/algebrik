@@ -84,19 +84,19 @@ const featureCards = [
 
 const flowsData = [
     {
-        icon: "/icons/ce1.png",
+        icon: "/icons/ce1.webp",
         title: "Design approval logic, pricing bands, and eligibility flows visually."
     },
     {
-        icon: "/icons/ce2.png",
+        icon: "/icons/ce2.webp",
         title: "Test strategies on past applicants to predict impact."
     },
     {
-        icon: "/icons/ce3.png",
+        icon: "/icons/ce3.webp",
         title: "Compare rule sets live to see what performs best."
     },
     {
-        icon: "/icons/ce4.png",
+        icon: "/icons/ce4.webp",
         title: "Every decision is logged, explainable, and compliant."
     }
 ];
@@ -296,7 +296,7 @@ export default function DecisioningPage() {
                         }}
                     />
                 </div>
-                <Image src="/icons/lead.png" alt="Analytics" width={1000} height={1000} className="w-full z-10 shadow-2xl rounded-3xl" />
+                <Image src="/icons/lead.webp" alt="Analytics" width={1000} height={1000} className="w-full z-10 shadow-2xl rounded-3xl" />
             </section>
 
             {/* Teams Section (Tabs/Pills) */}
@@ -357,7 +357,7 @@ export default function DecisioningPage() {
                                             "Simulate strategy impact pre-launch",
                                             "Reduce dependence on engineering teams"
                                         ],
-                                        image: "/icons/dat-1.png"
+                                        image: "/icons/dat-1.webp"
                                     }
                                 },
                                 {
@@ -370,7 +370,7 @@ export default function DecisioningPage() {
                                             "Build flows per product line",
                                             "Launch variations without writing code"
                                         ],
-                                        image: "/icons/dat-2.png"
+                                        image: "/icons/dat-2.webp"
                                     }
                                 },
                                 {
@@ -383,7 +383,7 @@ export default function DecisioningPage() {
                                             "Ensure auditability across rule sets",
                                             "Support Fair Lending and ECOA"
                                         ],
-                                        image: "/icons/dat-3.png"
+                                        image: "/icons/dat-3.webp"
                                     }
                                 },
                                 {
@@ -396,7 +396,7 @@ export default function DecisioningPage() {
                                             "Use Python or visual rules",
                                             "Adjust thresholds without IT support"
                                         ],
-                                        image: "/icons/dat-4.png"
+                                        image: "/icons/dat-4.webp"
                                     }
                                 },
                                 {
@@ -409,7 +409,7 @@ export default function DecisioningPage() {
                                             "Track performance by segment",
                                             "Optimize based on live results"
                                         ],
-                                        image: "/icons/dat-5.png"
+                                        image: "/icons/dat-5.webp"
                                     }
                                 }
                             ];

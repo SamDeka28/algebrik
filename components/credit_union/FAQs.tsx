@@ -19,10 +19,10 @@ const FAQs = () => {
     console.log('Normalized path:', path);
     let data: FAQItem[] = [];
     switch (path) {
-      case '/solutions/auto_lenders':
+      case '/solutions/auto-lenders':
         data = footerData.SolutionsForAutoLenders;
         break;
-      case '/solutions/credit_union':
+      case '/solutions/credit-union':
         data = footerData.SolutionsForCreditUnions;
         break;
       case '/solutions/banks':

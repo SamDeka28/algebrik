@@ -168,7 +168,7 @@ export default function LoanLifecycle() {
             }}
           >
             <Image
-              src={index === activeIndex ? "/icons/solar_check-circle.svg" : "/icons/uncheck.png"}
+              src={index === activeIndex ? "/icons/solar_check-circle.svg" : "/icons/uncheck.webp"}
               width={24}
               height={24}
               alt={index === activeIndex ? "Checked" : "Unchecked"}

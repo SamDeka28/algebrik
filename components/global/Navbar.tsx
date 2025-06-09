@@ -8,7 +8,7 @@ import { HiOutlineMenu, HiX } from "react-icons/hi";
 import { HiChevronDown } from "react-icons/hi";
 import Image from "next/image";
 import logo from "@/public/logo.png";
-import blueLogo from "@/public/blue_logo.png";
+import blueLogo from "@/public/blue_logo.webp";
 import PortalDropdown from "./PortalDropdown";
 import { blogContent } from "@/components/constant/blogs";
 

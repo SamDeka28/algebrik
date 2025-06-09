@@ -67,7 +67,7 @@ type CardProps = {
             description="Talk to our experts and explore how Algebrik can solve your unique lending challenges."
             buttonText="Schedule a Demo Call"
             buttonLink="/contact"
-            imageUrl="/background_images/futureLending.png"
+            imageUrl="/background_images/futureLending.webp"
             isPrimary
           />
           <Card
@@ -75,7 +75,7 @@ type CardProps = {
             description="Take a guided tour of our platform to explore its features at your own pace."
             buttonText="Get tour"
             buttonLink="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
-            imageUrl="/background_images/algebrikFirsthand.png"
+            imageUrl="/background_images/algebrikFirsthand.webp"
           />
         </div>
       </div>

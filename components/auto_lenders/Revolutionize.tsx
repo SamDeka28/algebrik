@@ -8,7 +8,7 @@ export default function Revolutionize() {
   const data = {
     cardData: [
       {
-        image: "/section_images/auto_lenders/lend.png",
+        image: "/section_images/auto_lenders/lend.webp",
         title: "Lend Anywhere, Anytime",
         description:
           "Connected experiences across dealerships, mobile apps, and web platforms",
@@ -17,13 +17,13 @@ export default function Revolutionize() {
         title: "View work your way",
         description:
           "Easily configure workflows and loan terms with a drag-and-drop interface",
-        image: "/section_images/auto_lenders/view.png",
+        image: "/section_images/auto_lenders/view.webp",
       },
       {
         title: "Smarter Approvals, Faster Turnarounds",
         description:
           "Configuring Algebrik for different auto lending needs is as easy as flipping a switch.",
-        image: "/section_images/auto_lenders/faster.png",
+        image: "/section_images/auto_lenders/faster.webp",
       },
     ],
   };

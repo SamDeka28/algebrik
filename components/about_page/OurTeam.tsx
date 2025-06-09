@@ -7,19 +7,19 @@ import { motion } from "framer-motion";
 
 const carouselDataOne = [
   {
-    image: "/team_images/pankaj.png",
+    image: "/team_images/pankaj.webp",
     name: "PANKAJ JAIN ",
     title: "Founder & CEO",
     place: "N/A",
   },
   {
-    image: "/team_images/jesse.png",
+    image: "/team_images/jesse.webp",
     name: "JESSE FRUGE",
     title: "VP, PRODUCT",
     place: "N/A",
   },
   {
-    image: "/team_images/andrea.png",
+    image: "/team_images/andrea.webp",
     name: "ANDREA SILVERS",
     title: "VP, BD & Partnerships",
     place: "N/A",
@@ -28,56 +28,56 @@ const carouselDataOne = [
 
 const carouselDataTwo = [
   {
-    image: "/team_images/Michael.jpeg",
+    image: "/team_images/Michael.webp",
     name: "Michael Barnhardt Jr",
     title: "Chief Lending Office",
     place: "Oklahoma Central Credit Union, Oklahoma",
   },
   {
-    image: "/team_images/SherryWu.jpg",
+    image: "/team_images/SherryWu.webp",
     name: "Sherry Wu",
     title: "Chief Technology Officer",
     place: "University of Michigan Credit Union, Michigan",
   },
   {
-    image: "/team_images/michele.png",
+    image: "/team_images/michele.webp",
     name: "Michele Dean",
     title: "Chief Executive Officer",
     place: "Suffolk FCU, New York",
   },
   {
-    image: "/team_images/travis.png",
+    image: "/team_images/travis.webp",
     name: "Travis Bow",
     title: "Chief Executive Officer",
     place: "University of Hawaii FCU, Hawaii",
   },
   {
-    image: "/team_images/leAnne.png",
+    image: "/team_images/leAnne.webp",
     name: "LeAnne Hixson",
     title: "Chief Lending Officer",
     place: "PFCU Credit Union, Michigan",
   },
   {
-    image: "/team_images/david.png",
+    image: "/team_images/david.webp",
     name: "David Libby",
     title: "Chief Executive Officer",
     place: "Town & Country FCU, Maine",
   },
   {
-    image: "/team_images/travisBow.png",
+    image: "/team_images/travisBow.webp",
     name: "Shad Edwards",
     title: "Chief Lending Officer",
     place: "MidWest America FCU, Indiana",
   },
   {
-    image: "/team_images/hina.png",
+    image: "/team_images/hina.webp",
     name: "Hina Khalid",
     title: "Chief Financial Officer",
     place: "Labor Credit Union, Washington",
   },
 ];
 
-function TeamMemberCard({
+export function TeamMemberCard({
   image,
   name,
   title,
