@@ -14,13 +14,24 @@ import heroImage5 from "@/public/section_images/home_page/EmailAssist.webp";
 
 export default function HeroSection() {
   const [isRearranged, setIsRearranged] = useState(true);
+  const [showHeroImages, setShowHeroImages] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIsRearranged((prev) => !prev);
     }, 5000);
 
-    return () => clearInterval(interval);
+    if (typeof window !== "undefined") {
+      if ("requestIdleCallback" in window) {
+        (window as any).requestIdleCallback(() => setShowHeroImages(true));
+      } else {
+        setTimeout(() => setShowHeroImages(true), 500);
+      }
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
 
@@ -66,7 +77,7 @@ export default function HeroSection() {
             <span className="font-semibold">Experience</span>
           </h1>
           <p className="text-white text-[16px] font-normal md:text-[18px] font-plus-jakarta md:font-light opacity-80 leading-relaxed">
-            The World’s first AI and Cloud Native LOS makes lending journeys
+            The World's first AI and Cloud Native LOS makes lending journeys
             what they should be – Fast, Intuitive, Seamless.
           </p>
           <div className="relative md:static -bottom-48">
@@ -85,27 +96,28 @@ export default function HeroSection() {
             style={{ width: "442px", height: "280px" }}
           />
           <div className="relative hidden md:block w-[780px] h-[520px] overflow-hidden">
-            {images.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={initialPositions[index]}
-                animate={isRearranged ? rearrangedPositions[index] : initialPositions[index]}
-                transition={{ duration: 1, ease: "easeInOut" }}
-                className="absolute"
-                style={{ zIndex: image.zIndex, borderRadius: image.borderRadius }}
-              >
-                <Image
-                  src={image.src}
-                  alt={`Hero Image ${index + 1}`}
-                  width={image.width}
-                  height={image.height}
-                  quality={100}
-                  priority
-                  objectFit="cover"
-                  className="rounded-[12px]"
-                />
-              </motion.div>
-            ))}
+            {showHeroImages &&
+              images.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={initialPositions[index]}
+                  animate={isRearranged ? rearrangedPositions[index] : initialPositions[index]}
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  className="absolute"
+                  style={{ zIndex: image.zIndex, borderRadius: image.borderRadius }}
+                >
+                  <Image
+                    src={image.src}
+                    alt={`Hero Image ${index + 1}`}
+                    width={image.width}
+                    height={image.height}
+                    quality={100}
+                    priority
+                    objectFit="cover"
+                    className="rounded-[12px]"
+                  />
+                </motion.div>
+              ))}
           </div>
         </div>
       </div>
