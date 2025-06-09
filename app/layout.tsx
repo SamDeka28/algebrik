@@ -41,13 +41,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
+        {/* <script
           type="text/javascript"
           id="hs-script-loader"
           async
           defer
           src="//js.hs-scripts.com/47671281.js"
-        ></script>
+        ></script> */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-VE1K00BENT"
@@ -72,11 +72,11 @@ export default function RootLayout({
             __html: `(function(){"use strict";function e(t: Document){var r=t.head;if(!r)return;var i=t.querySelector('script[src="https://js.storylane.io/js/v2/storylane.js"]'),n=t.querySelector('script[src="https://js.storylane.io/js/v1/storylane.js"]');if(i||n)return;var s=t.createElement("script");s.type="text/javascript",s.async=!0,s.src="https://js.storylane.io/js/v2/storylane.js",r.appendChild(s)}e(window.document)})()`
           }}
         />
-        <Script
+        {/* <Script
           id="hubspot-script"
           src="//js-na2.hs-scripts.com/47671281.js"
           strategy="afterInteractive" // Load after page is interactive
-        />
+        /> */}
       </head>
 
       <body

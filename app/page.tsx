@@ -301,15 +301,15 @@ function Conversation() {
         className="fixed bottom-10 font-plus-jakarta right-4 rounded-full flex items-center p-2.5 bg-white shadow-2xl pointer-events-auto overflow-hidden w-fit z-50 border border-gray-100"
       >
         <motion.div
-          className="relative shrink-0 w-10 h-10 mx-1 shadow-md rounded-full border border-gray-200 bg-white"
+          className="relative shrink-0 w-10 h-10 mx-1 shadow-md rounded-full border border-gray-200  bg-[#2a5fac] bg-[url('/logo.png')] bg-center bg-no-repeat bg-contain"
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.97 }}
         >
-          <img
-            src="https://storage.googleapis.com/eleven-public-cdn/convai/agent_01jwdd48b1e17rkf0dngh470mv/avatar.webp"
+          {/* <img
+            src="/logo.webp"
             alt="algebrik"
-            className="absolute inset-0 rounded-full w-full h-full object-cover"
-          />
+            className="w-full object-contain"
+          /> */}
         </motion.div>
         <AnimatePresence mode="wait">
           {conversation.status !== 'connected' ? (
