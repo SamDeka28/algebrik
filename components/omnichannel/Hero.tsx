@@ -27,7 +27,7 @@ export default function HeroSection() {
     ),
     subtitle:
       "Algebrik's Omnichannel POS Solutions let you launch seamless, high-converting lending experiences across every touchpoint-mobile, web, branch, dealer, and partner channels.",
-    sectionImage: "/icons/opos-main.png",
+    sectionImage: "/icons/opos-main.webp",
     subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px] max-w-7xl",
   }
 
@@ -40,14 +40,14 @@ export default function HeroSection() {
       <div
         // className="w-full h-[758px] flex items-center justify-center overflow-hidden relative"
         // style={{
-        //   backgroundImage: "url('/background_images/platform_hero.png')",
+        //   backgroundImage: "url('/background_images/platform_hero.webp')",
         //   backgroundSize: "100%",
         //   backgroundPosition: "center center",
         //   backgroundRepeat: "no-repeat",
         //   backgroundPositionY: "bottom",
         // }}
         className="w-full h-[758px] flex items-center justify-center overflow-hidden relative 
-    md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-bottom 
+    md:bg-[url('/background_images/platform_hero.webp')] bg-[url('/background_images/mobile_solutions.webp')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-bottom 
     bg-cover"
 
       >

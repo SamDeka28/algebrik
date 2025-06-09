@@ -394,7 +394,7 @@ export default function DecisioningPage() {
                                             "Take next-step actions (e.g. request docs, escalate)",
                                             "Communicate with borrowers in-platform"
                                         ],
-                                        image: "/icons/lo.png"
+                                        image: "/icons/lo.webp"
                                     }
                                 },
                                 {
@@ -406,7 +406,7 @@ export default function DecisioningPage() {
                                             "Collaborate with officers via internal notes and tagging",
                                             "Track files by risk category or manual review triggers"
                                         ],
-                                        image: "/icons/ca.png"
+                                        image: "/icons/ca.webp"
                                     }
                                 },
                                 {
@@ -418,7 +418,7 @@ export default function DecisioningPage() {
                                             "Identify pending files and SLAs at risk",
                                             "Reassign files or intervene in bottlenecked queues"
                                         ],
-                                        image: "/icons/bm.png"
+                                        image: "/icons/bm.webp"
                                     }
                                 },
                                 {
@@ -431,7 +431,7 @@ export default function DecisioningPage() {
                                             "Spot stuck files and SLA breaches",
                                             "Monitor daily task and app completion rates"
                                         ],
-                                        image: "/icons/lops.png"
+                                        image: "/icons/lops.webp"
                                     }
                                 },
                                 {
@@ -444,7 +444,7 @@ export default function DecisioningPage() {
                                             "Track performance by segmentAudit rule execution and decision fairness",
                                             "Segment approvals by risk and pricing tiers"
                                         ],
-                                        image: "/icons/risk.png"
+                                        image: "/icons/risk.webp"
                                     }
                                 }
                             ];
@@ -685,7 +685,7 @@ export default function DecisioningPage() {
                         </ul>
                     </div>
                     {/* <div className="flex-1 flex items-end justify-end self-end"> */}
-                    <img src="/icons/cds.png" alt="Clarity Dashboard" className="rounded-2xl w-full max-w-md z-10" />
+                    <img src="/icons/cds.webp" alt="Clarity Dashboard" className="rounded-2xl w-full max-w-md z-10" />
                     {/* </div> */}
                 </div>
             </section>

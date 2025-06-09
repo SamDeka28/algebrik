@@ -20,7 +20,7 @@ const SmbRoadBlocks = () => {
         "Evolving regulations create inefficiencies and increase the risk of non-compliance.",
       hoverDescription:
         "Built-in KYC and AML checks simplify compliance, ensuring adherence without delays.",
-        image: "/section_images/auto_lenders/evolving.png",
+        image: "/section_images/auto_lenders/evolving.webp",
     },
     {
         title: "Loan Processing Bottlenecks",
@@ -28,7 +28,7 @@ const SmbRoadBlocks = () => {
           "Lengthy approval cycles hinder growth and frustrate borrowers.",
         hoverDescription:
           "Algebrik streamlines processing with automation, enabling faster approvals and better scalability.",
-          image: "/section_images/auto_lenders/operational.png",
+          image: "/section_images/auto_lenders/operational.webp",
       },
   ];
 

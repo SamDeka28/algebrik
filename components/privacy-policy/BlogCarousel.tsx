@@ -25,7 +25,7 @@ const carouselData: CarouselItem[] = [
     description:
       "\"The success of any financial system lies in its ability to adapt and serve its people,\" once said Mervyn King, former....",
     source: "Prateek Samantaray   ",
-    image: "/section_images/blog/beyond.png",
+    image: "/section_images/blog/beyond.webp",
     url: "/resource_center/beyond_decisioning",
     target: "_self",
   },
@@ -36,7 +36,7 @@ const carouselData: CarouselItem[] = [
     description:
       "Learn how companies are leveraging Algebrik AI's platform to streamline loan origination processes, increase efficiency, and drive results in the financial sector.",
     source: "BusinessWire",
-    image: "/section_images/place.png",
+    image: "/section_images/place.webp",
     url: "",
     target: "_self",
   },  
@@ -47,7 +47,7 @@ const carouselData: CarouselItem[] = [
     description:
       "Explore the latest updates and news stories about Algebrik AI and its impact on the global financial technology industry.",
     source: "BusinessWire",
-    image: "/section_images/blog/bw.png",
+    image: "/section_images/blog/bw.webp",
     url: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
     target: "_blank",
   },
@@ -58,7 +58,7 @@ const carouselData: CarouselItem[] = [
     description:
       "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
     source: "BusinessWire",
-    image: "/section_images/place.png",
+    image: "/section_images/place.webp",
     url: "",
     target: "_self",
   },
@@ -71,7 +71,7 @@ const newsArticles = [
     author: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -87,7 +87,7 @@ const newsArticles = [
     author: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -103,7 +103,7 @@ const newsArticles = [
     author: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -111,7 +111,7 @@ const newsArticles = [
     author: "Pulse 2.0",
     role: "Marketing",
     link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
-    image: "/section_images/blog/p.jpg",
+    image: "/section_images/blog/p.webp",
   },
 
 
@@ -120,7 +120,7 @@ const newsArticles = [
     "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
       author: "BusinessWire",
       role: "Marketing",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
     link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
   },
   {
@@ -128,7 +128,7 @@ const newsArticles = [
     "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
       author: "BusinessWire",
       role: "Marketing",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
     link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
   },
   {
@@ -136,7 +136,7 @@ const newsArticles = [
     "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
       author: "BusinessWire",
       role: "Marketing",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
     link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
   }
 ];

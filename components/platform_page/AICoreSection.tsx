@@ -43,7 +43,7 @@ const AICoreSection = () => {
   return (
     <div
       className="mx-auto p-4 md:p-8 my-16 md:my-0 flex flex-col justify-center items-center gap-8
-      md:bg-[url('/background_images/modern_lender.png')] bg-cover bg-center bg-[position-y:150px]
+      md:bg-[url('/background_images/modern_lender.webp')] bg-cover bg-center bg-[position-y:150px]
       "
     >
       <div className="container flex flex-col justify-center items-center text-center gap-5">

@@ -308,7 +308,7 @@ export default function DecisioningPage() {
                                             "Compare product performance across branches",
                                             "Monitor lending pipeline health in real-time"
                                         ],
-                                        image: "/icons/clo.png"
+                                        image: "/icons/clo.webp"
                                     }
                                 },
                                 {
@@ -321,7 +321,7 @@ export default function DecisioningPage() {
                                             "Assess impact of recent rule or pricing changes",
                                             "Identify gaps in policy coverage by segment"
                                         ],
-                                        image: "/icons/cs.png"
+                                        image: "/icons/cs.webp"
                                     }
                                 },
                                 {
@@ -334,7 +334,7 @@ export default function DecisioningPage() {
                                             "Identify drop-offs by affiliate or dealer",
                                             "Attribute conversions to campaigns or channels"
                                         ],
-                                        image: "/icons/cpo.png"
+                                        image: "/icons/cpo.webp"
                                     }
                                 },
                                 {
@@ -347,7 +347,7 @@ export default function DecisioningPage() {
                                             "Spot stuck files and SLA breaches",
                                             "Monitor daily task and app completion rates"
                                         ],
-                                        image: "/icons/bl.png"
+                                        image: "/icons/bl.webp"
                                     }
                                 },
                                 {
@@ -360,7 +360,7 @@ export default function DecisioningPage() {
                                             "Track performance by segmentAudit rule execution and decision fairness",
                                             "Segment approvals by risk and pricing tiers"
                                         ],
-                                        image: "/icons/cr.png"
+                                        image: "/icons/cr.webp"
                                     }
                                 }
                             ];

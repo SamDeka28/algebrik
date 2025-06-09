@@ -9,7 +9,7 @@ export default function AutoLenders() {
   const data = {
     cardData: [
       {
-        image: "/section_images/auto_lenders/smarter.png",
+        image: "/section_images/auto_lenders/smarter.webp",
         title: "Smarter Lending Decisions",
         description:
           "AI-powered insights streamline approvals, reducing friction for your team and borrowers",
@@ -18,7 +18,7 @@ export default function AutoLenders() {
         title: "Seamless Borrower Journeys",
         description:
           "Deliver connected experiences across dealership, mobile, and online channels",
-        image: "/section_images/auto_lenders/seemless.png",
+        image: "/section_images/auto_lenders/seemless.webp",
       },
       {
         title: "Integrated Workflows",
@@ -42,7 +42,7 @@ export default function AutoLenders() {
       <div
         className="relative md:flex flex-wrap justify-center gap-6"
         style={{
-          backgroundImage: "url('/background_images/modern_lender.png')",
+          backgroundImage: "url('/background_images/modern_lender.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

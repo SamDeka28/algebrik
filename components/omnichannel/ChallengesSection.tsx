@@ -10,21 +10,21 @@ const ChallengesSection = () => {
       description:
         "Lengthy approval times and outdated workflows frustrate members and slow growth.",
         hoverDescription: "Automate workflows to approve loans in minutes, not days.",
-      image: "/section_images/challenges_one.png",
+      image: "/section_images/challenges_one.webp",
     },
     {
       title: "Attracting the Next Generation",
       description:
         "Younger members expect digital-first, intuitive, and seamless experiences. Complex processes drive them away.",
         hoverDescription: "Deliver seamless omnichannel interactions—mobile, web, and in-branch.",
-      image: "/section_images/attract.png",
+      image: "/section_images/attract.webp",
     },
     {
       title: "Scaling Fast at Lower Costs",
       description:
         "Manual operations and siloed systems increase costs and hinder growth.",
         hoverDescription: "Optimize workflows with a cloud-native platform that scales with your credit union.",
-      image: "/section_images/challenges_two.png",
+      image: "/section_images/challenges_two.webp",
     },
   ];
 

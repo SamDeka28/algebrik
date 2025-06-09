@@ -22,7 +22,7 @@ export default function DashboardAnalyticsHero() {
     ),
     subtitle:
       "Track application flows, approval trends, and risk distribution—so you can optimize conversion and lending strategy before disbursement",
-    sectionImage: "/icons/da-main.png",
+    sectionImage: "/icons/da-main.webp",
     subtitleClass:
       "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px] max-w-7xl",
   };
@@ -30,7 +30,7 @@ export default function DashboardAnalyticsHero() {
   return (
     <div className="w-full h-max">
       <div
-        className="w-full h-[758px] flex items-center justify-center overflow-hidden relative md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-bottom bg-cover"
+        className="w-full h-[758px] flex items-center justify-center overflow-hidden relative md:bg-[url('/background_images/platform_hero.webp')] bg-[url('/background_images/mobile_solutions.webp')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-bottom bg-cover"
       >
         <div className="absolute top-48 mx-auto flex flex-col items-center justify-start gap-[20px]">
           <div className="flex flex-col gap-[20px]">

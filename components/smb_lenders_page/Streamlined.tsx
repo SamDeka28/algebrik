@@ -42,7 +42,7 @@ export default function Streamlined() {
       <div
         className="relative flex flex-wrap justify-center md:gap-6 md:p-6"
         style={{
-          backgroundImage: "url('/background_images/modern_lender.png')",
+          backgroundImage: "url('/background_images/modern_lender.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

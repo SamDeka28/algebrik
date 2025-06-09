@@ -14,7 +14,7 @@ export default function NewsSection() {
       source: "BusinessWire",
       role: "Marketing",
       link: "https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
     },
     {
       title:
@@ -24,7 +24,7 @@ export default function NewsSection() {
       role: "Marketing",
       description:"Algebrik AI Inc., today announced a strategic partnership with Conductiv, a leader in providing digital stipulations via permissioned data and AI. ",
       link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
-      image: "/section_images/blog/teamalgebrik.png",
+      image: "/section_images/blog/teamalgebrik.webp",
     },
     {
       title:
@@ -33,7 +33,7 @@ export default function NewsSection() {
       role: "Marketing",
       description:"NEW YORK--(BUSINESS WIRE)--Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced a strategic partnership with Carleton, Inc.",
       link: "https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
     },
     {
       title:
@@ -42,7 +42,7 @@ export default function NewsSection() {
       role: "Marketing",
       description:"Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced an integration agreement with Corelation",
       link: "https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
     },
     {
       title:
@@ -50,7 +50,7 @@ export default function NewsSection() {
       source: "BusinessWire",
       description:"NEW YORK--(BUSINESS WIRE)--Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's 1st cloud-native...",
             link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
     },
     {
       title:
@@ -58,7 +58,7 @@ export default function NewsSection() {
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital-era Loan...",
       source: "BusinessWire",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
       link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
     },
     {
@@ -67,7 +67,7 @@ export default function NewsSection() {
       description:
         "OTTOMOTO®, the leading embedded lending platform revolutionizing how dealers and lenders collaborate across auto, RV, powersports, marine, and aircraft industries, is proud to announce...",
       source: "BusinessWire",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
       link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
     },
     {
@@ -76,7 +76,7 @@ export default function NewsSection() {
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
       source: "Fintech Futures",
-      image: "/section_images/blog/ff.jpg",
+      image: "/section_images/blog/ff.webp",
       link: "https://www.fintechfutures.com/2024/09/scienaptic-ai-co-founder-steps-down-to-launch-new-venture-algebrik-ai/"
     },
     {
@@ -85,7 +85,7 @@ export default function NewsSection() {
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
       source: "BusinessWire",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
       link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market"
     },
     {
@@ -94,7 +94,7 @@ export default function NewsSection() {
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
       source: "Yahoo Finance",
-      image: "/section_images/blog/ya.png",
+      image: "/section_images/blog/ya.webp",
       link: "https://finance.yahoo.com/news/algebrik-ai-expands-founding-leadership-120000953.html"
     },
     {
@@ -103,7 +103,7 @@ export default function NewsSection() {
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
       source: "BusinessWire",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
       link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships"
     },
     {
@@ -112,7 +112,7 @@ export default function NewsSection() {
       description:
         "Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native and AI-powered digital era Loan Origination Platform, today announced that it has...",
       source: "Pulse 2.0",
-      image: "/section_images/blog/p.jpg",
+      image: "/section_images/blog/p.webp",
       link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/"
     },
     {
@@ -121,7 +121,7 @@ export default function NewsSection() {
       description:
         "Pioneering the Future of Lending - This is a monumental step forward for Algebrik AI and the financial institutions we serve,” said Pankaj Jain, Founder and CEO...",
       source: "BusinessWire",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
       link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
     },
   

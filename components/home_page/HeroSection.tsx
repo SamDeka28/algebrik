@@ -1,16 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import mobileHeroImage from "@/public/section_images/home_page/loan.png";
+import mobileHeroImage from "@/public/section_images/home_page/loan.webp";
 import BookADemo from "../BookADemo";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import heroImage1 from "@/public/section_images/home_page/HiHowMuch.png";
-import heroImage2 from "@/public/section_images/home_page/Purpose.png";
-import heroImage3 from "@/public/section_images/home_page/Dashboard.png";
-import heroImage4 from "@/public/section_images/home_page/Profile.png";
-import heroImage5 from "@/public/section_images/home_page/EmailAssist.png";
+import heroImage1 from "@/public/section_images/home_page/HiHowMuch.webp";
+import heroImage2 from "@/public/section_images/home_page/Purpose.webp";
+import heroImage3 from "@/public/section_images/home_page/Dashboard.webp";
+import heroImage4 from "@/public/section_images/home_page/Profile.webp";
+import heroImage5 from "@/public/section_images/home_page/EmailAssist.webp";
 
 export default function HeroSection() {
   const [isRearranged, setIsRearranged] = useState(true);
@@ -52,7 +52,7 @@ export default function HeroSection() {
     <div
       className="
       w-full md:w-full md:h-[670px] flex items-center justify-center overflow-hidden rounded-b-[32px] md:rounded-b-none
-      bg-[url('/background_images/hero_background.png')] bg-no-repeat bg-cover bg-[left_top_-9.5rem]
+      bg-[url('/background_images/hero_background.webp')] bg-no-repeat bg-cover bg-[left_top_-9.5rem]
       md:bg-cover md:bg-[left_top_0rem]"
     >
       <div className="container pt-[181px] text-center md:mx-auto md:px-6 flex flex-col md:flex-row items-center md:justify-end md:pt-16 gap-0 md:gap-16">
