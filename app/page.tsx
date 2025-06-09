@@ -15,6 +15,10 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Script from "next/script";
 import { motion, AnimatePresence } from 'framer-motion';
 import CarouselSection from "@/components/about_page/CarouselSection";
+import dynamic from "next/dynamic";
+
+const LazyIntegrationsSection = dynamic(() => import("@/components/home_page/IntegrationsSection"), { ssr: false, loading: () => <div /> });
+const LazyFooterCards = dynamic(() => import("@/components/FooterCards"), { ssr: false, loading: () => <div /> });
 
 const HubSpotPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -73,13 +77,19 @@ const HubSpotPopup: React.FC = () => {
 
 export default function Home() {
   const [showConversation, setShowConversation] = useState(false);
+  const [showIntegrations, setShowIntegrations] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if ('requestIdleCallback' in window) {
         (window as any).requestIdleCallback(() => setShowConversation(true));
+        (window as any).requestIdleCallback(() => setShowIntegrations(true));
+        (window as any).requestIdleCallback(() => setShowFooter(true));
       } else {
         setTimeout(() => setShowConversation(true), 500);
+        setTimeout(() => setShowIntegrations(true), 700);
+        setTimeout(() => setShowFooter(true), 900);
       }
     }
   }, []);
@@ -161,8 +171,8 @@ export default function Home() {
             subtitleText="Our Advisory Board brings together industry leaders and visionaries, guiding Algebrik AI with strategic insights, deep expertise, and a shared commitment to transforming lending into a seamless and inclusive experience."
           />
         </div>
-        <IntegrationsSection />
-        <FooterCards />
+        {showIntegrations && <LazyIntegrationsSection />}
+        {showFooter && <LazyFooterCards />}
         {showConversation && <Conversation />}
         {/* <elevenlabs-convai agent-id="agent_01jwdd48b1e17rkf0dngh470mv" />
         <Script
