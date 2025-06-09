@@ -67,8 +67,8 @@ export default function HeroSection() {
         background: "radial-gradient(128.68% 367.63% at 50% -243.57%, #7EB2FF 0%, #043071 85%)"
       }}
     >
-      <Image src="/background_images/modern_lender.webp" alt="Hero Background" fill className="hidden md:block absolute top-0 left-0 object-cover w-full h-full" priority />
-      <Image src="/background_images/ml-single.svg" alt="Hero Background" fill className="lg:hidden absolute top-0 left-0 object-cover w-full h-full" priority />
+      <img src="/background_images/modern_lender.webp" alt="Hero Background" fill className="hidden md:block absolute top-0 left-0 object-cover w-full h-full" fetchPriority="high" />
+      <img src="/background_images/ml-single.svg" alt="Hero Background"  className="lg:hidden absolute top-0 left-0 object-cover w-full h-full" fetchPriority="high" />
       <div className="container pt-[181px] text-center md:mx-auto md:px-6 flex flex-col md:flex-row items-center md:justify-end md:pt-16 gap-0 md:gap-16">
 
         <div className="flex flex-col gap-6 px-16 md:px-0 max-w-[500px] h-72 w-full">
