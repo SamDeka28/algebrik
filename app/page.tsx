@@ -72,9 +72,20 @@ const HubSpotPopup: React.FC = () => {
 };
 
 export default function Home() {
+  const [showConversation, setShowConversation] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(() => setShowConversation(true));
+      } else {
+        setTimeout(() => setShowConversation(true), 500);
+      }
+    }
+  }, []);
+
   return (
     <>
-
       <main className="overflow-x-hidden">
         <HeroSection />
         {/* <HubSpotPopup /> */}
@@ -134,8 +145,7 @@ export default function Home() {
                 title: "Chief Financial Officer",
                 place: "Labor Credit Union, Washington",
               },
-            ]
-            }
+            ]}
             autoScroll
             headerText={
               <>
@@ -143,7 +153,6 @@ export default function Home() {
                   <span>Guided by the</span>
                   <span>Best in the Field</span>
                 </div>
-
                 <div className="block md:hidden">
                   Guided by the best in the Field
                 </div>
@@ -154,7 +163,7 @@ export default function Home() {
         </div>
         <IntegrationsSection />
         <FooterCards />
-        <Conversation />
+        {showConversation && <Conversation />}
         {/* <elevenlabs-convai agent-id="agent_01jwdd48b1e17rkf0dngh470mv" />
         <Script
           src="https://unpkg.com/@elevenlabs/convai-widget-embed"
