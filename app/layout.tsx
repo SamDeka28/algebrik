@@ -41,6 +41,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <link rel="preload" as="image" href="/background_images/hero_background.webp" />
+      <link rel="preload" as="image" href="/blue_logo.webp" />
         {/* <script
           type="text/javascript"
           id="hs-script-loader"
