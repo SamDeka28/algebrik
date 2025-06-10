@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import DashboardAnalyticsHero from "@/components/dashboard-analytics/Hero";
 import { useRouter } from "next/navigation";
+import Contact from "@/components/contacts";
 
 const beforeAfterData = [
     {
@@ -108,6 +109,7 @@ const scaleData = [
 
 export default function DecisioningPage() {
     const router = useRouter();
+    const [showContactModal, setShowContactModal] = useState(false);
     return (
         <main className="bg-[#F8FAFF] min-h-screen w-full flex flex-col items-center font-plus-jakarta">
             {/* Hero Section */}
@@ -530,13 +532,14 @@ export default function DecisioningPage() {
                         ease: "easeInOut"
                     }}
                     onClick={() => {
-                        router.push("/contact");
+                       setShowContactModal(true);
                     }}
                 >
                     <span className="relative z-10"> Talk to a Lending Funnel Expert</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                 </motion.button>
             </section>
+            <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
         </main>
     );
 } 

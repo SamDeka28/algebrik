@@ -8,6 +8,7 @@ import { useState } from "react";
 import DashboardAnalyticsHero from "@/components/dashboard-analytics/Hero";
 import LenderCockpitHero from "@/components/lender-cockpit/Hero";
 import { useRouter } from "next/navigation";
+import Contact from "@/components/contacts";
 const beforeAfterData = [
     {
         type: "before",
@@ -175,7 +176,7 @@ const clarityBullets = [
 export default function DecisioningPage() {
     const [activeCard, setActiveCard] = useState(0);
     const [showPoints, setShowPoints] = useState(true);
-
+    const [showContactModal, setShowContactModal] = useState(false);
     const router = useRouter();
     const handleCardHover = (idx: number) => {
         if (activeCard !== idx) {
@@ -705,11 +706,12 @@ export default function DecisioningPage() {
                         duration: 0.5,
                         ease: "easeInOut"
                     }}
-                    onClick={() => router.push("/contact")}
+                    onClick={() => setShowContactModal(true)}
                 >
                     <span className="relative z-10">See the Cockpit in Action</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                 </motion.button>
+                <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
             </section>
         </main>
     );

@@ -5,7 +5,10 @@ import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Contact from "../contacts";
+import { useState } from "react";
 export default function DashboardAnalyticsHero() {
+  const [showContactModal, setShowContactModal] = useState(false);
   const heroContent = {
     header: (
       <>
@@ -53,7 +56,7 @@ export default function DashboardAnalyticsHero() {
               ease: "easeInOut"
             }}
             onClick={() => {
-              router.push("/contact");
+              setShowContactModal(true);
             }}
           >
             <span className="relative z-10">See the Dashboard in Action</span>
@@ -73,6 +76,7 @@ export default function DashboardAnalyticsHero() {
           </div>
         </div>
       </div>
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </div>
   );
 } 

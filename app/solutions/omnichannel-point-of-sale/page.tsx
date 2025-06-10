@@ -8,6 +8,7 @@ import borrowerData from "@/components/constant/constant";
 import { motion, useAnimation } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Contact from "@/components/contacts";
 const beforeAfterData = [
     {
         type: "before",
@@ -120,6 +121,7 @@ export default function OmnichannelPOSPage() {
     const setWidthRef = useRef(0);
     const [setWidth, setSetWidth] = useState(0);
     const router = useRouter();
+    const [showContactModal, setShowContactModal] = useState(false);
     // Function to measure width of one set
     const measureSetWidth = () => {
         const track = trackRef.current;
@@ -387,12 +389,13 @@ export default function OmnichannelPOSPage() {
                         ease: "easeInOut"
                     }}
                     onClick={() => {
-                        router.push("/contact");
+                        setShowContactModal(true);
                     }}
                 >
                     <span className="relative z-10">Plan Your POS Rollout With Us</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                 </motion.button>
+                <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
             </section>
         </main>
     );

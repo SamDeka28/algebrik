@@ -5,8 +5,11 @@ import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Contact from "../contacts";
+import { useState } from "react";
 export default function DecisioningHero() {
   const router = useRouter();
+  const [showContactModal, setShowContactModal] = useState(false);
   const heroContent = {
     header: (
       <>
@@ -54,7 +57,7 @@ export default function DecisioningHero() {
               ease: "easeInOut"
             }}
             onClick={() => {
-              router.push("/contact");
+              setShowContactModal(true);
             }}
           >
             <span className="relative z-10">See how it works live</span>
@@ -74,6 +77,7 @@ export default function DecisioningHero() {
           </div>
         </div>
       </div>
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </div>
   );
 } 

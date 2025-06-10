@@ -5,6 +5,7 @@ import * as SliderPrimitive from "@radix-ui/react-slider";
 import { CustomHeader, CustomSubtitle } from "@/components/CustomHeader";
 import Button from "@/components/Buttons";
 import Link from "next/link";
+import Contact from "@/components/contacts";
 
 const steps = [
     {
@@ -67,6 +68,7 @@ interface ROIInputs {
 
 export default function StepperForm() {
     const [step, setStep] = useState(0);
+    const [showContactModal, setShowContactModal] = useState(false);
     const [values, setValues] = useState<(number | string)[]>(steps.map((s) => s.type === "slider" ? s.min : ""));
     const [showResult, setShowResult] = useState(false);
     const [summary,setSummary] = useState({
@@ -441,11 +443,11 @@ export default function StepperForm() {
                                 activeStyle="bg-white text-[#292929] font-bold"
                             />
 
-                            <Link
-                                href="/contact/"
+                            <button
+                                onClick={() => setShowContactModal(true)}
                                 className="flex-1 flex justify-center items-center rounded-full bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto text-[#1A69DC] font-bold"
 
-                            >Talk to Sales</Link>
+                            >Talk to Sales</button>
                         </div>
                         <div className="w-full h-[1px] bg-[#D4E2ED] mt-[42px]" />
                         <div className=" text-[12px] text-[#999999] py-2 px-6 text-left w-full">
@@ -453,6 +455,7 @@ export default function StepperForm() {
                         </div>
                     </div>}
             </div>
+            <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
         </div>
     );
 }

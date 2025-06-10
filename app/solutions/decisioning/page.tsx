@@ -7,6 +7,7 @@ import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion"
 import DecisioningHero from "@/components/decisioning/Hero";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Contact from "@/components/contacts";
 
 const beforeAfterData = [
     {
@@ -121,6 +122,7 @@ export default function DecisioningPage() {
     const containerRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(containerRef);
     const router = useRouter();
+    const [showContactModal, setShowContactModal] = useState(false);
     useEffect(() => {
         if (isInView) {
             controls.start({
@@ -603,12 +605,13 @@ export default function DecisioningPage() {
                         ease: "easeInOut"
                     }}
                     onClick={() => {
-                        router.push("/contact");
+                        setShowContactModal(true);
                     }}
                 >
                     <span className="relative z-10">See how it works live</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                 </motion.button>
+                <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
             </section>
         </main>
     );
