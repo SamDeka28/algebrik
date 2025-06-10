@@ -12,7 +12,7 @@ export default function Home(){
      <>
      <main className="overflow-x-hidden">
         {/* <Contact /> */}
-        <ContactUs />
+        {/* <ContactUs /> */}
      </main>
      </>
     )

@@ -11,6 +11,9 @@ import logo from "@/public/logo.png";
 import blueLogo from "@/public/blue_logo.webp";
 import PortalDropdown from "./PortalDropdown";
 import { blogContent } from "@/components/constant/blogs";
+import dynamic from "next/dynamic";
+
+const Contact = dynamic(() => import("../contacts"), { ssr: false });
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,6 +28,7 @@ export default function Navbar() {
     const shuffled = [...blogContent].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, 2);
   });
+  const [showContactModal, setShowContactModal] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -231,8 +235,9 @@ export default function Navbar() {
             About Us
           </Link>
         </div>
-        <Link
-          href="/contact"
+        <button
+          type="button"
+          onClick={() => setShowContactModal(true)}
           className={`hidden md:inline-block px-6 py-2 rounded-full text-[14px] font-bold transition ${isScrolled
             ? isContactOrResourcePage
               ? "bg-white text-[#292929] hover:bg-gray-700"
@@ -241,7 +246,7 @@ export default function Navbar() {
             }`}
         >
           Contact Us
-        </Link>
+        </button>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -318,16 +323,18 @@ export default function Navbar() {
             </Link>
           </div>
           <div>
-            <Link
-              href="/contact"
-              onClick={toggleMenu}
+            <button
+              type="button"
+              onClick={() => { setShowContactModal(true); toggleMenu(); }}
               className="block px-6 py-4 border border-[#B4C7E1] text-[18px] w-full text-center bg-white shadow-2xl rounded-[36px] text-black hover:bg-gray-700"
             >
               Contact Us
-            </Link>
+            </button>
           </div>
         </motion.div>
       )}
+      {/* Contact Modal */}
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </motion.nav>
   );
 }

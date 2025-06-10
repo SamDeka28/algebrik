@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
+import Contact from "../contacts";
 
 const ReadyToGo = () => {
+  const [showContactModal, setShowContactModal] = useState(false);
   return (
     <section
       className="bg-[#EBEEF5] mx-auto md:flex flex-col justify-center items-center gap-8 md:py-[13px]"
@@ -23,7 +25,7 @@ const ReadyToGo = () => {
           <Button
             text="Get Started"
             isActive={true}
-            link="/contact"
+            onClick={() => setShowContactModal(true)}
             customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[14px] text-[14px] md:py-[18px] md:text-[16px] font-bold hover:bg-blue-500 flex-1"
             activeStyle="bg-white text-[#292929] font-bold"
           />
@@ -36,6 +38,7 @@ const ReadyToGo = () => {
           />
         </div>
       </div>
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </section>
   );
 };
