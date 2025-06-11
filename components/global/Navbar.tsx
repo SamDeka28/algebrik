@@ -12,8 +12,17 @@ import blueLogo from "@/public/blue_logo.webp";
 import PortalDropdown from "./PortalDropdown";
 import { blogContent } from "@/components/constant/blogs";
 import dynamic from "next/dynamic";
+import ReactDOM from "react-dom";
 
 const Contact = dynamic(() => import("../contacts"), { ssr: false });
+
+function ContactModalPortal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (typeof window === "undefined") return null;
+  return ReactDOM.createPortal(
+    <Contact open={open} onClose={onClose} />,
+    document.body
+  );
+}
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -333,8 +342,7 @@ export default function Navbar() {
           </div>
         </motion.div>
       )}
-      {/* Contact Modal */}
-      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
+      <ContactModalPortal open={showContactModal} onClose={() => setShowContactModal(false)} />
     </motion.nav>
   );
 }
