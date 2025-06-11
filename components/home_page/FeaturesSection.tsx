@@ -39,9 +39,9 @@ export default function FeaturesSection() {
           transition={
             animate
               ? {
-                  ease: "linear",
-                  duration: 20,
-                  repeat: Infinity,
+            ease: "linear",
+            duration: 20,
+            repeat: Infinity,
                 }
               : undefined
           }

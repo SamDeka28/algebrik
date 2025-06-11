@@ -147,7 +147,7 @@ export default function Home() {
                 place: "Town & Country FCU, Maine",
               },
               {
-                image: "/team_images/travisBow.webp",
+                image: "/team_images/se.webp",
                 name: "Shad Edwards",
                 title: "Chief Lending Officer",
                 place: "MidWest America FCU, Indiana",

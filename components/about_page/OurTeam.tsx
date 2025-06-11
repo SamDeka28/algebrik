@@ -74,15 +74,15 @@ const carouselDataTwo = [
     name: "David Libby",
     title: "Chief Executive Officer",
     place: "Town & Country FCU, Maine",
-    bio:"David Libby has worked at Town & Country Federal Credit Union for nearly 35 years and has been President & CEO since 2011. He has spearheaded Maine’s first contactless debit cards, Apple Pay, check-imaging ATMs, and even one of the nation’s earliest Alexa banking skills, all while fostering a “think-beyond-banking” culture. Under his leadership, Town & Country has repeatedly earned honors such as Maine’s Best Credit Union and Best Home Mortgage Lender.",
+    bio:"David Libby has worked at Town & Country Federal Credit Union for nearly 35 years and has been President & CEO since 2011. He has spearheaded Maine’s first contactless debit cards, Apple Pay, check-imaging ATMs, and even one of the nation’s earliest Alexa banking skills, all while fostering a “think-beyond-banking” culture.",
     linkedin:"https://www.linkedin.com/in/david-libby-166a8310/"
   },
   {
-    image: "/team_images/travisBow.webp",
+    image: "/team_images/se.webp",
     name: "Shad Edwards",
     title: "Chief Lending Officer",
     place: "MidWest America FCU, Indiana",
-    bio:"Shad Edwards is Chief Lending Officer at MidWest America FCU, Fort Wayne, IN, overseeing all lending operations. With 13 years as CLO and 16 years at the credit union, he previously served as VP of Commercial Banking in Northwest Ohio. A graduate of Eastern Michigan University (Finance), Shad worked as a pizza delivery driver and golf club employee to pay his way through school. Under his leadership, loans grew from $315M to $700M while maintaining strong performance.",
+    bio:"Shad Edwards is Chief Lending Officer at MidWest America FCU, Fort Wayne, IN, overseeing all lending operations. With 13 years as CLO and 16 years at the credit union, he previously served as VP of Commercial Banking in Northwest Ohio.",
     linkedin:"https://www.linkedin.com/in/shad-edwards-3a08b3b/"
   },
   {
@@ -90,7 +90,7 @@ const carouselDataTwo = [
     name: "Hina Khalid",
     title: "Chief Financial Officer",
     place: "Labor Credit Union, Washington",
-    bio:"Hina is an innovative financial leader with over 20 years of experience, currently serving as CFO at Labor Credit Union—where she also oversees HR, enterprise risk, compliance, and strategic partnerships. She champions digital transformation, fintech collaborations, and community initiatives, successfully rebranding the credit union as a forward-thinking institution recognized for its financial empowerment and marketing achievements. Hina is Vice Chair of the D.C. Chapter for the Maryland/D.C. Credit Union Association and a board member of DORA Financial, focused on expanding access to banking for low-income families. As part of the VentureTech selection committee, she evaluates and supports fintech solutions that drive credit union growth and innovation.",
+    bio:"Hina is an innovative financial leader with over 20 years of experience, currently serving as CFO at Labor Credit Union—where she also oversees HR, enterprise risk, compliance, and strategic partnerships. Hina is Vice Chair of the D.C. Chapter for the Maryland/D.C. Credit Union Association and a board member of DORA Financial, focused on expanding access to banking for low-income families.",
     linkedin:"https://www.linkedin.com/in/hinakh/"
   },
 ];
