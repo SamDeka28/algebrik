@@ -200,7 +200,7 @@ export default function ThankYou() {
               description="Grab our guide, “5 Moves to Modern Lending,” for quick wins you can use before the event. It’s short, practical, and built for busy credit union teams like yours."
               buttonText="Download the Guide:"
               buttonLink="https://hubs.ly/Q03gwGqS0"
-              imageUrl="/background_images/futureLending.png"
+              imageUrl="/background_images/futureLending.webp"
               isPrimary
             />
             <Card
@@ -208,7 +208,7 @@ export default function ThankYou() {
               description="Want a front-row seat to what your peers are thinking? RSVP to the event and Follow Algebrik"
               buttonText="RSVP on Linkedin"
               buttonLink="https://www.linkedin.com/events/lending2030-beyondai-shapingthe7315351703766122496/"
-              imageUrl="/background_images/algebrikFirsthand.png"
+              imageUrl="/background_images/algebrikFirsthand.webp"
             />
           </div>
         </div>

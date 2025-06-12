@@ -8,6 +8,7 @@ import { useState } from "react";
 import DashboardAnalyticsHero from "@/components/dashboard-analytics/Hero";
 import LenderCockpitHero from "@/components/lender-cockpit/Hero";
 import { useRouter } from "next/navigation";
+import Contact from "@/components/contacts";
 const beforeAfterData = [
     {
         type: "before",
@@ -175,7 +176,7 @@ const clarityBullets = [
 export default function DecisioningPage() {
     const [activeCard, setActiveCard] = useState(0);
     const [showPoints, setShowPoints] = useState(true);
-
+    const [showContactModal, setShowContactModal] = useState(false);
     const router = useRouter();
     const handleCardHover = (idx: number) => {
         if (activeCard !== idx) {
@@ -394,7 +395,7 @@ export default function DecisioningPage() {
                                             "Take next-step actions (e.g. request docs, escalate)",
                                             "Communicate with borrowers in-platform"
                                         ],
-                                        image: "/icons/lo.png"
+                                        image: "/icons/lo.webp"
                                     }
                                 },
                                 {
@@ -406,7 +407,7 @@ export default function DecisioningPage() {
                                             "Collaborate with officers via internal notes and tagging",
                                             "Track files by risk category or manual review triggers"
                                         ],
-                                        image: "/icons/ca.png"
+                                        image: "/icons/ca.webp"
                                     }
                                 },
                                 {
@@ -418,7 +419,7 @@ export default function DecisioningPage() {
                                             "Identify pending files and SLAs at risk",
                                             "Reassign files or intervene in bottlenecked queues"
                                         ],
-                                        image: "/icons/bm.png"
+                                        image: "/icons/bm.webp"
                                     }
                                 },
                                 {
@@ -431,7 +432,7 @@ export default function DecisioningPage() {
                                             "Spot stuck files and SLA breaches",
                                             "Monitor daily task and app completion rates"
                                         ],
-                                        image: "/icons/lops.png"
+                                        image: "/icons/lops.webp"
                                     }
                                 },
                                 {
@@ -444,7 +445,7 @@ export default function DecisioningPage() {
                                             "Track performance by segmentAudit rule execution and decision fairness",
                                             "Segment approvals by risk and pricing tiers"
                                         ],
-                                        image: "/icons/risk.png"
+                                        image: "/icons/risk.webp"
                                     }
                                 }
                             ];
@@ -685,7 +686,7 @@ export default function DecisioningPage() {
                         </ul>
                     </div>
                     {/* <div className="flex-1 flex items-end justify-end self-end"> */}
-                    <img src="/icons/cds.png" alt="Clarity Dashboard" className="rounded-2xl w-full max-w-md z-10" />
+                    <img src="/icons/cds.webp" alt="Clarity Dashboard" className="rounded-2xl w-full max-w-md z-10" />
                     {/* </div> */}
                 </div>
             </section>
@@ -705,11 +706,12 @@ export default function DecisioningPage() {
                         duration: 0.5,
                         ease: "easeInOut"
                     }}
-                    onClick={() => router.push("/contact")}
+                    onClick={() => setShowContactModal(true)}
                 >
                     <span className="relative z-10">See the Cockpit in Action</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                 </motion.button>
+                <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
             </section>
         </main>
     );

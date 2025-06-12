@@ -40,7 +40,7 @@ export default function Unlock() {
       className="container mx-auto p-4 md:mt-[106px] mt-20 md:mb-12 flex items-center justify-center font-plus-jakarta relative"
       style={{
         backgroundImage:
-          "url('/section_images/auto_lenders/lender_achive.png')",
+          "url('/section_images/auto_lenders/lender_achive.webp')",
         backgroundSize: "cover",
       }}
     >

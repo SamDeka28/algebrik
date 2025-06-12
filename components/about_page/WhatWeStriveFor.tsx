@@ -9,7 +9,7 @@ export default function WhatWeStriveFor() {
     <div
       className="container mx-auto md:p-8 flex font-plus-jakarta justify-center items-center"
       style={{
-        backgroundImage: "url('/background_images/modern_lender.png')",
+        backgroundImage: "url('/background_images/modern_lender.webp')",
         backgroundSize: "cover",
       }}
     >

@@ -25,7 +25,7 @@ const carouselData: CarouselItem[] = [
     description:
       "\"The success of any financial system lies in its ability to adapt and serve its people,\" once said Mervyn King, former....",
     source: "Prateek Samantaray   ",
-    image: "/section_images/blog/beyond.png",
+    image: "/section_images/blog/beyond.webp",
     url: "/resource_center/beyond_decisioning",
     target: "_self",
   },
@@ -36,7 +36,7 @@ const carouselData: CarouselItem[] = [
     description:
       "Learn how companies are leveraging Algebrik AI's platform to streamline loan origination processes, increase efficiency, and drive results in the financial sector.",
     source: "BusinessWire",
-    image: "/section_images/place.png",
+    image: "/section_images/place.webp",
     url: "",
     target: "_self",
   },
@@ -47,7 +47,7 @@ const carouselData: CarouselItem[] = [
     description:
       "Explore the latest updates and news stories about Algebrik AI and its impact on the global financial technology industry.",
     source: "BusinessWire",
-    image: "/section_images/blog/bw.png",
+    image: "/section_images/blog/bw.webp",
     url: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
     target: "_blank",
   },
@@ -58,7 +58,7 @@ const carouselData: CarouselItem[] = [
     description:
       "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
     source: "BusinessWire",
-    image: "/section_images/place.png",
+    image: "/section_images/place.webp",
     url: "",
     target: "_self",
   },
@@ -72,7 +72,7 @@ const newsArticles = [
     source: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -80,7 +80,7 @@ const newsArticles = [
     author: "Team Algebrik",
     role: "Marketing",
     link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
-    image: "/section_images/blog/teamalgebrik.png",
+    image: "/section_images/blog/teamalgebrik.webp",
   },
   {
     title:
@@ -88,7 +88,7 @@ const newsArticles = [
     author: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -96,7 +96,7 @@ const newsArticles = [
     author: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -104,7 +104,7 @@ const newsArticles = [
     author: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -112,7 +112,7 @@ const newsArticles = [
     author: "Fintech Futures",
     role: "Marketing",
     link: "https://www.fintechfutures.com/2024/09/scienaptic-ai-co-founder-steps-down-to-launch-new-venture-algebrik-ai/",
-    image: "/section_images/blog/ff.jpg",
+    image: "/section_images/blog/ff.webp",
   },
   {
     title:
@@ -120,7 +120,7 @@ const newsArticles = [
     author: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -136,7 +136,7 @@ const newsArticles = [
     author: "BusinessWire",
     role: "Marketing",
     link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
   },
   {
     title:
@@ -144,7 +144,7 @@ const newsArticles = [
     author: "Pulse 2.0",
     role: "Marketing",
     link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
-    image: "/section_images/blog/p.jpg",
+    image: "/section_images/blog/p.webp",
   },
 
 
@@ -153,7 +153,7 @@ const newsArticles = [
       "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
     author: "BusinessWire",
     role: "Marketing",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
     link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
   },
   {
@@ -161,7 +161,7 @@ const newsArticles = [
       "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
     author: "BusinessWire",
     role: "Marketing",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
     link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
   },
   {
@@ -169,7 +169,7 @@ const newsArticles = [
       "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
     author: "BusinessWire",
     role: "Marketing",
-    image: "/section_images/blog/b.png",
+    image: "/section_images/blog/b.webp",
     link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
   }
 ];

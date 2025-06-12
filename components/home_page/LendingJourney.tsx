@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
 import Image from "next/image";
-import lendingWithoutAlgebrik from "@/public/background_images/lendingWithoutAlgebrik.png";
+import lendingWithoutAlgebrik from "@/public/background_images/lendingWithoutAlgebrik.webp";
 import lendingWithAlgebrik from "@/public/section_images/with.png"
 import { motion } from "framer-motion";
 

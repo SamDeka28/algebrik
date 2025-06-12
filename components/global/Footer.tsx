@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import Link from "next/link";
+import { useState } from "react";
+import Contact from "../contacts";
 
 const Footer = () => {
+  const [showContactModal, setShowContactModal] = useState(false);
   return (
     <footer className="bg-[#121212] pt-[40px] px-[20px] md:px-0 pb-[20px] font-plus-jakarta md:border md:border-t-1 md:border-[#262932]">
       <hr className="w-full border-none md:border-t text-[#787C91] border-gray-700" />
@@ -99,10 +104,10 @@ const Footer = () => {
                 {" "}
                 <li>About us</li>
               </Link>
-              <Link href="/contact" passHref target="_blank">
+              <button onClick={() => setShowContactModal(true)}>
                 {" "}
                 <li>Contact us</li>
-              </Link>
+              </button>
             </ul>
           </div>
 
@@ -117,10 +122,10 @@ const Footer = () => {
                 {" "}
                 <li>About us</li>
               </Link>
-              <Link href="/contact" passHref target="_blank">
+              <button onClick={() => setShowContactModal(true)}>
                 {" "}
                 <li>Contact us</li>
-              </Link>
+              </button>
             </ul>
           </div>
           <div>

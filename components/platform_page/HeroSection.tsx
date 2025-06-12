@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-// import hero from "@/public/section_images/platform.png";
+// import hero from "@/public/section_images/platform.webp";
 
 export default function HeroSection() {
   return (
@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div
   className="
     w-full h-[758px] flex items-center justify-center overflow-hidden relative 
-    md:bg-[url('/background_images/platform_hero.png')] bg-[url('/background_images/mobile_solutions.png')] 
+    md:bg-[url('/background_images/platform_hero.webp')] bg-[url('/background_images/mobile_solutions.webp')] 
     bg-no-repeat bg-center bg-[bottom_left-30.5rem]
      md:bg-cover bg-cover -md:bg-[left_top_10rem] rounded-b-[32px] md:rounded-none"
 >

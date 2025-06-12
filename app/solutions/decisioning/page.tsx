@@ -7,6 +7,7 @@ import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion"
 import DecisioningHero from "@/components/decisioning/Hero";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Contact from "@/components/contacts";
 
 const beforeAfterData = [
     {
@@ -84,19 +85,19 @@ const featureCards = [
 
 const flowsData = [
     {
-        icon: "/icons/ce1.png",
+        icon: "/icons/ce1.webp",
         title: "Design approval logic, pricing bands, and eligibility flows visually."
     },
     {
-        icon: "/icons/ce2.png",
+        icon: "/icons/ce2.webp",
         title: "Test strategies on past applicants to predict impact."
     },
     {
-        icon: "/icons/ce3.png",
+        icon: "/icons/ce3.webp",
         title: "Compare rule sets live to see what performs best."
     },
     {
-        icon: "/icons/ce4.png",
+        icon: "/icons/ce4.webp",
         title: "Every decision is logged, explainable, and compliant."
     }
 ];
@@ -121,6 +122,7 @@ export default function DecisioningPage() {
     const containerRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(containerRef);
     const router = useRouter();
+    const [showContactModal, setShowContactModal] = useState(false);
     useEffect(() => {
         if (isInView) {
             controls.start({
@@ -296,7 +298,7 @@ export default function DecisioningPage() {
                         }}
                     />
                 </div>
-                <Image src="/icons/lead.png" alt="Analytics" width={1000} height={1000} className="w-full z-10 shadow-2xl rounded-3xl" />
+                <Image src="/icons/lead.webp" alt="Analytics" width={1000} height={1000} className="w-full z-10 shadow-2xl rounded-3xl" />
             </section>
 
             {/* Teams Section (Tabs/Pills) */}
@@ -357,7 +359,7 @@ export default function DecisioningPage() {
                                             "Simulate strategy impact pre-launch",
                                             "Reduce dependence on engineering teams"
                                         ],
-                                        image: "/icons/dat-1.png"
+                                        image: "/icons/dat-1.webp"
                                     }
                                 },
                                 {
@@ -370,7 +372,7 @@ export default function DecisioningPage() {
                                             "Build flows per product line",
                                             "Launch variations without writing code"
                                         ],
-                                        image: "/icons/dat-2.png"
+                                        image: "/icons/dat-2.webp"
                                     }
                                 },
                                 {
@@ -383,7 +385,7 @@ export default function DecisioningPage() {
                                             "Ensure auditability across rule sets",
                                             "Support Fair Lending and ECOA"
                                         ],
-                                        image: "/icons/dat-3.png"
+                                        image: "/icons/dat-3.webp"
                                     }
                                 },
                                 {
@@ -396,7 +398,7 @@ export default function DecisioningPage() {
                                             "Use Python or visual rules",
                                             "Adjust thresholds without IT support"
                                         ],
-                                        image: "/icons/dat-4.png"
+                                        image: "/icons/dat-4.webp"
                                     }
                                 },
                                 {
@@ -409,7 +411,7 @@ export default function DecisioningPage() {
                                             "Track performance by segment",
                                             "Optimize based on live results"
                                         ],
-                                        image: "/icons/dat-5.png"
+                                        image: "/icons/dat-5.webp"
                                     }
                                 }
                             ];
@@ -603,12 +605,13 @@ export default function DecisioningPage() {
                         ease: "easeInOut"
                     }}
                     onClick={() => {
-                        router.push("/contact");
+                        setShowContactModal(true);
                     }}
                 >
                     <span className="relative z-10">See how it works live</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                 </motion.button>
+                <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
             </section>
         </main>
     );

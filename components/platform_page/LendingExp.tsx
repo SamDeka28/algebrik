@@ -3,8 +3,11 @@
 import React from "react";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
+import Contact from "../contacts";
+import { useState } from "react";
 
 const LendingExperience = () => {
+  const [showContactModal, setShowContactModal] = useState(false);
   return (
     <section
       className="mx-auto p-4 md:p-8 flex flex-col justify-center items-center gap-8 mb-[61px] md:mb-[119px]"
@@ -29,7 +32,7 @@ const LendingExperience = () => {
             text="Get Started"
             isActive={true}
             // onClick={() => alert("Please provide the redirection page")}
-            link="/contact"
+            onClick={() => setShowContactModal(true)}
             customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
             activeStyle="bg-white text-[#292929] font-bold"
           />
@@ -43,6 +46,7 @@ const LendingExperience = () => {
           />
         </div>
       </div>
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </section>
   );
 };

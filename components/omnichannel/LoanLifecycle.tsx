@@ -28,11 +28,11 @@ export default function LoanLifecycle() {
   const cardData = [
     {
       title: "Seamless Onboarding",
-      image: "/section_images/seemless_onboarding.png",
+      image: "/section_images/seemless_onboarding.webp",
     },
-    { title: "Deploy in Mins", image: "/section_images/deploy_in_mins.png" },
-    { title: "AI-Powered", image: "/section_images/ai_powered.png" },
-    { title: "Smart Decisioning", image: "/section_images/smart_decision.png" },
+    { title: "Deploy in Mins", image: "/section_images/deploy_in_mins.webp" },
+    { title: "AI-Powered", image: "/section_images/ai_powered.webp" },
+    { title: "Smart Decisioning", image: "/section_images/smart_decision.webp" },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -168,7 +168,7 @@ export default function LoanLifecycle() {
             }}
           >
             <Image
-              src={index === activeIndex ? "/icons/solar_check-circle.svg" : "/icons/uncheck.png"}
+              src={index === activeIndex ? "/icons/solar_check-circle.svg" : "/icons/uncheck.webp"}
               width={24}
               height={24}
               alt={index === activeIndex ? "Checked" : "Unchecked"}

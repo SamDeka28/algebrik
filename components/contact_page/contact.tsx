@@ -81,7 +81,7 @@ export default function Contact() {
 
   return (
     <section className="flex flex-col md:flex-row font-plus-jakarta items-center gap-[43px] md:gap-[98px] overflow-hidden">
-      <div className="bg-[url('/section_images/gac/gac.png')] md:h-[950px] object-cover bg-no-repeat bg-cover flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative md:block md:top-0 md:w-[723px]">
+      <div className="bg-[url('/section_images/gac/gac.webp')] md:h-[950px] object-cover bg-no-repeat bg-cover flex flex-col text-center md:text-left gap-[20px] p-8 md:p-0 relative md:block md:top-0 md:w-[723px]">
         <div className="mx-auto md:px-[99px] pt-[50px] md:pt-[72px] pb-[73px] text-white flex flex-col gap-[40px] font-plus-jakarta">
           <div className="">
             <Link href="/" className="flex justify-center items-center md:block">

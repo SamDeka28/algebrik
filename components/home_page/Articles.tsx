@@ -1,5 +1,5 @@
 // import Image from "next/image";
-// import evan from "@/public/icons/evan-gerdisch.png";
+// import evan from "@/public/icons/evan-gerdisch.webp";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
@@ -58,7 +58,7 @@ export default function Articles() {
       source: "BusinessWire",
       role: "Marketing",
       link: "https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
     },
     {
       title:
@@ -67,7 +67,7 @@ export default function Articles() {
       source: "Team Algebrik",
       role: "Marketing",
       link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
-      image: "/section_images/blog/teamalgebrik.png",
+      image: "/section_images/blog/teamalgebrik.webp",
     },
     {
       title:
@@ -76,7 +76,7 @@ export default function Articles() {
       source: "BusinessWire",
       role: "Marketing",
       link: "https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
     },
     {
       title:
@@ -85,7 +85,7 @@ export default function Articles() {
       source: "BusinessWire",
       role: "Marketing",
       link: "https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience",
-      image: "/section_images/blog/b.png",
+      image: "/section_images/blog/b.webp",
     },
     {
       title:
@@ -94,7 +94,7 @@ export default function Articles() {
       source: "BusinessWire",
       role: "Marketing",
       link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
-      // image: "/section_images/blog/b.png",
+      // image: "/section_images/blog/b.webp",
     },
     {
       title:

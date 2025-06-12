@@ -117,7 +117,7 @@ export default function Blog() {
               <div className="flex gap-[16px] items-center">
                 <div className=" object-cover">
                   <Image
-                    src="/section_images/blog/pra.jpg"
+                    src="/section_images/blog/pra.webp"
                     className="rounded-[184.59px] object-cover h-[48px]"
                     objectFit="cover"
                     width={48}
@@ -142,13 +142,13 @@ export default function Blog() {
               </div>
               <div className="flex gap-[8px]">
                 <Image
-                  src="/section_images/blog/play.svg"
+                  src="/section_images/blog/play.webp"
                   width={24}
                   height={24}
                   alt=""
                 />
                 <Image
-                  src="/section_images/blog/share.svg"
+                  src="/section_images/blog/share.webp"
                   width={24}
                   height={24}
                   alt=""
@@ -159,7 +159,7 @@ export default function Blog() {
 
           <div className="pt-[35px]">
             <Image
-              src="/section_images/blog/frag.png"
+              src="/section_images/blog/frag.webp"
               width={1160}
               height={500}
               alt=""
@@ -179,7 +179,7 @@ export default function Blog() {
           </div>
           <div className="pt-[35px]">
             <Image
-              src="/section_images/blog/frag.png"
+              src="/section_images/blog/frag.webp"
               width={1160}
               height={500}
               alt=""
