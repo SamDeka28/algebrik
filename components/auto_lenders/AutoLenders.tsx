@@ -4,12 +4,15 @@ import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { motion } from "framer-motion";
 import Button from "../Buttons";
+import Contact from "../contacts";
+import { useState } from "react";
 
 export default function AutoLenders() {
+  const [showContactModal, setShowContactModal] = useState(false);
   const data = {
     cardData: [
       {
-        image: "/section_images/auto_lenders/smarter.png",
+        image: "/section_images/auto_lenders/smarter.webp",
         title: "Smarter Lending Decisions",
         description:
           "AI-powered insights streamline approvals, reducing friction for your team and borrowers",
@@ -18,7 +21,7 @@ export default function AutoLenders() {
         title: "Seamless Borrower Journeys",
         description:
           "Deliver connected experiences across dealership, mobile, and online channels",
-        image: "/section_images/auto_lenders/seemless.png",
+        image: "/section_images/auto_lenders/seemless.webp",
       },
       {
         title: "Integrated Workflows",
@@ -42,7 +45,7 @@ export default function AutoLenders() {
       <div
         className="relative md:flex flex-wrap justify-center gap-6"
         style={{
-          backgroundImage: "url('/background_images/modern_lender.png')",
+          backgroundImage: "url('/background_images/modern_lender.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -191,7 +194,7 @@ export default function AutoLenders() {
         <div className="flex flex-row gap-4 w-full md:w-[430px] mt-6">
           <Button
             text="Get Started"
-            link="/contact"
+            onClick={() => setShowContactModal(true)}
             customClass="text-center bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[18px] text-[16px] font-bold hover:bg-blue-500 flex-1"
             activeStyle="bg-white text-[#292929] font-bold"
           />
@@ -203,6 +206,7 @@ export default function AutoLenders() {
           />
         </div>
       </div>
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </div>
   );
 }

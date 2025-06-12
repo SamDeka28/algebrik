@@ -25,31 +25,31 @@ const validationSchema = Yup.object({
 
 const carouselDataTwo = [
   {
-    image: "/team_images/jesse.png",
+    image: "/team_images/jesse.webp",
     name: "JESSE FRUGE",
     title: "VP, PRODUCT",
     place: "",
   },
   {
-    image: "/team_images/andrea.png",
+    image: "/team_images/andrea.webp",
     name: "ANDREA SILVERS",
     title: "VP, BD & Partnerships",
     place: "",
   },
   {
-    image: "/team_images/leAnne.png",
+    image: "/team_images/leAnne.webp",
     name: "LeAnne Hixson",
     title: "Chief Lending Officer",
     place: "PFCU Credit Union, Michigan",
   },
   {
-    image: "/team_images/david.png",
+    image: "/team_images/david.webp",
     name: "David Libby",
     title: "Chief Executive Officer",
     place: "Town & Country FCU, Maine",
   },
   {
-    image: "/team_images/travisBow.png",
+    image: "/team_images/travisBow.webp",
     name: "Shad Edwards",
     title: "Chief Lending Officer",
     place: "MidWest America FCU, Indiana",
@@ -156,8 +156,8 @@ export default function SecureYourSpot() {
               customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
               activeStyle="bg-white text-[#292929] font-bold text-center max-w-max px-[34px] mt-[32px]"
             />
-            <Image src={"/background_images/heroimagesys.png"} alt="secure your spot" width={1162} height={233} className="hidden lg:block w-full mt-[23px]" />
-            <Image src={"/background_images/heroimg.png"} alt="secure your spot" width={1162} height={233} className="lg:hidden w-full mt-[23px]" />
+            <Image src={"/background_images/heroimagesys.webp"} alt="secure your spot" width={1162} height={233} className="hidden lg:block w-full mt-[23px]" />
+            <Image src={"/background_images/heroimg.webp"} alt="secure your spot" width={1162} height={233} className="lg:hidden w-full mt-[23px]" />
             <div className="lg:flex py-[20px] px-[38px] justify-between w-full hidden">
               <div className="flex flex-col  items-center">
                 <p className="text-lg text-[#292929] font-bold">Jesse Fruge</p>

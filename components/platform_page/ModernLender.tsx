@@ -9,7 +9,7 @@ const ModernLender = () => {
     <div
       className="relative mx-auto p-2 md:p-8 flex flex-col justify-center items-center gap-4 md:gap-8 mb-28 mt-16"
       style={{
-        backgroundImage: "url('/background_images/modern_lender.png')",
+        backgroundImage: "url('/background_images/modern_lender.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center 150px",
       }}

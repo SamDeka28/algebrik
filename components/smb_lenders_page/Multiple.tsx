@@ -14,7 +14,7 @@ export default function Multiple() {
     //       </div>
     //       <div className="w-full flex justify-center items-center">
     //         <Image
-    //           src="/section_images/auto_lenders/plays.png"
+    //           src="/section_images/auto_lenders/plays.webp"
     //           alt="Plays Well With Others"
     //           width={332}
     //           height={231}
@@ -34,7 +34,7 @@ export default function Multiple() {
     //       </div>
     //       <div className="w-full flex justify-center items-center">
     //         <Image
-    //           src="/section_images/auto_lenders/brings.png"
+    //           src="/section_images/auto_lenders/brings.webp"
     //           alt="And Brings Them Together"
     //           width={332}
     //           height={231}
@@ -63,7 +63,7 @@ export default function Multiple() {
           </div>
           <div className="w-full flex justify-center items-center">
             <Image
-              src="/section_images/auto_lenders/plays.png"
+              src="/section_images/auto_lenders/plays.webp"
               alt="Plays Well With Others"
               width={332}
               height={231}
@@ -90,7 +90,7 @@ export default function Multiple() {
           </div>
           <div className="w-full flex justify-center items-center">
             <Image
-              src="/section_images/auto_lenders/brings.png"
+              src="/section_images/auto_lenders/brings.webp"
               alt="And Brings Them Together"
               width={332}
               height={231}

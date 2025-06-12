@@ -3,23 +3,25 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { m, motion } from "framer-motion";
+import Advisory from "./Advisory";
+import { FaLinkedin } from "react-icons/fa";
 
 const carouselDataOne = [
   {
-    image: "/team_images/pankaj.png",
+    image: "/team_images/pankaj.webp",
     name: "PANKAJ JAIN ",
     title: "Founder & CEO",
     place: "N/A",
   },
   {
-    image: "/team_images/jesse.png",
+    image: "/team_images/jesse.webp",
     name: "JESSE FRUGE",
     title: "VP, PRODUCT",
     place: "N/A",
   },
   {
-    image: "/team_images/andrea.png",
+    image: "/team_images/andrea.webp",
     name: "ANDREA SILVERS",
     title: "VP, BD & Partnerships",
     place: "N/A",
@@ -28,78 +30,109 @@ const carouselDataOne = [
 
 const carouselDataTwo = [
   {
-    image: "/team_images/Michael.jpeg",
+    image: "/team_images/Michael.webp",
     name: "Michael Barnhardt Jr",
     title: "Chief Lending Office",
     place: "Oklahoma Central Credit Union, Oklahoma",
+    bio:"Michael Barnhardt Jr. is Chief Lending Officer at Oklahoma Central Credit Union with 20+ years in lending strategy and analytics. An MBA/BS graduate of Western Governors University, he also heads the Meridian Trust NorthStar Foundation and advises Junior Achievement, CU 2.0, and Algebrik.",
+    linkedin:"https://www.linkedin.com/in/michael-barnhardt-jr-mba-5136b722/"
   },
   {
-    image: "/team_images/SherryWu.jpg",
+    image: "/team_images/SherryWu.webp",
     name: "Sherry Wu",
     title: "Chief Technology Officer",
     place: "University of Michigan Credit Union, Michigan",
+    bio:"Sherry Wu is the CTO of the University of Michigan Credit Union, guiding IT strategy after 25 years in leadership roles at IBM, Ford, and HPE and board service at People Driven CU. She holds an MBA from Michigan Ross and an MS in Computer Science from Eastern Michigan University.",
+    linkedin:"https://www.linkedin.com/in/xiang-wu/"
   },
   {
-    image: "/team_images/michele.png",
+    image: "/team_images/michele.webp",
     name: "Michele Dean",
     title: "Chief Executive Officer",
     place: "Suffolk FCU, New York",
+    bio:"Michele Dean is President and CEO of Suffolk Federal Credit Union, with a background in executive strategy and lending at major financial institutions. She holds advanced finance and leadership credentials and serves on several industry and community boards. Recognized as a top business leader and influencer, Michele has received multiple accolades for her impact in finance and on Long Island.",
+    linkedin:"https://www.linkedin.com/in/micheledean/"
   },
   {
-    image: "/team_images/travis.png",
+    image: "/team_images/travis.webp",
     name: "Travis Bow",
     title: "Chief Executive Officer",
     place: "University of Hawaii FCU, Hawaii",
+    bio:"Travis Bow is President and CEO of the University of Hawaii Federal Credit Union (UHFCU), Hawaii’s fifth largest credit union with $618 million in assets. He brings 17 years of experience at UHFCU, including as Vice President of Member Support, and is dedicated to member service and operational excellence. A University of Hawaii graduate, Bow is committed to the community and leading UHFCU’s continued growth.",
+    linkedin:"https://www.linkedin.com/in/travis-b-2a0475279/"
   },
   {
-    image: "/team_images/leAnne.png",
+    image: "/team_images/leAnne.webp",
     name: "LeAnne Hixson",
     title: "Chief Lending Officer",
     place: "PFCU Credit Union, Michigan",
+    bio:"LeAnne Hixson is the Chief Lending Officer at PFCU Credit Union. She has twenty-five years of experience in the financial industry with a strong background in lending and loan product development. She is an integral part of the executive team and a recognized leader in the credit union community. LeAnne is a life-long Michigan resident who currently resides in Grand Ledge with her family.",
+    linkedin:"https://www.linkedin.com/in/leanne-hixson-87147768/"
   },
   {
-    image: "/team_images/david.png",
+    image: "/team_images/david.webp",
     name: "David Libby",
     title: "Chief Executive Officer",
     place: "Town & Country FCU, Maine",
+    bio:"David Libby has worked at Town & Country Federal Credit Union for nearly 35 years and has been President & CEO since 2011. He has spearheaded Maine’s first contactless debit cards, Apple Pay, check-imaging ATMs, and even one of the nation’s earliest Alexa banking skills, all while fostering a “think-beyond-banking” culture.",
+    linkedin:"https://www.linkedin.com/in/david-libby-166a8310/"
   },
   {
-    image: "/team_images/travisBow.png",
+    image: "/team_images/se.webp",
     name: "Shad Edwards",
     title: "Chief Lending Officer",
     place: "MidWest America FCU, Indiana",
+    bio:"Shad Edwards is Chief Lending Officer at MidWest America FCU, Fort Wayne, IN, overseeing all lending operations. With 13 years as CLO and 16 years at the credit union, he previously served as VP of Commercial Banking in Northwest Ohio.",
+    linkedin:"https://www.linkedin.com/in/shad-edwards-3a08b3b/"
   },
   {
-    image: "/team_images/hina.png",
+    image: "/team_images/hina.webp",
     name: "Hina Khalid",
     title: "Chief Financial Officer",
     place: "Labor Credit Union, Washington",
+    bio:"Hina is an innovative financial leader with over 20 years of experience, currently serving as CFO at Labor Credit Union—where she also oversees HR, enterprise risk, compliance, and strategic partnerships. Hina is Vice Chair of the D.C. Chapter for the Maryland/D.C. Credit Union Association and a board member of DORA Financial, focused on expanding access to banking for low-income families.",
+    linkedin:"https://www.linkedin.com/in/hinakh/"
   },
 ];
 
-function TeamMemberCard({
+export function TeamMemberCard({
   image,
   name,
   title,
   place,
+  carousel=true,
+  bio,
+  linkedin
 }: {
   image: string;
   name: string;
   title: string;
   place?: string;
+  carousel?: boolean;
+  bio?: string;
+  linkedin?: string;
 }) {
   return (
     <div
-      className="w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px] font-plus-jakarta 
-      relative rounded-[22.61px] flex flex-col-reverse md:flex-col items-center justify-end bg-cover bg-center shadow-lg"
+      className={`${!carousel ? "w-full  h-[340px] md:h-[408.46px]  hover:border-[3px] hover:border-[#7EABFF] bg-cover" : "w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px] bg-cover"} font-plus-jakarta 
+      relative rounded-[22.61px] flex flex-col-reverse md:flex-col items-center justify-end  shadow-lg group overflow-hidden`}
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="bg-white/80 backdrop-blur-sm absolute bottom-6 w-[291px] md:w-[349px] py-5 rounded-[13.57px] flex flex-col items-center justify-center shadow-[0px_18.09px_32.57px_0px_rgba(10,64,108,0.1)]">
-        <h3 className="text-[16px] text-black font-bold">{name}</h3>
-        <p className="text-[14px] text-gray-600">{title}</p>
-        {place && place !== "N/A" && (
-          <p className="text-[14px] text-gray-600">{place}</p>
-        )}
+      {!carousel && (
+        <div className="absolute top-0 left-0 w-full h-full group-hover:visible invisible bg-[#001B41] bg-opacity-80 transition-opacity duration-300">
+          {bio && <p className="text-white text-sm p-4 font-plus-jakarta leading-6 font-medium">{bio}</p>}
+          {linkedin && <a href={linkedin} target="_blank" className="text-white text-sm p-4 absolute bottom-0 left-0"><FaLinkedin size={32}/></a>}
+        </div>
+      )}
+      <div className={`${!carousel ? "w-full px-6 group-hover:invisible" : "w-[291px] md:w-[349px]  bg-white/80 backdrop-blur-sm bottom-6  "} absolute py-5 rounded-[13.57px] flex flex-col items-center justify-center shadow-[0px_18.09px_32.57px_0px_rgba(10,64,108,0.1)]`}
+        style={!carousel ? { background: "linear-gradient(180deg, rgba(0, 27, 65, 0) 0%, #001B41 100%)",height:"100%",justifyContent:"flex-end"
+        } : {}}
+      >
+        <h3 className="text-[16px] text-black font-bold" style={!carousel ? { color: "white",textTransform:"uppercase" } : {}}>{name}</h3>
+        <p className="text-[14px] text-gray-600" style={!carousel ? { color: "white" } : {}}>{title}</p>
+        {/* {place && place !== "N/A" && (
+          <p className="text-[14px] text-gray-600" style={!carousel ? { color: "white" } : {}}>{place}</p>
+        )} */}
       </div>
     </div>
   );
@@ -161,8 +194,8 @@ function CarouselSection({
 
   return (
     <div
-      className="container w-[100%] md:w-min md:mx-auto  flex 
-    flex-col-reverse md:flex-col gap-[30px] font-plus-jakarta md:justify-center items-center"
+      className="container w-[100%] md:max-w-7xl md:mx-auto  flex 
+    flex-col-reverse md:flex-col gap-[30px] font-plus-jakarta md:justify-center items-center px-4 md:px-8"
     >
       <div
         className={`w-[100%] md:w-full flex overflow-x-scroll md:overflow-x-hidden flex-col gap-[26px]`}
@@ -201,7 +234,7 @@ function CarouselSection({
           ))}
         </motion.div>
       </div>
-      <div className="m-8 md:m-0 flex flex-wrap md:flex-nowrap gap-[16px] md:gap-[39px] justify-between items-start">
+      <div className=" md:m-0 flex flex-wrap md:flex-nowrap gap-[16px] md:gap-[39px] justify-between items-start">
         <div>
           <CustomHeader
             text={headerText}
@@ -264,16 +297,14 @@ export default function OurTeam() {
         subtitleText="Our vision to reshape
  the way lending is done is backed by 100+ man years of experience in the field. Meet the people behind Algebrik!"
       />
-      <CarouselSection
+      <Advisory
         data={carouselDataTwo}
-        autoScroll
         headerText={
           <>
             <div className="hidden md:flex flex-col">
               <span>Guided by the</span>
               <span>Best in the Field</span>
             </div>
-
             <div className="block md:hidden">
               Guided by the best in the Field
             </div>

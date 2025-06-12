@@ -25,7 +25,7 @@ export default function MissionSection() {
       <div className="flex-1 hidden md:flex flex-col items-center sm:hidden md:items-start  gap-6">
         <div className="md:w-[500px] md:h-[286px] flex justify-center"
         style={{
-          backgroundImage: "url('/section_images/mission_text.png')",
+          backgroundImage: "url('/section_images/mission_text.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           // borderRadius: "20px",

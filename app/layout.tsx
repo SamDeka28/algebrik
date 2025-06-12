@@ -41,13 +41,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          type="text/javascript"
+      <link rel="preload" as="image" href="/background_images/hero_background.webp" />
+      <link rel="preload" as="image" href="/blue_logo.webp" />
+      <link rel="preload" as="image" href="/background_images/modern_lender.webp" />
+      <link rel="preload" as="image" href="/background_images/ml-single.webp" />
+      <link rel="preload" as="image" href="/section_images/home_page/loan.webp" />
+        <Script
           id="hs-script-loader"
-          async
-          defer
+          strategy="afterInteractive"
           src="//js.hs-scripts.com/47671281.js"
-        ></script>
+        ></Script>
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-VE1K00BENT"

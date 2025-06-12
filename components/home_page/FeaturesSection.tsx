@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -18,19 +19,32 @@ const features = [
 ];
 
 export default function FeaturesSection() {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    // Use requestIdleCallback if available, otherwise fallback to setTimeout
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(() => setAnimate(true));
+    } else {
+      setTimeout(() => setAnimate(true), 500); // fallback
+    }
+  }, []);
+
   return (
     <section className="pt-[32px] pb-[46px] md:pt-[38px] md:pb-[38px] font-plus-jakarta bg-white overflow-hidden">
       <div className="relative w-full">
         <motion.div
           className="flex gap-6"
-          animate={{
-            x: ["0%", "-100%"],
-          }}
-          transition={{
+          animate={animate ? { x: ["0%", "-100%"] } : false}
+          transition={
+            animate
+              ? {
             ease: "linear",
             duration: 20,
             repeat: Infinity,
-          }}
+                }
+              : undefined
+          }
         >
           {[
             ...features,

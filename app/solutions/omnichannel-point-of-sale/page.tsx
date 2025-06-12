@@ -8,6 +8,7 @@ import borrowerData from "@/components/constant/constant";
 import { motion, useAnimation } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Contact from "@/components/contacts";
 const beforeAfterData = [
     {
         type: "before",
@@ -51,7 +52,7 @@ const borrowerExperienceData = [
         description: "In-app lending built for Gen Z attention spans"
     },
     {
-        icon: "/icons/branch.svg",
+        icon: "/icons/branch.webp",
         title: "Branch",
         description: "Staff-assisted flows with pre-fill and ID capture"
     },
@@ -120,6 +121,7 @@ export default function OmnichannelPOSPage() {
     const setWidthRef = useRef(0);
     const [setWidth, setSetWidth] = useState(0);
     const router = useRouter();
+    const [showContactModal, setShowContactModal] = useState(false);
     // Function to measure width of one set
     const measureSetWidth = () => {
         const track = trackRef.current;
@@ -308,8 +310,8 @@ export default function OmnichannelPOSPage() {
                     </div>
                     <div className="flex-1 flex justify-center lg:justify-end">
                         <div className="rounded-2xl w-full lg:w-[486px] lg:h-[296px] flex items-center justify-center lg:justify-end">
-                            <Image src="/icons/conversion.png" alt="Analytics" width={486} height={296} className="hidden lg:block" />
-                            <Image src="/icons/cv2.png" alt="Analytics" width={320} height={180} className="block lg:hidden" />
+                            <Image src="/icons/conversion.webp" alt="Analytics" width={486} height={296} className="hidden lg:block" />
+                            <Image src="/icons/cv2.webp" alt="Analytics" width={320} height={180} className="block lg:hidden" />
                         </div>
                     </div>
                 </div>
@@ -387,12 +389,13 @@ export default function OmnichannelPOSPage() {
                         ease: "easeInOut"
                     }}
                     onClick={() => {
-                        router.push("/contact");
+                        setShowContactModal(true);
                     }}
                 >
                     <span className="relative z-10">Plan Your POS Rollout With Us</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                 </motion.button>
+                <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
             </section>
         </main>
     );
