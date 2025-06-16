@@ -26,7 +26,7 @@ const carouselData: CarouselItem[] = [
       "\"The success of any financial system lies in its ability to adapt and serve its people,\" once said Mervyn King, former....",
     source: "Prateek Samantaray   ",
     image: "/section_images/blog/beyond.webp",
-    url: "/resource_center/beyond_decisioning",
+    url: "/resource-center/beyond_decisioning",
     target: "_self",
   },
   {
@@ -67,6 +67,16 @@ const carouselData: CarouselItem[] = [
 const newsArticles = [
   {
     title:
+      "Algebrik AI Partners with Equifax® to Power Smarter, Fairer, and Faster Loan Decisions",
+    author: "Team Algebrik",
+    source: "Team Algebrik",
+    role: "Marketing",
+    description:"Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
+    link: "/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/",
+    image: "/section_images/blog/teamalgebrik.webp",
+  },
+  {
+    title:
       "Algebrik AI Joins the Jack Henry™ Vendor Integration Program",
     author: "BusinessWire",
     source: "BusinessWire",
@@ -79,7 +89,7 @@ const newsArticles = [
       "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
     author: "Team Algebrik",
     role: "Marketing",
-    link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+    link: "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
     image: "/section_images/blog/teamalgebrik.webp",
   },
   {
@@ -181,7 +191,8 @@ export default function BlogCarousel() {
     setCurrentIndex(index);
   };
 
-  const currentSlide = carouselData[currentIndex];
+  let currentSlide = carouselData[currentIndex];
+
 
   return (
     <div className="container mx-auto p-8 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center">
@@ -199,7 +210,9 @@ export default function BlogCarousel() {
           </button>
         ))}
       </div>
-      {[0, 2].includes(currentIndex) &&
+      {/** main blog */}
+
+      {currentIndex==0 &&
         <div>
           <motion.div
             className="bg-white p-[24px] border border-[#D5D5D5] md:w-[1160px] md:h-[428px] rounded-[20px] flex flex-col md:flex-row items-start justify-between gap-[24px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)]"
@@ -234,6 +247,47 @@ export default function BlogCarousel() {
               </p>
               <p className="text-[30px] font-bold font-plus-jakarta text-black leading-[30px]">
                 {currentSlide.source}
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      }
+{/**News main blog */}
+{currentIndex==2 &&
+        <div>
+          <motion.div
+            className="bg-white p-[24px] border border-[#D5D5D5] md:w-[1160px] md:h-[428px] rounded-[20px] flex flex-col md:flex-row items-start justify-between gap-[24px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)]"
+            key={currentIndex}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            <div>
+              <Image
+                src={newsArticles[0].image}
+                alt={`Image for ${newsArticles[0].title}`}
+                width={551}
+                height={380}
+                className="md:w-[551px] md:h-[380px] rounded-lg object-contain"
+              />
+            </div>
+            <div className="md:w-[507px] pt-2 flex flex-col gap-[16px] justify-center">
+              <h3 className=" text-[14px] text-black/35 font-plus-jakarta tracking-widest font-bold">
+                NEWS
+              </h3>
+              <Link
+                href={newsArticles[0].link} target={"_blank"}>
+                <h3 className="cursor-pointer text-[20px] text-[#606060] font-bold font-plus-jakarta leading-[28.13px]">
+                  {newsArticles[0].title}
+                </h3>
+              </Link>
+
+              <p className="text-[16px] font-normal font-plus-jakarta text-[#606060] leading-[30px]">
+                {newsArticles[0].description}
+              </p>
+              <p className="text-[30px] font-bold font-plus-jakarta text-black leading-[30px]">
+                {newsArticles[0].source}
               </p>
             </div>
           </motion.div>
@@ -316,7 +370,7 @@ export default function BlogCarousel() {
                   </div>
                   <div className="absolute bottom-0 left-0 flex justify-center w-full cursor-pointer bg-white text-center h-[54px] rounded-b-[20px]">
                     <Link
-                      href={`/resource_center/${blog.blogSubtitle
+                      href={`/resource-center/${blog.blogSubtitle
                         .toLowerCase()
                         .replace(/ /g, "-")}`}
                       className="text-[#1A69DC] font-semibold" target="_blank"

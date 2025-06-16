@@ -36,21 +36,41 @@ export default function Articles() {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    const scrollSpeed = 1; 
+    const scrollSpeed = 1;
     const scrollInterval = setInterval(() => {
-      if (container.dataset.isDragging === "true") return; 
+      if (container.dataset.isDragging === "true") return;
       container.scrollLeft += scrollSpeed;
       if (
         container.scrollLeft + container.offsetWidth >= container.scrollWidth
       ) {
-        container.scrollLeft = 0; 
+        container.scrollLeft = 0;
       }
-    }, 20); 
+    }, 20);
 
     return () => clearInterval(scrollInterval);
   }, []);
 
   const newsArticles = [
+    {
+      title:
+        "Algebrik AI Partners with Equifax® to Power Smarter, Fairer, and Faster Loan Decisions",
+      author: "Team Algebrik",
+      source: "Team Algebrik",
+      role: "Marketing",
+      description: "Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
+      link: "/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/",
+      image: "/section_images/blog/teamalgebrik.webp",
+    },
+    {
+      title:
+        "Algebrik AI Partners with Equifax® to Power Smarter, Fairer, and Faster Loan Decisions",
+      author: "Team Algebrik",
+      source: "Team Algebrik",
+      role: "Marketing",
+      description: "Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
+      link: "/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/",
+      image: "/section_images/blog/teamalgebrik.webp",
+    },
     {
       title:
         "Algebrik AI Joins the Jack Henry™ Vendor Integration Program",
@@ -66,7 +86,7 @@ export default function Articles() {
       author: "Team Algebrik",
       source: "Team Algebrik",
       role: "Marketing",
-      link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+      link: "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
       image: "/section_images/blog/teamalgebrik.webp",
     },
     {
@@ -99,16 +119,16 @@ export default function Articles() {
     {
       title:
         "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
-        author: "Prateek Samantaray",
-        role: "Marketing",
+      author: "Prateek Samantaray",
+      role: "Marketing",
       source: "BusinessWire",
       link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
     },
     {
       title:
         "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
-        author: "Prateek Samantaray",
-        role: "Marketing",
+      author: "Prateek Samantaray",
+      role: "Marketing",
       source: "BusinessWire",
       link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
     },
@@ -150,13 +170,13 @@ export default function Articles() {
     },
     {
       title:
-      "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
-        author: "Prateek Samantaray",
-        role: "Marketing",
+        "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
+      author: "Prateek Samantaray",
+      role: "Marketing",
       source: "BusinessWire",
       link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
     },
-   
+
   ];
 
   return (
@@ -220,9 +240,9 @@ export default function Articles() {
                     {article.role}
                   </p> 
                 </div> */}
-                 <p className="text-[30px] font-bold font-plus-jakarta text-black leading-[30px]">
-              {article.source}
-            </p>
+                <p className="text-[30px] font-bold font-plus-jakarta text-black leading-[30px]">
+                  {article.source}
+                </p>
               </div>
             </div>
             <div className="absolute bottom-0 left-0 flex justify-center w-full bg-white text-center py-3 h-[54px] rounded-b-[20px]">
@@ -238,10 +258,10 @@ export default function Articles() {
         ))}
       </div>
       <div className="flex justify-center my-[40px]">
-        <Link href="/resource_center" target="_blank">
-        <button className="bg-white rounded-[32px] text-[#1A69DC] px-16 font-plus-jakarta border-[#195BD7] py-3 font-bold">
-          View More
-        </button>
+        <Link href="/resource-center" target="_blank">
+          <button className="bg-white rounded-[32px] text-[#1A69DC] px-16 font-plus-jakarta border-[#195BD7] py-3 font-bold">
+            View More
+          </button>
         </Link>
       </div>
     </div>
