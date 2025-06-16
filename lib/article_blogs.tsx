@@ -13,7 +13,7 @@ export const NEWS_ARTICLES =  [
       "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
     author: "Team Algebrik",
     role: "Marketing",
-    link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+    link: "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
     image: "/section_images/blog/teamalgebrik.webp",
   },
   {

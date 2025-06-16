@@ -8,6 +8,16 @@ export default function NewsSection() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI Partners with Equifax® to Power Smarter, Fairer, and Faster Loan Decisions",
+      author: "Team Algebrik",
+      source: "Team Algebrik",
+      role: "Marketing",
+      description:"Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
+      link: "/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/",
+      image: "/section_images/blog/teamalgebrik.webp",
+    },
+    {
+      title:
         "Algebrik AI Joins the Jack Henry™ Vendor Integration Program",
         description:"NEW YORK--(BUSINESS WIRE)--Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City, pioneering the world’s first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced that it has joined the Jack Henry™ Vendor Integration Program (VIP).",
       author: "BusinessWire",
@@ -23,7 +33,7 @@ export default function NewsSection() {
       source: "Team Algebrik",
       role: "Marketing",
       description:"Algebrik AI Inc., today announced a strategic partnership with Conductiv, a leader in providing digital stipulations via permissioned data and AI. ",
-      link: "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+      link: "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
       image: "/section_images/blog/teamalgebrik.webp",
     },
     {

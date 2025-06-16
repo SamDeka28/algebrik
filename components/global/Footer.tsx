@@ -53,7 +53,7 @@ const Footer = () => {
         <div className="hidden md:block">
           <h3 className="text-white font-medium mb-[29px] ">Resources</h3>
           <ul className="space-y-1 text-[#787C91] text-[14px]">
-            <Link href="/resource_center" passHref>
+            <Link href="/resource-center" passHref>
               {" "}
               <li>Origination Hub</li>
             </Link>
@@ -86,7 +86,7 @@ const Footer = () => {
           <div className="">
             <h3 className="text-white font-medium mb-[29px] ">Resources</h3>
             <ul className="space-y-1 text-[#787C91] text-[14px]">
-              <Link href="/resource_center" passHref>
+              <Link href="/resource-center" passHref>
                 {" "}
                 <li>Origination Hub</li>
               </Link>
