@@ -84,29 +84,31 @@ export default function Navbar() {
     }
   }, [dropdownOpen]);
 
-  // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource_center" || pathname === "/resource_center/out_of_the_lending_maze" || pathname === "/resource_center/from_fragmentation_to_seamlessness" || pathname === "/resource_center/beyond_decisioning" || pathname === "/resource_center/redefining_borrower";
+  // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource-center" || pathname === "/resource-center/out_of_the_lending_maze" || pathname === "/resource-center/from_fragmentation_to_seamlessness" || pathname === "/resource-center/beyond_decisioning" || pathname === "/resource-center/redefining_borrower";
 
   const BlueLogoPaths = [
     "/roi-calculator", "/roi-calculator/", "/algebrik-webinar1", "/algebrik-webinar1/",
     "/contact", "/contact/", "/privacy-policy", "/privacy-policy/",
-    "/resource_center", "/resource_center/",
-    "/resource_center/out_of_the_lending_maze", "/resource_center/out_of_the_lending_maze/",
-    "/resource_center/from_fragmentation_to_seamlessness", "/resource_center/from_fragmentation_to_seamlessness/",
-    "/resource_center/beyond_decisioning", "/resource_center/beyond_decisioning/",
-    "/resource_center/redefining_borrower", "/resource_center/redefining_borrower/",
+    "/resource-center", "/resource-center/",
+    "/resource-center/out_of_the_lending_maze", "/resource-center/out_of_the_lending_maze/",
+    "/resource-center/from_fragmentation_to_seamlessness", "/resource-center/from_fragmentation_to_seamlessness/",
+    "/resource-center/beyond_decisioning", "/resource-center/beyond_decisioning/",
+    "/resource-center/redefining_borrower", "/resource-center/redefining_borrower/",
     "/thank_you/",
-    "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
-    "/resource_center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting/",
-    "/resource_center/credit-union-mergers-are-at-an-all-time-high",
-    "/resource_center/credit-union-mergers-are-at-an-all-time-high/",
-    "/resource_center/how-digital-first-credit-unions-are-winning-member-loyalty",
-    "/resource_center/how-digital-first-credit-unions-are-winning-member-loyalty/",
-    "/resource_center/innovations-reshaping-lending-workflows",
-    "/resource_center/innovations-reshaping-lending-workflows/",
-    "/resource_center/what-driving-the-shift-to-intelligent-lending",
-    "/resource_center/what-driving-the-shift-to-intelligent-lending/",
-    "/resource_center/what-you-will-learn-in-our-intelligent-lending-roundtable",
-    "/resource_center/what-you-will-learn-in-our-intelligent-lending-roundtable/",
+    "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+    "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting/",
+    "/resource-center/credit-union-mergers-are-at-an-all-time-high",
+    "/resource-center/credit-union-mergers-are-at-an-all-time-high/",
+    "/resource-center/how-digital-first-credit-unions-are-winning-member-loyalty",
+    "/resource-center/how-digital-first-credit-unions-are-winning-member-loyalty/",
+    "/resource-center/innovations-reshaping-lending-workflows",
+    "/resource-center/innovations-reshaping-lending-workflows/",
+    "/resource-center/what-driving-the-shift-to-intelligent-lending",
+    "/resource-center/what-driving-the-shift-to-intelligent-lending/",
+    "/resource-center/what-you-will-learn-in-our-intelligent-lending-roundtable",
+    "/resource-center/what-you-will-learn-in-our-intelligent-lending-roundtable/",
+    '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions',
+    '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/'
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
@@ -218,7 +220,7 @@ export default function Navbar() {
                   {/* Column 3: Blog Cards */}
                   <div className="flex flex-col gap-6 min-w-[360px] pl-8">
                     {selectedBlogs.map((blog, i) => (
-                      <Link key={i} href={`/resource_center/${blog.blogSubtitle}`} className="rounded-xl bg-black/20 p-6 flex gap-4 items-center min-w-[340px] shadow-md hover:bg-white/30 transition">
+                      <Link key={i} href={`/resource-center/${blog.blogSubtitle}`} className="rounded-xl bg-black/20 p-6 flex gap-4 items-center min-w-[340px] shadow-md hover:bg-white/30 transition">
                         <div className="min-w-[160px] max-w-[160px] min-h-[125px] max-h-[125px] bg-white/30 rounded-lg flex items-center justify-center overflow-hidden">
                           <img src={blog.blogImage} alt={blog.blogTitle} className="object-cover w-[160px] h-[125px] rounded-lg" />
                         </div>
@@ -235,7 +237,7 @@ export default function Navbar() {
           </div>
 
           <Link
-            href="/resource_center"
+            href="/resource-center"
             className="hover:text-blue-300 transition"
           >
             Resource Center
@@ -317,7 +319,7 @@ export default function Navbar() {
               </div>
             )}
             <Link
-              href="/resource_center"
+              href="/resource-center"
               onClick={toggleMenu}
               className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
             >
