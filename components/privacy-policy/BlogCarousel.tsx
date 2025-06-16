@@ -26,7 +26,7 @@ const carouselData: CarouselItem[] = [
       "\"The success of any financial system lies in its ability to adapt and serve its people,\" once said Mervyn King, former....",
     source: "Prateek Samantaray   ",
     image: "/section_images/blog/beyond.webp",
-    url: "/resource_center/beyond_decisioning",
+    url: "/resource-center/beyond_decisioning",
     target: "_self",
   },
   {
@@ -284,7 +284,7 @@ export default function BlogCarousel() {
                 </div>
                 <div className="absolute bottom-0 left-0 flex justify-center w-full cursor-pointer bg-white text-center h-[54px] rounded-b-[20px]">
                   <Link
-                    href={`/resource_center/${blog.blogSubtitle
+                    href={`/resource-center/${blog.blogSubtitle
                       .toLowerCase()
                       .replace(/ /g, "-")}`}
                     className="text-[#1A69DC] font-semibold" target="_blank"
