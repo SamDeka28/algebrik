@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#121212] pt-[40px] px-[20px] md:px-0 pb-[20px] font-plus-jakarta md:border md:border-t-1 md:border-[#262932]">
       <hr className="w-full border-none md:border-t text-[#787C91] border-gray-700" />
-      <div className="container max-w-7xl mx-auto pt-[40px] grid grid-cols-1 md:grid-cols-5 gap-[40px] md:gap-[76px] justify-items-start md:justify-items-end">
+      <div className="container max-w-7xl mx-auto pt-[40px] grid grid-cols-1 md:grid-cols-6 gap-[40px] md:gap-[76px] justify-items-start md:justify-items-end">
         <div>
           <Image src={logo} alt="logo" width={157} height={40.19} />
           <div className="mt-2 text-[#787C91]">
@@ -139,6 +139,9 @@ const Footer = () => {
               {/* <p>Follow on X</p> */}
             </div>
           </div>
+        </div>
+        <div>
+          <Image src={"/icons/soc2.png"} alt="soc2" width={100} height={100} />
         </div>
       </div>
       <div className=" mx-auto container mt-8 pt-4 px-0 md:px-28 text-sm flex flex-col-reverse gap-2 md:flex-row justify-between items-center">
