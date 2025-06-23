@@ -84,7 +84,7 @@ interface ROIInputs {
 export default function StepperForm() {
     const [step, setStep] = useState(0);
     const [showContactModal, setShowContactModal] = useState(false);
-    const [values, setValues] = useState<(number | string)[]>(steps.map((s) => s.type === "slider" ? s.min : ""));
+    const [values, setValues] = useState<(number | string)[]>(steps.map((s) => s.type === "slider" ? (s.min || 0) : ""));
     const [showResult, setShowResult] = useState(false);
     const [inputErrors, setInputErrors] = useState<{[key: string]: string}>({});
     const [summary,setSummary] = useState({
@@ -374,7 +374,7 @@ export default function StepperForm() {
                                         <div
                                             className="absolute flex justify-center items-center top-1/2 transform -translate-y-1/2 bg-blue-600 rounded-full w-6 h-6 z-10"
                                             style={{
-                                                left: `${(((Number(values[step]) || 0) - steps[step].min) / (steps[step].max - steps[step].min)) * 100
+                                                left: `${(((Number(values[step]) || 0) - (steps[step]?.min || 0)) / ((steps[step]?.max || 1) - (steps[step]?.min || 0))) * 100
                                                     }%`
                                             }}
 
