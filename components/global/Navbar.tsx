@@ -171,7 +171,7 @@ export default function Navbar() {
             <Link
               href="/solutions"
               onClick={(e) => e.preventDefault()}
-              className={` transition flex items-center px-[15px] py-[11px] hover:bg-black/20 ${dropdownOpen ? 'bg-black/20' : ''} rounded-[20px] hover:text-white transition`}
+              className={` transition flex items-center px-2 py-1 hover:bg-black/20 ${dropdownOpen ? 'bg-black/20' : ''} rounded-[20px] hover:text-white transition`}
             >
               Solutions
               <HiChevronDown
