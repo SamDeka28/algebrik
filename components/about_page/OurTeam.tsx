@@ -32,7 +32,7 @@ const carouselDataTwo = [
   {
     image: "/team_images/Michael.webp",
     name: "Michael Barnhardt Jr",
-    title: "Chief Lending Office",
+    title: "Chief Lending Officer",
     place: "Oklahoma Central Credit Union, Oklahoma",
     bio:"Michael Barnhardt Jr. is Chief Lending Officer at Oklahoma Central Credit Union with 20+ years in lending strategy and analytics. An MBA/BS graduate of Western Governors University, he also heads the Meridian Trust NorthStar Foundation and advises Junior Achievement, CU 2.0, and Algebrik.",
     linkedin:"https://www.linkedin.com/in/michael-barnhardt-jr-mba-5136b722/"
@@ -195,8 +195,50 @@ function CarouselSection({
   return (
     <div
       className="container w-[100%] md:max-w-7xl md:mx-auto  flex 
-    flex-col-reverse md:flex-col gap-[30px] font-plus-jakarta md:justify-center items-center px-4 md:px-8"
+    flex-col md:flex-col gap-[30px] font-plus-jakarta md:justify-center items-center px-4 md:px-8"
     >
+       <div className=" md:m-0 flex flex-wrap md:flex-nowrap gap-[16px] md:gap-[39px] justify-between items-start py-10 md:py-0 ">
+        <div>
+          <CustomHeader
+            text={headerText}
+            className="text-[28px] md:text-[40px] md:w-[317px] flex md:flex-col gap-[5px] font-bold"
+          />
+        </div>
+        <div>
+          <CustomSubtitle
+            text={subtitleText}
+            className="text-[14px] md:text-[20px] font-normal leading-[30px] pt-3"
+          />
+        </div>
+        {!isMobile && data.length > 3 && (
+          <div className="hidden md:flex gap-[8px] justify-center">
+            <button
+              onClick={() => {
+                clearInterval(timeRef)
+                setRefresh(Date.now())
+                setCurrentIndex((prevIndex) => (prevIndex === 0 ? data.length - 3 : prevIndex - 3))
+              }
+              }
+              className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
+            >
+              <IoIosArrowBack size={20} color="white" />
+            </button>
+            <button
+              onClick={() => {
+                clearInterval(timeRef)
+                setRefresh(Date.now())
+                setCurrentIndex((prevIndex) =>
+                  prevIndex + 3 >= data.length ? 0 : prevIndex + 3
+                )
+              }
+              }
+              className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
+            >
+              <IoIosArrowForward size={20} color="white" />
+            </button>
+          </div>
+        )}
+      </div>
       <div
         className={`w-[100%] md:w-full flex overflow-x-scroll md:overflow-x-hidden flex-col gap-[26px]`}
       >
@@ -233,48 +275,6 @@ function CarouselSection({
             </motion.div>
           ))}
         </motion.div>
-      </div>
-      <div className=" md:m-0 flex flex-wrap md:flex-nowrap gap-[16px] md:gap-[39px] justify-between items-start">
-        <div>
-          <CustomHeader
-            text={headerText}
-            className="text-[28px] md:text-[40px] md:w-[317px] flex md:flex-col gap-[5px] font-bold"
-          />
-        </div>
-        <div>
-          <CustomSubtitle
-            text={subtitleText}
-            className="text-[14px] md:text-[20px] font-normal leading-[30px]"
-          />
-        </div>
-        {!isMobile && data.length > 3 && (
-          <div className="hidden md:flex gap-[8px] justify-center">
-            <button
-              onClick={() => {
-                clearInterval(timeRef)
-                setRefresh(Date.now())
-                setCurrentIndex((prevIndex) => (prevIndex === 0 ? data.length - 3 : prevIndex - 3))
-              }
-              }
-              className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
-            >
-              <IoIosArrowBack size={20} color="white" />
-            </button>
-            <button
-              onClick={() => {
-                clearInterval(timeRef)
-                setRefresh(Date.now())
-                setCurrentIndex((prevIndex) =>
-                  prevIndex + 3 >= data.length ? 0 : prevIndex + 3
-                )
-              }
-              }
-              className="rounded-[34px] flex items-center justify-center p-[8px] md:w-[82px] md:h-[36px] bg-gradient-to-b from-[#1C8DEA] to-[#195BD7]"
-            >
-              <IoIosArrowForward size={20} color="white" />
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

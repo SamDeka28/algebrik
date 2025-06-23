@@ -41,6 +41,20 @@ const steps = [
         options: []
     },
     {
+        type:"input",
+        question:"Enter your Email address",
+        options:[],
+        fields : [{
+            type:"email",
+            label:"Email",
+            placeholder:"Enter your email",
+            required:true,
+            errorMessage:"Please enter a valid email",
+            value:"",
+            onChange:()=>{}
+        }]
+    },
+    {
         type: "cards",
         question: "What type of loans does your CU primarily process?",
         min: 2,
@@ -52,7 +66,7 @@ const steps = [
         question: "Do you have an existing LOS?",
         min: 2,
         max: 20,
-        options: ["Yes, We have", "No, We don’t have"],
+        options: ["Yes, We have", "No, We don't have"],
     }
 ];
 
@@ -61,9 +75,10 @@ interface ROIInputs {
     avgProcessingTime: number; // Step 2
     dropOffRate: number; // Step 3
     processingCostPerLoan: number; // Step 4
-    loanType: string; // Step 5
-    existingLOS: string; // Step 6
-    monthlyRevenue: number; // Step 7
+    email: string; // Step 5
+    loanType: string; // Step 6
+    existingLOS: string; // Step 7
+    monthlyRevenue: number; // Step 8
 }
 
 export default function StepperForm() {
@@ -71,12 +86,14 @@ export default function StepperForm() {
     const [showContactModal, setShowContactModal] = useState(false);
     const [values, setValues] = useState<(number | string)[]>(steps.map((s) => s.type === "slider" ? s.min : ""));
     const [showResult, setShowResult] = useState(false);
+    const [inputErrors, setInputErrors] = useState<{[key: string]: string}>({});
     const [summary,setSummary] = useState({
         processingCostSavings:"",
         conversion:"",
         approvalTime:"",
     })
     const [result, setResult] = useState<any>([])
+    
     const handleSliderChange = (value: any) => {
         setValues((prev) => {
             const newValues = [...prev];
@@ -84,7 +101,6 @@ export default function StepperForm() {
             return newValues;
         });
     };
-
 
     const handleCardSelect = (option: string) => {
         setValues((prev) => {
@@ -94,23 +110,71 @@ export default function StepperForm() {
         });
     };
 
-    const handleSubmit = () => {
-        const userInputs: ROIInputs = {
-            monthlyLoanVolume: Number(values[0] ?? 0), // Ensure number
-            avgProcessingTime: Number(values[1] ?? 0),
-            dropOffRate: Number(values[2] ?? 0),
-            processingCostPerLoan: Number(values[3] ?? 0),
-            loanType: values[4] as string, // Strings don't need conversion
-            existingLOS: values[5] as string,
-            monthlyRevenue: Number(values[6] ?? 0),
-        };
-
-        const roiResults = calculateROI(userInputs);
-        setShowResult(true);
-        setResult(roiResults)
+    const handleInputChange = (fieldIndex: number, value: string) => {
+        setValues((prev) => {
+            const newValues = [...prev];
+            newValues[step] = value;
+            return newValues;
+        });
+        
+        // Clear error when user starts typing
+        if (inputErrors[`step-${step}-field-${fieldIndex}`]) {
+            setInputErrors(prev => {
+                const newErrors = { ...prev };
+                delete newErrors[`step-${step}-field-${fieldIndex}`];
+                return newErrors;
+            });
+        }
     };
 
+    const validateInputs = () => {
+        const currentStep = steps[step];
+        if (currentStep.type === "input") {
+            const errors: {[key: string]: string} = {};
+            
+            currentStep.fields?.forEach((field, fieldIndex) => {
+                const fieldValue = values[step] as string;
+                
+                if (field.required && (!fieldValue || fieldValue.trim() === "")) {
+                    errors[`step-${step}-field-${fieldIndex}`] = "This field is required";
+                } else if (field.type === "email" && fieldValue) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(fieldValue)) {
+                        errors[`step-${step}-field-${fieldIndex}`] = field.errorMessage || "Please enter a valid email";
+                    }
+                }
+            });
+            
+            setInputErrors(errors);
+            return Object.keys(errors).length === 0;
+        }
+        return true;
+    };
 
+    const handleNext = () => {
+        if (validateInputs()) {
+            setStep((prev) => Math.min(prev + 1, steps.length - 1));
+        }
+    };
+
+    const handleSubmit = () => {
+        if (validateInputs()) {
+            const userInputs: ROIInputs = {
+                monthlyLoanVolume: Number(values[0] ?? 0), // Ensure number
+                avgProcessingTime: Number(values[1] ?? 0),
+                dropOffRate: Number(values[2] ?? 0),
+                processingCostPerLoan: Number(values[3] ?? 0),
+                email: values[4] as string, // Email from step 5
+                loanType: values[5] as string, // Strings don't need conversion
+                existingLOS: values[6] as string,
+                monthlyRevenue: Number(values[7] ?? 0), // Add monthlyRevenue back
+            };
+
+            const roiResults = calculateROI(userInputs);
+            setShowResult(true);
+            setResult(roiResults)
+        }
+    };
 
     const calculateROI = ({
         monthlyLoanVolume,
@@ -258,10 +322,10 @@ export default function StepperForm() {
             </div>
             <div className="max-w-7xl w-full px-6 lg:px-[48px]">
                 <CustomHeader
-                    text="Calculate Your Credit Union’s AI Savings Potential"
+                    text="Calculate Your Credit Union's AI Savings Potential"
                     className="text-center lg:text-left"
                 />
-                <CustomSubtitle text="Here’s how Algebrik’s cloud-native, AI-powered LOS could transform your lending operations based on your data."
+                <CustomSubtitle text="Here's how Algebrik's cloud-native, AI-powered LOS could transform your lending operations based on your data."
                     className="text-center lg:text-left mt-4" />
             </div>
             <div className="max-w-7xl w-full px-6 lg:px-[48px] mt-12">
@@ -337,20 +401,44 @@ export default function StepperForm() {
                                         {values[step]} {steps[step].unit}
                                     </div>
                                 </div>
-                            </> : <div className={`flex flex-wrap gap-4 justify-center items-center w-full ${steps[step]?.options?.length == 2 ? "flex-col lg:flex-row" : "flex-row"}`}>
-                                {steps[step]?.options.map((option) => (
-                                    <button
-                                        key={option}
-                                        onClick={() => handleCardSelect(option)}
-                                        className={`flex-1 lg:flex-none py-4 ${steps[step]?.options?.length == 2 ? "w-full lg:min-w-[156px] lg:w-max    " : "min-w-[156px]"} lg:p-6 rounded-lg border transition-all duration-300 text-lg font-bold font-plus-jakarta ${values[step] === option
-                                            ? "bg-[#2A5FAC] border-[2px] border-[#61A1FF] text-white"
-                                            : "bg-white text-gray-700 hover:bg-gray-200 border border-[#E8E7E7]"
-                                            }`}
-                                    >
-                                        {option}
-                                    </button>
-                                ))}
-                            </div>}
+                            </> : steps[step].type === "input" ? (
+                                <div className="w-full p-4">
+                                    {steps[step].fields?.map((field, fieldIndex) => (
+                                        <div key={fieldIndex} className="flex flex-col gap-2">
+                                            <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
+                                                {field.label}
+                                            </label>
+                                            <input
+                                                type={field.type}
+                                                placeholder={field.placeholder}
+                                                value={values[step] as string || ""}
+                                                onChange={(e) => handleInputChange(fieldIndex, e.target.value)}
+                                                className="border text-black border-gray-300 font-plus-jakarta rounded-[8px] p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                                            />
+                                            {inputErrors[`step-${step}-field-${fieldIndex}`] && (
+                                                <p className="text-red-500 font-plus-jakarta text-sm">
+                                                    {inputErrors[`step-${step}-field-${fieldIndex}`]}
+                                                </p>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className={`flex flex-wrap gap-4 justify-center items-center w-full ${steps[step]?.options?.length == 2 ? "flex-col lg:flex-row" : "flex-row"}`}>
+                                    {steps[step]?.options?.map((option) => (
+                                        <button
+                                            key={option}
+                                            onClick={() => handleCardSelect(option)}
+                                            className={`flex-1 lg:flex-none py-4 ${steps[step]?.options?.length == 2 ? "w-full lg:min-w-[156px] lg:w-max    " : "min-w-[156px]"} lg:p-6 rounded-lg border transition-all duration-300 text-lg font-bold font-plus-jakarta ${values[step] === option
+                                                ? "bg-[#2A5FAC] border-[2px] border-[#61A1FF] text-white"
+                                                : "bg-white text-gray-700 hover:bg-gray-200 border border-[#E8E7E7]"
+                                                }`}
+                                        >
+                                            {option}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                         <div className="lg:hidden mt-8 w-full h-[1px] bg-[#D4E2ED]"></div>
                         {step == steps.length - 1 ?
@@ -413,12 +501,12 @@ export default function StepperForm() {
                             </p>
                         </div>
                         <div className="h-[1px] bg-[#D4E2ED] my-6 w-full" />
-                        <div className={`w-full lg:flex-row flex-col justify-between gap-4  rounded-2xl p-0 flex ${steps[step].type == "slider" && "shadow-sm border border-[##E8E7E7] "}`}>
+                        <div className={`w-full lg:flex-row flex-col justify-between gap-4  rounded-2xl p-0 flex ${steps[step]?.type == "slider" && "shadow-sm border border-[##E8E7E7] "}`}>
                             {result?.map((result: any, index: number) => {
-                                let splited = result?.heading?.text?.split(" ");
-                                let textOne = splited[0];
-                                let textTwo = splited?.slice(1)?.join(" ");
-                                return <div className="flex  p-4 lg:p-3  py-[26px] items-center flex-col justify-between lg:flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
+                                let splited = result?.heading?.text?.split(" ") || [];
+                                let textOne = splited[0] || "";
+                                let textTwo = splited?.slice(1)?.join(" ") || "";
+                                return <div key={index} className="flex  p-4 lg:p-3  py-[26px] items-center flex-col justify-between lg:flex-col border border-[#CBDCF4] rounded-[12px] flex-1">
                                     <div className="flex items-center !bg-[#EFF6FC] px-[6px] py-4 rounded-[6px] w-full gap-2">
                                         <p className="text-[#2A5FAC] text-[56px] font-extrabold font-bebas-neue">{result?.heading?.value}</p>
                                         <p className="text-[18px] font-semibold gap-2 text-[#2A5FAC] flex flex-col items-start text-left font-plus-jakarta mb-2">{textOne}<br />{textTwo}</p>

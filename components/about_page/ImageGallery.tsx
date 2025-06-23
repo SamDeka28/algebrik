@@ -3,6 +3,7 @@ import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { useState } from "react";
 import { HiX } from "react-icons/hi"
+import Marquee from "react-fast-marquee";
 
 const widths = [500, 1000, 1600]
 const ratios = [2.2, 4, 6, 8]
@@ -29,29 +30,44 @@ export default function ImageGallery({ images }: any) {
       <div className="flex flex-col gap-4">
         {/* Row 1 */}
         <div className="flex gap-4 flex-nowrap h-64 overflow-x-scroll">
-          {images.filter((_: any, index: number) => index % 2 === 0).map(({ src, width, height }: any, index: number) => {
-            const aspectRatio = width / height;
-            return (
-              <div key={index} className="relative h-64 p-2 hover:bg-[#87B9FF] rounded-lg transition-all" style={{ minWidth: `${Math.max(300, aspectRatio * 300)}px` }}>
-                <Image
-                  src={src}
-                  alt={`Gallery Image ${index + 1}`}
-                  width={width}
-                  height={height}
-                  className="h-full w-full object-cover rounded-lg cursor-pointer drop-shadow-md"
-                  onClick={() => { setOpen(true); setSelectedImage(src) }}
-                />
-              </div>
-            );
-          })}
+          <Marquee
+            speed={50}
+            gradient={false}
+            pauseOnHover={true}
+            direction="left"
+            className="flex items-center overflow-hidden"
+          >
+            {images.filter((_: any, index: number) => index % 2 === 0).map(({ src, width, height }: any, index: number) => {
+              const aspectRatio = width / height;
+              return (
+                <div key={index} className="relative h-64 p-2 hover:bg-[#87B9FF] rounded-lg transition-all" style={{ minWidth: `${Math.max(300, aspectRatio * 300)}px` }}>
+                  <Image
+                    src={src}
+                    alt={`Gallery Image ${index + 1}`}
+                    width={width}
+                    height={height}
+                    className="h-full w-full object-cover rounded-lg cursor-pointer drop-shadow-md"
+                    onClick={() => { setOpen(true); setSelectedImage(src) }}
+                  />
+                </div>
+              );
+            })}
+          </Marquee>
         </div>
 
         {/* Row 2 */}
-        <div className="flex gap-4 flex-nowrap h-64 overflow-scroll">
+        <div className="flex gap-4 flex-nowrap h-64 overflow-x-scroll">
+          <Marquee
+            speed={50}
+            gradient={false}
+            pauseOnHover={true}
+            direction="right"
+            className="flex items-center overflow-hidden"
+          > 
           {images.filter((_: any, index: number) => index % 2 !== 0).map(({ src, width, height }: any, index: number) => {
             const aspectRatio = width / height;
             return (
-              <div key={index} className="p-2 hover:bg-[#87B9FF] rounded-lg relative transition-all" style={{ minWidth: `${Math.max(300, aspectRatio * 300)}px` }}>
+              <div key={index} className="relative h-64 p-2 hover:bg-[#87B9FF] rounded-lg transition-all" style={{ minWidth: `${Math.max(300, aspectRatio * 300)}px` }}>
                 <Image
                   src={src}
                   alt={`Gallery Image ${index + 1}`}
@@ -61,8 +77,9 @@ export default function ImageGallery({ images }: any) {
                   onClick={() => { setOpen(true); setSelectedImage(src) }}
                 />
               </div>
-            );
-          })}
+              );
+            })}
+          </Marquee>
         </div>
       </div>
     </div>
