@@ -113,7 +113,7 @@ export default function Home() {
               {
                 image: "/team_images/Michael.webp",
                 name: "Michael Barnhardt Jr",
-                title: "Chief Lending Office",
+                title: "Chief Lending Officer",
                 place: "Oklahoma Central Credit Union, Oklahoma",
               },
               {

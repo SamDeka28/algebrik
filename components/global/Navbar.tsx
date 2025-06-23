@@ -163,7 +163,7 @@ export default function Navbar() {
 
           {/* Solutions Dropdown */}
           <div
-            className="relative font-plus-jakarta"
+            className="relative"
             onMouseEnter={openDropdown}
             onMouseLeave={closeDropdown}
             ref={solutionsRef}
@@ -171,7 +171,7 @@ export default function Navbar() {
             <Link
               href="/solutions"
               onClick={(e) => e.preventDefault()}
-              className={`flex items-center px-[15px] py-[11px] hover:bg-black/20 ${dropdownOpen ? 'bg-black/20' : ''} rounded-[20px] hover:text-white transition`}
+              className={` transition flex items-center px-[15px] py-[11px] hover:bg-black/20 ${dropdownOpen ? 'bg-black/20' : ''} rounded-[20px] hover:text-white transition`}
             >
               Solutions
               <HiChevronDown

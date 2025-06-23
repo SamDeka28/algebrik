@@ -159,6 +159,16 @@ const Footer = () => {
             </Link>
             {/* <p>Follow on X</p> */}
           </div>
+          <div className="hidden md:block">
+            <Link
+              href="https://www.youtube.com/@AlgebrikAI"
+              target="_blank"
+              className="text-[#3E404C]"
+            >
+              <p>Youtube</p>
+            </Link>
+            {/* <p>Follow on X</p> */}
+          </div>
           <Link href="/privacy-policy" className="text-[#3E404C] text-[14px]">
             Privacy policy
           </Link>

@@ -12,7 +12,7 @@ export default function Advisory({
   subtitleText: string;
 }) {
   return (
-    <section className="w-full max-w-7xl mx-auto py-10 md:py-20 px-4 md:px-8 flex flex-col items-center">
+    <section className="w-full max-w-7xl mx-auto py-0 md:py-10 px-4 md:px-8 flex flex-col items-center">
       {/* Text Section */}
       <div className="w-full max-w-7xl flex flex-col md:flex-row gap-4 text-left mb-10 md:mb-16">
         <CustomHeader

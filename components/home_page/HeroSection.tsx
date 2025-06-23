@@ -67,8 +67,8 @@ export default function HeroSection() {
         background: "radial-gradient(128.68% 367.63% at 50% -243.57%, #7EB2FF 0%, #043071 85%)"
       }}
     >
-      <img src="/background_images/modern_lender.webp" alt="Hero Background" className="hidden md:block absolute top-0 left-0 object-cover w-full h-full" fetchPriority="high" />
-      <img src="/background_images/ml-single.webp" alt="Hero Background"  className="lg:hidden absolute top-0 left-0 object-cover w-full h-full" fetchPriority="high" />
+      <img src="/background_images/modern_lender.webp" alt="Hero Background" className="z-0 hidden md:block absolute top-0 left-0 object-cover w-full h-full" fetchPriority="high" />
+      <img src="/background_images/ml-single.webp" alt="Hero Background"  className="z-0 lg:hidden absolute top-0 left-0 object-cover w-full h-full" fetchPriority="high" />
       <div className="container pt-[181px] text-center md:mx-auto md:px-6 flex flex-col md:flex-row items-center md:justify-end md:pt-16 gap-0 md:gap-16">
 
         <div className="flex flex-col gap-6 px-16 md:px-0 max-w-[500px] h-72 w-full">
@@ -80,13 +80,13 @@ export default function HeroSection() {
             The World's first AI and Cloud Native LOS makes lending journeys
             what they should be – Fast, Intuitive, Seamless.
           </p>
-          <div className="relative md:static -bottom-48">
+          <div className="relative md:static -bottom-48 z-20">
             <BookADemo />
           </div>
         </div>
 
 
-        <div className="flex justify-center items-center flex-shrink-0 pt-0 md:pt-10">
+        <div className="flex justify-center items-center flex-shrink-0 pt-0 md:pt-10 z-10">
           <Image
             src={mobileHeroImage}
             alt="Hero Section Image Mobile"
