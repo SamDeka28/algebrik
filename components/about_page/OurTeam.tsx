@@ -9,9 +9,15 @@ import { FaLinkedin } from "react-icons/fa";
 
 const carouselDataOne = [
   {
-    image: "/team_images/pankaj.webp",
-    name: "PANKAJ JAIN ",
-    title: "Founder & CEO",
+    image: "/team_images/andrea.webp",
+    name: "ANDREA SILVERS",
+    title: "VP, BD & Partnerships",
+    place: "N/A",
+  },
+  {
+    image: "/team_images/Jennifer.jpeg",
+    name: "JENNIFER HERNANDEZ",
+    title: "VP,Customer Success and Account Management",
     place: "N/A",
   },
   {
@@ -21,45 +27,29 @@ const carouselDataOne = [
     place: "N/A",
   },
   {
-    image: "/team_images/andrea.webp",
-    name: "ANDREA SILVERS",
-    title: "VP, BD & Partnerships",
+    image: "/team_images/pankaj.webp",
+    name: "PANKAJ JAIN ",
+    title: "Founder & CEO",
     place: "N/A",
-  },
+  }
 ];
 
 const carouselDataTwo = [
   {
-    image: "/team_images/Michael.webp",
-    name: "Michael Barnhardt Jr",
-    title: "Chief Lending Officer",
-    place: "Oklahoma Central Credit Union, Oklahoma",
-    bio:"Michael Barnhardt Jr. is Chief Lending Officer at Oklahoma Central Credit Union with 20+ years in lending strategy and analytics. An MBA/BS graduate of Western Governors University, he also heads the Meridian Trust NorthStar Foundation and advises Junior Achievement, CU 2.0, and Algebrik.",
-    linkedin:"https://www.linkedin.com/in/michael-barnhardt-jr-mba-5136b722/"
-  },
-  {
-    image: "/team_images/SherryWu.webp",
-    name: "Sherry Wu",
-    title: "Chief Technology Officer",
-    place: "University of Michigan Credit Union, Michigan",
-    bio:"Sherry Wu is the CTO of the University of Michigan Credit Union, guiding IT strategy after 25 years in leadership roles at IBM, Ford, and HPE and board service at People Driven CU. She holds an MBA from Michigan Ross and an MS in Computer Science from Eastern Michigan University.",
-    linkedin:"https://www.linkedin.com/in/xiang-wu/"
-  },
-  {
-    image: "/team_images/michele.webp",
-    name: "Michele Dean",
+    image: "/team_images/david.webp",
+    name: "David Libby",
     title: "Chief Executive Officer",
-    place: "Suffolk FCU, New York",
-    bio:"Michele Dean is President and CEO of Suffolk Federal Credit Union, with a background in executive strategy and lending at major financial institutions. She holds advanced finance and leadership credentials and serves on several industry and community boards. Recognized as a top business leader and influencer, Michele has received multiple accolades for her impact in finance and on Long Island.",
-    linkedin:"https://www.linkedin.com/in/micheledean/"
+    place: "Town & Country FCU, Maine",
+    bio:"David Libby has worked at Town & Country Federal Credit Union for nearly 35 years and has been President & CEO since 2011. He has spearheaded Maine’s first contactless debit cards, Apple Pay, check-imaging ATMs, and even one of the nation’s earliest Alexa banking skills, all while fostering a “think-beyond-banking” culture.",
+    linkedin:"https://www.linkedin.com/in/david-libby-166a8310/"
   },
   {
-    image: "/team_images/travis.webp",
-    name: "Travis Bow",
-    title: "Chief Executive Officer",
-    place: "University of Hawaii FCU, Hawaii",
-    bio:"Travis Bow is President and CEO of the University of Hawaii Federal Credit Union (UHFCU), Hawaii’s fifth largest credit union with $618 million in assets. He brings 17 years of experience at UHFCU, including as Vice President of Member Support, and is dedicated to member service and operational excellence. A University of Hawaii graduate, Bow is committed to the community and leading UHFCU’s continued growth.",
-    linkedin:"https://www.linkedin.com/in/travis-b-2a0475279/"
+    image: "/team_images/hina.webp",
+    name: "Hina Khalid",
+    title: "Chief Financial Officer",
+    place: "Labor Credit Union, Washington",
+    bio:"Hina is an innovative financial leader with over 20 years of experience, currently serving as CFO at Labor Credit Union—where she also oversees HR, enterprise risk, compliance, and strategic partnerships. Hina is Vice Chair of the D.C. Chapter for the Maryland/D.C. Credit Union Association and a board member of DORA Financial, focused on expanding access to banking for low-income families.",
+    linkedin:"https://www.linkedin.com/in/hinakh/"
   },
   {
     image: "/team_images/leAnne.webp",
@@ -70,12 +60,36 @@ const carouselDataTwo = [
     linkedin:"https://www.linkedin.com/in/leanne-hixson-87147768/"
   },
   {
-    image: "/team_images/david.webp",
-    name: "David Libby",
+    image: "/team_images/Michael.webp",
+    name: "Michael Barnhardt Jr",
+    title: "Chief Lending Officer",
+    place: "Oklahoma Central Credit Union, Oklahoma",
+    bio:"Michael Barnhardt Jr. is Chief Lending Officer at Oklahoma Central Credit Union with 20+ years in lending strategy and analytics. An MBA/BS graduate of Western Governors University, he also heads the Meridian Trust NorthStar Foundation and advises Junior Achievement, CU 2.0, and Algebrik.",
+    linkedin:"https://www.linkedin.com/in/michael-barnhardt-jr-mba-5136b722/"
+  },
+  {
+    image: "/team_images/michele.webp",
+    name: "Michele Dean",
     title: "Chief Executive Officer",
-    place: "Town & Country FCU, Maine",
-    bio:"David Libby has worked at Town & Country Federal Credit Union for nearly 35 years and has been President & CEO since 2011. He has spearheaded Maine’s first contactless debit cards, Apple Pay, check-imaging ATMs, and even one of the nation’s earliest Alexa banking skills, all while fostering a “think-beyond-banking” culture.",
-    linkedin:"https://www.linkedin.com/in/david-libby-166a8310/"
+    place: "Suffolk FCU, New York",
+    bio:"Michele Dean is President and CEO of Suffolk Federal Credit Union, with a background in executive strategy and lending at major financial institutions. She holds advanced finance and leadership credentials and serves on several industry and community boards. Recognized as a top business leader and influencer, Michele has received multiple accolades for her impact in finance and on Long Island.",
+    linkedin:"https://www.linkedin.com/in/micheledean/"
+  },
+  {
+    image: "/team_images/SherryWu.webp",
+    name: "Sherry Wu",
+    title: "Chief Technology Officer",
+    place: "University of Michigan Credit Union, Michigan",
+    bio:"Sherry Wu is the CTO of the University of Michigan Credit Union, guiding IT strategy after 25 years in leadership roles at IBM, Ford, and HPE and board service at People Driven CU. She holds an MBA from Michigan Ross and an MS in Computer Science from Eastern Michigan University.",
+    linkedin:"https://www.linkedin.com/in/xiang-wu/"
+  },
+  {
+    image:"/team_images/Shirley.jpeg",
+    name:"Shirley Senn",
+    title:"Chief Community Development & Impact Officer",
+    place:"New Orleans Firemen's Federal Credit Union",
+    bio:"Shirley is a Certified Credit Union Development Educator and passionate advocate for financial inclusion. With 30+ years of experience across fintech, credit union strategy, and nonprofit leadership, she brings a human-first lens to innovation and impact in community finance.",
+    linkedin:"https://www.linkedin.com/in/shirley-senn-cude-4395377/"
   },
   {
     image: "/team_images/se.webp",
@@ -86,12 +100,12 @@ const carouselDataTwo = [
     linkedin:"https://www.linkedin.com/in/shad-edwards-3a08b3b/"
   },
   {
-    image: "/team_images/hina.webp",
-    name: "Hina Khalid",
-    title: "Chief Financial Officer",
-    place: "Labor Credit Union, Washington",
-    bio:"Hina is an innovative financial leader with over 20 years of experience, currently serving as CFO at Labor Credit Union—where she also oversees HR, enterprise risk, compliance, and strategic partnerships. Hina is Vice Chair of the D.C. Chapter for the Maryland/D.C. Credit Union Association and a board member of DORA Financial, focused on expanding access to banking for low-income families.",
-    linkedin:"https://www.linkedin.com/in/hinakh/"
+    image: "/team_images/travis.webp",
+    name: "Travis Bow",
+    title: "Chief Executive Officer",
+    place: "University of Hawaii FCU, Hawaii",
+    bio:"Travis Bow is President and CEO of the University of Hawaii Federal Credit Union (UHFCU), Hawaii’s fifth largest credit union with $618 million in assets. He brings 17 years of experience at UHFCU, including as Vice President of Member Support, and is dedicated to member service and operational excellence. A University of Hawaii graduate, Bow is committed to the community and leading UHFCU’s continued growth.",
+    linkedin:"https://www.linkedin.com/in/travis-b-2a0475279/"
   },
 ];
 
@@ -114,8 +128,8 @@ export function TeamMemberCard({
 }) {
   return (
     <div
-      className={`${!carousel ? "w-full  h-[340px] md:h-[408.46px]  hover:border-[3px] hover:border-[#7EABFF] bg-cover" : "w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px] bg-cover"} font-plus-jakarta 
-      relative rounded-[22.61px] flex flex-col-reverse md:flex-col items-center justify-end  shadow-lg group overflow-hidden`}
+      className={`${!carousel ? "w-full  h-[340px] md:h-[408.46px]  hover:border-[3px] hover:border-[#7EABFF]" : "w-[307px] h-[340px] md:w-[369.18px] md:h-[408.46px] bg-cover"} font-plus-jakarta 
+       bg-cover bg-center relative rounded-[22.61px] flex flex-col-reverse md:flex-col items-center justify-end  shadow-lg group overflow-hidden`}
       style={{ backgroundImage: `url(${image})` }}
     >
       {!carousel && (
@@ -129,7 +143,7 @@ export function TeamMemberCard({
         } : {}}
       >
         <h3 className="text-[16px] text-black font-bold" style={!carousel ? { color: "white",textTransform:"uppercase" } : {}}>{name}</h3>
-        <p className="text-[14px] text-gray-600" style={!carousel ? { color: "white" } : {}}>{title}</p>
+        <p className="text-[14px] text-gray-600 text-center" style={!carousel ? { color: "white" } : {}}>{title}</p>
         {/* {place && place !== "N/A" && (
           <p className="text-[14px] text-gray-600" style={!carousel ? { color: "white" } : {}}>{place}</p>
         )} */}
