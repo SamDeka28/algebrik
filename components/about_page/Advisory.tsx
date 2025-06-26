@@ -25,7 +25,7 @@ export default function Advisory({
         />
       </div>
       {/* Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 w-full justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6 w-full justify-items-center">
         {data.map((item, idx) => (
           <TeamMemberCard
             key={"advisory-card-" + idx}
