@@ -4,7 +4,7 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 export default function HeroSection() {
   return (
     <section
-      className="mx-auto pt-[8px] md:pt-20 flex flex-col justify-center items-center md:bg-[url('/background_images/about_hero.webp')] bg-[url('/section_images/about_mobile.webp')] 
+      className="mx-auto pt-[8px] md:pt-20 flex flex-col justify-center items-center md:bg-[url('/background_images/about_hero.webp')] bg-[url('/section_images/about_mobile.png')] 
        bg-no-repeat bg-center bg-[bottom_left-30.5rem] md:bg-cover bg-cover -md:bg-[left_top_0rem] rounded-b-[32px] md:rounded-none"
       aria-label="Reshaping Lending, One Experience at a Time"
     >

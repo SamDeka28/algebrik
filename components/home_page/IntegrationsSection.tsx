@@ -44,7 +44,7 @@ export default function IntegrationsSection() {
         <CustomHeader text="Seamlessly Connected, Effortlessly Scaled" />
         <CustomSubtitle className="px-7 mt-[16px] md:px-0 md:mt-0" text="Algebrik integrates with the tools and systems you already use, creating a unified, efficient lending ecosystem." />
 
-        <div className="relative my-[33px] mt-12 flex flex-col gap-5">
+        <div className="relative my-20 flex flex-col gap-5">
 
           <Marquee
             speed={50}
@@ -56,12 +56,12 @@ export default function IntegrationsSection() {
             {firstHalf.map((integration, index) => (
               <div
                 key={index}
-                className="bg-gray-50 w-[150px] h-[56px] py-[12px] px-[12px] rounded-[12px] flex items-center justify-center mx-4"
+                className="bg-gray-50 w-[200px] h-[106px] py-[12px] px-[12px] rounded-[12px] flex items-center justify-center mx-4"
               >
                 <Image
                   src={integration.image}
                   alt={`Integration ${index}`}
-                  width={90}
+                  width={120}
                   height={90}
                   objectFit="scale-down"
                   priority
@@ -81,13 +81,13 @@ export default function IntegrationsSection() {
             {secondHalf.map((integration, index) => (
               <div
                 key={index}
-                className="bg-gray-50 w-[150px] h-[56px] py-[12px] px-[12px] rounded-[12px] flex items-center justify-center mx-4"
+                className="bg-gray-50 w-[200px] h-[106px] py-[12px] px-[12px] rounded-[12px] flex items-center justify-center mx-4"
               >
                 <Image
                   src={integration.image}
                   alt={`Integration ${index}`}
-                  width={90}
-                  height={90}
+                  width={120}
+                  height={120}
                   objectFit="scale-down"
                   priority
                   quality={100}

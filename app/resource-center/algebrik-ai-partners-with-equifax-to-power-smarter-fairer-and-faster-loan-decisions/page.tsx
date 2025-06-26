@@ -76,7 +76,7 @@ const lendingData = {
         Algebrik AI’s mission is to empower credit unions to attract, engage, grow, and retain next-gen
         members while staying competitive in today’s digital era. By transforming loan originations end-
         to-end, Algebrik AI takes on the heavy lifting, allowing credit unions to focus on helping the
-        members &amp; communities they serve.`
+        members  communities they serve.`
       ]
     },
     {

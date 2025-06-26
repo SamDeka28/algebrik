@@ -12,7 +12,7 @@ export default function Advisory({
   subtitleText: string;
 }) {
   return (
-    <section className="w-full max-w-7xl mx-auto py-10 md:py-20 px-4 md:px-8 flex flex-col items-center">
+    <section className="w-full max-w-7xl mx-auto py-0 md:py-10 px-4 md:px-8 flex flex-col items-center">
       {/* Text Section */}
       <div className="w-full max-w-7xl flex flex-col md:flex-row gap-4 text-left mb-10 md:mb-16">
         <CustomHeader
@@ -25,7 +25,7 @@ export default function Advisory({
         />
       </div>
       {/* Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 w-full justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6 w-full justify-items-center">
         {data.map((item, idx) => (
           <TeamMemberCard
             key={"advisory-card-" + idx}
