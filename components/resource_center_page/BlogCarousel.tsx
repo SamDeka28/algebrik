@@ -52,7 +52,7 @@ const carouselData: CarouselItem[] = [
     target: "_blank",
   },
   {
-    header: "One Pagers",
+    header: "Insights",
     cardTitle: "ONE PAGER",
     title: "Key Insights on Algebrik AI: A Quick Overview",
     description:
@@ -195,14 +195,14 @@ export default function BlogCarousel() {
 
 
   return (
-    <div className="container mx-auto p-8 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center">
-      <div className="container px-[25px] py-[4px] bg-[#EAEDF3] flex justify-between items-center rounded-[36px] drop-shadow-[0_0_60px_0_rgba(0, 0, 0, 0.08)]  md:w-[700px] md:h-[56px]">
+    <div className="container mx-auto p-3 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center">
+      <div className="container px-2 py-[4px] bg-[#EAEDF3] flex justify-between items-center rounded-[36px] drop-shadow-[0_0_60px_0_rgba(0, 0, 0, 0.08)]  md:w-[700px] md:h-[56px]">
         {carouselData.map((item, index: number) => (
           <button
             key={index}
             onClick={() => handleHeaderClick(index)}
-            className={`rounded-md font-plus-jakarta font-medium ${currentIndex === index
-                ? "!rounded-3xl text-[12px] md:text-[16px] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] p-1 w-[80px] h-[40px] md:w-[168px] md:h-[40px]  text-white"
+            className={`rounded-md font-plus-jakarta font-medium w-[160px] h-[40px] md:w-[168px] md:h-[40px] ${currentIndex === index
+                ? "!rounded-3xl text-[12px] md:text-[16px] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] p-1   text-white"
                 : "text-black text-[12px] md:text-[16px]"
               }`}
           >
