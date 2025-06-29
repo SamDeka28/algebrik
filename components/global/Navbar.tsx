@@ -342,7 +342,7 @@ export default function Navbar() {
                     </Link>
                   </div>
                   <div className="col-span-2 flex flex-col min-w-[260px] gap-3">
-                    <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">Integrations</div>
+                    <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">Featured Integrations</div>
                     <div className="grid grid-cols-3 gap-6 my-4 pr-20">
                       {Object.values(partnerData).map((partner, i) => (
                         <Link key={i} target="_blank" href={partner.website} className="bg-white px-10 w-full h-16 flex items-center gap-2  py-3 rounded-lg transition text-black text-base font-medium">
