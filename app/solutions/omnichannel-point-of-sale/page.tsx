@@ -9,6 +9,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Contact from "@/components/contacts";
+import Marquee from "react-fast-marquee";
 const beforeAfterData = [
     {
         type: "before",
@@ -99,7 +100,7 @@ const resultsData = [
     },
     {
         image: "/icons/rs-2.svg",
-        title: "30% increase in borrower application completion",
+        title: "4 legacy tools replaced by 1 unified POS",
         description: "→ Lead forms, CRM inputs, doc collection tools, and application portals—streamlined."
     },
     {
@@ -269,16 +270,24 @@ export default function OmnichannelPOSPage() {
             <section className="w-full px-4 py-[20] md:py-16 flex flex-col items-center">
                 <CustomHeader text="Launch a borrower experience that fits wherever lending happens." className="text-center max-w-3xl text-[28px] md:text-[40px] font-bold" />
                 <div className="w-full overflow-x-hidden">
-                    <motion.div
+                    {/* <motion.div
                         ref={trackRef}
                         className="flex flex-nowrap gap-4 md:gap-8 justify-start md:justify-center pb-4 mt-8"
                         animate={controls}
+                    > */}
+                    <Marquee
+                        className="flex justify-start md:justify-around pb-4 mt-8"
+                        direction="left"
+                        pauseOnHover
+                        loop={0}
+                        speed={100}
+                        gradient={false}
                     >
                         {Array(cardSets).fill(0).flatMap((_, setIdx) =>
                             borrowerExperienceData.map((item, idx) => (
                                 <div
-                                    key={item.title + setIdx + idx}
-                                    className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[400px] max-w-[400px] gap-6"
+                                    key={item.title + idx}
+                                    className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[400px] max-w-[400px] gap-6 mx-2 md:mx-4"
                                     style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
                                 >
                                     <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl">
@@ -291,7 +300,8 @@ export default function OmnichannelPOSPage() {
                                 </div>
                             ))
                         )}
-                    </motion.div>
+                    </Marquee>
+                    {/* </motion.div> */}
                 </div>
                 {/* <p className="text-gray-600 text-center max-w-2xl mt-8 font-extrabold">Borrowers can start, pause, and resume—anywhere.</p> */}
             </section>
@@ -339,7 +349,9 @@ export default function OmnichannelPOSPage() {
                         </motion.div>
                     ))}
                 </div>
-                <p className="text-base lg:text-[20px]  text-[#2A5FAC] font-bold  mt-8 text-center lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
+                <div className="bg-[#F6F9FB] border border-[#195bd7] rounded-full px-6 py-3 inline-block mt-8">
+                    <p className="text-base lg:text-[20px] text-[#2A5FAC] font-bold text-center lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
+                </div>
             </section>
 
             {/* Results Section */}

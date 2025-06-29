@@ -32,19 +32,33 @@ export default function Navbar() {
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
   const solutionsRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+  const aboutRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const [selectedBlogs, setSelectedBlogs] = useState(() => {
     // Pick 2 random blogs initially (will be replaced on first open)
     const shuffled = [...blogContent].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, 2);
   });
   const [showContactModal, setShowContactModal] = useState(false);
-
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [aboutTimeout, setAboutTimeout] = useState<NodeJS.Timeout | null>(null);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const toggleSolutions = () => {
     setIsSolutionsOpen(!isSolutionsOpen);
+  };
+
+  const openAbout = () => { 
+    if (aboutTimeout) clearTimeout(aboutTimeout);
+    setAboutOpen(true);
+  };
+
+  const closeAbout = () => {
+    const timeout = setTimeout(() => {
+      setAboutOpen(false);
+    }, 200);
+    setAboutTimeout(timeout);
   };
 
   const openDropdown = () => {
@@ -108,7 +122,11 @@ export default function Navbar() {
     "/resource-center/what-you-will-learn-in-our-intelligent-lending-roundtable",
     "/resource-center/what-you-will-learn-in-our-intelligent-lending-roundtable/",
     '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions',
-    '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/'
+    '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/',
+    "/integrations",
+    "/integrations/",
+    "/become-a-partner",
+    "/become-a-partner/"
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
@@ -171,7 +189,7 @@ export default function Navbar() {
             <Link
               href="/solutions"
               onClick={(e) => e.preventDefault()}
-              className={` transition flex items-center px-2 py-1 hover:bg-black/20 ${dropdownOpen ? 'bg-black/20' : ''} rounded-[20px] hover:text-white transition`}
+              className={` transition flex items-center px-2 py-1 hover:bg-black/20 ${dropdownOpen ? 'bg-black/20 text-white' : ''} rounded-[20px] hover:text-white transition`}
             >
               Solutions
               <HiChevronDown
@@ -204,18 +222,19 @@ export default function Navbar() {
                         <Image src="/icons/pos.svg" alt="Point of Sale Icon" width={20} height={20} />
                         Point of Sale
                       </Link>
+                      <Link href="/solutions/lender-cockpit" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                        <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
+                        Lender's Cockpit (LOS)
+                      </Link>
                       <Link href="/solutions/decisioning" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                         <Image src="/icons/de.svg" alt="Decisioning Engine Icon" width={20} height={20} />
                         Decisioning Engine
                       </Link>
-                      <Link href="/solutions/dashboard-analytics" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Link href="/solutions/portfolio-analytics" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                         <Image src="/icons/da.svg" alt="Dashboard Analytics Icon" width={20} height={20} />
-                        Dashboard Analytics
+                        Portfolio Analytics
                       </Link>
-                      <Link href="/solutions/lender-cockpit" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
-                        Lender Cockpit
-                      </Link>
+                     
                   </div>
                   {/* Column 3: Blog Cards */}
                   <div className="flex flex-col gap-6 min-w-[360px] pl-8">
@@ -242,9 +261,63 @@ export default function Navbar() {
           >
             Resource Center
           </Link>
-          <Link href="/about" className="hover:text-blue-300 transition">
+          <div
+            className="relative"
+            onMouseEnter={openAbout}
+            onMouseLeave={closeAbout}
+            ref={aboutRef}
+          >
+            <Link
+              href="/about"
+              onClick={(e) => e.preventDefault()}
+              className={` transition flex items-center px-2 py-1 hover:bg-black/20 ${aboutOpen ? 'bg-black/20 text-white' : ''} rounded-[20px] hover:text-white transition`}
+            >
+              About Us
+              <HiChevronDown
+                className={`ml-2 transform transition-all ${aboutOpen ? "rotate-180" : "rotate-0"}`}
+              />
+            </Link>
+            {aboutOpen && (
+              <PortalDropdown anchorRef={aboutRef} autoWidth={true}>
+                <div className="flex gap-12 min-w-[1100px]  rounded-2xl p-4 shadow-2xl font-plus-jakarta">
+                  {/* Column 1: By Institution */}
+                  <div className="flex flex-col min-w-[260px] gap-3">
+                    <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">About Us</div>
+                    <Link href="/about" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
+                      Company
+                    </Link>
+                    <Link href="/integrations" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/svg/car.svg" alt="Auto Lenders Icon" width={20} height={20} />
+                        Integrations
+                    </Link>
+                    <Link href="/become-a-partner" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                    <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
+                      Become a Partner
+                    </Link>
+                  </div>
+                 
+                  {/* Column 3: Blog Cards */}
+                  {/* <div className="flex flex-col gap-6 min-w-[360px] pl-8">
+                    {selectedBlogs.map((blog, i) => (
+                      <Link key={i} href={`/resource-center/${blog.blogSubtitle}`} className="rounded-xl bg-black/20 p-6 flex gap-4 items-center min-w-[340px] shadow-md hover:bg-white/30 transition">
+                        <div className="min-w-[160px] max-w-[160px] min-h-[125px] max-h-[125px] bg-white/30 rounded-lg flex items-center justify-center overflow-hidden">
+                          <img src={blog.blogImage} alt={blog.blogTitle} className="object-cover w-[160px] h-[125px] rounded-lg" />
+                        </div>
+                        <div className="flex flex-col justify-start h-full">
+                          <span className="text-sm text-[#A0AEC0] font-bold mb-1  tracking-[30%] ">BLOG</span>
+                          <span className="text-white font-semibold text-[20px] leading-normal">{blog.blogTitle}</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div> */}
+                </div>
+              </PortalDropdown>
+            )}
+          </div>
+          {/* <Link href="/about" className="hover:text-blue-300 transition">
             About Us
-          </Link>
+          </Link> */}
         </div>
         <button
           type="button"
@@ -304,18 +377,19 @@ export default function Navbar() {
                 <Link href="/solutions/banks" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Banks
                 </Link>
-                <Link href="/solutions/decisioning" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                  Decisioning
-                </Link>
                 <Link href="/solutions/omnichannel-point-of-sale" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                  Omnichannel point of sale
-                </Link>
-                <Link href="/solutions/dashboard-analytics" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                  Dashboard Analytics
+                  Point of sale
                 </Link>
                 <Link href="/solutions/lender-cockpit" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                  Lender Cockpit
+                  Lender's Cockpit (LOS)
                 </Link>
+                <Link href="/solutions/decisioning" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                Decisioning Engine
+                </Link>
+                <Link href="/solutions/portfolio-analytics" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Portfolio Analytics
+                </Link>
+               
               </div>
             )}
             <Link
@@ -332,6 +406,19 @@ export default function Navbar() {
             >
               About Us
             </Link>
+            {aboutOpen && (
+              <div className="pl-6">
+                <Link href="/about" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Company
+                </Link>
+                <Link href="/integrations" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Auto Lenders
+                </Link>
+                <Link href="/become-a-partner" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Become a Partner
+                </Link>
+              </div>
+            )}
           </div>
           <div>
             <button

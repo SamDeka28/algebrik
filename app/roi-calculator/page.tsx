@@ -159,20 +159,20 @@ export default function StepperForm() {
 
     const handleSubmit = () => {
         if (validateInputs()) {
-            const userInputs: ROIInputs = {
-                monthlyLoanVolume: Number(values[0] ?? 0), // Ensure number
-                avgProcessingTime: Number(values[1] ?? 0),
-                dropOffRate: Number(values[2] ?? 0),
-                processingCostPerLoan: Number(values[3] ?? 0),
+        const userInputs: ROIInputs = {
+            monthlyLoanVolume: Number(values[0] ?? 0), // Ensure number
+            avgProcessingTime: Number(values[1] ?? 0),
+            dropOffRate: Number(values[2] ?? 0),
+            processingCostPerLoan: Number(values[3] ?? 0),
                 email: values[4] as string, // Email from step 5
                 loanType: values[5] as string, // Strings don't need conversion
                 existingLOS: values[6] as string,
                 monthlyRevenue: Number(values[7] ?? 0), // Add monthlyRevenue back
-            };
+        };
 
-            const roiResults = calculateROI(userInputs);
-            setShowResult(true);
-            setResult(roiResults)
+        const roiResults = calculateROI(userInputs);
+        setShowResult(true);
+        setResult(roiResults)
         }
     };
 
@@ -426,17 +426,17 @@ export default function StepperForm() {
                             ) : (
                                 <div className={`flex flex-wrap gap-4 justify-center items-center w-full ${steps[step]?.options?.length == 2 ? "flex-col lg:flex-row" : "flex-row"}`}>
                                     {steps[step]?.options?.map((option) => (
-                                        <button
-                                            key={option}
-                                            onClick={() => handleCardSelect(option)}
-                                            className={`flex-1 lg:flex-none py-4 ${steps[step]?.options?.length == 2 ? "w-full lg:min-w-[156px] lg:w-max    " : "min-w-[156px]"} lg:p-6 rounded-lg border transition-all duration-300 text-lg font-bold font-plus-jakarta ${values[step] === option
-                                                ? "bg-[#2A5FAC] border-[2px] border-[#61A1FF] text-white"
-                                                : "bg-white text-gray-700 hover:bg-gray-200 border border-[#E8E7E7]"
-                                                }`}
-                                        >
-                                            {option}
-                                        </button>
-                                    ))}
+                                    <button
+                                        key={option}
+                                        onClick={() => handleCardSelect(option)}
+                                        className={`flex-1 lg:flex-none py-4 ${steps[step]?.options?.length == 2 ? "w-full lg:min-w-[156px] lg:w-max    " : "min-w-[156px]"} lg:p-6 rounded-lg border transition-all duration-300 text-lg font-bold font-plus-jakarta ${values[step] === option
+                                            ? "bg-[#2A5FAC] border-[2px] border-[#61A1FF] text-white"
+                                            : "bg-white text-gray-700 hover:bg-gray-200 border border-[#E8E7E7]"
+                                            }`}
+                                    >
+                                        {option}
+                                    </button>
+                                ))}
                                 </div>
                             )}
                         </div>
