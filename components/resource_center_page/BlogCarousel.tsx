@@ -30,8 +30,8 @@ const carouselData: CarouselItem[] = [
     target: "_self",
   },
   {
-    header: "Case Studies",
-    cardTitle: "CASE STUDY",
+    header: "Webinar",
+    cardTitle: "WEBINAR",
     title: "Revolutionizing Lending with AI: Case Studies of Success",
     description:
       "Learn how companies are leveraging Algebrik AI's platform to streamline loan origination processes, increase efficiency, and drive results in the financial sector.",
@@ -62,9 +62,30 @@ const carouselData: CarouselItem[] = [
     url: "",
     target: "_self",
   },
+  {
+    header: "Tools",
+    cardTitle: "TOOLS",
+    title: "Algebrik AI's Loan Origination Platform: A Comprehensive Guide",
+    description:
+      "A detailed overview of Algebrik AI's loan origination platform, including its features, benefits, and how it can help financial institutions streamline their loan processes.",
+    source: "BusinessWire",
+    image: "/section_images/place.webp",
+    url: "",
+    target: "_self",
+  },
 ];
 
 const newsArticles = [
+  {
+    title:
+      "Algebrik AI Partners with TruStage™ to Offer Embedded Lending Protection Products Through the Loan Origination Journey",
+    author: "PR Newswire",
+    source: "Yahoo Finance",
+    role: "Marketing",
+    description:"AAlgebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
+    link: "https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html",
+    image: "/section_images/blog/ya.webp",
+  },
   {
     title:
       "Algebrik AI Partners with Equifax® to Power Smarter, Fairer, and Faster Loan Decisions",
@@ -384,7 +405,7 @@ export default function BlogCarousel() {
           }
 
 
-          {[1, 3].includes(currentIndex) &&
+          {[1, 3,4].includes(currentIndex) &&
 
             <h2 className="text-black text-[56px] text-center font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
 

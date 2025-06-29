@@ -8,6 +8,7 @@ import DecisioningHero from "@/components/decisioning/Hero";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Contact from "@/components/contacts";
+import Marquee from "react-fast-marquee";
 
 const beforeAfterData = [
     {
@@ -214,19 +215,19 @@ export default function DecisioningPage() {
             {/* Feature Cards Section */}
             <section className="w-full px-4 py-16 flex flex-col items-center">
                 <CustomHeader text="A Smarter Way to Manage Credit Strategies" className="text-center text-[28px] md:text-[40px] font-bold" />
-                <div ref={containerRef} className="w-full overflow-hidden">
-                    <motion.div
-                        className="flex gap-4 pb-4 mt-8"
-                        animate={controls}
-                        style={{
-                            transition: "transform 20s linear infinite",
-                            transform: "translateX(-100%)",
-                        }}
+                <div className="w-full  px-4">
+                    <Marquee
+                        className="flex items-center justify-start md:justify-around pb-4 pt-8"
+                        direction="left"
+                        pauseOnHover
+                        loop={0}
+                        speed={100}
+                        gradient={false}
                     >
                         {featureCards.map((item, idx) => (
                             <motion.div
                                 key={item.title}
-                                className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2"
+                                className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2 mx-2 h-[280px]"
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.2 }}
                             >
@@ -234,25 +235,10 @@ export default function DecisioningPage() {
                                     <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
                                 </div>
                                 <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
-                                <span className="text-[#606060] text-base leading-snug">{item.description}</span>
+                                <span className="text-[#606060] text-base leading-snug flex-1">{item.description}</span>
                             </motion.div>
                         ))}
-                        {/* Duplicate cards for seamless loop */}
-                        {featureCards.map((item, idx) => (
-                            <motion.div
-                                key={`duplicate-${item.title}`}
-                                className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2"
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.2 }}
-                            >
-                                <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
-                                    <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
-                                </div>
-                                <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
-                                <span className="text-[#606060] text-base leading-snug">{item.description}</span>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                    </Marquee>
                 </div>
             </section>
 

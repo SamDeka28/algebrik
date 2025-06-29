@@ -11,8 +11,8 @@ const Footer = () => {
   return (
     <footer className="bg-[#121212] pt-[40px] px-[20px] md:px-0 pb-[20px] font-plus-jakarta md:border md:border-t-1 md:border-[#262932]">
       <hr className="w-full border-none md:border-t text-[#787C91] border-gray-700" />
-      <div className="container max-w-7xl mx-auto pt-[40px] grid grid-cols-1 md:grid-cols-6 gap-[40px] md:gap-[76px] justify-items-start md:justify-items-end">
-        <div>
+      <div className="container  mx-auto pt-[40px] grid grid-cols-1 md:grid-cols-7 gap-[40px] md:gap-6 justify-items-start md:justify-items-end">
+        <div className="w-full">
           <Image src={logo} alt="logo" width={157} height={40.19} />
           <div className="mt-2 text-[#787C91]">
             <p>Algebrik AI Inc</p>
@@ -25,12 +25,12 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-medium mb-[29px]">Branch Offices</h3>
           <div className="mt-2 text-[#787C91]">
-            <p>Wayne, IN</p>
-            <p>Dallas, TX</p>
+            <p>Fort Wayne, IN</p>
+            <p>Phoenix, AZ</p>
           </div>
         </div>
         <div className="hidden md:block">
-          <h3 className="text-white font-medium mb-[29px]">Product</h3>
+          <h3 className="text-white font-medium mb-[29px]">Platform</h3>
           <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap:[7px]">
             <Link href="/platform" passHref>
               {" "}
@@ -51,6 +51,27 @@ const Footer = () => {
           </ul>
         </div>
         <div className="hidden md:block">
+          <h3 className="text-white font-medium mb-[29px]">Solutions</h3>
+          <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap:[7px]">
+            <Link href="/solutions/omnichannel-point-of-sale" passHref>
+              {" "}
+              <li>Point of Sale</li>{" "}
+            </Link>
+            <Link href="/solutions/lender-cockpit" passHref>
+              {" "}
+              <li>Lender's Cockpit</li>
+            </Link>
+            <Link href="/solutions/decisioning" passHref>
+              {" "}
+              <li>Decisioning Engine</li>
+            </Link>
+            <Link href="/solutions/portfolio-analytics" passHref>
+              {" "}
+              <li>Portfolio Analytics</li>
+            </Link>
+          </ul>
+        </div>
+        <div className="hidden md:block">
           <h3 className="text-white font-medium mb-[29px] ">Resources</h3>
           <ul className="space-y-1 text-[#787C91] text-[14px]">
             <Link href="/resource-center" passHref>
@@ -61,9 +82,9 @@ const Footer = () => {
           </ul>
         </div>
         {/* Mobile */}
-        <div className="md:hidden flex space-x-28">
-          <div className="">
-            <h3 className="text-white font-medium mb-[29px]">Product</h3>
+        <div className="md:hidden flex flex-col gap-10">
+          <div className="mb-10">
+            <h3 className="text-white font-medium mb-[29px]">Platform</h3>
             <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap-[7px]">
               <Link href="/platform" passHref>
                 {" "}
@@ -80,6 +101,23 @@ const Footer = () => {
               <Link href="/solutions/auto_lenders" passHref>
                 {" "}
                 <li>For Auto Lenders</li>
+              </Link>
+            </ul>
+          </div>
+          <div className="mb-10">
+            <h3 className="text-white font-medium mb-[29px]">Solutions</h3>
+            <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap:[7px]">
+              <Link href="/solutions/omnichannel-point-of-sale" passHref>
+                {" "}
+                <li>Point of Sale</li>{" "}
+              </Link>
+              <Link href="/solutions/lender-cockpit" passHref>
+                {" "}
+                <li>Lender's Cockpit</li>
+              </Link>
+              <Link href="/solutions/decisioning" passHref>
+                {" "}
+                <li>Decisioning Engine</li>
               </Link>
             </ul>
           </div>
@@ -104,17 +142,17 @@ const Footer = () => {
                 {" "}
                 <li>About us</li>
               </Link>
-              <button onClick={() => setShowContactModal(true)}>
+              <Link href="/contact" passHref>
                 {" "}
                 <li>Contact us</li>
-              </button>
+              </Link>
             </ul>
           </div>
 
         </div>
 
         {/* Mobile */}
-        <div className="md:hidden flex space-x-28 md:space-x-0">
+        <div className="md:hidden flex flex-col gap-10 md:space-x-0">
           <div>
             <h3 className="text-white font-medium mb-[29px]">Company</h3>
             <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap-[7px]">
