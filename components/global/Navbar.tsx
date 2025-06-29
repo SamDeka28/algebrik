@@ -24,6 +24,50 @@ function ContactModalPortal({ open, onClose }: { open: boolean; onClose: () => v
   );
 }
 
+interface Partner {
+  name: string;
+  image: string;
+  category: string;
+  description: string;
+  website: string;
+  logoClass: string;
+}
+
+const partnerData: { [key: string]: Partner } = {
+  'Plaid': {
+    name: 'Plaid',
+    image: "/integration_logos/plaid.png",
+    category: 'Core Banking & Financial Data',
+    description: 'Consumer-permissioned access to real-time financial data enabling faster, more accurate lending decisions.',
+    website: 'https://plaid.com',
+    logoClass: 'bg-gradient-to-r from-green-400 to-blue-400'
+  },
+  'DocuSign': {
+    name: 'DocuSign',
+    image: "/integration_logos/docusign.png",
+    category: 'Document & Workflow Management',
+    description: 'Industry-leading electronic signature technology with new sonic identity reflecting leadership position.',
+    website: 'https://docusign.com',
+    logoClass: 'bg-yellow-500'
+  },
+  'Equifax': {
+    name: 'Equifax',
+    image: "/integration_logos/equifax.png",
+    category: 'Credit Bureaus',
+    description: 'Comprehensive credit reporting and risk assessment with deep industry expertise and tradition of trust in lending decisions.',
+    website: 'https://equifax.com',
+    logoClass: 'bg-red-600'
+  },
+  'RouteOne': {
+    name: 'RouteOne',
+    image: "/integration_logos/routeone.png",
+    category: 'Auto Lending & Vehicle Data',
+    description: 'Comprehensive F&I platform connecting dealerships with approximately 1,500 integrated finance sources.',
+    website: 'https://routeone.com',
+    logoClass: 'bg-blue-600'
+  }
+};
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +93,7 @@ export default function Navbar() {
     setIsSolutionsOpen(!isSolutionsOpen);
   };
 
-  const openAbout = () => { 
+  const openAbout = () => {
     if (aboutTimeout) clearTimeout(aboutTimeout);
     setAboutOpen(true);
   };
@@ -211,30 +255,30 @@ export default function Navbar() {
                       Auto Lenders
                     </Link>
                     <Link href="/solutions/banks" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                    <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
+                      <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
                       Banks
                     </Link>
                   </div>
                   {/* Column 2: By Usecase + Button */}
                   <div className="flex flex-col min-w-[260px] gap-3">
-                      <div className="text-[18px]  p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">By Usecase</div>
-                      <Link href="/solutions/omnichannel-point-of-sale" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/pos.svg" alt="Point of Sale Icon" width={20} height={20} />
-                        Point of Sale
-                      </Link>
-                      <Link href="/solutions/lender-cockpit" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
-                        Lender's Cockpit (LOS)
-                      </Link>
-                      <Link href="/solutions/decisioning" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/de.svg" alt="Decisioning Engine Icon" width={20} height={20} />
-                        Decisioning Engine
-                      </Link>
-                      <Link href="/solutions/portfolio-analytics" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                        <Image src="/icons/da.svg" alt="Dashboard Analytics Icon" width={20} height={20} />
-                        Portfolio Analytics
-                      </Link>
-                     
+                    <div className="text-[18px]  p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">By Usecase</div>
+                    <Link href="/solutions/omnichannel-point-of-sale" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/pos.svg" alt="Point of Sale Icon" width={20} height={20} />
+                      Point of Sale
+                    </Link>
+                    <Link href="/solutions/lender-cockpit" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
+                      Lender's Cockpit (LOS)
+                    </Link>
+                    <Link href="/solutions/decisioning" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/de.svg" alt="Decisioning Engine Icon" width={20} height={20} />
+                      Decisioning Engine
+                    </Link>
+                    <Link href="/solutions/portfolio-analytics" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/da.svg" alt="Dashboard Analytics Icon" width={20} height={20} />
+                      Portfolio Analytics
+                    </Link>
+
                   </div>
                   {/* Column 3: Blog Cards */}
                   <div className="flex flex-col gap-6 min-w-[360px] pl-8">
@@ -279,9 +323,9 @@ export default function Navbar() {
             </Link>
             {aboutOpen && (
               <PortalDropdown anchorRef={aboutRef} autoWidth={true}>
-                <div className="flex gap-12 min-w-[1100px]  rounded-2xl p-4 shadow-2xl font-plus-jakarta">
+                <div className="grid grid-cols-3 gap-12 min-w-[1100px]  rounded-2xl p-4 shadow-2xl font-plus-jakarta">
                   {/* Column 1: By Institution */}
-                  <div className="flex flex-col min-w-[260px] gap-3">
+                  <div className="flex flex-col  gap-3">
                     <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">About Us</div>
                     <Link href="/about" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                       <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
@@ -289,28 +333,23 @@ export default function Navbar() {
                     </Link>
                     <Link href="/integrations" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                       <Image src="/icons/svg/car.svg" alt="Auto Lenders Icon" width={20} height={20} />
-                        Integrations
+                      Integrations
                     </Link>
                     <Link href="/become-a-partner" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                    <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
+                      <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
                       Become a Partner
                     </Link>
                   </div>
-                 
-                  {/* Column 3: Blog Cards */}
-                  {/* <div className="flex flex-col gap-6 min-w-[360px] pl-8">
-                    {selectedBlogs.map((blog, i) => (
-                      <Link key={i} href={`/resource-center/${blog.blogSubtitle}`} className="rounded-xl bg-black/20 p-6 flex gap-4 items-center min-w-[340px] shadow-md hover:bg-white/30 transition">
-                        <div className="min-w-[160px] max-w-[160px] min-h-[125px] max-h-[125px] bg-white/30 rounded-lg flex items-center justify-center overflow-hidden">
-                          <img src={blog.blogImage} alt={blog.blogTitle} className="object-cover w-[160px] h-[125px] rounded-lg" />
-                        </div>
-                        <div className="flex flex-col justify-start h-full">
-                          <span className="text-sm text-[#A0AEC0] font-bold mb-1  tracking-[30%] ">BLOG</span>
-                          <span className="text-white font-semibold text-[20px] leading-normal">{blog.blogTitle}</span>
-                        </div>
-                      </Link>
-                    ))}
-                  </div> */}
+                  <div className="col-span-2 flex flex-col min-w-[260px] gap-3">
+                    <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">Integrations</div>
+                    <div className="grid grid-cols-3 gap-6 my-4 pr-20">
+                      {Object.values(partnerData).map((partner, i) => (
+                        <Link key={i} target="_blank" href={partner.website} className="bg-white px-10 w-full h-16 flex items-center gap-2  py-3 rounded-lg transition text-black text-base font-medium">
+                          <img src={partner.image} alt={partner.name} className="w-full h-full object-contain" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </PortalDropdown>
             )}
@@ -384,12 +423,12 @@ export default function Navbar() {
                   Lender's Cockpit (LOS)
                 </Link>
                 <Link href="/solutions/decisioning" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                Decisioning Engine
+                  Decisioning Engine
                 </Link>
                 <Link href="/solutions/portfolio-analytics" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Portfolio Analytics
                 </Link>
-               
+
               </div>
             )}
             <Link
