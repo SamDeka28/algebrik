@@ -125,6 +125,7 @@ export default function Navbar() {
         setIsScrolled(false);
       }
       setDropdownOpen(false);
+      setAboutOpen(false);
     };
 
     window.addEventListener("scroll", handleScroll);
