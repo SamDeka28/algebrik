@@ -53,13 +53,13 @@ export default function Articles() {
   const newsArticles = [
     {
       title:
-        "Algebrik AI Partners with Equifax® to Power Smarter, Fairer, and Faster Loan Decisions",
-      author: "Team Algebrik",
-      source: "Team Algebrik",
+        "Algebrik AI Partners with TruStage™ to Offer Embedded Lending Protection Products Through the Loan Origination Journey",
+      author: "PR Newswire",
+      source: "Yahoo Finance",
       role: "Marketing",
-      description: "Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
-      link: "/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/",
-      image: "/section_images/blog/teamalgebrik.webp",
+      description:"AAlgebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
+      link: "https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html",
+      image: "/section_images/blog/ya.webp",
     },
     {
       title:
