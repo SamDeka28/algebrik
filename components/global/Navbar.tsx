@@ -171,7 +171,9 @@ export default function Navbar() {
     "/integrations",
     "/integrations/",
     "/become-a-partner",
-    "/become-a-partner/"
+    "/become-a-partner/",
+    "/lending-health-check",
+    "/lending-health-check/"
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
