@@ -4,6 +4,8 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Image from "next/image";
 import Articles from "./Articles";
 import Marquee from "react-fast-marquee";
+import Button from "../Buttons";
+import { useRouter } from "next/navigation";
 
 const integrations = [
   { image: "/partner_icons/allied.webp" },
@@ -35,6 +37,7 @@ const integrations = [
 ];
 
 export default function IntegrationsSection() {
+  const router = useRouter();
   const firstHalf = integrations.slice(0, Math.floor(integrations.length / 2));
   const secondHalf = integrations.slice(Math.floor(integrations.length / 2));
 
@@ -96,8 +99,16 @@ export default function IntegrationsSection() {
             ))}
           </Marquee>
         </div>
+        <div className="mb-20">
+            <Button
+              text="View All Integrations"
+              customClass="bg-transparent border border-[#2A5FAC] text-[#2A5FAC] hover:bg-[#2A5FAC] hover:text-white px-6 py-3 rounded-full"
+              onClick={() => {
+                router.push('/integrations');
+              }}
+            />
+          </div>
       </div>
-
       <Articles />
     </div>
   );

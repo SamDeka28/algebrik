@@ -4,9 +4,10 @@ import { createPortal } from "react-dom";
 interface PortalDropdownProps {
   anchorRef: RefObject<HTMLDivElement>;
   children: ReactNode;
+  autoWidth?: boolean;
 }
 
-export default function PortalDropdown({ anchorRef, children }: PortalDropdownProps) {
+export default function PortalDropdown({ anchorRef, children, autoWidth = false }: PortalDropdownProps) {
   const [coords, setCoords] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
@@ -35,8 +36,8 @@ export default function PortalDropdown({ anchorRef, children }: PortalDropdownPr
         top: coords.top + 20,
         left: "50%",
         transform: "translateX(-50%)",
-        width: "100%",
-        maxWidth: "1260px",
+        width: autoWidth ? "auto" : "100%",
+        maxWidth: autoWidth ? "1260px" : "auto",
         zIndex: 9999,
       }}
       className="mt-2 rounded-[20px] shadow-lg backdrop-blur-3xl bg-black/50 text-white flex flex-col items-start w-full max-w-[1260px] mx-auto"

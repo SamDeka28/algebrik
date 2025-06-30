@@ -23,7 +23,7 @@ export default function LenderCockpitHero() {
       </>
     ),
     subtitle:
-      "Algebrik’s Lender’s Cockpit gives loan officers and credit teams a unified workspace to track pipelines, automate decisions, and engage borrowers in real time.",
+      "Algebrik’s Loan Origination System gives loan officers and credit teams a unified workspace to track pipelines, automate decisions, and engage borrowers in real time.",
     sectionImage: "/icons/lc-main.webp",
     subtitleClass:
       "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-[38px] md:px-[193px] mb-[10px] max-w-7xl",
