@@ -31,6 +31,18 @@ const carouselDataOne = [
     name: "PANKAJ JAIN ",
     title: "Founder & CEO",
     place: "N/A",
+  },
+  {
+    image: "/team_images/prateek.jpg",
+    name: "PRATEEK SAMANTARAY",
+    title: "AVP, Growth & Product Marketing",
+    place: "N/A",
+  },
+  {
+    image: "/team_images/tarun.jpeg",
+    name: "TARUN KANERIA",
+    title: "AVP, Product",
+    place: "N/A",
   }
 ];
 

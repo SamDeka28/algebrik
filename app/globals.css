@@ -77,11 +77,59 @@ html{
   .animate-fadeIn {
     animation: fadeIn 1.5s ease-out forwards;
   }
+  .animate-fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
   .delay-200 {
     animation-delay: 0.2s;
   }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
   .delay-400 {
     animation-delay: 0.4s;
+  }
+  .delay-500 {
+    animation-delay: 0.5s;
+  }
+  .delay-600 {
+    animation-delay: 0.6s;
+  }
+  .delay-800 {
+    animation-delay: 0.8s;
+  }
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+  .delay-1200 {
+    animation-delay: 1.2s;
+  }
+  .delay-1400 {
+    animation-delay: 1.4s;
+  }
+  .delay-1600 {
+    animation-delay: 1.6s;
+  }
+  .delay-1800 {
+    animation-delay: 1.8s;
+  }
+  .delay-2000 {
+    animation-delay: 2s;
+  }
+  .delay-2200 {
+    animation-delay: 2.2s;
+  }
+  .delay-2400 {
+    animation-delay: 2.4s;
+  }
+  .delay-2800 {
+    animation-delay: 2.8s;
+  }
+  .delay-3000 {
+    animation-delay: 3s;
   }
 }
 
