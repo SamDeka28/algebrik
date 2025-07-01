@@ -173,7 +173,9 @@ export default function Navbar() {
     "/become-a-partner",
     "/become-a-partner/",
     "/lending-health-check",
-    "/lending-health-check/"
+    "/lending-health-check/",
+    "/jack-henry",
+    "/jack-henry/"
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
