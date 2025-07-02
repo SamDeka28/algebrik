@@ -6,6 +6,8 @@ import { CustomHeader, CustomSubtitle } from "@/components/CustomHeader";
 import Button from "@/components/Buttons";
 import Link from "next/link";
 import Contact from "@/components/contacts";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const steps = [
     {
@@ -44,14 +46,37 @@ const steps = [
         type:"input",
         question:"Enter your Email address",
         options:[],
-        fields : [{
-            type:"email",
+        apiUrl: "https://api.hsforms.com/submissions/v3/integration/submit/47671281/31505f87-b12e-47da-8a24-6bc0d3fa2437",
+        fields : [
+            {
+                type:"text",
+                label:"First Name",
+                placeholder:"Enter your first name",
+                required:true,
+                errorMessage:"Please enter a valid first name",
+                value:"",
+                onChange:()=>{},
+                name:"0-1/firstname"
+            },
+            {
+                type:"text",
+                label:"Last Name",
+                placeholder:"Enter your last name",
+                required:true,
+                errorMessage:"Please enter a valid last name",
+                value:"",
+                onChange:()=>{},
+                name:"0-1/lastname"
+            },
+            {
+                type:"email",
             label:"Email",
             placeholder:"Enter your email",
             required:true,
             errorMessage:"Please enter a valid email",
             value:"",
-            onChange:()=>{}
+            onChange:()=>{},
+            name:"0-1/email"
         }]
     },
     {
@@ -93,7 +118,81 @@ export default function StepperForm() {
         approvalTime:"",
     })
     const [result, setResult] = useState<any>([])
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
+    // Get the current input step
+    const currentInputStep = steps.find(s => s.type === "input");
+    
+    // Create dynamic validation schema based on the input step fields
+    const validationSchema = Yup.object().shape(
+        currentInputStep?.fields?.reduce((acc, field) => {
+            if (field.required) {
+                if (field.type === "email") {
+                    acc[field.name] = Yup.string()
+                        .email(field.errorMessage || "Please enter a valid email")
+                        .required(field.errorMessage || "This field is required");
+                } else {
+                    acc[field.name] = Yup.string()
+                        .required(field.errorMessage || "This field is required");
+                }
+            }
+            return acc;
+        }, {} as any) || {}
+    );
+
+    // Initialize form values dynamically
+    const initialValues = currentInputStep?.fields?.reduce((acc, field) => {
+        acc[field.name] = "";
+        return acc;
+    }, {} as any) || {};
+
+    const formik = useFormik({
+        initialValues,
+        validationSchema,
+        onSubmit: async (values) => {
+            setIsSubmitting(true);
+            try {
+                // Prepare the data for HubSpot API
+                const hubspotData = {
+                    fields: Object.keys(values).map(key => ({
+                        name: key,
+                        value: values[key]
+                    })),
+                    context: {
+                        pageUri: window.location.href,
+                        pageName: "ROI Calculator"
+                    }
+                };
+
+                // Submit to HubSpot API
+                const response = await fetch(currentInputStep?.apiUrl || "", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(hubspotData),
+                });
+
+                if (response.ok) {
+                    // Continue to next step after successful submission
+                    setStep((prev) => Math.min(prev + 1, steps.length - 1));
+                    // Store the email for ROI calculation
+                    setValues(prev => {
+                        const newValues = [...prev];
+                        newValues[4] = values.email || values["0-1/email"] || "";
+                        return newValues;
+                    });
+                } else {
+                    console.error("Failed to submit form");
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+            } finally {
+                setIsSubmitting(false);
+            }
+        },
+    });
+
     const handleSliderChange = (value: any) => {
         setValues((prev) => {
             const newValues = [...prev];
@@ -130,29 +229,17 @@ export default function StepperForm() {
     const validateInputs = () => {
         const currentStep = steps[step];
         if (currentStep.type === "input") {
-            const errors: {[key: string]: string} = {};
-            
-            currentStep.fields?.forEach((field, fieldIndex) => {
-                const fieldValue = values[step] as string;
-                
-                if (field.required && (!fieldValue || fieldValue.trim() === "")) {
-                    errors[`step-${step}-field-${fieldIndex}`] = "This field is required";
-                } else if (field.type === "email" && fieldValue) {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(fieldValue)) {
-                        errors[`step-${step}-field-${fieldIndex}`] = field.errorMessage || "Please enter a valid email";
-                    }
-                }
-            });
-            
-            setInputErrors(errors);
-            return Object.keys(errors).length === 0;
+            // Use Formik validation instead
+            return formik.isValid && !formik.errors;
         }
         return true;
     };
 
     const handleNext = () => {
-        if (validateInputs()) {
+        if (steps[step].type === "input") {
+            // Submit Formik form for input step
+            formik.handleSubmit();
+        } else if (validateInputs()) {
             setStep((prev) => Math.min(prev + 1, steps.length - 1));
         }
     };
@@ -164,7 +251,7 @@ export default function StepperForm() {
             avgProcessingTime: Number(values[1] ?? 0),
             dropOffRate: Number(values[2] ?? 0),
             processingCostPerLoan: Number(values[3] ?? 0),
-                email: values[4] as string, // Email from step 5
+                email: formik.values.email || formik.values["0-1/email"] || "", // Email from Formik
                 loanType: values[5] as string, // Strings don't need conversion
                 existingLOS: values[6] as string,
                 monthlyRevenue: Number(values[7] ?? 0), // Add monthlyRevenue back
@@ -402,27 +489,31 @@ export default function StepperForm() {
                                     </div>
                                 </div>
                             </> : steps[step].type === "input" ? (
-                                <div className="w-full p-4">
+                                <form onSubmit={formik.handleSubmit} className="w-full p-4">
                                     {steps[step].fields?.map((field, fieldIndex) => (
-                                        <div key={fieldIndex} className="flex flex-col gap-2">
+                                        <div key={fieldIndex} className="flex flex-col gap-2 mb-4">
                                             <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
                                                 {field.label}
                                             </label>
                                             <input
                                                 type={field.type}
                                                 placeholder={field.placeholder}
-                                                value={values[step] as string || ""}
-                                                onChange={(e) => handleInputChange(fieldIndex, e.target.value)}
-                                                className="border text-black border-gray-300 font-plus-jakarta rounded-[8px] p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
+                                                name={field.name}
+                                                value={formik.values[field.name] || ""}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                className={`border text-black border-gray-300 font-plus-jakarta rounded-[8px] p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA] ${
+                                                    formik.touched[field.name] && formik.errors[field.name] ? 'border-red-500' : ''
+                                                }`}
                                             />
-                                            {inputErrors[`step-${step}-field-${fieldIndex}`] && (
+                                            {formik.touched[field.name] && formik.errors[field.name] && (
                                                 <p className="text-red-500 font-plus-jakarta text-sm">
-                                                    {inputErrors[`step-${step}-field-${fieldIndex}`]}
+                                                    {formik.errors[field.name] as string}
                                                 </p>
                                             )}
                                         </div>
                                     ))}
-                                </div>
+                                </form>
                             ) : (
                                 <div className={`flex flex-wrap gap-4 justify-center items-center w-full ${steps[step]?.options?.length == 2 ? "flex-col lg:flex-row" : "flex-row"}`}>
                                     {steps[step]?.options?.map((option) => (
@@ -454,11 +545,11 @@ export default function StepperForm() {
                                 />
 
                                 <Button
-                                    text={step === steps.length - 1 ? "Calculate" : "Next"}
-                                    onClick={() => step === steps.length - 1 ? handleSubmit() : setStep((prev) => Math.min(prev + 1, steps.length - 1))}
-                                    customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
-                                    activeStyle="text-[#1A69DC] font-bold"
-
+                                    text={isSubmitting ? "Submitting..." : (step === steps.length - 1 ? "Calculate" : "Next")}
+                                    onClick={() => step === steps.length - 1 ? handleSubmit() : handleNext()}
+                                    customClass="py-[10px] text-[14px] md:text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA] w-full md:w-auto"
+                                    activeStyle="bg-white text-[#292929] font-bold"
+                                    disabled={isSubmitting}
                                 />
                             </div> :
                             <div className="flex flex-row gap-[22px] w-full md:w-[300px] mt-4 md:mt-[66px]">
@@ -474,11 +565,11 @@ export default function StepperForm() {
                                 />
 
                                 <Button
-                                    text={step === steps.length - 1 ? "Calculate" : "Next"}
-                                    onClick={() => step === steps.length - 1 ? handleSubmit() : setStep((prev) => Math.min(prev + 1, steps.length - 1))}
+                                    text={isSubmitting ? "Submitting..." : (step === steps.length - 1 ? "Calculate" : "Next")}
+                                    onClick={() => step === steps.length - 1 ? handleSubmit() : handleNext()}
                                     customClass="py-[10px] text-[14px] md:text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA] w-full md:w-auto"
                                     activeStyle="bg-white text-[#292929] font-bold"
-
+                                    disabled={isSubmitting}
                                 />
                             </div>
                         }
