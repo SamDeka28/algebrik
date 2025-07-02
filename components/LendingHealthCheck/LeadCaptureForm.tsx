@@ -52,7 +52,7 @@ const LeadCaptureForm = () => {
         </h2>
 
         {/* Subheadline */}
-        <p className="text-lg text-gray-600 mb-8 leading-relaxed animate-fade-in transition-all duration-500">
+        <p className="text-lg text-left lg:text-center text-gray-600 mb-8 leading-relaxed animate-fade-in transition-all duration-500">
           Join leading credit unions already transforming their lending process. Request your personalized demo today 
           and see how AI can reduce loan processing time by 85% while maintaining full Jack Henry Symitar® compliance.
         </p>
