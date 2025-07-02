@@ -8,7 +8,7 @@ import ReadyToGo from "@/components/about_page/ReadyToGo";
 import WhatWeStriveFor from "@/components/about_page/WhatWeStriveFor";
 import { Metadata } from "next";
 
-import { getEventImages } from "@/lib/utils";
+import { getEventImages } from "@/lib/server-utils";
 
 export const metadata:Metadata={
   title:"About Algebrik: Innovating the Future of Lending Technology",
