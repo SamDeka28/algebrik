@@ -33,13 +33,13 @@ const carouselDataOne = [
     place: "N/A",
   },
   {
-    image: "/team_images/prateek.jpg",
+    image: "/team_images/prateek.webp",
     name: "PRATEEK SAMANTARAY",
     title: "AVP, Growth & Product Marketing",
     place: "N/A",
   },
   {
-    image: "/team_images/tarun.jpeg",
+    image: "/team_images/tarun.webp",
     name: "TARUN KANERIA",
     title: "AVP, Product",
     place: "N/A",
