@@ -78,7 +78,7 @@ export default function JackHenry() {
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in delay-800">
-              <Button size="lg" className="px-8 py-6 text-lg font-semibold bg-[#2A5FAC] hover:bg-[#1e4a8c] text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-2xl">
+              <Button size="lg" onClick={scrollToForm} className="px-8 py-6 text-lg font-semibold bg-[#2A5FAC] hover:bg-[#1e4a8c] text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-2xl">
                 Experience the Demo
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
@@ -186,7 +186,7 @@ export default function JackHenry() {
                 desc: "Feel the satisfaction of streamlined member experiences",
                 delay: "delay-400"
               }].map((metric, index) => <div key={index} className={`bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 animate-fade-in delay-1400 ${metric.delay} group`}>
-                    <div className="flex items-center mb-4">
+                    <div className="flex flex-col lg:flex-row items-center mb-4">
                       <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 group-hover:bg-blue-200 transition-colors duration-300">
                         <metric.icon className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" style={{
                       color: '#2A5FAC'
@@ -218,7 +218,7 @@ export default function JackHenry() {
             </div>
 
             {/* How It Works Section - Enhanced */}
-            <div className="mt-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 rounded-3xl shadow-2xl border border-slate-700 p-12 transform transition-all duration-700 hover:shadow-3xl animate-fade-in delay-1600 relative overflow-hidden">
+            <div className="mt-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 rounded-3xl shadow-2xl border border-slate-700 lg:p-12 p-6 transform transition-all duration-700 hover:shadow-3xl animate-fade-in delay-1600 relative overflow-hidden">
               {/* Background Pattern */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-slate-500/10 pointer-events-none" />
               <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl -translate-y-48 translate-x-48" />
@@ -238,7 +238,7 @@ export default function JackHenry() {
                 <div className="max-w-5xl mx-auto">
                   <div className="relative">
                     {/* Enhanced Vertical line with gradient */}
-                    <div className="absolute left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50"></div>
+                    <div className="hidden lg:block absolute left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50"></div>
                     
                     {/* Steps */}
                     {[
@@ -280,16 +280,16 @@ export default function JackHenry() {
                     ].map((step, index) => (
                       <div key={index} className={`relative flex items-start mb-16 last:mb-0 animate-fade-in delay-1800 ${step.delay} group`}>
                         {/* Enhanced Step circle with gradient and glow */}
-                        <div className={`relative z-10 w-20 h-20 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-2xl border-2 border-white/20 group-hover:scale-110 group-hover:shadow-3xl transition-all duration-500 transform backdrop-blur-sm`}>
+                        <div className={`hidden relative z-10 w-20 h-20 rounded-full bg-gradient-to-br ${step.gradient} lg:flex items-center justify-center shadow-2xl border-2 border-white/20 group-hover:scale-110 group-hover:shadow-3xl transition-all duration-500 transform backdrop-blur-sm`}>
                           <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${step.gradient} opacity-20 blur-xl animate-pulse`} />
                           <step.icon className="w-8 h-8 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
                         </div>
                         
                         {/* Enhanced Step content */}
-                        <div className="ml-12 pb-8 flex-1">
+                        <div className="lg:ml-12 lg:pb-8 flex-1 w-full lg:w-auto">
                           <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-translate-y-2 border border-white/20">
                             <div className="flex items-start justify-between mb-4">
-                              <div className="flex-1">
+                              <div className="flex-1 text-left lg:text-center">
                                 <h3 className="text-2xl font-bold mb-4 text-slate-800 group-hover:text-blue-800 transition-colors duration-300">
                                   {step.title}
                                 </h3>
@@ -324,7 +324,7 @@ export default function JackHenry() {
                   <Button 
                     size="lg" 
                     onClick={scrollToForm}
-                    className="px-10 py-6 text-lg font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-2xl border-0"
+                    className="gap-0 px-10 py-6 text-lg font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-2xl border-0 w-full lg:w-auto"
                   >
                     Start Your Integration Journey
                     <ArrowRight className="ml-3 w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
@@ -356,7 +356,7 @@ export default function JackHenry() {
                 <div className="flex justify-center items-center gap-8 flex-wrap">
                   {leadershipTeam.map((member, index) => <HoverCard key={index}>
                       <HoverCardTrigger asChild>
-                        <div className={`flex flex-col items-center cursor-pointer group transition-all duration-500 hover:scale-110 animate-fade-in delay-2000`}>
+                        <div className={`flex-1 flex flex-col items-center cursor-pointer group transition-all duration-500 hover:scale-110 animate-fade-in delay-2000`}>
                           <Avatar className="w-20 h-20 mb-3 ring-2 ring-blue-100 group-hover:ring-blue-300 transition-all duration-300 group-hover:shadow-lg">
                             <AvatarImage src={member.image} alt={member.name} />
                             <AvatarFallback className="bg-blue-100 text-blue-800 font-semibold">
@@ -435,8 +435,8 @@ export default function JackHenry() {
             {/* Trust Indicators */}
             <div className="mt-16 pt-8 border-t animate-fade-in delay-3000">
               <p className="text-sm text-gray-500 mb-4">Experience trusted by leading credit unions and community banks</p>
-              <div className="flex items-center justify-center space-x-8 opacity-60">
-                {["Jack Henry Certified", "SOC 2 Compliant", "Bank-Grade Security"].map((badge, index) => <div key={index} className={`px-4 py-2 bg-gray-100 rounded text-sm font-medium text-gray-600 transition-all duration-300 hover:bg-gray-200 hover:scale-105 animate-fade-in delay-3000`}>
+              <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-8 gap-2 opacity-60">
+                {["Jack Henry Certified", "SOC 2 Compliant", "Bank-Grade Security"].map((badge, index) => <div key={index} className={`w-full lg:w-auto px-4 py-2 bg-gray-100 rounded text-sm font-medium text-gray-600 transition-all duration-300 hover:bg-gray-200 hover:scale-105 animate-fade-in delay-3000`}>
                     {badge}
                   </div>)}
               </div>
