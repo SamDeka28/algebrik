@@ -267,6 +267,18 @@ const allTabs = [
   ...integrationGroups.map((g) => ({ id: g.id, name: g.name })),
 ];
 
+// Featured Integrations (separate from main groups)
+const featuredIntegrationNames = ['Plaid', 'DocuSign', 'Equifax', 'RouteOne'];
+const featuredIntegrations = featuredIntegrationNames
+  .map((name) => {
+    for (const group of integrationGroups) {
+      const found = group.integrations.find((i) => i.name === name);
+      if (found) return found;
+    }
+    return null;
+  })
+  .filter(Boolean);
+
 // 2. Remove old partnerData, categories, featuredPartners, and related logic
 // 3. Partner Card (reuse, but use new data)
 const PartnerCard = ({ partner }: { partner: { name: string; image: string; description: string; website: string } }) => {
@@ -327,6 +339,21 @@ export default function IntegrationsPage() {
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Integrations Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h3 className="text-3xl font-semibold mb-12 text-center text-[#2A5FAC]">
+            Featured Integrations
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {featuredIntegrations.filter((partner): partner is { name: string; image: string; description: string; website: string } => !!partner)
+              .map((partner) => (
+                <PartnerCard key={partner.name} partner={partner} />
+              ))}
           </div>
         </div>
       </section>
