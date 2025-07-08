@@ -218,14 +218,14 @@ const newsArticles = [
 // Tools data for the Tools tab
 const toolsData = [
   {
-    image: '/icons/roi.png',
+    image: '/icons/roi.webp',
     title: "Discover Your ROI Gain",
     description: 'Switch to Algebrik AI to boost returns, reduce risk, and transform lending.',
     buttonText: 'Check your ROI',
     buttonLink: '/roi-calculator',
   },
   {
-    image: '/icons/healthcheck.png',
+    image: '/icons/healthcheck.webp',
     title: 'Is your Lending Stack a burden?',
     description: 'Don’t Build on a Broken Stack, take a moment to assess the health of your lending stack.',
     buttonText: 'Assess Now',
