@@ -205,6 +205,24 @@ const newsArticles = [
   }
 ];
 
+// Tools data for the Tools tab
+const toolsData = [
+  {
+    image: '/icons/roi.png',
+    title: "Discover Your ROI Gain",
+    description: 'Switch to Algebrik AI to boost returns, reduce risk, and transform lending.',
+    buttonText: 'Check your ROI',
+    buttonLink: '/roi-calculator',
+  },
+  {
+    image: '/icons/healthcheck.png',
+    title: 'Is your Lending Stack a burden?',
+    description: 'Don’t Build on a Broken Stack, take a moment to assess the health of your lending stack.',
+    buttonText: 'Assess Now',
+    buttonLink: '/lending-health-check',
+  },
+];
+
 export default function BlogCarousel() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
@@ -216,7 +234,9 @@ export default function BlogCarousel() {
 
 
   return (
-    <div className="container mx-auto p-3 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center">
+    <div className="container mx-auto p-3 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center relative pb-24">
+      <img src="/background_images/ml-single.svg" className="absolute left-0 -translate-x-1/2 translate-y-1/2 bottom-0 z-0"/>
+
       <div className="container px-2 py-[4px] bg-[#EAEDF3] flex justify-between items-center rounded-[36px] drop-shadow-[0_0_60px_0_rgba(0, 0, 0, 0.08)]  md:w-[700px] md:h-[56px]">
         {carouselData.map((item, index: number) => (
           <button
@@ -314,11 +334,12 @@ export default function BlogCarousel() {
           </motion.div>
         </div>
       }
+    
       <section className="container mx-auto max-w-[1160px] py-[10px] rounded-[36px] ">
 
 
         {/* News */}
-        <div className="flex flex-col items-center justify-center font-plus-jakarta">
+        <div className="flex flex-col items-center justify-center font-plus-jakarta relative">
           {currentIndex == 2 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 content-between gap-9">
               {newsArticles.map((article, index) => (
@@ -404,8 +425,37 @@ export default function BlogCarousel() {
             </div>
           }
 
+          {/* Tools */}
+          {currentIndex == 4 &&
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
+              {toolsData.map((tool, index) => (
+                <div
+                  key={index}
+                  className="bg-white max-w-[520px] text-gray-900 rounded-[20px] shadow p-4 flex flex-row gap-6"
+                >
+                    <Image
+                      src={tool.image}
+                      alt={""}
+                      width={120}
+                      height={120}
+                      className="object-cover  bg-gray-100 rounded-lg"
+                    />
+                  <div className="flex flex-col flex-1 gap-2 h-full">
+                    <h3 className="text-[22px] font-bold text-[#2A5FAC]">{tool.title}</h3>
+                    <p className="text-[15px] text-[#606060]">{tool.description}</p>
+                    <Link href={tool.buttonLink} target="_blank">
+                      <button className="border border-[#2A5FAC] text-[#2A5FAC] rounded-full px-6 py-2 font-medium hover:bg-[#2A5FAC] hover:text-white transition-all">
+                        {tool.buttonText}
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          }
 
-          {[1, 3,4].includes(currentIndex) &&
+
+          {[1, 3].includes(currentIndex) &&
 
             <h2 className="text-black text-[56px] text-center font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
 
