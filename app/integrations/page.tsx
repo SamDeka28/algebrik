@@ -13,22 +13,22 @@ const integrationGroups = [
     name: 'Bureaus',
     integrations: [
       {
-        name: 'Equifax',
+    name: 'Equifax',
         image: '/integration_logos/equifax.png',
         description: 'Instantly access credit reports and scores for streamlined underwriting.',
-        website: 'https://equifax.com',
-      },
+    website: 'https://equifax.com',
+  },
       {
-        name: 'Experian',
+    name: 'Experian',
         image: '/integration_logos/experian.png',
         description: 'Pull real-time credit data to power smarter lending decisions.',
-        website: 'https://experian.com',
-      },
+    website: 'https://experian.com',
+  },
       {
-        name: 'TransUnion',
+    name: 'TransUnion',
         image: '/integration_logos/transunion.png',
         description: 'Enable seamless credit pulls and borrower insights via TU integration.',
-        website: 'https://transunion.com',
+    website: 'https://transunion.com',
       },
     ],
   },
@@ -43,16 +43,16 @@ const integrationGroups = [
         website: 'https://jackhenry.com',
       },
       {
-        name: 'Corelation',
+    name: 'Corelation',
         image: '/integration_logos/corelation.png',
         description: 'Enable seamless origination and servicing through Algebrik’s KeyStone integration.',
-        website: 'https://corelationinc.com',
-      },
+    website: 'https://corelationinc.com',
+  },
       {
-        name: 'Fiserv',
+    name: 'Fiserv',
         image: '/integration_logos/fiserv.png',
         description: 'Algebrik supports Fiserv core connectivity to power fast, compliant workflows.',
-        website: 'https://fiserv.com',
+    website: 'https://fiserv.com',
       },
     ],
   },
@@ -71,13 +71,13 @@ const integrationGroups = [
         image: '/integration_logos/routeone.png',
         description: 'Receive and process indirect auto loans through Algebrik’s RouteOne bridge.',
         website: 'https://routeone.com',
-      },
+  },
       {
         name: 'Dealertrack',
         image: '/integration_logos/dealertrack.png',
         description: 'With Algebrik, loan officers can easily handle apps flowing in from Dealertrack.',
         website: 'https://dealertrack.com',
-      },
+  },
       {
         name: 'AppOne',
         image: '/integration_logos/appone.png',
@@ -101,7 +101,7 @@ const integrationGroups = [
         image: '/integration_logos/conductiv.png',
         description: 'Power income verification inside Algebrik with payroll access via Conductiv.',
         website: 'https://conductiv.com',
-      },
+  },
       {
         name: 'SpringVerify',
         image: '/integration_logos/SpringVerify.png',
@@ -115,10 +115,10 @@ const integrationGroups = [
     name: 'Alternate Data',
     integrations: [
       {
-        name: 'LexisNexis',
+    name: 'LexisNexis',
         image: '/integration_logos/lexis.png',
         description: 'Algebrik brings in LexisNexis data to expand creditworthiness assessments beyond the bureau.',
-        website: 'https://lexisnexis.com',
+    website: 'https://lexisnexis.com',
       },
     ],
   },
@@ -133,16 +133,16 @@ const integrationGroups = [
         website: 'https://plaid.com',
       },
       {
-        name: 'SentiLink',
+    name: 'SentiLink',
         image: '/integration_logos/sentilink.png',
         description: 'Algebrik blocks synthetic identities with real-time risk scoring from SentiLink.',
-        website: 'https://sentilink.com',
-      },
+    website: 'https://sentilink.com',
+  },
       {
-        name: 'Point Predictive',
+    name: 'Point Predictive',
         image: '/integration_logos/point.png',
         description: 'Use Point Predictive inside Algebrik to flag risky applications before approval.',
-        website: 'https://pointpredictive.com',
+    website: 'https://pointpredictive.com',
       },
     ],
   },
@@ -163,10 +163,10 @@ const integrationGroups = [
         website: 'https://plaid.com',
       },
       {
-        name: 'Socure',
+    name: 'Socure',
         image: '/integration_logos/socure.png',
         description: 'Leverage Socure via Algebrik to ensure fast, accurate identity verification.',
-        website: 'https://socure.com',
+    website: 'https://socure.com',
       },
     ],
   },
@@ -181,29 +181,29 @@ const integrationGroups = [
         website: 'https://trustage.com',
       },
       {
-        name: 'Allied Solutions',
+    name: 'Allied Solutions',
         image: '/integration_logos/allied.png',
         description: 'Offer GAP and warranty options inside Algebrik via Allied Solutions.',
-        website: 'https://alliedsolutions.net',
+    website: 'https://alliedsolutions.net',
       },
       {
         name: 'Auto Exam',
         image: '/integration_logos/auto.png',
         description: 'Algebrik enables Auto Exam’s mechanical coverage as part of auto loan flows.',
         website: 'https://autoexam.com',
-      },
+  },
       {
-        name: 'SWBC',
+    name: 'SWBC',
         image: '/integration_logos/swbc.png',
         description: 'Add SWBC’s protection plans to Algebrik’s digital loan experience.',
-        website: 'https://swbc.com',
-      },
+    website: 'https://swbc.com',
+  },
       {
         name: 'Frost',
         image: '/integration_logos/frost.png',
         description: 'Deliver embedded lending insurance offers through Frost integrations on Algebrik.',
         website: 'https://frost.com',
-      },
+  },
       {
         name: 'Route66 Warranty',
         image: '/integration_logos/route66.png',
@@ -221,24 +221,24 @@ const integrationGroups = [
         image: '/integration_logos/docusign.png',
         description: 'Algebrik powers secure document workflows with integrated e-signatures from DocuSign.',
         website: 'https://docusign.com',
-      },
+  },
       {
-        name: 'Carleton',
+    name: 'Carleton',
         image: '/integration_logos/carle.png',
         description: 'Generate compliant disclosures and payoff quotes in Algebrik via Carleton.',
-        website: 'https://carleton.com',
+    website: 'https://carleton.com',
       },
       {
         name: 'J.D. Power',
         image: '/integration_logos/jdpower.png',
         description: 'Use J.D. Power data in Algebrik to price vehicles accurately for lending.',
         website: 'https://jdpower.com',
-      },
+  },
       {
-        name: 'Eltropy',
+    name: 'Eltropy',
         image: '/integration_logos/eltropy.png',
         description: 'Communicate with borrowers via text, voice, or video right inside Algebrik using Eltropy.',
-        website: 'https://eltropy.com',
+    website: 'https://eltropy.com',
       },
       {
         name: 'eDoc Innovations',
@@ -253,10 +253,10 @@ const integrationGroups = [
         website: 'https://carfax.com',
       },
       {
-        name: 'Janusea',
+    name: 'Janusea',
         image: '/integration_logos/janusea.png',
         description: 'Algebrik uses Janusea to streamline and secure API connectivity with core systems.',
-        website: 'https://janusea.com',
+    website: 'https://janusea.com',
       },
     ],
   },
@@ -353,7 +353,7 @@ export default function IntegrationsPage() {
             {featuredIntegrations.filter((partner): partner is { name: string; image: string; description: string; website: string } => !!partner)
               .map((partner) => (
                 <PartnerCard key={partner.name} partner={partner} />
-              ))}
+            ))}
           </div>
         </div>
       </section>
@@ -362,20 +362,20 @@ export default function IntegrationsPage() {
       <section id="all-integrations" className="py-16">
         <div className="container mx-auto px-4">
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
             {allTabs.map((tab) => (
-              <button
+                <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-full border transition-all duration-300 text-sm font-medium ${
+                  className={`px-4 py-2 rounded-full border transition-all duration-300 text-sm font-medium ${
                   activeTab === tab.id
-                    ? 'bg-[#2A5FAC] border-[#2A5FAC] text-white'
-                    : 'bg-white border-gray-300 text-[#2A5FAC] hover:bg-gray-50 hover:border-[#2A5FAC]'
-                }`}
-              >
+                      ? 'bg-[#2A5FAC] border-[#2A5FAC] text-white'
+                      : 'bg-white border-gray-300 text-[#2A5FAC] hover:bg-gray-50 hover:border-[#2A5FAC]'
+                  }`}
+                >
                 {tab.name}
-              </button>
-            ))}
+                </button>
+              ))}
           </div>
 
           {/* Integrations Grid */}
@@ -395,7 +395,7 @@ export default function IntegrationsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {group.integrations.map((partner) => (
                     <PartnerCard key={partner.name} partner={partner} />
-                  ))}
+                ))}
                 </div>
               </motion.div>
             ))}
