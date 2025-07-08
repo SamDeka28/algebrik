@@ -6,278 +6,291 @@ import { CustomHeader, CustomSubtitle } from "@/components/CustomHeader";
 import Button from "@/components/Buttons";
 import Image from "next/image";
 
-// Partner data structure
-interface Partner {
-  name: string;
-  image: string;
-  category: string;
-  description: string;
-  website: string;
-  logoClass: string;
-}
-
-// const integrations = [
-//     { image: "/partner_icons/allied.webp" },
-//     { image: "/partner_icons/autoexam.webp" },
-//     { image: "/partner_icons/carle.webp" },
-//     { image: "/partner_icons/conductiv.webp" },
-//     { image: "/partner_icons/corelation.webp" },
-//     { image: "/partner_icons/equifax.webp" },
-//     { image: "/partner_icons/experian.webp" },
-//     // { image: "/partner_icons/cuanswers.webp" },
-//     { image: "/partner_icons/dealertrack.webp" },
-//     { image: "/partner_icons/docusign.webp" },
-//     { image: "/partner_icons/fiserv.webp" },
-//     { image: "/partner_icons/jackharry.webp" },
-//     { image: "/partner_icons/jdpower.webp" },
-//     { image: "/partner_icons/lexis.webp" },
-//     { image: "/partner_icons/ottomoto.webp" },
-//     { image: "/partner_icons/plaid.webp" },
-//     // { image: "/partner_icons/point.webp" },
-//     // { image: "/partner_icons/portico.webp" },
-//     { image: "/partner_icons/routeone.webp" },
-//     // { image: "/partner_icons/scienaptic.webp" },
-//     { image: "/partner_icons/sentilink.webp" },
-//     // { image: "/partner_icons/socure.webp" },
-//     { image: "/partner_icons/transunion.webp" },
-//     { image: "/partner_icons/trustage.webp" },
-//     // { image: "/partner_icons/zest.webp" },
-//     { image: "/partner_icons/kelly.webp" },
-//   ];
-
-// Partner data
-const partnerData: { [key: string]: Partner } = {
-  'Plaid': {
-    name: 'Plaid',
-    image: "/integration_logos/plaid.png",
-    category: 'Core Banking & Financial Data',
-    description: 'Consumer-permissioned access to real-time financial data enabling faster, more accurate lending decisions.',
-    website: 'https://plaid.com',
-    logoClass: 'bg-gradient-to-r from-green-400 to-blue-400'
+// 1. Define the new groupings and integration data
+const integrationGroups = [
+  {
+    id: 'bureaus',
+    name: 'Bureaus',
+    integrations: [
+      {
+        name: 'Equifax',
+        image: '/integration_logos/equifax.png',
+        description: 'Instantly access credit reports and scores for streamlined underwriting.',
+        website: 'https://equifax.com',
+      },
+      {
+        name: 'Experian',
+        image: '/integration_logos/experian.png',
+        description: 'Pull real-time credit data to power smarter lending decisions.',
+        website: 'https://experian.com',
+      },
+      {
+        name: 'TransUnion',
+        image: '/integration_logos/transunion.png',
+        description: 'Enable seamless credit pulls and borrower insights via TU integration.',
+        website: 'https://transunion.com',
+      },
+    ],
   },
-  'DocuSign': {
-    name: 'DocuSign',
-    image: "/integration_logos/docusign.png",
-    category: 'Document & Workflow Management',
-    description: 'Industry-leading electronic signature technology with new sonic identity reflecting leadership position.',
-    website: 'https://docusign.com',
-    logoClass: 'bg-yellow-500'
+  {
+    id: 'cores',
+    name: 'Cores',
+    integrations: [
+      {
+        name: 'Jack Henry',
+        image: '/integration_logos/jackharry.png',
+        description: 'Algebrik connects natively with Jack Henry to sync account and member data in real time.',
+        website: 'https://jackhenry.com',
+      },
+      {
+        name: 'Corelation',
+        image: '/integration_logos/corelation.png',
+        description: 'Enable seamless origination and servicing through Algebrik’s KeyStone integration.',
+        website: 'https://corelationinc.com',
+      },
+      {
+        name: 'Fiserv',
+        image: '/integration_logos/fiserv.png',
+        description: 'Algebrik supports Fiserv core connectivity to power fast, compliant workflows.',
+        website: 'https://fiserv.com',
+      },
+    ],
   },
-  'Equifax': {
-    name: 'Equifax',
-    image: "/integration_logos/equifax.png",
-    category: 'Credit Bureaus',
-    description: 'Comprehensive credit reporting and risk assessment with deep industry expertise and tradition of trust in lending decisions.',
-    website: 'https://equifax.com',
-    logoClass: 'bg-red-600'
+  {
+    id: 'indirect-auto',
+    name: 'Indirect Auto',
+    integrations: [
+      {
+        name: 'OttoMoto',
+        image: '/integration_logos/ottomoto.png',
+        description: 'Algebrik automates dealer-submitted loan ingestion via OttoMoto.',
+        website: 'https://ottomoto.com',
+      },
+      {
+        name: 'RouteOne',
+        image: '/integration_logos/routeone.png',
+        description: 'Receive and process indirect auto loans through Algebrik’s RouteOne bridge.',
+        website: 'https://routeone.com',
+      },
+      {
+        name: 'Dealertrack',
+        image: '/integration_logos/dealertrack.png',
+        description: 'With Algebrik, loan officers can easily handle apps flowing in from Dealertrack.',
+        website: 'https://dealertrack.com',
+      },
+      {
+        name: 'AppOne',
+        image: '/integration_logos/appone.png',
+        description: 'Algebrik’s AppOne integration simplifies indirect lending for credit unions and auto lenders.',
+        website: 'https://appone.com',
+      },
+    ],
   },
-  'RouteOne': {
-    name: 'RouteOne',
-    image: "/integration_logos/routeone.png",
-    category: 'Auto Lending & Vehicle Data',
-    description: 'Comprehensive F&I platform connecting dealerships with approximately 1,500 integrated finance sources.',
-    website: 'https://routeone.com',
-    logoClass: 'bg-blue-600'
+  {
+    id: 'consumer-permissioned',
+    name: 'Consumer Permissioned Data & Income',
+    integrations: [
+      {
+        name: 'Plaid',
+        image: '/integration_logos/plaid.png',
+        description: 'Algebrik lets borrowers share bank and income data securely through Plaid.',
+        website: 'https://plaid.com',
+      },
+      {
+        name: 'Conductiv',
+        image: '/integration_logos/conductiv.png',
+        description: 'Power income verification inside Algebrik with payroll access via Conductiv.',
+        website: 'https://conductiv.com',
+      },
+      {
+        name: 'SpringVerify',
+        image: '/integration_logos/SpringVerify.png',
+        description: 'Algebrik integrates SpringVerify to automate employment and income validation.',
+        website: 'https://springverify.com',
+      },
+    ],
   },
-  'Experian': {
-    name: 'Experian',
-    image: "/integration_logos/experian.png",
-    category: 'Credit Bureaus',
-    description: 'Advanced credit data and analytics to help lenders make informed decisions with global credit reporting expertise.',
-    website: 'https://experian.com',
-    logoClass: 'bg-orange-500'
+  {
+    id: 'alternate-data',
+    name: 'Alternate Data',
+    integrations: [
+      {
+        name: 'LexisNexis',
+        image: '/integration_logos/lexis.png',
+        description: 'Algebrik brings in LexisNexis data to expand creditworthiness assessments beyond the bureau.',
+        website: 'https://lexisnexis.com',
+      },
+    ],
   },
-  'TransUnion': {
-    name: 'TransUnion',
-    image: "/integration_logos/transunion.png",
-    category: 'Credit Bureaus',
-    description: 'Innovative credit reporting solutions and risk management tools for modern lending operations.',
-    website: 'https://transunion.com',
-    logoClass: 'bg-blue-700'
+  {
+    id: 'fraud',
+    name: 'Fraud',
+    integrations: [
+      {
+        name: 'Plaid',
+        image: '/integration_logos/plaid.png',
+        description: 'Detect anomalies and reduce risk via Plaid’s fraud prevention capabilities within Algebrik.',
+        website: 'https://plaid.com',
+      },
+      {
+        name: 'SentiLink',
+        image: '/integration_logos/sentilink.png',
+        description: 'Algebrik blocks synthetic identities with real-time risk scoring from SentiLink.',
+        website: 'https://sentilink.com',
+      },
+      {
+        name: 'Point Predictive',
+        image: '/integration_logos/point.png',
+        description: 'Use Point Predictive inside Algebrik to flag risky applications before approval.',
+        website: 'https://pointpredictive.com',
+      },
+    ],
   },
-  'Corelation': {
-    name: 'Corelation',
-    image: "/integration_logos/corelation.png",
-    category: 'Core Banking & Financial Data',
-    description: 'Core banking system integration for enhanced personalization and improved member experience in credit union environments.',
-    website: 'https://corelationinc.com',
-    logoClass: 'bg-blue-500'
+  {
+    id: 'identity',
+    name: 'Identity',
+    integrations: [
+      {
+        name: 'LexisNexis',
+        image: '/integration_logos/lexis.png',
+        description: 'Algebrik verifies borrower identity instantly through LexisNexis’s ID graph.',
+        website: 'https://lexisnexis.com',
+      },
+      {
+        name: 'Plaid',
+        image: '/integration_logos/plaid.png',
+        description: 'Confirm bank ownership and account legitimacy with Plaid inside Algebrik.',
+        website: 'https://plaid.com',
+      },
+      {
+        name: 'Socure',
+        image: '/integration_logos/socure.png',
+        description: 'Leverage Socure via Algebrik to ensure fast, accurate identity verification.',
+        website: 'https://socure.com',
+      },
+    ],
   },
-  'Fiserv': {
-    name: 'Fiserv',
-    image: "/integration_logos/fiserv.png",
-    category: 'Core Banking & Financial Data',
-    description: 'Comprehensive financial technology platform providing core banking solutions with vibrant, innovative approach to fintech.',
-    website: 'https://fiserv.com',
-    logoClass: 'bg-orange-500'
+  {
+    id: 'insurance',
+    name: 'Insurance, GAP, Warranty',
+    integrations: [
+      {
+        name: 'TruStage',
+        image: '/integration_logos/trustage.png',
+        description: 'Algebrik embeds TruStage protection products directly into the borrower journey.',
+        website: 'https://trustage.com',
+      },
+      {
+        name: 'Allied Solutions',
+        image: '/integration_logos/allied.png',
+        description: 'Offer GAP and warranty options inside Algebrik via Allied Solutions.',
+        website: 'https://alliedsolutions.net',
+      },
+      {
+        name: 'Auto Exam',
+        image: '/integration_logos/auto.png',
+        description: 'Algebrik enables Auto Exam’s mechanical coverage as part of auto loan flows.',
+        website: 'https://autoexam.com',
+      },
+      {
+        name: 'SWBC',
+        image: '/integration_logos/swbc.png',
+        description: 'Add SWBC’s protection plans to Algebrik’s digital loan experience.',
+        website: 'https://swbc.com',
+      },
+      {
+        name: 'Frost',
+        image: '/integration_logos/frost.png',
+        description: 'Deliver embedded lending insurance offers through Frost integrations on Algebrik.',
+        website: 'https://frost.com',
+      },
+      {
+        name: 'Route66 Warranty',
+        image: '/integration_logos/route66.png',
+        description: 'Algebrik lets lenders offer Route66 Extended Warranty coverage directly within the lending workflow.',
+        website: 'https://route66warranty.com',
+      },
+    ],
   },
-  'Conductiv': {
-    name: 'Conductiv',
-    image: "/integration_logos/conductiv.png",
-    category: 'Core Banking & Financial Data',
-    description: 'Permissioned data access with automated stipulations and enhanced underwriting capabilities.',
-    website: 'https://conductiv.com',
-    logoClass: 'bg-gray-700'
+  {
+    id: 'others',
+    name: 'Others',
+    integrations: [
+      {
+        name: 'DocuSign',
+        image: '/integration_logos/docusign.png',
+        description: 'Algebrik powers secure document workflows with integrated e-signatures from DocuSign.',
+        website: 'https://docusign.com',
+      },
+      {
+        name: 'Carleton',
+        image: '/integration_logos/carle.png',
+        description: 'Generate compliant disclosures and payoff quotes in Algebrik via Carleton.',
+        website: 'https://carleton.com',
+      },
+      {
+        name: 'J.D. Power',
+        image: '/integration_logos/jdpower.png',
+        description: 'Use J.D. Power data in Algebrik to price vehicles accurately for lending.',
+        website: 'https://jdpower.com',
+      },
+      {
+        name: 'Eltropy',
+        image: '/integration_logos/eltropy.png',
+        description: 'Communicate with borrowers via text, voice, or video right inside Algebrik using Eltropy.',
+        website: 'https://eltropy.com',
+      },
+      {
+        name: 'eDoc Innovations',
+        image: '/integration_logos/edoc.png',
+        description: 'Algebrik integrates with eDoc for compliant digital document storage and lifecycle management.',
+        website: 'https://edoclogic.com',
+      },
+      {
+        name: 'Carfax',
+        image: '/integration_logos/carfax.png',
+        description: 'Access vehicle history reports through Algebrik to inform safe, data-backed lending decisions.',
+        website: 'https://carfax.com',
+      },
+      {
+        name: 'Janusea',
+        image: '/integration_logos/janusea.png',
+        description: 'Algebrik uses Janusea to streamline and secure API connectivity with core systems.',
+        website: 'https://janusea.com',
+      },
+    ],
   },
-  'Spinwheel': {
-    name: 'Spinwheel',
-    image: "/integration_logos/spinwheel.png",
-    category: 'Core Banking & Financial Data',
-    description: 'Advanced financial data connectivity and insights for improved lending decision-making.',
-    website: 'https://spinwheelplatform.com',
-    logoClass: 'bg-purple-600'
-  },
-  'OTTOMOTO': {
-    name: 'OTTOMOTO',
-    image: "/integration_logos/ottomoto.png",
-    category: 'Auto Lending & Vehicle Data',
-    description: 'Enhanced embedded lending capabilities with AI-driven insights for automotive finance.',
-    website: 'https://ottomoto.com',
-    logoClass: 'bg-gray-800'
-  },
-  'Carfax': {
-    name: 'Carfax',
-    image: "/integration_logos/carfax.png",
-    category: 'Auto Lending & Vehicle Data',
-    description: 'Comprehensive vehicle history reports and automotive data for informed auto lending decisions.',
-    website: 'https://carfax.com',
-    logoClass: 'bg-orange-600'
-  },
-  'Auto Exam': {
-    name: 'Auto Exam',
-    image: "/integration_logos/auto.png",
-    category: 'Auto Lending & Vehicle Data',
-    description: 'Seamless delivery of auto loan protection solutions and vehicle-related financial products.',
-    website: 'https://autoexam.com',
-    logoClass: 'bg-gray-600'
-  },
-  'LexisNexis': {
-    name: 'LexisNexis',
-    image: "/integration_logos/lexis.png",
-    category: 'Fraud Detection & Identity',
-    description: 'Advanced risk and identity solutions for comprehensive fraud detection and compliance management.',
-    website: 'https://lexisnexis.com',
-    logoClass: 'bg-blue-800'
-  },
-  'SentiLink': {
-    name: 'SentiLink',
-    image: "/integration_logos/sentilink.png",
-    category: 'Fraud Detection & Identity',
-    description: 'Sophisticated fraud detection technology specializing in synthetic identity prevention.',
-    website: 'https://sentilink.com',
-    logoClass: 'bg-red-600'
-  },
-  'Point Predictive': {
-    name: 'Point Predictive',
-    image: "/integration_logos/point.png",
-    category: 'Fraud Detection & Identity',
-    description: 'AI-powered fraud detection covering auto, mortgage, fintech, and personal lending with over 90% fraud detection accuracy.',
-    website: 'https://pointpredictive.com',
-    logoClass: 'bg-teal-600'
-  },
-  'Socure': {
-    name: 'Socure',
-    image: "/integration_logos/socure.png",
-    category: 'Fraud Detection & Identity',
-    description: 'AI-powered digital identity platform for streamlined identity verification and risk assessment.',
-    website: 'https://socure.com',
-    logoClass: 'bg-teal-500'
-  },
-  'Allied Solutions': {
-    name: 'Allied Solutions',
-    image: "/integration_logos/allied.png",
-    category: 'Insurance & Warranty',
-    description: 'Comprehensive insurance and risk management solutions with extensive industry experience.',
-    website: 'https://alliedsolutions.net',
-    logoClass: 'bg-blue-900'
-  },
-  'SWBC': {
-    name: 'SWBC',
-    image: "/integration_logos/swbc.png",
-    category: 'Insurance & Warranty',
-    description: 'Insurance and risk management solutions with over 35 years of experience in the insurance industry.',
-    website: 'https://swbc.com',
-    logoClass: 'bg-blue-700'
-  },
-  'TruSTAGE': {
-    name: 'TruSTAGE',
-    image: "/integration_logos/trustage.png",
-    category: 'Insurance & Warranty',
-    description: 'Trusted insurance and financial protection products designed specifically for credit union members.',
-    website: 'https://trustage.com',
-    logoClass: 'bg-blue-600'
-  },
-  'Extended Warranty': {
-    name: 'Extended Warranty',
-    image: "/integration_logos/extended.png",
-    category: 'Insurance & Warranty',
-    description: 'Comprehensive warranty protection solutions for various lending products.',
-    website: '#',
-    logoClass: 'bg-gray-700'
-  },
-  'J.D. Power': {
-    name: 'J.D. Power',
-    image: "/integration_logos/jdpower.png",
-    category: 'Document & Workflow Management',
-    description: 'Trusted insights and analytics for improving customer satisfaction and lending performance.',
-    website: 'https://jdpower.com',
-    logoClass: 'bg-gray-900'
-  },
-  'Carleton': {
-    name: 'Carleton',
-    image: "/integration_logos/carle.png",
-    category: 'Document & Workflow Management',
-    description: 'Enhanced lending accuracy and compliance through advanced verification and data solutions.',
-    website: 'https://carleton.com',
-    logoClass: 'bg-purple-700'
-  },
-  'Eltropy': {
-    name: 'Eltropy',
-    image: "/integration_logos/eltropy.png",
-    category: 'Document & Workflow Management',
-    description: 'Communication platform for streamlined borrower engagement and loan servicing.',
-    website: 'https://eltropy.com',
-    logoClass: 'bg-purple-600'
-  },
-  'Janusea': {
-    name: 'Janusea',
-    image: "/integration_logos/janusea.png",
-    category: 'Document & Workflow Management',
-    description: 'Advanced document processing and workflow management solutions.',
-    website: 'https://janusea.com',
-    logoClass: 'bg-teal-400'
-  }
-};
-
-// Category data
-const categories = [
-  { id: 'all', name: 'All' },
-  { id: 'Credit Bureaus', name: 'Credit Bureaus' },
-  { id: 'Core Banking & Financial Data', name: 'Core Banking & Financial Data' },
-  { id: 'Auto Lending & Vehicle Data', name: 'Auto Lending & Vehicle Data' },
-  { id: 'Fraud Detection & Identity', name: 'Fraud Detection & Identity' },
-  { id: 'Insurance & Warranty', name: 'Insurance & Warranty' },
-  { id: 'Document & Workflow Management', name: 'Document & Workflow Management' }
 ];
 
-// Featured partners
-const featuredPartners = ['Plaid', 'DocuSign', 'Equifax', 'RouteOne'];
+const allTabs = [
+  { id: 'all', name: 'All' },
+  ...integrationGroups.map((g) => ({ id: g.id, name: g.name })),
+];
 
-// Partner Card Component
-const PartnerCard = ({ partner, isFeatured = false }: { partner: Partner; isFeatured?: boolean }) => {
+// Featured Integrations (separate from main groups)
+const featuredIntegrationNames = ['Plaid', 'DocuSign', 'Equifax', 'RouteOne'];
+const featuredIntegrations = featuredIntegrationNames
+  .map((name) => {
+    for (const group of integrationGroups) {
+      const found = group.integrations.find((i) => i.name === name);
+      if (found) return found;
+    }
+    return null;
+  })
+  .filter(Boolean);
+
+// 2. Remove old partnerData, categories, featuredPartners, and related logic
+// 3. Partner Card (reuse, but use new data)
+const PartnerCard = ({ partner }: { partner: { name: string; image: string; description: string; website: string } }) => {
   const [isHovered, setIsHovered] = useState(false);
-
   const handlePartnerClick = () => {
     if (partner.website && partner.website !== '#') {
       window.open(partner.website, '_blank');
     }
   };
-
   return (
     <motion.div
-      className={`bg-white border border-gray-200 rounded-xl p-6 text-center cursor-pointer transition-all duration-300 ${
-        isFeatured ? 'border-2' : ''
-      } ${isHovered ? 'border-blue-500' : ''}`}
+      className={`bg-white border border-gray-200 rounded-xl p-6 text-center cursor-pointer transition-all duration-300 ${isHovered ? 'border-blue-500' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handlePartnerClick}
@@ -293,45 +306,15 @@ const PartnerCard = ({ partner, isFeatured = false }: { partner: Partner; isFeat
   );
 };
 
-// Category Section Component
-const CategorySection = ({ category, partners }: { category: string; partners: Partner[] }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="mb-8"
-    >
-      <h4 className="text-2xl font-semibold mb-5 pb-2 border-b-2 border-gray-200 text-[#2A5FAC]">
-        {category}
-      </h4>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {partners.map((partner) => (
-          <PartnerCard key={partner.name} partner={partner} />
-        ))}
-      </div>
-    </motion.div>
-  );
-};
-
+// 4. Main Page Component
 export default function IntegrationsPage() {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [activeTab, setActiveTab] = useState('all');
 
-  // Get all partners grouped by category
-  const partnersByCategory = Object.values(partnerData).reduce((acc, partner) => {
-    if (!acc[partner.category]) {
-      acc[partner.category] = [];
-    }
-    acc[partner.category].push(partner);
-    return acc;
-  }, {} as { [key: string]: Partner[] });
-
-  // Get featured partners
-  const featuredPartnersList = featuredPartners.map(name => partnerData[name]).filter(Boolean);
-
-  // Handle category filter
-  const handleCategoryFilter = (category: string) => {
-    setActiveCategory(category);
+  // Helper to get integrations for the selected tab
+  const getIntegrations = () => {
+    if (activeTab === 'all') return integrationGroups;
+    const group = integrationGroups.find((g) => g.id === activeTab);
+    return group ? [group] : [];
   };
 
   return (
@@ -360,74 +343,62 @@ export default function IntegrationsPage() {
         </div>
       </section>
 
-      {/* Featured Partners Section */}
+      {/* Featured Integrations Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h3 className="text-3xl font-semibold mb-12 text-center text-[#2A5FAC]">
             Featured Integrations
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {featuredPartnersList.map((partner) => (
-              <PartnerCard key={partner.name} partner={partner} isFeatured={true} />
-            ))}
+            {featuredIntegrations.filter((partner): partner is { name: string; image: string; description: string; website: string } => !!partner)
+              .map((partner) => (
+                <PartnerCard key={partner.name} partner={partner} />
+              ))}
           </div>
         </div>
       </section>
 
-      {/* All Integrations Section */}
+      {/* Integrations Tabs & Content */}
       <section id="all-integrations" className="py-16">
         <div className="container mx-auto px-4">
-          <div className="mb-12">
-            <h3 className="text-3xl font-semibold mb-8 text-center text-[#2A5FAC]">
-              All Integrations By Category
-            </h3>
-            
-            {/* Category Filters */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => handleCategoryFilter(category.id)}
-                  className={`px-4 py-2 rounded-full border transition-all duration-300 text-sm font-medium ${
-                    activeCategory === category.id
-                      ? 'bg-[#2A5FAC] border-[#2A5FAC] text-white'
-                      : 'bg-white border-gray-300 text-[#2A5FAC] hover:bg-gray-50 hover:border-[#2A5FAC]'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
+          {/* Tabs */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {allTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-2 rounded-full border transition-all duration-300 text-sm font-medium ${
+                  activeTab === tab.id
+                    ? 'bg-[#2A5FAC] border-[#2A5FAC] text-white'
+                    : 'bg-white border-gray-300 text-[#2A5FAC] hover:bg-gray-50 hover:border-[#2A5FAC]'
+                }`}
+              >
+                {tab.name}
+              </button>
+            ))}
           </div>
 
-          {/* Partners Grid */}
+          {/* Integrations Grid */}
           <AnimatePresence mode="wait">
-            {activeCategory === 'all' ? (
+            {getIntegrations().map((group) => (
               <motion.div
-                key="all"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                key={group.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3 }}
+                className="mb-12"
               >
-                {Object.entries(partnersByCategory).map(([category, partners]) => (
-                  <CategorySection key={category} category={category} partners={partners} />
-                ))}
+                <h4 className="text-2xl font-semibold mb-5 pb-2 border-b-2 border-gray-200 text-[#2A5FAC] text-left">
+                  {group.name}
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {group.integrations.map((partner) => (
+                    <PartnerCard key={partner.name} partner={partner} />
+                  ))}
+                </div>
               </motion.div>
-            ) : (
-              <motion.div
-                key={activeCategory}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <CategorySection 
-                  category={activeCategory} 
-                  partners={partnersByCategory[activeCategory] || []} 
-                />
-              </motion.div>
-            )}
+            ))}
           </AnimatePresence>
         </div>
       </section>
