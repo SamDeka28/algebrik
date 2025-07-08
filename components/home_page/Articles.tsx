@@ -53,6 +53,16 @@ export default function Articles() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI and Kinective Partner to Streamline Lending from Application to Signature",
+      author: "PR Newswire",
+      source: "Yahoo Finance",
+      role: "Marketing",
+      description:"Algebrik AI Inc. today announced a strategic partnership with Kinective, a leading provider of digital connectivity, document workflow, and core integration solutions for the banking sector.",
+      link: "https://finance.yahoo.com/news/algebrik-ai-kinective-partner-streamline-120300510.html?guccounter=1",
+      image: "/section_images/blog/ya.webp",
+    },
+    {
+      title:
         "Algebrik AI Partners with TruStage™ to Offer Embedded Lending Protection Products Through the Loan Origination Journey",
       author: "PR Newswire",
       source: "Yahoo Finance",
