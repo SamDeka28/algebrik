@@ -34,36 +34,44 @@ interface Partner {
 }
 
 const partnerData: { [key: string]: Partner } = {
+  'Equifax':{
+    name:'Equifax',
+    image: '/menu-icons/ef.png',
+    category: 'Core Banking & Financial Data',
+    description: 'Consumer-permissioned access to real-time financial data enabling faster, more accurate lending decisions.',
+    website: 'https://www.equifax.com/',
+    logoClass: 'bg-gradient-to-r from-green-400 to-blue-400'
+  },
   'Plaid': {
     name: 'Plaid',
-    image: "/integration_logos/plaid.png",
+    image: "/menu-icons/plaid.png",
     category: 'Core Banking & Financial Data',
     description: 'Consumer-permissioned access to real-time financial data enabling faster, more accurate lending decisions.',
     website: 'https://plaid.com',
     logoClass: 'bg-gradient-to-r from-green-400 to-blue-400'
   },
-  'DocuSign': {
-    name: 'DocuSign',
-    image: "/integration_logos/docusign.png",
+  'Corelation': {
+    name: 'Corelation',
+    image: "/menu-icons/cr.png",
     category: 'Document & Workflow Management',
     description: 'Industry-leading electronic signature technology with new sonic identity reflecting leadership position.',
-    website: 'https://docusign.com',
+    website: 'https://corelationinc.com/',
     logoClass: 'bg-yellow-500'
   },
-  'Equifax': {
-    name: 'Equifax',
-    image: "/integration_logos/equifax.png",
+  'Jack Henry': {
+    name: 'Jack Henry',
+    image: "/menu-icons/jh.png",
     category: 'Credit Bureaus',
     description: 'Comprehensive credit reporting and risk assessment with deep industry expertise and tradition of trust in lending decisions.',
-    website: 'https://equifax.com',
+    website: 'https://www.jackhenry.com/',
     logoClass: 'bg-red-600'
   },
-  'RouteOne': {
-    name: 'RouteOne',
-    image: "/integration_logos/routeone.png",
+  'TruStage': {
+    name: 'TruStage',
+    image: "/menu-icons/ts.png",
     category: 'Auto Lending & Vehicle Data',
     description: 'Comprehensive F&I platform connecting dealerships with approximately 1,500 integrated finance sources.',
-    website: 'https://routeone.com',
+    website: 'https://www.trustage.com/',
     logoClass: 'bg-blue-600'
   }
 };
@@ -349,7 +357,7 @@ export default function Navbar() {
                     <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">Featured Integrations</div>
                     <div className="grid grid-cols-3 gap-6 my-4 pr-20">
                       {Object.values(partnerData).map((partner, i) => (
-                        <Link key={i} target="_blank" href={partner.website} className="bg-white px-10 w-full h-16 flex items-center gap-2  py-3 rounded-lg transition text-black text-base font-medium">
+                        <Link key={i} target="_blank" href={partner.website} className="px-10 w-full h-16 flex items-center gap-2  py-3 rounded-lg transition text-black text-base font-medium">
                           <img src={partner.image} alt={partner.name} className="w-full h-full object-contain" />
                         </Link>
                       ))}
