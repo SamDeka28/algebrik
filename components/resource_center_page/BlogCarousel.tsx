@@ -28,18 +28,6 @@ const carouselData: CarouselItem[] = [
     target:"_self"
   },
   {
-    header: "Blogs",
-    cardTitle: "BLOG",
-    title:
-      "Beyond Decisioning: AI's Comprehensive Role in Lending",
-    description:
-      "\"The success of any financial system lies in its ability to adapt and serve its people,\" once said Mervyn King, former....",
-    source: "Prateek Samantaray   ",
-    image: "/section_images/blog/beyond.webp",
-    url: "/resource-center/beyond_decisioning",
-    target: "_self",
-  },
-  {
     header: "Webinar",
     cardTitle: "WEBINAR",
     title: "Revolutionizing Lending with AI: Case Studies of Success",
