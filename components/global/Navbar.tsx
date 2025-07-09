@@ -176,6 +176,8 @@ export default function Navbar() {
     "/resource-center/what-you-will-learn-in-our-intelligent-lending-roundtable/",
     '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions',
     '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/',
+    '/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month',
+    '/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month/',    
     "/integrations",
     "/integrations/",
     "/become-a-partner",
@@ -183,7 +185,9 @@ export default function Navbar() {
     "/lending-health-check",
     "/lending-health-check/",
     "/jack-henry",
-    "/jack-henry/"
+    "/jack-henry/",
+    "/page-not-found",
+    "/page-not-found/"
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
@@ -341,15 +345,15 @@ export default function Navbar() {
                   <div className="flex flex-col  gap-3">
                     <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">About Us</div>
                     <Link href="/about" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                      <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
+                      <Image src="/icons/company.svg" alt="Credit Unions Icon" width={20} height={20} />
                       Company
                     </Link>
                     <Link href="/integrations" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                      <Image src="/icons/svg/car.svg" alt="Auto Lenders Icon" width={20} height={20} />
+                      <Image src="/icons/integrations.svg" alt="Auto Lenders Icon" width={20} height={20} />
                       Integrations
                     </Link>
                     <Link href="/become-a-partner" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                      <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
+                      <Image src="/icons/partner.svg" alt="Credit Unions Icon" width={20} height={20} />
                       Become a Partner
                     </Link>
                   </div>

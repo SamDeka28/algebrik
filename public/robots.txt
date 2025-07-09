@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /page-not-found
+Disallow: /404
+
+# Allow everything else
+Allow: /
+
+# If you have a sitemap, include it (uncomment and update the URL):
+# Sitemap: https://www.algabrik.com/sitemap.xml 
