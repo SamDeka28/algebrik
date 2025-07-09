@@ -20,6 +20,16 @@ const carouselData: CarouselItem[] = [
   {
     header: "Blogs",
     cardTitle: "BLOG",
+    title:"A Product Peek into What’s New at Algebrik this Month",
+    description:"At Algebrik, every product update is a chance to simplify complexity—and July is no different. Whether you're navigating indirect channels or financing a family’s first road trip RV, this month’s releases are designed to take the load off your lending teams.",
+    image:"/section_images/blog-9july.webp",
+    source:"Prateek Samantaray",
+    url:"/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month",
+    target:"_self"
+  },
+  {
+    header: "Blogs",
+    cardTitle: "BLOG",
     title:
       "Beyond Decisioning: AI's Comprehensive Role in Lending",
     description:

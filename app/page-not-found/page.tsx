@@ -5,11 +5,11 @@ import Image from "next/image";
 
 export default function PageNotFound() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-[#F8FAFF] to-[#E4E8ED] font-plus-jakarta relative px-4 py-12 overflow-hidden">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-[#F8FAFF] to-[#E4E8ED] font-plus-jakarta relative px-4 py-28 overflow-hidden">
       {/* Animated background accent */}
       <div className="absolute left-0 top-0 w-[700px] h-[700px] bg-[#2A5FAC]/10 rounded-full blur-[120px] -z-10 animate-pulse" />
       <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-[#195BD7]/10 rounded-full blur-[100px] -z-10 animate-pulse" />
-      <div className="relative z-10 flex flex-col items-center gap-8 bg-white/95 rounded-3xl shadow-2xl px-8 py-16 max-w-xl w-full border border-[#E4E8ED]">
+      <div className="relative z-10 flex flex-col items-center gap-8 rounded-3xl  px-8 py-16 max-w-xl w-full ">
         {/* Large 404 number with playful icon */}
         <div className="flex flex-col items-center gap-2">
           <span className="text-[80px] md:text-[120px] font-extrabold text-[#2A5FAC] drop-shadow-lg leading-none tracking-tight">404</span>

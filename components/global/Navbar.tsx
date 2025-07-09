@@ -176,6 +176,8 @@ export default function Navbar() {
     "/resource-center/what-you-will-learn-in-our-intelligent-lending-roundtable/",
     '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions',
     '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/',
+    '/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month',
+    '/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month/',    
     "/integrations",
     "/integrations/",
     "/become-a-partner",
