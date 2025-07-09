@@ -1,5 +1,13 @@
 export const blogContent = [
   {
+    blogTitle:"A Product Peek into What’s New at Algebrik this Month",
+    blogSubtitle:'a-product-peek-into-what-is-new-at-algebrik-this-month',
+    blogImage:"/section_images/blog-9july.webp",
+    authorName:"Prateek Samantaray",
+    authorImage:"/section_images/blog/pra.webp",
+    publishedDate:"July 9, 2025"
+  },
+  {
     blogTitle:"What’s Driving the Shift to Intelligent Lending?",
     blogSubtitle: "what-driving-the-shift-to-intelligent-lending",
     blogImage: "/section_images/Blog 1.jpg",

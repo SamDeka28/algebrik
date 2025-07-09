@@ -13,11 +13,21 @@ export default function NewsSection() {
   const newsArticles = [
     {
       title:
+        "Algebrik AI and Kinective Partner to Streamline Lending from Application to Signature",
+      author: "PR Newswire",
+      source: "Yahoo Finance",
+      role: "Marketing",
+      description:"Algebrik AI Inc. today announced a strategic partnership with Kinective, a leading provider of digital connectivity, document workflow, and core integration solutions for the banking sector.",
+      link: "https://finance.yahoo.com/news/algebrik-ai-kinective-partner-streamline-120300510.html?guccounter=1",
+      image: "/section_images/blog/ya.webp",
+    },
+    {
+      title:
         "Algebrik AI Partners with TruStage™ to Offer Embedded Lending Protection Products Through the Loan Origination Journey",
       author: "PR Newswire",
       source: "Yahoo Finance",
       role: "Marketing",
-      description:"AAlgebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
+      description:"Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
       link: "https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html",
       image: "/section_images/blog/ya.webp",
     },
