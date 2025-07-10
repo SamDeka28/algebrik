@@ -309,7 +309,7 @@ export default function BlogCarousel() {
                   <div className="flex flex-col gap-8 border border-[#D5D5D5] rounded-2xl p-6 bg-white">
                     {past.length === 0 && <div className="col-span-2 text-center text-[#606060]">No past webinars yet.</div>}
                     {past.map((w, idx) => (
-                      <div key={w.title + idx} className="flex flex-row gap-4 items-start">
+                      <div key={w.title + idx} className="flex  flex-col md:flex-row gap-6 items-start">
                         <div className="flex-1 bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1]">
                           <img src={w.image} alt={w.title} className="object-contain rounded-lg" />
                         </div>
