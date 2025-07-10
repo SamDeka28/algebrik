@@ -2,6 +2,7 @@
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { ArrowLeft, Download, Calendar, TrendingUp, AlertTriangle, AlertCircle, CheckCircle } from "lucide-react";
+import { PopupButton } from '@typeform/embed-react';
 
 interface SurveyData {
   losEfficiency: string;
@@ -79,13 +80,16 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Button>
-          <Button 
-            variant="outline"
-            className="border-[#003366] text-[#003366] hover:bg-blue-50"
+          {/* Replace the Button with PopupButton for Typeform modal */}
+          <PopupButton
+            id="uL6UYz0p"
+            size={50}
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-[#003366] bg-blue-100 hover:bg-blue-50 px-4 py-2 h-10"
+            style={{ display: 'inline-flex' }}
           >
             <Download className="w-4 h-4 mr-2" />
-            Download PDF Report
-          </Button>
+            Request PDF Report
+          </PopupButton>
         </div>
 
         {/* Main Title */}

@@ -13,6 +13,7 @@ import PortalDropdown from "./PortalDropdown";
 import { blogContent } from "@/components/constant/blogs";
 import dynamic from "next/dynamic";
 import ReactDOM from "react-dom";
+import { WEBINARS } from "../constant/webinars";
 
 const Contact = dynamic(() => import("../contacts"), { ssr: false });
 
@@ -187,7 +188,11 @@ export default function Navbar() {
     "/jack-henry",
     "/jack-henry/",
     "/page-not-found",
-    "/page-not-found/"
+    "/page-not-found/",
+    "/resource-center/is-your-member-experience-broken",
+    "/resource-center/is-your-member-experience-broken/",
+    ...WEBINARS.map(item=>item.link),
+    ...WEBINARS.map(item=>item.link+"/")
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
