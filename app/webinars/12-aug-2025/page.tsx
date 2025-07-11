@@ -1,6 +1,6 @@
 
 import { Metadata } from "next";
-import SecureYourSpot from "@/components/secure-your-spot/7-aug-2025";
+import SecureYourSpot from "@/components/secure-your-spot/12-aug-2025";
 
 
 
