@@ -62,7 +62,7 @@ const StressSimulation = ({ onComplete }: StressSimulationProps) => {
         <div className="mb-12">
           <div className="flex justify-center mb-6">
             <img 
-              src="/lovable-uploads/5e1ca36a-922a-4d14-a12c-4af46ff517a6.png" 
+              src="/section_images/blog/favicon.svg" 
               alt="Algebrik Logo" 
               className="h-20 w-auto object-contain"
               style={{ maxHeight: '80px' }}

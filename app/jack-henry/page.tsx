@@ -32,8 +32,8 @@ export default function JackHenry() {
   const handleDownloadOnePager = () => {
     // Create a sample PDF download - in production this would be a real PDF
     const link = document.createElement('a');
-    link.href = '#'; // In production, this would be the actual PDF URL
-    link.download = 'algebrik-ai-integration-guide.pdf';
+    link.href = '/documents/Algebrik X Symitar-2-1.pdf'; // Must be a valid path
+    link.download = 'Algebrik X Symitar-2-1.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
