@@ -16,6 +16,8 @@ interface SurveyData {
   scalability: string;
   volumeIncrease: string;
   processingCapacity: string;
+  losIntegration: string;
+  integrationAreas: string[];
 }
 
 interface StressResult {
@@ -40,7 +42,9 @@ interface SimulationDashboardProps {
 
 const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }: SimulationDashboardProps) => {
 
-  const [showContactModal,setShowContactModal]=useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [showPdfAlert, setShowPdfAlert] = useState(false); // for top button
+  const [showBottomPdfAlert, setShowBottomPdfAlert] = useState(false); // for bottom button
 
   const getScoreColor = (score: number) => {
     if (score > 75) return "text-green-600";
@@ -77,7 +81,44 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
   const [form, setForm] = useState({ name: "", email: "" });
   const [formError, setFormError] = useState<string | null>(null);
 
-  const handleUnlock = (e: React.FormEvent) => {
+  // HubSpot submission logic
+  const HUBSPOT_PORTAL_ID = "47671281"; // TODO: Replace with your actual portal ID
+  const HUBSPOT_FORM_GUID = "b4e3d63f-9ef1-4793-b688-c849f44778ea"; // TODO: Replace with your actual form GUID
+  const HUBSPOT_ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`;
+
+  const submitToHubspot = async (form: { name: string; email: string }) => {
+    // Map form and surveyData to HubSpot fields
+    const payload = {
+      "0-1/firstname": form.name.split(" ")[0] || "",
+      "0-1/lastname": form.name.split(" ").slice(1).join(" ") || "",
+      "0-1/email": form.email,
+      "0-1/misc": "",
+      "0-1/automation_level": surveyData.automationPercentage,
+      "0-1/system_downtime": surveyData.systemDowntime,
+      "0-1/loan_approval_time": surveyData.approvalTime,
+      "0-1/real_time_compliance_checks": surveyData.complianceChecks,
+      "0-1/system_scalability_quotient": surveyData.scalability,
+      "0-1/loan_increase_projection": surveyData.volumeIncrease,
+      "0-1/peak_loan_processing_capacity": surveyData.processingCapacity,
+      "0-1/los_integration_status": surveyData.losIntegration,
+      "0-1/integration_status": Array.isArray(surveyData.integrationAreas) ? surveyData.integrationAreas.join(", ") : "",
+      // "hs_context": ... // Optionally add tracking context
+    };
+    try {
+      await fetch(HUBSPOT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fields: Object.entries(payload).map(([name, value]) => ({ name, value })),
+        }),
+      });
+    } catch (err) {
+      // Optionally handle error (e.g., show a toast)
+      console.error("HubSpot submission failed", err);
+    }
+  };
+
+  const handleUnlock = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email) {
       setFormError("Please fill in both name and email.");
@@ -85,6 +126,8 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
     }
     setIsUnlocked(true);
     setFormError(null);
+    // Submit to HubSpot
+    submitToHubspot(form);
   };
 
   return (
@@ -105,11 +148,26 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-[#003366] bg-blue-100 hover:bg-blue-50 px-4 py-2 h-10"
             style={{ display: 'inline-flex' }}
             disabled={!isUnlocked}
+            onClick={() => setShowPdfAlert(true)}
           >
             <Download className="w-4 h-4 mr-2" />
             Request PDF Report
           </Button>
         </div>
+
+        {/* PDF Request Alert Banner */}
+        {showPdfAlert && (
+          <div className="mb-8 w-full flex items-center justify-between bg-yellow-100 border border-yellow-300 text-yellow-900 px-6 py-4 rounded-lg shadow ">
+            <span className="font-medium">We have notified our team your request would be fulfilled in 24 to 48 hours</span>
+            <button
+              className="ml-4 text-yellow-900 hover:text-yellow-700 font-bold text-xl"
+              onClick={() => setShowPdfAlert(false)}
+              aria-label="Dismiss"
+            >
+              &times;
+            </button>
+          </div>
+        )}
 
         {/* BLUR + FORM GATE START */}
         <div className="relative">
@@ -338,15 +396,32 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
                 <Calendar className="w-5 h-5 mr-2" />
                 Schedule Executive Demo
               </Button>
+              {/* Bottom PDF Request Alert Banner */}
+             
               <Button 
                 variant="outline"
                 size="lg"
                 className="border-white text-white hover:bg-white/10 px-8 py-4"
+                onClick={() => setShowBottomPdfAlert(true)}
               >
                 <Download className="w-5 h-5 mr-2" />
-                Download Detailed Report
+                Request PDF Report
               </Button>
             </div>
+            <div className="w-full flex justify-center">
+             {showBottomPdfAlert && (
+                <div className="mb-4 flex items-center justify-between bg-yellow-100 border border-yellow-300 text-yellow-900 px-6 py-4 rounded-lg shadow mt-10 w-max ">
+                  <span className="font-medium">We have notified our team your request would be fulfilled in 24 to 48 hours</span>
+                  <button
+                    className="ml-4 text-yellow-900 hover:text-yellow-700 font-bold text-xl"
+                    onClick={() => setShowBottomPdfAlert(false)}
+                    aria-label="Dismiss"
+                  >
+                    &times;
+                  </button>
+                </div>
+              )}
+              </div>
           </CardContent>
         </Card>
       </div>
