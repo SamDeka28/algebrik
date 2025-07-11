@@ -245,6 +245,7 @@ function isPast(dateStr: string) {
 
 export default function BlogCarousel() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [videoModal, setVideoModal] = useState<{ open: boolean, url?: string }>({ open: false });
 
   const handleHeaderClick = (index: number) => {
     setCurrentIndex(index);
@@ -308,19 +309,57 @@ export default function BlogCarousel() {
                   <div className="bg-[#F6F7FA] rounded-xl px-6 py-3 text-xl font-bold text-[#000000] mb-6 text-center">Previously</div>
                   <div className="flex flex-col gap-8 border border-[#D5D5D5] rounded-2xl p-6 bg-white">
                     {past.length === 0 && <div className="col-span-2 text-center text-[#606060]">No past webinars yet.</div>}
-                    {past.map((w, idx) => (
-                      <div key={w.title + idx} className="flex  flex-col md:flex-row gap-6 items-start">
-                        <div className="flex-1 bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1]">
-                          <img src={w.image} alt={w.title} className="object-contain rounded-lg" />
+                    {past.map((w, idx) => {
+                      // YouTube thumbnail logic
+                      let thumb = w.youtube
+                        ? `https://img.youtube.com/vi/${w.youtube.split("/").pop()?.split("?")[0]}/maxresdefault.jpg`
+                        : w.image;
+
+                        console.log({thumb})
+                      return (
+                        <div key={w.title + idx} className="flex flex-col md:flex-row gap-6 items-start">
+                          <div className="flex-1 bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
+                            onClick={() => w.youtube && setVideoModal({ open: true, url: w.youtube })}
+                          >
+                            {w.youtube ? (
+                              <>
+                                <img src={thumb} alt={w.title} className="object-cover rounded-lg w-full h-full max-h-[220px]" />
+                                <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition">
+                                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="32" cy="32" r="32" fill="#fff" fillOpacity="0.8" />
+                                    <polygon points="26,20 48,32 26,44" fill="#195BD7" />
+                                  </svg>
+                                </div>
+                              </>
+                            ) : (
+                              <img src={w.image} alt={w.title} className="object-contain rounded-lg w-full h-full max-h-[220px]" />
+                            )}
+                          </div>
+                          <div className="flex-1 flex flex-col justify-start gap-1">
+                            <div className="font-bold text-3xl text-[#222] leading-tight">{w.title}</div>
+                            <div className="text-[#606060] text-sm mb-1">{w.eventDate}</div>
+                          </div>
                         </div>
-                        <div className="flex-1 flex flex-col justify-start gap-1">
-                          <div className="font-bold text-3xl text-[#222] leading-tight">{w.title}</div>
-                          <div className="text-[#606060] text-sm mb-1">{w.eventDate}</div>
-                          {/* <Link href={w.link} target="_blank" className="text-[#195BD7] font-semibold underline text-sm">View Details</Link> */}
+                      );
+                    })}
+                  </div>
+                  {/* Video Modal */}
+                  {videoModal.open && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+                      <div className="bg-white rounded-lg shadow-lg p-4 relative max-w-2xl w-full">
+                        <button className="absolute top-2 right-2 text-2xl font-bold text-gray-700 hover:text-red-500" onClick={() => setVideoModal({ open: false })}>&times;</button>
+                        <div className="aspect-w-16 aspect-h-9 w-full">
+                          <iframe
+                            src={videoModal.url}
+                            title="Webinar Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-[360px] rounded-lg"
+                          />
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </>
             );
