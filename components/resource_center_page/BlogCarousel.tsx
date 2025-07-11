@@ -315,7 +315,6 @@ export default function BlogCarousel() {
                         ? `https://img.youtube.com/vi/${w.youtube.split("/").pop()?.split("?")[0]}/maxresdefault.jpg`
                         : w.image;
 
-                        console.log({thumb})
                       return (
                         <div key={w.title + idx} className="flex flex-col md:flex-row gap-6 items-start">
                           <div className="flex-1 bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
