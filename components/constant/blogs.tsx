@@ -1,10 +1,17 @@
 export const blogContent = [
   {
+    blogTitle: "Is Your Member Experience Broken? You're Already Losing.",
+    blogSubtitle: "is-your-member-experience-broken",
+    blogImage: "/section_images/blog-july-10.png",
+    authorName: "Aditya Bajaj",
+    authorImage: ""
+  },
+  {
     blogTitle:"A Product Peek into What’s New at Algebrik this Month",
     blogSubtitle:'a-product-peek-into-what-is-new-at-algebrik-this-month',
     blogImage:"/section_images/blog-9july.webp",
-    authorName:"Prateek Samantaray",
-    authorImage:"/section_images/blog/pra.webp",
+    authorName:"Team Algebrik",
+    authorImage:"/section_images/blog/favicon.svg",
     publishedDate:"July 9, 2025"
   },
   {

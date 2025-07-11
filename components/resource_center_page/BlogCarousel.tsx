@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { blogContent } from "../constant/blogs";
 import Link from "next/link";
+import { WEBINARS } from "../constant/webinars";
 
 type CarouselItem = {
   header: string;
@@ -20,12 +21,12 @@ const carouselData: CarouselItem[] = [
   {
     header: "Blogs",
     cardTitle: "BLOG",
-    title:"A Product Peek into What’s New at Algebrik this Month",
-    description:"At Algebrik, every product update is a chance to simplify complexity—and July is no different. Whether you're navigating indirect channels or financing a family’s first road trip RV, this month’s releases are designed to take the load off your lending teams.",
-    image:"/section_images/blog-9july.webp",
-    source:"Prateek Samantaray",
-    url:"/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month",
-    target:"_self"
+    title: "Is Your Member Experience Broken? You're Already Losing.",
+    description: "We all know the story of the Apollo 13 crew, stranded miles from Earth. Their lives depended on ingenious, on-the-fly problem-solving – famously, using duct tape to fix a critical carbon dioxide filter. It’s a testament to human ingenuity and the power of a quick fix in an emergenc",
+    image: "/section_images/blog-july-10.png",
+    source: "Aditya Bajaj",
+    url: "/resource-center/is-your-member-experience-broken",
+    target: "_self"
   },
   {
     header: "Webinar",
@@ -80,7 +81,7 @@ const newsArticles = [
     author: "PR Newswire",
     source: "Yahoo Finance",
     role: "Marketing",
-    description:"Algebrik AI Inc. today announced a strategic partnership with Kinective, a leading provider of digital connectivity, document workflow, and core integration solutions for the banking sector.",
+    description: "Algebrik AI Inc. today announced a strategic partnership with Kinective, a leading provider of digital connectivity, document workflow, and core integration solutions for the banking sector.",
     link: "https://finance.yahoo.com/news/algebrik-ai-kinective-partner-streamline-120300510.html?guccounter=1",
     image: "/section_images/blog/ya.webp",
   },
@@ -90,7 +91,7 @@ const newsArticles = [
     author: "PR Newswire",
     source: "Yahoo Finance",
     role: "Marketing",
-    description:"AAlgebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
+    description: "AAlgebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
     link: "https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html",
     image: "/section_images/blog/ya.webp",
   },
@@ -100,7 +101,7 @@ const newsArticles = [
     author: "Team Algebrik",
     source: "Team Algebrik",
     role: "Marketing",
-    description:"Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
+    description: "Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
     link: "/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/",
     image: "/section_images/blog/teamalgebrik.webp",
   },
@@ -231,8 +232,20 @@ const toolsData = [
   },
 ];
 
+function isFuture(dateStr: string) {
+  // Accepts '7 Aug, 2025' or '7 Feb,2025' (with or without space)
+  const d = new Date(Date.parse(dateStr.replace(/(\d{1,2}) ([A-Za-z]+),? ?(\d{4})/, '$1 $2 $3')));
+  return d.getTime() > Date.now();
+}
+
+function isPast(dateStr: string) {
+  const d = new Date(Date.parse(dateStr.replace(/(\d{1,2}) ([A-Za-z]+),? ?(\d{4})/, '$1 $2 $3')));
+  return d.getTime() <= Date.now();
+}
+
 export default function BlogCarousel() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [videoModal, setVideoModal] = useState<{ open: boolean, url?: string }>({ open: false });
 
   const handleHeaderClick = (index: number) => {
     setCurrentIndex(index);
@@ -243,7 +256,7 @@ export default function BlogCarousel() {
 
   return (
     <div className="container mx-auto p-3 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center relative pb-24">
-      <img src="/background_images/ml-single.svg" className="absolute left-0 -translate-x-1/2 translate-y-1/2 bottom-0 z-0"/>
+      <img src="/background_images/ml-single.svg" className="absolute left-0 -translate-x-1/2 translate-y-1/2 bottom-0 z-0" />
 
       <div className="container px-2 py-[4px] bg-[#EAEDF3] flex justify-between items-center rounded-[36px] drop-shadow-[0_0_60px_0_rgba(0, 0, 0, 0.08)]  md:w-[700px] md:h-[56px]">
         {carouselData.map((item, index: number) => (
@@ -251,17 +264,110 @@ export default function BlogCarousel() {
             key={index}
             onClick={() => handleHeaderClick(index)}
             className={`rounded-md font-plus-jakarta font-medium w-[160px] h-[40px] md:w-[168px] md:h-[40px] ${currentIndex === index
-                ? "!rounded-3xl text-[12px] md:text-[16px] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] p-1   text-white"
-                : "text-black text-[12px] md:text-[16px]"
+              ? "!rounded-3xl text-[12px] md:text-[16px] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] p-1   text-white"
+              : "text-black text-[12px] md:text-[16px]"
               }`}
           >
             {item.header}
           </button>
         ))}
       </div>
+
+      {/* Webinar Tab */}
+      {currentIndex === 1 && (
+        <div className="w-full flex flex-col items-center gap-12">
+          {/* Upcoming Webinar Banner */}
+          {(() => {
+            const upcoming = WEBINARS.filter(w => isFuture(w.eventDate));
+            const past = WEBINARS.filter(w => isPast(w.eventDate));
+            const next = upcoming.length > 0 ? upcoming[0] : null;
+            return (
+              <>
+                {next && (
+                  <div
+                    className="w-full max-w-[1160px] rounded-[32px] flex flex-col md:flex-row items-center  gap-6 shadow-lg overflow-hidden relative"
+                    style={{
+                      background: 'radial-gradient(104.17% 277.39% at 50% -153.34%, #7EB2FF 0%, #043071 85%)'
+                    }}
+                  >
+                    <img src="/background_images/ml-single.svg" className="absolute right-0 z-0 rotate-180" />
+                    <div className="flex-1 flex items-end mt-16 justify-center">
+                      <img src={next.image} alt={next.title} className="rounded-2xl object-cover w-full" />
+                    </div>
+                    <div className="flex-1 flex flex-col gap-2 text-white p-6 md:p-10">
+                      <div className="uppercase tracking-widest text-xs font-semibold opacity-80 mb-1">Upcoming Webinar</div>
+                      <div className="text-2xl md:text-3xl font-bold leading-tight mb-2">{next.title}</div>
+                      <div className="text-base font-medium mb-2">{next.eventDate}</div>
+                      <Link href={next.link} target="_blank">
+                        <button className="bg-white text-[#195BD7] font-semibold rounded-full px-6 py-2 mt-2 shadow hover:bg-[#195BD7] hover:text-white border border-white transition-all">Register Now</button>
+                      </Link>
+                    </div>
+                  </div>
+                )}
+                {/* Previously Section */}
+                <div className="w-full max-w-[1160px] mt-12">
+                  <div className="bg-[#F6F7FA] rounded-xl px-6 py-3 text-xl font-bold text-[#000000] mb-6 text-center">Previously</div>
+                  <div className="flex flex-col gap-8 border border-[#D5D5D5] rounded-2xl p-6 bg-white">
+                    {past.length === 0 && <div className="col-span-2 text-center text-[#606060]">No past webinars yet.</div>}
+                    {past.map((w, idx) => {
+                      // YouTube thumbnail logic
+                      let thumb = w.youtube
+                        ? `https://img.youtube.com/vi/${w.youtube.split("/").pop()?.split("?")[0]}/maxresdefault.jpg`
+                        : w.image;
+
+                      return (
+                        <div key={w.title + idx} className="flex flex-col md:flex-row gap-6 items-start">
+                          <div className="flex-1 bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
+                            onClick={() => w.youtube && setVideoModal({ open: true, url: w.youtube })}
+                          >
+                            {w.youtube ? (
+                              <>
+                                <img src={thumb} alt={w.title} className="object-cover rounded-lg w-full h-full max-h-[220px]" />
+                                <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition">
+                                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="32" cy="32" r="32" fill="#fff" fillOpacity="0.8" />
+                                    <polygon points="26,20 48,32 26,44" fill="#195BD7" />
+                                  </svg>
+                                </div>
+                              </>
+                            ) : (
+                              <img src={w.image} alt={w.title} className="object-contain rounded-lg w-full h-full max-h-[220px]" />
+                            )}
+                          </div>
+                          <div className="flex-1 flex flex-col justify-start gap-1">
+                            <div className="font-bold text-3xl text-[#222] leading-tight">{w.title}</div>
+                            <div className="text-[#606060] text-sm mb-1">{w.eventDate}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {/* Video Modal */}
+                  {videoModal.open && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+                      <div className="bg-white rounded-lg shadow-lg p-4 relative max-w-2xl w-full">
+                        <button className="absolute top-2 right-2 text-2xl font-bold text-gray-700 hover:text-red-500" onClick={() => setVideoModal({ open: false })}>&times;</button>
+                        <div className="aspect-w-16 aspect-h-9 w-full">
+                          <iframe
+                            src={videoModal.url}
+                            title="Webinar Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-[360px] rounded-lg"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            );
+          })()}
+        </div>
+      )}
       {/** main blog */}
 
-      {currentIndex==0 &&
+      {currentIndex == 0 &&
         <div>
           <motion.div
             className="bg-white p-[24px] border border-[#D5D5D5] md:w-[1160px] md:h-[428px] rounded-[20px] flex flex-col md:flex-row items-start justify-between gap-[24px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)]"
@@ -301,8 +407,8 @@ export default function BlogCarousel() {
           </motion.div>
         </div>
       }
-{/**News main blog */}
-{currentIndex==2 &&
+      {/**News main blog */}
+      {currentIndex == 2 &&
         <div>
           <motion.div
             className="bg-white p-[24px] border border-[#D5D5D5] md:w-[1160px] md:h-[428px] rounded-[20px] flex flex-col md:flex-row items-start justify-between gap-[24px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)]"
@@ -342,7 +448,7 @@ export default function BlogCarousel() {
           </motion.div>
         </div>
       }
-    
+
       <section className="container mx-auto max-w-[1160px] py-[10px] rounded-[36px] ">
 
 
@@ -441,13 +547,13 @@ export default function BlogCarousel() {
                   key={index}
                   className="bg-white max-w-[520px] text-gray-900 rounded-[20px] shadow p-4 flex flex-row gap-6"
                 >
-                    <Image
-                      src={tool.image}
-                      alt={""}
-                      width={120}
-                      height={120}
-                      className="object-cover  bg-gray-100 rounded-lg"
-                    />
+                  <Image
+                    src={tool.image}
+                    alt={""}
+                    width={120}
+                    height={120}
+                    className="object-cover  bg-gray-100 rounded-lg"
+                  />
                   <div className="flex flex-col flex-1 gap-2 h-full">
                     <h3 className="text-[22px] font-bold text-[#2A5FAC]">{tool.title}</h3>
                     <p className="text-[15px] text-[#606060]">{tool.description}</p>
@@ -463,7 +569,7 @@ export default function BlogCarousel() {
           }
 
 
-          {[1, 3].includes(currentIndex) &&
+          {[ 3].includes(currentIndex) &&
 
             <h2 className="text-black text-[56px] text-center font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
 

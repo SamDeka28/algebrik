@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 
 const lendingData = {
   "title": "A Product Peek into What’s New at Algebrik this Month",
-  "author": "Prateek Samantaray",
+  "author": "Team Algebrik",
   "sections": [
     {
       title: "A Product Peek into What’s New at Algebrik this Month",
@@ -102,7 +102,7 @@ export default function Blog() {
               <div className="flex gap-[16px] items-center">
                 <div className=" object-cover relative flex justify-center">
                   <Image
-                    src="/section_images/blog/pra.webp"
+                    src="/section_images/blog/favicon.svg"
                     className="rounded-[184.59px] object-cover h-[48px]"
                     objectFit="cover"
                     width={48}
@@ -114,7 +114,7 @@ export default function Blog() {
                 </div>
                 <div className="flex flex-col">
                   <div>
-                    <h3>Prateek Samantaray</h3>
+                    <h3>Team Algebrik</h3>
                   </div>
                   <div className="flex flex-col md:flex-row md:gap-4">
                     <p>3 min read</p>
