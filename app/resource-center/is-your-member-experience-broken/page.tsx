@@ -200,7 +200,7 @@ export default function Blog() {
 
             </div> */}
             <Image
-              src="/section_images/blog-9july.webp"
+              src="/section_images/blog-july-10.png"
               width={1160}
               height={500}
               alt=""
@@ -220,7 +220,7 @@ export default function Blog() {
           </div>
           <div className="pt-[35px]">
             <Image
-              src="/section_images/blog-9july.webp"
+              src="/section_images/blog-july-10.png"
               width={1160}
               height={500}
               alt=""
