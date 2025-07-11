@@ -3,6 +3,9 @@ import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { ArrowLeft, Download, Calendar, TrendingUp, AlertTriangle, AlertCircle, CheckCircle } from "lucide-react";
 import { PopupButton } from '@typeform/embed-react';
+import React, { useState } from "react";
+import Contact from '../contacts';
+
 
 interface SurveyData {
   losEfficiency: string;
@@ -36,6 +39,9 @@ interface SimulationDashboardProps {
 }
 
 const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }: SimulationDashboardProps) => {
+
+  const [showContactModal,setShowContactModal]=useState(false);
+
   const getScoreColor = (score: number) => {
     if (score > 75) return "text-green-600";
     if (score >= 50) return "text-yellow-600";
@@ -67,6 +73,20 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
   const hasHighRisk = stressResults.some(result => result.riskLevel === "High");
   const hasMediumRisk = stressResults.some(result => result.riskLevel === "Medium");
 
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "" });
+  const [formError, setFormError] = useState<string | null>(null);
+
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email) {
+      setFormError("Please fill in both name and email.");
+      return;
+    }
+    setIsUnlocked(true);
+    setFormError(null);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white p-4 py-48">
       <div className="max-w-7xl mx-auto">
@@ -81,150 +101,196 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
             Back to Home
           </Button>
           {/* Replace the Button with PopupButton for Typeform modal */}
-          <PopupButton
-            id="uL6UYz0p"
-            size={50}
+          <Button
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-[#003366] bg-blue-100 hover:bg-blue-50 px-4 py-2 h-10"
             style={{ display: 'inline-flex' }}
+            disabled={!isUnlocked}
           >
             <Download className="w-4 h-4 mr-2" />
             Request PDF Report
-          </PopupButton>
+          </Button>
         </div>
 
-        {/* Main Title */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-[#003366] mb-4">
-            Advanced Stress Test Results
-          </h1>
-          <p className="text-xl text-gray-600">
-            Comprehensive analysis of your lending stack resilience
-          </p>
-        </div>
-
-        {/* Health Score Summary */}
-        <Card className="border-2 border-[#003366] bg-gradient-to-r from-blue-50 to-white mb-8">
-          <CardContent className="flex items-center justify-between p-8">
-            <div className="flex items-center space-x-6">
-              <div className="w-20 h-20 bg-[#003366] rounded-full flex items-center justify-center">
-                <TrendingUp className="w-10 h-10 text-white" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-[#003366] mb-2">
-                  Lending Stack Health Score
-                </h2>
-                <div className={`text-4xl font-bold ${getScoreColor(healthScore)}`}>
-                  {healthScore}/100
-                </div>
-              </div>
+        {/* BLUR + FORM GATE START */}
+        <div className="relative">
+          {/* Blurred Content */}
+          <div className={
+            `transition-all duration-500 ${!isUnlocked ? 'blur-lg pointer-events-none select-none' : ''}`
+          }>
+            {/* Main Title */}
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold text-[#003366] mb-4">
+                Advanced Stress Test Results
+              </h1>
+              <p className="text-xl text-gray-600">
+                Comprehensive analysis of your lending stack resilience
+              </p>
             </div>
-            <div className="text-right">
-              <div className={`inline-flex px-4 py-2 rounded-full text-sm font-medium ${
-                healthScore > 75 ? "bg-green-100 text-green-800" :
-                healthScore >= 50 ? "bg-yellow-100 text-yellow-800" :
-                "bg-red-100 text-red-800"
-              }`}>
-                {healthScore > 75 ? "Excellent" : healthScore >= 50 ? "Moderate" : "Needs Improvement"}
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
-        {/* Stress Test Results Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 mb-8">
-          {stressResults.map((result) => (
-            <Card key={result.id} className="border-2 border-blue-100 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      result.riskLevel === "High" ? "bg-red-100" :
-                      result.riskLevel === "Medium" ? "bg-yellow-100" : "bg-green-100"
-                    }`}>
-                      {getRiskIcon(result.riskLevel)}
-                    </div>
-                    <div>
-                      <CardTitle className="text-[#003366]">{result.name}</CardTitle>
-                      <p className="text-sm text-gray-600">{result.description}</p>
-                    </div>
+            {/* Health Score Summary */}
+            <Card className="border-2 border-[#003366] bg-gradient-to-r from-blue-50 to-white mb-8">
+              <CardContent className="flex items-center justify-between p-8">
+                <div className="flex items-center space-x-6">
+                  <div className="w-20 h-20 bg-[#003366] rounded-full flex items-center justify-center">
+                    <TrendingUp className="w-10 h-10 text-white" />
                   </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-medium border ${getRiskColor(result.riskLevel)}`}>
-                    {result.riskLevel} Risk
+                  <div>
+                    <h2 className="text-2xl font-bold text-[#003366] mb-2">
+                      Lending Stack Health Score
+                    </h2>
+                    <div className={`text-4xl font-bold ${getScoreColor(healthScore)}`}>
+                      {healthScore}/100
+                    </div>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent>
-                {result.impactType !== "quality" ? (
-                  <>
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                      <div className="bg-blue-50 p-3 rounded-lg">
-                        <p className="text-xs text-gray-600 mb-1">Adjusted Capacity</p>
-                        <p className="text-lg font-bold text-[#003366]">
-                          {Math.round(result.adjustedCapacity)}
-                        </p>
-                        <p className="text-xs text-gray-500">loans/day</p>
-                      </div>
-                      <div className="bg-blue-50 p-3 rounded-lg">
-                        <p className="text-xs text-gray-600 mb-1">
-                          {result.impactType === "volume" ? "Surge Volume" : "Projected Volume"}
-                        </p>
-                        <p className="text-lg font-bold text-[#003366]">
-                          {Math.round(result.adjustedVolume || result.projectedVolume)}
-                        </p>
-                        <p className="text-xs text-gray-500">loans/day</p>
-                      </div>
-                    </div>
-
-                    {/* Interactive Capacity Bar */}
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="font-medium text-gray-700">Capacity Utilization</span>
-                        <span className={`font-bold ${
-                          result.capacityUtilization > 100 ? "text-red-600" :
-                          result.capacityUtilization > 80 ? "text-yellow-600" : "text-green-600"
-                        }`}>
-                          {result.capacityUtilization}%
-                        </span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-6 relative overflow-hidden">
-                        <div 
-                          className={`h-6 rounded-full transition-all duration-1000 ${
-                            result.capacityUtilization > 100 ? "bg-gradient-to-r from-red-500 to-red-600" :
-                            result.capacityUtilization > 80 ? "bg-gradient-to-r from-yellow-500 to-yellow-600" : 
-                            "bg-gradient-to-r from-green-500 to-green-600"
-                          }`}
-                          style={{ width: `${Math.min(result.capacityUtilization, 100)}%` }}
-                        />
-                        {result.capacityUtilization > 100 && (
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-white text-xs font-bold">OVERLOAD</span>
-                          </div>
-                        )}
-                      </div>
-                      {result.hasCapacityShortfall && (
-                        <div className="flex items-center text-red-600 text-sm font-medium mt-2">
-                          <AlertTriangle className="w-4 h-4 mr-1" />
-                          Critical: System overload detected
-                        </div>
-                      )}
-                    </div>
-                  </>
-                ) : (
-                  <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-                    <div className="flex items-center">
-                      <AlertCircle className="w-5 h-5 text-yellow-600 mr-2" />
-                      <p className="text-yellow-800 font-medium">Credit Quality Impact</p>
-                    </div>
-                    <p className="text-yellow-700 text-sm mt-2">
-                      Economic stress conditions may significantly impact borrower creditworthiness, 
-                      increasing default rates and requiring enhanced risk assessment protocols.
-                    </p>
+                <div className="text-right">
+                  <div className={`inline-flex px-4 py-2 rounded-full text-sm font-medium ${
+                    healthScore > 75 ? "bg-green-100 text-green-800" :
+                    healthScore >= 50 ? "bg-yellow-100 text-yellow-800" :
+                    "bg-red-100 text-red-800"
+                  }`}>
+                    {healthScore > 75 ? "Excellent" : healthScore >= 50 ? "Moderate" : "Needs Improvement"}
                   </div>
-                )}
+                </div>
               </CardContent>
             </Card>
-          ))}
+
+            {/* Stress Test Results Grid */}
+            <div className="grid lg:grid-cols-2 gap-6 mb-8">
+              {stressResults.map((result) => (
+                <Card key={result.id} className="border-2 border-blue-100 hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                          result.riskLevel === "High" ? "bg-red-100" :
+                          result.riskLevel === "Medium" ? "bg-yellow-100" : "bg-green-100"
+                        }`}>
+                          {getRiskIcon(result.riskLevel)}
+                        </div>
+                        <div>
+                          <CardTitle className="text-[#003366]">{result.name}</CardTitle>
+                          <p className="text-sm text-gray-600">{result.description}</p>
+                        </div>
+                      </div>
+                      <div className={`px-3 py-1 rounded-full text-xs font-medium border ${getRiskColor(result.riskLevel)}`}>
+                        {result.riskLevel} Risk
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    {result.impactType !== "quality" ? (
+                      <>
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                          <div className="bg-blue-50 p-3 rounded-lg">
+                            <p className="text-xs text-gray-600 mb-1">Adjusted Capacity</p>
+                            <p className="text-lg font-bold text-[#003366]">
+                              {Math.round(result.adjustedCapacity)}
+                            </p>
+                            <p className="text-xs text-gray-500">loans/day</p>
+                          </div>
+                          <div className="bg-blue-50 p-3 rounded-lg">
+                            <p className="text-xs text-gray-600 mb-1">
+                              {result.impactType === "volume" ? "Surge Volume" : "Projected Volume"}
+                            </p>
+                            <p className="text-lg font-bold text-[#003366]">
+                              {Math.round(result.adjustedVolume || result.projectedVolume)}
+                            </p>
+                            <p className="text-xs text-gray-500">loans/day</p>
+                          </div>
+                        </div>
+
+                        {/* Interactive Capacity Bar */}
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span className="font-medium text-gray-700">Capacity Utilization</span>
+                            <span className={`font-bold ${
+                              result.capacityUtilization > 100 ? "text-red-600" :
+                              result.capacityUtilization > 80 ? "text-yellow-600" : "text-green-600"
+                            }`}>
+                              {result.capacityUtilization}%
+                            </span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-6 relative overflow-hidden">
+                            <div 
+                              className={`h-6 rounded-full transition-all duration-1000 ${
+                                result.capacityUtilization > 100 ? "bg-gradient-to-r from-red-500 to-red-600" :
+                                result.capacityUtilization > 80 ? "bg-gradient-to-r from-yellow-500 to-yellow-600" : 
+                                "bg-gradient-to-r from-green-500 to-green-600"
+                              }`}
+                              style={{ width: `${Math.min(result.capacityUtilization, 100)}%` }}
+                            />
+                            {result.capacityUtilization > 100 && (
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <span className="text-white text-xs font-bold">OVERLOAD</span>
+                              </div>
+                            )}
+                          </div>
+                          {result.hasCapacityShortfall && (
+                            <div className="flex items-center text-red-600 text-sm font-medium mt-2">
+                              <AlertTriangle className="w-4 h-4 mr-1" />
+                              Critical: System overload detected
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                        <div className="flex items-center">
+                          <AlertCircle className="w-5 h-5 text-yellow-600 mr-2" />
+                          <p className="text-yellow-800 font-medium">Credit Quality Impact</p>
+                        </div>
+                        <p className="text-yellow-700 text-sm mt-2">
+                          Economic stress conditions may significantly impact borrower creditworthiness, 
+                          increasing default rates and requiring enhanced risk assessment protocols.
+                        </p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Overlay Form */}
+          {!isUnlocked && (
+            <div className="absolute inset-0 flex items-start justify-center z-20 pt-32 lg:pt-52">
+              <form
+                className="bg-white bg-opacity-95 rounded-xl shadow-xl p-8 w-full max-w-md border border-blue-100 flex flex-col gap-4"
+                onSubmit={handleUnlock}
+              >
+                <h2 className="text-2xl font-bold text-[#003366] mb-2 text-center">Access Your Results</h2>
+                <p className="text-gray-600 text-center mb-4">Please enter your details to view the full results.</p>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={form.name}
+                  onChange={e => setForm({ ...form, name: e.target.value })}
+                  className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200 text-black"
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={form.email}
+                  onChange={e => setForm({ ...form, email: e.target.value })}
+                  className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200 text-black"
+                  required
+                />
+                {formError && <div className="text-red-600 text-sm text-center">{formError}</div>}
+                <button
+                  type="submit"
+                  className="bg-[#003366] text-white font-bold rounded px-4 py-2 mt-2 hover:bg-blue-800 transition"
+                >
+                  View Results
+                </button>
+              </form>
+            </div>
+          )}
         </div>
+        {/* BLUR + FORM GATE END */}
 
         {/* Overall Assessment & Actions */}
         <Card className="border-2 border-[#003366] bg-gradient-to-r from-[#003366] to-[#002244] text-white">
@@ -267,6 +333,7 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
               <Button 
                 size="lg"
                 className="bg-white text-[#003366] hover:bg-blue-50 font-bold px-8 py-4 text-lg"
+                onClick={()=>setShowContactModal(true)}
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Schedule Executive Demo
@@ -283,6 +350,7 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
           </CardContent>
         </Card>
       </div>
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </div>
   );
 };

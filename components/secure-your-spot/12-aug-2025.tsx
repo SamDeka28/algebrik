@@ -24,34 +24,32 @@ const validationSchema = Yup.object({
 
 const carouselDataTwo = [
   {
+    image: "/team_images/Jennifer.jpeg",
+    name: "Jennifer Hernandez",
+    title: "VP,Customer Success",
+    place: "N/A",
+  },
+  {
     image: "/team_images/jesse.webp",
-    name: "JESSE FRUGE",
+    name: "Jesse Fruge",
     title: "VP, PRODUCT",
     place: "",
   },
   {
-    image: "/team_images/andrea.webp",
-    name: "ANDREA SILVERS",
-    title: "VP, BD & Partnerships",
-    place: "",
+    image:"/team_images/Shirley.jpeg",
+    name:"Shirley Senn",
+    title:"Chief Community Development",
+    place:"New Orleans Firemen's Federal Credit Union",
+    bio:"Shirley is a Certified Credit Union Development Educator and passionate advocate for financial inclusion. With 30+ years of experience across fintech, credit union strategy, and nonprofit leadership, she brings a human-first lens to innovation and impact in community finance.",
+    linkedin:"https://www.linkedin.com/in/shirley-senn-cude-4395377/"
   },
   {
-    image: "/team_images/leAnne.webp",
-    name: "LeAnne Hixson",
-    title: "Chief Lending Officer",
-    place: "PFCU Credit Union, Michigan",
-  },
-  {
-    image: "/team_images/david.webp",
-    name: "David Libby",
-    title: "Chief Executive Officer",
-    place: "Town & Country FCU, Maine",
-  },
-  {
-    image: "/team_images/travisBow.webp",
-    name: "Shad Edwards",
-    title: "Chief Lending Officer",
-    place: "MidWest America FCU, Indiana",
+    image: "/team_images/SherryWu.webp",
+    name: "Sherry Wu",
+    title: "Chief Technology Officer",
+    place: "University of Michigan Credit Union, Michigan",
+    bio:"Sherry Wu is the CTO of the University of Michigan Credit Union, guiding IT strategy after 25 years in leadership roles at IBM, Ford, and HPE and board service at People Driven CU. She holds an MBA from Michigan Ross and an MS in Computer Science from Eastern Michigan University.",
+    linkedin:"https://www.linkedin.com/in/xiang-wu/"
   }
 ];
 
@@ -147,39 +145,20 @@ export default function SecureYourSpot() {
             <p className="text-[#292929] text-lg px-6 text-center">Join industry leaders as they break down how Agentic Al is reshaping loan origination</p>
             <Button
               openInBlank={false}
-              text="Reserve Your Seat for the Future of Intelligent Lending | 7th Aug, 1PM EST"
+              text="Reserve Your Seat for the Future of Intelligent Lending | 12th Aug, 2PM EST"
               isActive={true}
               // onClick={() => alert("Please provide the redirection page")}
               link="#form"
               customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
               activeStyle="bg-white text-[#292929] font-bold text-center max-w-max px-[34px] mt-[32px]"
             />
-            <Image src={"/background_images/heroimagesys.webp"} alt="secure your spot" width={1162} height={233} className="hidden lg:block w-full mt-[23px]" />
-            <Image src={"/background_images/heroimg.webp"} alt="secure your spot" width={1162} height={233} className="lg:hidden w-full mt-[23px]" />
+            <Image src={"/background_images/12aug2pm-d.png"} alt="secure your spot" width={1162} height={233} className="hidden lg:block w-full mt-[23px]" />
+            <Image src={"/background_images/12aug2pm-m.png"} alt="secure your spot" width={1162} height={233} className="lg:hidden w-full mt-[23px]" />
             <div className="lg:flex py-[20px] px-[38px] justify-between w-full hidden">
-              <div className="flex flex-col  items-center">
-                <p className="text-lg text-[#292929] font-bold">Jesse Fruge</p>
-                <p className="text-base font-medium text-[#292929]">VP, Product</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <p className="text-lg text-[#292929] font-bold">Shad Edwards</p>
-                <p className="text-base font-medium text-[#292929]">Chief Lending Officer</p>
-                <p className="text-xs font-normal text-[#292929]">MidWest America FCU, Indiana</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <p className="text-lg text-[#292929] font-bold">David Libby</p>
-                <p className="text-base font-medium text-[#292929]">Chief Executive Officer</p>
-                <p className="text-xs font-normal text-[#292929]">Town & Country FCU, Maine</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <p className="text-lg text-[#292929] font-bold">LeAnne Hixson</p>
-                <p className="text-base font-medium text-[#292929]">Chief Lending Officer</p>
-                <p className="text-xs font-normal text-[#292929]">PFCU Credit Union, Michigan</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <p className="text-lg text-[#292929] font-bold">Andrea Silvers</p>
-                <p className="text-base font-medium text-[#292929]">VP, BD & Partnerships</p>
-              </div>
+              {carouselDataTwo.map(item=> <div className="flex flex-col  items-center">
+                <p className="text-lg text-[#292929] font-bold">{item.name}</p>
+                <p className="text-base font-medium text-[#292929]">{item.title}</p>
+              </div>)}
             </div>
           </div>
         </div>
@@ -302,7 +281,7 @@ export default function SecureYourSpot() {
                         <div className="bg-white px-2 pb-2 pt-[50px] w-[199px] h-[123px] rounded-[14px] border-[2px] border-[#E2E8F1] absolute left-[-10px] bottom-[10px] z-10">
                           <p className="text-[18px] font-bold text-[#292929] mb-[2px]">{team.name}</p>
                           <p className="text-sm text-[#292929] font-medium">{team.title}</p>
-                          <p className="text-xs text-[#656565] font-normal">{team.place}</p>
+                          {/* <p className="text-xs text-[#656565] font-normal">{team.place}</p> */}
                         </div>
                       </div>
                     })}
@@ -453,9 +432,9 @@ export default function SecureYourSpot() {
                     return <div className="relative mr-20 h-[230px]" key={`idx-${index}`}>
                       <Image src={team.image} alt={team.name} height={138} width={138} className="min-w-[138px] aspect-square !z-20  object-cover overflow-hidden rounded-lg relative" />
                       <div className="bg-white px-2 pb-2 pt-[50px] w-[199px] h-[123px] rounded-[14px] border-[2px] border-[#E2E8F1] absolute left-[-10px] bottom-[10px] z-10">
-                        <p className="text-[18px] font-bold text-[#292929] mb-[2px]">{team.name}</p>
+                        <p className="text-[14px] font-bold text-[#292929] mb-[2px]">{team.name}</p>
                         <p className="text-sm text-[#292929] font-medium">{team.title}</p>
-                        <p className="text-xs text-[#656565] font-normal">{team.place}</p>
+                        {/* <p className="text-xs text-[#656565] font-normal">{team.place}</p> */}
                       </div>
                     </div>
                   })}
