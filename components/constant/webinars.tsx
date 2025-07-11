@@ -9,6 +9,7 @@ export const WEBINARS=[
         image : "/background_images/heroimg.webp",
         title: "Lending 2030: Beyond AI-Shaping the Future of Lending",
         link:"/webinars/algebrik-webinar1",
-        eventDate : "7 Feb,2025"
+        eventDate : "7 Feb,2025",
+        youtube:"https://www.youtube.com/embed/Jhn1kNzUuoI?si=0yWR3-0JBh3f0ZBl"
     }
 ]
