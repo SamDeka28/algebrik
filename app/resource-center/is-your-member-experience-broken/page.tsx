@@ -103,6 +103,14 @@ const lendingData = {
   ]
 }
 
+const toolsData = [{
+  image: '/icons/healthcheck.webp',
+  title: 'Is your Lending Stack a burden?',
+  description: 'Don’t Build on a Broken Stack, take a moment to assess the health of your lending stack.',
+  buttonText: 'Assess Now',
+  buttonLink: '/lending-health-check',
+}]
+
 
 export default function Blog() {
   return (
@@ -218,16 +226,32 @@ export default function Blog() {
               />
             ))}
           </div>
-          <div className="pt-[35px]">
-            <Image
-              src="/section_images/blog-july-10.png"
-              width={1160}
-              height={500}
-              alt=""
-              priority
-              quality={100}
-            />
-          </div>
+          <div className="grid grid-cols-1  content-between gap-9  mb-24 pt-20">
+              {toolsData.map((tool, index) => (
+                <div
+                  key={index}
+                  className="bg-white w-full text-gray-900 rounded-[20px] shadow-2xl p-4 flex flex-row gap-6"
+                >
+                  <Image
+                    src={tool.image}
+                    alt={""}
+                    width={120}
+                    height={120}
+                    className="object-cover  bg-gray-100 rounded-lg"
+                  />
+                  <div className="flex flex-col flex-1 gap-2 h-full">
+                    <h3 className="text-[22px] font-bold text-[#2A5FAC]">{tool.title}</h3>
+                    <p className="text-[15px] text-[#606060]">{tool.description}</p>
+                    <Link href={tool.buttonLink} target="_blank">
+                      <button className="border border-[#2A5FAC] text-[#2A5FAC] rounded-full px-6 py-2 font-medium hover:bg-[#2A5FAC] hover:text-white transition-all">
+                        {tool.buttonText}
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
 
           <div className="mt-16">
             <CustomHeader text="More Blogs" className="text-center" />
