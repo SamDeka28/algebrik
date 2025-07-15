@@ -191,6 +191,10 @@ export default function Navbar() {
     "/page-not-found/",
     "/resource-center/is-your-member-experience-broken",
     "/resource-center/is-your-member-experience-broken/",
+    "/resource-center/the-silent-sabotage",
+    "/resource-center/the-silent-sabotage/",
+    "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work",
+    "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work/",
     ...WEBINARS.map(item=>item.link),
     ...WEBINARS.map(item=>item.link+"/")
   ]

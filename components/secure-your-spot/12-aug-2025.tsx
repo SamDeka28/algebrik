@@ -24,32 +24,40 @@ const validationSchema = Yup.object({
 
 const carouselDataTwo = [
   {
-    image: "/team_images/Jennifer.jpeg",
-    name: "Jennifer Hernandez",
-    title: "VP,Customer Success",
+    image: "/team_images/jesse.webp",
+    name: "JESSE FRUGE",
+    title: "VP, PRODUCT",
     place: "N/A",
   },
   {
-    image: "/team_images/jesse.webp",
-    name: "Jesse Fruge",
-    title: "VP, PRODUCT",
-    place: "",
-  },
-  {
-    image:"/team_images/Shirley.jpeg",
-    name:"Shirley Senn",
-    title:"Chief Community Development",
-    place:"New Orleans Firemen's Federal Credit Union",
-    bio:"Shirley is a Certified Credit Union Development Educator and passionate advocate for financial inclusion. With 30+ years of experience across fintech, credit union strategy, and nonprofit leadership, she brings a human-first lens to innovation and impact in community finance.",
-    linkedin:"https://www.linkedin.com/in/shirley-senn-cude-4395377/"
+    image: "/team_images/travis.webp",
+    name: "Travis Bow",
+    title: "Chief Executive Officer",
+    place: "University of Hawaii FCU, Hawaii",
+    bio:"Travis Bow is President and CEO of the University of Hawaii Federal Credit Union (UHFCU), Hawaii’s fifth largest credit union with $618 million in assets. He brings 17 years of experience at UHFCU, including as Vice President of Member Support, and is dedicated to member service and operational excellence. A University of Hawaii graduate, Bow is committed to the community and leading UHFCU’s continued growth.",
+    linkedin:"https://www.linkedin.com/in/travis-b-2a0475279/"
   },
   {
     image: "/team_images/SherryWu.webp",
     name: "Sherry Wu",
     title: "Chief Technology Officer",
     place: "University of Michigan Credit Union, Michigan",
-    bio:"Sherry Wu is the CTO of the University of Michigan Credit Union, guiding IT strategy after 25 years in leadership roles at IBM, Ford, and HPE and board service at People Driven CU. She holds an MBA from Michigan Ross and an MS in Computer Science from Eastern Michigan University.",
-    linkedin:"https://www.linkedin.com/in/xiang-wu/"
+    bio: "Sherry Wu is the CTO of the University of Michigan Credit Union, guiding IT strategy after 25 years in leadership roles at IBM, Ford, and HPE and board service at People Driven CU. She holds an MBA from Michigan Ross and an MS in Computer Science from Eastern Michigan University.",
+    linkedin: "https://www.linkedin.com/in/xiang-wu/"
+  },
+  {
+    image: "/team_images/Shirley.jpeg",
+    name: "Shirley Senn",
+    title: "Chief Community Development",
+    place: "New Orleans Firemen's Federal Credit Union",
+    bio: "Shirley is a Certified Credit Union Development Educator and passionate advocate for financial inclusion. With 30+ years of experience across fintech, credit union strategy, and nonprofit leadership, she brings a human-first lens to innovation and impact in community finance.",
+    linkedin: "https://www.linkedin.com/in/shirley-senn-cude-4395377/"
+  },
+  {
+    image: "/team_images/Jennifer.jpeg",
+    name: "Jennifer Hernandez",
+    title: "VP,Customer Success",
+    place: "N/A",
   }
 ];
 
@@ -62,7 +70,7 @@ export default function SecureYourSpot() {
   const [loading, setLoading] = useState(false);
   const [clicked, setClicked] = useState(false);
 
-  const router=useRouter();
+  const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
@@ -140,22 +148,25 @@ export default function SecureYourSpot() {
         <div className="mt-8 Hero w-full max-w-7xl lg:bg-[url('/background_images/bg-2.svg')]  bg-[length:150%_auto] bg-center bg-white pt-[36px] border border-[#E2E8F1] rounded-[24px] shadow-[0px_20px_36px_0px_#0A406C1A] overflow-hidden">
           <div className="row flex flex-col gap-3 items-center">
             <div className="px-6 lg:px-36">
-              <h1 className="text-3xl lg:text-5xl font-bold text-[#2A5FAC] text-center leading-[60px]">Generative Al vs. Agentic Al-And Why It Matters for Loan Origination</h1>
+              <h1 className="text-3xl lg:text-[40px] font-bold text-[#2A5FAC] text-center leading-[60px]">Generative Al vs. Agentic Al :
+                <h1 className="text-3xl lg:text-[40px] text-[#2A5FAC] text-center leading-[60px] font-normal">Why It Matters for Loan Origination</h1>
+              </h1>
+
             </div>
-            <p className="text-[#292929] text-lg px-6 text-center">Join industry leaders as they break down how Agentic Al is reshaping loan origination</p>
+            <p className="text-[#292929] text-lg px-6 text-center">Join industry leaders as they decode Agentic AI's real impact on lending workflows.</p>
             <Button
               openInBlank={false}
-              text="Reserve Your Seat for the Future of Intelligent Lending | 12th Aug, 2PM EST"
+              text="12th August, 2025 at 02:00 PM EDT"
               isActive={true}
               // onClick={() => alert("Please provide the redirection page")}
               link="#form"
-              customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
+              customClass="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white font-bold py-[10px] text-[14px] md:text-[16px] font-semibold hover:bg-blue-500 w-full md:w-auto"
               activeStyle="bg-white text-[#292929] font-bold text-center max-w-max px-[34px] mt-[32px]"
             />
             <Image src={"/background_images/12aug2pm-d.png"} alt="secure your spot" width={1162} height={233} className="hidden lg:block w-full mt-[23px]" />
             <Image src={"/background_images/12aug2pm-m.png"} alt="secure your spot" width={1162} height={233} className="lg:hidden w-full mt-[23px]" />
             <div className="lg:flex py-[20px] px-[38px] justify-between w-full hidden">
-              {carouselDataTwo.map(item=> <div className="flex flex-col  items-center">
+              {carouselDataTwo.map(item => <div className="flex flex-col  items-center">
                 <p className="text-lg text-[#292929] font-bold">{item.name}</p>
                 <p className="text-base font-medium text-[#292929]">{item.title}</p>
               </div>)}

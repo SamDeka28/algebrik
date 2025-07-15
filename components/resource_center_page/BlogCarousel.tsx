@@ -21,11 +21,11 @@ const carouselData: CarouselItem[] = [
   {
     header: "Blogs",
     cardTitle: "BLOG",
-    title: "Is Your Member Experience Broken? You're Already Losing.",
-    description: "We all know the story of the Apollo 13 crew, stranded miles from Earth. Their lives depended on ingenious, on-the-fly problem-solving – famously, using duct tape to fix a critical carbon dioxide filter. It’s a testament to human ingenuity and the power of a quick fix in an emergenc",
-    image: "/section_images/blog-july-10.png",
-    source: "Aditya Bajaj",
-    url: "/resource-center/is-your-member-experience-broken",
+    title: "From Suggestions to Action: How Credit Unions Are Putting Agentic Al to Work",
+    description: "This blog explores how real credit unions are using Agentic Al in the field today, what makes it different from generative Al, and how you can start spotting real action-not just marketing fluff. ",
+    image: "/section_images/blog-agents.png",
+    source: "Prateek Samantaray",
+    url: "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work",
     target: "_self"
   },
   {
@@ -285,28 +285,28 @@ export default function BlogCarousel() {
               <>
                 {next && (
                   <div
-                    className="w-full max-w-[1160px] rounded-[32px] flex flex-col md:flex-row items-center  gap-6 shadow-lg overflow-hidden relative"
-                    style={{
-                      background: 'radial-gradient(104.17% 277.39% at 50% -153.34%, #7EB2FF 0%, #043071 85%)'
+                    className="w-full max-w-[1160px] rounded-[32px] gap-6 flex flex-col md:flex-row items-center shadow-lg overflow-hidden relative bg-[#FFFFFFE5] border-[#CFE3FF] border-[2px]"
+                    style={{ 
+                      // background: 'radial-gradient(104.17% 277.39% at 50% -153.34%, #7EB2FF 0%, #043071 85%)'
                     }}
                   >
                     <img src="/background_images/ml-single.svg" className="absolute right-0 z-0 rotate-180" />
-                    <div className="flex-1 flex items-end mt-16 justify-center">
-                      <img src={next.image} alt={next.title} className="rounded-2xl object-cover w-full" />
+                    <div className="flex-1 flex items-end mt-[110px] justify-center">
+                      <img src={next.image} alt={next.title} className="rounded-2xl object-cover w-full scale-110" />
                     </div>
-                    <div className="flex-1 flex flex-col gap-2 text-white p-6 md:p-10">
-                      <div className="uppercase tracking-widest text-xs font-semibold opacity-80 mb-1">Upcoming Webinar</div>
-                      <div className="text-2xl md:text-3xl font-bold leading-tight mb-2">{next.title}</div>
-                      <div className="text-base font-medium mb-2">{next.eventDate}</div>
+                    <div className="flex-1 flex flex-col gap-2 text-white p-5 md:p-10">
+                      <div className="uppercase tracking-[30%] text-xs font-semibold opacity-80 mb-1 text-[#005FB5]">Upcoming Webinar</div>
+                      <div className="text-2xl md:text-3xl font-bold leading-tight mb-2 text-[#292929]">{next.title}</div>
+                      {/* <div className="text-base font-medium mb-2">{next.eventDate}</div> */}
                       <Link href={next.link} target="_blank">
-                        <button className="bg-white text-[#195BD7] font-semibold rounded-full px-6 py-2 mt-2 shadow hover:bg-[#195BD7] hover:text-white border border-white transition-all">Register Now</button>
+                        <button className="bg-white text-[#fff] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] font-semibold rounded-full px-6 py-2 mt-2 shadow hover:bg-[#195BD7] hover:text-white border border-white transition-all">Register Now</button>
                       </Link>
                     </div>
                   </div>
                 )}
                 {/* Previously Section */}
                 <div className="w-full max-w-[1160px] mt-12">
-                  <div className="bg-[#F6F7FA] rounded-xl px-6 py-3 text-xl font-bold text-[#000000] mb-6 text-center">Previously</div>
+                  <div className="bg-[#DDE6F8] rounded-xl px-6 py-3 text-xl font-bold text-[#000000] mb-6 text-center">Previously</div>
                   <div className="flex flex-col gap-8 border border-[#D5D5D5] rounded-2xl p-6 bg-white">
                     {past.length === 0 && <div className="col-span-2 text-center text-[#606060]">No past webinars yet.</div>}
                     {past.map((w, idx) => {
