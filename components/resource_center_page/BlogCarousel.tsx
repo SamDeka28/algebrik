@@ -42,12 +42,12 @@ const carouselData: CarouselItem[] = [
   {
     header: "News Center",
     cardTitle: "NEWS CENTER",
-    title: "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
+    title: "United Financial Credit Union Selects AlgebrikAI's Comprehensive Consumer Lending Suite, Algebrik One ",
     description:
       "Explore the latest updates and news stories about Algebrik AI and its impact on the global financial technology industry.",
-    source: "BusinessWire",
-    image: "/section_images/blog/bw.webp",
-    url: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
+    source: "PR Newswire",
+    image: "/section_images/blog/ya.webp",
+    url: "https://www.prnewswire.com/news-releases/united-financial-credit-union-selects-algebrikais-comprehensive-consumer-lending-suite-algebrik-one-302504296.html?tc=eml_cleartime",
     target: "_blank",
   },
   {
@@ -77,6 +77,16 @@ const carouselData: CarouselItem[] = [
 const newsArticles = [
   {
     title:
+      "United Financial Credit Union Selects AlgebrikAI's Comprehensive Consumer Lending Suite, Algebrik One",
+    author: "PR Newswire",
+    source: "PR Newswire",
+    role: "Marketing",
+    description: "Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS) built for credit unions, today announced that United Financial Credit Union...",
+    link: "https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html",
+    image: "/section_images/blog/ya.webp",
+  },
+  {
+    title:
       "Algebrik AI and Kinective Partner to Streamline Lending from Application to Signature",
     author: "PR Newswire",
     source: "Yahoo Finance",
@@ -92,7 +102,7 @@ const newsArticles = [
     source: "Yahoo Finance",
     role: "Marketing",
     description: "AAlgebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
-    link: "https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html",
+    link: "https://www.prnewswire.com/news-releases/united-financial-credit-union-selects-algebrikais-comprehensive-consumer-lending-suite-algebrik-one-302504296.html?tc=eml_cleartime",
     image: "/section_images/blog/ya.webp",
   },
   {

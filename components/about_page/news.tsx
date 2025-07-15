@@ -13,6 +13,16 @@ export default function NewsSection() {
   const newsArticles = [
     {
       title:
+        "United Financial Credit Union Selects AlgebrikAI's Comprehensive Consumer Lending Suite, Algebrik One",
+      author: "PR Newswire",
+      source: "PR Newswire",
+      role: "Marketing",
+      description: "Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS) built for credit unions, today announced that United Financial Credit Union...",
+      link: "https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html",
+      image: "/section_images/blog/ya.webp",
+    },
+    {
+      title:
         "Algebrik AI and Kinective Partner to Streamline Lending from Application to Signature",
       author: "PR Newswire",
       source: "Yahoo Finance",
