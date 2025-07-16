@@ -41,11 +41,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link rel="preload" as="image" href="/background_images/hero_background.webp" />
-      <link rel="preload" as="image" href="/blue_logo.webp" />
-      <link rel="preload" as="image" href="/background_images/modern_lender.webp" />
-      <link rel="preload" as="image" href="/background_images/ml-single.webp" />
-      <link rel="preload" as="image" href="/section_images/home_page/loan.webp" />
+        <link rel="preload" as="image" href="/background_images/hero_background.webp" />
+        <link rel="preload" as="image" href="/blue_logo.webp" />
+        <link rel="preload" as="image" href="/background_images/modern_lender.webp" />
+        <link rel="preload" as="image" href="/background_images/ml-single.webp" />
+        <link rel="preload" as="image" href="/section_images/home_page/loan.webp" />
         <Script
           id="hs-script-loader"
           strategy="afterInteractive"
@@ -53,7 +53,7 @@ export default function RootLayout({
         ></Script>
         <Script
           strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-VE1K00BENT"
+          src="https://www.googletagmanager.com/gtag/js?id=G-7VNDB4K3JH"
         />
         {/**add favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -61,11 +61,11 @@ export default function RootLayout({
           id="google-analytics"
           strategy="afterInteractive"
         >
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-VE1K00BENT');
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7VNDB4K3JH');
         `}
         </Script>
         <Script

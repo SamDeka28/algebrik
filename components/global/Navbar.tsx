@@ -162,7 +162,7 @@ export default function Navbar() {
     "/resource-center/from_fragmentation_to_seamlessness", "/resource-center/from_fragmentation_to_seamlessness/",
     "/resource-center/beyond_decisioning", "/resource-center/beyond_decisioning/",
     "/resource-center/redefining_borrower", "/resource-center/redefining_borrower/",
-    "/thank_you/",
+    "/thank-you/",
     "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
     "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting/",
     "/resource-center/credit-union-mergers-are-at-an-all-time-high",
@@ -191,6 +191,10 @@ export default function Navbar() {
     "/page-not-found/",
     "/resource-center/is-your-member-experience-broken",
     "/resource-center/is-your-member-experience-broken/",
+    "/resource-center/the-silent-sabotage",
+    "/resource-center/the-silent-sabotage/",
+    "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work",
+    "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work/",
     ...WEBINARS.map(item=>item.link),
     ...WEBINARS.map(item=>item.link+"/")
   ]

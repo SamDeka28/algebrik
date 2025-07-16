@@ -1,5 +1,19 @@
 export const blogContent = [
   {
+    blogTitle:"From Suggestions to Action: How Credit Unions Are Putting Agentic Al to Work",
+    blogSubtitle: "how-credit-unions-are-putting-agentic-ai-to-work",
+    blogImage: "/section_images/blog-agents.png",
+    authorName: "Prateek Samantaray",
+    authorImage: ""
+  },
+  {
+    blogTitle: "The Silent Sabotage: Why Paperwork Is Killing Your Credit Union's Future",
+    blogSubtitle: "the-silent-sabotage",
+    blogImage: "/section_images/Blog_Sabotage.webp",
+    authorName: "Aditya Bajaj",
+    authorImage: ""
+  },
+  {
     blogTitle: "Is Your Member Experience Broken? You're Already Losing.",
     blogSubtitle: "is-your-member-experience-broken",
     blogImage: "/section_images/blog-july-10.png",
