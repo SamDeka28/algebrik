@@ -162,7 +162,7 @@ export default function Navbar() {
     "/resource-center/from_fragmentation_to_seamlessness", "/resource-center/from_fragmentation_to_seamlessness/",
     "/resource-center/beyond_decisioning", "/resource-center/beyond_decisioning/",
     "/resource-center/redefining_borrower", "/resource-center/redefining_borrower/",
-    "/thank_you/",
+    "/thank-you/",
     "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
     "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting/",
     "/resource-center/credit-union-mergers-are-at-an-all-time-high",
