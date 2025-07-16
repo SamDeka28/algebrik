@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Button from "../Buttons";
 import Image from "next/image";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import Marquee from "react-fast-marquee";
 import { parsePhoneNumberFromString } from "libphonenumber-js"
@@ -65,6 +65,17 @@ export default function SecureYourSpot() {
   const [clicked, setClicked] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash === "#form") {
+      const el = document.getElementById("form");
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 100); // slight delay to ensure render
+      }
+    }
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -318,7 +329,7 @@ export default function SecureYourSpot() {
             <div className="relative w-full pb-[20px] md:pb-0 mt-[47px]" id="form">
               <div className="md:hidden bg-[#121212] p-10 absolute bottom-0 w-[200%] left-[-10%] min-h-20 h-20"></div>
               <hr className="md:hidden absolute bottom-0 z-20 w-screen left-[-6%] border-b border-[#262932]" />
-              <form
+              <form id="form"
                 onSubmit={formik.handleSubmit}
                 className="relative mx-auto z-10 mt-[43px] md:mt-0 font-plus-jakarta drop-shadow-xl w-full
            bg-white/90 backdrop-blur-sm rounded-[24px] p-8"
