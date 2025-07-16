@@ -92,7 +92,7 @@ export default function SecureYourSpot() {
       setLoading(false)
       if (res.ok) {
         formik.resetForm()
-        router.push("/thank_you")
+        router.push("/thank-you")
       } else {
         alert("Failed to submit form.");
       }
