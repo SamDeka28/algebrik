@@ -20,30 +20,30 @@ const carouselDataTwo = [
   {
     image: "/team_images/jesse.webp",
     name: "JESSE FRUGE",
-    title: "VP, PRODUCT",
+    title: "VP, Product",
     place: "Algebrik AI",
   },
   {
     image: "/team_images/travis.webp",
     name: "Travis Bow",
-    title: "Chief Executive Officer",
-    place: "University of Hawaii FCU, Hawaii",
+    title: "CEO",
+    place: "University of Hawaii FCU",
     bio:"Travis Bow is President and CEO of the University of Hawaii Federal Credit Union (UHFCU), Hawaii’s fifth largest credit union with $618 million in assets. He brings 17 years of experience at UHFCU, including as Vice President of Member Support, and is dedicated to member service and operational excellence. A University of Hawaii graduate, Bow is committed to the community and leading UHFCU’s continued growth.",
     linkedin:"https://www.linkedin.com/in/travis-b-2a0475279/"
   },
   {
     image: "/team_images/SherryWu.webp",
     name: "Sherry Wu",
-    title: "Chief Technology Officer",
-    place: "University of Michigan Credit Union, Michigan",
+    title: "CTO",
+    place: "University of Michigan Credit Union",
     bio: "Sherry Wu is the CTO of the University of Michigan Credit Union, guiding IT strategy after 25 years in leadership roles at IBM, Ford, and HPE and board service at People Driven CU. She holds an MBA from Michigan Ross and an MS in Computer Science from Eastern Michigan University.",
     linkedin: "https://www.linkedin.com/in/xiang-wu/"
   },
   {
     image: "/team_images/Shirley.jpeg",
     name: "Shirley Senn",
-    title: "Chief Community Development",
-    place: "New Orleans Firemen's Federal Credit Union",
+    title: "Chief Comm. Dev. Officer",
+    place: "New Orleans Firemen’s FCU",
     bio: "Shirley is a Certified Credit Union Development Educator and passionate advocate for financial inclusion. With 30+ years of experience across fintech, credit union strategy, and nonprofit leadership, she brings a human-first lens to innovation and impact in community finance.",
     linkedin: "https://www.linkedin.com/in/shirley-senn-cude-4395377/"
   },
@@ -168,7 +168,7 @@ export default function SecureYourSpot() {
             />
             <Image src={"/background_images/12aug2pm-d.png"} alt="secure your spot" width={1162} height={233} className="hidden lg:block w-full mt-[23px]" />
             <Image src={"/background_images/12aug2pm-m.png"} alt="secure your spot" width={1162} height={233} className="lg:hidden w-full mt-[23px]" />
-            <div className="lg:flex py-[20px] px-[38px] justify-between w-full hidden">
+            <div className="lg:flex py-[20px]  justify-between w-full hidden px-20">
               {carouselDataTwo.map(item => <div className="flex flex-col  items-center">
                 <p className="text-lg text-[#292929] font-bold">{item.name}</p>
                 <p className="text-base font-medium text-[#292929]">{item.title}</p>
