@@ -21,7 +21,7 @@ const carouselDataTwo = [
     image: "/team_images/jesse.webp",
     name: "JESSE FRUGE",
     title: "VP, PRODUCT",
-    place: "N/A",
+    place: "Algebrik AI",
   },
   {
     image: "/team_images/travis.webp",
@@ -51,7 +51,7 @@ const carouselDataTwo = [
     image: "/team_images/Jennifer.jpeg",
     name: "Jennifer Hernandez",
     title: "VP,Customer Success",
-    place: "N/A",
+    place: "Algebrik AI",
   }
 ];
 
@@ -172,6 +172,7 @@ export default function SecureYourSpot() {
               {carouselDataTwo.map(item => <div className="flex flex-col  items-center">
                 <p className="text-lg text-[#292929] font-bold">{item.name}</p>
                 <p className="text-base font-medium text-[#292929]">{item.title}</p>
+                <p className="text-[12px] text-[#656565]">{item.place}</p>
               </div>)}
             </div>
           </div>
