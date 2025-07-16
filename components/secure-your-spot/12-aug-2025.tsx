@@ -11,15 +11,9 @@ import { useRouter } from "next/navigation";
 
 const validationSchema = Yup.object({
   firstname: Yup.string().required("Name is required"),
-  phone: Yup.string()
-    .test("is-valid-phone", "Phone number is invalid", (value) =>
-      validatePhoneNumber(value || "")
-    )
-    .required("Phone is required"),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
-  company: Yup.string().required("Company name is required"),
 });
 
 const carouselDataTwo = [
@@ -75,9 +69,7 @@ export default function SecureYourSpot() {
   const formik = useFormik({
     initialValues: {
       firstname: "",
-      phone: "",
       email: "",
-      company: "",
     },
     validationSchema,
     onSubmit: async (values: { [key: string]: string }) => {
@@ -351,23 +343,6 @@ export default function SecureYourSpot() {
                         <p className="text-red-500 font-plus-jakarta text-sm">{formik.errors.firstname as string}</p>
                       )}
                     </div>
-                    <div className="flex flex-col gap-[12px] w-full">
-                      <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
-                        Phone
-                      </label>
-                      <input
-                        type="text"
-                        name="phone"
-                        placeholder="+1 (123) 456 7890"
-                        value={formik.values.phone}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
-                      />
-                      {formik.touched.phone && formik.errors.phone && (
-                        <p className="text-red-500 font-plus-jakarta text-sm">{formik.errors.phone as string}</p>
-                      )}
-                    </div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-[24px]">
                     <div className="flex flex-col gap-[12px] w-full">
@@ -385,25 +360,6 @@ export default function SecureYourSpot() {
                       />
                       {formik.touched.email && formik.errors.email && (
                         <p className="text-red-500 font-plus-jakarta text-sm">{formik.errors.email as string}</p>
-                      )}
-                    </div>
-                    <div className="flex flex-col gap-[12px] w-full">
-                      <label className="text-[#5D5A88] font-plus-jakarta text-[14px] font-bold">
-                        Company
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        placeholder="Facebook"
-                        value={formik.values.company}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        className="border border-gray-300 font-plus-jakarta rounded-[8px] p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#1C8DEA]"
-                      />
-                      {formik.touched.company && formik.errors.company && (
-                        <p className="text-red-500 font-plus-jakarta text-sm">
-                          {formik.errors.company as string}
-                        </p>
                       )}
                     </div>
                   </div>

@@ -183,7 +183,7 @@ export default function ThankYou() {
         <div>
           <CustomSubtitle
             className=" text-[14px] text-center md:text-[24px] font-normal !font-inter"
-            text="📅 April 24th, 2025 at 11:00 AM EDT"
+            text="📅 August 12th, 2025 at 2:00 PM EDT"
           />
           <CustomSubtitle
             className="text-[14px] text-center md:text-[24px] font-normal !font-inter mt-2"
