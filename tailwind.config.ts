@@ -20,6 +20,8 @@ export default {
         "plus-jakarta": ["var(--font-plus-jakarta-sans)", "sans-serif"],
         "bebas-neue": ["var(--font-bebas-neue)", "sans-serif"],
         "inter": ["var(--font-inter)", ""],
+        "poppins": ["Poppins", "sans-serif"],
+        "opensans": ["Open Sans", "sans-serif"],
       },
       colors: {
 				border: 'hsl(var(--border))',

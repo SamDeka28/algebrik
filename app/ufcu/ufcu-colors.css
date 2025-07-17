@@ -1,0 +1,13 @@
+:root {
+  --ufcu-primary: #1e90ff;
+  --ufcu-light-blue: #7eb2ff;
+  --ufcu-medium-blue: #2a5fac;
+  --ufcu-dark-blue: #043071;
+  --ufcu-teal-400: #2dd4bf;
+  --ufcu-teal-500: #14b8a6;
+  --ufcu-teal-600: #0d9488;
+  --ufcu-gradient-hero: linear-gradient(135deg, #7eb2ff 0%, #043071 100%);
+  --ufcu-glass-bg: rgba(255, 255, 255, 0.15);
+  --ufcu-shadow-glow: 0 4px 32px 0 rgba(30, 144, 255, 0.15);
+  --ufcu-shadow-glow-lg: 0 8px 64px 0 rgba(30, 144, 255, 0.25);
+} 
