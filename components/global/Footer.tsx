@@ -27,6 +27,7 @@ const Footer = () => {
           <div className="mt-2 text-[#787C91]">
             <p>Fort Wayne, IN</p>
             <p>Phoenix, AZ</p>
+            <p>Houston, TX</p>
           </div>
         </div>
         <div className="hidden md:block">
@@ -184,7 +185,7 @@ const Footer = () => {
       </div>
       <div className=" mx-auto container mt-8 pt-4 px-0 md:px-28 text-sm flex flex-col-reverse gap-2 md:flex-row justify-between items-center">
         <div className="text-[#3E404C] text-[14.3px]">
-          <p>© 2024 Algebrik. All rights reserved.</p>
+          <p>© 2025 Algebrik. All rights reserved.</p>
         </div>
         <div className="flex space-x-4 mt-2 md:mt-0">
           <div className="hidden md:block">
