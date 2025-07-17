@@ -5,6 +5,13 @@ import { CustomHeader } from "@/components/CustomHeader";
 import Image from "next/image";
 import Link from "next/link";
 
+const Webinar = {
+  image: "/background_images/12aug2pm-m.png",
+  title: "Generative Al vs. Agentic Al-And Why It Matters for Loan Origination",
+  link: "/webinars/12-aug-2025#form",
+  eventDate: "12 Aug, 2025"
+}
+
 const lendingData = {
   "title": "From Suggestions to Action: How Credit Unions Are Putting Agentic Al to Work ",
   "author": "Prateek Samantaray",
@@ -73,7 +80,7 @@ const lendingData = {
           <tbody>
             <tr className="bg-white border-b border-gray-200">
               <td className="px-6 py-4">Income Validation</td>
-              <td  className="px-6 py-4">Suggest Missing Info</td>
+              <td className="px-6 py-4">Suggest Missing Info</td>
               <td className="px-6 py-4">Completes Validation</td>
             </tr>
             <tr className="bg-white border-b border-gray-200">
@@ -129,9 +136,27 @@ const lendingData = {
           <li>Product experts explaining how to spot real Agentic capabilities vs. assistive fluff</li>
         </ul>,
         "Whether you're auditing your stack or planning for 2025, this session will give you the lens—and language to separate hype from help.",
-        "[Save Your Spot →] ",
         "Because in lending, it's not about having Al. ",
-        "It's about having the right kind. "
+        "It's about having the right kind. ",
+        <div
+          className="w-full max-w-[1160px] rounded-[32px] gap-6 flex flex-col md:flex-row items-center shadow-lg overflow-hidden relative bg-[#FFFFFFE5] border-[#CFE3FF] border-[2px]"
+          style={{
+            // background: 'radial-gradient(104.17% 277.39% at 50% -153.34%, #7EB2FF 0%, #043071 85%)'
+          }}
+        >
+          <img src="/background_images/ml-single.svg" className="absolute right-0 z-0 rotate-180" />
+          <div className="flex-1 flex items-end mt-[110px] justify-center">
+            <img src={Webinar.image} alt={Webinar.title} className="rounded-2xl object-cover w-full scale-110" />
+          </div>
+          <div className="flex-1 flex flex-col gap-2 text-white p-5 md:p-10">
+            <div className="uppercase tracking-[30%] text-xs font-semibold opacity-80 mb-1 text-[#005FB5]">Upcoming Webinar</div>
+            <div className="text-2xl md:text-3xl font-bold leading-tight mb-2 text-[#292929]">{Webinar.title}</div>
+            {/* <div className="text-base font-medium mb-2">{next.eventDate}</div> */}
+            <Link href={Webinar.link}>
+              <button className="bg-white text-[#fff] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] font-semibold rounded-full px-6 py-2 mt-2 shadow hover:bg-[#195BD7] hover:text-white border border-white transition-all">Register Now</button>
+            </Link>
+          </div>
+        </div>,
       ]
     }
   ]
