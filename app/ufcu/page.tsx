@@ -6,8 +6,7 @@ import UFCUSuccessSection from "../../components/ufcu/UFCUSuccessSection";
 import EliteProgramSection from "../../components/ufcu/EliteProgramSection";
 import EliteActionSection from "../../components/ufcu/EliteActionSection";
 import AlgebrikLeadForm from "../../components/ufcu/AlgebrikLeadForm";
-import AlgebrikFloatingCTA from "../../components/ufcu/AlgebrikFloatingCTA";
-import AlgebrikFooter from "../../components/ufcu/AlgebrikFooter";
+import ConvoaiWidget from "../../components/ConvoaiWidget";
 
 export default function UFCUPage() {
   const [showLoading, setShowLoading] = useState(true);
@@ -45,7 +44,8 @@ export default function UFCUPage() {
         <AlgebrikLeadForm />
         {/* <AlgebrikFooter /> */}
         {/* Floating CTA */}
-        <AlgebrikFloatingCTA />
+        {/* <AlgebrikFloatingCTA /> */}
+        <ConvoaiWidget/>
       </main>
     </div>
   );
