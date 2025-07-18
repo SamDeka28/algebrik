@@ -14,15 +14,32 @@ const AlgebrikLeadForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout | undefined;
+    if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
+        observer.disconnect();
+        if (timeoutId) clearTimeout(timeoutId);
       }
     }, { threshold: 0.3 });
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    return () => observer.disconnect();
+    // Mobile fallback: if not visible after 1s, show content
+    if (typeof window !== 'undefined' && window.innerWidth < 700) {
+      timeoutId = setTimeout(() => {
+        setIsVisible(true);
+        observer.disconnect();
+      }, 1000);
+    }
+    return () => {
+      observer.disconnect();
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, []);
 
   const validateField = (name: string, value: string) => {

@@ -39,6 +39,12 @@ const carouselDataOne = [
     place: "N/A",
   },
   {
+    image: "/team_images/arvind.webp",
+    name: "ARVIND MISHRA",
+    title: "Vice President - Business Development and Inside Sales",
+    place: "N/A",
+  },
+  {
     image: "/team_images/tarun.webp",
     name: "TARUN KANERIA",
     title: "AVP, Product",

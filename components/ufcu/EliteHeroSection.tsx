@@ -1,17 +1,39 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Crown, Star, Users } from 'lucide-react';
 import Modal from "./Modal";
+import PRNewswireModal from "./PRNewswireModal";
 const EliteHeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
+  const [showPRModal, setShowPRModal] = useState(false);
   useEffect(() => {
-    setIsVisible(true);
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
+    let timeoutId: NodeJS.Timeout | undefined;
+    if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.disconnect();
+        if (timeoutId) clearTimeout(timeoutId);
+      }
+    }, { threshold: 0.3 });
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+    // Mobile fallback: if not visible after 1s, show content
+    if (typeof window !== 'undefined' && window.innerWidth < 700) {
+      timeoutId = setTimeout(() => {
+        setIsVisible(true);
+        observer.disconnect();
+      }, 1000);
+    }
+    return () => {
+      observer.disconnect();
+      if (timeoutId) clearTimeout(timeoutId);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const scrollToForm = () => {
     const formElement = document.getElementById('lead-form');
@@ -47,7 +69,7 @@ const EliteHeroSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-screen">
             
             {/* Left Content */}
-            <div className="lg:col-span-8 space-y-8 py-20">
+            <div className="lg:col-span-8 space-y-8 pt-10 pb-0  lg:py-20">
               
               {/* Elite Status Badge */}
               <div className={`transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-teal-500/20 to-teal-400/20 backdrop-blur-md border border-teal-300/30">
@@ -86,15 +108,18 @@ const EliteHeroSection = () => {
                   <span>Join Elite Early Adopter Program</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </button>
-                <a
+                <button
                   className="btn-secondary group inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/30 text-white"
-                  href="https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => setShowPRModal(true)}
                 >
                   <span>Read Official Announcement</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </a>
+                </button>
+                <PRNewswireModal
+                  open={showPRModal}
+                  onClose={() => setShowPRModal(false)}
+                  url="https://thecreditunionconnection.com/united-financial-credit-union-selects-algebrikais-comprehensive-consumer-lending-suite-algebrik-one/"
+                />
               </div>
               
               {/* Professional Urgency Messaging */}
@@ -127,7 +152,7 @@ const EliteHeroSection = () => {
             </div>
 
             {/* Right Content - Elite Status Visual */}
-            <div className={`lg:col-span-4 relative transition-all duration-1000 delay-1000 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>              <div className="relative h-96 lg:h-[500px]">
+            <div className={`lg:col-span-4 mb-28 lg:mb-0 relative transition-all duration-1000 delay-1000 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>              <div className="relative h-96 lg:h-[500px]">
                 <div className="relative w-full h-full bg-gradient-to-br from-teal-500/10 to-teal-400/10 backdrop-blur-lg rounded-3xl border border-teal-300/30 p-8 overflow-hidden">
                   
                   {/* Elite Status Header */}
