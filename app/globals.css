@@ -326,6 +326,7 @@ html{
 }
 .btn-primary:hover {
   box-shadow: var(--shadow-glow-lg);
+  color:white;
   transform: scale(1.05) translateY(-0.25rem);
 }
 .btn-primary::before {
