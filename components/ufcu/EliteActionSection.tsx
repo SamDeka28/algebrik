@@ -88,7 +88,7 @@ const EliteActionSection = () => {
             </div>
           </div>
           {/* Application Process */}
-          <div className={`mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          {/* <div className={`mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {[{
               step: '1',
@@ -119,16 +119,7 @@ const EliteActionSection = () => {
               </div>
             ))}
             </div>
-          </div>
-          {/* Primary CTA */}
-          <div className={`space-y-6 transition-all duration-1000 delay-600 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <div className="text-center">
-              <button onClick={openCalendar} className="btn-secondary group inline-flex items-center gap-3">
-                <Calendar className="w-5 h-5" />
-                <span>Schedule Executive Strategy Session</span>
-              </button>
-            </div>
-          </div>
+          </div> */}
           {/* Urgency Messaging */}
           <div className={`mt-12 transition-all duration-1000 delay-800 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20 max-w-3xl mx-auto">
@@ -143,6 +134,15 @@ const EliteActionSection = () => {
             <p className="text-teal-200 font-medium">
               Elite Early Adopter Program • Limited to 10 Institutions • 6 Spots Remaining
             </p>
+          </div>
+           {/* Primary CTA */}
+           <div className={`space-y-6 transition-all duration-1000 delay-600 mt-20 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <div className="text-center">
+              <button onClick={openCalendar} className="btn-secondary group inline-flex items-center gap-3">
+                <Calendar className="w-5 h-5" />
+                <span>Schedule Executive Strategy Session</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
