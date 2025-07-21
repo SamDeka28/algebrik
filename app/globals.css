@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -248,3 +249,260 @@ html{
     @apply bg-background text-foreground;
   }
 }
+
+/* === UFCU Custom Styles Start === */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 9%;
+  --primary: 220 100% 25%;
+  --primary-foreground: 0 0% 100%;
+  --dark-blue: 220 100% 15%;
+  --dark-blue-foreground: 0 0% 100%;
+  --medium-blue: 220 100% 35%;
+  --medium-blue-foreground: 0 0% 100%;
+  --light-blue: 220 100% 45%;
+  --light-blue-foreground: 0 0% 100%;
+  --text-secondary: 0 0% 40%;
+  --text-muted: 0 0% 60%;
+  --surface: 0 0% 98%;
+  --surface-elevated: 0 0% 100%;
+  --accent-blue: 220 100% 50%;
+  --accent-teal: 163 57% 52%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 95%;
+  --ring: 220 100% 45%;
+  --gradient-hero: linear-gradient(135deg, hsl(220 100% 15%) 0%, hsl(220 100% 25%) 100%);
+  --gradient-primary: linear-gradient(135deg, hsl(220 100% 25%) 0%, hsl(220 100% 35%) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(220 100% 45%) 0%, hsl(163 57% 52%) 100%);
+  --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-bg-dark: rgba(255, 255, 255, 0.02);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 20px hsl(var(--light-blue) / 0.2);
+  --shadow-glow-lg: 0 0 40px hsl(var(--light-blue) / 0.3);
+  --radius: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+}
+.heading-hero {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: white;
+  line-height: 1.2;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.body-large {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: hsl(var(--text-secondary));
+}
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: white;
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-md);
+  transition: all 0.5s;
+}
+.btn-primary:hover {
+  box-shadow: var(--shadow-glow-lg);
+  color:white;
+  transform: scale(1.05) translateY(-0.25rem);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--gradient-accent);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-primary:hover::before {
+  opacity: 1;
+}
+.btn-secondary {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: white;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.5s;
+}
+.btn-secondary:hover {
+  background: var(--glass-bg-dark);
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: var(--shadow-lg);
+  transform: scale(1.05) translateY(-0.25rem);
+}
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+.animate-fade-in-up {
+  animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.animate-fade-in {
+  animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+.sticky-meeting-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 60px;
+  height: 60px;
+  background: var(--light-blue);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  z-index: 1000;
+}
+.sticky-meeting-btn:hover {
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.1);
+}
+/* === UFCU Custom Styles End === */
+
+/* === UFCU Showcase Pixel-Perfect Form Styles === */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: white;
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-md);
+  transition: all 0.5s;
+}
+.btn-primary:hover {
+  box-shadow: var(--shadow-glow-lg);
+  transform: scale(1.05) translateY(-0.25rem);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--gradient-accent);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-primary:hover::before {
+  opacity: 1;
+}
+.btn-secondary {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: white;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.5s;
+}
+.btn-secondary:hover {
+  background: var(--glass-bg-dark);
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: var(--shadow-lg);
+  transform: scale(1.05) translateY(-0.25rem);
+}
+.container-custom {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+.section-spacing {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.form-input {
+  width: 100%;
+  border: 1px solid hsl(var(--input));
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  padding-left: 40px;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s;
+  background: #F7F8FA;
+  color: hsl(var(--foreground));
+}
+.form-input:focus {
+  outline: none;
+  border-color: hsl(var(--light-blue));
+  background: #fff;
+  box-shadow: 0 0 0 3px hsl(var(--light-blue) / 0.1);
+}
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-family: 'Open Sans', sans-serif;
+  color: hsl(var(--text-secondary));
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+/* === End UFCU Showcase Pixel-Perfect Form Styles === */

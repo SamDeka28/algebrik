@@ -18,8 +18,8 @@ export default function NewsSection() {
       source: "PR Newswire",
       role: "Marketing",
       description: "Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS) built for credit unions, today announced that United Financial Credit Union...",
-      link: "https://finance.yahoo.com/news/algebrik-ai-partners-trustage-offer-130200023.html",
-      image: "/section_images/blog/ya.webp",
+      link: "https://www.prnewswire.com/news-releases/united-financial-credit-union-selects-algebrikais-comprehensive-consumer-lending-suite-algebrik-one-302504296.html?tc=eml_cleartime",
+      image: "/section_images/blog/prnewswire.jpg",
     },
     {
       title:
