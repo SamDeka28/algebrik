@@ -212,6 +212,12 @@ export default function Navbar() {
       }
     }
   }
+
+  // Hide Navbar on all /ufcu routes
+  if (pathname.startsWith('/ufcu')) {
+    return null;
+  }
+
   if (pathname === "/gac-conference-dinner/") {
     return null;
   }

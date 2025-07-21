@@ -1,21 +1,14 @@
 "use client";
 import HeroSection from "@/components/home_page/HeroSection";
 import CardsContainer from "@/components/card";
-import FooterCards from "@/components/FooterCards";
-import LendingJourney from "@/components/home_page/LendingJourney";
-import Potential from "@/components/home_page/Potential";
-import IntegrationsSection from "@/components/home_page/IntegrationsSection";
 import FeaturesSection from "@/components/home_page/FeaturesSection";
-import BorrowerJourney from "@/components/home_page/BorrowerJourney";
-
-import { useConversation } from '@elevenlabs/react';
+import ConvoaiWidget from "@/components/ConvoaiWidget"
 
 
 import React, { useEffect, useState, useCallback } from 'react';
-import Script from "next/script";
-import { motion, AnimatePresence } from 'framer-motion';
 import CarouselSection from "@/components/about_page/CarouselSection";
 import dynamic from "next/dynamic";
+import Conversation from "@/components/Conversation";
 
 const LazyIntegrationsSection = dynamic(() => import("@/components/home_page/IntegrationsSection"), { ssr: false, loading: () => <div /> });
 const LazyFooterCards = dynamic(() => import("@/components/FooterCards"), { ssr: false, loading: () => <div /> });
@@ -200,215 +193,13 @@ export default function Home() {
         </div>
         {showIntegrations && <LazyIntegrationsSection />}
         {showFooter && <LazyFooterCards />}
-        {showConversation && <Conversation />}
+        <ConvoaiWidget/>
         {/* <elevenlabs-convai agent-id="agent_01jwdd48b1e17rkf0dngh470mv" />
         <Script
           src="https://unpkg.com/@elevenlabs/convai-widget-embed"
           strategy="afterInteractive"
         /> */}
       </main>
-    </>
-  );
-}
-
-
-function Conversation() {
-  const [showTerms, setShowTerms] = useState(false);
-  const [accepted, setAccepted] = useState(false);
-  const [showWidget, setShowWidget] = useState(true);
-  const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
-  const [micMuted, setMicMuted] = useState(false);
-  const conversation = useConversation({
-    micMuted,
-    onConnect: () => console.log('Connected'),
-    onDisconnect: () => console.log('Disconnected'),
-    onMessage: (message) => console.log('Message:', message),
-    onError: (error) => console.error('Error:', error),
-  });
-
-  // On mount, check if terms were already accepted
-  useEffect(() => {
-    if (typeof window !== 'undefined' && localStorage.getItem('convai-terms-accepted') === 'true') {
-      setAccepted(true);
-    }
-  }, []);
-
-  const startConversation = useCallback(async () => {
-    if (accepted) {
-      setShowWidget(false);
-      setTimeout(async () => {
-        setShowWidget(true);
-        try {
-          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          setMediaStream(stream);
-          setMicMuted(false);
-          await conversation.startSession({
-            agentId: 'agent_01jwdd48b1e17rkf0dngh470mv',
-          });
-        } catch (error) {
-          console.error('Failed to start conversation:', error);
-        }
-      }, 200); // short delay for animation
-    } else {
-      setShowTerms(true);
-    }
-  }, [accepted, conversation]);
-
-  const acceptTerms = useCallback(async () => {
-    setShowTerms(false);
-    setAccepted(true);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('convai-terms-accepted', 'true');
-    }
-    setShowWidget(false);
-    setTimeout(async () => {
-      setShowWidget(true);
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        setMediaStream(stream);
-        setMicMuted(false);
-        await conversation.startSession({
-          agentId: 'agent_01jwdd48b1e17rkf0dngh470mv',
-        });
-      } catch (error) {
-        console.error('Failed to start conversation:', error);
-      }
-    }, 200);
-  }, [conversation]);
-
-  const stopConversation = useCallback(async () => {
-    setShowWidget(false);
-    setTimeout(async () => {
-      setShowWidget(true);
-      if (mediaStream) {
-        mediaStream.getTracks().forEach(track => track.stop());
-        setMediaStream(null);
-        setMicMuted(false);
-      }
-      await conversation.endSession();
-      setAccepted(true); // keep accepted true so terms don't show again
-    }, 200);
-  }, [conversation, mediaStream]);
-
-  // Mic mute/unmute toggle at browser level
-  const toggleMic = useCallback(() => {
-    if (mediaStream) {
-      const audioTrack = mediaStream.getAudioTracks()[0];
-      if (audioTrack) {
-        audioTrack.enabled = !audioTrack.enabled;
-        setMicMuted(!audioTrack.enabled);
-      }
-    }
-  }, [mediaStream]);
-
-  return (
-    <>
-      {/* Animated Terms Modal */}
-      <AnimatePresence>
-        {showTerms && (
-          <motion.div
-            className="fixed inset-0 z-[100000] flex items-center justify-center bg-black/40 backdrop-blur-sm text-[#000]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl absolute bottom-10 right-4 border border-gray-100"
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 40, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            >
-              <h2 className="text-lg font-bold mb-2">Terms and conditions</h2>
-              <p className="text-sm mb-4">
-                By clicking "Agree," and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as described in the Privacy Policy. If you do not wish to have your conversations recorded, please refrain from using this service.
-              </p>
-              <div className="flex justify-end gap-2 mt-4">
-                <button
-                  className="px-4 py-2 text-sm rounded-3xl bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
-                  onClick={() => setShowTerms(false)}
-                >
-                  Cancel
-                </button>
-                <button
-                  className="px-4 py-2 text-sm rounded-3xl bg-black text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black transition"
-                  onClick={acceptTerms}
-                >
-                  Accept
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Animated Widget */}
-      <div
-        className="fixed bottom-10 font-plus-jakarta right-4 rounded-full flex items-center p-2.5 bg-white shadow-2xl pointer-events-auto overflow-hidden w-fit z-50 border border-gray-100"
-      >
-        <motion.div
-          className="relative shrink-0 w-10 h-10 mx-1 shadow-md rounded-full border border-gray-200  bg-[#2a5fac] bg-[url('/logo.png')] bg-center bg-no-repeat bg-contain"
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.97 }}
-        >
-          {/* <img
-            src="/logo.webp"
-            alt="algebrik"
-            className="w-full object-contain"
-          /> */}
-        </motion.div>
-        <AnimatePresence mode="wait">
-          {conversation.status !== 'connected' ? (
-            <motion.button
-              key="start"
-              type="button"
-              aria-label="Start a call"
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black transition ml-2 shadow-sm"
-              onClick={startConversation}
-              initial={{ x: 40, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -40, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            >
-              <svg height="1em" width="1em" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.7489 2.25C2.93286 2.25 2.21942 2.92142 2.27338 3.7963C2.6686 10.2041 7.79483 15.3303 14.2026 15.7255C15.0775 15.7795 15.7489 15.066 15.7489 14.25V11.958C15.7489 11.2956 15.3144 10.7116 14.6799 10.5213L12.6435 9.91035C12.1149 9.75179 11.542 9.89623 11.1518 10.2864L10.5901 10.8482C9.15291 10.0389 7.95998 8.84599 7.15074 7.40881L7.71246 6.84709C8.10266 6.45689 8.24711 5.88396 8.08854 5.35541L7.47761 3.31898C7.28727 2.6845 6.70329 2.25 6.04087 2.25H3.7489Z"></path></svg>
-              Start a call
-            </motion.button>
-          ) : (
-            <motion.div className="flex gap-2 ml-2" key="end-mic"
-              initial={{ x: 40, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -40, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            >
-              <motion.button
-                type="button"
-                aria-label="End"
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-300 text-black text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 transition shadow-sm"
-                onClick={stopConversation}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <svg height="1em" width="1em" viewBox="0 0 19 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16.0303 3.53033C16.3232 3.23744 16.3232 2.76256 16.0303 2.46967C15.7374 2.17678 15.2626 2.17678 14.9697 2.46967L8.6271 8.81224C8.25925 8.3778 7.93185 7.90804 7.65074 7.40881L8.21246 6.84709C8.60266 6.45689 8.74711 5.88396 8.58854 5.35541L7.97761 3.31898C7.78727 2.6845 7.20329 2.25 6.54087 2.25H4.2489C3.43286 2.25 2.71942 2.92142 2.77338 3.7963C2.95462 6.73468 4.13069 9.40357 5.96899 11.4703L2.96967 14.4697C2.67678 14.7626 2.67678 15.2374 2.96967 15.5303C3.26256 15.8232 3.73744 15.8232 4.03033 15.5303L16.0303 3.53033Z"></path><path d="M14.7026 15.7255C12.2994 15.5773 10.0765 14.7636 8.21584 13.4665L10.9278 10.7545C10.9815 10.7863 11.0356 10.8175 11.0901 10.8482L11.6518 10.2864C12.042 9.89623 12.6149 9.75179 13.1435 9.91035L15.1799 10.5213C15.8144 10.7116 16.2489 11.2956 16.2489 11.958V14.25C16.2489 15.066 15.5775 15.7795 14.7026 15.7255Z"></path></svg>
-                End
-              </motion.button>
-              <motion.button
-                type="button"
-                aria-label={micMuted ? 'Unmute microphone' : 'Mute microphone'}
-                className={`flex items-center justify-center w-9 h-9 rounded-full border ${micMuted ? 'bg-red-50 border-red-200 text-red-500' : 'border-gray-300 bg-white text-black'} hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 transition shadow-sm`}
-                onClick={toggleMic}
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                {micMuted ? (
-                  <svg height="1em" width="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10 14a4 4 0 0 0 4-4V7a4 4 0 1 0-8 0v3a4 4 0 0 0 4 4zm5-4a1 1 0 1 1 2 0 6 6 0 0 1-6 6v2a1 1 0 1 1-2 0v-2a6 6 0 0 1-6-6 1 1 0 1 1 2 0 4 4 0 0 0 8 0z" /><line x1="4" y1="4" x2="16" y2="16" stroke="red" strokeWidth="2" /></svg>
-                ) : (
-                  <svg height="1em" width="1em" viewBox="0 0 19 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M9.50008 1.5C7.42901 1.5 5.75008 3.17893 5.75008 5.25V8.25C5.75008 10.3211 7.42901 12 9.50008 12C11.5712 12 13.2501 10.3211 13.2501 8.25V5.25C13.2501 3.17893 11.5712 1.5 9.50008 1.5Z"></path><path d="M4.88997 10.8417C4.66448 10.4943 4.20002 10.3954 3.85256 10.6209C3.50509 10.8463 3.40621 11.3108 3.63169 11.6583C4.47442 12.9569 6.08493 14.6838 8.75008 14.9616V15.75C8.75008 16.1642 9.08587 16.5 9.50008 16.5C9.9143 16.5 10.2501 16.1642 10.2501 15.75V14.9616C12.9152 14.6838 14.5257 12.9569 15.3685 11.6583C15.594 11.3108 15.4951 10.8463 15.1476 10.6209C14.8001 10.3954 14.3357 10.4943 14.1102 10.8417C13.3305 12.0432 11.9002 13.5 9.50008 13.5C7.1 13.5 5.66968 12.0432 4.88997 10.8417Z"></path></svg>
-                )}
-              </motion.button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
     </>
   );
 }
