@@ -211,7 +211,7 @@ const AlgebrikLeadForm = () => {
                     <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
                     <span>Sending...</span>
                   </> : <>
-                    <span>Request Information</span>
+                    <span>The Lending Stack Test Drive</span>
                     <Send className="w-5 h-5" />
                   </>}
                 </button>
