@@ -478,7 +478,7 @@ export default function DecisioningPage() {
                                                 </div>
                                             </div>
                                             {/* Content */}
-                                            <div className="flex-1 flex flex-col items-start max-w-xl pt-6 ">
+                                            <div className="flex-1 flex flex-col items-start justify-center max-w-xl">
                                                 {current?.content.title && <h3 className="text-2xl font-semibold mb-4 text-[#292929]">{current?.content.title}</h3>}
                                                 <ul className="text-[#C7D6F3] text-lg space-y-2">
                                                     {current?.content.bullets.map((b, i) => (
