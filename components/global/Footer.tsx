@@ -161,7 +161,7 @@ const Footer = () => {
                 {" "}
                 <li>About us</li>
               </Link>
-              <button onClick={() => setShowContactModal(true)}>
+              <button onClick={() => setShowContactModal(true)} style={{all:"unset"}}>
                 {" "}
                 <li>Contact us</li>
               </button>
@@ -175,6 +175,13 @@ const Footer = () => {
               >
                 <p>Follow on LinkedIn</p>
               </Link>
+              <Link
+              href="https://www.youtube.com/@AlgebrikAI"
+              target="_blank"
+              // className="text-[#3E404C]"
+            >
+              <p>Youtube</p>
+            </Link>
               {/* <p>Follow on X</p> */}
             </div>
           </div>
