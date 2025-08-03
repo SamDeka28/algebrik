@@ -3,38 +3,38 @@ import { ArrowRight, Crown, Star, Users } from 'lucide-react';
 import Modal from "./Modal";
 import PRNewswireModal from "./PRNewswireModal";
 const EliteHeroSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const [showPRModal, setShowPRModal] = useState(false);
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout | undefined;
-    if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.disconnect();
-        if (timeoutId) clearTimeout(timeoutId);
-      }
-    }, { threshold: 0.3 });
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-    // Mobile fallback: if not visible after 1s, show content
-    if (typeof window !== 'undefined' && window.innerWidth < 700) {
-      timeoutId = setTimeout(() => {
-        setIsVisible(true);
-        observer.disconnect();
-      }, 1000);
-    }
-    return () => {
-      observer.disconnect();
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, []);
+  // useEffect(() => {
+  //   let timeoutId: NodeJS.Timeout | undefined;
+  //   if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
+  //     setIsVisible(true);
+  //     return;
+  //   }
+  //   const observer = new IntersectionObserver(([entry]) => {
+  //     if (entry.isIntersecting) {
+  //       setIsVisible(true);
+  //       observer.disconnect();
+  //       if (timeoutId) clearTimeout(timeoutId);
+  //     }
+  //   }, { threshold: 0.3 });
+  //   if (heroRef.current) {
+  //     observer.observe(heroRef.current);
+  //   }
+  //   // Mobile fallback: if not visible after 1s, show content
+  //   if (typeof window !== 'undefined' && window.innerWidth < 700) {
+  //     timeoutId = setTimeout(() => {
+  //       setIsVisible(true);
+  //       observer.disconnect();
+  //     }, 1000);
+  //   }
+  //   return () => {
+  //     observer.disconnect();
+  //     if (timeoutId) clearTimeout(timeoutId);
+  //   };
+  // }, []);
   const scrollToForm = () => {
     const formElement = document.getElementById('lead-form');
     formElement?.scrollIntoView({
@@ -66,11 +66,11 @@ const EliteHeroSection = () => {
     {/* Main Content */}
     <div className="container mx-auto px-6 lg:px-12 relative z-10 text-white">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-screen">
+      <img src="/logo.png" style={{height:"50px"}} className='mt-10'/>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           {/* Left Content */}
           <div className="lg:col-span-8 space-y-8 pt-10 pb-0  lg:py-20">
-
             {/* Elite Status Badge */}
             <div className={`transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-teal-500/20 to-teal-400/20 backdrop-blur-md border border-teal-300/30">
               <Crown className="w-4 h-4 text-teal-300" />
