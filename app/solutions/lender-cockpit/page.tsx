@@ -585,14 +585,14 @@ export default function DecisioningPage() {
             <section className="w-full max-w-7xl px-4 md:px-0 py-8 lg:py-16 flex flex-col items-center relative md:mt-[72px]">
                 <CustomHeader text="Fits Right Into the Flow of Lending" className="text-center z-10" />
                 <p className="text-[#606060] text-lg text-center mb-10 max-w-3xl z-10">The Lender's Cockpit doesn't sit on the sidelines. It's woven directly into your origination journey—powering action at every stage.</p>
-                <div className="w-full flex flex-nowrap md:flex-wrap  z-10 justify-start md:justify-center pb-8 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
+                <div className="w-full flex flex-nowrap md:flex-wrap  z-10 justify-start md:justify-center pt-2 pb-8 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
                     {flowsData.map((item, idx) => (
                         !item.title ? (
-                            <div key={item.title} className="min-w-[82px] p-4 flex flex-col items-start justify-center ">
+                            <div key={item.title} className="min-w-[82px] p-4 flex flex-col items-start justify-center hover:scale-105 transition-all ease-in">
                                 <Image src={item.icon} alt="arrow" width={82} height={3} className="mb-3 w-full object-cover rounded-2xl" />
                             </div>
                         ) :
-                            <div key={item.title} className="bg-white w-[152px] shadow-lg p-4 flex flex-col items-start border-[2px] border-[#1B5AD2] rounded-[20px]">
+                            <div key={item.title} className="bg-white w-[152px] shadow-lg p-4 flex flex-col items-start border-[2px] border-[#1B5AD2] rounded-[20px] hover:scale-105 transition-all ease-in">
                                 <Image src={item.icon} alt={item.title} width={40} height={40} className="mb-3  w-[40px] h-[40px] object-cover rounded-2xl" />
                                 <span className="text-[18px] font-bold text-[#2A5FAC] text-left">{item.title}</span>
                             </div>
