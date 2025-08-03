@@ -91,15 +91,15 @@ const Footer = () => {
                 {" "}
                 <li>Platform</li>{" "}
               </Link>
-              <Link href="/solutions/credit_union" passHref>
+              <Link href="/solutions/credit-union" passHref>
                 {" "}
                 <li>For Credit Unions</li>
               </Link>
-              <Link href="/solutions/smb_lenders" passHref>
+              <Link href="/solutions/smb-lenders" passHref>
                 {" "}
                 <li>For Banks</li>
               </Link>
-              <Link href="/solutions/auto_lenders" passHref>
+              <Link href="/solutions/auto-lenders" passHref>
                 {" "}
                 <li>For Auto Lenders</li>
               </Link>
