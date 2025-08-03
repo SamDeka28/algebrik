@@ -331,7 +331,7 @@ export default function OmnichannelPOSPage() {
             <section className="w-full px-4 py-8 lg:py-16 flex flex-col items-center">
                 <CustomHeader text="POS Flows that Don't Take a Quarter to Go Live" className="text-center" />
                 <Marquee className="flex gap-[20px]">
-                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center py-8 overflow-x-auto scrollbar-hide hide-scrollbar">
+                <div className=" md:hidden w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center py-8 overflow-x-auto scrollbar-hide hide-scrollbar">
                     {posFlowsData.map((item, idx) => (
                         <motion.div 
                             key={item.title} 
@@ -351,6 +351,25 @@ export default function OmnichannelPOSPage() {
                     ))}
                 </div>
                 </Marquee>
+                <div className="hidden w-full md:flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center py-8 overflow-x-auto scrollbar-hide hide-scrollbar">
+                    {posFlowsData.map((item, idx) => (
+                        <motion.div 
+                            key={item.title} 
+                            className="bg-white w-[300px] min-w-[300px] rounded-2xl shadow-md p-4 flex flex-col items-center"
+                            style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                            whileHover={{ 
+                                scale: 1.05
+                            }}
+                            transition={{ 
+                                duration: 0.3,
+                                ease: "easeInOut"
+                            }}
+                        >
+                            <Image src={item.icon} alt={item.title} width={120} height={120} className="mb-3 w-full aspect-square object-cover border border-[#BEBEBE5C] rounded-2xl" />
+                            <span className="text-base font-medium text-[#292929]">{item.title}</span>
+                        </motion.div>
+                    ))}
+                </div>
                 <div className="bg-[#F6F9FB] border border-[#195bd7] rounded-full px-6 py-3 inline-block mt-8">
                     <p className="text-base lg:text-[20px] text-[#2A5FAC] font-bold text-center lg:text-left">From partner onboarding to mobile lending widget in under 30 days.</p>
                 </div>
