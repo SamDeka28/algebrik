@@ -287,7 +287,7 @@ export default function OmnichannelPOSPage() {
                             borrowerExperienceData.map((item, idx) => (
                                 <div
                                     key={item.title + idx}
-                                    className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[400px] max-w-[400px] gap-6 mx-2 md:mx-4"
+                                    className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[400px] max-w-[400px] gap-6 mx-2 md:mx-4 hover:scale-105 transition-all ease-in"
                                     style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
                                 >
                                     <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl">
