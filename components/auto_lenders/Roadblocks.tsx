@@ -32,7 +32,7 @@ const RoadBlocks = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-center px-4 md:py-[60px] sm:px-6 md:px-10">
+    <div className="flex flex-col gap-8 justify-center items-center px-4 md:py-[60px] sm:px-6 md:px-10 z-[10000]">
       <div className="flex flex-col justify-center items-center text-center gap-[24px]">
         <CustomHeader className="text-2xl md:text-3xl lg:text-4xl font-bold" text="Overcoming Roadblocks in Auto Lending" />
         <CustomSubtitle
@@ -43,9 +43,9 @@ const RoadBlocks = () => {
 
       <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center gap-[32px] lg:gap-10 w-full max-w-[1200px]">
         {/* Main Card */}
-        <div className="flex flex-col items-center w-full lg:w-1/2">
+        <div className="flex flex-col items-center w-full lg:w-1/2 z-20">
           <div className="relative cursor-pointer flex flex-col-reverse justify-between p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[518px] h-auto sm:h-[580px] group">
-            <div className="absolute w-80 h-44 md:h-96 -top-0 -right-2 bg-gradient-to-tr from-blue-200 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
+            <div className="hidden md:block absolute w-80 h-44 md:h-96 -top-0 -right-2 bg-gradient-to-tr from-blue-200 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
             <div className="flex flex-col mt-4 z-10">
               <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
                 {cardData[2].title}
@@ -57,7 +57,7 @@ const RoadBlocks = () => {
                 </span>
               </p>
             </div>
-            <div className="relative w-full h-[200px] sm:h-[370px] rounded-[24px] overflow-hidden 
+            <div className="hidden md:block relative w-full h-[200px] sm:h-[370px] rounded-[24px] overflow-hidden 
             mt-4 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
               <Image
                 src={cardData[2].image}
@@ -87,7 +87,7 @@ const RoadBlocks = () => {
         </div>
 
         {/* Other Cards */}
-        <div className="flex flex-col gap-6 lg:gap-10 w-full lg:w-1/2">
+        <div className="flex flex-col gap-6 lg:gap-10 w-full lg:w-1/2 z-20">
           {cardData.slice(0, 2).map((card, index) => (
             <div
               key={index}
@@ -98,11 +98,11 @@ const RoadBlocks = () => {
               } gap-4 group`}
             >
               {/* Gradient Background */}
-              <div className="absolute w-52 h-52 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
+              <div className="hidden md:block absolute w-52 h-52 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
 
               {/* Image Section */}
               <div
-                className={`relative ${
+                className={`relative md:block hidden ${
                   index === 0
                     ? "w-full sm:w-1/2 h-[150px] sm:h-full"
                     : "w-full h-[150px] sm:h-[200px] overflow-hidden"
