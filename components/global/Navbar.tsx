@@ -107,6 +107,10 @@ export default function Navbar() {
     setAboutOpen(true);
   };
 
+  const toggleAbout=()=>{
+    setAboutOpen(!aboutOpen)
+  }
+
   const closeAbout = () => {
     const timeout = setTimeout(() => {
       setAboutOpen(false);
@@ -355,7 +359,7 @@ export default function Navbar() {
             </Link>
             {aboutOpen && (
               <PortalDropdown anchorRef={aboutRef} autoWidth={true}>
-                <div className="grid grid-cols-3 gap-12 min-w-[1100px]  rounded-2xl p-4 shadow-2xl font-plus-jakarta">
+                <div className="lg:grid grid-cols-3 gap-12 min-w-[1100px]  rounded-2xl p-4 shadow-2xl font-plus-jakarta hidden">
                   {/* Column 1: By Institution */}
                   <div className="flex flex-col  gap-3">
                     <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">About Us</div>
@@ -470,15 +474,14 @@ export default function Navbar() {
             >
               Resource Center
             </Link>
-            <Link
-              href="/about"
-              onClick={toggleMenu}
+            <div
+              onClick={toggleAbout}
               className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
             >
               About Us
-            </Link>
+            </div>
             {aboutOpen && (
-              <div className="pl-6">
+              <div className="pl-6 z-100">
                 <Link href="/about" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Company
                 </Link>

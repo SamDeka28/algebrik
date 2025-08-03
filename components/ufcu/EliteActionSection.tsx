@@ -2,37 +2,37 @@ import { useState, useEffect, useRef } from 'react';
 import { Crown, ArrowRight, Calendar, CheckCircle, Users, Clock } from 'lucide-react';
 import Contact from '../contacts';
 const EliteActionSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [openContact,setOpenContact]=useState(false)
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout | undefined;
-    if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.disconnect();
-        if (timeoutId) clearTimeout(timeoutId);
-      }
-    }, { threshold: 0.3 });
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    // Mobile fallback: if not visible after 1s, show content
-    if (typeof window !== 'undefined' && window.innerWidth < 700) {
-      timeoutId = setTimeout(() => {
-        setIsVisible(true);
-        observer.disconnect();
-      }, 1000);
-    }
-    return () => {
-      observer.disconnect();
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, []);
+  // useEffect(() => {
+  //   let timeoutId: NodeJS.Timeout | undefined;
+  //   if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
+  //     setIsVisible(true);
+  //     return;
+  //   }
+  //   const observer = new IntersectionObserver(([entry]) => {
+  //     if (entry.isIntersecting) {
+  //       setIsVisible(true);
+  //       observer.disconnect();
+  //       if (timeoutId) clearTimeout(timeoutId);
+  //     }
+  //   }, { threshold: 0.3 });
+  //   if (sectionRef.current) {
+  //     observer.observe(sectionRef.current);
+  //   }
+  //   // Mobile fallback: if not visible after 1s, show content
+  //   if (typeof window !== 'undefined' && window.innerWidth < 700) {
+  //     timeoutId = setTimeout(() => {
+  //       setIsVisible(true);
+  //       observer.disconnect();
+  //     }, 1000);
+  //   }
+  //   return () => {
+  //     observer.disconnect();
+  //     if (timeoutId) clearTimeout(timeoutId);
+  //   };
+  // }, []);
   const scrollToForm = () => {
     const formElement = document.getElementById('lead-form');
     formElement?.scrollIntoView({
