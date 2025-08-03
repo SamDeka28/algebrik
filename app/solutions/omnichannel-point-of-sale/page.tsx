@@ -308,7 +308,7 @@ export default function OmnichannelPOSPage() {
 
             {/* Analytics Section */}
             <section className="w-full max-w-7xl lg:px-4 lg:py-16 px-0 py-8 flex flex-col items-center">
-                <div className="bg-gradient-to-br from-[#043071] to-[#7EB2FF] lg:rounded-3xl shadow-xl p-10 lg:pr-0 w-full flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="bg-gradient-to-br from-[#043071] to-[#7EB2FF] lg:rounded-3xl shadow-xl p-10 lg:pr-0 lg:pl-28 w-full flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="flex-1">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Track conversion, drop-offs, and channel health in one view</h2>
                         <ul className="text-white/90 space-y-2 mb-4">
