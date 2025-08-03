@@ -412,9 +412,9 @@ export default function DecisioningPage() {
                                     content: {
                                         // title: "Review policy exceptions and score distribution for audit readiness",
                                         bullets: [
-                                            "Track policy exception rates and overrides",
-                                            "Track performance by segmentAudit rule execution and decision fairness",
-                                            "Segment approvals by risk and pricing tiers"
+                                            "View full audit trails for every officer action",
+                                            "Monitor exception handling and policy deviations",
+                                            "Ensure documentation and decision logs are complete"
                                         ],
                                         image: "/icons/risk.webp"
                                     }
