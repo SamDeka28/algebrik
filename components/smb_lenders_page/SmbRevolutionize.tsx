@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { CustomHeader } from "../CustomHeader";
+import Marquee from "react-fast-marquee";
 
 export default function SmbRevolutionize() {
   const data = {
@@ -39,7 +40,7 @@ export default function SmbRevolutionize() {
             </>
           }
         />
-       
+
       </div>
 
       <div className="relative hidden md:flex flex-wrap justify-center gap-6 p-6">
@@ -73,39 +74,43 @@ export default function SmbRevolutionize() {
           </div>
         ))}
       </div>
-       <div
-              className="relative  md:hidden flex md:flex-wrap md:items-center md:justify-center gap-6 p-6 overflow-x-scroll md:overflow-visible scrollbar-none"
+      <div
+        className="relative  md:hidden flex md:flex-wrap md:items-center md:justify-center gap-6 p-6 overflow-x-scroll md:overflow-visible scrollbar-none"
+      >
+        <Marquee className="flex">
+        {data.cardData.map((card, index) => (
+          <div
+            key={index}
+            style={{marginLeft:"20px"}}
+            className="relative h-auto w-[333.33px] md:h-[295px] flex-shrink-0 md:flex-shrink flex flex-col items-center justify-between"
+          >
+            <div
+              className="mb-4 rounded-[24px] shadow-[0px_-4px_6px_-1px_rgba(0,0,0,0.1),0px_-2px_4px_-2px_rgba(0,0,0,0.1)]"
+              style={{
+                filter:
+                  "drop-shadow(0px 0px 18px rgba(0, 0, 0, 0.1)), drop-shadow(0px 0px 18px rgba(0, 0, 0, 0.1)) ,drop-shadow(0px 3.65px 40px rgba(0, 0, 0, 0.08))",
+              }}
             >
-              {data.cardData.map((card, index) => (
-                <div
-                  key={index}
-                  className="relative w-[80%] h-auto md:w-[333.33px] md:h-[295px] flex-shrink-0 md:flex-shrink flex flex-col items-center justify-between"
-                >
-                  <div
-                    className="mb-4 rounded-[24px] shadow-[0px_-4px_6px_-1px_rgba(0,0,0,0.1),0px_-2px_4px_-2px_rgba(0,0,0,0.1)]"
-                    style={{
-                      filter:
-                        "drop-shadow(0px 0px 18px rgba(0, 0, 0, 0.1)), drop-shadow(0px 0px 18px rgba(0, 0, 0, 0.1)) ,drop-shadow(0px 3.65px 40px rgba(0, 0, 0, 0.08))",
-                    }}
-                  >
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      className=" md:object-cover shadow-md h-[255px] md:h[295px] rounded-[24px]"
-                      width={333.33}
-                      height={295}
-                      quality={100}
-                    />
-                  </div>
-                  <h3 className="text-[#2A5FAC] text-[20px] md:text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
-                    {card.description}
-                  </p>
-                </div>
-              ))}
+              <Image
+                src={card.image}
+                alt={card.title}
+                className=" md:object-cover shadow-md h-[255px] md:h[295px] rounded-[24px]"
+                width={333.33}
+                height={295}
+                quality={100}
+              />
             </div>
+            <h3 className="text-[#2A5FAC] text-[20px] md:text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
+              {card.title}
+            </h3>
+            <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
+              {card.description}
+            </p>
+          </div>
+        ))}
+        </Marquee>
+      </div>
+      
     </div>
   );
 }
