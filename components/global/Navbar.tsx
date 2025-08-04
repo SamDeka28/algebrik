@@ -306,6 +306,10 @@ export default function Navbar() {
                       <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
                       Lender's Cockpit (LOS)
                     </Link>
+                    <Link href="/solutions/lender-cockpit" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
+                      Digital Account Opening
+                    </Link>
                     <Link href="/solutions/decisioning" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                       <Image src="/icons/de.svg" alt="Decisioning Engine Icon" width={20} height={20} />
                       Decisioning Engine
@@ -457,6 +461,9 @@ export default function Navbar() {
                 </Link>
                 <Link href="/solutions/lender-cockpit" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Lender's Cockpit (LOS)
+                </Link>
+                <Link href="/solutions/lender-cockpit" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Digital Account Opening
                 </Link>
                 <Link href="/solutions/decisioning" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Decisioning Engine
