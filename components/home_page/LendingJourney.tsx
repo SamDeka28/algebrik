@@ -39,7 +39,7 @@ export default function LendingJourneyDesign() {
   };
 
   const containerClass = isMobile
-    ? "w-[300px] h-[547px]"
+    ? "w-full"
     : "md:w-[1282px] md:h-[687px]";
 
   return (
@@ -92,20 +92,20 @@ export default function LendingJourneyDesign() {
           className={`block ${containerClass}`}
         >
           {/* Desktop Image */}
-          <Image
-            src={lendingWithoutAlgebrik}
+          <img
+            src={"/background_images/lendingWithoutAlgebrik.webp"}
             alt="Lending Without Algebrik (Desktop)"
-            width={1282}
-            height={687}
+            // width={1282}
+            // height={687}
             className="object-cover hidden md:block"
           />
         
           {/* Mobile Image */}
-          <Image
-            src={lendingWithAlgebrik}
+          <img
+            src={"/section_images/with.png"}
             alt="Lending With Algebrik (Mobile)"
-            width={547}
-            height={300}
+            // width={547}
+            // height={300}
             className="object-cover w-[100%] md:hidden block"
           />
         </motion.div>

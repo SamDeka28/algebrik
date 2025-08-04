@@ -3,36 +3,36 @@ import { Crown, Target, Shield, Zap, TrendingUp, Clock, CheckCircle, AlertTriang
 import { Carousel, CarouselContent, CarouselItem } from "../LendingHealthCheck/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 const EliteProgramSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout | undefined;
-    if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.disconnect();
-        if (timeoutId) clearTimeout(timeoutId);
-      }
-    }, { threshold: 0.3 });
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    // Mobile fallback: if not visible after 1s, show content
-    if (typeof window !== 'undefined' && window.innerWidth < 700) {
-      timeoutId = setTimeout(() => {
-        setIsVisible(true);
-        observer.disconnect();
-      }, 1000);
-    }
-    return () => {
-      observer.disconnect();
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, []);
+  // useEffect(() => {
+  //   let timeoutId: NodeJS.Timeout | undefined;
+  //   if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
+  //     setIsVisible(true);
+  //     return;
+  //   }
+  //   const observer = new IntersectionObserver(([entry]) => {
+  //     if (entry.isIntersecting) {
+  //       setIsVisible(true);
+  //       observer.disconnect();
+  //       if (timeoutId) clearTimeout(timeoutId);
+  //     }
+  //   }, { threshold: 0.3 });
+  //   if (sectionRef.current) {
+  //     observer.observe(sectionRef.current);
+  //   }
+  //   // Mobile fallback: if not visible after 1s, show content
+  //   if (typeof window !== 'undefined' && window.innerWidth < 700) {
+  //     timeoutId = setTimeout(() => {
+  //       setIsVisible(true);
+  //       observer.disconnect();
+  //     }, 1000);
+  //   }
+  //   return () => {
+  //     observer.disconnect();
+  //     if (timeoutId) clearTimeout(timeoutId);
+  //   };
+  // }, []);
   const scrollToForm = () => {
     const formElement = document.getElementById('lead-form');
     formElement?.scrollIntoView({
@@ -40,6 +40,15 @@ const EliteProgramSection = () => {
     });
   };
   return <section ref={sectionRef} className="relative pt-20 lg:pb-32 overflow-hidden bg-background">
+     <div className='flex justify-center'>
+            <button onClick={scrollToForm} className="btn-primary group inline-flex items-center gap-3 hover:text-white mb-20">
+              <span className="relative z-10 flex items-center gap-3">
+                <Crown className="w-5 h-5" />
+                <span>Join the Early Adopters Program today</span>
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </span>
+            </button>
+          </div>
     {/* Background Elements */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute top-32 right-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />

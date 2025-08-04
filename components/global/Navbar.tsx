@@ -107,6 +107,10 @@ export default function Navbar() {
     setAboutOpen(true);
   };
 
+  const toggleAbout=()=>{
+    setAboutOpen(!aboutOpen)
+  }
+
   const closeAbout = () => {
     const timeout = setTimeout(() => {
       setAboutOpen(false);
@@ -302,6 +306,10 @@ export default function Navbar() {
                       <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
                       Lender's Cockpit (LOS)
                     </Link>
+                    <Link href="/solutions/digital-account-opening" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
+                      Digital Account Opening
+                    </Link>
                     <Link href="/solutions/decisioning" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                       <Image src="/icons/de.svg" alt="Decisioning Engine Icon" width={20} height={20} />
                       Decisioning Engine
@@ -355,7 +363,7 @@ export default function Navbar() {
             </Link>
             {aboutOpen && (
               <PortalDropdown anchorRef={aboutRef} autoWidth={true}>
-                <div className="grid grid-cols-3 gap-12 min-w-[1100px]  rounded-2xl p-4 shadow-2xl font-plus-jakarta">
+                <div className="lg:grid grid-cols-3 gap-12 min-w-[1100px]  rounded-2xl p-4 shadow-2xl font-plus-jakarta hidden">
                   {/* Column 1: By Institution */}
                   <div className="flex flex-col  gap-3">
                     <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">About Us</div>
@@ -419,7 +427,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className={`md:hidden flex flex-col justify-between gap bg-white font-plus-jakarta backdrop-blur-3xl py-6 h-[500px]
+          className={`md:hidden flex flex-col justify-between gap bg-white font-plus-jakarta backdrop-blur-3xl py-6 h-[90vh] pb-10 overflow-y-scroll
             px-5 ${isContactOrResourcePage ? "text-black" : "text-black"}`}
         >
           <div>
@@ -454,6 +462,9 @@ export default function Navbar() {
                 <Link href="/solutions/lender-cockpit" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Lender's Cockpit (LOS)
                 </Link>
+                <Link href="/solutions/digital-account-opening" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Digital Account Opening
+                </Link>
                 <Link href="/solutions/decisioning" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Decisioning Engine
                 </Link>
@@ -470,15 +481,14 @@ export default function Navbar() {
             >
               Resource Center
             </Link>
-            <Link
-              href="/about"
-              onClick={toggleMenu}
+            <div
+              onClick={toggleAbout}
               className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white"
             >
               About Us
-            </Link>
+            </div>
             {aboutOpen && (
-              <div className="pl-6">
+              <div className="pl-6 z-100">
                 <Link href="/about" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Company
                 </Link>

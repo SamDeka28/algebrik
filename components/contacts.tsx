@@ -87,7 +87,7 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
     if (!open) return null;
     return (
       <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
-        <div className="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 p-6 overflow-y-auto max-h-[90vh] overflow-x-hidden">
+        <div className="relative bg-white rounded-2xl shadow-2xl h-[95vh] md:h-auto max-w-3xl w-full mx-4 px-6 pt-6 overflow-y-auto overflow-x-hidden">
           <button
             className="absolute top-4 right-4 text-2xl text-gray-500 hover:text-black"
             onClick={onClose}
@@ -106,7 +106,7 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
 
   function renderContactSection() {
     return (
-      <section className="container md:max-w-7xl w-full mx-auto md:p-8 flex flex-col md:flex-row font-plus-jakarta justify-center items-start gap-[43px] md:gap-[98px] overflow-hidden">
+      <section className="container md:max-w-7xl w-full mx-auto md:px-8 md:pt-8 flex flex-col md:flex-row font-plus-jakarta justify-center items-start gap-[43px] md:gap-[98px] overflow-hidden">
         <div className="absolute top-[100px] opacity-[30%] -z-10">
           <motion.div
             className="absolute -top-9 md:left-[96px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[550px] h-[135px] md:w-[461.73px] md:h-[439.68px] blur-[80px]"
@@ -170,7 +170,7 @@ const HubspotMeetingEmbed = () => {
       ref={containerRef}
       className="meetings-iframe-container"
       data-src="https://meetings-na2.hubspot.com/algebrik?embed=true"
-      style={{ minHeight: '700px', width: '100%' }}
+      style={{  width: '100%' }}
     />
   );
 };

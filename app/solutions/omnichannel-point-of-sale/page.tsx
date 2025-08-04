@@ -15,7 +15,7 @@ const beforeAfterData = [
         type: "before",
         title: "Before Algebrik",
         titleClass: "mb-3 bg-[#E4E8ED] rounded-[40px] text-center text-[#292929] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-white rounded-2xl shadow-2xl p-6 pb-20 flex-1 min-w-[260px]",
+        cardClass: "bg-white rounded-2xl shadow-2xl p-6 pb-20 flex-1 min-w-[260px] hover:scale-105 transition-all ease-in",
         textClass: "text-gray-600 space-y-2 text-left",
         icon: null,
         items: [
@@ -29,7 +29,7 @@ const beforeAfterData = [
         type: "after",
         title: "After Algebrik",
         titleClass: "flex justify-center items-center gap-1 mb-3 bg-[#5A94E7] rounded-[40px] text-center text-[#FDFEFE] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 pb-20 flex-1 min-w-[260px] text-white border-[5px] border-[#5A94E7]",
+        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 pb-20 flex-1 min-w-[260px] text-white border-[5px] border-[#5A94E7] hover:scale-105 transition-all ease-in",
         textClass: "space-y-2 text-left",
         icon: (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -287,7 +287,7 @@ export default function OmnichannelPOSPage() {
                             borrowerExperienceData.map((item, idx) => (
                                 <div
                                     key={item.title + idx}
-                                    className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[400px] max-w-[400px] gap-6 mx-2 md:mx-4"
+                                    className="flex flex-col lg:flex-row lg:items-center bg-white rounded-[32px] p-4 min-w-[400px] max-w-[400px] gap-6 mx-2 md:mx-4 hover:scale-105 transition-all ease-in"
                                     style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
                                 >
                                     <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl">
@@ -308,7 +308,7 @@ export default function OmnichannelPOSPage() {
 
             {/* Analytics Section */}
             <section className="w-full max-w-7xl lg:px-4 lg:py-16 px-0 py-8 flex flex-col items-center">
-                <div className="bg-gradient-to-br from-[#043071] to-[#7EB2FF] lg:rounded-3xl shadow-xl p-10 lg:pr-0 w-full flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="bg-gradient-to-br from-[#043071] to-[#7EB2FF] lg:rounded-3xl shadow-xl p-10 lg:pr-0 lg:pl-28 w-full flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="flex-1">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Track conversion, drop-offs, and channel health in one view</h2>
                         <ul className="text-white/90 space-y-2 mb-4">
@@ -330,7 +330,28 @@ export default function OmnichannelPOSPage() {
             {/* POS Flows Section */}
             <section className="w-full px-4 py-8 lg:py-16 flex flex-col items-center">
                 <CustomHeader text="POS Flows that Don't Take a Quarter to Go Live" className="text-center" />
-                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center py-8 overflow-x-auto scrollbar-hide hide-scrollbar">
+                <Marquee className="flex gap-[20px]">
+                <div className=" md:hidden w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center py-8 overflow-x-auto scrollbar-hide hide-scrollbar">
+                    {posFlowsData.map((item, idx) => (
+                        <motion.div 
+                            key={item.title} 
+                            className="bg-white w-[300px] min-w-[300px] rounded-2xl shadow-md p-4 flex flex-col items-center"
+                            style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                            whileHover={{ 
+                                scale: 1.05
+                            }}
+                            transition={{ 
+                                duration: 0.3,
+                                ease: "easeInOut"
+                            }}
+                        >
+                            <Image src={item.icon} alt={item.title} width={120} height={120} className="mb-3 w-full aspect-square object-cover border border-[#BEBEBE5C] rounded-2xl" />
+                            <span className="text-base font-medium text-[#292929]">{item.title}</span>
+                        </motion.div>
+                    ))}
+                </div>
+                </Marquee>
+                <div className="hidden w-full md:flex flex-nowrap md:flex-wrap gap-4 md:gap-8 justify-start md:justify-center py-8 overflow-x-auto scrollbar-hide hide-scrollbar">
                     {posFlowsData.map((item, idx) => (
                         <motion.div 
                             key={item.title} 

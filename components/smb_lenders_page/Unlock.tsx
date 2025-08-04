@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { CustomHeader } from "../CustomHeader";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
 const data = [
   { percentage: 70, title: "Reduction in Approval Times" },
@@ -88,6 +89,7 @@ export default function Unlock() {
         </div>
 
         <div className="flex w-full h-auto md:w-1/2">
+        <Marquee className="flex gap-[20px]">
           <div className="flex gap-4 overflow-x-auto overflow-hidden md:hidden flex-nowrap p-2 ">
             {data.map((item, index) => (
               <motion.div
@@ -103,7 +105,9 @@ export default function Unlock() {
                 <div className="text-[#2A5FAC] font-bold text-[24px]">{item.title}</div>
               </motion.div>
             ))}
+            
           </div>
+          </Marquee>
 
           <div className="hidden md:flex flex-col md:flex-row gap-[24px] md:gap-[32px] w-full">
             <div className="flex flex-col gap-[24px]">

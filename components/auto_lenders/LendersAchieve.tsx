@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { CustomHeader } from "../CustomHeader";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
 const data = [
   { percentage: 70, title: "Reduction in Approval Times" },
@@ -46,26 +47,26 @@ export default function Unlock() {
     >
       <motion.div
         className="absolute top-0 left-0 w-[50%] h-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full blur-[150px] opacity-[24%] z-[-1]"
-        // animate={{
-        //   x: ["-10%", "10%", "-10%", "0%"],
-        // }}
-        // transition={{
-        //   duration: 10,
-        //   repeat: Infinity,
-        //   ease: "easeInOut",
-        // }}
+      // animate={{
+      //   x: ["-10%", "10%", "-10%", "0%"],
+      // }}
+      // transition={{
+      //   duration: 10,
+      //   repeat: Infinity,
+      //   ease: "easeInOut",
+      // }}
       />
 
       <motion.div
         className="absolute top-[300px] sm:top-0 left-0 w-full h-[20px] bg-[#BE95FF] rounded-full blur-[50px] opacity-[30%] z-[-1]"
-        // animate={{
-        //   x: ["-10%", "10%", "-10%", "0%"],
-        // }}
-        // transition={{
-        //   duration: 8,
-        //   repeat: Infinity,
-        //   ease: "easeInOut",
-        // }}
+      // animate={{
+      //   x: ["-10%", "10%", "-10%", "0%"],
+      // }}
+      // transition={{
+      //   duration: 8,
+      //   repeat: Infinity,
+      //   ease: "easeInOut",
+      // }}
       />
 
       <div className="flex flex-col items-start md:items-center md:justify-center md:flex-row gap-[24px] mb-[48px] md:mb-0 md:gap-[92px] w-full">
@@ -87,6 +88,7 @@ export default function Unlock() {
           </p>{" "}
         </div>
         <div className="flex w-full h-auto md:w-1/2">
+        <Marquee>
           <div className="flex gap-4 overflow-x-auto overflow-hidden md:hidden flex-nowrap p-2 ">
             {data.map((item, index) => (
               <motion.div
@@ -105,7 +107,7 @@ export default function Unlock() {
               </motion.div>
             ))}
           </div>
-
+          </Marquee>
           <div className="hidden md:flex flex-col md:flex-row gap-[24px] md:gap-[32px] w-full">
             <div className="flex flex-col gap-[24px]">
               {data.slice(0, 2).map((item, index) => (

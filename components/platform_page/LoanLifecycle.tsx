@@ -195,10 +195,13 @@ export default function LoanLifecycle() {
                 setSelectedCategory(item.title);
                 setCurrentCategoryIndex(index);
               }}
-              className={`flex items-center gap-2 font-plus-jakarta py-[10px] pl-[16px] text-left font-bold text-[14px] md:text-[15.38px] mb-2 ${currentCategoryIndex === index
-                  ? "text-[#056CC1] w-max md:w-full md:border-2 rounded-[26px] md:bg-gradient-to-b from-[#D8E4FF80] to-[#D8E4FF] border-white"
+              className={`flex min-w-max items-center gap-2 font-plus-jakarta py-[10px] px-[16px] rounded-[26px]  text-left font-bold text-[14px] md:text-[15.38px] mb-2 ${currentCategoryIndex === index
+                  ? "text-[#056CC1] w-max md:w-full border-2 rounded-[26px] shadow-sm bg-gradient-to-b from-[#D8E4FF] to-[#D8E4FF] border-[#FFFFFF]"
                   : "text-[#8C8C8C] font-normal"
                 }`}
+                style={
+                  currentCategoryIndex === index ?{ border:"#fff" }:{}
+                }
             >
               <Image
                 src={
@@ -316,7 +319,7 @@ export default function LoanLifecycle() {
                 <h2 className="text-[#292929] font-semibold text-[25px] md:text-[32px] leading-[42px]">
                   {data[currentCategoryIndex].cardTitle}
                 </h2>
-                <hr className="w-[71.69px] md:h-[3.58px] rounded-sm my-[12px] md:my-0 bg-[#C5DDFF]" />
+                <div className="w-[71.69px] h-[5px] rounded-sm my-[12px] md:my-0 bg-[#C5DDFF]" />
                 <p className="text-[#292929] font-normal text-[14px] md:text-[16px] leading-[21.51px]">
                   {data[currentCategoryIndex].cardSubtitle}
                 </p>
@@ -333,11 +336,11 @@ export default function LoanLifecycle() {
                   quality={100}
                 />
                 <Image
-                  src={data[currentCategoryIndex].image}
+                  src={data[currentCategoryIndex].mobImage || data[currentCategoryIndex].image}
                   alt={selectedCategory}
                   width={350}
                   height={243}
-                  className="md:hidden w-[100%] h-5/6 rounded-[10px] object-contain"
+                  className="md:hidden w-[100%] h-full rounded-[10px] object-cover"
                   priority
                   quality={100}
                 />

@@ -47,8 +47,8 @@ const SmbRoadBlocks = () => {
  
        <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center gap-[32px] lg:gap-10 w-full max-w-[1200px]">
          <div className="flex flex-col items-center w-full lg:w-1/2">
-           <div className="relative flex flex-col-reverse justify-between p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[518px] h-[580px] group">
-             <div className="absolute w-80 h-96 -top-0 -right-2 bg-gradient-to-tr from-blue-200 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
+           <div className="relative flex flex-col-reverse justify-between p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[518px] md:h-[580px] group">
+             <div className="hidden md:block absolute w-80 h-96 -top-0 -right-2 bg-gradient-to-tr from-blue-200 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
              <div className="flex flex-col mt-4 z-10">
                <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
                  {cardData[2].title}
@@ -60,7 +60,7 @@ const SmbRoadBlocks = () => {
                 </span>
               </p>
              </div>
-             <div className="relative w-full h-[200px] md:h-[370px] rounded-[24px] overflow-hidden mt-4 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+             <div className="hidden md:block relative w-full h-[200px] md:h-[370px] rounded-[24px] overflow-hidden mt-4 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                <Image
                  src={cardData[2].image}
                  alt={cardData[2].title}
@@ -92,15 +92,15 @@ const SmbRoadBlocks = () => {
      <div
        key={index}
        className={`relative p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[610px] ${
-         index === 0 ? "flex flex-row-reverse h-[222px]" : "flex flex-col h-[326px]"
+         index === 0 ? "flex flex-row-reverse md:h-[222px]" : "flex flex-col md:h-[326px]"
        } gap-4 group`}
      >
        {/* Gradient Background */}
-       <div className="absolute w-52 h-52 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
+       <div className="hidden md:block absolute w-52 h-52 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
  
        {/* Image Section */}
        <div
-         className={`relative ${
+         className={`hidden md:block relative ${
            index === 0
              ? "w-1/2 h-full right-0"
              : "w-full h-[150px] md:h-[200px] overflow-hidden"
@@ -136,7 +136,7 @@ const SmbRoadBlocks = () => {
        {/* Text Section */}
        <div
          className={`flex flex-col justify-center ${
-           index === 0 ? "w-1/2" : "w-full"
+           index === 0 ? "md:w-1/2" : "w-full"
          } z-10`}
        >
          <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
