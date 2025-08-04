@@ -427,7 +427,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className={`md:hidden flex flex-col justify-between gap bg-white font-plus-jakarta backdrop-blur-3xl py-6 h-dvh pb-10 overflow-y-scroll
+          className={`md:hidden flex flex-col justify-between gap bg-white font-plus-jakarta backdrop-blur-3xl py-6 h-[90vh] pb-10 overflow-y-scroll
             px-5 ${isContactOrResourcePage ? "text-black" : "text-black"}`}
         >
           <div>
