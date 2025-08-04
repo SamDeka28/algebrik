@@ -68,7 +68,7 @@ export default function HeroSection() {
           </>
         ),
         subtitle:
-          "Simplify lending operations, improve decision-making, and deliver faster, seamless borrower experiences—all tailored for bank lenders",
+          "Simplify lending operations, improve decision-making, and deliver faster, seamless borrower experiences—all tailored for Banks!",
         sectionImage: "/section_images/smb_lenders/hero.png",
         subtitleClass: "text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center mb-[10px] px-6 max-w-4xl",
       }

@@ -18,7 +18,7 @@ export default function PlaysAndBrings() {
           </div>
           <div className="w-full flex justify-center items-center">
             <Image
-              src="/section_images/auto_lenders/plays.webp"
+              src="/your-los.webp"
               alt="Plays Well With Others"
               width={332}
               height={231}

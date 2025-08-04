@@ -40,6 +40,15 @@ const EliteProgramSection = () => {
     });
   };
   return <section ref={sectionRef} className="relative pt-20 lg:pb-32 overflow-hidden bg-background">
+     <div className='flex justify-center'>
+            <button onClick={scrollToForm} className="btn-primary group inline-flex items-center gap-3 hover:text-white mb-20">
+              <span className="relative z-10 flex items-center gap-3">
+                <Crown className="w-5 h-5" />
+                <span>Join the Early Adopters Program today</span>
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </span>
+            </button>
+          </div>
     {/* Background Elements */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute top-32 right-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
