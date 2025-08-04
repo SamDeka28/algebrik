@@ -87,7 +87,7 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
     if (!open) return null;
     return (
       <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
-        <div className="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 px-6 pt-6 overflow-y-auto overflow-x-hidden">
+        <div className="relative bg-white rounded-2xl shadow-2xl h-[95vh] md:h-auto max-w-3xl w-full mx-4 px-6 pt-6 overflow-y-auto overflow-x-hidden">
           <button
             className="absolute top-4 right-4 text-2xl text-gray-500 hover:text-black"
             onClick={onClose}
