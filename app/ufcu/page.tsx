@@ -41,7 +41,7 @@ export default function UFCUPage() {
         <UFCUSuccessSection />
         <EliteProgramSection />
         <EliteActionSection />
-        <AlgebrikLeadForm />
+        {/* <AlgebrikLeadForm /> */}
         {/* <AlgebrikFooter /> */}
         {/* Floating CTA */}
         {/* <AlgebrikFloatingCTA /> */}

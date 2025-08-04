@@ -140,7 +140,8 @@ const EliteActionSection = () => {
             <div className="text-center">
               <button onClick={openCalendar} className="btn-secondary group inline-flex items-center gap-3">
                 <Calendar className="w-5 h-5" />
-                <span>Schedule Executive Strategy Session</span>
+                {/* <span>Schedule Executive Strategy Session</span> */}
+                <span>Take The Lending Stack Test Drive</span>
               </button>
             </div>
           </div>

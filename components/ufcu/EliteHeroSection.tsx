@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Crown, Star, Users } from 'lucide-react';
 import Modal from "./Modal";
 import PRNewswireModal from "./PRNewswireModal";
+import Link from 'next/link';
 const EliteHeroSection = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [scrollY, setScrollY] = useState(0);
@@ -66,7 +67,7 @@ const EliteHeroSection = () => {
     {/* Main Content */}
     <div className="container mx-auto px-6 lg:px-12 relative z-10 text-white">
       <div className="max-w-7xl mx-auto">
-      <img src="/logo.png" style={{height:"50px"}} className='mt-10'/>
+      <Link href={"/"}><img src="/logo.png" style={{height:"50px"}} className='mt-10'/></Link>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           {/* Left Content */}

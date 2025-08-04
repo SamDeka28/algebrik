@@ -202,10 +202,10 @@ const UFCUSuccessSection = () => {
           {/* Executive Quote */}
           <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'
             }`}>
-            <div className="bg-card rounded-3xl p-8 lg:p-12 border border-border shadow-lg">
+            <div className="bg-card rounded-3xl p-1 lg:p-1 border border-border shadow-lg overflow-hidden">
               <div className="w-full mx-auto">
                 <div className="flex items-start gap-6">
-                  <img src={"/ufcu-assets/ufcuf.webp"} className='w-full' />
+                  <img src={"/ufcu-assets/ufcuf.webp"} className='w-full rounded-3xl' />
                   {/* <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Quote className="w-6 h-6 text-primary" />
                   </div>
@@ -272,10 +272,10 @@ const UFCUSuccessSection = () => {
           {/* Executive Quote */}
           <div className={`transition-all duration-1000 delay-600 mt-20 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'
             }`}>
-            <div className="bg-card rounded-3xl p-8 lg:p-12 border border-border shadow-lg">
+            <div className="bg-card rounded-3xl p-1 lg:p-1 border border-border shadow-lg overflow-hidden">
               <div className="w-full mx-auto">
                 <div className="flex items-start gap-6">
-                  <img src={"/ufcu-assets/ufcum.webp"} className='w-full' />
+                  <img src={"/ufcu-assets/ufcum.webp"} className='w-full rounded-3xl' />
                   {/* <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Quote className="w-6 h-6 text-primary" />
                   </div>
