@@ -5,8 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import DashboardAnalyticsHero from "@/components/dashboard-analytics/Hero";
-import LenderCockpitHero from "@/components/lender-cockpit/Hero";
+import LenderCockpitHero from "@/components/digital-account-opening/Hero";
 import { useRouter } from "next/navigation";
 import Contact from "@/components/contacts";
 import Marquee from "react-fast-marquee";
@@ -20,8 +19,8 @@ const beforeAfterData = [
         textClass: "text-gray-600 space-y-2 text-left",
         icon: null,
         items: [
-            "Juggling between CRM, core, email, and spreadsheets",
-            "No visibility into borrower status or stage",
+            "Static forms with poor mobile experience",
+            "Drop-offs before essential info is collected",
             "Manual task management slows approvals",
             "Teams operate in silos"
         ]
@@ -39,10 +38,10 @@ const beforeAfterData = [
             </svg>
         ),
         items: [
-            "One interface for the full lending lifecycle pre-disbursement",
-            "Live loan status, app progress, and next steps at a glance",
-            "Smart workflows prioritize and automate officer actions",
-            "Shared visibility across credit, lending, and branch teams"
+            "Adaptive forms optimized for mobile, web & in-branch",
+            "Auto-save, resume later, and progressive data capture",
+            "Omnichannel sync with core LOS in real-time",
+            "Visibility into drop-offs and incomplete"
         ]
     }
 ];
@@ -50,28 +49,33 @@ const beforeAfterData = [
 const featureCards = [
     {
         icon: "/icons/lst.svg",
-        title: "Loan Status Tracking",
-        description: "See every loan's real-time progress-by stage, borrower, or team"
+        title: "Application Kickstart",
+        description: "Borrowers can begin applications via web, app, call center, or even embedded links"
     },
     {
         icon: "/icons/ai.svg",
-        title: "AI-Powered Recommendations",
-        description: "Next-best actions auto-suggested for stalled files or missing docs"
+        title: "Mobile-First Experience",
+        description: "Responsive, guided forms with smart defaults and dynamic field rules"
     },
     {
         icon: "/icons/sta.svg",
-        title: "Smart Task Automation",
-        description: "Auto-assign follow-ups, pre-fill documents, and trigger compliance checks"
+        title: "Auto Save & Resume",
+        description: "Incomplete applications are saved across devices and re-engaged via SMS/email"
     },
     {
         icon: "/icons/ubv.svg",
-        title: "Unified Borrower View",
-        description: "Centralized borrower timeline with all activities, uploads, and communications"
+        title: "Omnichannel Sync",
+        description: "Seamless transition between channels—start online, complete in-branch"
     },
     {
         icon: "/icons/wpt.svg",
-        title: "Workload Planning for Teams",
-        description: "See who's overloaded, what's delayed, and where files are stuck"
+        title: "Real-Time Validation",
+        description: "Verify KYC, identity, income, and credit score inline"
+    },
+    {
+        icon: "/icons/wpt.svg",
+        title: "Guided Journeys",
+        description: "Dynamic flows based on borrower profile, loan type, and prior data"
     }
 ];
 
@@ -175,6 +179,29 @@ const clarityBullets = [
     "No more 'who owns this file?' confusion across branches or teams"
 ];
 
+const resultsData = [
+    {
+        image: "/icons/rs-2.svg",
+        title: "30% increase in application completions through auto-resume & guided flows",
+        description: "→ No-code setup, fast customization, zero dev dependencies."
+    },
+    {
+        image: "/icons/sub-60.svg",
+        title: "40% faster time to verified application via inline document capture & checks",
+        description: "→ Lead forms, CRM inputs, doc collection tools, and application portals—streamlined."
+    },
+    {
+        image: "/icons/sub-60.svg",
+        title: "Up to 20% reduction in support queries from simplified, mobile-optimized flows",
+        description: "→ Optimized for branch, kiosk, and dealer use cases."
+    },
+    {
+        image: "/icons/rs-4.svg",
+        title: "3x higher submission rates from embedded journeys in marketing pages",
+        description: "→ Driven by mobile-optimized UX, pre-fill logic, and fewer drop-offs"
+    }
+];
+
 export default function DecisioningPage() {
     const [activeCard, setActiveCard] = useState(0);
     const [showPoints, setShowPoints] = useState(true);
@@ -237,10 +264,10 @@ export default function DecisioningPage() {
                         }}
                     />
                 </div>
-                <CustomHeader text="From Fragmented Screens to Full Control" className="text-center text-[28px] md:text-[40px] font-bold" />
-                <p className="text-gray-600 text-center max-w-4xl mb-10 mt-6">
+                <CustomHeader text="From Fragmented Forms to Frictionless Flows" className="text-center text-[28px] md:text-[40px] font-bold" />
+                {/* <p className="text-gray-600 text-center max-w-4xl mb-10 mt-6">
                     Deliver seamless, personalised member experiences across every channel, while empowering your team with faster decisions and scalable solutions
-                </p>
+                </p> */}
                 <div className="flex flex-col md:flex-row gap-6 w-full justify-center z-10">
                     {beforeAfterData.map((card, idx) => (
                         <div key={card.type} className={card.cardClass}>
@@ -264,9 +291,9 @@ export default function DecisioningPage() {
 
             {/* Feature Cards Section */}
             <section className="w-full py-16 flex flex-col items-center lg:px-0 px-6">
-                <CustomHeader text="What Makes the Cockpit Work for Loan Teams" className="text-center text-[28px] md:text-[40px] font-bold" />
+                <CustomHeader text="Onboard Borrowers. On Any Channel. In Any Context" className="text-center text-[28px] md:text-[40px] font-bold" />
                 <p className="text-gray-600 text-center max-w-4xl mt-6">
-                    Every Task. Every Stage. Every Borrower—Right Where You Need Them.
+                    Every Journey Starts with Experience
                 </p>
                 <div className="w-full overflow-x-auto scrollbar-hide hide-scrollbar px-4">
                     <Marquee
@@ -278,14 +305,14 @@ export default function DecisioningPage() {
                         gradient={false}
                     >
                         {featureCards.map((item, idx) => (
-                            <motion.div 
-                                key={item.title} 
+                            <motion.div
+                                key={item.title}
                                 className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2 mx-2"
                                 style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
-                                whileHover={{ 
+                                whileHover={{
                                     scale: 1.05
                                 }}
-                                transition={{ 
+                                transition={{
                                     duration: 0.3,
                                     ease: "easeInOut"
                                 }}
@@ -345,7 +372,7 @@ export default function DecisioningPage() {
                 </div>
                 <div className="relative z-10 w-full flex justify-center max-w-7xl">
                     <div className="w-full bg-white rounded-[36px] shadow-2xl px-8 py-10 flex flex-col items-center">
-                        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#2A5FAC]">Built for the Teams Who Own Lending</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#2A5FAC]">Built for Lending Teams in Action</h2>
                         {(() => {
                             const teams: {
                                 key: string;
@@ -356,70 +383,57 @@ export default function DecisioningPage() {
                                     image: string;
                                 };
                             }[] = [
-                                {
-                                    key: "credit",
-                                    label: "Loan Officers",
-                                    content: {
-                                        // title: "Monitor daily application and approval metrics across branches and products",
-                                        bullets: [
-                                            "View assigned applications with status and priority",
-                                            "Take next-step actions (e.g. request docs, escalate)",
-                                            "Communicate with borrowers in-platform"
-                                        ],
-                                        image: "/icons/lo.webp"
-                                    }
-                                },
-                                {
-                                    key: "product",
-                                    label: "Credit Analysts ",
-                                    content: {
-                                        bullets: [
-                                            "Review flagged files and add approval conditions",
-                                            "Collaborate with officers via internal notes and tagging",
-                                            "Track files by risk category or manual review triggers"
-                                        ],
-                                        image: "/icons/ca.webp"
-                                    }
-                                },
-                                {
-                                    key: "compliance",
-                                    label: "Branch Managers",
-                                    content: {
-                                        bullets: [
-                                            "Monitor staff workload and turnaround timese",
-                                            "Identify pending files and SLAs at risk",
-                                            "Reassign files or intervene in bottlenecked queues"
-                                        ],
-                                        image: "/icons/bm.webp"
-                                    }
-                                },
-                                {
-                                    key: "pricing",
-                                    label: "Lending Ops",
-                                    content: {
-                                        // title: "See staff productivity and stage-level drop-offs",
-                                        bullets: [
-                                            "See workload distribution across staff",
-                                            "Spot stuck files and SLA breaches",
-                                            "Monitor daily task and app completion rates"
-                                        ],
-                                        image: "/icons/lops.webp"
-                                    }
-                                },
-                                {
-                                    key: "ops",
-                                    label: "Compliance / Risk",
-                                    content: {
-                                        // title: "Review policy exceptions and score distribution for audit readiness",
-                                        bullets: [
-                                            "View full audit trails for every officer action",
-                                            "Monitor exception handling and policy deviations",
-                                            "Ensure documentation and decision logs are complete"
-                                        ],
-                                        image: "/icons/risk.webp"
-                                    }
-                                }
-                            ];
+                                    {
+                                        key: "credit",
+                                        label: "Branch & RM Teams",
+                                        content: {
+                                            // title: "Monitor daily application and approval metrics across branches and products",
+                                            bullets: [
+                                                "Launch guided applications in branch or remotely",
+                                                "Seamlessly hand off apps across channels",
+                                                "Track real-time status and completions"
+                                            ],
+                                            image: "/icons/lo.webp"
+                                        }
+                                    },
+                                    {
+                                        key: "product",
+                                        label: "Lending Ops",
+                                        content: {
+                                            bullets: [
+                                                "Eliminate duplicate data entry and rework",
+                                                "Accelerate KYC and credit validations",
+                                                "Monitor drop-offs and journey progress"
+                                            ],
+                                            image: "/icons/ca.webp"
+                                        }
+                                    },
+                                    {
+                                        key: "compliance",
+                                        label: "Risk & Compliance",
+                                        content: {
+                                            bullets: [
+                                                "Validate ID, income, credit via APIs",
+                                                "Monitor real-time KYC and fraud checks",
+                                                "Ensure policy adherence from step one"
+                                            ],
+                                            image: "/icons/bm.webp"
+                                        }
+                                    },
+                                    {
+                                        key: "pricing",
+                                        label: "Product Teams",
+                                        content: {
+                                            // title: "See staff productivity and stage-level drop-offs",
+                                            bullets: [
+                                                "A/B test onboarding flows and layouts",
+                                                "Track funnel metrics by version and channel",
+                                                "Optimize journeys for every borrower segment"
+                                            ],
+                                            image: "/icons/lops.webp"
+                                        }
+                                    },
+                                ];
                             const [selected, setSelected] = useState("credit");
                             const current = teams.find(t => t.key === selected);
                             return (
@@ -498,8 +512,8 @@ export default function DecisioningPage() {
                 </div>
             </section>
 
-            {/* Lending Timeline Section */}
-            <section className="w-full flex flex-col items-center py-16 relative px-6">
+            {/* Core section */}
+            <section className="w-full flex flex-col items-center justify-center py-8 md:pt-10 relative">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -540,85 +554,37 @@ export default function DecisioningPage() {
                         }}
                     />
                 </div>
-                <CustomHeader text="What Lending looks like when you can do it all in one tab" className="z-10 text-center" />
-                <p className="text-[#606060] text-lg text-center mb-10 max-w-3xl z-10">The Cockpit brings structure, automation, and visibility to every hour of your loan officers' day—so they can focus on lending, not logistics.</p>
-                <div 
-                    className="flex flex-col md:flex-row gap-4 w-full max-w-7xl justify-center z-10"
-                    onMouseLeave={() => {
-                        setActiveCard(0);
-                        setShowPoints(true);
-                    }}
-                >
-                    {lendingTimeline.map((item, idx) => (
-                        <div
-                            key={item.time}
-                            className={
-                                activeCard === idx
-                                    ? `min-w-[50%] lg:h-[220px] bg-[radial-gradient(89.87%_256.74%_at_50%_-132.69%,_#7EB2FF_0%,_#043071_98.49%)] text-white rounded-2xl p-6 shadow-lg flex flex-col flex-3 transition-none duration-500 ease-in-out`
-                                    : "lg:max-w-[16.66%] lg:min-w-[20%] lg:h-[220px] w-full bg-white border border-[#C7D6F3] rounded-2xl p-6 shadow-sm flex flex-col bg-[url('/icons/patt.svg')] bg-no-repeat bg-right-bottom flex-1"
-                            }
-                            style={{
-                                cursor: 'pointer',
-                            }}
-                            onMouseEnter={() => handleCardHover(idx)}
-                        >
-                            <span className={"font-bebas-neue mb-2 " + (activeCard === idx ? "text-white text-3xl md:text-[56px]" : "text-[#689BE8] text-2xl md:text-[48px]")}>{item.time}</span>
-                            <span className={"text-lg font-medium mb-2 " + (activeCard === idx ? "text-white" : "text-[#606060]")}>{item.title}</span>
-                            {activeCard === idx && (
-                                <ul className={`mt-2 text-[#ACC7ED] text-base list-disc list-inside space-y-1 hidden lg:block transition-none duration-2000 ease-in-out ${true ? 'opacity-100' : 'opacity-0'}`}>
-                                    {item.details.map((d, i) => (
-                                        <li key={i}>{d}</li>
-                                    ))}
-                                </ul>
-                            )}
-                            <ul className="mt-2 text-[#ACC7ED] text-base list-disc list-inside space-y-1 block lg:hidden">
-                                {item.details.map((d, i) => (
-                                    <li key={i} className={`text-[#606060] text-sm ${activeCard === idx ? "text-white" : ""}`}>{d}</li>
-                                ))}
-                            </ul>
+                <div className="relative z-10 w-full flex justify-center max-w-7xl">
+                    <div className="w-full bg-white rounded-[36px] shadow-2xl px-8 lg:px-[73px] py-10 flex flex-col items-center">
+                        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#2A5FAC]">Connect to Core. Embed. Personalize.</h2>
+                        <p className="text-xl text-[#606060] font-plus-jakarta">DAO fits into your stack—not the other way around</p>
+                        <div className="flex flex-col lg:flex-row justify-start items-center w-full">
+                            <div className="flex-2 flex flex-col gap-[14px] mt-10 lg:mt-0">
+                                {[
+                                    "Built on same framework as Algebrik LOS",
+                                    "Embed in websites, landing pages, apps, emails",
+                                    "Connect with CRMs, KYC providers, bureaus (Equifax, TransUnion, etc.)",
+                                    "Pre-integrated with Algebrik POS, Decision Engine",
+                                    "Role-based dashboards for Branch, Ops, Compliance",
+                                    "SOC2-grade access control, end-to-end encryption"
+                                ].map(item => <p className="flex gap-2 items-center">
+                                    <svg className="min-w-[20px] min-h-[20px]" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.9974 19.2263C14.5807 19.2263 18.3307 15.4763 18.3307 10.893C18.3307 6.30963 14.5807 2.55963 9.9974 2.55963C5.41406 2.55963 1.66406 6.30963 1.66406 10.893C1.66406 15.4763 5.41406 19.2263 9.9974 19.2263Z" stroke="#292929" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M6.46094 10.8929L8.81927 13.2513L13.5443 8.53461" stroke="#292929" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span className="text-[#292929] text-base font-medium">{item}</span>
+                                </p>)}
+                            </div>
+                            <div className="flex-1">
+                                <img className="object-cover w-full" src="/core.png"/>
+                            </div>
                         </div>
-                    ))}
+                    </div>
                 </div>
             </section>
-
-            {/* Flows Section */}
-            <section className="w-full max-w-7xl px-4 md:px-0 py-8 lg:py-16 flex flex-col items-center relative md:mt-[72px]">
-                <CustomHeader text="Fits Right Into the Flow of Lending" className="text-center z-10" />
-                <p className="text-[#606060] text-lg text-center mb-10 max-w-3xl z-10">The Lender's Cockpit doesn't sit on the sidelines. It's woven directly into your origination journey—powering action at every stage.</p>
-                <Marquee className="flex gap-[20px]">
-                <div className="md:hidden w-full flex flex-nowrap md:flex-wrap  z-10 justify-start md:justify-center pt-2 pb-8 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
-                    {flowsData.map((item, idx) => (
-                        !item.title ? (
-                            <div key={item.title} className="min-w-[82px] p-4 flex flex-col items-start justify-center hover:scale-105 transition-all ease-in">
-                                <Image src={item.icon} alt="arrow" width={82} height={3} className="mb-3 w-full object-cover rounded-2xl" />
-                            </div>
-                        ) :
-                            <div key={item.title} className="bg-white w-[152px] shadow-lg p-4 flex flex-col items-start border-[2px] border-[#1B5AD2] rounded-[20px] hover:scale-105 transition-all ease-in">
-                                <Image src={item.icon} alt={item.title} width={40} height={40} className="mb-3  w-[40px] h-[40px] object-cover rounded-2xl" />
-                                <span className="text-[18px] font-bold text-[#2A5FAC] text-left">{item.title}</span>
-                            </div>
-                    ))}
-                </div></Marquee>
-
-                <div className="hidden w-full md:flex flex-nowrap md:flex-wrap  z-10 justify-start md:justify-center pt-2 pb-8 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
-                    {flowsData.map((item, idx) => (
-                        !item.title ? (
-                            <div key={item.title} className="min-w-[82px] p-4 flex flex-col items-start justify-center hover:scale-105 transition-all ease-in">
-                                <Image src={item.icon} alt="arrow" width={82} height={3} className="mb-3 w-full object-cover rounded-2xl" />
-                            </div>
-                        ) :
-                            <div key={item.title} className="bg-white w-[152px] shadow-lg p-4 flex flex-col items-start border-[2px] border-[#1B5AD2] rounded-[20px] hover:scale-105 transition-all ease-in">
-                                <Image src={item.icon} alt={item.title} width={40} height={40} className="mb-3  w-[40px] h-[40px] object-cover rounded-2xl" />
-                                <span className="text-[18px] font-bold text-[#2A5FAC] text-left">{item.title}</span>
-                            </div>
-                    ))}
-                </div>
-            </section>
-
-
-            {/* Clarity Drives Speed Section */}
-            <section className="w-full flex flex-col items-center py-16 px-6 lg:px-0">
-                <div className="container relative opacity-[30%] z-0">
+ {/* Results Section */}
+ <section className="w-full max-w-7xl px-4 py-8 lg:py-16 flex flex-col items-center">
+ <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
                         animate={{
@@ -658,30 +624,38 @@ export default function DecisioningPage() {
                         }}
                     />
                 </div>
-                <CustomHeader text="Clarity Drives Speed. Speed Drives Conversions" className="pt-6 pb-[32px] z-10 text-center" />
-                <div className="w-full max-w-7xl bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row items-center p-8 md:p-0 gap-8 z-10 backdrop-blur-lg">
-                    <div className="flex-1 flex flex-col justify-center  md:p-10">
-                        <h3 className="text-[#2A5FAC] text-lg md:text-xl font-bold mb-4">Deliver seamless, personalised member experiences across every channel, while empowering your team with faster decisions and scalable solutions</h3>
-                        <ul className="space-y-3">
-                            {clarityBullets.map((b, i) => (
-                                <li key={i} className="flex items-start gap-2 text-[#292929] text-base md:text-lg">
-                                    <span className=" text-[#2563EB]">→</span>
-                                    <span className="">{b}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    {/* <div className="flex-1 flex items-end justify-end self-end"> */}
-                    <img src="/icons/cds.webp" alt="Clarity Dashboard" className="rounded-2xl w-full max-w-md z-10" />
-                    {/* </div> */}
+                <CustomHeader text="Tested. Tuned. Ready to Scale." className="text-center" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-6 mt-8 z-10">
+                    {resultsData.map((item, idx) => (
+                        <motion.div 
+                            key={item.title + idx} 
+                            className="bg-white rounded-2xl shadow-xl p-6 flex flex-col lg:flex-row lg:items-center gap-6"
+                            style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                            whileHover={{ 
+                                scale: 1.05
+                            }}
+                            transition={{ 
+                                duration: 0.3,
+                                ease: "easeInOut"
+                            }}
+                        >
+                            <div className="flex-shrink-0 w-[64px] h-[64px] md:w-[80px] md:h-[80px] flex items-center justify-center rounded-2xl">
+                                <Image src={item.image} alt={item.title} width={64} height={64} className="object-contain w-[48px] h-[48px] md:w-[64px] md:h-[64px]" />
+                            </div>
+                            <div className="flex flex-col items-start">
+                                <span className="font-bold text-lg mb-2 text-[#2A5FAC]">{item.title}</span>
+                                {/* <span className="text-xs text-gray-500">{item.description}</span> */}
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
             </section>
 
             {/* Final CTA Section */}
             <section className="w-full py-16 mb-24 flex flex-col items-center text-center">
-                <CustomHeader text="Give Your Loan Officers the Control They Deserve" className="text-center text-2xl md:text-[44px] max-w-3xl leading-normal font-bold mb-4" />
+                <CustomHeader text="Lending Growth Starts at Hello" className="text-center text-2xl md:text-[44px] max-w-3xl leading-normal font-bold mb-4" />
                 <p className="max-w-5xl mx-auto text-sm lg:text-2xl px-6 lg:px-0 text-[#606060] mt-6">
-                    Your lending teams drive your business. It's time they had the tools to do it with speed, visibility, and confidence.
+                Don’t let your borrowers fall through the cracks. Build onboarding flows that adapt to them
                 </p>
                 <motion.button
                     className="relative bg-gradient-to-tr from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px] overflow-hidden group mt-8 lg:mt-16"
@@ -694,7 +668,7 @@ export default function DecisioningPage() {
                     }}
                     onClick={() => setShowContactModal(true)}
                 >
-                    <span className="relative z-10">See the Cockpit in Action</span>
+                    <span className="relative z-10">Talk to a Borrower Experience Expert</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#195BD7] to-[#1C8DEA] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                 </motion.button>
                 <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />

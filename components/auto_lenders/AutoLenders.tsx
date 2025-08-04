@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Button from "../Buttons";
 import Contact from "../contacts";
 import { useState } from "react";
+import Marquee from "react-fast-marquee";
 
 export default function AutoLenders() {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -86,87 +87,88 @@ export default function AutoLenders() {
         </div>
 
         {/* Desktop Cards */}
-        <div className="hidden md:flex gap-6">
-          {data.cardData.map((card, index) => (
-            <motion.div
-              key={index}
-              className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[365px] h-[426px] flex flex-col items-center justify-start"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-              }}
-              transition={{
-                scale: { duration: 0.3 },
-                boxShadow: { duration: 0.3 },
-              }}
-            >
-              <div className="mb-4">
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  className="object-contain rounded-md"
-                  width={433}
-                  height={355}
-                  quality={100}
-                />
-              </div>
-              <h3 className="text-[#2A5FAC] text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
-                {card.title}
-              </h3>
-              <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
-                {card.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
+          <div className="hidden md:flex gap-6">
+            {data.cardData.map((card, index) => (
+              <motion.div
+                key={index}
+                className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[365px] h-[426px] flex flex-col items-center justify-start"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                }}
+                transition={{
+                  scale: { duration: 0.3 },
+                  boxShadow: { duration: 0.3 },
+                }}
+              >
+                <div className="mb-4">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    className="object-contain rounded-md"
+                    width={433}
+                    height={355}
+                    quality={100}
+                  />
+                </div>
+                <h3 className="text-[#2A5FAC] text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
+                  {card.title}
+                </h3>
+                <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
+                  {card.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         <div className="block md:hidden relative w-full h-full">
-  <motion.div
-    className="absolute top-0 left-0 w-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full h-[350px] sm:w-[400px] sm:h-[450px] md:w-[468.64px] md:h-[542.11px] blur-[125px] opacity-30"
-    initial={{ x: "0%" }}
-    // animate={{
-    //   x: ["-10%", "10%", "-10%", "0%"],
-    // }}
-    transition={{
-      duration: 10,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
+          <motion.div
+            className="absolute top-0 left-0 w-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full h-[350px] sm:w-[400px] sm:h-[450px] md:w-[468.64px] md:h-[542.11px] blur-[125px] opacity-30"
+            initial={{ x: "0%" }}
+            // animate={{
+            //   x: ["-10%", "10%", "-10%", "0%"],
+            // }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
 
-  <motion.div
-    className="absolute top-0 left-0 w-full bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full h-[250px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[125px] opacity-30 -z-10"
-    initial={{ x: "0%" }}
-    // animate={{
-    //   x: ["10%", "-10%", "10%", "0%"],
-    // }}
-    transition={{
-      duration: 12,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
+          <motion.div
+            className="absolute top-0 left-0 w-full bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full h-[250px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[125px] opacity-30 -z-10"
+            initial={{ x: "0%" }}
+            // animate={{
+            //   x: ["10%", "-10%", "10%", "0%"],
+            // }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
 
-  <motion.div
-    className="absolute top-[300px] sm:top-0 left-0 w-full bg-[#BE95FF] rounded-full h-[200px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[105px] opacity-30 z-[-1]"
-    // initial={{ x: "0%" }}
-    // animate={{
-    //   x: ["-10%", "10%", "-10%", "0%"],
-    // }}
-    // transition={{
-    //   duration: 8,
-    //   repeat: Infinity,
-    //   ease: "easeInOut",
-    // }}
-  />
-</div>
+          <motion.div
+            className="absolute top-[300px] sm:top-0 left-0 w-full bg-[#BE95FF] rounded-full h-[200px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[105px] opacity-30 z-[-1]"
+          // initial={{ x: "0%" }}
+          // animate={{
+          //   x: ["-10%", "10%", "-10%", "0%"],
+          // }}
+          // transition={{
+          //   duration: 8,
+          //   repeat: Infinity,
+          //   ease: "easeInOut",
+          // }}
+          />
+        </div>
 
         {/* Mobile Carousel */}
         <div className="flex md:hidden overflow-x-auto pb-4">
+        <Marquee>
           <div className="flex flex-nowrap gap-[20px]">
             {data.cardData.map((card, index) => (
               <div
                 key={index}
+                style={index==0?{marginLeft:"20px"}:{}}
                 className="relative p-4 backdrop-brightness-110 bg-white/70 rounded-[32px] shadow-md w-[300px] h-auto flex flex-col items-center justify-start transform transition-transform duration-300 hover:scale-105"
               >
                 <div className="mb-4">
@@ -188,6 +190,7 @@ export default function AutoLenders() {
               </div>
             ))}
           </div>
+          </Marquee>
         </div>
 
         {/* Buttons */}

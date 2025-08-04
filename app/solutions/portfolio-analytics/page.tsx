@@ -15,7 +15,7 @@ const beforeAfterData = [
         type: "before",
         title: "Before Algebrik",
         titleClass: "mb-3 bg-[#E4E8ED] rounded-[40px] text-center text-[#292929] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-white rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px]",
+        cardClass: "bg-white rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px] hover:scale-105 transition-all ease-in",
         textClass: "text-gray-600 space-y-2 text-left",
         icon: null,
         items: [
@@ -29,7 +29,7 @@ const beforeAfterData = [
         type: "after",
         title: "After Algebrik",
         titleClass: "flex justify-center items-center gap-1 mb-3 bg-[#5A94E7] rounded-[40px] text-center text-[#FDFEFE] text-[20px] font-bold px-4 py-2",
-        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px] text-white  border-[5px] border-[#5A94E7]",
+        cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-2xl shadow-2xl p-6 pb-10 flex-1 min-w-[260px] text-white  border-[5px] border-[#5A94E7] hover:scale-105 transition-all ease-in",
         textClass: "space-y-2 text-left",
         icon: (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

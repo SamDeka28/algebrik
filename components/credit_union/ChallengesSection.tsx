@@ -64,7 +64,7 @@ const ChallengesSection = () => {
               </p>
               </div>
 
-              <div className="relative w-full md:w-[880px]  md:h-[234px] left-[22px] overflow-hidden mt-4 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+              <div className="hidden md:block relative w-full md:w-[880px]  md:h-[234px] left-[22px] overflow-hidden mt-4 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 <Image
                   src={card.image}
                   alt={card.title}
