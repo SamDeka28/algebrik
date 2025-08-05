@@ -308,7 +308,7 @@ export default function BlogCarousel() {
                       <div className="uppercase tracking-[30%] text-xs font-semibold opacity-80 mb-1 text-[#005FB5]">Upcoming Webinar</div>
                       <div className="text-2xl md:text-3xl font-bold leading-tight mb-2 text-[#292929]">{next.title}</div>
                       {/* <div className="text-base font-medium mb-2">{next.eventDate}</div> */}
-                      <Link href={next.link} target="_blank">
+                      <Link href={next.link} target="_blank" className="z-10">
                         <button className="bg-white text-[#fff] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] font-semibold rounded-full px-6 py-2 mt-2 shadow hover:bg-[#195BD7] hover:text-white border border-white transition-all">Register Now</button>
                       </Link>
                     </div>

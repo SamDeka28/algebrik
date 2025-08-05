@@ -3,6 +3,7 @@
 import React from "react";
 import { CustomHeader } from "../CustomHeader";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
 export default function WhatWeStriveFor() {
   return (
@@ -273,7 +274,7 @@ export default function WhatWeStriveFor() {
           className=" md:hidden px-[20px] flex text-left flex-col text-[28px]"
           text="What we strive for!"
         />
-        <div className=" w-[100%]  overflow-x-scroll overflow-y-hidden flex font-plus-jakarta gap-[16px] md:gap-[24px]">
+        <div className="hidden w-[100%]  overflow-x-scroll overflow-y-hidden lg:flex font-plus-jakarta gap-[16px] md:gap-[24px]">
           {/* First Row */}
           <div
             className="ml-4 bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] backdrop-blur-[7.34px] 
@@ -419,6 +420,154 @@ export default function WhatWeStriveFor() {
             </div>
           </div>
         </div>
+        <Marquee>
+        <div className="md:hidden w-[100%]  overflow-x-scroll overflow-y-hidden flex font-plus-jakarta gap-[16px] md:gap-[24px]">
+          {/* First Row */}
+          <div
+            className="ml-4 bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] backdrop-blur-[7.34px] 
+          border-2 p-[0.5px] rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]"
+          >
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] font pb-[17px] font-extrabold">
+                01
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold">
+                Simplify Complexity
+              </h3>
+              <p className="text-[12px] font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] tracking-[2px] flex flex-col uppercase">
+                Lending is simple. We strive to make it so.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] border-2 p-[0.5px] backdrop-blur-[7.34px] 
+          rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] font pb-[17px] font-extrabold">
+                02
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold flex flex-col">
+                <span>Design for </span>
+                <span>Inclusivity</span>
+              </h3>
+              <p className="text-[12px] font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] tracking-[2px] flex flex-col uppercase">
+                Financial services should work for all.
+              </p>
+            </div>
+          </div>
+
+          <div
+            className="bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] backdrop-blur-[7.34px] border-2 p-[0.5px] 
+          rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]"
+          >
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] font pb-[17px] font-extrabold">
+                03
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold">
+                Build with Purpose
+              </h3>
+              <p className="text-[12px] font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] tracking-[2px] flex flex-col uppercase">
+                Inspired by precision and depth, like the mathematics in our
+                name, we craft FUTURE READY TOOLS
+              </p>
+            </div>
+          </div>
+
+          {/* Second Row */}
+          <div className="bg-gradient-to-b from-[#149994] to-[#149994] backdrop-blur-[7.34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)] border-2 p-[0.5px] rounded-[34px]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#149994] to-[#149994] font pb-[17px] font-extrabold">
+                04
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold flex flex-col">
+                <span>Obsess Over </span>
+                <span>Impact</span>
+              </h3>
+              <p className="text-[12px] font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#149994] to-[#149994] tracking-[2px] flex flex-col uppercase">
+                Every decision is guided by how it helps lenders and borrowers
+                achieve.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-b from-[#149994] to-[#149994] border-2 p-[0.5px] rounded-[34px] backdrop-blur-[7.34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#149994] to-[#149994] font pb-[17px] font-extrabold">
+                05
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold">
+                Push Boundaries
+              </h3>
+              <p className="text-[12px] font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#149994] to-[#149994] tracking-[2px] flex flex-col uppercase">
+                We question limits and create what doesn’t yet exist to redefine
+                lending experiences.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-b from-[#149994] to-[#149994] border-2 p-[0.5px] rounded-[34px] backdrop-blur-[7.34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#149994] to-[#149994] font pb-[17px] font-extrabold">
+                06
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold">
+                Earn and Give Trust
+              </h3>
+              <p className="text-[12px] text-transparent bg-clip-text bg-gradient-to-b from-[#149994] to-[#149994] font-bold tracking-[2px] flex flex-col uppercase">
+                Trust is the cornerstone of lending, and we intend to keep it
+                that way.
+              </p>
+            </div>
+          </div>
+
+          {/* Third Row */}
+          <div className="bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] border-2 p-[0.5px] backdrop-blur-[7.34px] rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] font pb-[17px] font-extrabold">
+                07
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold flex flex-col">
+                <span>Empower Every </span>
+                <span>Stakeholder</span>
+              </h3>
+              <p className="text-[12px] text-transparent bg-clip-text bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] font-bold tracking-[2px] flex flex-col uppercase">
+                Enable everyone to focus on what they do best, knowing we have
+                their back.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] border-2 p-[0.5px] backdrop-blur-[7.34px] rounded-[34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] font pb-[17px] font-extrabold">
+                08
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold flex flex-col">
+                Celebrate Progress
+              </h3>
+              <p className="text-[12px] text-transparent bg-clip-text bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] font-bold tracking-[2px] flex flex-col uppercase">
+                Every small improvement leads to big wins.
+              </p>
+            </div>
+          </div>
+
+          <div className="mr-4 bg-gradient-to-b from-[#1C8DEA] to-[#195BD7] border-2 p-[0.5px] rounded-[34px] backdrop-blur-[7.34px] shadow-[0_22.22px_60.64px_0_rgba(16, 30, 54, 0.08)]">
+            <div className="bg-white flex flex-col px-[18px] py-[20px] rounded-[32px] w-[260px] h-[256px]">
+              <h2 className="text-[40px] text-transparent bg-clip-text bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] font pb-[17px] font-extrabold">
+                09
+              </h2>
+              <h3 className="text-[24px] text-[#292D34] pb-[8px] font-bold flex flex-col">
+                <span>Create Meaningful </span>
+                <span>Connections</span>
+              </h3>
+              <p className="text-[12px] text-transparent bg-clip-text bg-gradient-to-b from-[#BE95FF] to-[#9A5FF6] font-bold tracking-[2px] flex flex-col uppercase">
+                Lending is simple. We strive to make it so.
+              </p>
+            </div>
+          </div>
+        </div>
+        </Marquee>
       </div>
     </div>
   );

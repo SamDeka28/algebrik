@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const carouselData = [
   {
@@ -73,6 +74,7 @@ const carouselData = [
 
 export default function OurStory() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isMobile=useIsMobile();
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
@@ -83,6 +85,14 @@ export default function OurStory() {
       prevIndex === 0 ? carouselData.length - 1 : prevIndex - 1
     );
   };
+
+  useEffect(()=>{
+    if(isMobile){
+      setInterval(()=>{
+        handleNext();
+      },3000)
+    }
+  },[isMobile])
 
   const currentSlide = carouselData[currentIndex];
 

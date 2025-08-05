@@ -554,11 +554,12 @@ export default function DecisioningPage() {
                             key={item.time}
                             className={
                                 activeCard === idx
-                                    ? `min-w-[50%] lg:h-[220px] bg-[radial-gradient(89.87%_256.74%_at_50%_-132.69%,_#7EB2FF_0%,_#043071_98.49%)] text-white rounded-2xl p-6 shadow-lg flex flex-col flex-3 transition-none duration-500 ease-in-out`
-                                    : "lg:max-w-[16.66%] lg:min-w-[20%] lg:h-[220px] w-full bg-white border border-[#C7D6F3] rounded-2xl p-6 shadow-sm flex flex-col bg-[url('/icons/patt.svg')] bg-no-repeat bg-right-bottom flex-1"
+                                    ? `min-w-[50%] lg:h-[220px] bg-[radial-gradient(89.87%_256.74%_at_50%_-132.69%,_#7EB2FF_0%,_#043071_98.49%)] text-white rounded-2xl p-6 shadow-lg flex flex-col flex-3 transition-all duration-500 ease-in-out`
+                                    : "lg:max-w-[16.66%] lg:min-w-[20%] lg:h-[220px] w-full bg-white border border-[#C7D6F3] rounded-2xl p-6 shadow-sm flex flex-col bg-[url('/icons/patt.svg')] bg-no-repeat bg-right-bottom flex-1 transition-all duration-500 ease-in-out"
                             }
                             style={{
                                 cursor: 'pointer',
+                                overflow:"hidden"
                             }}
                             onMouseEnter={() => handleCardHover(idx)}
                         >

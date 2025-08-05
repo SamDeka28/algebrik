@@ -532,7 +532,27 @@ export default function DecisioningPage() {
                     />
                 </div>
                 <CustomHeader text="Control Every Decision. Without the Backlog" className="text-center z-10" />
-                <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center py-10 overflow-x-auto scrollbar-hide hide-scrollbar">
+                <Marquee className="flex gap-[20px]">
+                <div className="w-full flex md:hidden flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center py-10 overflow-x-auto scrollbar-hide hide-scrollbar">
+                    {flowsData.map((item, idx) => (
+                        <motion.div
+                            key={item.title}
+                            className="bg-white rounded-2xl min-w-[270px] max-w-[270px] flex-1 shadow-lg p-4 flex flex-col items-center"
+                            whileHover={{
+                                scale: 1.05,
+                            }}
+                            transition={{
+                                duration: 0.3,
+                                ease: "easeOut"
+                            }}
+                        >
+                            <Image src={item.icon} alt={item.title} width={240} height={133} className="mb-3 w-full object-cover border border-[#BEBEBE5C] rounded-2xl" />
+                            <span className="text-base font-medium text-[#292929] text-left">{item.title}</span>
+                        </motion.div>
+                    ))}
+                </div>
+                </Marquee>
+                <div className="hidden w-full md:flex flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center py-10 overflow-x-auto scrollbar-hide hide-scrollbar">
                     {flowsData.map((item, idx) => (
                         <motion.div
                             key={item.title}
