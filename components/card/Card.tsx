@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsMobile } from "@/hooks/use-mobile";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -46,6 +47,8 @@ const Card = ({
   imageHeight = 300,
   buttonLink,
 }: CardProps) => {
+
+  const isMobile=useIsMobile();
   return (
     <div
       className={`relative px-6 py-8 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] flex flex-col justify-end
@@ -124,13 +127,15 @@ const Card = ({
           <Image
             src={imageSrc}
             alt={title || "Card image"}
-            className={`object-cover rounded-md transition-all duration-300 ease-in-out ${customStyles?.image || ""}`}
+            className={`object-cover  rounded-md transition-all duration-300 ease-in-out ${customStyles?.image || ""}`}
             width={imageWidth}
             height={imageHeight}
-            style={{
+            style={!isMobile ?{
               objectFit: "cover",
               filter: "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
               opacity: 0.5,
+            }:{
+              opacity:0.2
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.filter = "none";

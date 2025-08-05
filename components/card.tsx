@@ -5,7 +5,7 @@ import Card from "./card/Card";
       <div className="flex flex-col md:flex-row gap-8 justify-center items-start px-6 pt-[49px] md:pt-0 md:px-0 md:p-10">
         <div className="flex flex-col justify-start items-start gap-8">
           <Card
-            // imageSrc="/section_images/credit_union.png"
+            imageSrc="/section_images/credit_union.png"
             number="01"
             subtitle="For Credit Unions"
             title="Seamless Experiences for your Members."
@@ -20,7 +20,7 @@ import Card from "./card/Card";
             }}
           />
           <Card
-                    //  imageSrc="/section_images/auto_lenders.png"
+            imageSrc="/section_images/auto_lenders.png"
             number="02"
             subtitle="For Auto Lenders"
             title="Lending Transformed for Auto Lenders"
@@ -36,7 +36,7 @@ import Card from "./card/Card";
           />
         </div>
         <Card
-        // imageSrc="/section_images/smb_lending.png"
+        imageSrc="/section_images/smb_lending.png"
  
           number="03"
           subtitle="For Banks"
