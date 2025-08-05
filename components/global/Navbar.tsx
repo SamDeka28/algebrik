@@ -14,6 +14,7 @@ import { blogContent } from "@/components/constant/blogs";
 import dynamic from "next/dynamic";
 import ReactDOM from "react-dom";
 import { WEBINARS } from "../constant/webinars";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Contact = dynamic(() => import("../contacts"), { ssr: false });
 
@@ -94,6 +95,7 @@ export default function Navbar() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [aboutTimeout, setAboutTimeout] = useState<NodeJS.Timeout | null>(null);
+  const isMobile=useIsMobile();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -247,13 +249,19 @@ export default function Navbar() {
         </Link>
         }
 
-        {isScrolled && <Link href="/">
+        {(isScrolled) ? isMobile ? <Link href="/">
           <img
             src={"/a.png"}
             alt="logo"
             className="w-[40px]"
           />
-        </Link>}
+        </Link>:<Link href="/">
+          <Image
+            src={getLogo()}
+            alt="logo"
+            className="w-[157px] h-[40px]"
+          />
+        </Link>:""}
 
         {/* Desktop Menu */}
         <div
