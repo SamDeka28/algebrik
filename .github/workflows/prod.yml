@@ -7,6 +7,17 @@ on:
 
 
 jobs:
+  sonar-scan:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: Algebrik-AI/github-actions/sonar-scan-2.0@prod
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_PROD_BRANCH }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
   code-scanner:
     runs-on: ubuntu-latest
     permissions:
