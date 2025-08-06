@@ -14,6 +14,7 @@ import { blogContent } from "@/components/constant/blogs";
 import dynamic from "next/dynamic";
 import ReactDOM from "react-dom";
 import { WEBINARS } from "../constant/webinars";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Contact = dynamic(() => import("../contacts"), { ssr: false });
 
@@ -35,8 +36,8 @@ interface Partner {
 }
 
 const partnerData: { [key: string]: Partner } = {
-  'Equifax':{
-    name:'Equifax',
+  'Equifax': {
+    name: 'Equifax',
     image: '/menu-icons/ef.png',
     category: 'Core Banking & Financial Data',
     description: 'Consumer-permissioned access to real-time financial data enabling faster, more accurate lending decisions.',
@@ -94,6 +95,7 @@ export default function Navbar() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [aboutTimeout, setAboutTimeout] = useState<NodeJS.Timeout | null>(null);
+  const isMobile=useIsMobile();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -107,7 +109,7 @@ export default function Navbar() {
     setAboutOpen(true);
   };
 
-  const toggleAbout=()=>{
+  const toggleAbout = () => {
     setAboutOpen(!aboutOpen)
   }
 
@@ -159,6 +161,7 @@ export default function Navbar() {
   // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource-center" || pathname === "/resource-center/out_of_the_lending_maze" || pathname === "/resource-center/from_fragmentation_to_seamlessness" || pathname === "/resource-center/beyond_decisioning" || pathname === "/resource-center/redefining_borrower";
 
   const BlueLogoPaths = [
+    "/vlo","/vlo/",
     "/roi-calculator", "/roi-calculator/", "/algebrik-webinar1", "/algebrik-webinar1/",
     "/contact", "/contact/", "/privacy-policy", "/privacy-policy/",
     "/resource-center", "/resource-center/",
@@ -182,7 +185,7 @@ export default function Navbar() {
     '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions',
     '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/',
     '/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month',
-    '/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month/',    
+    '/resource-center/a-product-peek-into-what-is-new-at-algebrik-this-month/',
     "/integrations",
     "/integrations/",
     "/become-a-partner",
@@ -199,8 +202,8 @@ export default function Navbar() {
     "/resource-center/the-silent-sabotage/",
     "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work",
     "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work/",
-    ...WEBINARS.map(item=>item.link),
-    ...WEBINARS.map(item=>item.link+"/")
+    ...WEBINARS.map(item => item.link),
+    ...WEBINARS.map(item => item.link + "/")
   ]
 
   const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
@@ -230,21 +233,36 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${isScrolled
+      className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto  ${isScrolled
         ? isContactOrResourcePage
-          ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
-          : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl"
+          ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl w-[90%] max-w-[95%]"
+          : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl w-[90%] max-w-[95%]"
         : "bg-transparent"
         } transition-all duration-300`}
     >
       <div className="container mx-auto px-10 py-6 flex justify-between items-center">
-        <Link href="/">
+        {!isScrolled && <Link href="/">
           <Image
             src={getLogo()}
             alt="logo"
             className="w-[157px] h-[40px]"
           />
         </Link>
+        }
+
+        {(isScrolled) ? isMobile ? <Link href="/">
+          <img
+            src={"/a.png"}
+            alt="logo"
+            className="w-[40px]"
+          />
+        </Link>:<Link href="/">
+          <Image
+            src={getLogo()}
+            alt="logo"
+            className="w-[157px] h-[40px]"
+          />
+        </Link>:""}
 
         {/* Desktop Menu */}
         <div
@@ -302,13 +320,13 @@ export default function Navbar() {
                       <Image src="/icons/pos.svg" alt="Point of Sale Icon" width={20} height={20} />
                       Point of Sale
                     </Link>
-                    <Link href="/solutions/lender-cockpit" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
-                      <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
-                      Lender's Cockpit (LOS)
-                    </Link>
                     <Link href="/solutions/digital-account-opening" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                       <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
                       Digital Account Opening
+                    </Link>
+                    <Link href="/solutions/lender-cockpit" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                      <Image src="/icons/lc.svg" alt="Lender Cockpit Icon" width={20} height={20} />
+                      Lender's Cockpit (LOS)
                     </Link>
                     <Link href="/solutions/decisioning" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                       <Image src="/icons/de.svg" alt="Decisioning Engine Icon" width={20} height={20} />
@@ -459,11 +477,11 @@ export default function Navbar() {
                 <Link href="/solutions/omnichannel-point-of-sale" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Point of sale
                 </Link>
-                <Link href="/solutions/lender-cockpit" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                  Lender's Cockpit (LOS)
-                </Link>
                 <Link href="/solutions/digital-account-opening" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Digital Account Opening
+                </Link>
+                <Link href="/solutions/lender-cockpit" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                  Lender's Cockpit (LOS)
                 </Link>
                 <Link href="/solutions/decisioning" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Decisioning Engine

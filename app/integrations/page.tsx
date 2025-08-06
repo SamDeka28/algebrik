@@ -102,12 +102,12 @@ const integrationGroups = [
         description: 'Power income verification inside Algebrik with payroll access via Conductiv.',
         website: 'https://conductiv.com',
   },
-      {
-        name: 'SpringVerify',
-        image: '/integration_logos/SpringVerify.png',
-        description: 'Algebrik integrates SpringVerify to automate employment and income validation.',
-        website: 'https://springverify.com',
-      },
+      // {
+      //   name: 'SpringVerify',
+      //   image: '/integration_logos/SpringVerify.png',
+      //   description: 'Algebrik integrates SpringVerify to automate employment and income validation.',
+      //   website: 'https://springverify.com',
+      // },
     ],
   },
   {
@@ -162,12 +162,12 @@ const integrationGroups = [
         description: 'Confirm bank ownership and account legitimacy with Plaid inside Algebrik.',
         website: 'https://plaid.com',
       },
-      {
-    name: 'Socure',
-        image: '/integration_logos/socure.png',
-        description: 'Leverage Socure via Algebrik to ensure fast, accurate identity verification.',
-    website: 'https://socure.com',
-      },
+    //   {
+    // name: 'Socure',
+    //     image: '/integration_logos/socure.png',
+    //     description: 'Leverage Socure via Algebrik to ensure fast, accurate identity verification.',
+    // website: 'https://socure.com',
+    //   },
     ],
   },
   {

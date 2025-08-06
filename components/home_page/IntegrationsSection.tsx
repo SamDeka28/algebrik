@@ -45,7 +45,7 @@ export default function IntegrationsSection() {
     <div className="bg-white py-10">
       <div className="text-center">
         <CustomHeader text="Seamlessly Connected, Effortlessly Scaled" />
-        <CustomSubtitle className="px-7 mt-[16px] md:px-0 md:mt-0" text="Algebrik integrates with the tools and systems you already use, creating a unified, efficient lending ecosystem." />
+        <CustomSubtitle className="px-7 mt-[16px] md:px-0 md:mt-0 text-[14px] md:text-[20px] font-normal leading-[30px]" text="Algebrik integrates with the tools and systems you already use, creating a unified, efficient lending ecosystem." />
 
         <div className="relative my-20 flex flex-col gap-5">
 

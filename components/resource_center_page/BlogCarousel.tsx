@@ -242,6 +242,17 @@ const toolsData = [
   },
 ];
 
+const insightsData = [
+ {
+  title:"Algebrik AI - Digital Natives’ Banking Panacea with Pankaj Jain - S2E10 - Lumière Startup Saturday ",
+  link: "https://www.youtube.com/embed/KMOT9WC8Z4A?si=NjzIvdK_ehyF-0eA"
+  },
+  {
+    title:"AI Unleashed: Pankaj Jain on How Algebrik is Rewriting Lending Rules for Credit Unions",
+  link:"https://www.youtube.com/embed/hnWrqto3b68?si=VVMGKXY6retxmIND"
+  }
+]
+
 function isFuture(dateStr: string) {
   // Accepts '7 Aug, 2025' or '7 Feb,2025' (with or without space)
   const d = new Date(Date.parse(dateStr.replace(/(\d{1,2}) ([A-Za-z]+),? ?(\d{4})/, '$1 $2 $3')));
@@ -296,7 +307,7 @@ export default function BlogCarousel() {
                 {next && (
                   <div
                     className="w-full max-w-[1160px] rounded-[32px] gap-6 flex flex-col md:flex-row items-center shadow-lg overflow-hidden relative bg-[#FFFFFFE5] border-[#CFE3FF] border-[2px]"
-                    style={{ 
+                    style={{
                       // background: 'radial-gradient(104.17% 277.39% at 50% -153.34%, #7EB2FF 0%, #043071 85%)'
                     }}
                   >
@@ -308,7 +319,7 @@ export default function BlogCarousel() {
                       <div className="uppercase tracking-[30%] text-xs font-semibold opacity-80 mb-1 text-[#005FB5]">Upcoming Webinar</div>
                       <div className="text-2xl md:text-3xl font-bold leading-tight mb-2 text-[#292929]">{next.title}</div>
                       {/* <div className="text-base font-medium mb-2">{next.eventDate}</div> */}
-                      <Link href={next.link} target="_blank">
+                      <Link href={next.link} target="_blank" className="z-10">
                         <button className="bg-white text-[#fff] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] font-semibold rounded-full px-6 py-2 mt-2 shadow hover:bg-[#195BD7] hover:text-white border border-white transition-all">Register Now</button>
                       </Link>
                     </div>
@@ -352,23 +363,6 @@ export default function BlogCarousel() {
                       );
                     })}
                   </div>
-                  {/* Video Modal */}
-                  {videoModal.open && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-                      <div className="bg-white rounded-lg shadow-lg p-4 relative max-w-2xl w-full">
-                        <button className="absolute top-2 right-2 text-2xl font-bold text-gray-700 hover:text-red-500" onClick={() => setVideoModal({ open: false })}>&times;</button>
-                        <div className="aspect-w-16 aspect-h-9 w-full">
-                          <iframe
-                            src={videoModal.url}
-                            title="Webinar Video"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="w-full h-[360px] rounded-lg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </>
             );
@@ -578,13 +572,59 @@ export default function BlogCarousel() {
             </div>
           }
 
+          {/* Tools */}
+          {currentIndex == 3 &&
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
+              {insightsData.map((tool, index) => {
+                let thumb = `https://img.youtube.com/vi/${tool.link.split("/").pop()?.split("?")[0]}/maxresdefault.jpg`
 
-          {[ 3].includes(currentIndex) &&
+                return (
+                  <div key={tool.title.replace(" ","_") + index} className="flex flex-col md:flex-row gap-6 items-start">
+                    <div className="flex-1 flex-col bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
+                      onClick={() => tool.link && setVideoModal({ open: true, url: tool.link })}
+                    >
+                        <>
+                          <img src={thumb} alt={tool.title} className="object-cover rounded-lg w-full h-full max-h-[220px]" />
+                          <div className="absolute rounded-lg inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="32" cy="32" r="32" fill="#fff" fillOpacity="0.8" />
+                              <polygon points="26,20 48,32 26,44" fill="#195BD7" />
+                            </svg>
+                          </div>
+                        </>
+                        <p className="text-primary font-medium font-plus-jakarta px-2 py-4">{tool.title}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          }
+
+          {/* {[3].includes(currentIndex) &&
 
             <h2 className="text-black text-[56px] text-center font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
 
 
-          }
+          } */}
+           {/* Video Modal */}
+           {videoModal.open && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+                      <div className="bg-white rounded-lg shadow-lg p-4 relative max-w-2xl w-full">
+                        <button className="absolute bg-white rounded-full flex justify-center items-center -top-3 -right-3 shadow-lg p-2 text-2xl font-bold text-gray-700 hover:text-red-500" onClick={() => setVideoModal({ open: false })}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                        </button>
+                        <div className="aspect-w-16 aspect-h-9 w-full">
+                          <iframe
+                            src={videoModal.url}
+                            title="Webinar Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-[360px] rounded-lg"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
         </div>
       </section>
     </div>
