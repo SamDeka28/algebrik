@@ -58,6 +58,9 @@ const Footer = () => {
               {" "}
               <li>Point of Sale</li>{" "}
             </Link>
+            <Link href="/solutions/digital-account-opening" passHref>
+                  Digital Account Opening
+            </Link>
             <Link href="/solutions/lender-cockpit" passHref>
               {" "}
               <li>Lender's Cockpit</li>
@@ -112,6 +115,9 @@ const Footer = () => {
                 {" "}
                 <li>Point of Sale</li>{" "}
               </Link>
+              <Link href="/solutions/digital-account-opening" passHref>
+                  Digital Account Opening
+            </Link>
               <Link href="/solutions/lender-cockpit" passHref>
                 {" "}
                 <li>Lender's Cockpit</li>
