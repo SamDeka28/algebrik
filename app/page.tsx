@@ -193,7 +193,7 @@ export default function Home() {
         </div>
         {showIntegrations && <LazyIntegrationsSection />}
         {showFooter && <LazyFooterCards />}
-        <ConvoaiWidget/>
+        {/* <ConvoaiWidget/> */}
         {/* <elevenlabs-convai agent-id="agent_01jwdd48b1e17rkf0dngh470mv" />
         <Script
           src="https://unpkg.com/@elevenlabs/convai-widget-embed"

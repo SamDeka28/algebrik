@@ -1,7 +1,21 @@
 import { Button } from "../LendingHealthCheck/ui/button";
 import { ArrowDown, Play, Calendar, Users } from "lucide-react";
 import { useState, useEffect } from "react";
+
+import dynamic from "next/dynamic";
+import ReactDOM from "react-dom";
+const Contact = dynamic(() => import("../contacts"), { ssr: false });
+
+function ContactModalPortal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (typeof window === "undefined") return null;
+  return ReactDOM.createPortal(
+    <Contact open={open} onClose={onClose} />,
+    document.body
+  );
+}
+
 const HeroSection = () => {
+  const [showContactModal,setShowContactModal]=useState(false)
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -71,7 +85,7 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up">
-          <Button onClick={scrollToRegistration} size="lg" className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold py-4 px-8 text-lg rounded-full hover-lift glow-primary">
+          <Button onClick={()=>setShowContactModal(true)} size="lg" className="bg-primary hover:bg-primary-dark text-primary-foreground font-bold py-4 px-8 text-lg rounded-full hover-lift glow-primary">
             <Calendar className="mr-3 h-6 w-6" />
             Schedule a Demo With Us
           </Button>
@@ -99,6 +113,7 @@ const HeroSection = () => {
           <ArrowDown className="h-8 w-8 text-primary opacity-60" />
         </div>
       </div>
+      <ContactModalPortal open={showContactModal} onClose={() => setShowContactModal(false)} />
     </section>;
 };
 export default HeroSection;
