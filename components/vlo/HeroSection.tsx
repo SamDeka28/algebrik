@@ -46,7 +46,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-10 container mx-auto px-6 pt-20 md:pt-0 text-center">
         {/* Webinar Badge */}
         <div className="animate-fade-in-up mb-8">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full border border-primary/20 glass-morphism">
