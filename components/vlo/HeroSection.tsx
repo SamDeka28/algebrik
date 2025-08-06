@@ -39,14 +39,14 @@ const HeroSection = () => {
       behavior: 'smooth'
     });
   };
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-subtle">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-subtle pt-20 lg:pt-0">
       {/* Modern Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,hsl(var(--primary))_1px,transparent_0)] bg-[size:20px_20px]" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pt-20 md:pt-0 text-center">
+      <div className="relative z-10 container mx-auto px-6 pt-20 lg:pt-0 text-center">
         {/* Webinar Badge */}
         <div className="animate-fade-in-up mb-8">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full border border-primary/20 glass-morphism">
