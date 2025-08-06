@@ -197,27 +197,27 @@ export default function DecisioningPage() {
                         loop={0}
                         speed={100}
                         gradient={false}
-                        >
-                            {featureCards.map((item, idx) => (
-                                <motion.div 
-                                    key={item.title} 
+                    >
+                        {featureCards.map((item, idx) => (
+                            <motion.div
+                                key={item.title}
                                 className="flex flex-col bg-white rounded-2xl shadow-md p-6 min-w-[330px] max-w-[380px] gap-2 mx-2 h-[280px]"
-                                    style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
-                                    whileHover={{ 
-                                        scale: 1.05
-                                    }}
-                                    transition={{ 
-                                        duration: 0.3,
-                                        ease: "easeInOut"
-                                    }}
-                                >
-                                    <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
-                                        <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
-                                    </div>
-                                    <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
+                                style={{ boxShadow: "0 4px 24px 0 rgba(10,64,108,0.10)" }}
+                                whileHover={{
+                                    scale: 1.05
+                                }}
+                                transition={{
+                                    duration: 0.3,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                <div className="flex-shrink-0 flex items-center justify-center w-[78px] h-[78px] bg-[#F6F9FB] rounded-2xl mb-2">
+                                    <Image src={item.icon} alt={item.title} width={48} height={48} className="w-[48px] h-[48px] object-contain" />
+                                </div>
+                                <span className="font-bold text-[#292929] text-base mb-1">{item.title}</span>
                                 <span className="text-[#606060] text-base leading-snug flex-1">{item.description}</span>
-                                </motion.div>
-                            ))}
+                            </motion.div>
+                        ))}
                     </Marquee>
                 </div>
             </section>
@@ -380,7 +380,7 @@ export default function DecisioningPage() {
                                         ))}
                                     </div>
                                     {/* Two-column layout: image left, text right */}
-                                    <motion.div 
+                                    <motion.div
                                         key={selected}
                                         initial={{ opacity: 0, x: 100 }}
                                         animate={{ opacity: 1, x: 0 }}
@@ -413,8 +413,8 @@ export default function DecisioningPage() {
                 </div>
             </section>
 
-             {/* Analytics Section */}
-             <section className="w-full max-w-7xl lg:px-4 lg:py-8 px-0 py-8 flex flex-col items-center relative lg:px-0 px-6">
+            {/* Analytics Section */}
+            <section className="w-full max-w-7xl lg:px-4 lg:py-8 px-0 py-8 flex flex-col items-center relative lg:px-0 px-6">
                 <div className="container relative opacity-[30%] z-0">
                     <motion.div
                         className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
@@ -464,15 +464,35 @@ export default function DecisioningPage() {
             <section className="w-full max-w-7xl px-4 py-8 lg:py-16 flex flex-col items-center relative mt-[72px]">
                 <CustomHeader text="Turning Origination Data into Actionable Strategy" className="text-center z-10" />
                 <div className="w-full flex flex-nowrap md:flex-wrap gap-4 md:gap-8 z-10 justify-start md:justify-center pb-8 mt-8 overflow-x-auto scrollbar-hide hide-scrollbar">
-                    <div className="flex gap-4 md:gap-8 px-4">
+                    <Marquee className="">
+                        <div className="flex md:hidden gap-4 md:gap-8 px-4 pb-5">
+                            {flowsData.map((item, idx) => (
+                                <motion.div
+                                    key={item.title}
+                                    className="bg-white rounded-2xl min-w-[270px] max-w-[270px] flex-1 shadow-lg p-4 flex flex-col items-start"
+                                    whileHover={{
+                                        scale: 1.05
+                                    }}
+                                    transition={{
+                                        duration: 0.3,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <Image src={item.icon} alt={item.title} width={64} height={64} className="mb-3 w-[64px] h-[64px] object-cover rounded-2xl" />
+                                    <span className="text-[18px] font-medium text-[#2A5FAC] text-left">{item.title}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </Marquee>
+                    <div className="hidden lg:flex gap-4 md:gap-8 px-4">
                         {flowsData.map((item, idx) => (
-                            <motion.div 
-                                key={item.title} 
+                            <motion.div
+                                key={item.title}
                                 className="bg-white rounded-2xl min-w-[270px] flex-1 shadow-lg p-4 flex flex-col items-start"
-                                whileHover={{ 
+                                whileHover={{
                                     scale: 1.05
                                 }}
-                                transition={{ 
+                                transition={{
                                     duration: 0.3,
                                     ease: "easeInOut"
                                 }}
@@ -487,10 +507,10 @@ export default function DecisioningPage() {
 
 
             {/* Final CTA Section */}
-            <section className="w-full py-16 mb-24 flex flex-col items-center text-center">
+            <section className="w-full pb-16 mb-24 flex flex-col items-center text-center">
                 <CustomHeader text="Lending Strategy Starts with Visibility" className="text-center text-2xl md:text-[44px] max-w-3xl leading-normal font-bold mb-4" />
                 <p className="max-w-5xl mx-auto text-sm lg:text-2xl px-6 lg:px-0 text-[#606060] mt-6">
-                Know what's moving through your origination pipeline—so you can act fast, stay efficient, and grow smarter.
+                    Know what's moving through your origination pipeline—so you can act fast, stay efficient, and grow smarter.
                 </p>
                 <motion.button
                     className="relative bg-gradient-to-tr from-[#1C8DEA] to-[#195BD7] text-white py-[14px] px-6 font-bold rounded-[31px] overflow-hidden group mt-8 lg:mt-16"
@@ -502,7 +522,7 @@ export default function DecisioningPage() {
                         ease: "easeInOut"
                     }}
                     onClick={() => {
-                       setShowContactModal(true);
+                        setShowContactModal(true);
                     }}
                 >
                     <span className="relative z-10"> Talk to a Lending Funnel Expert</span>

@@ -5,6 +5,8 @@ import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
 import Script from "next/script";
 import RouteLoader from "@/components/global/RouteLoader";
+import ConvoaiWidget from "@/components/ConvoaiWidget"
+
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -89,6 +91,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <ConvoaiWidget/>
         </RouteLoader>
       </body>
     </html>
