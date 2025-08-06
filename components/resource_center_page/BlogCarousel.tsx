@@ -611,7 +611,7 @@ export default function BlogCarousel() {
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
                       <div className="bg-white rounded-lg shadow-lg p-4 relative max-w-2xl w-full">
                         <button className="absolute bg-white rounded-full flex justify-center items-center -top-3 -right-3 shadow-lg p-2 text-2xl font-bold text-gray-700 hover:text-red-500" onClick={() => setVideoModal({ open: false })}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                         </button>
                         <div className="aspect-w-16 aspect-h-9 w-full">
                           <iframe
