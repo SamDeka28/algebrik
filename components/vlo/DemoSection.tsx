@@ -2,7 +2,21 @@ import { Card } from "../LendingHealthCheck/ui/card";
 import { Button } from "../LendingHealthCheck/ui/button";
 import { MessageCircle, Mic, Send, Sparkles, Zap, Shield, Clock, Calendar, Brain } from "lucide-react";
 import { useState } from "react";
+
+import dynamic from "next/dynamic";
+import ReactDOM from "react-dom";
+const Contact = dynamic(() => import("../contacts"), { ssr: false });
+
+function ContactModalPortal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (typeof window === "undefined") return null;
+  return ReactDOM.createPortal(
+    <Contact open={open} onClose={onClose} />,
+    document.body
+  );
+}
 const DemoSection = () => {
+  const [showContactModal,setShowContactModal]=useState(false)
+
   const [activeTab, setActiveTab] = useState("chat");
   const [messages] = useState([{
     type: "ai",
@@ -155,9 +169,7 @@ This demo shows real interactions you'll experience in the webinar.</p>
               <p className="text-muted-foreground text-sm mb-4">
                 Schedule a demo for hands-on interaction with the AI loan officer
               </p>
-              <Button className="bg-primary hover:bg-primary-dark text-primary-foreground hover-lift" onClick={() => document.getElementById('cta-section')?.scrollIntoView({
-              behavior: 'smooth'
-            })}>
+              <Button className="bg-primary hover:bg-primary-dark text-primary-foreground hover-lift" onClick={() =>setShowContactModal(true)}>
                 <Calendar className="mr-2 h-4 w-4" />
                 Test Drive Now
               </Button>
@@ -165,6 +177,7 @@ This demo shows real interactions you'll experience in the webinar.</p>
           </div>
         </div>
       </div>
+      <ContactModalPortal open={showContactModal} onClose={() => setShowContactModal(false)} />
     </section>;
 };
 export default DemoSection;

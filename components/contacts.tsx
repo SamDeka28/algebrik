@@ -169,7 +169,7 @@ const HubspotMeetingEmbed = () => {
     <div
       ref={containerRef}
       className="meetings-iframe-container"
-      data-src="https://meetings-na2.hubspot.com/algebrik?embed=true"
+      data-src="https://meetings-na2.hubspot.com/algebrik/meeting-with-team-algebrik-v2?embed=true"
       style={{  width: '100%' }}
     />
   );
