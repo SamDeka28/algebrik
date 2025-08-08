@@ -14,7 +14,7 @@ function ContactModalPortal({ open, onClose }: { open: boolean; onClose: () => v
   );
 }
 
-const HeroSection = () => {
+const HeroSection = ({openModal}:{openModal:()=>void}) => {
   const [showContactModal,setShowContactModal]=useState(false)
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -89,9 +89,10 @@ const HeroSection = () => {
             <Calendar className="mr-3 h-6 w-6" />
             Schedule a Demo With Us
           </Button>
-          <Button onClick={scrollToDemo} variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold py-4 px-8 text-lg rounded-full hover-lift">
+          <Button onClick={openModal} variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold py-4 px-8 text-lg rounded-full hover-lift">
             <Play className="mr-3 h-6 w-6" />
-            See In Action          </Button>
+            See In Action          
+          </Button>
         </div>
 
         {/* Social Proof */}
@@ -109,7 +110,7 @@ const HeroSection = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="flex items-center justify-center animate-bounce mt-20 cursor-pointer" onClick={scrollToDemo} >
           <ArrowDown className="h-8 w-8 text-primary opacity-60" />
         </div>
       </div>
