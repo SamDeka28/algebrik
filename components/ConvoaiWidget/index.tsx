@@ -1,11 +1,13 @@
 // app/components/ConvaiWidget.tsx
 'use client';
 
+import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
 export default function ConvaiWidget() {
   const [ready, setReady] = useState(false);
+  let pathname=usePathname();
 
   useEffect(() => {
     const check = () => {
@@ -17,7 +19,7 @@ export default function ConvaiWidget() {
     };
     check();
   }, []);
-
+  if(["/vlo","/vlo/"].includes(pathname)) return null;
   return (
     <>
       <Script
