@@ -1,6 +1,49 @@
 import { useState, useEffect, useRef } from 'react';
 import { Quote, TrendingUp, Clock, Award, CheckCircle, UserPlus, Wallet, Monitor, Scale, PieChart, Crown, ArrowRight } from 'lucide-react';
 
+const HubspotMeetingEmbed = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const loadMeetings = () => {
+      if (window.HubSpotMeetings) {
+        window.HubSpotMeetings.loadMeetings();
+      } else {
+        setTimeout(loadMeetings, 1000); // Retry after 1 second if not loaded
+      }
+    };
+
+    // Load the script
+    if (!document.getElementById('hs-meetings-embed-script')) {
+      const script = document.createElement('script');
+      script.id = 'hs-meetings-embed-script';
+      script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+      script.async = true;
+      script.onload = loadMeetings;
+      document.body.appendChild(script);
+    } else {
+      loadMeetings();
+    }
+
+    // Cleanup
+    return () => {
+      const script = document.getElementById('hs-meetings-embed-script');
+      if (script) {
+        script.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="meetings-iframe-container pt-20"
+      data-src="https://meetings-na2.hubspot.com/algebrik/ufcu-win?embed=true"
+      style={{  width: '100%' }}
+    />
+  );
+};
+
 const UFCUSuccessSection = () => {
   const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -42,9 +85,13 @@ const UFCUSuccessSection = () => {
   };
 
   return (
+    <>
+    <div id="lead-form">
+      <HubspotMeetingEmbed/>
+    </div>
     <section
       ref={sectionRef}
-      className="relative pt-20 lg:pt-32 overflow-hidden"
+      className="relative pt-10 lg:pt-10 overflow-hidden"
       style={{
         // background: 'linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--background)) 100%)'
       }}
@@ -300,6 +347,7 @@ const UFCUSuccessSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

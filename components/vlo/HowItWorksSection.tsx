@@ -49,11 +49,11 @@ const HowItWorksSection = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => (
               <div key={index} className="relative">
-                <Card className="p-6 text-center border-2 border-accent/20 hover:border-accent/40 transition-all duration-300 hover:shadow-xl bg-card">
+                <Card className="p-6 text-center border-2 border-[#15C3A9] hover:border-[#15C3A9]/40 transition-all duration-300 hover:shadow-xl bg-card">
                   {/* Step Number */}
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-sm">
+                  {/* <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-sm">
                     {index + 1}
-                  </div>
+                  </div> */}
                   
                   {/* Icon */}
                   <div className="w-16 h-16 bg-gradient-neon rounded-2xl flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
@@ -62,14 +62,14 @@ const HowItWorksSection = () => {
                   
                   {/* Content */}
                   <h3 className="text-xl font-bold text-primary mb-2">{step.title}</h3>
-                  <p className="text-accent font-medium mb-3">{step.description}</p>
+                  <p className="text-[#15C3A9] font-medium mb-3">{step.description}</p>
                   <p className="text-sm text-muted-foreground">{step.detail}</p>
                 </Card>
 
                 {/* Arrow for desktop */}
                 {index < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-24 -right-8 z-10">
-                    <ArrowRight className="h-8 w-8 text-accent animate-pulse" />
+                    <ArrowRight className="h-8 w-8 text-[#15C3A9] animate-pulse" />
                   </div>
                 )}
               </div>
@@ -83,7 +83,7 @@ const HowItWorksSection = () => {
             <h3 className="text-2xl font-bold mb-4 !text-primary">
               This isn't a chatbot. It's an intelligent lending assistant.
             </h3>
-            <p className="text-lg text-accent">
+            <p className="text-lg text-[#15C3A9]">
               Trained on real borrower behavior, built into Algebrik One.
             </p>
           </div>

@@ -344,8 +344,8 @@ export default function DecisioningPage() {
                     />
                 </div>
                 <div className="relative z-10 w-full flex justify-center max-w-7xl">
-                    <div className="w-full bg-white rounded-[36px] shadow-2xl px-8 py-10 flex flex-col items-center">
-                        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#2A5FAC]">Built for the Teams Who Own Lending</h2>
+                    <div className="w-full  bg-gradient-to-br from-[#1C3B6F] to-[#2563EB]  rounded-[36px] shadow-2xl px-8 py-10 flex flex-col items-center">
+                        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-white">Built for the Teams Who Own Lending</h2>
                         {(() => {
                             const teams: {
                                 key: string;
@@ -425,7 +425,7 @@ export default function DecisioningPage() {
                             return (
                                 <div className="w-full flex flex-col items-center">
                                     {/* Pills as nav bar at the top of the card */}
-                                    <div className="flex md:flex-row flex-wrap justify-center gap-2 md:gap-4 mb-8 border-[1px] rounded-lg lg:rounded-full border-[#C4DCFF] p-[6px] bg-[#C4DCFF]">
+                                    <div className="flex flex-row flex-wrap justify-center gap-2 md:gap-4 mb-8 border-[2px] rounded-lg lg:rounded-full border-[#467AC6] p-[6px] bg-[#1F3048]">
                                         {teams.map(team => (
                                             selected === team.key ? (
                                                 <div
@@ -453,44 +453,43 @@ export default function DecisioningPage() {
                                                 <button
                                                     key={team.key}
                                                     onClick={() => setSelected(team.key)}
-                                                    className="px-6 py-2 rounded-full transition font-medium text-base focus:outline-none min-w-[170px] text-center bg-transparent text-[#567199] border-white/40 hover:bg-white/10"
-                                                    style={{}}
+                                                    className="px-6 py-2 rounded-full transition font-medium text-base focus:outline-none min-w-[170px] text-center bg-transparent text-white border-white/40 hover:bg-white/10"
+                                                    style={{
+
+                                                    }}
                                                 >
                                                     {team.label}
                                                 </button>
                                             )
                                         ))}
                                     </div>
-                                    {/* Two-column layout: image left, text right, with animation */}
-                                    <AnimatePresence mode="wait">
-                                        <motion.div
-                                            key={selected}
-                                            initial={{ opacity: 0, x: 40 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: -40 }}
-                                            transition={{ duration: 0.35, ease: "easeInOut" }}
-                                            className="flex flex-row flex-wrap gap-8 w-full"
-                                        >
-                                            {/* Placeholder image with white border */}
-                                            <div className="rounded-2xl p-2" >
-                                                <div className="w-full lg:w-[460px] lg:h-[320px] flex items-center justify-center rounded-xl">
-                                                    <Image src={current?.content.image as string} alt="Credit" width={460} height={320} className="w-full lg:h-full object-cover rounded-xl" />
-                                                </div>
+                                    {/* Two-column layout: image left, text right */}
+                                    <motion.div
+                                        key={selected}
+                                        initial={{ opacity: 0, x: 100 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                        className="flex flex-row flex-wrap gap-8 w-full"
+                                    >
+                                        {/* Placeholder image with white border */}
+                                        <div className="rounded-2xl p-2">
+                                            <div className="w-full lg:w-[460px] lg:h-[320px] flex items-center justify-center rounded-xl">
+                                                <Image src={current?.content.image as string} alt="Credit" width={460} height={320} className="w-full lg:h-full object-cover rounded-xl" />
                                             </div>
-                                            {/* Content */}
-                                            <div className="flex-1 flex flex-col items-start justify-center max-w-xl">
-                                                {current?.content.title && <h3 className="text-2xl font-semibold mb-4 text-[#292929]">{current?.content.title}</h3>}
-                                                <ul className="text-[#C7D6F3] text-lg space-y-2">
-                                                    {current?.content.bullets.map((b, i) => (
-                                                        <li key={i} className="flex items-center gap-2">
-                                                            <span className=" w-2 h-2 bg-[#292929] rounded-full inline-block mt-1"></span>
-                                                            <span className="text-[#292929]">{b}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        </div>
+                                        {/* Content */}
+                                        <div className="flex-1 flex flex-col justify-center items-start max-w-xl">
+                                            <h3 className="text-white text-2xl font-semibold mb-4">{current?.content.title}</h3>
+                                            <ul className="text-[#C7D6F3] text-lg space-y-2">
+                                                {current?.content.bullets.map((b, i) => (
+                                                    <li key={i} className="flex items-center gap-2">
+                                                        <span className="w-2 h-2 bg-white rounded-full inline-block"></span>
+                                                        <span>{b}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </motion.div>
                                 </div>
                             );
                         })()}

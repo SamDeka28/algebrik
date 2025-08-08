@@ -38,7 +38,7 @@ const WhyItMattersSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             The Age of{" "}
-            <span className="text-gradient bg-gradient-to-r from-accent to-neon bg-clip-text text-transparent">
+            <span className="text-gradient bg-gradient-to-br from-accent to-neon bg-clip-text text-transparent">
               Agentic Lending
             </span>{" "}
             Is Here
@@ -52,10 +52,10 @@ const WhyItMattersSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {benefits.map((benefit, index) => (
             <Card key={index} className="bg-white/10 border-accent/30 p-6 text-center backdrop-blur-sm hover:bg-white/15 transition-all duration-300">
-              <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#15C3A9] rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <benefit.icon className="h-8 w-8 text-primary" />
               </div>
-              <div className="text-4xl font-bold text-accent mb-2">{benefit.stat}</div>
+              <div className="text-4xl font-bold text-[#15C3A9] mb-2">{benefit.stat}</div>
               <div className="text-lg font-semibold text-white mb-2">{benefit.label}</div>
               <p className="text-sm text-white/70">{benefit.description}</p>
             </Card>
@@ -65,10 +65,10 @@ const WhyItMattersSection = () => {
         {/* Trust Banner */}
         <div className="bg-white/10 rounded-3xl p-8 text-center backdrop-blur-sm border border-accent/20">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <Shield className="h-8 w-8 text-accent" />
-            <h3 className="text-2xl font-bold ">🔒 Secure. Compliant. Real-time.</h3>
+            <Shield className="h-8 w-8 text-[#15C3A9]" />
+            <h3 className="text-2xl font-bold ">Secure. Compliant. Real-time.</h3>
           </div>
-          <p className="text-lg text-accent">
+          <p className="text-lg text-[#15C3A9]">
             Powered by the trusted infrastructure of Algebrik One.
           </p>
         </div>
