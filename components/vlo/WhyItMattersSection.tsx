@@ -38,7 +38,7 @@ const WhyItMattersSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             The Age of{" "}
-            <span className="text-gradient bg-gradient-to-br from-accent to-neon bg-clip-text text-transparent">
+            <span className=" bg-gradient-to-br from-accent to-accent/75 bg-clip-text text-transparent">
               Agentic Lending
             </span>{" "}
             Is Here
