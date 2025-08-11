@@ -197,7 +197,7 @@ export const VLO = ({ open, onClose }: { open: Boolean; onClose: () => void }) =
   const isConnected = conversation.status === 'connected';
   return open ?
     <div className='fixed top-0 z-50 left-0 flex justify-center items-center backdrop-blur-md h-screen w-screen p-6 '>
-      <div className={`bg-gradient-to-br w-full ${analysis ? "lg:w-[65%] w-full" : "lg:w-[40%]"} gap-10 py-20 mt-10 px-6 bg-black backdrop-blur-sm flex flex-col lg:flex-row w-full max-h-[90%] overflow-y-auto items-center rounded-xl`}>
+      <div className={`bg-gradient-to-br w-full ${analysis ? "lg:w-[40%] w-full" : "lg:w-[40%]"} gap-10 py-20 mt-10 px-6 bg-black backdrop-blur-sm w-full max-h-[90%] overflow-y-auto items-center rounded-xl`}>
         {/* <div className="w-full flex-1"> */}
           <svg onClick={handleClose} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="cursor-pointer lucide lucide-circle-x-icon lucide-circle-x absolute z-50 top-4 right-4"><circle cx="12" cy="12" r="10" /><path d="m15 9-6 6" /><path d="m9 9 6 6" /></svg>
           <div className="w-full flex-1 min-h-max">
@@ -322,9 +322,9 @@ export const VLO = ({ open, onClose }: { open: Boolean; onClose: () => void }) =
             </div>
           </div>
 
-          {analysis ? <div className="flex-1 flex gap-4 flex-col relative overflow-x-auto w-full h-full  lg:overflow-y-scroll min-h-max">
-            <h1 className="text-3xl font-bold text-foreground font-poppins text-white pt-5 flex items-center gap-4">
-              <ArrowLeft /> Analysis
+          {analysis ? <div className="lg:flex-1 flex gap-4 flex-col relative overflow-x-auto w-full h-full  lg:overflow-y-scroll min-h-max">
+            <h1 className="text-3xl font-bold text-foreground font-poppins text-white pt-6 flex items-center gap-4">
+             Analysis
             </h1>
             <table className="flex-1 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <tbody>
@@ -335,7 +335,7 @@ export const VLO = ({ open, onClose }: { open: Boolean; onClose: () => void }) =
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white capitalize">
                       {heading}
                     </th>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 w-[200px] min-w-[100px]">
                       {value}
                     </td>
                   </tr>
@@ -355,7 +355,7 @@ export const VLO = ({ open, onClose }: { open: Boolean; onClose: () => void }) =
             </Button>
           </div>
           : !analysis && conversationEnded ? 
-          <p className='text-muted'>Loading analysis....</p>
+          <div className='pt-20 flex items-center flex-col gap-5 justify-center text-muted'><DotsLoader/>Loading Analytics</div>
           :null
           }
         </div>
@@ -366,3 +366,85 @@ export const VLO = ({ open, onClose }: { open: Boolean; onClose: () => void }) =
       </div>
       : null;
 };
+
+
+import { motion } from "framer-motion";
+
+type DotsLoaderProps = {
+  size?: number;         // diameter of each dot in px
+  color?: string;        // dot color (any valid CSS color)
+  count?: number;        // number of dots
+  speed?: number;        // time (s) for one dot pulse cycle
+  gap?: number;          // gap between dots in px
+  className?: string;
+  "aria-label"?: string;
+};
+
+export default function DotsLoader({
+  size = 10,
+  color = "#2563eb",
+  count = 3,
+  speed = 0.9,
+  gap = 8,
+  className,
+  "aria-label": ariaLabel = "Loading",
+}: DotsLoaderProps) {
+  const container = {
+    animate: {
+      transition: {
+        staggerChildren: speed / (count * 0.8), // distribute timings nicely
+      },
+    },
+  };
+
+  const dot = {
+    initial: { scale: 0.6, opacity: 0.3 },
+    animate: {
+      scale: [0.6, 1.15, 0.85, 0.6],
+      opacity: [0.3, 1, 0.6, 0.3],
+      transition: {
+        duration: speed,
+        ease: "easeInOut",
+        repeat: Infinity,
+      },
+    },
+  };
+
+  const dots = Array.from({ length: count });
+
+  return (
+    <motion.div
+      role="status"
+      aria-live="polite"
+      aria-label={ariaLabel}
+      variants={container}
+      initial="initial"
+      animate="animate"
+      className={className}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: gap,
+      }}
+    >
+      {dots.map((_, i) => (
+        <motion.span
+          key={i}
+          style={{
+            width: size,
+            height: size,
+            borderRadius: "50%",
+            background: color,
+            display: "inline-block",
+            // to preserve pixel-crisp on transforms
+            transformOrigin: "center",
+          }}
+        />
+      ))}
+      {/* Visually hidden text for screen-readers (redundant with aria-label but extra-safe) */}
+      <span style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0 }}>
+        {ariaLabel}…
+      </span>
+    </motion.div>
+  );
+}
