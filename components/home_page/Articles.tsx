@@ -52,6 +52,33 @@ export default function Articles() {
 
   const newsArticles = [
     {
+      title:"Algebrik AI Partners with Spinwheel to Streamline Debt Data & Payments in Loan Origination",
+      author: "PR Newswire",
+      source:"PR Newswire",
+      role:"Marketing",
+      description:"Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City and pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announces a strategic partnership with Spinwheel, a leading...",
+      link:"https://www.prnewswire.com/news-releases/algebrik-ai-partners-with-spinwheel-to-streamline-debt-data--payments-in-loan-origination-302509571.html",
+      image:"/section_images/blog/prnewswire.jpg"
+    },
+    {
+      title:"Family Financial Credit Union Chooses Algebrik AI's End-to-End Digital Lending Suite: Algebrik ONE; to Enter into the New Era of Agentic AI-Powered Lending",
+      author: "PR Newswire",
+      source:"PR Newswire",
+      role:"Marketing",
+      description:"Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination System (LOS) built for credit unions, today announced that Family Financial Credit Union...",
+      link:"https://www.prnewswire.com/news-releases/family-financial-credit-union-chooses-algebrik-ais-end-to-end-digital-lending-suite-algebrik-one-to-enter-into-the-new-era-of-agentic-ai-powered-lending-302520713.html",
+      image:"/section_images/blog/prnewswire.jpg"
+    },
+    {
+      title:"Algebrik AI and Open Lending Partner to Expand Intelligent Auto Loan Decisioning for Credit Unions",
+      author: "PR Newswire",
+      source:"PR Newswire",
+      role:"Marketing",
+      description:"Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City and pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced an integration with Open Lending Corporation...",
+      link:"https://www.prnewswire.com/news-releases/algebrik-ai-and-open-lending-partner-to-expand-intelligent-auto-loan-decisioning-for-credit-unions-302526459.html",
+      image:"/section_images/blog/prnewswire.jpg"
+    },
+    {
       title:
         "United Financial Credit Union Selects AlgebrikAI's Comprehensive Consumer Lending Suite, Algebrik One",
       author: "PR Newswire",
