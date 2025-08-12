@@ -254,14 +254,36 @@ const insightsData = [
 ]
 
 function isFuture(dateStr: string) {
-  // Accepts '7 Aug, 2025' or '7 Feb,2025' (with or without space)
-  const d = new Date(Date.parse(dateStr.replace(/(\d{1,2}) ([A-Za-z]+),? ?(\d{4})/, '$1 $2 $3')));
-  return d.getTime() > Date.now();
+  // Normalize the date string format
+  const parsed = new Date(
+    Date.parse(
+      dateStr.replace(/(\d{1,2}) ([A-Za-z]+),?\s?(\d{4})/, "$1 $2 $3")
+    )
+  );
+
+  // Start of today
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // Future means today or later
+  return parsed >= today;
 }
 
+
 function isPast(dateStr: string) {
-  const d = new Date(Date.parse(dateStr.replace(/(\d{1,2}) ([A-Za-z]+),? ?(\d{4})/, '$1 $2 $3')));
-  return d.getTime() <= Date.now();
+  // Parse and normalize the input date (ignoring time of day)
+  const parsed = new Date(
+    Date.parse(
+      dateStr.replace(/(\d{1,2}) ([A-Za-z]+),?\s?(\d{4})/, "$1 $2 $3")
+    )
+  );
+
+  // Create "today" at midnight (start of the day)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // If parsed date is strictly before today, it's "past"
+  return parsed < today;
 }
 
 export default function BlogCarousel() {
