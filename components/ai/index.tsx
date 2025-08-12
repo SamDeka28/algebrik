@@ -41,16 +41,7 @@ export const VLO = ({ open, onClose }: { open: Boolean; onClose: () => void }) =
       });
     },
     onDisconnect: async (meta) => {
-      // setTimeout(async () => {
-      //   let response = await fetch(`https://api.elevenlabs.io/v1/convai/conversations/${conversationId}?agent_id=agent_0201k0va7e2bev9tzn9d66ajgbqt`, {
-      //     method: "GET",
-      //     headers: {
-      //       "xi-api-key": "sk_da3d6723746d45ebc2f5745ad796f2050332021dfacf4896"
-      //     }
-      //   })
-      //   let data: any = await response.json();
-      //   setAnalysis(data?.analysis?.data_collection_results)
-      // }, 3000);
+      setConversationEnded(true);
       setIsConnecting(false);
       toast({
         title: "Disconnected",
