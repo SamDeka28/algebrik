@@ -100,12 +100,12 @@ const HeroSection = ({openModal}:{openModal:()=>void}) => {
           <div className="flex items-center justify-center gap-8 text-muted-foreground">
             <div className="flex items-center gap-2">
               <Users className="h-5 w-5" />
-              <span className="text-sm">2,500+ Registered</span>
+              <span className="text-sm"> Instant Pre-qualification</span>
             </div>
             <div className="w-px h-4 bg-border" />
-            <div className="text-sm">45-Minute Interactive Session</div>
+            <div className="text-sm">Future of Lending</div>
             <div className="w-px h-4 bg-border" />
-            <div className="text-sm">Q&A with Experts</div>
+            <div className="text-sm">Fully Encrypted </div>
           </div>
         </div>
 
