@@ -35,7 +35,7 @@ export default function ImageGallery({ images }: any) {
             gradient={false}
             pauseOnHover={true}
             direction="left"
-            className="flex items-center overflow-hidden"
+            className="flex gap-6 items-center overflow-hidden"
           >
             {images.filter((_: any, index: number) => index % 2 === 0).map(({ src, width, height }: any, index: number) => {
               const aspectRatio = width / height;
