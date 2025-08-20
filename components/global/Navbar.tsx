@@ -273,7 +273,7 @@ export default function Navbar() {
             : "text-white"
             }`}
         >
-          <Link href="/platform" className="hover:text-blue-300 transition">
+          <Link href="/platform" className="hover:text-[#15C3A9] transition">
             Platform
           </Link>
 
@@ -287,7 +287,7 @@ export default function Navbar() {
             <Link
               href="/solutions"
               onClick={(e) => e.preventDefault()}
-              className={` transition flex items-center px-2 py-1 hover:bg-black/20 ${dropdownOpen ? 'bg-black/20 text-white' : ''} rounded-[20px] hover:text-white transition`}
+              className={` transition flex items-center px-2 py-1 hover:bg-black/20 ${dropdownOpen ? 'bg-black/20 text-[' : ''} rounded-[20px] hover:text-[#15C3A9] transition`}
             >
               Solutions
               <HiChevronDown
@@ -359,7 +359,7 @@ export default function Navbar() {
 
           <Link
             href="/resource-center"
-            className="hover:text-blue-300 transition"
+            className="hover:text-[#15C3A9] transition"
           >
             Resource Center
           </Link>
@@ -372,7 +372,7 @@ export default function Navbar() {
             <Link
               href="/about"
               onClick={(e) => e.preventDefault()}
-              className={` transition flex items-center px-2 py-1 hover:bg-black/20 ${aboutOpen ? 'bg-black/20 text-white' : ''} rounded-[20px] hover:text-white transition`}
+              className={` transition flex items-center px-2 py-1 hover:bg-black/20 ${aboutOpen ? 'bg-black/20 text-white' : ''} rounded-[20px] hover:text-[#15C3A9] transition`}
             >
               About Us
               <HiChevronDown
@@ -511,7 +511,7 @@ export default function Navbar() {
                   Company
                 </Link>
                 <Link href="/integrations" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
-                  Auto Lenders
+                  Integrations
                 </Link>
                 <Link href="/become-a-partner" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Become a Partner
