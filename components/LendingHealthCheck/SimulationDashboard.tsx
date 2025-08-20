@@ -401,7 +401,7 @@ const SimulationDashboard = ({ surveyData, healthScore, stressResults, onBack }:
               <Button 
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white/10 px-8 py-4"
+                className="border-white text-black hover:bg-white/10 hover:text-white px-8 py-4"
                 onClick={() => setShowBottomPdfAlert(true)}
               >
                 <Download className="w-5 h-5 mr-2" />
