@@ -357,6 +357,9 @@ export default function BlogCarousel() {
             const next = upcoming.length > 0 ? upcoming[0] : null;
             return (
               <>
+                {!next && 
+                <h2 className="text-white text-3xl text-center font-plus-jakarta font-bold py-10 bg-[#195BD7] rounded-xl max-w-6xl w-full shadow-2xl ">Stay tuned for the upcoming webinnar</h2>
+                }
                 {next && (
                   <div
                     className="w-full max-w-[1160px] rounded-[32px] gap-6 flex flex-col md:flex-row items-center shadow-lg overflow-hidden relative bg-[#FFFFFFE5] border-[#CFE3FF] border-[2px]"
@@ -659,7 +662,7 @@ export default function BlogCarousel() {
 
             <h2 className="text-black text-[56px] text-center font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
 
-
+Stay tuned for the upcoming webinnar
           } */}
            {/* Video Modal */}
            {videoModal.open && (
