@@ -9,6 +9,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import CarouselSection from "@/components/about_page/CarouselSection";
 import dynamic from "next/dynamic";
 import Conversation from "@/components/Conversation";
+import { motion } from "framer-motion";
 
 const LazyIntegrationsSection = dynamic(() => import("@/components/home_page/IntegrationsSection"), { ssr: false, loading: () => <div /> });
 const LazyFooterCards = dynamic(() => import("@/components/FooterCards"), { ssr: false, loading: () => <div /> });
@@ -95,12 +96,53 @@ export default function Home() {
       <main className="overflow-x-hidden">
         <HeroSection />
         {/* <HubSpotPopup /> */}
-        <FeaturesSection />
-        <LazyBorrowerJourney />
-        <LazyLendingJourney />
-        <LazyPotential />
-        <CardsContainer />
-        <div className="lg:py-20 py-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <FeaturesSection />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <LazyBorrowerJourney />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <LazyLendingJourney />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <LazyPotential />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <CardsContainer />
+        </motion.div>
+        <motion.div
+          className="lg:py-20 py-10"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <CarouselSection
             data={[
               {
@@ -190,7 +232,7 @@ export default function Home() {
             }
             subtitleText="Our Advisory Board brings together industry leaders and visionaries, guiding Algebrik AI with strategic insights, deep expertise, and a shared commitment to transforming lending into a seamless and inclusive experience."
           />
-        </div>
+        </motion.div>
         {showIntegrations && <LazyIntegrationsSection />}
         {showFooter && <LazyFooterCards />}
         {/* <ConvoaiWidget/> */}

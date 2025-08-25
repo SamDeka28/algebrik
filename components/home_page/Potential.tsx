@@ -5,6 +5,7 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import ThreeColMotion from "@/components/animations/ThreeColMotion";
 
 const PercentageCard = ({
   title,
@@ -167,33 +168,36 @@ export default function Potential() {
           />
         </div>
 
-        <div className="hidden md:flex flex-row md:flex-wrap justify-center gap-6 overflow-x-auto md:overflow-visible">
-          {data.cardData.map((card, index) => (
-            <div
-              key={index}
-              className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[338px] md:w-[365px] h-[426px] md:h-[426px] flex flex-col items-center justify-start transform transition-transform duration-300 hover:scale-105"
-            >
-              <div className="mb-4">
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  className={`object-contain rounded-md ${isMobile ? "w-[306px] h-[300px]" : "w-[433px] h-[236px]"
-                    }`}
-                  width={isMobile ? 306 : 433}
-                  height={isMobile ? 300 : 236}
-                  quality={100}
-                />
+        {/* Desktop 3-column cards with motion */}
+        <div className="hidden md:block">
+          <ThreeColMotion className="justify-center gap-6">
+            {data.cardData.map((card, index) => (
+              <div
+                key={index}
+                className="relative backdrop-brightness-110 bg-white/30 rounded-[32px] shadow-2xl w-[338px] md:w-[365px] h-[426px] md:h-[426px] flex flex-col items-center justify-start transform transition-transform duration-300 hover:scale-105 mx-auto"
+              >
+                <div className="mb-4">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    className={`object-contain rounded-md ${isMobile ? "w-[306px] h-[300px]" : "w-[433px] h-[236px]"}`}
+                    width={isMobile ? 306 : 433}
+                    height={isMobile ? 300 : 236}
+                    quality={100}
+                  />
+                </div>
+                <h3 className="text-[#2A5FAC] text-[20px] md:text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
+                  {card.title}
+                </h3>
+                <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
+                  {card.description}
+                </p>
               </div>
-              <h3 className="text-[#2A5FAC] text-[20px] md:text-[24px] font-plus-jakarta text-center font-bold mb-3 px-2">
-                {card.title}
-              </h3>
-              <p className="text-[#606060] text-[14px] text-center font-plus-jakarta px-2">
-                {card.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </ThreeColMotion>
         </div>
 
+        {/* Mobile horizontal scroll remains unchanged */}
         <div className="flex md:hidden  overflow-x-auto pb-4">
           <div className="flex flex-nowrap gap-[16px] md:gap-[30px]">
             {data.cardData.map((card, index) => (
