@@ -270,6 +270,10 @@ const toolsData = [
 ];
 
 const insightsData = [
+  {
+    title:"UFCUxAlgebrik | Insights by Barbara Appold",
+    link:"https://www.youtube.com/embed/eurUe1zGl98?si=KSAHbFEVWlUL8R-x"
+  },
  {
   title:"Algebrik AI - Digital Natives’ Banking Panacea with Pankaj Jain - S2E10 - Lumière Startup Saturday ",
   link: "https://www.youtube.com/embed/KMOT9WC8Z4A?si=NjzIvdK_ehyF-0eA"
@@ -384,11 +388,13 @@ export default function BlogCarousel() {
                       let thumb = w.youtube
                         ? `https://img.youtube.com/vi/${w.youtube.split("/").pop()?.split("?")[0]}/maxresdefault.jpg`
                         : w.image;
-
+                      
                       return (
                         <div key={w.title + idx} className="flex flex-col md:flex-row gap-6 items-start">
                           <div className="flex-1 bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
-                            onClick={() => w.youtube && setVideoModal({ open: true, url: w.youtube })}
+                            onClick={() =>{ 
+                              w.linkedin && window.open(w.linkedin,"_blank")
+                              w.youtube && setVideoModal({ open: true, url: w.youtube })}}
                           >
                             {w.youtube ? (
                               <>
@@ -641,7 +647,7 @@ export default function BlogCarousel() {
                             </svg>
                           </div>
                         </>
-                        <p className="text-primary font-medium font-plus-jakarta px-2 py-4">{tool.title}</p>
+                        <p className="text-primary w-full font-medium text-left font-plus-jakarta px-2 py-4">{tool.title}</p>
                     </div>
                   </div>
                 );
