@@ -270,6 +270,10 @@ const toolsData = [
 ];
 
 const insightsData = [
+  {
+    title:"UFCUxAlgebrik | Insights by Barbara Appold",
+    link:"https://www.youtube.com/embed/eurUe1zGl98?si=KSAHbFEVWlUL8R-x"
+  },
  {
   title:"Algebrik AI - Digital Natives’ Banking Panacea with Pankaj Jain - S2E10 - Lumière Startup Saturday ",
   link: "https://www.youtube.com/embed/KMOT9WC8Z4A?si=NjzIvdK_ehyF-0eA"
@@ -353,6 +357,9 @@ export default function BlogCarousel() {
             const next = upcoming.length > 0 ? upcoming[0] : null;
             return (
               <>
+                {!next && 
+                <h2 className="text-white text-3xl text-center font-plus-jakarta font-bold py-10 bg-[#195BD7] rounded-xl max-w-6xl w-full shadow-2xl ">Stay tuned for the upcoming webinnar</h2>
+                }
                 {next && (
                   <div
                     className="w-full max-w-[1160px] rounded-[32px] gap-6 flex flex-col md:flex-row items-center shadow-lg overflow-hidden relative bg-[#FFFFFFE5] border-[#CFE3FF] border-[2px]"
@@ -384,11 +391,13 @@ export default function BlogCarousel() {
                       let thumb = w.youtube
                         ? `https://img.youtube.com/vi/${w.youtube.split("/").pop()?.split("?")[0]}/maxresdefault.jpg`
                         : w.image;
-
+                      
                       return (
                         <div key={w.title + idx} className="flex flex-col md:flex-row gap-6 items-start">
                           <div className="flex-1 bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
-                            onClick={() => w.youtube && setVideoModal({ open: true, url: w.youtube })}
+                            onClick={() =>{ 
+                              w.linkedin && window.open(w.linkedin,"_blank")
+                              w.youtube && setVideoModal({ open: true, url: w.youtube })}}
                           >
                             {w.youtube ? (
                               <>
@@ -641,7 +650,7 @@ export default function BlogCarousel() {
                             </svg>
                           </div>
                         </>
-                        <p className="text-primary font-medium font-plus-jakarta px-2 py-4">{tool.title}</p>
+                        <p className="text-primary w-full font-medium text-left font-plus-jakarta px-2 py-4">{tool.title}</p>
                     </div>
                   </div>
                 );
@@ -653,7 +662,7 @@ export default function BlogCarousel() {
 
             <h2 className="text-black text-[56px] text-center font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
 
-
+Stay tuned for the upcoming webinnar
           } */}
            {/* Video Modal */}
            {videoModal.open && (
