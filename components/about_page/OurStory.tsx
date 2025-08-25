@@ -111,10 +111,10 @@ export default function OurStory() {
           <div className="absolute top-0 left-0 transform -md:translate-x-1/2 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[100%] md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10 animate-fadeIn delay-200" />
           <div className="absolute top-0 left-0 transform -md:translate-x-1/2 bg-[#BE95FF] rounded-full w-[100%] md:w-[1226.24px] h-[1000px] md:h-[239.68px] blur-[100px] z-[-1] animate-fadeIn delay-400" />
         </div>
-
+ 
         <motion.div
           className="bg-white w-full md:w-[1160px] md:h-[411px] rounded-[42px] flex flex-col 
-          md:flex-row justify-between gap-[95px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)] p-[12px] md:p-8"
+          md:flex-row justify-between gap-[95px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)] p-[12px] md:p-8 h-[931px] lg:h-auto"
           key={currentSlide.id}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
