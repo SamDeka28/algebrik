@@ -1,5 +1,6 @@
 "use client";
 
+import ThreeColMotion from "../animations/ThreeColMotion";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import { motion } from "framer-motion";
 
@@ -41,7 +42,14 @@ const cardData = [
 const AICoreSection = () => {
 
   return (
-    <div
+    <motion.div
+      initial={{y:"20%"}}
+      whileInView={{y:0}}
+      transition={ {
+        duration: 2,
+        delay: 0,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
       className="mx-auto p-4 md:p-8 my-16 md:my-0 flex flex-col justify-center items-center gap-8
       md:bg-[url('/background_images/modern_lender.webp')] bg-cover bg-center bg-[position-y:150px]
       "
@@ -130,8 +138,7 @@ const AICoreSection = () => {
 
 
 
-
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-center">
+        <ThreeColMotion  className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-center">
         {cardData.map((card, index) => (
           <motion.div
             key={index}
@@ -168,8 +175,8 @@ const AICoreSection = () => {
             </div>
           </motion.div>
         ))}
-      </div>
-    </div>
+        </ThreeColMotion>
+    </motion.div>
   );
 };
 
