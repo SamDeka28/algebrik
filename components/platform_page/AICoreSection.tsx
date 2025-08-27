@@ -102,11 +102,11 @@ const AICoreSection = () => {
 
       <div className="w-full h-max md:hidden">
         <div className="relative overflow-x-scroll scrollbar-hide flex">
-          <div className="flex space-x-6">
+          <div className="flex space-x-6 pb-5">
             {cardData.map((card, index) => (
               <div
                 key={index}
-                className="px-6 py-8 rounded-[20px] drop-shadow-2xl md:shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg
+                className="px-6 py-8 rounded-[20px] shadow-[0_0px_16px_0px_rgba(10,64,108,0.1)] md:shadow-[[0_16px_52px_0px_rgba(10,64,108,0.1)]] backdrop-blur-lg
           bg-white/80 md:bg-white/60 border-none md:border border-[#CAD3E0] flex flex-col justify-between 
            w-[274px] h-auto flex-shrink-0"
               // style={{
