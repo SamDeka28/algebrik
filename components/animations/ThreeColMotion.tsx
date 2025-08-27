@@ -32,7 +32,7 @@ export default function ThreeColMotion({ children, className = "" }: { children:
             initial={v.initial}
             whileInView={v.animate}
             transition={v.transition}
-            viewport={{ amount: 0.3 }}
+            viewport={{ amount: 0.3,once:true }}
           >
             {child}
           </motion.div>
@@ -44,7 +44,7 @@ export default function ThreeColMotion({ children, className = "" }: { children:
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" as const, delay: 0.05 * (idx + 1) }}
-          viewport={{ amount: 0.3 }}
+          viewport={{ amount: 0.3 ,once:true}}
         >
           {child}
         </motion.div>

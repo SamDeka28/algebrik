@@ -50,6 +50,7 @@ const AICoreSection = () => {
         delay: 0,
         ease: [0, 0.71, 0.2, 1.01],
       }}
+      viewport={{once:true}}
       className="mx-auto p-4 md:p-8 my-16 md:my-0 flex flex-col justify-center items-center gap-8
       md:bg-[url('/background_images/modern_lender.webp')] bg-cover bg-center bg-[position-y:150px]
       "
