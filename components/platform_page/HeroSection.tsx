@@ -1,11 +1,27 @@
 // import Image from "next/image";
+"use client";
 import BookADemo from "../BookADemo";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import {motion, Transition} from "framer-motion"
 // import hero from "@/public/section_images/platform.webp";
 
 export default function HeroSection() {
+  const transition:Transition = {
+    duration: 1,
+    delay: 0,
+    ease: [0, 0.71, 0.2, 1.01],
+  }
   return (
-    <div className=" w-full h-max">
+    <motion.div 
+      initial={{
+        opacity:0.5
+      }}
+      transition={transition}
+      whileInView={{
+        opacity:1
+      }}
+      viewport={{once:true}}
+    className=" w-full h-max">
       <div
   className="
     w-full h-[758px] flex items-center justify-center overflow-hidden relative 
@@ -72,6 +88,6 @@ export default function HeroSection() {
 
 </div>
 
-    </div>
+    </motion.div>
   );
 }
