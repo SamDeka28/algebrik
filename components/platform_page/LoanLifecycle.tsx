@@ -193,6 +193,7 @@ export default function LoanLifecycle() {
       whileInView={{
         y: 0
       }}
+      viewport={{once:true}}
       // viewport={{ once: true }}
       >
       <motion.div viewport={{ once: false, amount: 0.8 }}

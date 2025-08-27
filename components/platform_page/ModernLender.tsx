@@ -19,6 +19,7 @@ const ModernLender = () => {
       whileInView={{
         y: 0
       }}
+      viewport={{once:true}}
       // viewport={{ once: true }}
       className="relative mx-auto p-2 md:p-8 flex flex-col justify-center items-center gap-4 md:gap-8 mb-28 mt-16"
       style={{
@@ -90,6 +91,7 @@ const ModernLender = () => {
               initial={{scale:0.8,opacity:0.8}}
               whileInView={{scale:1,opacity:1}}
               transition={{duration:1}}
+              viewport={{once:true}}
               className="bg-white px-[24px] py-[32px] md:w-[482px] md:h-[428px] rounded-[20px] flex flex-col 
             gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
               <h1 className="text-[18px] md:text-[24px] font-plus-jakarta font-bold text-[#2A5FAC] tracking-tight">
@@ -103,6 +105,7 @@ const ModernLender = () => {
             <motion.div 
               initial={{scale:0.8,opacity:0.8}}
               whileInView={{scale:1,opacity:1}}
+              viewport={{once:true}}
               className="relative top-8 md:top-24 bg-white px-[24px] py-[32px] md:w-[409px] md:h-[370px] rounded-[20px] flex flex-col-reverse gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
               <p className="text-[14px] md:text-[16px] font-plus-jakarta text-[#606060] leading-[22px] md:leading-[30px]">
@@ -117,6 +120,7 @@ const ModernLender = () => {
             <motion.div 
              initial={{scale:0.8,opacity:0.8}}
              whileInView={{scale:1,opacity:1}}
+             viewport={{once:true}}
               className="bg-white px-[24px] py-[32px] md:w-[444.58px] md:h-[327.46px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
               <h1 className="text-[18px] md:text-[24px] font-plus-jakarta font-bold text-[#2A5FAC] tracking-tight">Omnichannel Experience</h1>
@@ -128,6 +132,7 @@ const ModernLender = () => {
             <motion.div 
               initial={{scale:0.8,opacity:0.8}}
               whileInView={{scale:1,opacity:1}}
+              viewport={{once:true}}
               className="relative top-8 bg-white px-[24px] py-[32px] md:w-[445px] md:h-[351px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
               <h1 className="text-[18px] md:text-[24px] font-plus-jakarta font-bold text-[#2A5FAC] tracking-tight">Scalable & Secure</h1>
