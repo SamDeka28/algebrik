@@ -43,9 +43,9 @@ export default function Unlock() {
       whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{once: false, amount:0.2}}
-      style={{ willChange: "transform, opacity" }}
       className="container mx-auto p-4 md:mt-[106px] mt-20 md:mb-12 flex items-center justify-center font-plus-jakarta relative"
       style={{
+        willChange: "transform, opacity" ,
         backgroundImage: "url('/section_images/auto_lenders/lender_achive.webp')",
         backgroundSize: "cover",
       }}
