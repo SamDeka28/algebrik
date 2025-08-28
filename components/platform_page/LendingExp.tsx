@@ -5,16 +5,18 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
 import Contact from "../contacts";
 import { useState } from "react";
-import {motion} from "framer-motion"
+import {motion, useReducedMotion} from "framer-motion"
 
 const LendingExperience = () => {
   const [showContactModal, setShowContactModal] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
   return (
     <motion.section
-      initial={{y:"10%",opacity:0.8}}
-      whileInView={{y:0,opacity:1}}
-      transition={{duration:0.8}}
-      viewport={{once:true}}
+      initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+      whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+      transition={{duration:0.6, ease:"easeOut"}}
+      viewport={{once:true, amount:0.2}}
+      style={{ willChange: "transform, opacity" }}
       className="mx-auto p-4 md:p-8 flex flex-col justify-center items-center gap-8 mb-[61px] md:mb-[119px]"
       aria-label="Build the Lending Experience of Tomorrow"
     >
