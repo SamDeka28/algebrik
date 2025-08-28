@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Contact from './contacts';
+import { useReducedMotion,motion } from 'framer-motion';
 
 
 type CardProps = {
@@ -65,8 +66,15 @@ type CardProps = {
         setIsSolutionsPage(false);
       }
     }, []);
+    const prefersReducedMotion = useReducedMotion();
     return (
-      <div className="relative font-plus-jakarta">
+      <motion.div
+        initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+        whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{once: false, amount:0.2}}
+        style={{ willChange: "transform, opacity" }}
+         className="relative font-plus-jakarta">
          <div className={`absolute bottom-0 md:top-1/2 left-0 w-full h-[40%] rounded-t-[20px] 
           md:rounded-none md:h-1/2 ${isSolutionsPage ? '' : 'bg-[#121212]'} -z-10`}></div>
         <div className="flex flex-col md:flex-row gap-6 md:mx-auto max-w-7xl mx-[16px] md:px-4 md:py-28 relative z-10 justify-center items-center">
@@ -89,7 +97,7 @@ type CardProps = {
           />
         </div>
         <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
-      </div>
+      </motion.div>
     );
   };
   

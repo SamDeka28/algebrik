@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { useReducedMotion,motion } from "framer-motion";
 
 const ChallengesSection = () => {
   const cardData = [
@@ -27,16 +28,22 @@ const ChallengesSection = () => {
       image: "/section_images/challenges_two.png",
     },
   ];
-
+  const prefersReducedMotion = useReducedMotion();
   return (
-    <div className="flex flex-col gap-8 justify-center items-center my-[48px] md:my-[10px] p-4 md:p-10">
+    <motion.div
+      initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+      whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{once: false, amount:0.2}}
+      style={{ willChange: "transform, opacity" }}
+       className="flex flex-col gap-8 justify-center items-center my-[48px] md:my-[10px] p-4 md:p-10">
       <div className="flex flex-col justify-center items-center text-center gap-[24px]">
         <CustomHeader
           className="text-2xl md:text-3xl lg:text-4xl font-bold"
           text="We understand your challenges"
         />
         <CustomSubtitle
-          className="px-4 sm:px-16 md:px-32 lg:px-48 text-base md:text-lg lg:text-xl mb-10"
+          className="max-w-7xl px-4 sm:px-16 md:px-32 lg:px-48 text-base md:text-lg lg:text-xl mb-10"
           text="Credit unions face unique obstacles in balancing member satisfaction and operational efficiency. Algebrik AI offers intelligent solutions to help you overcome them"
         />
       </div>
@@ -133,7 +140,7 @@ const ChallengesSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
+import { useReducedMotion ,motion} from "framer-motion";
 
 const RoadBlocks = () => {
   const cardData = [
@@ -31,8 +32,15 @@ const RoadBlocks = () => {
     },
   ];
 
-  return (
-    <div className="flex flex-col gap-8 justify-center items-center px-4 md:py-[60px] sm:px-6 md:px-10 z-[10000]">
+  const prefersReducedMotion = useReducedMotion();
+    return (
+      <motion.div
+        initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+        whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{once: false, amount:0.2}}
+        style={{ willChange: "transform, opacity" }}
+         className="flex flex-col gap-8 justify-center items-center px-4 md:py-[60px] sm:px-6 md:px-10 z-[10000]">
       <div className="flex flex-col justify-center items-center text-center gap-[24px]">
         <CustomHeader className="text-2xl md:text-3xl lg:text-4xl font-bold" text="Overcoming Roadblocks in Auto Lending" />
         <CustomSubtitle
@@ -151,7 +159,7 @@ const RoadBlocks = () => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

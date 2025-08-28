@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { CustomHeader } from "../CustomHeader";
 import Marquee from "react-fast-marquee";
+import { useReducedMotion,motion } from "framer-motion";
+import ThreeColMotion from "../animations/ThreeColMotion";
 
 export default function SmbRevolutionize() {
   const data = {
@@ -28,8 +30,14 @@ export default function SmbRevolutionize() {
     ],
   };
 
-  return (
-    <div className="container mx-auto my-[48px] md:my-0 p-4 md:pt-20 flex flex-col gap-12 font-plus-jakarta">
+  const prefersReducedMotion = useReducedMotion();
+    return (
+      <motion.div
+        initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+        whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{once: false, amount:0.2}}
+        style={{ willChange: "transform, opacity" }} className="container mx-auto my-[48px] md:my-0 p-4 md:pt-20 flex flex-col gap-12 font-plus-jakarta">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
           className="flex flex-col px-6 md:px-0"
@@ -43,7 +51,7 @@ export default function SmbRevolutionize() {
 
       </div>
 
-      <div className="relative hidden md:flex flex-wrap justify-center gap-6 p-6">
+      <ThreeColMotion className="relative hidden md:flex flex-wrap justify-center gap-6 p-6">
         {data.cardData.map((card, index) => (
           <div
             key={index}
@@ -73,7 +81,7 @@ export default function SmbRevolutionize() {
             </p>
           </div>
         ))}
-      </div>
+      </ThreeColMotion>
       <div
         className="relative  md:hidden flex md:flex-wrap md:items-center md:justify-center gap-6 p-6 overflow-x-scroll md:overflow-visible scrollbar-none"
       >
@@ -111,6 +119,6 @@ export default function SmbRevolutionize() {
         </Marquee>
       </div>
       
-    </div>
+    </motion.div>
   );
 }

@@ -20,7 +20,7 @@ export default function HeroSection() {
       whileInView={{
         opacity:1
       }}
-      viewport={{once:true,amount:0.5}}
+      viewport={{once: false,amount:0.5}}
     className=" w-full h-max">
       <div
   className="

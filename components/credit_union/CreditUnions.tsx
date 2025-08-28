@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Marquee from "react-fast-marquee";
+import ThreeColMotion from "../animations/ThreeColMotion";
 
 export default function CreditUnion() {
   const data = {
@@ -28,9 +29,14 @@ export default function CreditUnion() {
       },
     ],
   };
-
+  const prefersReducedMotion = useReducedMotion();
   return (
-    <div className="container mx-auto py-[48px] p-4 md:py-0 md:p-8 flex font-plus-jakarta flex-col gap-[27px] md:gap-12">
+    <motion.div
+      initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+      whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{once: false, amount:0.2}}
+      style={{ willChange: "transform, opacity" }} className="container mx-auto py-[48px] p-4 md:py-0 md:p-8 flex font-plus-jakarta flex-col gap-[27px] md:gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
           className=""
@@ -82,7 +88,7 @@ export default function CreditUnion() {
             }}
           />
         </div>
-
+          <ThreeColMotion>
         {data.cardData.map((card, index) => (
           <motion.div
             key={index}
@@ -112,6 +118,7 @@ export default function CreditUnion() {
             </p>
           </motion.div>
         ))}
+        </ThreeColMotion>
       </div>
       <div className="block md:hidden relative w-[80%] h-full">
         <motion.div
@@ -193,6 +200,6 @@ export default function CreditUnion() {
         </Marquee>
 
       </div>
-    </div>
+    </motion.div>
   );
 }

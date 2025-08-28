@@ -1,8 +1,16 @@
+"use client"
+import { useReducedMotion,motion } from "framer-motion";
 import Image from "next/image";
 
 export default function PlaysAndBrings() {
-  return (
-    <div className="container mx-auto md:p-4 md:mt-[106px] flex items-center justify-center font-plus-jakarta">
+  const prefersReducedMotion = useReducedMotion();
+    return (
+      <motion.div
+        initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+        whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{once: false, amount:0.2}}
+        style={{ willChange: "transform, opacity" }} className="container mx-auto md:p-4 md:mt-[106px] flex items-center justify-center font-plus-jakarta">
       <div className="flex flex-col md:w-[1160px] md:h-[526px] md:flex-row rounded-none md:rounded-[42px] backdrop-blur-sm 
       shadow-2xl bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 hover:scale-105 hover:shadow-lg 
       transition-transform duration-300 ease-in-out w-full md:max-w-none">
@@ -54,6 +62,6 @@ export default function PlaysAndBrings() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
