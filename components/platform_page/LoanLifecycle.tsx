@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, Transition } from "framer-motion";
+import { motion, Transition, useReducedMotion } from "framer-motion";
 import { CustomHeader } from "../CustomHeader";
 import Image from "next/image";
 
@@ -70,6 +70,7 @@ function debounce<T extends any[]>(
 }
 
 export default function LoanLifecycle() {
+  const prefersReducedMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -179,24 +180,19 @@ export default function LoanLifecycle() {
     }
   }, [isHalfVisible]);
 
-  const transition: Transition = {
-    duration: 2,
-    delay: 0,
-    ease: [0, 0.71, 0.2, 1.01],
-  }
+  const transition: Transition = prefersReducedMotion
+    ? { duration: 0.01 }
+    : { duration: 0.6, ease: "easeOut" };
 
   return (
-    <motion.div initial={{
-      y: "20%"
-    }}
+    <motion.div initial={prefersReducedMotion ? {opacity:1} : { y: 30, opacity: 0 }}
       transition={transition}
-      whileInView={{
-        y: 0
-      }}
-      viewport={{once:true}}
+      whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, opacity: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      style={{ willChange: "transform, opacity" }}
       // viewport={{ once: true }}
       >
-      <motion.div viewport={{ once: false, amount: 0.8 }}
+      <motion.div viewport={{ once: false, amount: 0.6 }}
         ref={sectionRef} className="container mx-auto p-4 md:p-8 flex flex-col gap-12 overscroll-contain">
         <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto px-8 md:px-36">
           <CustomHeader text="Reimagining the Loan Lifecycle, End to End" />
@@ -239,10 +235,11 @@ export default function LoanLifecycle() {
           <motion.div
             className="flex justify-center md:items-center p-[24px_24px_0_24px] md:p-6 w-full md:w-[932px] h-[531.96px] rounded-[36px] md:rounded-[42px] relative bg-[rgba(255,255,255,0.7)] shadow-lg border border-gray-200"
             key={selectedCategory}
-            initial={{ x: 100, opacity: 1 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -100, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            initial={prefersReducedMotion ? {opacity:1} : { x: 20, opacity: 0 }}
+            animate={prefersReducedMotion ? {opacity:1} : { x: 0, opacity: 1 }}
+            exit={prefersReducedMotion ? {opacity:1} : { x: -20, opacity: 0 }}
+            transition={prefersReducedMotion ? { duration: 0.01 } : { duration: 0.35, ease: "easeOut" }}
+            style={{ willChange: "transform, opacity" }}
           >
             <div className="hidden md:block absolute top-0 opacity-[30%] z-[-1]">
               <motion.div
