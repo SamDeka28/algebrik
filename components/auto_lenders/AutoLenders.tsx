@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Button from "../Buttons";
 import Contact from "../contacts";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
+import ThreeColMotion from "../animations/ThreeColMotion";
 
 export default function AutoLenders() {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -33,8 +34,15 @@ export default function AutoLenders() {
     ],
   };
 
-  return (
-    <div className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex font-plus-jakarta flex-col gap-12">
+  const prefersReducedMotion = useReducedMotion();
+    return (
+      <motion.div
+        initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+        whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{once: false, amount:0.2}}
+        style={{ willChange: "transform, opacity" }}
+        className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex font-plus-jakarta flex-col gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader text="Optimized for Auto Lenders, Tailored for Auto Owners" />
         <CustomSubtitle
@@ -87,7 +95,7 @@ export default function AutoLenders() {
         </div>
 
         {/* Desktop Cards */}
-          <div className="hidden md:flex gap-6">
+          <ThreeColMotion className="hidden md:flex gap-6">
             {data.cardData.map((card, index) => (
               <motion.div
                 key={index}
@@ -119,7 +127,7 @@ export default function AutoLenders() {
                 </p>
               </motion.div>
             ))}
-          </div>
+          </ThreeColMotion>
         <div className="block md:hidden relative w-full h-full">
           <motion.div
             className="absolute top-0 left-0 w-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full h-[350px] sm:w-[400px] sm:h-[450px] md:w-[468.64px] md:h-[542.11px] blur-[125px] opacity-30"
@@ -210,6 +218,6 @@ export default function AutoLenders() {
         </div>
       </div>
       <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
-    </div>
+  </motion.div>
   );
 }

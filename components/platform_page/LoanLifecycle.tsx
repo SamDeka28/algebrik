@@ -188,9 +188,9 @@ export default function LoanLifecycle() {
     <motion.div initial={prefersReducedMotion ? {opacity:1} : { y: 30, opacity: 0 }}
       transition={transition}
       whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: false, amount: 0.2 }}
       style={{ willChange: "transform, opacity" }}
-      // viewport={{ once: true }}
+      // viewport={{ once: false }}
       >
       <motion.div viewport={{ once: false, amount: 0.6 }}
         ref={sectionRef} className="container mx-auto p-4 md:p-8 flex flex-col gap-12 overscroll-contain">

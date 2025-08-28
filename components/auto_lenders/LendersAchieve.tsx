@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { CustomHeader } from "../CustomHeader";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Marquee from "react-fast-marquee";
+import ThreeColMotion from "../animations/ThreeColMotion";
 
 const data = [
   { percentage: 70, title: "Reduction in Approval Times" },
@@ -36,10 +37,16 @@ export default function Unlock() {
     });
   }, []);
 
+  const prefersReducedMotion = useReducedMotion();
   return (
-    <div
+    <motion.div
+      initial={prefersReducedMotion ? { opacity: 1 } : { y: 30, opacity: 0 }}
+      whileInView={prefersReducedMotion ? { opacity: 1 } : { y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: false, amount: 0.2 }}
       className="container mx-auto p-4 md:mt-[106px] mt-20 md:mb-12 flex items-center justify-center font-plus-jakarta relative"
       style={{
+        willChange: "transform, opacity",
         backgroundImage:
           "url('/section_images/auto_lenders/lender_achive.webp')",
         backgroundSize: "cover",
@@ -70,7 +77,11 @@ export default function Unlock() {
       />
 
       <div className="flex flex-col items-start md:items-center md:justify-center md:flex-row gap-[24px] mb-[48px] md:mb-0 md:gap-[92px] w-full">
-        <div className="flex flex-col gap-[8px]">
+        <motion.div
+          initial={{x:-100}}
+          whileInView={{x:0}}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="flex flex-col gap-[8px]">
           <CustomHeader
             className="flex flex-col"
             text={
@@ -86,27 +97,27 @@ export default function Unlock() {
             <span>Some numbers to tell the impact of</span>{" "}
             <span>using Algebrik AI</span>{" "}
           </p>{" "}
-        </div>
+        </motion.div>
         <div className="flex w-full h-auto md:w-1/2">
-        <Marquee>
-          <div className="flex gap-4 overflow-x-auto overflow-hidden md:hidden flex-nowrap p-2 ">
-            {data.map((item, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col min-w-[300px] md:w-[327px] md:h-[290px] items-start justify-center p-6 bg-white bg-opacity-90 rounded-[20px] shadow-xl"
-                initial={{ opacity: 0, x: "-100%" }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.5 * index }}
-              >
-                <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
-                  {count[index]}%
-                </div>
-                <div className="text-[#2A5FAC] font-bold text-[24px]">
-                  {item.title}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <Marquee>
+            <div className="flex gap-4 overflow-x-auto overflow-hidden md:hidden flex-nowrap p-2 ">
+              {data.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="flex flex-col min-w-[300px] md:w-[327px] md:h-[290px] items-start justify-center p-6 bg-white bg-opacity-90 rounded-[20px] shadow-xl"
+                  initial={{ opacity: 0, x: "-100%" }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: 0.5 * index }}
+                >
+                  <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
+                    {count[index]}%
+                  </div>
+                  <div className="text-[#2A5FAC] font-bold text-[24px]">
+                    {item.title}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </Marquee>
           <div className="hidden md:flex flex-col md:flex-row gap-[24px] md:gap-[32px] w-full">
             <div className="flex flex-col gap-[24px]">
@@ -114,8 +125,8 @@ export default function Unlock() {
                 <motion.div
                   key={index}
                   className="flex flex-col md:w-[327px] md:h-[290px] items-start justify-center p-6 bg-white bg-opacity-90 rounded-[20px] shadow-xl"
-                  initial={{ opacity: 0, x: "-100%" }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: (index+1)*50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, delay: 0.5 * index }}
                 >
                   <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
@@ -132,8 +143,8 @@ export default function Unlock() {
                 <motion.div
                   key={index + 2}
                   className="flex flex-col md:w-[327px] md:h-[290px] items-start justify-center p-6 bg-white bg-opacity-90 rounded-[20px] shadow-xl"
-                  initial={{ opacity: 0, x: "100%" }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0,  x: (index+1)*50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, delay: 0.5 * index }}
                 >
                   <div className="text-[104px] font-bebas-neue font-medium bg-gradient-to-tr from-[#1C8DEA4D] to-[#195BD7] bg-clip-text text-transparent">
@@ -148,6 +159,6 @@ export default function Unlock() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

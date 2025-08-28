@@ -46,7 +46,7 @@ const AICoreSection = () => {
       initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
       whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      viewport={{once:true, amount:0.2}}
+      viewport={{once: false, amount:0.2}}
       style={{ willChange: "transform, opacity" }}
       className="mx-auto p-4 md:p-8 my-16 md:my-0 flex flex-col justify-center items-center gap-8
       md:bg-[url('/background_images/modern_lender.webp')] bg-cover bg-center bg-[position-y:150px]

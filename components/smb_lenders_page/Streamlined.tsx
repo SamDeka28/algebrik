@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Button from "../Buttons";
 import Contact from "../contacts";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
+import ThreeColMotion from "../animations/ThreeColMotion";
 
 export default function Streamlined() {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -33,8 +34,14 @@ export default function Streamlined() {
     ],
   };
 
-  return (
-    <div className="container mx-auto p-4 py-[48px] md:py-8 flex font-plus-jakarta flex-col gap-12">
+  const prefersReducedMotion = useReducedMotion();
+    return (
+      <motion.div
+        initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+        whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{once: false, amount:0.2}}
+        style={{ willChange: "transform, opacity" }} className="container mx-auto p-4 py-[48px] md:py-8 flex font-plus-jakarta flex-col gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader text="Streamlined Lending, Designed for Banking Systems" />
         <CustomSubtitle
@@ -92,7 +99,7 @@ export default function Streamlined() {
           />
         </div>
 
-        <div className="hidden md:flex gap-[32px]">
+        <ThreeColMotion className="hidden md:flex gap-[32px]">
           {data.cardData.map((card, index) => (
             <motion.div
               key={index}
@@ -123,7 +130,7 @@ export default function Streamlined() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </ThreeColMotion>
 
 
         <div className="block md:hidden relative w-[50%] h-full">
@@ -214,6 +221,6 @@ export default function Streamlined() {
         </div>
       </div>
       <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
-    </div>
+    </motion.div>
   );
 }

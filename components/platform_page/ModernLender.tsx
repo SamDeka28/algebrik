@@ -14,9 +14,9 @@ const ModernLender = () => {
       initial={prefersReducedMotion ? {opacity:1} : { y: 30, opacity: 0 }}
       transition={transition}
       whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, opacity: 1 }}
-      viewport={{once:true, amount:0.2}}
+      viewport={{once: false, amount:0.2}}
       style={{ willChange: "transform, opacity", backgroundImage: "url('/background_images/modern_lender.webp')", backgroundSize: "cover", backgroundPosition: "center 150px" }}
-      // viewport={{ once: true }}
+      // viewport={{ once: false }}
       className="relative mx-auto p-2 md:p-8 flex flex-col justify-center items-center gap-4 md:gap-8 mb-28 mt-16"
     >
       <div className="container flex flex-col justify-center items-center text-center gap-5">
@@ -64,7 +64,7 @@ const ModernLender = () => {
               initial={prefersReducedMotion ? {opacity:1} : { y: 20, scale: 0.98, opacity: 0 }}
               whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, scale: 1, opacity: 1 }}
               transition={transition}
-              viewport={{once:true, amount:0.2}}
+              viewport={{once: false, amount:0.2}}
               style={{ willChange: "transform, opacity" }}
               className="bg-white px-[24px] py-[32px] md:w-[482px] md:h-[428px] rounded-[20px] flex flex-col 
             gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
@@ -80,7 +80,7 @@ const ModernLender = () => {
               initial={prefersReducedMotion ? {opacity:1} : { y: 20, scale: 0.98, opacity: 0 }}
               whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, scale: 1, opacity: 1 }}
               transition={transition}
-              viewport={{once:true, amount:0.2}}
+              viewport={{once: false, amount:0.2}}
               style={{ willChange: "transform, opacity" }}
               className="relative top-8 md:top-24 bg-white px-[24px] py-[32px] md:w-[409px] md:h-[370px] rounded-[20px] flex flex-col-reverse gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
@@ -97,7 +97,7 @@ const ModernLender = () => {
              initial={prefersReducedMotion ? {opacity:1} : { y: 20, scale: 0.98, opacity: 0 }}
              whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, scale: 1, opacity: 1 }}
              transition={transition}
-             viewport={{once:true, amount:0.2}}
+             viewport={{once: false, amount:0.2}}
              style={{ willChange: "transform, opacity" }}
               className="bg-white px-[24px] py-[32px] md:w-[444.58px] md:h-[327.46px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
@@ -111,7 +111,7 @@ const ModernLender = () => {
               initial={prefersReducedMotion ? {opacity:1} : { y: 20, scale: 0.98, opacity: 0 }}
               whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, scale: 1, opacity: 1 }}
               transition={transition}
-              viewport={{once:true, amount:0.2}}
+              viewport={{once: false, amount:0.2}}
               style={{ willChange: "transform, opacity" }}
               className="relative top-8 bg-white px-[24px] py-[32px] md:w-[445px] md:h-[351px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
