@@ -12,15 +12,7 @@ export default function HeroSection() {
     ease: [0, 0.71, 0.2, 1.01],
   }
   return (
-    <motion.div 
-      initial={{
-        opacity:0.5
-      }}
-      transition={transition}
-      whileInView={{
-        opacity:1
-      }}
-      viewport={{once: false,amount:0.5}}
+    <div 
     className=" w-full h-max">
       <div
   className="
@@ -88,6 +80,6 @@ export default function HeroSection() {
 
 </div>
 
-    </motion.div>
+    </div>
   );
 }

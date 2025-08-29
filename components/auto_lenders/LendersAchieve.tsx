@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { CustomHeader } from "../CustomHeader";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, MotionConfig } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import Marquee from "react-fast-marquee";
 import ThreeColMotion from "../animations/ThreeColMotion";
 
@@ -38,7 +39,9 @@ export default function Unlock() {
   }, []);
 
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   return (
+    <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
     <motion.div
       initial={prefersReducedMotion ? { opacity: 1 } : { y: 30, opacity: 0 }}
       whileInView={prefersReducedMotion ? { opacity: 1 } : { y: 0, opacity: 1 }}
@@ -160,5 +163,6 @@ export default function Unlock() {
         </div>
       </div>
     </motion.div>
+    </MotionConfig>
   );
 }

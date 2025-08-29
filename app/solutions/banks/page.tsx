@@ -1,4 +1,4 @@
-
+ 
 
 
 import FAQs from "@/components/credit_union/FAQs";
@@ -10,6 +10,7 @@ import SmbRoadBlocks from "@/components/smb_lenders_page/SmbRoadblocks";
 import Streamlined from "@/components/smb_lenders_page/Streamlined";
 import Unlock from "@/components/smb_lenders_page/Unlock";
 import { Metadata } from "next";
+ 
 
 export const metadata:Metadata={
   title:"Algebrik for Banks: Enhancing Lending Efficiency with AI",
@@ -21,13 +22,13 @@ export default function SMBLenders() {
     <>
       <main className="overflow-x-hidden">
         <HeroSection />
-       <Streamlined />
-       <SmbRoadBlocks/>
-       <SmbRevolutionize />
-       <Multiple />
-       <Unlock />
-       <FooterCard />
-       <FAQs/>
+        <Streamlined />
+        <SmbRoadBlocks/>
+        <SmbRevolutionize />
+        <Multiple />
+        <Unlock />
+        <FooterCard />
+        <FAQs/>
       </main>
     </>
   );

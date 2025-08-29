@@ -2,7 +2,8 @@
 
 import ThreeColMotion from "../animations/ThreeColMotion";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, MotionConfig } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const cardData = [
   {
@@ -41,7 +42,9 @@ const cardData = [
 
 const AICoreSection = () => {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   return (
+    <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
     <motion.div
       initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
       whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
@@ -161,6 +164,7 @@ const AICoreSection = () => {
         ))}
         </ThreeColMotion>
     </motion.div>
+    </MotionConfig>
   );
 };
 

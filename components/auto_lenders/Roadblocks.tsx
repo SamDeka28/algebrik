@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { useReducedMotion ,motion} from "framer-motion";
+import { useReducedMotion ,motion, MotionConfig} from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const RoadBlocks = () => {
   const cardData = [
@@ -33,7 +34,9 @@ const RoadBlocks = () => {
   ];
 
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
     return (
+      <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
       <motion.div
         initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
         whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
@@ -160,6 +163,7 @@ const RoadBlocks = () => {
         </div>
       </div>
     </motion.div>
+    </MotionConfig>
   );
 };
 
