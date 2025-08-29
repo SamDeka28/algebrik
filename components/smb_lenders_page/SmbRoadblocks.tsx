@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { useReducedMotion,motion } from "framer-motion";
+import { useReducedMotion,motion, MotionConfig } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const SmbRoadBlocks = () => {
   const cardData = [
@@ -34,7 +35,9 @@ const SmbRoadBlocks = () => {
   ];
 
   const prefersReducedMotion = useReducedMotion();
+  const isMobile=useIsMobile()
   return (
+    <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
     <motion.div
       initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
       whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
@@ -95,74 +98,75 @@ const SmbRoadBlocks = () => {
            </div>
          </div>
          <div className="flex flex-col gap-6 lg:gap-10 w-full lg:w-1/2">
-   {cardData.slice(0, 2).map((card, index) => (
-     <div
-       key={index}
-       className={`relative p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[610px] ${
-         index === 0 ? "flex flex-row-reverse md:h-[222px]" : "flex flex-col md:h-[326px]"
-       } gap-4 group`}
-     >
-       {/* Gradient Background */}
-       <div className="hidden md:block absolute w-52 h-52 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
+  {cardData.slice(0, 2).map((card, index) => (
+    <div
+      key={index}
+      className={`relative p-6 rounded-[20px] shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg bg-white/60 border border-[#CAD3E0] w-full max-w-[610px] ${
+        index === 0 ? "flex flex-row-reverse md:h-[222px]" : "flex flex-col md:h-[326px]"
+      } gap-4 group`}
+    >
+      {/* Gradient Background */}
+      <div className="hidden md:block absolute w-52 h-52 -top-0 -right-0 bg-gradient-to-tr from-blue-100 to-green-50 -z-10 rounded-[24px] blur-xl"></div>
  
-       {/* Image Section */}
-       <div
-         className={`hidden md:block relative ${
-           index === 0
-             ? "w-1/2 h-full right-0"
-             : "w-full h-[150px] md:h-[200px] overflow-hidden"
-         }`}
-       >
-         <Image
-           src={card.image}
-           alt={card.title}
-           width={950}
-           height={515}
-           objectFit="cover"
-           className={`rounded-[24px] ${
-             index === 0 ? "w-full h-full" : "w-full h-full object-cover"
-           }`}
-           style={{
-             filter:
-               "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
-             opacity: 0,
-             transition: "opacity 0.5s ease, filter 0.5s ease",
-           }}
-           onMouseOver={(e) => {
-             e.currentTarget.style.filter = "none";
-             e.currentTarget.style.opacity = "1";
-           }}
-           onMouseOut={(e) => {
-             e.currentTarget.style.filter =
-               "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))";
-             e.currentTarget.style.opacity = "0.5";
-           }}
-         />
-       </div>
+      {/* Image Section */}
+      <div
+        className={`hidden md:block relative ${
+          index === 0
+            ? "w-1/2 h-full right-0"
+            : "w-full h-[150px] md:h-[200px] overflow-hidden"
+        }`}
+      >
+        <Image
+          src={card.image}
+          alt={card.title}
+          width={950}
+          height={515}
+          objectFit="cover"
+          className={`rounded-[24px] ${
+            index === 0 ? "w-full h-full" : "w-full h-full object-cover"
+          }`}
+          style={{
+            filter:
+              "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))",
+            opacity: 0,
+            transition: "opacity 0.5s ease, filter 0.5s ease",
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.filter = "none";
+            e.currentTarget.style.opacity = "1";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.filter =
+              "blur(28px) drop-shadow(0px 36px 36px rgba(0, 0, 0, 0.08))";
+            e.currentTarget.style.opacity = "0.5";
+          }}
+        />
+      </div>
  
-       {/* Text Section */}
-       <div
-         className={`flex flex-col justify-center ${
-           index === 0 ? "md:w-1/2" : "w-full"
-         } z-10`}
-       >
-         <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
-           {card.title}
-         </h3>
-         <p className="text-sm md:text-[16px] font-normal font-plus-jakarta text-[#292929] mt-2 leading-5 md:leading-6 relative">
-                {card.description}
-                <span className="absolute top-0 left-0 w-full h-full text-[#292929] bg-white/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {card.hoverDescription}
-                </span>
-              </p>
-       </div>
-     </div>
-   ))}
- </div>
+      {/* Text Section */}
+      <div
+        className={`flex flex-col justify-center ${
+          index === 0 ? "md:w-1/2" : "w-full"
+        } z-10`}
+      >
+        <h3 className="text-lg md:text-[24px] font-plus-jakarta text-[#2A5FAC] font-bold leading-6 md:leading-8">
+          {card.title}
+        </h3>
+        <p className="text-sm md:text-[16px] font-normal font-plus-jakarta text-[#292929] mt-2 leading-5 md:leading-6 relative">
+               {card.description}
+               <span className="absolute top-0 left-0 w-full h-full text-[#292929] bg-white/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                 {card.hoverDescription}
+               </span>
+             </p>
+      </div>
+    </div>
+  ))}
+</div>
  
-       </div>
-     </motion.div>
+      </div>
+    </motion.div>
+    </MotionConfig>
   );
-};
+}
 
 export default SmbRoadBlocks;

@@ -10,6 +10,7 @@ import CarouselSection from "@/components/about_page/CarouselSection";
 import dynamic from "next/dynamic";
 import Conversation from "@/components/Conversation";
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const LazyIntegrationsSection = dynamic(() => import("@/components/home_page/IntegrationsSection"), { ssr: false, loading: () => <div /> });
 const LazyFooterCards = dynamic(() => import("@/components/FooterCards"), { ssr: false, loading: () => <div /> });
@@ -73,6 +74,7 @@ const HubSpotPopup: React.FC = () => {
 };
 
 export default function Home() {
+  const isMobile = useIsMobile();
   const [showConversation, setShowConversation] = useState(false);
   const [showIntegrations, setShowIntegrations] = useState(false);
   const [showFooter, setShowFooter] = useState(false);
@@ -91,57 +93,46 @@ export default function Home() {
     }
   }, []);
 
+  const baseMotion = {
+    initial: isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: isMobile ? 0.01 : 0.6, ease: "easeOut" },
+    viewport: { once: false, amount: 0.2 },
+  } as const;
+
   return (
     <>
       <main className="overflow-x-hidden">
         <HeroSection />
         {/* <HubSpotPopup /> */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.2 }}
+          {...baseMotion}
         >
           <FeaturesSection />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: false, amount: 0.2 }}
+          {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
         >
           <LazyBorrowerJourney />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: false, amount: 0.2 }}
+          {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
         >
           <LazyLendingJourney />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: false, amount: 0.2 }}
+          {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
         >
           <LazyPotential />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: false, amount: 0.2 }}
+          {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
         >
           <CardsContainer />
         </motion.div>
         <motion.div
           className="lg:py-20 py-10"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: false, amount: 0.2 }}
+          {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
         >
           <CarouselSection
             data={[
@@ -231,16 +222,16 @@ export default function Home() {
               </>
             }
             subtitleText="Our Advisory Board brings together industry leaders and visionaries, guiding Algebrik AI with strategic insights, deep expertise, and a shared commitment to transforming lending into a seamless and inclusive experience."
-          />
-        </motion.div>
-        {showIntegrations && <LazyIntegrationsSection />}
-        {showFooter && <LazyFooterCards />}
-        {/* <ConvoaiWidget/> */}
-        {/* <elevenlabs-convai agent-id="agent_01jwdd48b1e17rkf0dngh470mv" />
-        <Script
-          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-          strategy="afterInteractive"
-        /> */}
+            />
+          </motion.div>
+          {showIntegrations && <LazyIntegrationsSection />}
+          {showFooter && <LazyFooterCards />}
+          {/* <ConvoaiWidget/> */}
+          {/* <elevenlabs-convai agent-id="agent_01jwdd48b1e17rkf0dngh470mv" />
+          <Script
+            src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+            strategy="afterInteractive"
+          /> */}
       </main>
     </>
   );

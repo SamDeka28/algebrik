@@ -1,4 +1,4 @@
-
+ 
 
 import FooterCards from "@/components/FooterCards";
 import FAQs from "@/components/credit_union/FAQs";
@@ -9,6 +9,7 @@ import Revolutionize from "@/components/auto_lenders/Revolutionize";
 import PlaysAndBrings from "@/components/auto_lenders/Plays&Brings";
 import LendersAchieve from "@/components/auto_lenders/LendersAchieve";
 import { Metadata } from "next";
+ 
 
 export const metadata:Metadata={
   title:"Algebrik for Auto Lenders: Accelerate Approvals with AI Technology",
@@ -26,7 +27,7 @@ export default function AutoLenders() {
         <PlaysAndBrings/>
         <LendersAchieve />
         <FooterCards />
-    <FAQs/>
+        <FAQs/>
       </main>
     </>
   );

@@ -5,12 +5,15 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Button from "../Buttons";
 import Contact from "../contacts";
 import { useState } from "react";
-import {motion, useReducedMotion} from "framer-motion"
+import {motion, useReducedMotion, MotionConfig} from "framer-motion"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const LendingExperience = () => {
   const [showContactModal, setShowContactModal] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   return (
+    <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
     <motion.section
       initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
       whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
@@ -55,6 +58,7 @@ const LendingExperience = () => {
       </div>
       <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </motion.section>
+    </MotionConfig>
   );
 };
 

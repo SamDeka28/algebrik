@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { CustomHeader } from "../CustomHeader";
 import Marquee from "react-fast-marquee";
-import { useReducedMotion,motion } from "framer-motion";
+import { useReducedMotion,motion, MotionConfig } from "framer-motion";
 import ThreeColMotion from "../animations/ThreeColMotion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function SmbRevolutionize() {
   const data = {
@@ -31,7 +32,9 @@ export default function SmbRevolutionize() {
   };
 
   const prefersReducedMotion = useReducedMotion();
+  const isMobile=useIsMobile()
     return (
+      <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
       <motion.div
         initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
         whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
@@ -120,5 +123,6 @@ export default function SmbRevolutionize() {
       </div>
       
     </motion.div>
+    </MotionConfig>
   );
 }

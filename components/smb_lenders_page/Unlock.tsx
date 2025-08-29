@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { CustomHeader } from "../CustomHeader";
 import { motion, useReducedMotion } from "framer-motion";
 import Marquee from "react-fast-marquee";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const data = [
   { percentage: 70, title: "Reduction in Approval Times" },
@@ -37,6 +38,8 @@ export default function Unlock() {
   }, []);
 
   const prefersReducedMotion = useReducedMotion();
+  const isMobile=useIsMobile()
+
   return (
     <motion.div
       initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}

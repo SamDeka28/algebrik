@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Contact from './contacts';
 import { useReducedMotion,motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 
 type CardProps = {
@@ -67,10 +68,12 @@ type CardProps = {
       }
     }, []);
     const prefersReducedMotion = useReducedMotion();
+    const isMobile=useIsMobile()
+
     return (
       <motion.div
-        initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
-        whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+        initial={prefersReducedMotion  ? {opacity:1} : {y:30, opacity:0}}
+        whileInView={prefersReducedMotion  ? {opacity:1} : {y:0, opacity:1}}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{once: false, amount:0.2}}
         style={{ willChange: "transform, opacity" }}

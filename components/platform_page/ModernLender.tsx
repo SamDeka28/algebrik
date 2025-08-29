@@ -2,19 +2,32 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { motion, Transition, useReducedMotion } from "framer-motion";
+import { motion, Transition, useReducedMotion, MotionConfig } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const ModernLender = () => {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const transition: Transition = prefersReducedMotion
     ? { duration: 0.01 }
     : { duration: 0.6, ease: "easeOut" };
+  const flyUp = !isMobile ? {
+    initial:{ y: 30, opacity: 0 },
+    transition,
+    whileInView:  { y: 0, opacity: 1 },
+    viewport: { once: false, amount: 0.2 }
+  } : {};
+
+
+
   return (
+    <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
     <motion.div
-      initial={prefersReducedMotion ? {opacity:1} : { y: 30, opacity: 0 }}
+      // {...flyUp}
+      initial={{ y: 30, opacity: 0 }}
       transition={transition}
-      whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, opacity: 1 }}
-      viewport={{once: false, amount:0.2}}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
       style={{ willChange: "transform, opacity", backgroundImage: "url('/background_images/modern_lender.webp')", backgroundSize: "cover", backgroundPosition: "center 150px" }}
       // viewport={{ once: false }}
       className="relative mx-auto p-2 md:p-8 flex flex-col justify-center items-center gap-4 md:gap-8 mb-28 mt-16"
@@ -30,42 +43,42 @@ const ModernLender = () => {
       <div className="container relative w-[100%] flex flex-col gap-0 md:gap-[24.42px] justify-center mt-[42px]">
         <motion.div
           className="container relative -inset-y-[250px] md:inset-0 w-[100%] flex gap-[24.42px] align-super md:justify-center mt-[2px]"
-          initial={prefersReducedMotion ? {opacity:1} : { opacity: 0 }}
+          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <div className="relative opacity-[30%] z-[-1]">
             <motion.div
               className="absolute top-0 transform md:left-[96px] bg-gradient-to-b sm:bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[100%] h-[500px] sm:w-[100%] sm:h-[500px] md:w-[468.64px] md:h-[542.11px] blur-[50px] sm:blur-[100px]"
-              initial={prefersReducedMotion ? false : { x: "-25%" }}
-              animate={prefersReducedMotion ? undefined : { x: ["-30%", "30%", "-30%", "0%"] }}
-              transition={prefersReducedMotion ? undefined : { duration: 10, repeat: Infinity, ease: "easeInOut" }}
+              initial={{ x: "-25%" }}
+              animate={(isMobile || prefersReducedMotion) ? undefined : { x: ["-30%", "30%", "-30%", "0%"] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             />
 
             <motion.div
               className="absolute top-[200px] sm:top-0 transform md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[350px] h-[550px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[50px] sm:blur-[100px] -z-10"
-              initial={prefersReducedMotion ? false : { x: "10%" }}
-              animate={prefersReducedMotion ? undefined : { x: ["10%", "-20%", "10%", "0%"] }}
-              transition={prefersReducedMotion ? undefined : { duration: 12, repeat: Infinity, ease: "easeInOut" }}
+              initial={{ x: "10%" }}
+              animate={(isMobile || prefersReducedMotion) ? undefined : { x: ["10%", "-20%", "10%", "0%"] }}
+              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
             />
 
             <motion.div
               className="absolute top-[400px] sm:top-0 transform md:-left-96 md:bottom-[10px] bg-[#BE95FF] rounded-full w-[250px] h-[450px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[50px] sm:blur-[100px] z-[-1]"
-              initial={prefersReducedMotion ? false : { x: "-10%" }}
-              animate={prefersReducedMotion ? undefined : { x: ["-30%", "40%", "-40%", "0%"] }}
-              transition={prefersReducedMotion ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              initial={{ x: "-10%" }}
+              animate={(isMobile || prefersReducedMotion) ? undefined : { x: ["-30%", "40%", "-40%", "0%"] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
         </motion.div>
 
         <div className="flex flex-col items-center justify-center gap-[12px] md:gap-[30px]">
           <div className="relative flex gap-[12px] md:gap-[20px]">
-            <motion.div 
-              initial={prefersReducedMotion ? {opacity:1} : { y: 20, scale: 0.98, opacity: 0 }}
-              whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, scale: 1, opacity: 1 }}
-              transition={transition}
-              viewport={{once: false, amount:0.2}}
-              style={{ willChange: "transform, opacity" }}
+            <motion.div
+              // initial={prefersReducedMotion ? { opacity: 1 } : { y: 20, scale: 0.98, opacity: 0 }}
+              // whileInView={prefersReducedMotion ? { opacity: 1 } : { y: 0, scale: 1, opacity: 1 }}
+              // transition={transition}
+              // viewport={{ once: false, amount: 0.2 }}
+              // style={{ willChange: "transform, opacity" }}
               className="bg-white px-[24px] py-[32px] md:w-[482px] md:h-[428px] rounded-[20px] flex flex-col 
             gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
               <h1 className="text-[18px] md:text-[24px] font-plus-jakarta font-bold text-[#2A5FAC] tracking-tight">
@@ -76,12 +89,12 @@ const ModernLender = () => {
               </p>
               <Image src="/section_images/ai_driven.png" width={482} height={428} alt="AI-Driven automation" className="hidden md:block" />
             </motion.div>
-            <motion.div 
-              initial={prefersReducedMotion ? {opacity:1} : { y: 20, scale: 0.98, opacity: 0 }}
-              whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, scale: 1, opacity: 1 }}
-              transition={transition}
-              viewport={{once: false, amount:0.2}}
-              style={{ willChange: "transform, opacity" }}
+            <motion.div
+              // initial={prefersReducedMotion ? { opacity: 1 } : { y: 20, scale: 0.98, opacity: 0 }}
+              // whileInView={prefersReducedMotion ? { opacity: 1 } : { y: 0, scale: 1, opacity: 1 }}
+              // transition={transition}
+              // viewport={{ once: false, amount: 0.2 }}
+              // style={{ willChange: "transform, opacity" }}
               className="relative top-8 md:top-24 bg-white px-[24px] py-[32px] md:w-[409px] md:h-[370px] rounded-[20px] flex flex-col-reverse gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
               <p className="text-[14px] md:text-[16px] font-plus-jakarta text-[#606060] leading-[22px] md:leading-[30px]">
@@ -93,12 +106,12 @@ const ModernLender = () => {
             </motion.div>
           </div>
           <div className="flex gap-[12px] md:gap-[22.42px] z-10">
-            <motion.div 
-             initial={prefersReducedMotion ? {opacity:1} : { y: 20, scale: 0.98, opacity: 0 }}
-             whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, scale: 1, opacity: 1 }}
-             transition={transition}
-             viewport={{once: false, amount:0.2}}
-             style={{ willChange: "transform, opacity" }}
+            <motion.div
+              // initial={prefersReducedMotion ? { opacity: 1 } : { y: 20, scale: 0.98, opacity: 0 }}
+              // whileInView={prefersReducedMotion ? { opacity: 1 } : { y: 0, scale: 1, opacity: 1 }}
+              // transition={transition}
+              // viewport={{ once: false, amount: 0.2 }}
+              // style={{ willChange: "transform, opacity" }}
               className="bg-white px-[24px] py-[32px] md:w-[444.58px] md:h-[327.46px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
               <h1 className="text-[18px] md:text-[24px] font-plus-jakarta font-bold text-[#2A5FAC] tracking-tight">Omnichannel Experience</h1>
@@ -107,12 +120,12 @@ const ModernLender = () => {
               </p>
               <Image src="/section_images/omnichannel_experience.png" width={482} height={428} alt="Omnichannel Experience" className="hidden md:block" />
             </motion.div>
-            <motion.div 
-              initial={prefersReducedMotion ? {opacity:1} : { y: 20, scale: 0.98, opacity: 0 }}
-              whileInView={prefersReducedMotion ? {opacity:1} : { y: 0, scale: 1, opacity: 1 }}
-              transition={transition}
-              viewport={{once: false, amount:0.2}}
-              style={{ willChange: "transform, opacity" }}
+            <motion.div
+              // initial={prefersReducedMotion ? { opacity: 1 } : { y: 20, scale: 0.98, opacity: 0 }}
+              // whileInView={prefersReducedMotion ? { opacity: 1 } : { y: 0, scale: 1, opacity: 1 }}
+              // transition={transition}
+              // viewport={{ once: false, amount: 0.2 }}
+              // style={{ willChange: "transform, opacity" }}
               className="relative top-8 bg-white px-[24px] py-[32px] md:w-[445px] md:h-[351px] rounded-[20px] flex flex-col gap-[8px] shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
 
               <h1 className="text-[18px] md:text-[24px] font-plus-jakarta font-bold text-[#2A5FAC] tracking-tight">Scalable & Secure</h1>
@@ -127,6 +140,7 @@ const ModernLender = () => {
         </div>
       </div>
     </motion.div>
+    </MotionConfig>
   );
 };
 
