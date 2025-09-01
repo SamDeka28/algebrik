@@ -1,5 +1,19 @@
 export const blogContent = [
   {
+    blogTitle:"The Agentic AI Advantage: Automating Lending Decisions with Unprecedented Precision",
+    blogSubtitle:"automating-lending-decisions-with-unprecedented-precision",
+    blogImage:"/section_images/beyond-cloud.png",
+    authorName:"Aditya Bajaj",
+    authorImage:""
+  },
+  {
+    blogTitle:"Beyond the Branch: Building Digital-First Loyalty for Credit Unions",
+    blogSubtitle:"building-digital-first-loyalty-for-credit-unions",
+    blogImage:"/section_images/beyond-cloud.png",
+    authorName:"Aditya Bajaj",
+    authorImage:""
+  },
+  {
     blogTitle:"From Suggestions to Action: How Credit Unions Are Putting Agentic Al to Work",
     blogSubtitle: "how-credit-unions-are-putting-agentic-ai-to-work",
     blogImage: "/section_images/blog-agents.png",
