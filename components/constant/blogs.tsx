@@ -1,5 +1,12 @@
 export const blogContent = [
   {
+    blogTitle:"Mastering Digital Onboarding: How AI-Powered Lending Becomes Gen Z’s Instant Favorite",
+    blogSubtitle:"mastering-digital-onboarding",
+    blogImage:"/section_images/genz.png",
+    authorName:"Aditya Bajaj",
+    authorImage:""
+  },
+  {
     blogTitle:"Cable TV Lending is Dead. Why Are You Still Selling Channels?",
     blogSubtitle:"cable-tv-lending-is-dead",
     blogImage:"/section_images/cable.png",

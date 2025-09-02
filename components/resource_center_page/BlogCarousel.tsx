@@ -21,11 +21,11 @@ const carouselData: CarouselItem[] = [
   {
     header: "Blogs",
     cardTitle: "BLOG",
-    title: "From Suggestions to Action: How Credit Unions Are Putting Agentic Al to Work",
-    description: "This blog explores how real credit unions are using Agentic Al in the field today, what makes it different from generative Al, and how you can start spotting real action-not just marketing fluff. ",
-    image: "/section_images/blog-agents.png",
-    source: "Prateek Samantaray",
-    url: "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work",
+    title: "Mastering Digital Onboarding: How AI-Powered Lending Becomes Gen Z’s Instant Favorite",
+    description: "Imagine a Gen Z applicant, fresh out of college, mindlessly scrolling their phone thinking about a car loan. They find your credit union, tap Apply, and are hit with a blast from the past: endless clunky forms, redundant questions, and a prompt to scan paperwork they do not even own. They close the tab faster than they can say “fax is dead.”",
+    image: "/section_images/genz.png",
+    source: "Aditya Bajaj",
+    url: "/resource-center/mastering-digital-onboarding",
     target: "_self"
   },
   {
