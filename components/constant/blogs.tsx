@@ -9,28 +9,28 @@ export const blogContent = [
   {
     blogTitle:"Cable TV Lending is Dead. Why Are You Still Selling Channels?",
     blogSubtitle:"cable-tv-lending-is-dead",
-    blogImage:"/section_images/cable.png",
+    blogImage:"/section_images/cable.webp",
     authorName:"Aditya Bajaj",
     authorImage:""
   },
   {
     blogTitle:"The Future of Auto Lending: Not Just Faster- Radically Smarter",
     blogSubtitle:"the-future-of-auto-lending",
-    blogImage:"/section_images/future.png",
+    blogImage:"/section_images/future.webp",
     authorName:"Aditya Bajaj",
     authorImage:""
   },
   {
     blogTitle:"The Agentic AI Advantage: Automating Lending Decisions with Unprecedented Precision",
     blogSubtitle:"automating-lending-decisions-with-unprecedented-precision",
-    blogImage:"/section_images/agentic-advantage.png",
+    blogImage:"/section_images/agentic-advantage.webp",
     authorName:"Aditya Bajaj",
     authorImage:""
   },
   {
     blogTitle:"Beyond the Branch: Building Digital-First Loyalty for Credit Unions",
     blogSubtitle:"building-digital-first-loyalty-for-credit-unions",
-    blogImage:"/section_images/beyond-cloud.png",
+    blogImage:"/section_images/beyond-cloud.webp",
     authorName:"Aditya Bajaj",
     authorImage:""
   },
