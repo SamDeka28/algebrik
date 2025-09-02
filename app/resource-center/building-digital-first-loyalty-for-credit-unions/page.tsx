@@ -216,7 +216,7 @@ export default function Blog() {
 
             </div>
             <Image
-              src="/section_images/beyond-cloud.png"
+              src="/section_images/beyond-cloud.webp"
               width={1160}
               height={500}
               alt=""
@@ -236,7 +236,7 @@ export default function Blog() {
           </div>
           <div className="pt-[35px]">
             <Image
-              src="/section_images/beyond-cloud.png"
+              src="/section_images/beyond-cloud.webp"
               width={1160}
               height={500}
               alt=""
