@@ -146,7 +146,7 @@ const DemoSection = () => {
                   variants={containerVariants}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: false, amount: 0.3 }}
                 >
                   {messages.map((message, index) => (
                     <motion.div

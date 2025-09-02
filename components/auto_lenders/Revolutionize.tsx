@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import Marquee from "react-fast-marquee";
+import ThreeColMotion from "../animations/ThreeColMotion";
 
 export default function Revolutionize() {
   const data = {
@@ -28,9 +29,14 @@ export default function Revolutionize() {
       },
     ],
   };
-
+  const prefersReducedMotion = useReducedMotion();
   return (
-    <div className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex flex-col gap-[16px] md:gap-12 font-plus-jakarta">
+    <motion.div
+      initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+      whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{once: false, amount:0.2}}
+      style={{ willChange: "transform, opacity" }} className="container mx-auto my-[48px] md:my-0 p-4 md:py-8 flex flex-col gap-[16px] md:gap-12 font-plus-jakarta">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
           className="flex flex-col px-6 md:px-0"
@@ -124,7 +130,7 @@ export default function Revolutionize() {
        
       </div>
       </Marquee>
-      <div
+      <ThreeColMotion
         className="relative hidden md:flex md:flex-wrap md:items-center md:justify-center gap-6 md:p-6 overflow-x-scroll md:overflow-visible scrollbar-none"
       >
         {data.cardData.map((card, index) => (
@@ -157,7 +163,7 @@ export default function Revolutionize() {
           </div>
         ))}
 
-      </div>
-    </div>
+      </ThreeColMotion>
+    </motion.div>
   );
 }

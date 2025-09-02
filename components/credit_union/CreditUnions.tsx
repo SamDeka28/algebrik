@@ -2,10 +2,13 @@
 
 import Image from "next/image";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, MotionConfig } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import Marquee from "react-fast-marquee";
+import ThreeColMotion from "../animations/ThreeColMotion";
 
 export default function CreditUnion() {
+  const isMobile = useIsMobile();
   const data = {
     cardData: [
       {
@@ -28,9 +31,15 @@ export default function CreditUnion() {
       },
     ],
   };
-
+  const prefersReducedMotion = useReducedMotion();
   return (
-    <div className="container mx-auto py-[48px] p-4 md:py-0 md:p-8 flex font-plus-jakarta flex-col gap-[27px] md:gap-12">
+    <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
+    <motion.div
+      initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+      whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{once: false, amount:0.2}}
+      style={{ willChange: "transform, opacity" }} className="container mx-auto py-[48px] p-4 md:py-0 md:p-8 flex font-plus-jakarta flex-col gap-[27px] md:gap-12">
       <div className="flex flex-col justify-center items-center text-center gap-5 mx-auto md:px-44">
         <CustomHeader
           className=""
@@ -45,9 +54,7 @@ export default function CreditUnion() {
         <div className="container relative opacity-[30%] z-[-1]">
           <motion.div
             className="absolute top-20 md:left-[296px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full md:w-[861.73px] md:h-[239.68px] blur-[100px]"
-            animate={{
-              y: [50, 30, 50],
-            }}
+            animate={(!prefersReducedMotion) ? { y: [50, 30, 50] } : undefined}
             transition={{
               duration: 2,
               repeat: Infinity,
@@ -57,9 +64,7 @@ export default function CreditUnion() {
           />
           <motion.div
             className="absolute top-20 md:left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full md:w-[796.91px] md:h-[280.03px] blur-[100px] -z-10"
-            animate={{
-              y: [50, 30, 60],
-            }}
+            animate={(!prefersReducedMotion) ? { y: [50, 30, 60] } : undefined}
             transition={{
               duration: 2,
               delay: 0.2,
@@ -70,9 +75,7 @@ export default function CreditUnion() {
           />
           <motion.div
             className="absolute top-56 bg-[#BE95FF] rounded-full md:w-[1226.24px] md:h-[239.68px] blur-[100px] z-[-1]"
-            animate={{
-              y: [10, 90, 0],
-            }}
+            animate={(!prefersReducedMotion) ? { y: [10, 90, 0] } : undefined}
             transition={{
               duration: 2,
               delay: 0.4,
@@ -82,7 +85,7 @@ export default function CreditUnion() {
             }}
           />
         </div>
-
+          <ThreeColMotion>
         {data.cardData.map((card, index) => (
           <motion.div
             key={index}
@@ -112,14 +115,13 @@ export default function CreditUnion() {
             </p>
           </motion.div>
         ))}
+        </ThreeColMotion>
       </div>
       <div className="block md:hidden relative w-[80%] h-full">
         <motion.div
           className="absolute top-0 left-0 w-full bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full h-[350px] sm:w-[400px] sm:h-[450px] md:w-[468.64px] md:h-[542.11px] blur-[125px] opacity-30"
           initial={{ x: "0%" }}
-          animate={{
-            x: ["-10%", "10%", "-10%", "0%"],
-          }}
+          animate={(!prefersReducedMotion) ? { x: ["-10%", "10%", "-10%", "0%"] } : undefined}
           transition={{
             duration: 10,
             repeat: Infinity,
@@ -130,9 +132,7 @@ export default function CreditUnion() {
         <motion.div
           className="absolute top-0 left-0 w-full bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full h-[250px] sm:w-[500px] sm:h-[600px] md:w-[618.35px] md:h-[633.38px] blur-[125px] opacity-30 -z-10"
           initial={{ x: "0%" }}
-          animate={{
-            x: ["10%", "-10%", "10%", "0%"],
-          }}
+          animate={(!prefersReducedMotion) ? { x: ["10%", "-10%", "10%", "0%"] } : undefined}
           transition={{
             duration: 12,
             repeat: Infinity,
@@ -143,9 +143,7 @@ export default function CreditUnion() {
         <motion.div
           className="absolute top-[300px] sm:top-0 left-0 w-full bg-[#BE95FF] rounded-full h-[200px] sm:w-[400px] sm:h-[500px] md:w-[451.48px] md:h-[542.11px] blur-[105px] opacity-30 z-[-1]"
           initial={{ x: "0%" }}
-          animate={{
-            x: ["-10%", "10%", "-10%", "0%"],
-          }}
+          animate={(!prefersReducedMotion) ? { x: ["-10%", "10%", "-10%", "0%"] } : undefined}
           transition={{
             duration: 8,
             repeat: Infinity,
@@ -193,6 +191,7 @@ export default function CreditUnion() {
         </Marquee>
 
       </div>
-    </div>
+    </motion.div>
+    </MotionConfig>
   );
 }

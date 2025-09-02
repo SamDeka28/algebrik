@@ -1,7 +1,9 @@
 "use client";
 
+import ThreeColMotion from "../animations/ThreeColMotion";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, MotionConfig } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const cardData = [
   {
@@ -39,9 +41,16 @@ const cardData = [
 
 
 const AICoreSection = () => {
-
+  const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   return (
-    <div
+    <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
+    <motion.div
+      initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+      whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{once: false, amount:0.2}}
+      style={{ willChange: "transform, opacity" }}
       className="mx-auto p-4 md:p-8 my-16 md:my-0 flex flex-col justify-center items-center gap-8
       md:bg-[url('/background_images/modern_lender.webp')] bg-cover bg-center bg-[position-y:150px]
       "
@@ -58,47 +67,33 @@ const AICoreSection = () => {
         <motion.div
           className="absolute top-32 left-[446px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full 
           w-[200px] md:w-[794.87px] md:h-[392.59px] blur-3xl"
-          initial={{ x: "-100%" }}
-          animate={{ x: ["0%", "20%", "-10%", "0%"] }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          initial={prefersReducedMotion ? false : { x: "-25%" }}
+          animate={prefersReducedMotion ? undefined : { x: ["0%", "20%", "-10%", "0%"] }}
+          transition={prefersReducedMotion ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute top-36 left-[20px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full 
          w-[200px] md:w-[735.08px] h-[458.69px] blur-[228px] -z-10"
-          initial={{ x: "100%" }}
-          animate={{ x: ["0%", "-10%", "10%", "0%"] }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.2,
-          }}
+          initial={prefersReducedMotion ? false : { x: "10%" }}
+          animate={prefersReducedMotion ? undefined : { x: ["0%", "-10%", "10%", "0%"] }}
+          transition={prefersReducedMotion ? undefined : { duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
         />
         <motion.div
           className="absolute top-48 bottom-[10px] bg-[#BE95FF] rounded-full 
           w-[200px] md:w-[1131.09px] h-[392.59px] blur-[228px] z-[-1]"
-          initial={{ x: "-100%" }}
-          animate={{ x: ["0%", "10%", "-10%", "0%"] }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.4,
-          }}
+          initial={prefersReducedMotion ? false : { x: "-10%" }}
+          animate={prefersReducedMotion ? undefined : { x: ["0%", "10%", "-10%", "0%"] }}
+          transition={prefersReducedMotion ? undefined : { duration: 12, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
         />
       </div>
 
       <div className="w-full h-max md:hidden">
         <div className="relative overflow-x-scroll scrollbar-hide flex">
-          <div className="flex space-x-6">
+          <div className="flex space-x-6 pb-5">
             {cardData.map((card, index) => (
               <div
                 key={index}
-                className="px-6 py-8 rounded-[20px] drop-shadow-2xl md:shadow-[0_16px_52px_0px_rgba(10,64,108,0.1)] backdrop-blur-lg
+                className="px-6 py-8 rounded-[20px] shadow-[0_0px_16px_0px_rgba(10,64,108,0.1)] md:shadow-[[0_16px_52px_0px_rgba(10,64,108,0.1)]] backdrop-blur-lg
           bg-white/80 md:bg-white/60 border-none md:border border-[#CAD3E0] flex flex-col justify-between 
            w-[274px] h-auto flex-shrink-0"
               // style={{
@@ -130,8 +125,7 @@ const AICoreSection = () => {
 
 
 
-
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-center">
+        <ThreeColMotion  className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-center">
         {cardData.map((card, index) => (
           <motion.div
             key={index}
@@ -168,8 +162,9 @@ const AICoreSection = () => {
             </div>
           </motion.div>
         ))}
-      </div>
-    </div>
+        </ThreeColMotion>
+    </motion.div>
+    </MotionConfig>
   );
 };
 

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { CustomHeader } from "../CustomHeader";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 type DebounceFunction<T extends any[]> = (...args: T) => void;
 
@@ -142,8 +142,14 @@ export default function LoanLifecycle() {
   }, [isHalfVisible]);
 
 
+  const prefersReducedMotion = useReducedMotion();
   return (
-    <section
+    <motion.section
+      initial={prefersReducedMotion ? {opacity:1} : {y:30, opacity:0}}
+      whileInView={prefersReducedMotion ? {opacity:1} : {y:0, opacity:1}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{once: false, amount:0.2}}
+      style={{ willChange: "transform, opacity" }}
       ref={sectionRef}
       id="loan-lifecycle-section"
       className="container pt-[108px] mx-auto hidden md:flex flex-col items-center justify-between gap-[48px] relative"
@@ -253,6 +259,6 @@ export default function LoanLifecycle() {
           />
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

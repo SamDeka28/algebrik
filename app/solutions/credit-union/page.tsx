@@ -1,4 +1,4 @@
-
+ 
 
 import FooterCards from "@/components/FooterCards";
 import ChallengesSection from "@/components/credit_union/ChallengesSection";
@@ -7,6 +7,7 @@ import FAQs from "@/components/credit_union/FAQs";
 import HeroSection from "@/components/credit_union/Hero";
 import LoanLifecycle from "@/components/credit_union/LoanLifecycle";
 import { Metadata } from "next";
+ 
 
 export const metadata:Metadata={
   title:"Algebrik for Credit Unions: AI Solutions for Member-Centric Lending",
@@ -22,7 +23,7 @@ export default function CreditUnions() {
         <ChallengesSection />
         <LoanLifecycle />
         <FooterCards />
-    <FAQs/>
+        <FAQs/>
       </main>
     </>
   );

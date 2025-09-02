@@ -202,6 +202,14 @@ export default function Navbar() {
     "/resource-center/the-silent-sabotage/",
     "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work",
     "/resource-center/how-credit-unions-are-putting-agentic-ai-to-work/",
+    "/resource-center/building-digital-first-loyalty-for-credit-unions",
+    "/resource-center/building-digital-first-loyalty-for-credit-unions/",
+    "/resource-center/automating-lending-decisions-with-unprecedented-precision",
+    "/resource-center/automating-lending-decisions-with-unprecedented-precision/",
+    "/resource-center/the-future-of-auto-lending",
+    "/resource-center/the-future-of-auto-lending/",
+    "/resource-center/cable-tv-lending-is-dead",
+    "/resource-center/cable-tv-lending-is-dead/",
     ...WEBINARS.map(item => item.link),
     ...WEBINARS.map(item => item.link + "/")
   ]
