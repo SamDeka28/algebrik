@@ -210,6 +210,8 @@ export default function Navbar() {
     "/resource-center/the-future-of-auto-lending/",
     "/resource-center/cable-tv-lending-is-dead",
     "/resource-center/cable-tv-lending-is-dead/",
+    "/resource-center/mastering-digital-onboarding",
+    "/resource-center/mastering-digital-onboarding/",
     ...WEBINARS.map(item => item.link),
     ...WEBINARS.map(item => item.link + "/")
   ]
