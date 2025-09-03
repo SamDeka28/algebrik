@@ -21,11 +21,11 @@ const carouselData: CarouselItem[] = [
   {
     header: "Blogs",
     cardTitle: "BLOG",
-    title: "Mastering Digital Onboarding: How AI-Powered Lending Becomes Gen Z’s Instant Favorite",
-    description: "Imagine a Gen Z applicant, fresh out of college, mindlessly scrolling their phone thinking about a car loan. They find your credit union, tap Apply, and are hit with a blast from the past: endless clunky forms, redundant questions, and a prompt to scan paperwork they do not even own. They close the tab faster than they can say “fax is dead.”",
-    image: "/section_images/genz.png",
-    source: "Aditya Bajaj",
-    url: "/resource-center/mastering-digital-onboarding",
+    title: "From Pixels to People: Rethinking Lending",
+    description: "In 2010, Apple introduced the Retina Display. No fireworks, no “one more thing” drama. Just a screen so sharp that, for the first time, your eyes could not tell the pixels apart. Text looked like print. Photos looked alive. And just like that, every screen you had ever loved suddenly looked blurry.",
+    image: "/section_images/pankajblog.webp",
+    source: "Pankaj Jain",
+    url: "/resource-center/year-one-at-algebrik",
     target: "_self"
   },
   {
