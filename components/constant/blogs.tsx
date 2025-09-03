@@ -7,6 +7,13 @@ export const blogContent = [
     authorImage:""
   },
   {
+    blogTitle:"Members Want Yield, Loans, and Love: Credit Union Lessons from Trendwatch Q2",
+    blogSubtitle:"credit-union-lessons-from-trendwatch-q2",
+    blogImage:"/section_images/callahan.webp",
+    authorName:"Prateek Samantaray",
+    authorImage:""
+  },
+  {
     blogTitle:"Mastering Digital Onboarding: How AI-Powered Lending Becomes Gen Z’s Instant Favorite",
     blogSubtitle:"mastering-digital-onboarding",
     blogImage:"/section_images/genz.png",
