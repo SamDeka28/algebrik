@@ -212,6 +212,8 @@ export default function Navbar() {
     "/resource-center/cable-tv-lending-is-dead/",
     "/resource-center/mastering-digital-onboarding",
     "/resource-center/mastering-digital-onboarding/",
+    "/resource-center/year-one-at-algebrik",
+    "/resource-center/year-one-at-algebrik/",
     ...WEBINARS.map(item => item.link),
     ...WEBINARS.map(item => item.link + "/")
   ]

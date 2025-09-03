@@ -1,5 +1,12 @@
 export const blogContent = [
   {
+    blogTitle:"From Pixels to People: Rethinking Lending",
+    blogSubtitle:"year-one-at-algebrik",
+    blogImage:"/section_images/pankajblog.webp",
+    authorName:"Pankaj Jain",
+    authorImage:""
+  },
+  {
     blogTitle:"Mastering Digital Onboarding: How AI-Powered Lending Becomes Gen Z’s Instant Favorite",
     blogSubtitle:"mastering-digital-onboarding",
     blogImage:"/section_images/genz.png",
