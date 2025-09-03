@@ -210,6 +210,12 @@ export default function Navbar() {
     "/resource-center/the-future-of-auto-lending/",
     "/resource-center/cable-tv-lending-is-dead",
     "/resource-center/cable-tv-lending-is-dead/",
+    "/resource-center/mastering-digital-onboarding",
+    "/resource-center/mastering-digital-onboarding/",
+    "/resource-center/year-one-at-algebrik",
+    "/resource-center/year-one-at-algebrik/",
+    "/resource-center/credit-union-lessons-from-trendwatch-q2/",
+    "/resource-center/credit-union-lessons-from-trendwatch-q2",
     ...WEBINARS.map(item => item.link),
     ...WEBINARS.map(item => item.link + "/")
   ]
@@ -238,9 +244,9 @@ export default function Navbar() {
   }
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+      // initial={{ opacity: 0, y: -50 }}
+      // animate={{ opacity: 1, y: 0 }}
+      // transition={{ duration: 0.8 }}
       className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto  ${isScrolled
         ? isContactOrResourcePage
           ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#7EB2FF] to-[#043071] rounded-[88px] drop-shadow-xl w-[90%] max-w-[95%]"

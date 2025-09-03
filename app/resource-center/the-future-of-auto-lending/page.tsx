@@ -352,7 +352,7 @@ export default function Blog() {
 
             </div>
             <Image
-              src="/section_images/future.png"
+              src="/section_images/future.webp"
               width={1160}
               height={500}
               alt=""
@@ -372,7 +372,7 @@ export default function Blog() {
           </div>
           <div className="pt-[35px]">
             <Image
-              src="/section_images/future.png"
+              src="/section_images/future.webp"
               width={1160}
               height={500}
               alt=""

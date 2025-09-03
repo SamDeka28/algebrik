@@ -234,7 +234,7 @@ export default function Blog() {
 
             </div>
             <Image
-              src="/section_images/cable.png"
+              src="/section_images/cable.webp"
               width={1160}
               height={500}
               alt=""
@@ -254,7 +254,7 @@ export default function Blog() {
           </div>
           <div className="pt-[35px]">
             <Image
-              src="/section_images/cable.png"
+              src="/section_images/cable.webp"
               width={1160}
               height={500}
               alt=""

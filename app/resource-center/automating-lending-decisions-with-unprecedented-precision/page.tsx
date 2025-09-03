@@ -272,7 +272,7 @@ export default function Blog() {
 
             </div>
             <Image
-              src="/section_images/agentic-advantage.png"
+              src="/section_images/agentic-advantage.webp"
               width={1160}
               height={500}
               alt=""
@@ -292,7 +292,7 @@ export default function Blog() {
           </div>
           <div className="pt-[35px]">
             <Image
-              src="/section_images/agentic-advantage.png"
+              src="/section_images/agentic-advantage.webp"
               width={1160}
               height={500}
               alt=""
