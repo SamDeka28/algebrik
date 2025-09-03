@@ -473,7 +473,7 @@ export default function BlogCarousel() {
       {currentIndex == 2 &&
         <div>
           <motion.div
-            className="bg-white p-[24px] border border-[#D5D5D5] md:w-[1160px] md:h-[428px] rounded-[20px] flex flex-col md:flex-row items-start justify-between gap-[24px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)]"
+            className="bg-white p-[24px] border border-[#D5D5D5] md:w-[1160px] rounded-[20px] flex flex-col md:flex-row items-start justify-between gap-[24px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)]"
             key={currentIndex}
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -519,9 +519,13 @@ export default function BlogCarousel() {
           {currentIndex == 2 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 content-between gap-9">
               {newsArticles.map((article, index) => (
+                <Link
+                href={article.link}
+                className="font-semibold bg-white border  max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col" target="_blank"
+              >
                 <div
                   key={index}
-                  className="bg-white border  max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
+                  className=""
                 >
                   <div className="flex flex-col flex-grow">
                     <div className="h-[269px]">
@@ -558,6 +562,7 @@ export default function BlogCarousel() {
                     </Link>
                   </div>
                 </div>
+                </Link>
               ))}
 
             </div>
@@ -568,11 +573,17 @@ export default function BlogCarousel() {
           {currentIndex == 0 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 content-between gap-9 ">
               {blogContent.map((blog, index) => (
+                <Link
+                href={`/resource-center/${blog.blogSubtitle
+                  .toLowerCase()
+                  .replace(/ /g, "-")}`}
+                className="bg-white max-w-[360px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col" target="_blank"
+              >
                 <div
                   key={index}
-                  className="bg-white max-w-[360px] h-[528px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
+                  className=""
                 >
-                  <div className="h-[269px]">
+                  <div className="">
                     <Image
                       src={blog.blogImage}
                       alt={`Image for ${blog.blogTitle}`}
@@ -581,22 +592,17 @@ export default function BlogCarousel() {
                       className="rounded-md object-cover"
                       quality={100}
                     />
-                    <h6 className="text-gray-400 tracking-widest text-[14px] font-bold uppercase md:mt-4 mb-2">
+                    <h6 className="text-gray-400 tracking-widest text-[14px] font-bold uppercase md:mt-4 mt-4 mb-2">
                       Blog
                     </h6>
-                    <p className="font-bold mt-4 text-[20px]">{blog.blogTitle}</p>
+                    <p className="font-bold mt-4 text-[20px] text-ellipsis">{blog.blogTitle}</p>
                   </div>
-                  <div className="absolute bottom-0 left-0 flex justify-center w-full cursor-pointer bg-white text-center h-[54px] rounded-b-[20px]">
-                    <Link
-                      href={`/resource-center/${blog.blogSubtitle
-                        .toLowerCase()
-                        .replace(/ /g, "-")}`}
-                      className="text-[#1A69DC] font-semibold" target="_blank"
-                    >
+                  <div className="text-[#1A69DC] font-semibold absolute bottom-0 left-0 flex justify-center w-full cursor-pointer bg-white text-center h-[54px] rounded-b-[20px] pt-4">
+                    
                       Read More →
-                    </Link>
                   </div>
                 </div>
+                </Link>
               ))}
             </div>
           }
