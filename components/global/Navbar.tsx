@@ -214,6 +214,8 @@ export default function Navbar() {
     "/resource-center/mastering-digital-onboarding/",
     "/resource-center/year-one-at-algebrik",
     "/resource-center/year-one-at-algebrik/",
+    "/resource-center/credit-union-lessons-from-trendwatch-q2/",
+    "/resource-center/credit-union-lessons-from-trendwatch-q2",
     ...WEBINARS.map(item => item.link),
     ...WEBINARS.map(item => item.link + "/")
   ]
