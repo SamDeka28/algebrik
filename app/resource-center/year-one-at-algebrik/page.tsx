@@ -119,7 +119,7 @@ const lendingData = {
         "Algebrik One is not the first lending system. It is not meant to be. It is designed to reset expectations, to make legacy workflows feel as outdated as squinting at pixels once did.",
         "My vision for Algebrik is simple. To give credit unions and lenders a platform that makes lending so intuitive and so seamless that members forget about the system entirely and remember only the experience.",
         "Year one proved it works. Year two will prove it scales.",
-        <p className="font-bold text-xl">— Pankaj Jain, CEO, Algebriks</p>,
+        <p className="font-bold text-xl">— Pankaj Jain, CEO, Algebrik</p>,
       ]
     }
   ]
