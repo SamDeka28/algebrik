@@ -2,6 +2,7 @@
 import HeroSection from "@/components/home_page/HeroSection";
 import CardsContainer from "@/components/card";
 import FeaturesSection from "@/components/home_page/FeaturesSection";
+import YouTubeVideo from "@/components/home_page/YouTubeVideo";
 import ConvoaiWidget from "@/components/ConvoaiWidget"
 
 
@@ -109,6 +110,15 @@ export default function Home() {
           {...baseMotion}
         >
           <FeaturesSection />
+        </motion.div>
+        <motion.div
+          className="py-16 lg:py-20"
+          {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
+        >
+          <YouTubeVideo 
+            videoId="y1vGROnP8tM" 
+            title="Algebrik AI Demo Video"
+          />
         </motion.div>
         <motion.div
           {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
