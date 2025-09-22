@@ -153,6 +153,9 @@ const Footer = () => {
                 {" "}
                 <li>Contact us</li>
               </Link>
+              <Link href="/privacy-policy" className="">
+            Privacy policy
+          </Link>
             </ul>
           </div>
 
@@ -171,6 +174,9 @@ const Footer = () => {
                 {" "}
                 <li>Contact us</li>
               </button>
+              <Link href="/privacy-policy" className="">
+            Privacy policy
+          </Link>
             </ul>
           </div>
           <div>
@@ -221,9 +227,6 @@ const Footer = () => {
             </Link>
             {/* <p>Follow on X</p> */}
           </div>
-          <Link href="/privacy-policy" className="text-[#3E404C] text-[14px]">
-            Privacy policy
-          </Link>
           {/* <Link href="#" className="text-[#3E404C] text-[14px]">
             GDPR
           </Link>
