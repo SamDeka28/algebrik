@@ -36,12 +36,26 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
     setErrors({});
   };
 
-  // Reset state when modal is closed
+  // Reset state when modal is closed and handle body scroll
   useEffect(() => {
     if (!open) {
       resetState();
     }
-  }, [open]);
+    
+    // Prevent body scroll when modal is open
+    if (isModal) {
+      if (open) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'unset';
+      }
+      
+      // Cleanup function to restore scroll when component unmounts
+      return () => {
+        document.body.style.overflow = 'unset';
+      };
+    }
+  }, [open, isModal]);
 
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {};
@@ -138,16 +152,20 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
   if (isModal) {
     if (!open) return null;
     return (
-      <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
-        <div className="relative bg-white rounded-2xl shadow-2xl h-[95vh] md:h-auto max-w-6xl w-full mx-4 px-6 pt-6 overflow-y-auto overflow-x-hidden">
-          <button
-            className="absolute top-4 right-4 text-2xl text-gray-500 hover:text-black z-10"
-            onClick={onClose}
-            aria-label="Close Contact Modal"
-          >
-            &times;
-          </button>
-          {renderContactSection()}
+      <div className="fixed inset-0 z-[10000] bg-black/60 backdrop-blur-sm">
+        <div className="h-full overflow-y-auto">
+          <div className="flex min-h-full items-start md:items-center justify-center p-2 md:p-4">
+            <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-6xl my-4 md:my-8">
+              <button
+                className="absolute top-4 right-4 text-2xl text-gray-500 hover:text-black z-10"
+                onClick={onClose}
+                aria-label="Close Contact Modal"
+              >
+                &times;
+              </button>
+              {renderContactSection()}
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -206,22 +224,24 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
 
     // Main contact form and calendar layout
     return (
-      <section className="py-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2a5fac] mb-4 font-plus-jakarta">
+      <section className="py-6 md:py-8 px-4 md:px-6">
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#2a5fac] mb-3 font-plus-jakarta">
             Get in Touch
           </h2>
-          <p className="text-lg text-gray-600 font-plus-jakarta">
+          <p className="text-base md:text-lg text-gray-600 font-plus-jakarta">
             Choose how you'd like to connect with us
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
           {/* Left Side - Calendar Scheduling */}
-          <div className="bg-gradient-to-br from-[#2a5fac] to-[#1e4a8a] rounded-2xl p-4 text-white">
+          <div className="bg-gradient-to-br from-[#2a5fac] to-[#1e4a8a] rounded-2xl p-4 md:p-6 text-white">
 
             {/* HubSpot Calendar Embed */}
-            <HubspotMeetingEmbed />
+            <div className="min-h-[400px] md:min-h-[450px]">
+              <HubspotMeetingEmbed />
+            </div>
           </div>
 
           {/* OR Divider */}
@@ -234,15 +254,15 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2 font-plus-jakarta">Send us a Message</h3>
-              <p className="text-gray-600 font-plus-jakarta">
+          <div className="bg-gray-50 rounded-2xl p-4 md:p-6 lg:p-8">
+            <div className="mb-4 md:mb-6">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-plus-jakarta">Send us a Message</h3>
+              <p className="text-gray-600 font-plus-jakarta text-sm md:text-base">
                 Fill out the form and we'll get back to you within 24 hours.
               </p>
             </div>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div>
                 <label htmlFor="firstname" className="block text-sm font-medium text-gray-700 mb-2 font-plus-jakarta">
                   First Name *
@@ -253,13 +273,13 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
                   name="firstname"
                   value={formData.firstname}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#2a5fac] focus:border-transparent font-plus-jakarta ${
+                  className={`w-full px-3 md:px-4 py-2 md:py-3 border rounded-lg focus:ring-2 focus:ring-[#2a5fac] focus:border-transparent font-plus-jakarta text-sm md:text-base ${
                     errors.firstname ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Enter your first name"
                 />
                 {errors.firstname && (
-                  <p className="mt-1 text-sm text-red-600 font-plus-jakarta">{errors.firstname}</p>
+                  <p className="mt-1 text-xs md:text-sm text-red-600 font-plus-jakarta">{errors.firstname}</p>
                 )}
               </div>
 
@@ -273,13 +293,13 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
                   name="lastname"
                   value={formData.lastname}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#2a5fac] focus:border-transparent font-plus-jakarta ${
+                  className={`w-full px-3 md:px-4 py-2 md:py-3 border rounded-lg focus:ring-2 focus:ring-[#2a5fac] focus:border-transparent font-plus-jakarta text-sm md:text-base ${
                     errors.lastname ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Enter your last name"
                 />
                 {errors.lastname && (
-                  <p className="mt-1 text-sm text-red-600 font-plus-jakarta">{errors.lastname}</p>
+                  <p className="mt-1 text-xs md:text-sm text-red-600 font-plus-jakarta">{errors.lastname}</p>
                 )}
               </div>
 
@@ -293,24 +313,24 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#2a5fac] focus:border-transparent font-plus-jakarta ${
+                  className={`w-full px-3 md:px-4 py-2 md:py-3 border rounded-lg focus:ring-2 focus:ring-[#2a5fac] focus:border-transparent font-plus-jakarta text-sm md:text-base ${
                     errors.email ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Enter your email address"
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-600 font-plus-jakarta">{errors.email}</p>
+                  <p className="mt-1 text-xs md:text-sm text-red-600 font-plus-jakarta">{errors.email}</p>
                 )}
               </div>
 
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-[#2a5fac] text-white py-4 px-6 rounded-lg font-semibold hover:bg-[#1e4a8a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-plus-jakarta"
+                className="w-full bg-[#2a5fac] text-white py-3 md:py-4 px-4 md:px-6 rounded-lg font-semibold hover:bg-[#1e4a8a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-plus-jakarta text-sm md:text-base"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 md:h-5 md:w-5 border-b-2 border-white mr-2"></div>
                     Sending...
                   </div>
                 ) : (
