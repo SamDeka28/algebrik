@@ -215,7 +215,8 @@ export default function BoltOnModulesSection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3">
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-3">
           {/* Left Side - Navigation */}
           <div className="space-y-2 flex flex-col justify-center">
             {productAreas.map((area, index) => (
@@ -248,7 +249,6 @@ export default function BoltOnModulesSection() {
           {/* Right Side - Content */}
           <div className="space-y-6 col-span-2 h-full">
             <div className="!bg-gray-50 rounded-[40px] p-[28px] shadow-sm h-[456px]">
-
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Legacy LOS */}
                 <div>
@@ -270,7 +270,6 @@ export default function BoltOnModulesSection() {
                       <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" fill="#2A5FAC" />
                       <path d="M7.75 12L10.58 14.83L16.25 9.17001" stroke="#EFF6FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-
                     <h5 className="text-lg font-semibold text-[#2a5fac] font-plus-jakarta">Algebrik</h5>
                   </div>
                   <ul className="space-y-3">
@@ -282,6 +281,77 @@ export default function BoltOnModulesSection() {
                     ))}
                   </ul>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="lg:hidden space-y-6">
+          {/* Mobile Navigation */}
+          <div className="bg-white rounded-2xl p-4 shadow-lg border border-gray-200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {productAreas.map((area) => (
+                <button
+                  key={area.id}
+                  onClick={() => setSelectedArea(area.id)}
+                  className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
+                    selectedArea === area.id
+                      ? 'bg-[#EFF6FC] border-2 border-[#2a5fac]'
+                      : 'bg-gray-50 border-2 border-transparent hover:bg-gray-100'
+                  }`}
+                >
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center p-1 ${selectedArea === area.id && 'bg-[#2a5fac]'}`}>
+                    {area.icon}
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <span className={`font-medium font-plus-jakarta text-sm ${selectedArea === area.id ? 'text-[#2a5fac] font-bold' : 'text-gray-700'}`}>
+                      {area.name}
+                    </span>
+                    {area.description && (
+                      <span className="text-xs text-gray-500 font-plus-jakarta text-left">
+                        {area.description}
+                      </span>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Content */}
+          <div className="bg-gray-50 rounded-2xl p-6 shadow-sm">
+            <div className="space-y-6">
+              {/* Legacy LOS */}
+              <div>
+                <h5 className="text-lg font-semibold text-gray-800 mb-4 font-plus-jakarta bg-[#F0F0F0] rounded-full px-4 py-2">Legacy LOS</h5>
+                <ul className="space-y-3">
+                  {comparisonData[selectedArea as keyof typeof comparisonData].legacy.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Image src="/icons/info-circle.svg" alt="Info" width={20} height={20} className="flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600 font-plus-jakarta text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Algebrik */}
+              <div>
+                <div className="flex items-center gap-2 mb-4 bg-[#EFF6FC] rounded-full px-4 py-2">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" fill="#2A5FAC" />
+                    <path d="M7.75 12L10.58 14.83L16.25 9.17001" stroke="#EFF6FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <h5 className="text-lg font-semibold text-[#2a5fac] font-plus-jakarta">Algebrik</h5>
+                </div>
+                <ul className="space-y-3">
+                  {comparisonData[selectedArea as keyof typeof comparisonData].algebrik.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Image src="/icons/tick-circle.svg" alt="Tick" width={20} height={20} className="flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600 font-plus-jakarta text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

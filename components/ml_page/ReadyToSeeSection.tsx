@@ -13,7 +13,7 @@ export default function ReadyToSeeSection() {
   } as const;
 
   return (
-    <section className="py-20 bg-white font-plus-jakarta">
+    <section className="py-20 w-full font-plus-jakarta bg-[#EBEEF5]">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div {...baseMotion} className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-bold text-[#2a5fac] mb-6 font-plus-jakarta">
@@ -23,10 +23,10 @@ export default function ReadyToSeeSection() {
             Algebrik unifies Account Opening, POS, LOS, Decisioning, and Analytics into one agentic AI-powered platform - built for Personal, Auto, Credit Card, and HELOC lending.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-[#2a5fac] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#1e4a8a] transition-colors font-plus-jakarta">
+          <button className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta">
               Check how my stack compares
             </button>
-            <button className="border-2 border-[#2a5fac] text-[#2a5fac] px-8 py-4 rounded-lg font-semibold hover:bg-[#2a5fac] hover:text-white transition-colors font-plus-jakarta">
+            <button className="border-2 rounded-full border-[#2a5fac] text-[#2a5fac] px-8 py-4 font-semibold hover:bg-[#2a5fac] hover:text-white transition-colors font-plus-jakarta">
               Self-paced Demo
             </button>
           </div>
