@@ -23,12 +23,12 @@ export default function ReadyToSeeSection() {
             Algebrik unifies Account Opening, POS, LOS, Decisioning, and Analytics into one agentic AI-powered platform - built for Personal, Auto, Credit Card, and HELOC lending.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta">
+          <a target="_blank" href="/lending-health-check" className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta">
               Check how my stack compares
-            </button>
-            <button className="border-2 rounded-full border-[#2a5fac] text-[#2a5fac] px-8 py-4 font-semibold hover:bg-[#2a5fac] hover:text-white transition-colors font-plus-jakarta">
+            </a>
+            <a target="_blank" href="/solutions/lender-cockpit" className="border-2 rounded-full border-[#2a5fac] text-[#2a5fac] px-8 py-4 font-semibold hover:bg-[#2a5fac] hover:text-white transition-colors font-plus-jakarta">
               Self-paced Demo
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

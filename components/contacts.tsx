@@ -136,14 +136,62 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
   };
 
   // Load HubSpot calendar script
+  // Load HubSpot calendar script with better error handling
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (!document.getElementById("hs-meetings-embed-script")) {
+      const loadMeetings = () => {
+        if (window.HubSpotMeetings) {
+          try {
+            window.HubSpotMeetings.loadMeetings();
+          } catch (error) {
+            console.error("Error loading HubSpot meetings:", error);
+            // Retry after a delay
+            setTimeout(loadMeetings, 2000);
+          }
+        } else {
+          // Retry after a delay if HubSpotMeetings is not available
+          setTimeout(loadMeetings, 1000);
+        }
+      };
+
+      // Check if script already exists
+      const existingScript = document.getElementById("hs-meetings-embed-script");
+      
+      if (!existingScript) {
         const script = document.createElement("script");
         script.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
         script.type = "text/javascript";
         script.id = "hs-meetings-embed-script";
+        script.async = true;
+        script.crossOrigin = "anonymous";
+        
+        script.onload = () => {
+          console.log("HubSpot script loaded successfully");
+          // Wait a bit for the script to fully initialize
+          setTimeout(loadMeetings, 500);
+        };
+        
+        script.onerror = (error) => {
+          console.error("Failed to load HubSpot meetings script:", error);
+          // Retry loading the script after a delay
+          setTimeout(() => {
+            const retryScript = document.createElement("script");
+            retryScript.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+            retryScript.type = "text/javascript";
+            retryScript.id = "hs-meetings-embed-script-retry";
+            retryScript.async = true;
+            retryScript.crossOrigin = "anonymous";
+            retryScript.onload = () => {
+              setTimeout(loadMeetings, 500);
+            };
+            document.body.appendChild(retryScript);
+          }, 3000);
+        };
+        
         document.body.appendChild(script);
+      } else {
+        // Script already exists, try to load meetings
+        setTimeout(loadMeetings, 500);
       }
     }
   }, []);
@@ -353,44 +401,74 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
 }
 
 const HubspotMeetingEmbed = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
-    const loadMeetings = () => {
-      if (window.HubSpotMeetings) {
-        window.HubSpotMeetings.loadMeetings();
-      } else {
-        setTimeout(loadMeetings, 1000); // Retry after 1 second if not loaded
-      }
-    };
+  const handleIframeLoad = () => {
+    setIsLoading(false);
+    setHasError(false);
+  };
 
-    // Load the script
-    if (!document.getElementById('hs-meetings-embed-script')) {
-      const script = document.createElement('script');
-      script.id = 'hs-meetings-embed-script';
-      script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
-      script.async = true;
-      script.onload = loadMeetings;
-      document.body.appendChild(script);
-    } else {
-      loadMeetings();
-    }
+  const handleIframeError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
 
-    // Cleanup
-    return () => {
-      const script = document.getElementById('hs-meetings-embed-script');
-      if (script) {
-        script.remove();
-      }
-    };
-  }, []);
+  if (hasError) {
+    return (
+      <div className="flex items-center justify-center h-64 bg-white/10 rounded-lg">
+        <div className="text-center text-white">
+          <p className="text-sm mb-4">Unable to load calendar</p>
+          <a 
+            href="https://meetings-na2.hubspot.com/algebrik"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-4 py-2 bg-white/20 rounded text-xs hover:bg-white/30 transition-colors"
+          >
+            Open Calendar
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div
-      ref={containerRef}
-      className="meetings-iframe-container"
-      data-src="https://meetings-na2.hubspot.com/algebrik/meeting-with-team-algebrik-v2?embed=true"
-      style={{ width: '100%',height: '100%' }}
-    />
+    <div className="relative rounded-lg overflow-hidden" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+      <style jsx>{`
+        div::-webkit-scrollbar {
+          display: none;
+        }
+        iframe::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white/10 rounded-lg z-10">
+          <div className="text-center text-white">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-2"></div>
+            <p className="text-sm">Loading calendar...</p>
+          </div>
+        </div>
+      )}
+      <iframe
+        src="https://meetings-na2.hubspot.com/algebrik/meeting-with-team-algebrik-v2?embed=true"
+        width="100%"
+        height="650"
+        frameBorder="0"
+        title="Schedule a Meeting"
+        onLoad={handleIframeLoad}
+        onError={handleIframeError}
+        className="rounded-lg"
+        style={{ 
+          border: 'none',
+          overflow: 'hidden',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none'
+        }}
+        allow="camera; microphone; fullscreen"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        scrolling="no"
+      />
+    </div>
   );
 };

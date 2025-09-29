@@ -1,5 +1,4 @@
 "use client";
-import BookADemo from "../BookADemo";
 
 export default function HeroSection() {
   return (
@@ -31,12 +30,16 @@ export default function HeroSection() {
             Replace rigid stacks with a unified, AI-first platform for Personal, Auto, Credit Card, and HELOC lending. Built for speed, flexibility, and growth.
           </p>
           <div className="relative md:static -bottom-48 z-20 flex flex-col sm:flex-row gap-4 justify-center mt-10">
-          <button className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta">
+          <a 
+            target="_blank"
+            href="/lending-health-check"
+            className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta"
+          >
               Check how my stack compares
-            </button>
-            <button className="bg-white border-2 border-white text-[#195BD7] px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#2a5fac] transition-colors font-plus-jakarta">
+            </a>
+            <a target="_blank" href="/solutions/lender-cockpit" className="bg-white border-2 border-white text-[#195BD7] px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#2a5fac] transition-colors font-plus-jakarta">
               Self-paced Demo
-            </button>
+            </a>
           </div>
         </div>
       </div>
