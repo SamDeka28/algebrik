@@ -147,9 +147,9 @@ export default function LegacyStacksSection() {
         </motion.div>
 
         <div className="text-center mt-12">
-        <button className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta">
-              Check full comparison here
-            </button>
+        <a target="_blank" href="/solutions/credit-union" className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta">
+              Explore Algebrik in action
+            </a>
         </div>
       </div>
     </section>

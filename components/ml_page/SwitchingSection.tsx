@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Image from "next/image";
+import { useState } from "react";
+import Contact from "../contacts";
 
 const timelineData = [
   {
@@ -38,6 +40,7 @@ const timelineData = [
 
 export default function SwitchingSection() {
   const isMobile = useIsMobile();
+  const [showContactModal, setShowContactModal] = useState(false);
 
   const baseMotion = {
     initial: isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 },
@@ -169,12 +172,16 @@ export default function SwitchingSection() {
           </div> */}
 
           <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta">
+            <button 
+              onClick={() => setShowContactModal(true)}
+              className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all font-plus-jakarta"
+            >
               Get my Migration Plan
             </button>
           </div>
         </motion.div>
       </div>
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </section>
   );
 }
