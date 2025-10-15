@@ -216,6 +216,10 @@ export default function Navbar() {
     "/resource-center/year-one-at-algebrik/",
     "/resource-center/credit-union-lessons-from-trendwatch-q2/",
     "/resource-center/credit-union-lessons-from-trendwatch-q2",
+    "/resource-center/when-the-game-changes",
+    "/resource-center/when-the-game-changes/",
+    "/resource-center/from-piggy-banks-to-product-hooks-why-credit-unions-need-a-feature-strategy",
+    "/resource-center/from-piggy-banks-to-product-hooks-why-credit-unions-need-a-feature-strategy/",
     ...WEBINARS.map(item => item.link),
     ...WEBINARS.map(item => item.link + "/")
   ]

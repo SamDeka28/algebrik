@@ -1,5 +1,23 @@
 export const blogContent = [
   {
+    blogTitle:"When the Game Changes",
+    blogSubtitle:"when-the-game-changes",
+    blogImage:"/section_images/oct15-1.webp",
+    authorName:"Aditya Bajaj",
+    authorImage:"A",
+    publishedDate:"October 15, 2025",
+    readTime:"3 min read"
+  },
+  {
+    blogTitle:"From Piggy Banks to Product Hooks: Why Credit Unions Need a Feature Strategy",
+    blogSubtitle:"from-piggy-banks-to-product-hooks-why-credit-unions-need-a-feature-strategy",
+    blogImage:"/section_images/oct15-2.webp",
+    authorName:"Jennifer Hernandez",
+    authorImage:"J",
+    publishedDate:"October 15, 2025",
+    readTime:"6 min read"
+  },
+  {
     blogTitle:"From Pixels to People: Rethinking Lending",
     blogSubtitle:"year-one-at-algebrik",
     blogImage:"/section_images/pankajblog.webp",
