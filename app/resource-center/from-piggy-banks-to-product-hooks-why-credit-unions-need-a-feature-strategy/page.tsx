@@ -31,9 +31,9 @@ const blogData = {
       "paragraphs": [
         "Let's be honest. The credit union value proposition has started to sound like a high school group project where everyone picked \"climate change\" because no one wanted to think harder.",
         <ul className="list-disc ml-4 mt-4">
-          <li>We have great rates.</li>
-          <li>We care about members.</li>
-          <li>We don't have shareholders.</li>
+          <li>"We have great rates."</li>
+          <li>"We care about members."</li>
+          <li>“We are not for profit but for for service"</li>
         </ul>,
         "All true. All identical. It's like a row of identical houses in a planned suburb, with different colored mailboxes and the same lawn gnome out front.",
         "Meanwhile, fintechs are out there turning **features into growth machines**. Chime grew past 12 million users by marketing \"get paid two days early\" as if they'd discovered fire. Startups like Self and Grow Credit have built entire businesses around rent reporting and credit score lifts. These aren't utilities. They're conversion engines."
