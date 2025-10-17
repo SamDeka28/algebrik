@@ -12,6 +12,15 @@ export default function NewsSection() {
 
   const newsArticles = [
     {
+      title:"Algebrik AI Partners with Scienaptic AI to Power Inclusive Decisioning in Loan Origination",
+      author: "PR Newswire",
+      source:"PR Newswire",
+      role:"Marketing",
+      description:"Algebrik AI today announced a strategic partnership with Scienaptic AI, a leading provider of AI-powered lending solutions for credit unions.",
+      link:"https://finance.yahoo.com/news/algebrik-ai-partners-scienaptic-ai-132700269.html",
+      image:"/section_images/blog/ya.webp"
+    },
+    {
       title:"Algebrik AI and Housetable Announce Strategic Partnership and Advisory Engagement",
       author: "The Credit Union Connection",
       source:"The Credit Union Connection",

@@ -42,12 +42,12 @@ const carouselData: CarouselItem[] = [
   {
     header: "News Center",
     cardTitle: "NEWS CENTER",
-    title: "Algebrik AI and Housetable Announce Strategic Partnership and Advisory Engagement",
+    title: "Algebrik AI Partners with Scienaptic AI to Power Inclusive Decisioning in Loan Origination",
     description:
-      "Explore the latest updates and news stories about Algebrik AI and its impact on the global financial technology industry.",
+      "Algebrik AI today announced a strategic partnership with Scienaptic AI, a leading provider of AI-powered lending solutions for credit unions.",
     source: "The Credit Union Connection",
-    image: "https://thecreditunionconnection.com/wp-content/uploads/2024/10/37B7B312-4939-45D4-9CE0-B07F18E21853-2.jpeg",
-    url: "https://thecreditunionconnection.com/algebrik-ai-and-housetable-announce-strategic-partnership-and-advisory-engagement/",
+    image: "/section_images/blog/prnewswire.jpg",
+    url: "https://finance.yahoo.com/news/algebrik-ai-partners-scienaptic-ai-132700269.html",
     target: "_blank",
   },
   {
@@ -75,6 +75,15 @@ const carouselData: CarouselItem[] = [
 ];
 
 const newsArticles = [
+  {
+    title:"Algebrik AI Partners with Scienaptic AI to Power Inclusive Decisioning in Loan Origination",
+    author: "PR Newswire",
+    source:"PR Newswire",
+    role:"Marketing",
+    description:"Algebrik AI today announced a strategic partnership with Scienaptic AI, a leading provider of AI-powered lending solutions for credit unions.",
+    link:"https://finance.yahoo.com/news/algebrik-ai-partners-scienaptic-ai-132700269.html",
+    image:"/section_images/blog/ya.webp"
+  },
   {
     title:"Algebrik AI and Housetable Announce Strategic Partnership and Advisory Engagement",
     author: "The Credit Union Connection",
