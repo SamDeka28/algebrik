@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { blogContent } from "../constant/blogs";
 import Link from "next/link";
 import { WEBINARS } from "../constant/webinars";
+import { getStrapiMediaUrl, StrapiAPI } from "@/lib/strapi";
 
 type CarouselItem = {
   header: string;
@@ -269,39 +270,6 @@ const newsArticles = [
   }
 ];
 
-// Tools data for the Tools tab
-const toolsData = [
-  {
-    image: '/icons/roi.webp',
-    title: "Discover Your ROI Gain",
-    description: 'Switch to Algebrik AI to boost returns, reduce risk, and transform lending.',
-    buttonText: 'Check your ROI',
-    buttonLink: '/roi-calculator',
-  },
-  {
-    image: '/icons/healthcheck.webp',
-    title: 'Is your Lending Stack a burden?',
-    description: 'Don’t Build on a Broken Stack, take a moment to assess the health of your lending stack.',
-    buttonText: 'Assess Now',
-    buttonLink: '/lending-health-check',
-  },
-];
-
-const insightsData = [
-  {
-    title:"UFCUxAlgebrik | Insights by Barbara Appold",
-    link:"https://www.youtube.com/embed/eurUe1zGl98?si=KSAHbFEVWlUL8R-x"
-  },
- {
-  title:"Algebrik AI - Digital Natives’ Banking Panacea with Pankaj Jain - S2E10 - Lumière Startup Saturday ",
-  link: "https://www.youtube.com/embed/KMOT9WC8Z4A?si=NjzIvdK_ehyF-0eA"
-  },
-  {
-    title:"AI Unleashed: Pankaj Jain on How Algebrik is Rewriting Lending Rules for Credit Unions",
-  link:"https://www.youtube.com/embed/hnWrqto3b68?si=VVMGKXY6retxmIND"
-  }
-]
-
 function isFuture(dateStr: string) {
   // Normalize the date string format
   const parsed = new Date(
@@ -338,6 +306,27 @@ function isPast(dateStr: string) {
 export default function BlogCarousel() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [videoModal, setVideoModal] = useState<{ open: boolean, url?: string }>({ open: false });
+  const [insights, setInsights] = useState<any[]>([]);
+  const [tools, setTools] = useState<any[]>([]);
+  const [news, setNews] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      const news = await StrapiAPI.find("news-articles",{populate:"*"});
+      setNews(news);
+    };
+    const fetchInsights = async () => {
+      const insights = await StrapiAPI.find("insights",{populate:"*"});
+      setInsights(insights);
+    };
+    const fetchTools = async () => {
+      const tools = await StrapiAPI.find("tools",{populate:"*"});
+      setTools(tools);
+    };
+    fetchNews();
+    fetchInsights();
+    fetchTools();
+  }, []);
 
   const handleHeaderClick = (index: number) => {
     setCurrentIndex(index);
@@ -536,52 +525,70 @@ export default function BlogCarousel() {
         <div className="flex flex-col items-center justify-center font-plus-jakarta relative">
           {currentIndex == 2 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 content-between gap-9">
-              {newsArticles.map((article, index) => (
-                <Link
-                href={article.link}
-                className="font-semibold bg-white border  max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col" target="_blank"
-              >
-                <div
-                  key={index}
-                  className=""
-                >
-                  <div className="flex flex-col flex-grow">
-                    <div className="h-[269px]">
-                      <h6 className="text-gray-400 tracking-widest text-[14px] font-bold uppercase mb-2">
-                        News
-                      </h6>
-                      <p className="font-bold mb-4 text-[20px]">
-                        {article.title}
-                      </p>
-                    </div>
-                    <div className="flex items-center">
-                      <Image
-                        src={article.image}
-                        alt={`Image of ${article.author}`}
-                        width={60}
-                        height={60}
-                        className="object-contain rounded-full h-[60px] w-[60px] shadow-lg"
-                        quality={100}
-                      />
-                      <div className="flex flex-col justify-center pl-3">
-                        <p className="text-[#333333] text-[18px] font-extrabold">
-                          {article.author}
+              {news?.map((article: any, index: number) => {
+                // Access Strapi attributes
+                const attrs = article.attributes || article;
+                const link = attrs.link;
+                const title = attrs.title;
+                const author = attrs.author;
+                const image = attrs.image ? getStrapiMediaUrl(attrs.image) : null;
+
+                const CardContent = (
+                  <>
+                    <div className="flex flex-col flex-grow">
+                      <div className="h-[269px]">
+                        <h6 className="text-gray-400 tracking-widest text-[14px] font-bold uppercase mb-2">
+                          News
+                        </h6>
+                        <p className="font-bold mb-4 text-[20px]">
+                          {title}
                         </p>
-                        {/* <p className="text-gray-600 text-[12px]">{article.role}</p> */}
+                      </div>
+                      <div className="flex items-center">
+                        {image && (
+                        <Image
+                          src={image}
+                          alt={`Image of ${author}`}
+                          width={60}
+                          height={60}
+                          className="object-contain rounded-full h-[60px] w-[60px] shadow-lg"
+                          quality={100}
+                        />
+                        )}
+                        <div className="flex flex-col justify-center pl-3">
+                          <p className="text-[#333333] text-[18px] font-extrabold">
+                            {author}
+                          </p>
+                          {/* <p className="text-gray-600 text-[12px]">{article.role}</p> */}
+                        </div>
                       </div>
                     </div>
+                    <div className="absolute bottom-0 left-0 flex justify-center w-full bg-white text-center py-3 h-[54px] rounded-b-[20px]">
+                      <span className="text-[#1A69DC] font-semibold">
+                        Read More →
+                      </span>
+                    </div>
+                  </>
+                );
+
+                return link ? (
+                  <Link
+                    key={index}
+                    href={link}
+                    className="font-semibold bg-white border  max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col" 
+                    target="_blank"
+                  >
+                    {CardContent}
+                  </Link>
+                ) : (
+                  <div
+                    key={index}
+                    className="font-semibold bg-white border  max-w-[360px] h-[428px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col opacity-60 cursor-not-allowed"
+                  >
+                    {CardContent}
                   </div>
-                  <div className="absolute bottom-0 left-0 flex justify-center w-full bg-white text-center py-3 h-[54px] rounded-b-[20px]">
-                    <Link
-                      href={article.link}
-                      className="text-[#1A69DC] font-semibold" target="_blank"
-                    >
-                      Read More →
-                    </Link>
-                  </div>
-                </div>
-                </Link>
-              ))}
+                );
+              })}
 
             </div>
           }
@@ -592,14 +599,12 @@ export default function BlogCarousel() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 content-between gap-9 ">
               {blogContent.map((blog, index) => (
                 <Link
-                href={`/resource-center/${blog.blogSubtitle
-                  .toLowerCase()
-                  .replace(/ /g, "-")}`}
-                className="bg-white max-w-[360px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col" target="_blank"
-              >
-                <div
                   key={index}
-                  className=""
+                  href={`/resource-center/${blog.blogSubtitle
+                    .toLowerCase()
+                    .replace(/ /g, "-")}`}
+                  className="bg-white max-w-[360px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col" 
+                  target="_blank"
                 >
                   <div className="">
                     <Image
@@ -616,10 +621,8 @@ export default function BlogCarousel() {
                     <p className="font-bold mt-4 text-[20px] text-ellipsis">{blog.blogTitle}</p>
                   </div>
                   <div className="text-[#1A69DC] font-semibold absolute bottom-0 left-0 flex justify-center w-full cursor-pointer bg-white text-center h-[54px] rounded-b-[20px] pt-4">
-                    
-                      Read More →
+                    Read More →
                   </div>
-                </div>
                 </Link>
               ))}
             </div>
@@ -628,45 +631,65 @@ export default function BlogCarousel() {
           {/* Tools */}
           {currentIndex == 4 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
-              {toolsData.map((tool, index) => (
-                <div
-                  key={index}
-                  className="bg-white max-w-[520px] text-gray-900 rounded-[20px] shadow p-4 flex flex-row gap-6"
-                >
-                  <Image
-                    src={tool.image}
-                    alt={""}
-                    width={120}
-                    height={120}
-                    className="object-cover  bg-gray-100 rounded-lg"
-                  />
-                  <div className="flex flex-col flex-1 gap-2 h-full">
-                    <h3 className="text-[22px] font-bold text-[#2A5FAC]">{tool.title}</h3>
-                    <p className="text-[15px] text-[#606060]">{tool.description}</p>
-                    <Link href={tool.buttonLink} target="_blank">
-                      <button className="border border-[#2A5FAC] text-[#2A5FAC] rounded-full px-6 py-2 font-medium hover:bg-[#2A5FAC] hover:text-white transition-all">
-                        {tool.buttonText}
-                      </button>
-                    </Link>
+              {tools?.map((tool: any, index: number) => {
+                // Access Strapi attributes
+                const attrs = tool.attributes || tool;
+                const buttonLink = attrs.buttonLink;
+                const buttonText = attrs.buttonText;
+                const title = attrs.title;
+                const description = attrs.description;
+                const image = attrs.image;
+
+                return (
+                  <div
+                    key={index}
+                    className="bg-white max-w-[520px] text-gray-900 rounded-[20px] shadow p-4 flex flex-row gap-6"
+                  >
+                    <Image
+                      src={getStrapiMediaUrl(image)} 
+                      alt={title}
+                      width={120}
+                      height={120}
+                      className="object-cover  bg-gray-100 rounded-lg"
+                    />
+                    <div className="flex flex-col flex-1 gap-2 h-full">
+                      <h3 className="text-[22px] font-bold text-[#2A5FAC]">{title}</h3>
+                      <p className="text-[15px] text-[#606060]">{description}</p>
+                      {buttonLink ? (
+                        <Link href={buttonLink} target="_blank">
+                          <button className="border border-[#2A5FAC] text-[#2A5FAC] rounded-full px-6 py-2 font-medium hover:bg-[#2A5FAC] hover:text-white transition-all">
+                            {buttonText}
+                          </button>
+                        </Link>
+                      ) : (
+                        <button className="border border-gray-300 text-gray-400 rounded-full px-6 py-2 font-medium cursor-not-allowed" disabled>
+                          {buttonText || 'Coming Soon'}
+                        </button>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           }
 
-          {/* Tools */}
+          {/* Insights */}
           {currentIndex == 3 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
-              {insightsData.map((tool, index) => {
-                let thumb = `https://img.youtube.com/vi/${tool.link.split("/").pop()?.split("?")[0]}/maxresdefault.jpg`
+              {insights?.map((tool: any, index: number) => {
+                // Access Strapi attributes
+                const attrs = tool.attributes || tool;
+                const link = attrs.link;
+                const title = attrs.title;
+                const thumb = link ? `https://img.youtube.com/vi/${link.split("/").pop()?.split("?")[0]}/maxresdefault.jpg` : null;
 
                 return (
-                  <div key={tool.title.replace(" ","_") + index} className="flex flex-col md:flex-row gap-6 items-start">
+                  <div key={title?.replace(" ","_") + index} className="flex flex-col md:flex-row gap-6 items-start">
                     <div className="flex-1 flex-col bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
-                      onClick={() => tool.link && setVideoModal({ open: true, url: tool.link })}
+                      onClick={() => link && setVideoModal({ open: true, url: link })}
                     >
                         <>
-                          <img src={thumb} alt={tool.title} className="object-cover rounded-lg w-full h-full max-h-[220px]" />
+                          {thumb && <img src={thumb} alt={title} className="object-cover rounded-lg w-full h-full max-h-[220px]" />}
                           <div className="absolute rounded-lg inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <circle cx="32" cy="32" r="32" fill="#fff" fillOpacity="0.8" />
@@ -674,7 +697,7 @@ export default function BlogCarousel() {
                             </svg>
                           </div>
                         </>
-                        <p className="text-primary w-full font-medium text-left font-plus-jakarta px-2 py-4">{tool.title}</p>
+                        <p className="text-primary w-full font-medium text-left font-plus-jakarta px-2 py-4">{title}</p>
                     </div>
                   </div>
                 );
