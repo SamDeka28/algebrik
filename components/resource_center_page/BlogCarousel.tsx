@@ -312,7 +312,7 @@ export default function BlogCarousel() {
 
   useEffect(() => {
     const fetchNews = async () => {
-      const news = await StrapiAPI.find("news-articles",{populate:"*"});
+      const news = await StrapiAPI.find("news-articles",{populate:"*",sort:["createdAt:desc"]});
       setNews(news);
     };
     const fetchInsights = async () => {
@@ -477,7 +477,7 @@ export default function BlogCarousel() {
         </div>
       }
       {/**News main blog */}
-      {currentIndex == 2 &&
+      {currentIndex == 2 && news.length > 0 &&
         <div>
           <motion.div
             className="bg-white p-[24px] border border-[#D5D5D5] md:w-[1160px] rounded-[20px] flex flex-col md:flex-row items-start justify-between gap-[24px] backdrop-blur-[28.68px] shadow-[0px_20px_36px_0_rgba(10, 64, 108, 0.1)]"
@@ -489,8 +489,8 @@ export default function BlogCarousel() {
           >
             <div>
               <Image
-                src={newsArticles[0].image}
-                alt={`Image for ${newsArticles[0].title}`}
+                src={getStrapiMediaUrl((news[0].attributes || news[0]).image)}
+                alt={`Image for ${(news[0].attributes || news[0]).title}`}
                 width={551}
                 height={380}
                 className="md:w-[551px] md:h-[380px] rounded-lg object-contain"
@@ -501,17 +501,17 @@ export default function BlogCarousel() {
                 NEWS
               </h3>
               <Link
-                href={newsArticles[0].link} target={"_blank"}>
+                href={(news[0].attributes || news[0]).link || '#'} target={"_blank"}>
                 <h3 className="cursor-pointer text-[20px] text-[#606060] font-bold font-plus-jakarta leading-[28.13px]">
-                  {newsArticles[0].title}
+                  {(news[0].attributes || news[0]).title}
                 </h3>
               </Link>
 
               <p className="text-[16px] font-normal font-plus-jakarta text-[#606060] leading-[30px]">
-                {newsArticles[0].description}
+                {(news[0].attributes || news[0]).description}
               </p>
               <p className="text-[30px] font-bold font-plus-jakarta text-black leading-[30px]">
-                {newsArticles[0].source}
+                {(news[0].attributes || news[0]).source || (news[0].attributes || news[0]).author}
               </p>
             </div>
           </motion.div>
