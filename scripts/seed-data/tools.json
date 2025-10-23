@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Sample Tool",
+    "description": "This is a sample tool entry",
+    "buttonText": "Try It Now",
+    "buttonLink": "https://example.com",
+    "image": "/section_images/placeholder.png"
+  }
+]
+
