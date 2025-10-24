@@ -9,7 +9,13 @@
     "lint": "next lint",
     "seed": "node scripts/seed.js",
     "seed:news": "node scripts/seed.js news-articles scripts/seed-data/news-articles.json",
-    "seed:clear": "node scripts/seed.js news-articles scripts/seed-data/news-articles.json --clear"
+    "seed:clear": "node scripts/seed.js news-articles scripts/seed-data/news-articles.json --clear",
+    "seed:blogs": "node scripts/seed-blogs.js",
+    "seed:blogs:clear": "node scripts/seed-blogs.js --clear",
+    "seed:blogs:all": "node scripts/seed-blogs.js scripts/seed-data/blogs-complete-22.json",
+    "seed:blogs:all:clear": "node scripts/seed-blogs.js scripts/seed-data/blogs-complete-22.json --clear",
+    "test:strapi": "node scripts/test-strapi.js",
+    "test:blogs": "node scripts/test-blog-fetch.js"
   },
   "dependencies": {
     "@elevenlabs/react": "^0.1.6",
