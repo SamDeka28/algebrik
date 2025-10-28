@@ -129,7 +129,7 @@ export default function Blog() {
                   </div>
                   <div className="flex flex-col md:flex-row md:gap-4">
                     <p>5 min read</p>
-                    <p>December 20, 2024</p>
+                    <p>October 28, 2025</p>
                   </div>
                 </div>
               </div>

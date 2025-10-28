@@ -5,7 +5,7 @@ export const blogContent = [
     blogImage:"/section_images/isai.webp",
     authorName:"Andrea Silvers",
     authorImage:"A",
-    publishedDate:"December 20, 2024",
+    publishedDate:"October 28, 2025",
     readTime:"5 min read"
   },
   {
