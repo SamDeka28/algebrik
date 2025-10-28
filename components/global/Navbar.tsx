@@ -220,6 +220,8 @@ export default function Navbar() {
     "/resource-center/when-the-game-changes/",
     "/resource-center/from-piggy-banks-to-product-hooks-why-credit-unions-need-a-feature-strategy",
     "/resource-center/from-piggy-banks-to-product-hooks-why-credit-unions-need-a-feature-strategy/",
+    "/resource-center/ai-is-the-engine-people-are-the-trust",
+    "/resource-center/ai-is-the-engine-people-are-the-trust/",
     ...WEBINARS.map(item => item.link),
     ...WEBINARS.map(item => item.link + "/")
   ]
