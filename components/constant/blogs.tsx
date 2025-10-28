@@ -1,5 +1,14 @@
 export const blogContent = [
   {
+    blogTitle:"AI Is the Engine. People Are the Trust.",
+    blogSubtitle:"ai-is-the-engine-people-are-the-trust",
+    blogImage:"/section_images/isai.webp",
+    authorName:"Andrea Silvers",
+    authorImage:"A",
+    publishedDate:"December 20, 2024",
+    readTime:"5 min read"
+  },
+  {
     blogTitle:"When the Game Changes",
     blogSubtitle:"when-the-game-changes",
     blogImage:"/section_images/oct15-1.webp",
