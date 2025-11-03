@@ -386,8 +386,8 @@ export default function BlogCarousel() {
                     }}
                   >
                     <img src="/background_images/ml-single.svg" className="absolute right-0 z-0 rotate-180" />
-                    <div className="flex-1 flex items-end mt-[110px] justify-center">
-                      <img src={next.image} alt={next.title} className="rounded-2xl object-cover w-full scale-110" />
+                    <div className="flex-1 flex items-end justify-center">
+                      <img src={next.image} alt={next.title} className="rounded-2xl object-cover w-full scale-110 bg-[#f2f2f2]" />
                     </div>
                     <div className="flex-1 flex flex-col gap-2 text-white p-5 md:p-10">
                       <div className="uppercase tracking-[30%] text-xs font-semibold opacity-80 mb-1 text-[#005FB5]">Upcoming Webinar</div>
