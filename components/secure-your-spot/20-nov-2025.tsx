@@ -286,7 +286,7 @@ export default function SecureYourSpot() {
                         <div className="bg-white px-2 pb-2 pt-[50px] w-[199px] h-[123px] rounded-[14px] border-[2px] border-[#E2E8F1] absolute left-[-10px] bottom-[10px] z-10">
                           <p className="text-[18px] font-bold text-[#292929] mb-[2px]">{team.name}</p>
                           <p className="text-sm text-[#292929] font-medium">{team.title}</p>
-                          {/* <p className="text-xs text-[#656565] font-normal">{team.place}</p> */}
+                          <p className="text-xs text-[#656565] font-normal">{team.place}</p>
                         </div>
                       </div>
                     })}
@@ -420,7 +420,7 @@ export default function SecureYourSpot() {
                       <div className="bg-white px-2 pb-2 pt-[50px] w-[199px] h-[123px] rounded-[14px] border-[2px] border-[#E2E8F1] absolute left-[-10px] bottom-[10px] z-10">
                         <p className="text-[14px] font-bold text-[#292929] mb-[2px]">{team.name}</p>
                         <p className="text-sm text-[#292929] font-medium">{team.title}</p>
-                        {/* <p className="text-xs text-[#656565] font-normal">{team.place}</p> */}
+                        <p className="text-xs text-[#656565] font-normal">{team.place}</p>
                       </div>
                     </div>
                   })}
