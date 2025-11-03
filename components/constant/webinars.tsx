@@ -1,5 +1,12 @@
 export const WEBINARS=[
     {
+        image :"/background_images/20nov.png",
+        title : "Make Lending Great Again: Reclaiming the Heart of Credit Union Lending in the Age of AI",
+        link: "/webinars/20-nov-2025",
+        eventDate: "20 Nov, 2025",
+        linkedin : "https://www.linkedin.com/events/make-lending-great-again-reclaiming-the-heart-of-credit-union-lending-in-the-age-of-ai-7349433544881950720/"
+    },
+    {
         image :"/background_images/12aug2pm-m.png",
         title : "Generative Al vs. Agentic Al-And Why It Matters for Loan Origination",
         link: "/webinars/12-aug-2025",
