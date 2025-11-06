@@ -3,6 +3,11 @@ import HeroSection from "@/components/platform_page/HeroSection";
 import LendingExperience from "@/components/platform_page/LendingExp";
 import LoanLifecycle from "@/components/platform_page/LoanLifecycle";
 import ModernLender from "@/components/platform_page/ModernLender";
+import OperatingSystemSection from "@/components/platform_page/OperatingSystemSection";
+import FiveModulesSection from "@/components/platform_page/FiveModulesSection";
+import FragmentedToFluidSection from "@/components/platform_page/FragmentedToFluidSection";
+import BeforeAfterSection from "@/components/platform_page/BeforeAfterSection";
+import TrustedPartnersSection from "@/components/platform_page/TrustedPartnersSection";
 import { Metadata } from "next";
 
 export const metadata :Metadata={
@@ -14,6 +19,11 @@ export default function Home(){
         <>
         <main className="overflow-x-hidden">
             <HeroSection />
+            <OperatingSystemSection />
+            <FiveModulesSection />
+            <FragmentedToFluidSection />
+            <BeforeAfterSection />
+            <TrustedPartnersSection />
             <ModernLender />
             <LoanLifecycle />
             <AICoreSection />

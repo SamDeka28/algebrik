@@ -17,20 +17,19 @@ export default function HeroSection() {
       <div
   className="
     w-full h-[758px] flex items-center justify-center overflow-hidden relative 
-    md:bg-[url('/background_images/platform_hero.webp')] bg-[url('/background_images/mobile_solutions.webp')] 
-    bg-no-repeat bg-center bg-[bottom_left-30.5rem]
-     md:bg-cover bg-cover -md:bg-[left_top_10rem] rounded-b-[32px] md:rounded-none"
+    md:bg-[url('/background_images/platform_hero.webp')] bg-[url('/background_images/mobile_solutions.webp')] rounded-b-[32px] md:rounded-none bg-no-repeat bg-bottom 
+    bg-cover"
 >
 
-        <div className="absolute top-40 md:top-48 mx-auto flex flex-col items-center justify-center md:justify-start gap-[40px]">
+        <div className="max-w-6xl w-full absolute top-40 md:top-48 mx-auto flex flex-col items-center justify-center md:justify-start gap-[40px]">
           <div className="flex flex-col gap-[20px]">
             <CustomHeader
-              text="Lending just got easier"
+              text="The unified AI-powered lending stack"
               className="text-[36px] md:text-[56px] text-white text-center px-20 leading-[45px] md:leading-none md:px-0"
             />
             <CustomSubtitle
-              text="Experience the future of lending: a fully automated, AI-First platform that simplifies workflows, improves decision accuracy, and creates personalized borrower journeys at scale"
-              className="text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-10 md:px-[293px]"
+              text="Algebrik One unifies digital account opening, loan origination, decisioning, and analytics - so credit unions and community lenders can originate faster, decide smarter, and serve members better."
+              className="text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-10"
             />
           </div>
           
