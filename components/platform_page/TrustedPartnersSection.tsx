@@ -49,12 +49,6 @@ export default function TrustedPartnersSection() {
         viewport={{ once: false, amount: 0.2 }}
         className="w-full bg-white py-16 md:py-24 px-4 md:px-8 relative"
       >
-        {/* Subtle geometric pattern overlay - top left corner */}
-        <div className="absolute top-0 left-0 w-64 h-64 opacity-5">
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <polygon points="50,0 100,25 100,75 50,100 0,75 0,25" fill="#1C8DEA" />
-          </svg>
-        </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
@@ -66,7 +60,7 @@ export default function TrustedPartnersSection() {
           </div>
 
           {/* Partner Logos Row */}
-          <div className="flex max-w-7xl w-full flex-wrap justify-between items-center  mb-[32px] md:mb-[48px]">
+          <div className="grid grid-cols-2 md:flex md:justify-between items-center gap-4 md:gap-0 mb-[32px] md:mb-[48px] w-full">
             {partnerLogos.map((partner, index) => (
               <motion.div
                 key={partner.name}
@@ -74,15 +68,14 @@ export default function TrustedPartnersSection() {
                 transition={{ ...transition, delay: index * 0.1 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
-                className="bg-white rounded-lg border border-[#C3C3C3] p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300"
-                style={{ minWidth: '150px', height: '56px' }}
+                className="bg-white rounded-lg border border-[#C3C3C3] p-3 md:p-4 lg:p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 h-[48px] md:h-[56px] md:flex-shrink-0"
               >
                 <Image
                   src={partner.image}
                   alt={partner.name}
                   width={120}
                   height={60}
-                  className="max-w-full  object-contain"
+                  className="max-w-[90px] md:max-w-[100px] lg:max-w-[120px] h-auto object-contain"
                 />
               </motion.div>
             ))}
