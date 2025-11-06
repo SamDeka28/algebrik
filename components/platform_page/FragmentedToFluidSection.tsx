@@ -109,7 +109,7 @@ export default function FragmentedToFluidSection() {
             ))}
 
             {/* Second row - 2 cards, centered */}
-            <div className="md:col-span-3 flex justify-center gap-6 md:gap-8">
+            <div className="md:col-span-3 flex flex-col md:flex-row justify-center items-stretch gap-6 md:gap-8">
               {benefits.slice(3, 5).map((benefit, index) => (
                 <motion.div
                   key={benefit.number}
@@ -117,7 +117,7 @@ export default function FragmentedToFluidSection() {
                   transition={{ ...transition, delay: (index + 3) * 0.1 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: false, amount: 0.2 }}
-                  className="bg-white rounded-[20px] p-6 md:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100 w-full md:w-[calc(33.333%-1rem)] max-w-md"
+                  className="bg-white rounded-[20px] p-6 md:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100 w-full md:w-[calc(33.333%-1rem)] md:max-w-md"
                 >
                   <div className="flex flex-row gap-4">
                     {/* Number - Large outlined light blue number */}

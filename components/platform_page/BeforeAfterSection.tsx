@@ -11,7 +11,7 @@ const beforeAfterData = [
     title: "Before Algebrik",
     summary: "5 disconnected systems, 10 logins, 60 manual steps.",
     titleClass: "mb-3 bg-[#E4E8ED] rounded-[100px] text-center text-[#292929] text-[18px] md:text-[20px] font-bold px-4 py-2",
-    cardClass: "bg-[#F5F5F5] rounded-[32px] shadow-2xl p-6 pb-6 flex-1 min-w-[260px] hover:scale-105 transition-all ease-in",
+    cardClass: "bg-[#F5F5F5] rounded-[32px] shadow-xl p-6 pb-6 flex-1 min-w-[260px] hover:scale-105 transition-all ease-in",
     textClass: "text-[#292929] space-y-2 text-center",
     icon: null,
     items: [
@@ -27,7 +27,7 @@ const beforeAfterData = [
     title: "With Algebrik One",
     summary: "1 platform, 1 login, 1 intelligent journey.",
     titleClass: "flex flex-col justify-center items-center mb-3 bg-[#5A94E7] rounded-[100px] text-center text-[#FDFEFE] text-[18px] md:text-[20px] font-bold px-4 py-2",
-    cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-[32px] shadow-2xl p-6 pb-6 flex-1 min-w-[260px] text-white border-[5px] border-[#5A94E7] hover:scale-105 transition-all ease-in",
+    cardClass: "bg-gradient-to-br from-[#043071] to-[#7EB2FF] rounded-[32px] shadow-xl p-6 pb-6 flex-1 min-w-[260px] text-white border-[5px] border-[#5A94E7] hover:scale-105 transition-all ease-in",
     textClass: "space-y-2 text-center text-[#C7DAF5]",
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +119,7 @@ export default function BeforeAfterSection() {
                 </h3>
                 <ul className={card.textClass} style={{ marginTop: "20px" }}>
                   {card.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 mb-3">
+                    <li key={i} className="flex items-start gap-2 mb-3 text-left">
                       {card.type === "before" ? (
                         <Image src="/icons/info-circle.svg" alt="Info" width={20} height={20} className="mt-0.5 flex-shrink-0" />
                       ) : (
