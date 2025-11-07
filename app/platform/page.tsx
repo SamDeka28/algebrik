@@ -8,6 +8,8 @@ import FiveModulesSection from "@/components/platform_page/FiveModulesSection";
 import FragmentedToFluidSection from "@/components/platform_page/FragmentedToFluidSection";
 import BeforeAfterSection from "@/components/platform_page/BeforeAfterSection";
 import TrustedPartnersSection from "@/components/platform_page/TrustedPartnersSection";
+import HowItWorksSection from "@/components/platform_page/HowItWorksSection";
+import AgenticAISection from "@/components/platform_page/AgenticAISection";
 import { Metadata } from "next";
 
 export const metadata :Metadata={
@@ -24,10 +26,12 @@ export default function Home(){
             <FragmentedToFluidSection />
             <BeforeAfterSection />
             <TrustedPartnersSection />
-            <ModernLender />
+            <HowItWorksSection />
+            <AgenticAISection />
+            {/* <ModernLender />
             <LoanLifecycle />
-            <AICoreSection />
-            <LendingExperience />
+            <AICoreSection />*/}
+            <LendingExperience /> 
         </main>
         </>
     )

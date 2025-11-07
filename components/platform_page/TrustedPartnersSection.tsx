@@ -47,7 +47,7 @@ export default function TrustedPartnersSection() {
         transition={transition}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: false, amount: 0.2 }}
-        className="w-full bg-white py-16 md:py-24 px-4 md:px-8 relative"
+        className="w-full bg-white pt-16 md:pt-24 px-4 md:px-8 relative"
       >
 
         <div className="max-w-7xl mx-auto relative z-10">

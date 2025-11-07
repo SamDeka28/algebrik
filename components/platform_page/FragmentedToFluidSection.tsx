@@ -51,9 +51,9 @@ export default function FragmentedToFluidSection() {
         transition={transition}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: false, amount: 0.2 }}
-        className="w-full bg-white py-8 md:py-24 px-4 md:px-8 relative overflow-hidden"
+        className="w-full bg-white py-8 md:py-24 px-4 md:px-8 relative"
       >
-
+        <img src="/background_images/ml-single.webp" alt="Fragmented to Fluid" className="absolute -top-[10%] right-0 w-[25%] object-cover rotate-180" />
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
           <div className="max-w-5xl mx-auto text-center mb-12 md:mb-16">
