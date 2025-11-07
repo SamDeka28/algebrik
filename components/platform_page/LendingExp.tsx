@@ -28,30 +28,30 @@ const LendingExperience = () => {
           className="text-[32px] md:text-[48px] leading-[42px] md:leading-[62px] px-4 md:px-[140px] flex flex-col"
           text={
             <>
-              <span>Build the Lending</span>
-              <span>Experience of Tomorrow</span>
+              <span>Ready to reimagine lending</span>
+              <span>with Algebrik One?</span>
             </>
           }
         />
         <CustomSubtitle
           className="px-6 md:px-80 text-[16px] md:text-[24px] font-normal"
-          text="Unlock the power of AI and automation to transform your lending operations. Deliver faster approvals, smarter decisions, and seamless borrower experiences—all with Algebrik at your side"
+          text="Join forward-thinking lenders who are transforming their operations with unified, AI-powered lending."
         />
         <div className="flex flex-row gap-[22px] w-full md:w-[430px] md:mt-[66px]">
           <Button
-            text="Get Started"
+            text="Request a Demo"
             isActive={true}
             // onClick={() => alert("Please provide the redirection page")}
-            onClick={() => setShowContactModal(true)}
+            link="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
             customClass="bg-gradient-to-r from-blue-400 to-blue-900 text-white font-bold py-[10px] text-[14px] md:text-[16px] font-bold hover:bg-blue-500 w-full md:w-auto"
             activeStyle="bg-white text-[#292929] font-bold"
           />
 
           <Button
-            text="See Us In Action"
+            text="Contact Sales"
             // onClick={() => alert("Please provide the redirection page")}
-            link="https://app.storylane.io/demo/9gq55pwnefgy?embed=inline"
-            customClass="py-[10px] text-[14px] md:text-[16px] text-[#1A69DC] font-bold border border-[#1C8DEA] w-full md:w-auto"
+            onClick={() => setShowContactModal(true)}
+            customClass="py-[10px] text-[14px] md:text-[16px] text-[#1C8DEA] font-bold border border-[#195BD7] w-full md:w-auto"
             activeStyle="text-[#1A69DC] font-bold"
           />
         </div>

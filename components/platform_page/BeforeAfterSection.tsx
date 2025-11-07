@@ -59,8 +59,10 @@ export default function BeforeAfterSection() {
         transition={transition}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: false, amount: 0.2 }}
-        className="w-full py-16 md:py-8 px-4 md:px-8 relative overflow-hidden"
+        className="w-full py-16 md:py-8 px-4 md:px-8 relative"
       >
+                <img src="/background_images/ml-single.webp" alt="Fragmented to Fluid" className="absolute -top-[10%] left-0 w-[25%] object-cover" />
+
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Animated gradient circles - contained and smaller */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[20%] z-0 pointer-events-none">
