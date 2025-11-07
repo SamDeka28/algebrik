@@ -114,8 +114,8 @@ export default function WhyRethinkingSection() {
                                         <path opacity="0.8" d="M-33 8.25C-33.6904 8.25 -34.25 8.80964 -34.25 9.5C-34.25 10.1904 -33.6904 10.75 -33 10.75L-33 9.5L-33 8.25ZM43.8839 10.3839C44.372 9.89572 44.372 9.10427 43.8839 8.61611L35.9289 0.661159C35.4408 0.173004 34.6493 0.173004 34.1612 0.661159C33.673 1.14931 33.673 1.94077 34.1612 2.42893L41.2322 9.49999L34.1612 16.5711C33.673 17.0592 33.673 17.8507 34.1612 18.3388C34.6493 18.827 35.4408 18.827 35.9289 18.3388L43.8839 10.3839ZM-33 9.5L-33 10.75L43 10.75L43 9.49999L43 8.24999L-33 8.25L-33 9.5Z" fill="url(#paint0_linear_1582_1386)" />
                                         <defs>
                                             <linearGradient id="paint0_linear_1582_1386" x1="9" y1="9.99999" x2="43" y2="9.99999" gradientUnits="userSpaceOnUse">
-                                                <stop stop-color="#164486" stop-opacity="0" />
-                                                <stop offset="1" stop-color="#164486" />
+                                                <stop stopColor="#164486" stopOpacity="0" />
+                                                <stop offset="1" stopColor="#164486" />
                                             </linearGradient>
                                         </defs>
                                     </svg>

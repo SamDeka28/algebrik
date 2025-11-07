@@ -1,0 +1,207 @@
+"use client";
+
+import { motion, Transition, useReducedMotion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
+import Image from "next/image";
+import Link from "next/link";
+
+const timelineSteps = [
+  {
+    number: "1",
+    title: "Borrower applies",
+    description:
+      "Frictionless application across web, mobile, or branch – members onboard in under 3 minutes.",
+    align: "right" as const,
+    icon: "/icons/pahiw/ba.svg",
+  },
+  {
+    number: "2",
+    title: "AI checks & underwriting",
+    description:
+      "Agentic AI and no-code rules automate verification and risk checks – underwriting time cut by 40%.",
+    align: "left" as const,
+    icon: "/icons/pahiw/ai.svg",
+  },
+  {
+    number: "3",
+    title: "Instant decision",
+    description:
+      "Decisions delivered in seconds – so funding can begin the same day.",
+    align: "right" as const,
+    icon: "/icons/pahiw/id.svg",
+  },
+  {
+    number: "4",
+    title: "Funding / disbursement",
+    description:
+      "One-click disbursement ensures funds reach the borrower seamlessly.",
+    align: "left" as const,
+    icon: "/icons/pahiw/fd.svg",
+  },
+  {
+    number: "5",
+    title: "Analytics & portfolio insight",
+    description:
+      "Continuous intelligence and monitoring unlock predictive insights for future success.",
+    align: "right" as const,
+    icon: "/icons/pahiw/api.svg",
+  },
+];
+
+type TimelineStep = (typeof timelineSteps)[number];
+
+const HowItWorksSection = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const transition: Transition = prefersReducedMotion
+    ? { duration: 0.01 }
+    : { duration: 0.6, ease: "easeOut" };
+
+  const baseMotion = {
+    initial: prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    transition,
+    viewport: { once: false, amount: 0.2 },
+  } as const;
+
+  return (
+    <section className="relative w-full py-16 md:py-24 px-4 md:px-8 overflow-hidden flex flex-col items-center justify-center">
+      {/* Animated background accents */}
+      <div className="absolute top-[20%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[28%] pointer-events-none">
+        <motion.div
+          className="absolute -top-24 md:left-[40px] bg-gradient-to-tr from-[#66B3B0] to-[#149994] rounded-full w-[420px] h-[180px] md:w-[520px] md:h-[520px] blur-[120px]"
+          animate={prefersReducedMotion ? undefined : { x: ["-10%", "10%", "-5%", "0%"] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-8 md:left-[-60px] bg-gradient-to-tl from-[#1C8DEA] to-[#195BD7] rounded-full w-[420px] h-[240px] md:w-[460px] md:h-[460px] blur-[120px]"
+          animate={prefersReducedMotion ? undefined : { x: ["10%", "-15%", "12%", "0%"] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+        />
+        <motion.div
+          className="absolute top-56 md:top-24 md:-left-[360px] bg-[#BE95FF] rounded-full w-[360px] h-[260px] md:w-[420px] md:h-[420px] blur-[120px]"
+          animate={prefersReducedMotion ? undefined : { x: ["-8%", "18%", "-12%", "0%"] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <motion.div {...baseMotion} className="text-center mb-12 md:mb-16">
+          <h2 className="text-[28px] md:text-[40px] font-bold text-[#2A5FAC] mb-4 font-plus-jakarta">
+            How it works – one intelligent flow from onboarding to portfolio insight
+          </h2>
+          <p className="text-[16px] md:text-[18px] text-[#606060] max-w-3xl mx-auto font-plus-jakarta">
+            See how Algebrik One transforms the lending lifecycle into a cohesive, AI-powered journey.
+          </p>
+        </motion.div>
+
+        {/* Desktop timeline */}
+        <motion.div {...baseMotion} className="hidden md:block">
+          <div className="relative max-w-5xl mx-auto">
+            {/* timeline line */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 w-[4px] h-[110%]"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(198, 215, 240, 0) 0%, #C6D7F0 20%, #C6D7F0 80%, rgba(198, 215, 240, 0) 100%)",
+              }}
+            />
+
+            <div className="space-y-12">
+              {timelineSteps.map((step, index) => (
+                <TimelineItem key={step.number} step={step} isFirst={index === 0} />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Mobile vertical list */}
+        <motion.div {...baseMotion} className="md:hidden space-y-6">
+          {timelineSteps.map((step) => (
+            <div
+              key={step.number}
+              className="bg-white rounded-[20px] p-5 shadow-lg border border-[#E7EEF8]"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1C8DEA] to-[#195BD7] text-white font-plus-jakarta font-bold flex items-center justify-center">
+                  {step.number}
+                </div>
+                <div className="flex items-center gap-3">
+                  <Image src={step.icon} alt={step.title} width={36} height={36} className="w-9 h-9" />
+                  <h3 className="text-[#2A5FAC] text-lg font-bold font-plus-jakarta text-left">
+                    {step.title}
+                  </h3>
+                </div>
+              </div>
+              <p className="text-[#606060] text-sm font-plus-jakarta leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div {...baseMotion} className="mt-16 text-center">
+          <h3 className="text-[#1A3A5C] text-[18px] md:text-[22px] font-bold font-plus-jakarta mb-6">
+            Ready to see Algebrik One in action?
+          </h3>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-7 py-3 rounded-full font-semibold font-plus-jakarta shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Request a Demo
+            </Link>
+            <Link
+              href="/platform#modules"
+              className="border border-[#1C8DEA] text-[#1C8DEA] px-7 py-3 rounded-full font-semibold font-plus-jakarta hover:bg-[#E8F3FF] transition-all duration-300"
+            >
+              Explore the Modules
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+type TimelineItemProps = {
+  step: TimelineStep;
+  isFirst: boolean;
+};
+
+const TimelineItem = ({ step, isFirst }: TimelineItemProps) => {
+  return (
+    <div className="relative flex items-center">
+      {/* timeline node */}
+      <div
+        className={`absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full border-4 border-white flex items-center justify-center font-plus-jakarta font-bold text-lg shadow-lg ${
+          isFirst
+            ? "bg-gradient-to-br from-[#1C8DEA] to-[#195BD7] text-white"
+            : "bg-white text-[#2A5FAC]"
+        }`}
+      >
+        {step.number}
+      </div>
+
+      <div
+        className={`w-full md:w-1/2 px-4 ${
+          step.align === "left" ? "md:pr-14 md:text-right" : "md:pl-14 md:ml-auto"
+        }`}
+      >
+        <div className="bg-white rounded-[20px] p-6 shadow-lg border border-[#E7EEF8] hover:shadow-xl transition-shadow flex gap-5 items-center">
+          <div className="flex-shrink-0">
+            <Image src={step.icon} alt={step.title} width={48} height={48} className="w-12 h-12" />
+          </div>
+          <div className="space-y-2 text-left">
+            <h3 className="text-[#2A5FAC] text-xl font-bold font-plus-jakarta">{step.title}</h3>
+            <p className="text-[#606060] text-sm font-plus-jakarta leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HowItWorksSection;
