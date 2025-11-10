@@ -4,6 +4,10 @@ import { motion, Transition, useReducedMotion, MotionConfig } from "framer-motio
 import { useIsMobile } from "@/hooks/use-mobile";
 import { CustomHeader } from "../CustomHeader";
 import Image from "next/image";
+import Marquee from "react-fast-marquee";
+import Button from "../Buttons";
+import { useRouter } from "next/navigation";
+
 
 const partnerLogos = [
   { name: "Equifax", image: "/integration_logos/equifax.png" },
@@ -36,9 +40,10 @@ const testimonials = [
 export default function TrustedPartnersSection() {
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const router = useRouter();
   const transition: Transition = prefersReducedMotion
     ? { duration: 0.01 }
-    : { duration: 0.6, ease: "easeOut" };
+    : { duration: 0.1, ease: "easeOut" };
 
   return (
     <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
@@ -60,15 +65,17 @@ export default function TrustedPartnersSection() {
           </div>
 
           {/* Partner Logos Row */}
-          <div className="grid grid-cols-2 md:flex md:justify-between items-center gap-4 md:gap-0 mb-[32px] md:mb-[48px] w-full">
+          <div className="text-center  w-full">
+            <Marquee autoFill className="grid grid-cols-2 md:flex items-center py-5 gap-4 md:gap-4  w-full">
             {partnerLogos.map((partner, index) => (
               <motion.div
                 key={partner.name}
-                initial={{ y: 20, opacity: 0 }}
+                // initial={{ y: 20, opacity: 0 }}
                 transition={{ ...transition, delay: index * 0.1 }}
-                whileInView={{ y: 0, opacity: 1 }}
+                // whileInView={{ y: 0, opacity: 1 }}
+                whileHover={{ scale: 1.05 }}
                 viewport={{ once: false, amount: 0.2 }}
-                className="bg-white rounded-lg border border-[#C3C3C3] p-3 md:p-4 lg:p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 h-[48px] md:h-[56px] md:flex-shrink-0"
+                className="mr-4 bg-white  cursor-pointer rounded-lg border border-[#C3C3C3] p-3 md:p-4 lg:p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 h-[48px] md:h-[56px] md:flex-shrink-0"
               >
                 <Image
                   src={partner.image}
@@ -79,18 +86,22 @@ export default function TrustedPartnersSection() {
                 />
               </motion.div>
             ))}
+            </Marquee>
+            <Button 
+            text="View All Partners"
+            customClass="bg-transparent border border-[#2A5FAC] text-[#2A5FAC] hover:bg-[#2A5FAC] hover:text-white px-6 py-3 rounded-full min-w-max"
+            onClick={() => {
+              router.push('/integrations');
+            }}
+          />
           </div>
         </div>
 
         {/* Testimonial Cards Row - Container with overflow */}
         <div className="relative z-10 w-full pt-0 -mx-4 md:-mx-8">
           <div className="w-full">
-            <div 
+            <Marquee autoFill 
               className="flex gap-4 md:gap-6 pb-4 pt-10 overflow-x-auto scroll-smooth pl-4 md:pl-[max(32px,calc((100%-1280px)/2+32px))] pr-4 md:pr-8 hide-scrollbar" 
-              style={{ 
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-              }}
             >
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -99,7 +110,7 @@ export default function TrustedPartnersSection() {
                   transition={{ ...transition, delay: index * 0.1 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: false, amount: 0.2 }}
-                  className="bg-white rounded-[20px] p-5 md:p-9 flex-shrink-0 relative flex flex-col w-[240px] md:w-[calc((1280px-64px-48px)/3)] overflow-visible pt-6 md:pt-8"
+                  className="bg-white mr-4 rounded-[20px] p-5 md:p-9 flex-shrink-0 relative flex flex-col w-[240px] md:w-[calc((1280px-64px-48px)/3)] overflow-visible pt-6 md:pt-8"
                   style={{
                     boxShadow: '-10px 4px 20px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(0, 0, 0, 0.04)'
                   }}
@@ -131,7 +142,7 @@ export default function TrustedPartnersSection() {
                 </p>
                 </motion.div>
               ))}
-            </div>
+            </Marquee>
           </div>
         </div>
       </motion.section>

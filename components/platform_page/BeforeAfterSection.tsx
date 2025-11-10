@@ -50,7 +50,7 @@ export default function BeforeAfterSection() {
   const isMobile = useIsMobile();
   const transition: Transition = prefersReducedMotion
     ? { duration: 0.01 }
-    : { duration: 0.6, ease: "easeOut" };
+    : { duration: 0.1, ease: "easeOut" };
 
   return (
     <MotionConfig reducedMotion={isMobile ? "always" : "never"}>
@@ -59,7 +59,7 @@ export default function BeforeAfterSection() {
         transition={transition}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: false, amount: 0.2 }}
-        className="w-full py-16 md:py-8 px-4 md:px-8 relative"
+        className="w-full py-16 md:py-8 px-4 md:px-8 relative cursor-pointer"
       >
                 <img src="/background_images/ml-single.webp" alt="Fragmented to Fluid" className="absolute -top-[10%] left-0 w-[25%] object-cover" />
 
@@ -107,6 +107,7 @@ export default function BeforeAfterSection() {
                 initial={{ y: 20, opacity: 0 }}
                 transition={{ ...transition, delay: idx * 0.1 }}
                 whileInView={{ y: 0, opacity: 1 }}
+                whileHover={{ scale: 1.05 }}
                 viewport={{ once: false, amount: 0.2 }}
                 className={card.cardClass}
               >

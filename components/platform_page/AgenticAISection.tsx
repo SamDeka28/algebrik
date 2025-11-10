@@ -108,8 +108,8 @@ const AgenticAISection = () => {
             {modules.map((module, index) => (
               <div
                 key={module.title}
-                className={`relative rounded-[32px] p-6 md:p-8 ${index === 0 ? "bg-[#001637]" : "bg-[#03204B]"} border border-[#274E9B]/60 shadow-[0_18px_40px_rgba(6,18,53,0.45)] transition-transform duration-300 hover:-translate-y-1 ${
-                  index === 0 ? "border-[6px] border-[#71B7FF] shadow-[0_25px_55px_rgba(71,159,255,0.45)]" : ""
+                className={`relative rounded-[32px] p-6 md:p-8 hover:bg-[#001637] bg-[#03204B] shadow-[0_18px_40px_rgba(6,18,53,0.45)] transition-transform duration-300 hover:-translate-y-1 
+                  border-[6px] border-[#03204B] hover:border-[#71B7FF] hover:shadow-[0_25px_55px_rgba(71,159,255,0.45)]
                 }`}
               >
                 <div className="absolute inset-0 rounded-[32px] border border-white/5 pointer-events-none" />
