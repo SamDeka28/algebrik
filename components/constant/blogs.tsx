@@ -1,5 +1,40 @@
 export const blogContent = [
   {
+    blogTitle:
+      "New in Algebrik: Capture the HELOC Market, Onboard Members in Minutes, and Outsmart Identity Fraud",
+    blogSubtitle:
+      "new-in-algebrik-capture-the-heloc-market-onboard-members-in-minutes-and-outsmart-identity-fraud",
+    blogImage: "/section_images/blog/nia.png",
+    authorName: "Team Algebrik",
+    authorImage: "/section_images/blog/favicon.svg",
+    publishedDate: "November 10, 2025",
+    readTime: "4 min read",
+  },
+  {
+    blogTitle:
+      "Why Legacy Loan Systems Are Guaranteeing Failure (And the New 30% Opportunity)",
+    blogSubtitle:
+      "why-legacy-loan-systems-are-guaranteeing-failure-and-the-new-30-opportunity",
+    blogImage:
+      "/section_images/blog/Why Legacy Loan Systems Are Guaranteeing Failure.png",
+    authorName: "Team Algebrik",
+    authorImage: "/section_images/blog/favicon.svg",
+    publishedDate: "November 10, 2025",
+    readTime: "5 min read",
+  },
+  {
+    blogTitle:
+      "Is Your Technology Handing the Next Generation to the Competition?",
+    blogSubtitle:
+      "is-your-technology-handing-the-next-generation-to-the-competition",
+    blogImage:
+      "/section_images/blog/Is Your Technology Handing the Next Generation to the Competition.png",
+    authorName: "Team Algebrik",
+    authorImage: "/section_images/blog/favicon.svg",
+    publishedDate: "November 10, 2025",
+    readTime: "4 min read",
+  },
+  {
     blogTitle:"AI Is the Engine. People Are the Trust.",
     blogSubtitle:"ai-is-the-engine-people-are-the-trust",
     blogImage:"/section_images/isai.webp",
