@@ -4,6 +4,7 @@ import { motion, Transition, useReducedMotion, MotionConfig } from "framer-motio
 import { useIsMobile } from "@/hooks/use-mobile";
 import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 import Image from "next/image";
+import Link from "next/link";
 
 const modules = [
   {
@@ -11,30 +12,35 @@ const modules = [
     title: "Digital Account Opening",
     description: "Members open accounts in under 3 minutes - any device, anywhere.",
     metric: "70% faster onboarding",
+    href: "/solutions/digital-account-opening",
   },
   {
     icon: "/icons/fivemodule/los.svg", // Lender's Cockpit
     title: "Lender's Cockpit (LOS)",
     description: "One dashboard to originate, track & fund across all channels.",
     metric: "40% faster decisions",
+    href: "/solutions/lender-cockpit",
   },
   {
     icon: "/icons/fivemodule/pos.svg", // Omnichannel POS
     title: "Omnichannel POS",
     description: "Frictionless journeys from web to branch with instant prefill.",
     metric: "35% higher look-to-book",
+    href: "/solutions/omnichannel-point-of-sale",
   },
   {
     icon: "/icons/fivemodule/de.svg", // AI Decision Engine
     title: "AI Decision Engine",
     description: "No-code policies and real-time scoring for every loan type.",
     metric: "90% automated decisions",
+    href: "/solutions/decisioning",
   },
   {
     icon: "/icons/fivemodule/pa.svg", // Portfolio Analytics
     title: "Portfolio Analytics",
     description: "Track and analyze portfolio performance, identify trends, and mitigate risk.",
     metric: "25% fewer delinquencies",
+    href: "/solutions/portfolio-analytics",
   },
 ];
 
@@ -43,7 +49,7 @@ export default function FiveModulesSection() {
   const isMobile = useIsMobile();
   const transition: Transition = prefersReducedMotion
     ? { duration: 0.01 }
-    : { duration: 0.6, ease: "easeOut" };
+    : { duration: 0.1, ease: "easeOut" };
 
   return (
     <div className="w-full flex justify-center items-center">
@@ -149,8 +155,9 @@ export default function FiveModulesSection() {
                       initial={{ y: 20, opacity: 0, rotate: rotation }}
                       transition={{ ...transition, delay: index * 0.1 }}
                       whileInView={{ y: 0, opacity: 1, rotate: rotation }}
+                      whileHover={{ scale: 1.10 }}
                       viewport={{ once: false, amount: 0.2 }}
-                      className="absolute bg-gradient-to-br pb-16 from-[#1A3A5C] to-[#0F2440] border border-blue-400/30 rounded-[20px] p-4 flex flex-col gap-4 hover:scale-105 hover:border-blue-400/60 transition-all duration-300 shadow-lg justify-center"
+                      className="absolute hover:scale-125 cursor-pointer bg-gradient-to-br pb-16 from-[#1A3A5C] to-[#0F2440] border border-blue-400/30 rounded-[20px] p-4 flex flex-col gap-4 hover:border-blue-400/60 transition-all duration-300 shadow-lg justify-center"
                       style={{
                         width: `${cardWidth}px`,
                         maxWidth: "240px",
@@ -163,7 +170,8 @@ export default function FiveModulesSection() {
                         zIndex,
                       }}
                     >
-                      <div className="flex items-center justify-center mb-2">
+                      <Link href={module.href} target="_blank" className="flex flex-col gap-4">
+                      <div  className="flex items-center justify-center mb-2">
                         {module.icon ? (
                           <Image
                             src={module.icon}
@@ -187,6 +195,7 @@ export default function FiveModulesSection() {
                           <span className={metricColor[index]}>{module.metric}</span>
                         </p>
                       </div>
+                      </Link>
                     </motion.div>
                   );
                 })}
