@@ -20,20 +20,20 @@ const partnerLogos = [
 
 const testimonials = [
   {
-    quote: "Algebrik One has transformed our lending operations, allowing us to serve members faster than ever.",
-    source: "FFCU"
+    quote: "For us, this wasn't just about digitizing lending—it was about choosing a partner that understands where the future of lending is headed,",
+    source: "Barbara Appold, CEO, UFCU"
   },
   {
-    quote: "Algebrik One has transformed our lending operations, allowing us to serve members faster than ever.",
-    source: "FFCU"
+    quote: "At United Financial, our members expect speed, simplicity, and support—and we're all in on delivering it",
+    source: "Josh Sawyer, CLO, UFCU"
   },
   {
-    quote: "Algebrik One has transformed our lending operations, allowing us to serve members faster than ever.",
-    source: "FFCU"
+    quote: "Algebrik One's modularity and built-in AI allow us to approve faster, fund sooner, and stay compliant",
+    source: "Erin Folland, VP Lending, FFCU"
   },
   {
-    quote: "Algebrik One has transformed our lending operations, allowing us to serve members faster than ever.",
-    source: "FFCU"
+    quote: "Algebrik One gives us the agility to meet every member moment with agility, speed and empathy.",
+    source: "Deb Dietz, CEO, FFCU"
   },
 ];
 
