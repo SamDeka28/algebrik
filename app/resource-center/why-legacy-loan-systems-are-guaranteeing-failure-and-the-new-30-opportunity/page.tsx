@@ -9,7 +9,7 @@ import Link from "next/link";
 const blogData = {
   title:
     "Why Legacy Loan Systems Are Guaranteeing Failure (And the New 30% Opportunity)",
-  author: "Team Algebrik",
+  author: "Aditya Bajaj",
   readTime: "5 min read",
   publishedDate: "November 10, 2025",
   heroImage: "/section_images/blog/Why Legacy Loan Systems Are Guaranteeing Failure.png",
@@ -143,12 +143,7 @@ export default function Blog() {
             <div className="flex justify-between items-center w-full border-y border-[#D3D3D3] py-5">
               <div className="flex gap-[16px] items-center">
                 <div className="relative h-[48px] w-[48px] rounded-full overflow-hidden border border-[#D3D3D3]">
-                  <Image
-                    src="/section_images/blog/favicon.svg"
-                    alt="Algebrik favicon"
-                    fill
-                    className="object-cover"
-                  />
+                 <div className="flex justify-center items-center text-xl font-bold rounded-[184.59px] object-cover min-h-[48px] min-w-[48px] text-white bg-[#2a5fac]">AB</div>
                 </div>
                 <div className="flex flex-col">
                   <div>
