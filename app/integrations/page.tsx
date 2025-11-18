@@ -49,12 +49,12 @@ const integrationGroups = [
         description: 'Enable seamless origination and servicing through Algebrik’s KeyStone integration.',
         website: 'https://corelationinc.com',
       },
-      {
-        name: 'Fiserv',
-        image: '/integration_logos/fiserv.png',
-        description: 'Algebrik supports Fiserv core connectivity to power fast, compliant workflows.',
-        website: 'https://fiserv.com',
-      },
+      // {
+      //   name: 'Fiserv',
+      //   image: '/integration_logos/fiserv.png',
+      //   description: 'Algebrik supports Fiserv core connectivity to power fast, compliant workflows.',
+      //   website: 'https://fiserv.com',
+      // },
     ],
   },
   {
