@@ -1,9 +1,14 @@
 "use client";
 
 import { motion, Transition, useReducedMotion } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 const timelineSteps = [
   {
@@ -48,11 +53,11 @@ const timelineSteps = [
   },
 ];
 
-type TimelineStep = (typeof timelineSteps)[number];
-
 const HowItWorksSection = () => {
   const prefersReducedMotion = useReducedMotion();
-  const isMobile = useIsMobile();
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const elementRefs = useRef<(HTMLDivElement | null)[]>([]);
+  
   const transition: Transition = prefersReducedMotion
     ? { duration: 0.01 }
     : { duration: 0.6, ease: "easeOut" };
@@ -63,6 +68,35 @@ const HowItWorksSection = () => {
     transition,
     viewport: { once: false, amount: 0.2 },
   } as const;
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    elementRefs.current.forEach((element, index) => {
+      if (!element) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveIndex(index);
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+          rootMargin: "-20% 0px -20% 0px",
+        }
+      );
+
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
 
   return (
     <section className="relative w-full py-16 md:py-24 px-4 md:px-8 overflow-hidden flex flex-col items-center justify-center">
@@ -97,21 +131,93 @@ const HowItWorksSection = () => {
 
         {/* Desktop timeline */}
         <motion.div {...baseMotion} className="hidden md:block">
+          <style dangerouslySetInnerHTML={{__html: `
+            .vertical-timeline {
+              max-width: 100%;
+              margin: 0 auto;
+            }
+            .vertical-timeline::before {
+              background: linear-gradient(
+                180deg,
+                rgba(198, 215, 240, 0) 0%,
+                #C6D7F0 20%,
+                #C6D7F0 80%,
+                rgba(198, 215, 240, 0) 100%
+              ) !important;
+              width: 4px !important;
+            }
+            .vertical-timeline-element-icon {
+              box-shadow: 0 0 0 4px white, 0 0 0 8px transparent !important;
+              width: 40px !important;
+              height: 40px !important;
+              left: 50% !important;
+              margin-left: -20px !important;
+              display: flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+              font-family: 'Plus Jakarta Sans', sans-serif !important;
+              font-weight: bold !important;
+              font-size: 18px !important;
+            }
+            .vertical-timeline-element-content {
+              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+              border: 1px solid #E7EEF8 !important;
+              border-radius: 20px !important;
+              padding: 0 !important;
+              background: transparent !important;
+            }
+            .vertical-timeline-element-content:hover {
+              box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            }
+            .vertical-timeline-element-content-arrow {
+              border-right: 7px solid white !important;
+              display: none !important;
+            }
+            .vertical-timeline-element--left .vertical-timeline-element-content-arrow,
+            .vertical-timeline-element--right .vertical-timeline-element-content-arrow {
+              border-left: 7px solid white !important;
+            }
+          `}} />
           <div className="relative max-w-5xl mx-auto">
-            {/* timeline line */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 w-[4px] h-[110%]"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(198, 215, 240, 0) 0%, #C6D7F0 20%, #C6D7F0 80%, rgba(198, 215, 240, 0) 100%)",
-              }}
-            />
-
-            <div className="space-y-12">
-              {timelineSteps.map((step, index) => (
-                <TimelineItem key={step.number} step={step} isFirst={index === 0} />
-              ))}
-            </div>
+            <VerticalTimeline lineColor="#C6D7F0" animate={!prefersReducedMotion}>
+              {timelineSteps.map((step, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <VerticalTimelineElement
+                    key={step.number}
+                    className="vertical-timeline-element--work"
+                    date=""
+                    iconStyle={{
+                      background: isActive
+                        ? "linear-gradient(135deg, #1C8DEA 0%, #195BD7 100%)"
+                        : "white",
+                      color: isActive ? "white" : "#2A5FAC",
+                      border: "4px solid white",
+                      transition: "all 0.3s ease",
+                    }}
+                    icon={<span>{step.number}</span>}
+                    position={step.align === "left" ? "left" : "right"}
+                  >
+                    <div
+                      ref={(el) => {
+                        elementRefs.current[index] = el;
+                      }}
+                      className="bg-white rounded-[20px] p-6 shadow-lg border border-[#E7EEF8] hover:shadow-xl transition-shadow flex gap-5 items-center"
+                    >
+                      <div className="flex-shrink-0">
+                        <Image src={step.icon} alt={step.title} width={48} height={48} className="w-12 h-12" />
+                      </div>
+                      <div className="space-y-2 text-left">
+                        <h3 className="text-[#2A5FAC] text-xl font-bold font-plus-jakarta">{step.title}</h3>
+                        <p className="text-[#606060] text-sm font-plus-jakarta leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  </VerticalTimelineElement>
+                );
+              })}
+            </VerticalTimeline>
           </div>
         </motion.div>
 
@@ -164,44 +270,5 @@ const HowItWorksSection = () => {
   );
 };
 
-type TimelineItemProps = {
-  step: TimelineStep;
-  isFirst: boolean;
-};
-
-const TimelineItem = ({ step, isFirst }: TimelineItemProps) => {
-  return (
-    <div className="relative flex items-center">
-      {/* timeline node */}
-      <div
-        className={`absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full border-4 border-white flex items-center justify-center font-plus-jakarta font-bold text-lg shadow-lg ${
-          isFirst
-            ? "bg-gradient-to-br from-[#1C8DEA] to-[#195BD7] text-white"
-            : "bg-white text-[#2A5FAC]"
-        }`}
-      >
-        {step.number}
-      </div>
-
-      <div
-        className={`w-full md:w-1/2 px-4 ${
-          step.align === "left" ? "md:pr-14 md:text-right" : "md:pl-14 md:ml-auto"
-        }`}
-      >
-        <div className="bg-white rounded-[20px] p-6 shadow-lg border border-[#E7EEF8] hover:shadow-xl transition-shadow flex gap-5 items-center">
-          <div className="flex-shrink-0">
-            <Image src={step.icon} alt={step.title} width={48} height={48} className="w-12 h-12" />
-          </div>
-          <div className="space-y-2 text-left">
-            <h3 className="text-[#2A5FAC] text-xl font-bold font-plus-jakarta">{step.title}</h3>
-            <p className="text-[#606060] text-sm font-plus-jakarta leading-relaxed">
-              {step.description}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export default HowItWorksSection;
+

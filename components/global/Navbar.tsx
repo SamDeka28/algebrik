@@ -222,6 +222,12 @@ export default function Navbar() {
     "/resource-center/from-piggy-banks-to-product-hooks-why-credit-unions-need-a-feature-strategy/",
     "/resource-center/ai-is-the-engine-people-are-the-trust",
     "/resource-center/ai-is-the-engine-people-are-the-trust/",
+    "/resource-center/new-in-algebrik-capture-the-heloc-market-onboard-members-in-minutes-and-outsmart-identity-fraud",
+    "/resource-center/new-in-algebrik-capture-the-heloc-market-onboard-members-in-minutes-and-outsmart-identity-fraud/",
+    "/resource-center/why-legacy-loan-systems-are-guaranteeing-failure-and-the-new-30-opportunity",
+    "/resource-center/why-legacy-loan-systems-are-guaranteeing-failure-and-the-new-30-opportunity/",
+    "/resource-center/is-your-technology-handing-the-next-generation-to-the-competition",
+    "/resource-center/is-your-technology-handing-the-next-generation-to-the-competition/",
     ...WEBINARS.map(item => item.link),
     ...WEBINARS.map(item => item.link + "/")
   ]
