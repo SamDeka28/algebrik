@@ -18,7 +18,7 @@ const integrations = [
   // { image: "/partner_icons/cuanswers.webp" },
   { image: "/partner_icons/dealertrack.webp" },
   { image: "/partner_icons/docusign.webp" },
-  { image: "/partner_icons/fiserv.webp" },
+  // { image: "/partner_icons/fiserv.webp" },
   { image: "/partner_icons/jackharry.webp" },
   { image: "/partner_icons/jdpower.webp" },
   { image: "/partner_icons/lexis.webp" },
