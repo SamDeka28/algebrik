@@ -199,7 +199,7 @@ const HowItWorksSection = () => {
                       color: shouldHighlight ? "white" : "#2A5FAC",
                       border: "4px solid white",
                       transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
+              }}
                     icon={<span>{step.number}</span>}
                     position={step.align === "left" ? "left" : "right"}
                   >
@@ -220,7 +220,7 @@ const HowItWorksSection = () => {
                           {step.description}
                         </p>
                       </div>
-                    </div>
+            </div>
                   </VerticalTimelineElement>
                 );
               })}

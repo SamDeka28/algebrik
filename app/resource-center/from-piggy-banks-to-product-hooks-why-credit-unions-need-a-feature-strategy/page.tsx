@@ -6,6 +6,7 @@ import { CustomHeader } from "@/components/CustomHeader";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const blogData = {
   "title": "From Piggy Banks to Product Hooks: Why Credit Unions Need a Feature Strategy",
@@ -102,6 +103,16 @@ const blogData = {
 }
 
 export default function Blog() {
+  const pathname = usePathname();
+  // Extract the slug from pathname like /resource-center/slug-name
+  const pathSegments = pathname.split('/').filter(Boolean);
+  const currentBlogSlug = pathSegments[pathSegments.length - 1] || '';
+  
+  // Filter out the current blog article
+  const otherBlogs = blogContent.filter(
+    (blog) => blog.blogSubtitle !== currentBlogSlug
+  );
+
   return (
     <>
       <div className="container mx-auto px-5 md:px-0 py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
@@ -213,7 +224,7 @@ export default function Blog() {
             <CustomHeader text="More Blogs" className="text-center" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-              {blogContent.slice(0, 3).map((blog, index) => (
+              {otherBlogs.slice(0, 3).map((blog, index) => (
                 <div
                   key={index}
                   className="bg-white max-w-[360px] h-[528px] text-gray-900 rounded-[20px] shadow p-6 relative flex flex-col"
