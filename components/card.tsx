@@ -11,7 +11,7 @@ import Card from "./card/Card";
             title="Seamless Experiences for your Members."
             description="Deliver seamless, personalized experiences that enhance member satisfaction and loyalty."
             buttonText="Know More"
-            buttonLink="/solutions/credit_union"
+            buttonLink="/solutions/algebrik-for-credit-unions"
             imageHeight={322}
             imageWidth={322}
             customStyles={{

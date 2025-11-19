@@ -11,7 +11,7 @@ export const WEBINARS=[
         title : "Generative Al vs. Agentic Al-And Why It Matters for Loan Origination",
         link: "/webinars/12-aug-2025",
         eventDate: "12 Aug, 2025",
-        linkedin : "https://www.linkedin.com/events/generativeaivsagenticai-whyitma7349433544881950720/"
+        youtube : "https://www.youtube.com/embed/fcspLK4aw8Q?si=rdfkG988EQKVp5kT"
     },
     {
         image : "/background_images/heroimg.webp",

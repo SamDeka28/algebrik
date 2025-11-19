@@ -37,7 +37,7 @@ const Footer = () => {
               {" "}
               <li>Platform</li>{" "}
             </Link>
-            <Link href="/solutions/credit_union" passHref>
+            <Link href="/solutions/algebrik-for-credit-unions" passHref>
               {" "}
               <li>For Credit Unions</li>
             </Link>
@@ -94,7 +94,7 @@ const Footer = () => {
                 {" "}
                 <li>Platform</li>{" "}
               </Link>
-              <Link href="/solutions/credit-union" passHref>
+              <Link href="/solutions/algebrik-for-credit-unions" passHref>
                 {" "}
                 <li>For Credit Unions</li>
               </Link>

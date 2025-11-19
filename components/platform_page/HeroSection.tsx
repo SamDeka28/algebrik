@@ -28,7 +28,7 @@ export default function HeroSection() {
               className="text-[36px] md:text-[56px] text-white text-center px-20 leading-[45px] md:leading-none md:px-0"
             />
             <CustomSubtitle
-              text="Algebrik One unifies digital account opening, loan origination, decisioning, and analytics - so credit unions and community lenders can originate faster, decide smarter, and serve members better."
+              text="Algebrik One unifies digital account opening, point-of-sale, loan origination, decisioning, and analytics - so credit unions and community lenders can originate faster, decide smarter, and serve members better."
               className="text-[16px] md:text-[18px] text-gray-300 font-plus-jakarta font-normal text-center px-10"
             />
           </div>
