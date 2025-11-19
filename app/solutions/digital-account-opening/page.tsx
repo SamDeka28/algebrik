@@ -268,20 +268,25 @@ export default function DecisioningPage() {
                 {/* <p className="text-gray-600 text-center max-w-4xl mb-10 mt-6">
                     Deliver seamless, personalised member experiences across every channel, while empowering your team with faster decisions and scalable solutions
                 </p> */}
-                <div className="flex flex-col md:flex-row gap-6 w-full justify-center z-10">
+                <div className="flex flex-col md:flex-row gap-6 w-full justify-center z-10 mt-6">
                     {beforeAfterData.map((card, idx) => (
                         <div key={card.type} className={card.cardClass}>
                             <h3 className={card.titleClass}>
                                 {card.icon && <span className="mr-1">{card.icon}</span>}
                                 {card.title}
                             </h3>
-                            <ul className={card.textClass} style={{ marginTop: "20px" }}>
+                            <ul className={`grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-3`} style={{ marginTop: "20px" }}>
                                 {card.items.map((item, i) => (
-                                    <li key={i} className="flex items-center gap-2">{card.type === "before" ? (
-                                        <Image src="/icons/info-circle.svg" alt="Tick" width={20} height={20} />
-                                    ) : (
-                                        <Image src="/icons/tick-circle.svg" alt="Info" width={20} height={20} />
-                                    )} {item}</li>
+                                    <li key={i} className="flex items-center gap-4 text-left">
+                                        {card.type === "before" ? (
+                                            <Image src="/icons/info-circle.svg" alt="Info" width={20} height={20} className="mt-0.5 flex-shrink-0 h-full min-w-10" />
+                                        ) : (
+                                            <Image src="/icons/tick-circle.svg" alt="Check" width={20} height={20} className="mt-0.5 flex-shrink-0 h-full min-w-10" />
+                                        )}
+                                        <span className={`text-sm md:text-base font-plus-jakarta !font-normal leading-relaxed ${card.type === "after" ? "text-white" : "text-gray-600"}`}>
+                                            {item}
+                                        </span>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
