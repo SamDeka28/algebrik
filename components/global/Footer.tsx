@@ -143,11 +143,19 @@ const Footer = () => {
         {/* Desktop */}
         <div className="hidden md:block ">
           <div>
-            <h3 className="text-white font-medium mb-[29px]">Company</h3>
+            <h3 className="text-white font-medium mb-[29px]">About us</h3>
             <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap-[7px]">
               <Link href="/about" passHref>
                 {" "}
-                <li>About us</li>
+                <li>Company</li>
+              </Link>
+              <Link href="/integrations" passHref>
+                {" "}
+                <li>Integrations</li>
+              </Link>
+              <Link href="/become-a-partner" passHref>
+                {" "}
+                <li>Become a Partner</li>
               </Link>
               <Link href="/contact" passHref>
                 {" "}
@@ -164,11 +172,19 @@ const Footer = () => {
         {/* Mobile */}
         <div className="md:hidden flex flex-col gap-10 md:space-x-0">
           <div>
-            <h3 className="text-white font-medium mb-[29px]">Company</h3>
+            <h3 className="text-white font-medium mb-[29px]">About us</h3>
             <ul className="space-y-1 text-[#787C91] text-[14px] flex flex-col gap-[7px]">
               <Link href="/about" passHref>
                 {" "}
-                <li>About us</li>
+                <li>Company</li>
+              </Link>
+              <Link href="/integrations" passHref>
+                {" "}
+                <li>Integrations</li>
+              </Link>
+              <Link href="/become-a-partner" passHref>
+                {" "}
+                <li>Become a Partner</li>
               </Link>
               <button onClick={() => setShowContactModal(true)} style={{all:"unset"}}>
                 {" "}
