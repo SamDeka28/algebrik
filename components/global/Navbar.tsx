@@ -41,7 +41,7 @@ const partnerData: { [key: string]: Partner } = {
     image: '/menu-icons/ef.png',
     category: 'Core Banking & Financial Data',
     description: 'Consumer-permissioned access to real-time financial data enabling faster, more accurate lending decisions.',
-    website: 'https://www.equifax.com/',
+    website: 'https://algebrik.ai/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/',
     logoClass: 'bg-gradient-to-r from-green-400 to-blue-400'
   },
   'Plaid': {
@@ -49,7 +49,7 @@ const partnerData: { [key: string]: Partner } = {
     image: "/menu-icons/plaid.png",
     category: 'Core Banking & Financial Data',
     description: 'Consumer-permissioned access to real-time financial data enabling faster, more accurate lending decisions.',
-    website: 'https://plaid.com',
+    website: 'https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity',
     logoClass: 'bg-gradient-to-r from-green-400 to-blue-400'
   },
   'Corelation': {
@@ -57,7 +57,7 @@ const partnerData: { [key: string]: Partner } = {
     image: "/menu-icons/cr.png",
     category: 'Document & Workflow Management',
     description: 'Industry-leading electronic signature technology with new sonic identity reflecting leadership position.',
-    website: 'https://corelationinc.com/',
+    website: 'https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience',
     logoClass: 'bg-yellow-500'
   },
   'Jack Henry': {
@@ -65,7 +65,7 @@ const partnerData: { [key: string]: Partner } = {
     image: "/menu-icons/jh.png",
     category: 'Credit Bureaus',
     description: 'Comprehensive credit reporting and risk assessment with deep industry expertise and tradition of trust in lending decisions.',
-    website: 'https://www.jackhenry.com/',
+    website: 'https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program',
     logoClass: 'bg-red-600'
   },
   'TruStage': {
@@ -73,7 +73,7 @@ const partnerData: { [key: string]: Partner } = {
     image: "/menu-icons/ts.png",
     category: 'Auto Lending & Vehicle Data',
     description: 'Comprehensive F&I platform connecting dealerships with approximately 1,500 integrated finance sources.',
-    website: 'https://www.trustage.com/',
+    website: 'https://www.prnewswire.com/news-releases/algebrik-ai-partners-with-trustage-to-offer-embedded-lending-protection-products-through-the-loan-origination-journey-302488113.html',
     logoClass: 'bg-blue-600'
   }
 };

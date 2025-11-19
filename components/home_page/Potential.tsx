@@ -98,7 +98,7 @@ export default function Potential() {
       {
         title: "Exceptional Experiences",
         description:
-          "Delight borrowers with seamless onboarding, real-time updates, and simplified agreements.",
+          "Delight your borrowers with unified lending journeys, seamless onboarding, and instant processing.",
         image: "/section_images/exceptional.png",
       },
     ],
