@@ -56,6 +56,7 @@ const timelineSteps = [
 const HowItWorksSection = () => {
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const elementRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   const transition: Transition = prefersReducedMotion
@@ -158,6 +159,7 @@ const HowItWorksSection = () => {
               font-family: 'Plus Jakarta Sans', sans-serif !important;
               font-weight: bold !important;
               font-size: 18px !important;
+              transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
             }
             .vertical-timeline-element-content {
               box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
@@ -181,19 +183,22 @@ const HowItWorksSection = () => {
           <div className="relative max-w-5xl mx-auto">
             <VerticalTimeline lineColor="#C6D7F0" animate={!prefersReducedMotion}>
               {timelineSteps.map((step, index) => {
-                const isActive = activeIndex === index;
+                // Highlight if hovered (all up to hovered index) or if active (only the active one)
+                const shouldHighlight = hoveredIndex !== null 
+                  ? index <= hoveredIndex 
+                  : index === activeIndex;
                 return (
                   <VerticalTimelineElement
                     key={step.number}
                     className="vertical-timeline-element--work"
                     date=""
                     iconStyle={{
-                      background: isActive
+                      background: shouldHighlight
                         ? "linear-gradient(135deg, #1C8DEA 0%, #195BD7 100%)"
                         : "white",
-                      color: isActive ? "white" : "#2A5FAC",
+                      color: shouldHighlight ? "white" : "#2A5FAC",
                       border: "4px solid white",
-                      transition: "all 0.3s ease",
+                      transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                     icon={<span>{step.number}</span>}
                     position={step.align === "left" ? "left" : "right"}
@@ -202,7 +207,9 @@ const HowItWorksSection = () => {
                       ref={(el) => {
                         elementRefs.current[index] = el;
                       }}
-                      className="bg-white rounded-[20px] p-6 shadow-lg border border-[#E7EEF8] hover:shadow-xl transition-shadow flex gap-5 items-center"
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      className="bg-white rounded-[20px] p-6 shadow-lg border border-[#E7EEF8] hover:shadow-xl transition-all duration-300 ease-in-out flex gap-5 items-center"
                     >
                       <div className="flex-shrink-0">
                         <Image src={step.icon} alt={step.title} width={48} height={48} className="w-12 h-12" />
@@ -246,20 +253,20 @@ const HowItWorksSection = () => {
           ))}
         </motion.div>
 
-        <motion.div {...baseMotion} className="mt-16 text-center">
-          <h3 className="text-[#1A3A5C] text-[18px] md:text-[22px] font-bold font-plus-jakarta mb-6">
+        <motion.div {...baseMotion} className="mt-20 md:mt-24 text-center">
+          <h3 className="text-[#1A3A5C] text-[20px] md:text-[24px] font-bold font-plus-jakarta mb-8 md:mb-10">
             Ready to see Algebrik One in action?
           </h3>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 md:gap-6">
             <Link
               href="/contact"
-              className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-7 py-3 rounded-full font-semibold font-plus-jakarta shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] text-white px-8 py-4 rounded-full font-semibold font-plus-jakarta text-base md:text-lg shadow-lg hover:shadow-xl hover:from-[#195BD7] hover:to-[#1C8DEA] transition-all duration-300 w-full sm:w-auto"
             >
               Request a Demo
             </Link>
             <Link
               href="/platform#modules"
-              className="border border-[#1C8DEA] text-[#1C8DEA] px-7 py-3 rounded-full font-semibold font-plus-jakarta hover:bg-[#E8F3FF] transition-all duration-300"
+              className="border-2 border-[#1C8DEA] text-[#1C8DEA] px-8 py-4 rounded-full font-semibold font-plus-jakarta text-base md:text-lg hover:bg-[#E8F3FF] hover:border-[#195BD7] transition-all duration-300 w-full sm:w-auto"
             >
               Explore the Modules
             </Link>

@@ -29,8 +29,8 @@ const carouselData: CarouselItem[] = [
     target: "_self"
   },
   {
-    header: "Webinar",
-    cardTitle: "WEBINAR",
+    header: "Webinars",
+    cardTitle: "WEBINARS",
     title: "Revolutionizing Lending with AI: Case Studies of Success",
     description:
       "Learn how companies are leveraging Algebrik AI's platform to streamline loan origination processes, increase efficiency, and drive results in the financial sector.",

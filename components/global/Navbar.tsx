@@ -326,7 +326,7 @@ export default function Navbar() {
                   {/* Column 1: By Institution */}
                   <div className="flex flex-col min-w-[260px] gap-3">
                     <div className="text-[18px] p-3 font-bold text-[#FFFFFF] border-b border-[#4571AF]">By Institution</div>
-                    <Link href="/solutions/credit-union" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
+                    <Link href="/solutions/algebrik-for-credit-unions" className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-white/10 transition text-white text-base font-medium">
                       <Image src="/icons/svg/bank.svg" alt="Credit Unions Icon" width={20} height={20} />
                       Credit Unions
                     </Link>
@@ -491,7 +491,7 @@ export default function Navbar() {
             </div>
             {isSolutionsOpen && (
               <div className="pl-6">
-                <Link href="/solutions/credit-union" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
+                <Link href="/solutions/algebrik-for-credit-unions" onClick={toggleMenu} className="block px-6 py-3 text-[18px] hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">
                   Credit Union
                 </Link>
                 <Link href="/solutions/auto-lenders" onClick={toggleMenu} className="block px-6 py-3 text-[18px]  hover:bg-[#153A6F] opacity-85 rounded-[8px] hover:text-white">

@@ -8,7 +8,7 @@ import { CustomHeader, CustomSubtitle } from "../CustomHeader";
 export default function HeroSection() {
   const pathname = usePathname();
 
-  const isCreditUnion = pathname.includes("credit-union");
+  const isCreditUnion = pathname.includes("credit-union") || pathname.includes("algebrik-for-credit-unions");
   const isAutoLenders = pathname.includes("auto-lenders");
   const isSmbLenders = pathname.includes("banks");
 
