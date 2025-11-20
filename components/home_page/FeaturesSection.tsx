@@ -6,16 +6,16 @@ import { motion } from "framer-motion";
 
 
 const features = [
-  { title: "Borrower Communication", icon: "/icons/home/bc.svg" },
-  { title: "Fund Disbursement", icon: "/icons/home/fu.svg" },
-  { title: "Borrower Verification", icon: "/icons/home/bv.svg" },
-  { title: "Origination", icon: "/icons/home/or.svg" },
-  { title: "Application Management", icon: "/icons/home/am.svg" },
-  { title: "AI-Lender Enablement", icon: "/icons/home/ai.svg" },
-  { title: "Agreement Generation", icon: "/icons/home/ag.svg" },
-  { title: "Document Processing", icon: "/icons/home/do.svg" },
-  { title: "KYC Automation", icon: "/icons/home/ka.svg" },
-  { title: "Credit Scoring", icon: "/icons/home/cs.svg"}
+  { title: "Digital Account Opening", icon: "/icons/home/bc.svg" },
+  { title: "Document Processing", icon: "/icons/home/fu.svg" },
+  { title: "Point of Sale", icon: "/icons/home/bv.svg" },
+  { title: "Borrower Communication", icon: "/icons/home/or.svg" },
+  { title: "AI powered Decisioning", icon: "/icons/home/am.svg" },
+  { title: "Origination", icon: "/icons/home/ai.svg" },
+  { title: "Member Verification", icon: "/icons/home/ag.svg" },
+  { title: "Application Management", icon: "/icons/home/do.svg" },
+  { title: "Portfolio Analytics", icon: "/icons/home/ka.svg" },
+  { title: "AI Lender Enablement", icon: "/icons/home/cs.svg"}
 ];
 
 export default function FeaturesSection() {

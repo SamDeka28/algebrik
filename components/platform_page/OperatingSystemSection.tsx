@@ -24,7 +24,7 @@ export default function OperatingSystemSection() {
           {/* Left Side - Text Content */}
           <div className="flex-1 flex flex-col gap-6 md:gap-8">
             <h2 className="text-[32px] md:text-[40px] lg:text-[40px] font-plus-jakarta font-bold text-[#2A5FAC] leading-tight">
-              More than an LOS. The Operating System for Modern Lending
+              More than an LOS. The Operating System for Modern Lending.
             </h2>
             
             <div className="flex flex-col text-[#606060] text-[16px] md:text-[20px] font-plus-jakarta leading-relaxed">

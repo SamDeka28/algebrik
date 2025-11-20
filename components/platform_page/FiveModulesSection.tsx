@@ -77,7 +77,7 @@ export default function FiveModulesSection() {
                 className="text-[32px] lg:text-[48px] text-white mb-6"
               />
               <CustomSubtitle
-                text="Whether you're modernizing consumer lending or indirect auto, Algebrik One connects every member touchpoint - from application to funding - powered by Agentic AI. Each module drives measurable impact while working as part of one continuous flow."
+                text="Whether you're modernizing consumer lending or upending your entire onboarding journey, Algebrik One connects every member touchpoint - from application to funding - powered by Agentic AI. Each module drives measurable impact while working as part of one continuous flow"
                 className="text-[16px] md:text-[20px] text-white/90 max-w-4xl mx-auto"
               />
             </div>
@@ -206,14 +206,14 @@ export default function FiveModulesSection() {
             <div
               className="md:block hidden text-center z-40 mt-8 md:mt-12 absolute bottom-0 w-full left-0 right-0 rounded-t-[100%] p-4 bg-[#043071] py-[28px]"
             >
-              <p className="text-white text-[16px] md:text-[18px] font-plus-jakarta">
+              <p className="text-white text-[16px] md:text-[18px] font-plus-jakarta !font-bold">
                 Only Algebrik One runs all five modules on a single intelligence layer - no data silos, no vendor chaos.
               </p>
             </div>
             <div
               className="md:hidden block text-center z-40 mt-8 md:mt-12  w-full p-4 bg-[#043071] py-[28px]"
             >
-              <p className="text-white text-[16px] md:text-[18px] font-plus-jakarta">
+              <p className="text-white text-[16px] md:text-[18px] font-plus-jakarta !font-bold">
                 Only Algebrik One runs all five modules on a single intelligence layer - no data silos, no vendor chaos.
               </p>
             </div>

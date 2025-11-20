@@ -61,6 +61,15 @@ export default function Articles() {
       image:"/section_images/blog/ya.webp"
     },
     {
+      title:"Algebrik AI and Housetable Announce Strategic Partnership and Advisory Engagement",
+      author: "The Credit Union Connection",
+      source:"The Credit Union Connection",
+      role:"Marketing",
+      description:"Algebrik AI today announced a strategic partnership with Housetable, a fast-growing platform dedicated to digital renovation lending.",
+      link:"https://thecreditunionconnection.com/algebrik-ai-and-housetable-announce-strategic-partnership-and-advisory-engagement/",
+      image:"https://thecreditunionconnection.com/wp-content/uploads/2024/10/37B7B312-4939-45D4-9CE0-B07F18E21853-2.jpeg"
+    },
+    {
       title:"Algebrik AI Partners with Spinwheel to Streamline Debt Data & Payments in Loan Origination",
       author: "PR Newswire",
       source:"PR Newswire",

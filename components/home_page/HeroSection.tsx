@@ -76,9 +76,8 @@ export default function HeroSection() {
             Transform Lending into an{" "}
             <span className="font-semibold">Experience</span>
           </h1>
-          <p className="text-white text-[16px] font-normal md:text-[18px] font-plus-jakarta md:font-light opacity-80 leading-relaxed">
-            The World's first AI and Cloud Native LOS makes lending journeys
-            what they should be – Fast, Intuitive, Seamless.
+          <p className="text-white text-[16px] text-center lg:text-left font-normal md:text-[18px] font-plus-jakarta md:font-light opacity-80 leading-relaxed">
+            The World’s First Cloud-native, AI-powered Loan Origination Suite makes lending journeys what they should be- Fast, Intuitive, Seamless.
           </p>
           <div className="relative md:static -bottom-48 z-20">
             <BookADemo />
@@ -86,7 +85,7 @@ export default function HeroSection() {
         </div>
 
 
-        <div className="flex justify-center items-center flex-shrink-0 pt-0 md:pt-10 z-10">
+        <div className="flex justify-center items-center flex-shrink-0 pt-10 md:pt-10 z-10">
           <Image
             src={mobileHeroImage}
             alt="Hero Section Image Mobile"

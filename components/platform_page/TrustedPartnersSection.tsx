@@ -57,7 +57,7 @@ export default function TrustedPartnersSection() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-12 md:mb-0">
             <CustomHeader
               text="Trusted Partners & Proven Results"
               className="text-[32px] md:text-[40px] lg:text-[48px] text-[#2A5FAC] mb-6"
@@ -65,35 +65,37 @@ export default function TrustedPartnersSection() {
           </div>
 
           {/* Partner Logos Row */}
-          <div className="text-center  w-full">
-            <Marquee autoFill className="grid grid-cols-2 md:flex items-center py-5 gap-4 md:gap-4  w-full">
-            {partnerLogos.map((partner, index) => (
-              <motion.div
-                key={partner.name}
-                // initial={{ y: 20, opacity: 0 }}
-                transition={{ ...transition, delay: index * 0.1 }}
-                // whileInView={{ y: 0, opacity: 1 }}
-                whileHover={{ scale: 1.05 }}
-                viewport={{ once: false, amount: 0.2 }}
-                className="mr-4 bg-white  cursor-pointer rounded-lg border border-[#C3C3C3] p-3 md:p-4 lg:p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 h-[48px] md:h-[56px] md:flex-shrink-0"
-              >
-                <Image
-                  src={partner.image}
-                  alt={partner.name}
-                  width={120}
-                  height={60}
-                  className="max-w-[90px] md:max-w-[100px] lg:max-w-[120px] h-auto object-contain"
-                />
-              </motion.div>
-            ))}
+          <div className="text-center w-full mb-8">
+            <Marquee autoFill className="grid grid-cols-2 md:flex items-center py-5 gap-4 md:gap-4 w-full">
+              {partnerLogos.map((partner, index) => (
+                <motion.div
+                  key={partner.name}
+                  // initial={{ y: 20, opacity: 0 }}
+                  transition={{ ...transition, delay: index * 0.1 }}
+                  // whileInView={{ y: 0, opacity: 1 }}
+                  whileHover={{ scale: 1.05 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  className="mr-4 bg-white cursor-pointer rounded-lg border border-[#C3C3C3] p-4 md:p-5 lg:p-7 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 h-[64px] md:h-[80px] lg:h-[96px] md:flex-shrink-0"
+                >
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    width={160}
+                    height={70}
+                    className="max-w-[120px] md:max-w-[140px] lg:max-w-[180px] h-auto object-contain"
+                  />
+                </motion.div>
+              ))}
             </Marquee>
-            <Button 
-            text="View All Partners"
-            customClass="bg-transparent border border-[#2A5FAC] text-[#2A5FAC] hover:bg-[#2A5FAC] hover:text-white px-6 py-3 rounded-full min-w-max"
-            onClick={() => {
-              router.push('/integrations');
-            }}
-          />
+            <div className="mt-8 flex justify-center">
+              <Button 
+                text="View All Partners"
+                customClass="bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] border-2 border-[#2A5FAC] text-white hover:bg-gradient-to-r hover:from-[#195BD7] hover:to-[#1C8DEA] hover:shadow-lg px-8 py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 w-auto flex-none"
+                onClick={() => {
+                  router.push('/integrations');
+                }}
+              />
+            </div>
           </div>
         </div>
 
@@ -104,13 +106,9 @@ export default function TrustedPartnersSection() {
               className="flex gap-4 md:gap-6 pb-4 pt-10 overflow-x-auto scroll-smooth pl-4 md:pl-[max(32px,calc((100%-1280px)/2+32px))] pr-4 md:pr-8 hide-scrollbar" 
             >
               {testimonials.map((testimonial, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ y: 20, opacity: 0 }}
-                  transition={{ ...transition, delay: index * 0.1 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: false, amount: 0.2 }}
-                  className="bg-white mr-4 rounded-[20px] p-5 md:p-9 flex-shrink-0 relative flex flex-col w-[240px] md:w-[calc((1280px-64px-48px)/3)] overflow-visible pt-6 md:pt-8"
+                  className="bg-white mr-4 rounded-[20px] p-6 md:p-9 flex-shrink-0 relative flex flex-col w-[280px] md:w-[380px] lg:w-[400px] h-[280px] md:h-[220px] overflow-visible"
                   style={{
                     boxShadow: '-10px 4px 20px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(0, 0, 0, 0.04)'
                   }}
@@ -132,7 +130,7 @@ export default function TrustedPartnersSection() {
                 </p>
 
                 {/* Quote */}
-                <p className="text-[#333333] text-[13px] md:text-[15px] font-plus-jakarta leading-relaxed mb-5 flex-grow relative z-10 pr-2">
+                <p className="text-[#333333] text-[13px] md:text-[15px] font-plus-jakarta leading-relaxed mb-4 flex-grow relative z-10 pr-2 overflow-hidden">
                   "{testimonial.quote}"
                 </p>
 
@@ -140,7 +138,7 @@ export default function TrustedPartnersSection() {
                 <p className="text-[#3B82F6] text-[13px] md:text-[15px] font-plus-jakarta font-semibold text-right relative z-10 mt-auto">
                   - {testimonial.source}
                 </p>
-                </motion.div>
+                </div>
               ))}
             </Marquee>
           </div>

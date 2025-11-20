@@ -22,7 +22,7 @@ const FAQs = () => {
       case '/solutions/auto_lenders':
         data = footerData.SolutionsForAutoLenders;
         break;
-      case '/solutions/credit_union':
+      case '/solutions/algebrik-for-credit-unions':
         data = footerData.SolutionsForCreditUnions;
         break;
       case '/solutions/banks':

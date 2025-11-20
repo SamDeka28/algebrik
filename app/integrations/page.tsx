@@ -18,6 +18,7 @@ const integrationGroups = [
         image: '/integration_logos/equifax.png',
         description: 'Instantly access credit reports and scores for streamlined underwriting.',
         website: 'https://equifax.com',
+        newsArticle: '/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/',
       },
       {
         name: 'Experian',
@@ -42,12 +43,14 @@ const integrationGroups = [
         image: '/integration_logos/jackharry.png',
         description: 'Algebrik connects natively with Jack Henry to sync account and member data in real time.',
         website: 'https://jackhenry.com',
+        newsArticle: 'https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program',
       },
       {
         name: 'Corelation',
         image: '/integration_logos/corelation.png',
-        description: 'Enable seamless origination and servicing through Algebrik’s KeyStone integration.',
+        description: "Enable seamless origination and servicing through Algebrik's KeyStone integration.",
         website: 'https://corelationinc.com',
+        newsArticle: 'https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience',
       },
       // {
       //   name: 'Fiserv',
@@ -66,6 +69,7 @@ const integrationGroups = [
         image: '/integration_logos/ottomoto.png',
         description: 'Algebrik automates dealer-submitted loan ingestion via OttoMoto.',
         website: 'https://ottomoto.com',
+        newsArticle: 'https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO',
       },
       {
         name: 'RouteOne',
@@ -96,12 +100,14 @@ const integrationGroups = [
         image: '/integration_logos/plaid.png',
         description: 'Algebrik lets borrowers share bank and income data securely through Plaid.',
         website: 'https://plaid.com',
+        newsArticle: 'https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity',
       },
       {
         name: 'Conductiv',
         image: '/integration_logos/conductiv.png',
         description: 'Power income verification inside Algebrik with payroll access via Conductiv.',
         website: 'https://conductiv.com',
+        newsArticle: '/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting',
       },
       // {
       //   name: 'SpringVerify',
@@ -130,8 +136,9 @@ const integrationGroups = [
       {
         name: 'Plaid',
         image: '/integration_logos/plaid.png',
-        description: 'Detect anomalies and reduce risk via Plaid’s fraud prevention capabilities within Algebrik.',
+        description: "Detect anomalies and reduce risk via Plaid's fraud prevention capabilities within Algebrik.",
         website: 'https://plaid.com',
+        newsArticle: 'https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity',
       },
       {
         name: 'SentiLink',
@@ -162,6 +169,7 @@ const integrationGroups = [
         image: '/integration_logos/plaid.png',
         description: 'Confirm bank ownership and account legitimacy with Plaid inside Algebrik.',
         website: 'https://plaid.com',
+        newsArticle: 'https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity',
       },
       //   {
       // name: 'Socure',
@@ -180,6 +188,7 @@ const integrationGroups = [
         image: '/integration_logos/trustage.png',
         description: 'Algebrik embeds TruStage protection products directly into the borrower journey.',
         website: 'https://trustage.com',
+        newsArticle: 'https://www.prnewswire.com/news-releases/algebrik-ai-partners-with-trustage-to-offer-embedded-lending-protection-products-through-the-loan-origination-journey-302488113.html',
       },
       {
         name: 'Allied Solutions',
@@ -190,8 +199,9 @@ const integrationGroups = [
       {
         name: 'Auto Exam',
         image: '/integration_logos/auto.png',
-        description: 'Algebrik enables Auto Exam’s mechanical coverage as part of auto loan flows.',
+        description: "Algebrik enables Auto Exam's mechanical coverage as part of auto loan flows.",
         website: 'https://autoexam.com',
+        newsArticle: 'https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions',
       },
       {
         name: 'SWBC',
@@ -228,6 +238,7 @@ const integrationGroups = [
         image: '/integration_logos/carle.png',
         description: 'Generate compliant disclosures and payoff quotes in Algebrik via Carleton.',
         website: 'https://carleton.com',
+        newsArticle: 'https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance',
       },
       {
         name: 'J.D. Power',
@@ -282,26 +293,40 @@ const featuredIntegrations = featuredIntegrationNames
 
 // 2. Remove old partnerData, categories, featuredPartners, and related logic
 // 3. Partner Card (reuse, but use new data)
-const PartnerCard = ({ partner }: { partner: { name: string; image: string; description: string; website: string } }) => {
+const PartnerCard = ({ partner }: { partner: { name: string; image: string; description: string; website: string; newsArticle?: string } }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const handlePartnerClick = () => {
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const link = partner.newsArticle || partner.website;
+    if (link && link !== '#') {
+      // Check if it's a relative path (starts with /) or external URL
+      if (link.startsWith('/')) {
+        window.location.href = link;
+      } else {
+        window.open(link, '_blank');
+      }
+    }
+  };
+  const handleCardClick = () => {
     if (partner.website && partner.website !== '#') {
       window.open(partner.website, '_blank');
     }
   };
   return (
     <motion.div
-      className={`bg-white border border-gray-200 rounded-xl p-6 text-center cursor-pointer transition-all duration-300 ${isHovered ? 'border-blue-500' : ''}`}
+      className={`bg-white border border-gray-200 rounded-xl p-6 text-center transition-all duration-300 ${isHovered ? 'border-blue-500' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={handlePartnerClick}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mb-4 flex justify-center items-center h-28 w-full">
+      <div 
+        className="mb-4 flex justify-center items-center h-28 w-full cursor-pointer"
+        onClick={handleLogoClick}
+      >
         <img src={partner.image} alt={partner.name} className="w-1/2 h-full object-contain" />
       </div>
-      <h4 className="text-lg font-semibold mb-2 text-[#2A5FAC]">{partner.name}</h4>
+      <h4 className="text-lg font-semibold mb-2 text-[#2A5FAC] cursor-pointer" onClick={handleCardClick}>{partner.name}</h4>
       <p className="text-sm text-[#2A5FAC] opacity-80 leading-relaxed">{partner.description}</p>
     </motion.div>
   );
