@@ -1,4 +1,4 @@
-export const WEBINARS=[
+export const WEBINARS : {image: string, title: string, link: string, eventDate: string, youtube?: string, linkedin?: string}[] = [
     {
         image :"/background_images/20nov.png",
         title : "Make Lending Great Again: Reclaiming the Heart of Credit Union Lending in the Age of AI",
