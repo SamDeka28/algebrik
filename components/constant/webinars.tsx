@@ -4,7 +4,7 @@ export const WEBINARS=[
         title : "Make Lending Great Again: Reclaiming the Heart of Credit Union Lending in the Age of AI",
         link: "/webinars/20-nov-2025",
         eventDate: "20 Nov, 2025",
-        linkedin : "https://www.linkedin.com/events/make-lending-great-again-reclaiming-the-heart-of-credit-union-lending-in-the-age-of-ai-7349433544881950720/"
+        youtube : "https://www.youtube.com/embed/C3-W1akxBkc?si=aK4W73fBbz5YzYvK"
     },
     {
         image :"/background_images/12aug2pm-m.png",

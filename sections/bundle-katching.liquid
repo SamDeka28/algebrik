@@ -1,0 +1,1710 @@
+<!-- Point d'ancrage du bundle -->
+{% assign bundle_root_id = 'bundle-root-' | append: block.id %}
+{% if block.id == blank %}
+  {% assign bundle_root_id = 'bundle-root-default' %}
+{% endif %}
+<div id="{{ bundle_root_id }}" 
+     data-badge-variant-1-text="{{ block.settings.variant_1_badge_text | escape }}"
+     data-badge-variant-1-show="{{ block.settings.variant_1_show_badge }}"
+     data-badge-variant-2-text="{{ block.settings.variant_2_badge_text | escape }}"
+     data-badge-variant-2-show="{{ block.settings.variant_2_show_badge }}"
+     data-badge-variant-3-text="{{ block.settings.variant_3_badge_text | escape }}"
+     data-badge-variant-3-show="{{ block.settings.variant_3_show_badge }}"
+     data-badge-variant-4-text="{{ block.settings.variant_4_badge_text | escape }}"
+     data-badge-variant-4-show="{{ block.settings.variant_4_show_badge }}"
+     data-monthly-label="{{ block.settings.monthly_delivery_label | default: 'Monthly Delivery' | escape }}"
+     data-monthly-subtext="{{ block.settings.monthly_delivery_subtext | default: 'Save more' | escape }}"
+     data-monthly-description="{{ block.settings.monthly_delivery_description | default: 'Delivered every 4 weeks.' | escape }}"
+     data-onetime-label="{{ block.settings.one_time_purchase_label | default: 'One time purchase' | escape }}"
+     data-onetime-template="{{ block.settings.one_time_purchase_description_template | default: '1 Jar shipped once.' | escape }}"
+     data-free-offer-header="{{ block.settings.free_offer_header | default: 'FREE Alpha Coffee with your first delivery' | escape }}"
+     data-testimonial-quote="{{ block.settings.testimonial_quote | strip_html | escape }}"
+     data-testimonial-author="{{ block.settings.testimonial_author | default: 'John D.' | escape }}"
+     data-testimonial-avatar="{% if block.settings.testimonial_avatar %}{{ block.settings.testimonial_avatar | image_url: width: 120 }}{% endif %}">
+</div>
+<script>
+  console.log('[BUNDLE] Root div created with ID:', '{{ bundle_root_id }}');
+</script>
+
+<style>
+  .bundle__header{
+    margin-bottom: 2rem;
+  }
+  .bundle__product-title{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+  }
+  .bundle__payment-info{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  .bundle__shop-pay-link{
+    color: #6d388b;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .bundle__cards { display:grid; }
+  .bundle-card{ border:2px solid #7C1F2B; border-radius: 12px; transition:box-shadow .15s, outline-color .15s, border-color .15s; overflow: hidden}
+  .bundle-row{ display:grid; gap:8px; overflow-wrap:anywhere; }
+
+  .label-offer-2 > strong{ font-weight:800; font-size:1.35rem; }
+
+  /* S'assure que l'attribut [hidden] cache vraiment l'élément */
+  [hidden] { display: none !important; }
+
+  .bundle-purchase-type{ 
+    display:flex; 
+    flex-direction:column;
+    gap:1rem; 
+    margin-bottom:2rem;
+  }
+  .bundle-purchase-type label{ 
+    position:relative; 
+    display:flex; 
+    flex-direction:column;
+    padding:2rem; 
+    justify-content:flex-start; 
+    align-items:flex-start; 
+    gap:1rem; 
+    cursor:pointer; 
+    user-select:none; 
+    transition:border-color .2s, box-shadow .2s; 
+    background:white;
+    border:2px solid #EEE;
+    border-radius:12px;
+    width:100%;
+  }
+  .bundle-purchase-type label.is-checked{ 
+    border-color:#7C1F2B; 
+  }
+  .bundle-purchase-type input[type=radio]{ 
+    position:absolute; 
+    opacity:0; 
+    width:0; 
+    height:0; 
+    pointer-events:none; 
+  }
+  
+  /* Ensure all content inside labels is visible */
+  .bundle-purchase-type label * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Explicitly set text colors to ensure visibility */
+  .bundle-purchase-type label .bundle-plan-title,
+  .bundle-purchase-type label .bundle-plan-description,
+  .bundle-purchase-type label .bundle-plan-price {
+    color: #333 !important;
+  }
+  
+  .bundle-purchase-type label .bundle-plan-description {
+    color: #666 !important;
+  }
+  
+  .bundle-purchase-type label .bundle-plan-price .original {
+    color: #999 !important;
+  }
+  
+  .bundle-purchase-type label .label-subtext {
+    color: #333 !important;
+  }
+  
+  .bundle-plan-header{ 
+    display:flex; 
+    align-items:flex-start; 
+    gap:1rem; 
+    width:100%;
+    position:relative;
+    z-index:1;
+  }
+  .bundle-plan-title-wrapper{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+  }
+  .bundle-plan-title{ 
+    font-size:1.1rem; 
+    font-weight:600; 
+    line-height:1.3; 
+    color:#333;
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:1;
+  }
+  .bundle-plan-description{ 
+    font-size:0.9rem; 
+    color:#666; 
+    margin:0;
+    line-height:1.4;
+    position:relative;
+    z-index:1;
+  }
+  .bundle-plan-price-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:0.25rem;
+    margin-left:auto;
+    position:relative;
+    z-index:1;
+  }
+  .bundle-plan-price{ 
+    font-size:1.5rem; 
+    font-weight:700; 
+    color:#333; 
+    margin:0;
+    white-space:nowrap;
+    position:relative;
+    z-index:1;
+  }
+  .bundle-plan-price .original{ 
+    font-size:1rem; 
+    color:#999; 
+    text-decoration:line-through; 
+    font-weight:400;
+    display:block;
+    margin-top:0.25rem;
+    text-align:right;
+  }
+  .bundle-plan-price .label-offer{
+    display:inline-block;
+  }
+
+  /* === Case + coche === */
+  .select-checkbox__box{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:20px; height:20px;
+    background:#fff;
+    border:2px solid #7C1F2B; border-radius:4px;
+    position:relative; flex:0 0 20px;
+    transition:background-color .2s, border-color .2s;
+  }
+  .bundle-purchase-type .select-checkbox__box::after{
+    content:"";
+    position:absolute;
+    top:3px; left:6px;
+    width:5px; height:10px;
+    border:solid #FFD87E;
+    border-width:0 2px 2px 0;
+    transform:rotate(45deg);
+    opacity:0;
+    transition:opacity .2s;
+  }
+  .bundle-purchase-type label.is-checked .select-checkbox__box{
+    background:#7b021c;
+    border-color:#7b021c;
+  }
+  .bundle-purchase-type label.is-checked .select-checkbox__box::after{
+    opacity:1;
+  }
+
+  .variant-pill.is-active .variant-subtext { color: #ffffff; }
+
+  .variant-list{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:2rem; }
+  .variant-pill{ 
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    justify-content:center; 
+    padding:1.8rem 1.35rem; 
+    border:2px solid #EEE; 
+    border-radius:7px; 
+    background:#fff; 
+    cursor:pointer; 
+    font-size:14px; 
+    line-height:1; 
+    user-select:none; 
+    position:relative; 
+    transition:border-color .15s, background-color .15s, color .15s, box-shadow .15s; 
+    gap:.5rem; 
+    text-align:center;
+  }
+  .variant-pill:hover{ border-color:#bbb; }
+  .variant-pill.is-active{ border-color:#943f04; background:linear-gradient(90deg,#7e1d28,#c76b1f); color:#fff; }
+  .variant-thumb{ width:6rem; height:6rem; border-radius:4px; object-fit:cover; margin-bottom:0.5rem; }
+  .variant-thumb[hidden]{ display:none; }
+
+  .variant-textwrap{ display:flex; flex-direction:column; align-items:center; gap:0.25rem; }
+  .variant-label{ font-size:1.7rem; line-height:1.25; font-weight:700; }
+  .variant-subtext{ margin-top:.3rem; font-weight:600; font-size:1.4rem; line-height:1.1; color:#7b021c; align-self:center; }
+
+  .bundle__footer{ margin-top:12px; display:grid; gap:8px; }
+  .bundle-submit{ padding:2.1rem 1rem; font-size:1.5rem; border:none; border-radius:12px; background:#7C1F2B; color:#fff; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; transition:all 350ms; letter-spacing:.3px; text-transform:uppercase; }
+  .bundle-submit[disabled]{ opacity:.7; cursor:not-allowed; }
+  .bundle-submit__price{ opacity:.95; }
+  .bundle-submit:hover{ background-color:#9b2d3b; }
+
+  .bundle__error{ color:#B00020; min-height:18px; font-size:14px; }
+  .grastitle{ letter-spacing:.5px; text-align:center; font-size:1.7rem; font-weight:700; margin-block:0; line-height:1; margin-top:2rem; font-family: 'Poppins' !important;}
+
+  .spinner{ width:22px; height:22px; border:3px solid rgba(0,0,0,.15); border-top-color:#7C1F2B; border-radius:50%; animation:spin .8s linear infinite; display:inline-block; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .mostpop{ 
+    display:flex; 
+    font-size:1.05rem; 
+    background:#FFD372; 
+    color:#7B011C; 
+    width:fit-content; 
+    padding:.9rem 1.25rem; 
+    border-radius:2rem 0 2rem 0; 
+    position:absolute; 
+    top:0; 
+    left:0; 
+    z-index:2; 
+    font-weight:700; 
+    text-transform:lowercase; 
+    letter-spacing:.5px; 
+  }
+  .best-value-badge{
+    display:flex;
+    font-size:1.05rem;
+    background:#000;
+    color:#fff;
+    width:fit-content;
+    padding:.9rem 1.25rem;
+    border-radius:2rem 0 2rem 0;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:2;
+    font-weight:700;
+    text-transform:lowercase;
+    letter-spacing:.5px;
+  }
+
+  .label-text{ letter-spacing:.5px; font-weight:700; line-height:1.5; }
+  .bundle-perk{ display:block; text-align:center; }
+  .bundle-perk__img{ display:inline-block; max-width:100%; height:auto; border-radius:12px; margin-bottom:2rem; }
+
+  .bundle-empty{ padding:12px; background:#fff6e6; border:1px dashed #f0b24b; border-radius:8px; font-size:.95rem; color:#7a4a00; }
+  .bundle-loading{ display:flex; align-items:center; gap:8px; font-size:.95rem; color:#555; }
+
+  .testeurker{ padding:3rem 2rem; display:flex; gap:2rem; flex-direction:column; }
+  
+  .bundle-free-offer{
+    background:#f0f9f0;
+    border-radius:12px;
+    padding:2rem;
+    margin:2rem 0;
+  }
+  .bundle-free-offer-header{
+    margin-bottom:1.5rem;
+  }
+  .bundle-free-offer-header h3{
+    font-size:1.1rem;
+    font-weight:700;
+    margin:0;
+    color:#333;
+  }
+  .bundle-free-offer-content-wrapper{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:1.5rem;
+    align-items:center;
+  }
+  .bundle-free-offer-image{
+    width:120px;
+    height:120px;
+    border-radius:8px;
+    object-fit:cover;
+    position:relative;
+  }
+  .bundle-free-offer-content{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+  }
+  .bundle-free-offer-content .offer-title{
+    font-size:1.2rem;
+    font-weight:700;
+    margin:0;
+    color:#333;
+  }
+  .bundle-free-offer-content .offer-size{
+    font-size:0.9rem;
+    color:#666;
+    margin:0;
+  }
+  .bundle-free-offer-content .offer-description{
+    font-size:0.95rem;
+    color:#333;
+    margin:0;
+    line-height:1.5;
+  }
+  .bundle-free-offer-price{
+    font-size:1.1rem;
+    font-weight:700;
+    color:#01B91D;
+    margin-top:0.5rem;
+  }
+  .bundle-free-offer-price .original{
+    font-size:0.9rem;
+    color:#999;
+    text-decoration:line-through;
+    margin-left:0.5rem;
+    font-weight:400;
+  }
+  
+  .bundle-testimonial{
+    background:#f0f9f0;
+    border-radius:12px;
+    padding:2rem;
+    margin:2rem 0;
+  }
+  .bundle-testimonial-content{
+    display:flex;
+    gap:1.5rem;
+    align-items:flex-start;
+  }
+  .bundle-testimonial-avatar{
+    flex-shrink:0;
+  }
+  .bundle-testimonial-avatar img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+  }
+  .bundle-testimonial-text{
+    flex:1;
+  }
+  .bundle-testimonial-quote{
+    font-size:0.95rem;
+    color:#333;
+    line-height:1.6;
+    margin:0 0 1rem 0;
+    font-style:italic;
+  }
+  .bundle-testimonial-author{
+    font-size:0.9rem;
+    color:#666;
+    margin:0;
+    font-weight:600;
+  }
+  
+  .bundle-per-serving{
+    font-size:1.1rem;
+    color:#666;
+    margin:1rem 0;
+    font-weight:600;
+  }
+
+  .bundle-purchase-type label.is-checked{
+    border-color:#7C1F2B;
+  }
+
+  .bundle-purchase-type .select-checkbox__box, .bundle-purchase-type .label-text{ position:relative; z-index:1; font-size:1.35rem; line-height:1.25; }
+  
+  .bundle-plan-title .label-subtext{
+    display:inline-block;
+    background:#01B91D;
+    color:white;
+    padding:0.25rem 0.5rem;
+    border-radius:4px;
+    font-size:0.9rem;
+    font-weight:600;
+    margin-left:0.5rem;
+  }
+  
+  @media (max-width: 767px) {
+    .variant-list{
+      grid-template-columns: 1fr;
+    }
+    .bundle-purchase-type{
+      grid-template-columns: 1fr;
+    }
+    .bundle-purchase-type label:first-child.is-checked::before{
+      right: -28%;
+    }
+    .bundle-purchase-type label:last-child.is-checked::before{
+      left: -28%;
+    }
+    .bundle-benefits{
+      grid-template-columns: 1fr !important;
+    }
+    .bundle-free-offer{
+      grid-template-columns: 1fr;
+      text-align:center;
+    }
+    .bundle-free-offer-image{
+      margin:0 auto;
+    }
+    .variant-pill{ 
+      padding:1.6rem 1.35rem;  
+      display: flex;
+      flex-direction: column;
+    }
+    .variant-textwrap { 
+      align-items: center;  
+    }
+  }
+
+  .firstbundletitle{ font-size:1.3rem; font-weight:600; margin-block:0; line-height:1; font-family: 'Poppins' !important;
+    font-weight: 600;
+    margin-bottom: 1rem; }
+
+  .bundle-divider{ --divider-color:#222; --divider-thickness:2px; --divider-dot-size:6px; position:relative; width:100%; height:var(--divider-thickness); background:var(--divider-color); border-radius:999px; margin:unset; overflow: unset }
+  .bundle-divider::before, .bundle-divider::after{ content:""; position:absolute; top:50%; width:var(--divider-dot-size); height:var(--divider-dot-size); background:var(--divider-color); border-radius:50%; transform:translateY(-50%); }
+  .bundle-divider::before{ left:0; } .bundle-divider::after{ right:0; }
+
+  .bundle-benefits{ 
+    display:grid; 
+    grid-template-columns:1fr 1fr 1fr; 
+    gap:2rem; 
+    margin-top:1rem; 
+    margin-bottom:2rem;
+    padding:0; 
+    overflow-wrap:anywhere; 
+    list-style:none;
+  }
+  .benefit-item{ 
+    display:flex; 
+    align-items:flex-start; 
+    gap:8px; 
+    line-height:1.4;  
+    font-weight:600; 
+    letter-spacing:.5px; 
+    font-size:14px;
+    color:var(--benefit-color, #000);
+  }
+  .benefit-icon{
+    width: var(--benefit-icon-size, 18px);
+    height: var(--benefit-icon-size, 18px);
+    flex-shrink: 0;
+    margin-top:2px;
+  }
+
+  /* ==== Ajouts pour éviter "texte invisible" et appliquer les variables ==== */
+  .bundle-benefits{
+    gap: 2rem;
+    grid-template-columns: repeat(var(--benefit-columns, 3), 1fr);
+  }
+  .benefit-item{
+    color: var(--benefit-color, #000);
+    font-size: var(--benefit-font-size, 14px);
+  }
+  .benefit-icon{
+    width: var(--benefit-icon-size, 18px);
+    height: var(--benefit-icon-size, 18px);
+    flex-shrink: 0;
+  }
+  /* ======================================================================= */
+
+  .my-custom-price{ color:#fff; position:absolute; top:-1.5rem; background:#671520; font-size:1.2rem; font-weight:600; padding:.7rem; border-radius:5px; }
+  .wraperkacher{ display:flex; flex-direction:column; gap:.6rem; }
+  .label-subtext{ color:#01B91D; position:relative; font-size:1.1rem; letter-spacing:.25px; line-height:1.1; font-weight:600; }
+
+  .testlabel{ color:white; }
+
+  .label-offer,.label-offer-2{  font-weight:600; font-size:1.1rem; line-height:1.1; letter-spacing:.25px; position:relative; }
+
+  /* Toujours visibles pour éviter les sauts de layout */
+  .label-offer,
+  .label-offer-2,
+  .label-subtext{
+    display:block !important;
+    visibility:visible !important;
+    min-height:1.1em;
+  }
+</style>
+
+
+<script>
+console.log('[BUNDLE] Script file loaded');
+(function() {
+  'use strict';
+  console.log('[BUNDLE] IIFE executing');
+  
+  function initBundle() {
+    console.log('[BUNDLE] initBundle called');
+    let ROOT_ID = '{{ bundle_root_id }}';
+    if (!ROOT_ID || ROOT_ID === 'bundle-root-') {
+      console.warn('[BUNDLE] block.id is empty, trying fallback');
+      ROOT_ID = 'bundle-root-default';
+    }
+    console.log('[BUNDLE] ROOT_ID:', ROOT_ID);
+    console.log('[BUNDLE] Looking for element with ID:', ROOT_ID);
+    const testEl = document.getElementById(ROOT_ID);
+    console.log('[BUNDLE] Element found:', testEl);
+    const EMPTY_DELAY_MS = 800;
+
+  // 🔁 On veut afficher perks/grastitle sur TOUS les produits en mode Subscribe uniquement.
+  // (on garde la constante au cas où tu veuilles la réutiliser ailleurs)
+  // const TARGET_PRODUCT_ID = 9518563066204;
+
+  // ---------------- Utils ----------------
+  // Version tolérante : gère &quot;, supprime les virgules finales, etc.
+  const parseAttrJSON = (el, attr) => {
+    let raw = el.getAttribute(attr);
+    if (!raw) return null;
+
+    // Décode les entités HTML (&quot; -> ")
+    try {
+      const ta = document.createElement('textarea');
+      ta.innerHTML = raw;
+      raw = ta.value;
+    } catch (e) {}
+
+    // Normalisations : supprime les virgules finales avant } ou ] et espaces suspects
+    raw = raw
+      .replace(/,\s*(?=[}\]])/g, '')           // trailing comma avant } ou ]
+      .replace(/([\[\{]\s*),(?=\s*[\}\]])/g, '$1') // [ , ] ou { , } -> enlève
+      .trim();
+
+    try { return JSON.parse(raw); } catch (e) {
+      // Dernier filet : &quot; si encore présent
+      try { return JSON.parse(raw.replace(/&quot;/g,'"')); } catch (_e) {}
+    }
+    return null;
+  };
+
+  const getAllKachingBlocks = () => Array.from(document.querySelectorAll('kaching-subscriptions-block[product]'));
+  const dbg = (...a)=>console.debug('[BUNDLE]',...a);
+
+  function findSubscribeContainer(scope){
+    return scope.querySelector('.ks-card-wrapper, .ks-card-info, .ks-price-wrapper, .kaching-subscriptions__card[data-type="subscription"]');
+  }
+  function findOneTimeContainer(scope){
+    let el = scope.querySelector('.kaching-subscriptions__card-wrapper.one-time-purchase, .kaching-subscriptions__card[data-type="one_time"], .kaching-subscriptions__card-price-wrapper, .one-time-purchase');
+    if (el) return el;
+    const cards = scope.querySelectorAll('.kaching-subscriptions__card, .kaching-subscriptions__card-wrapper');
+    for (const c of cards){ const t=(c.textContent||'').toLowerCase(); if (/\bone[\s-]?time\b/.test(t)) return c; }
+    return null;
+  }
+
+  // Money helpers
+  const locale = document.documentElement.lang || navigator.language || 'fr-FR';
+  const currency = (window.Shopify && Shopify.currency && Shopify.currency.active) || (window.ShopifyAnalytics && ShopifyAnalytics.meta && ShopifyAnalytics.meta.currency) || 'EUR';
+  const fmt = cents => { try { return new Intl.NumberFormat(locale,{style:'currency',currency}).format(cents/100); } catch(_){ return (cents/100).toFixed(2)+' '+currency; } };
+  const readMoneyCents = (val)=>{
+    if (val==null) return null;
+    if (typeof val==='number') return Number.isInteger(val)&&Math.abs(val)>=100 ? val : Math.round(val*100);
+    if (typeof val==='string'){ const n=parseFloat(val.replace(/[^0-9,.\-]/g,'').replace(',','.')); return isNaN(n)?null:Math.round(n*100); }
+    if (typeof val==='object'){ if (val.amount!=null) return readMoneyCents(val.amount); if (val.value!=null) return readMoneyCents(val.value); }
+    return null;
+  };
+  const getVariantBasePriceCents = v => {
+    if (!v) return 0;
+    if (typeof v.price==='number') return Math.max(0,v.price);
+    if (v.priceV2?.amount) return Math.round(parseFloat(v.priceV2.amount)*100);
+    if (typeof v.price==='string') return Math.round(parseFloat(v.price.replace(',','.'))*100);
+    return 0;
+  };
+
+  // --------- Extract Kaching block data ---------
+  function extractKachingData(blockEl){
+    const product = parseAttrJSON(blockEl,'product') || {};
+       // Certaines versions de Kaching renvoient "config" + "sellingPlanConfigs"
+    const config  = parseAttrJSON(blockEl,'config')  || {};
+    const plansByGID = (config && config.sellingPlanConfigs) ? config.sellingPlanConfigs : {};
+    const planMeta = (planId)=>plansByGID[`gid://shopify/SellingPlan/${planId}`]||null;
+    return { product, planMeta, blockEl };
+  }
+
+  // --------- State ---------
+  const bundleSelections = new Map(); // productId -> { variantId, sellingPlanId|null }
+
+  // --------- Templates ---------
+  function renderCardHTML(product){
+    // Build maps from product variants (metafields should be in product data from Kaching)
+    const savingMap = {};
+    const servingMap = {};
+    const variantSubtextMap = {};
+    
+    if (product.variants) {
+      product.variants.forEach(v => {
+        const vid = String(v.id);
+        savingMap[vid] = {
+          save_onetime: v.metafields?.custom?.save_onetime || null,
+          save_subscribe: v.metafields?.custom?.save_subscribe || null,
+          bundle_onetime: v.metafields?.custom?.bundle_saving_onetime || null,
+          bundle_subscribe: v.metafields?.custom?.bundle_saving_subscribe || null,
+          saving_onetime: v.metafields?.custom?.saving_onetime || null,
+          saving_subscribe: v.metafields?.custom?.saving_subscribe || null
+        };
+        servingMap[vid] = {
+          one_time_text: v.metafields?.custom?.per_serving_text_onetime || null,
+          subscribe_text: v.metafields?.custom?.per_serving_text_subscribe || null,
+          one_time_text2: v.metafields?.custom?.per_serving_text2_onetime || null,
+          subscribe_text2: v.metafields?.custom?.per_serving_text2_subscribe || null
+        };
+        variantSubtextMap[vid] = {
+          onetime: v.metafields?.custom?.variant_subtext_onetime || null,
+          subscribe: v.metafields?.custom?.variant_subtext_subscribe || null
+        };
+      });
+    }
+    
+    const subtext = product.metafields?.custom?.bundle_louis_sous_titre_abonnement?.value || '';
+    // Handle image metafields - can be string or object with value/url property
+    const getImageUrl = (metafield) => {
+      if (!metafield) return '';
+      if (typeof metafield === 'string') return metafield;
+      if (metafield.value) return metafield.value;
+      if (metafield.url) return metafield.url;
+      if (metafield.src) return metafield.src;
+      return '';
+    };
+    const offerImgSub = getImageUrl(product.metafields?.custom?.offer_image_subscribe);
+    const offerImgOne = getImageUrl(product.metafields?.custom?.offer_image_onetime);
+    
+    return `
+      <article class="bundle-card"
+        data-product-id="${product.id}"
+        data-check-icon="{{ 'check-icon.svg' | asset_url }}"
+        data-subtext="${subtext.replace(/"/g, '&quot;')}"
+        data-saving-per-variant="${JSON.stringify(savingMap).replace(/"/g, '&quot;')}"
+        data-serving-per-variant="${JSON.stringify(servingMap).replace(/"/g, '&quot;')}"
+        data-variant-subtext-per-variant="${JSON.stringify(variantSubtextMap).replace(/"/g, '&quot;')}"
+        data-offer-img-subscribe="${offerImgSub}"
+        data-offer-img-onetime="${offerImgOne}"
+        data-product-title="${(product.title || '').replace(/"/g, '&quot;')}"
+        data-monthly-label="{{ block.settings.monthly_delivery_label | default: 'Monthly Delivery' | escape }}"
+        data-monthly-subtext="{{ block.settings.monthly_delivery_subtext | default: 'Save more' | escape }}"
+        data-monthly-description="{{ block.settings.monthly_delivery_description | default: 'Delivered every 4 weeks.' | escape }}"
+        data-onetime-label="{{ block.settings.one_time_purchase_label | default: 'One time purchase' | escape }}"
+        data-onetime-template="{{ block.settings.one_time_purchase_description_template | default: '1 Jar shipped once.' | escape }}"
+        data-free-offer-header="{{ block.settings.free_offer_header | default: 'FREE Alpha Coffee with your first delivery' | escape }}"
+        data-testimonial-quote="{{ block.settings.testimonial_quote | strip_html | escape }}"
+        data-testimonial-author="{{ block.settings.testimonial_author | default: 'John D.' | escape }}"
+        data-testimonial-avatar="{% if block.settings.testimonial_avatar %}{{ block.settings.testimonial_avatar | image_url: width: 120 }}{% endif %}"
+      >
+        <div class="testeurker">
+          <p class="firstbundletitle">{{ block.settings.select_quantity_label | default: "Select Quantity" }}</p>
+          <div class="bundle-row">
+            <div class="variant-list" role="group" aria-label="Choix de la variante"></div>
+          </div>
+
+          <p class="firstbundletitle" style="margin-top:2rem;">{{ block.settings.choose_plan_label | default: "Choose your plan" }}</p>
+          
+          <div class="bundle-row bundle-purchase-type">
+            <!-- SUBSCRIBE / MONTHLY DELIVERY -->
+            <label class="testlabel" data-plan="subscribe">
+              <input type="radio" name="pt-${product.id}" value="subscribe" checked>
+              <div class="bundle-plan-header">
+                <span class="select-checkbox__box" aria-hidden="true"></span>
+                <div class="bundle-plan-title-wrapper">
+                  <div class="bundle-plan-title" data-monthly-label>
+                    <span class="bundle-plan-title-text"></span>
+                    <span class="label-subtext" data-monthly-subtext></span>
+                  </div>
+                  <div class="bundle-plan-description" data-monthly-description></div>
+                </div>
+                <div class="bundle-plan-price-wrapper">
+                  <div class="bundle-plan-price">
+                    <span class="label-offer" data-offer="subscribe"></span>
+                    <span class="original" data-original-subscribe></span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Free Offer Section (inside Monthly Delivery) -->
+              <div class="bundle-free-offer" hidden>
+                <div class="bundle-free-offer-header">
+                  <h3 data-free-offer-header></h3>
+                </div>
+                <div class="bundle-free-offer-content-wrapper">
+                  <img class="bundle-free-offer-image" src="" alt="Free offer" loading="lazy" width="120" height="120">
+                  <div class="bundle-free-offer-content">
+                    <h4 class="offer-title"></h4>
+                    <div class="offer-size"></div>
+                    <div class="offer-description"></div>
+                    <div class="bundle-free-offer-price">
+                      <span class="free-text" style="color:#01B91D; font-weight:700;">FREE</span>
+                      <span class="original"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Per Serving Price (for Monthly) -->
+              <div class="bundle-per-serving" data-plan="subscribe" hidden></div>
+              
+              <span class="label-offer-2" data-offer="subscribe" style="display:none;"></span>
+            </label>
+
+            <!-- ONE-TIME PURCHASE -->
+            <label class="testlabel" data-plan="one_time">
+              <input type="radio" name="pt-${product.id}" value="one_time">
+              <div class="bundle-plan-header">
+                <span class="select-checkbox__box" aria-hidden="true"></span>
+                <div class="bundle-plan-title-wrapper">
+                  <div class="bundle-plan-title" data-onetime-label></div>
+                  <div class="bundle-plan-description" data-onetime-description data-onetime-template></div>
+                </div>
+                <div class="bundle-plan-price-wrapper">
+                  <div class="bundle-plan-price">
+                    <span class="label-offer" data-offer="one_time"></span>
+                    <span class="original" data-original-onetime></span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Per Serving Price (for One-time) -->
+              <div class="bundle-per-serving" data-plan="onetime" hidden></div>
+              
+              <!-- Testimonial Section (inside One-time Purchase) -->
+              <div class="bundle-testimonial" hidden>
+                <div class="bundle-testimonial-content">
+                  <div class="bundle-testimonial-avatar">
+                    <img src="" alt="Customer" loading="lazy" width="60" height="60">
+                  </div>
+                  <div class="bundle-testimonial-text">
+                    <p class="bundle-testimonial-quote"></p>
+                    <p class="bundle-testimonial-author"></p>
+                  </div>
+                </div>
+              </div>
+              
+              <span class="label-offer-2" data-offer="one_time" style="display:none;"></span>
+            </label>
+          </div>
+
+          <!-- Subscription Benefits -->
+          <div
+            class="bundle-benefits"
+            style="--benefit-columns:3;--benefit-color:#000000;--benefit-icon-size:18px;--benefit-font-size:14px;"
+            data-benefits-subscribe=""
+            data-benefits-onetime=""
+          ></div>
+
+
+
+        </div>
+      </article>
+    `;
+  }
+
+  // --------------- Card behaviour ---------------
+  function attachCardLogic(cardEl, { product, planMeta, blockEl }){
+    const variantList   = cardEl.querySelector('.variant-list');
+    const purchaseGroup = cardEl.querySelector('.bundle-purchase-type');
+    
+    // Store blockEl and data for price calculations
+    cardEl._kachingData = { product, planMeta, blockEl };
+    
+    // Update description from data attribute
+    const subtext = cardEl.getAttribute('data-subtext');
+    const descEl = cardEl.querySelector('.bundle-plan-description');
+    if (descEl && subtext) {
+      descEl.textContent = subtext;
+    }
+
+    let selectedVariantId = product.selectedVariantId || product?.variants?.[0]?.id;
+
+    const norm = (raw)=>{
+      if (raw==null) return '';
+      if (typeof raw==='string') return raw;
+      if (typeof raw==='object'){ if (raw.value!=null) return String(raw.value); try{return String(raw);}catch(_){return '';} }
+      return String(raw);
+    };
+
+    const isSubscribe = ()=> purchaseGroup.querySelector('input[type="radio"]:checked')?.value === 'subscribe';
+
+    function refreshPurchaseUI(){
+      cardEl.querySelectorAll('.bundle-purchase-type label').forEach(label=>{
+        const input = label.querySelector('input[type="radio"]');
+        label.classList.toggle('is-checked', !!input && input.checked);
+      });
+    }
+
+    // ✅ Afficher perks & titre UNIQUEMENT si mode = Subscribe (pour TOUS les produits)
+    // ✅ Afficher perks & titre UNIQUEMENT si mode = Subscribe (pour TOUS les produits)
+    function togglePerksForTarget(){
+      const isSub = isSubscribe();
+      const subscribeLabel = cardEl.querySelector('label[data-plan="subscribe"]');
+      const onetimeLabel = cardEl.querySelector('label[data-plan="one_time"]');
+      
+      // Find free offer and testimonial within their respective labels
+      const freeOfferEl = subscribeLabel ? subscribeLabel.querySelector('.bundle-free-offer') : null;
+      const testimonialEl = onetimeLabel ? onetimeLabel.querySelector('.bundle-testimonial') : null;
+      const perServingSub = subscribeLabel ? subscribeLabel.querySelector('.bundle-per-serving[data-plan="subscribe"]') : null;
+      const perServingOne = onetimeLabel ? onetimeLabel.querySelector('.bundle-per-serving[data-plan="onetime"]') : null;
+      const onetimeDescEl = cardEl.querySelector('[data-onetime-description]');
+      
+      // Show/hide free offer (only for Monthly Delivery)
+      if (freeOfferEl){
+        freeOfferEl.hidden = !isSub;
+        if (isSub) {
+          freeOfferEl.removeAttribute('hidden');
+          
+          // Update free offer content if visible
+          const offerImgSub = cardEl.getAttribute('data-offer-img-subscribe');
+          const imgEl = freeOfferEl.querySelector('.bundle-free-offer-image');
+          const titleEl = freeOfferEl.querySelector('.offer-title');
+          const sizeEl = freeOfferEl.querySelector('.offer-size');
+          const descEl = freeOfferEl.querySelector('.offer-description');
+          const originalPriceEl = freeOfferEl.querySelector('.bundle-free-offer-price .original');
+          
+          // Set image
+          if (imgEl) {
+            if (offerImgSub && offerImgSub.trim()) {
+              imgEl.src = offerImgSub;
+              imgEl.hidden = false;
+              imgEl.style.display = '';
+              console.log('[BUNDLE] Setting free offer image:', offerImgSub);
+            } else {
+              imgEl.hidden = true;
+              imgEl.style.display = 'none';
+              console.log('[BUNDLE] No free offer image available');
+            }
+          }
+          
+          // Populate free offer content (can be from metafields)
+          if (titleEl && !titleEl.textContent.trim()) {
+            titleEl.textContent = 'Alpha Coffee';
+          }
+          if (sizeEl && !sizeEl.textContent.trim()) {
+            sizeEl.textContent = '4.23oz / 120g';
+          }
+          if (descEl && !descEl.textContent.trim()) {
+            descEl.textContent = 'Elevate your wellness with the perfect duo for comprehensive health benefits.';
+          }
+          if (originalPriceEl && !originalPriceEl.textContent.trim()) {
+            originalPriceEl.textContent = '$49.00';
+          }
+        } else {
+          freeOfferEl.setAttribute('hidden','');
+        }
+      }
+      
+      // Show/hide testimonial (only for One-time Purchase)
+      if (testimonialEl){
+        testimonialEl.hidden = isSub;
+        if (!isSub) {
+          testimonialEl.removeAttribute('hidden');
+          // Populate testimonial if not already populated
+          const quoteEl = testimonialEl.querySelector('.bundle-testimonial-quote');
+          const authorEl = testimonialEl.querySelector('.bundle-testimonial-author');
+          const avatarEl = testimonialEl.querySelector('.bundle-testimonial-avatar img');
+          
+          // Get testimonial from schema settings (from card data attributes)
+          const testimonialQuote = cardEl.getAttribute('data-testimonial-quote') || '';
+          const testimonialAuthor = cardEl.getAttribute('data-testimonial-author') || '';
+          const testimonialAvatar = cardEl.getAttribute('data-testimonial-avatar') || '';
+          
+          if (quoteEl && !quoteEl.textContent.trim() && testimonialQuote) {
+            quoteEl.textContent = testimonialQuote;
+          } else if (quoteEl && !quoteEl.textContent.trim()) {
+            // Fallback default
+            quoteEl.textContent = '"Primal Herbs is a perfect remedy for ED and is over 90% effective. Consistent use leads to consistent results."';
+          }
+          if (authorEl && !authorEl.textContent.trim() && testimonialAuthor) {
+            authorEl.textContent = testimonialAuthor;
+          } else if (authorEl && !authorEl.textContent.trim()) {
+            // Fallback default
+            authorEl.textContent = 'Dr. Phillip Creed - General Surgeon';
+          }
+          // Set avatar from schema if available
+          if (avatarEl && testimonialAvatar) {
+            avatarEl.src = testimonialAvatar;
+            avatarEl.hidden = false;
+          }
+        } else {
+          testimonialEl.setAttribute('hidden','');
+        }
+      }
+      
+      // Update one-time description based on selected variant and template
+      if (onetimeDescEl) {
+        const v = currentVariant();
+        if (v) {
+          const qty = v.options && v.options[0] ? v.options[0].replace(/[^0-9]/g, '') : '1';
+          const template = onetimeDescEl.getAttribute('data-template') || '1 Jar shipped once.';
+          // Replace [quantity] placeholder with actual quantity
+          const description = template.replace(/\[quantity\]/g, qty);
+          onetimeDescEl.textContent = description;
+        }
+      }
+      
+      // Per-serving is shown for both modes, but in their respective containers
+      if (perServingSub) {
+        if (isSub) {
+          perServingSub.removeAttribute('hidden');
+        } else {
+          perServingSub.setAttribute('hidden','');
+        }
+      }
+      if (perServingOne) {
+        if (!isSub) {
+          perServingOne.removeAttribute('hidden');
+        } else {
+          perServingOne.setAttribute('hidden','');
+        }
+      }
+    }
+
+
+    function getVariantImageURL(v, product){
+      let url = v?.image?.src || v?.featured_image || v?.featuredMedia?.preview_image?.src || v?.featured_media?.preview_image?.src || v?.image || null;
+      if (!url && Array.isArray(product?.images) && product.images.length){ url = product.images[0]; }
+      if (!url) return null;
+      if (typeof url==='string' && url.startsWith('//')) url = 'https:'+url;
+      try{ const u=new URL(url); if (/cdn\.shopify\.com$/.test(u.hostname)) url=url.replace(/(\.(jpe?g|png|webp|gif))(?:\?.*)?$/i,'_60x$1'); }catch(_){}
+      return url;
+    }
+
+    function renderVariantButtons(){
+      const variants = product.variants || [];
+      
+      // Get badge settings from root element data attributes
+      const rootEl = document.getElementById(ROOT_ID);
+      const getBadgeSetting = (variantIdx, prop) => {
+        if (!rootEl) return '';
+        const attr = rootEl.getAttribute(`data-badge-variant-${variantIdx}-${prop}`);
+        return attr !== null ? attr : '';
+      };
+      
+      // Helper to get badge for variant index
+      const getBadgeForIndex = (idx) => {
+        const variantNum = idx + 1;
+        const badgeText = getBadgeSetting(variantNum, 'text');
+        const badgeShow = getBadgeSetting(variantNum, 'show') === 'true';
+        
+        if (badgeShow && badgeText && badgeText.trim()) {
+          // Determine badge class based on index (for styling)
+          const badgeClass = idx === 1 ? 'mostpop' : idx === 2 ? 'best-value-badge' : 'variant-badge';
+          const escapedText = badgeText.replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+          return `<div class="${badgeClass}">${escapedText}</div>`;
+        }
+        return '';
+      };
+      
+      variantList.innerHTML = variants.map((v, idx)=>{
+        const label = (v.options && v.options[0]) ? v.options[0].replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s])) : `Variant ${v.id}`;
+        const active = Number(v.id)===Number(selectedVariantId) ? ' is-active' : '';
+        const img = getVariantImageURL(v, product);
+        const imgHTML = img ? `<img class="variant-thumb" src="${img}" alt="" loading="lazy" decoding="async" width="96" height="96">` : `<img class="variant-thumb" hidden alt="">`;
+        
+        // Get badge from settings
+        const badgeHTML = getBadgeForIndex(idx);
+        const hasBadge = badgeHTML !== '';
+        
+        return `
+          <button type="button" class="variant-pill${active}" data-vid="${v.id}" aria-pressed="${active ? 'true':'false'}" style="position:relative; padding-top:${hasBadge ? '2rem' : '1.8rem'};">
+            ${badgeHTML}
+            ${imgHTML}
+            <span class="variant-textwrap">
+              <span class="variant-label">${label}</span>
+              <span class="variant-subtext" hidden></span>
+            </span>
+            <span class="my-custom-price variant-saving" data-vid="${v.id}" hidden></span>
+          </button>`;
+      }).join('');
+    }
+
+    const currentVariant = ()=> (product.variants||[]).find(v=>Number(v.id)===Number(selectedVariantId));
+
+    // ----- per-serving metas -----
+    const servingMap = (()=>{ try{ return JSON.parse(cardEl.getAttribute('data-serving-per-variant'))||{} }catch(_){ return {} } })();
+
+    // ----- saving metas (badge) -----
+    const savingMap = (()=>{ try{ return JSON.parse(cardEl.getAttribute('data-saving-per-variant'))||{} }catch(_){ return {} } })();
+
+    // ----- variant subtext metas -----
+    const variantSubtextMap = (()=>{ try{ return JSON.parse(cardEl.getAttribute('data-variant-subtext-per-variant'))||{} }catch(_){ return {} } })();
+
+    function getPerServingForSelectedVariant(mode){
+      const v = currentVariant(); if(!v) return null;
+      const row = servingMap[String(v.id)];
+      if (row){ const raw = (mode==='one_time') ? row.one_time_text : row.subscribe_text; const s = norm(raw).trim(); if (s) return s; }
+      return null;
+    }
+    function getPerServing2ForSelectedVariant(mode){
+      const v = currentVariant(); if(!v) return null;
+      const row = servingMap[String(v.id)];
+      if (row){ const raw = (mode==='one_time') ? row.one_time_text2 : row.subscribe_text2; const s = norm(raw).trim(); if (s) return s; }
+      return null;
+    }
+
+    // Badge "Save …" depuis métas (tolérant aux différents noms)
+    function pickSaving(row, mode){
+      if (!row) return '';
+      if (mode==='subscribe') return row.save_subscribe ?? row.bundle_subscribe ?? row.saving_subscribe ?? '';
+      return row.save_onetime ?? row.bundle_onetime ?? row.saving_onetime ?? '';
+    }
+    function updateVariantSavingFromMeta(){
+      const mode = isSubscribe() ? 'subscribe' : 'one_time';
+      variantList.querySelectorAll('.variant-pill').forEach(pill=>{
+        const vid = String(pill.dataset.vid);
+        const el = pill.querySelector('.variant-saving'); if (!el) return;
+        const text = String(pickSaving(savingMap[vid], mode) || '').trim();
+        if (text){ el.textContent = text; el.hidden = false; } else { el.textContent=''; el.hidden = true; }
+      });
+    }
+
+    // Subtext par variante + par mode (Subscribe / One-time)
+    function updateVariantMetaSubtextUI(){
+      const mode = isSubscribe() ? 'subscribe' : 'onetime';
+      variantList.querySelectorAll('.variant-pill').forEach(pill=>{
+        const vid  = String(pill.getAttribute('data-vid'));
+        const span = pill.querySelector('.variant-subtext');
+        if (!span) return;
+        const row  = variantSubtextMap[vid] || {};
+        const txt  = String((row[mode] ?? row.subscribe ?? row.onetime ?? '')).trim();
+        if (txt){ span.textContent = txt; span.hidden = false; }
+        else { span.textContent = ''; span.hidden = true; }
+      });
+    }
+
+    /* Update prices and per-serving text */
+    function refreshLabelOffers(){
+      const mode = isSubscribe() ? 'subscribe' : 'one_time';
+      const v = currentVariant();
+      if (!v) return;
+      
+      // Get Kaching data stored on cardEl
+      const kachingData = cardEl._kachingData;
+      if (!kachingData) return;
+      
+      const { product: kachingProduct, planMeta, blockEl: kachingBlockEl } = kachingData;
+      
+      // Calculate prices using the same logic as getItemPriceCents
+      const basePrice = getVariantBasePriceCents(v);
+      
+      // Get ratios from Kaching blocks (for first variant as reference)
+      const readKachingPair = (container)=>{
+        if (!container) return null;
+        const nowEl = container.querySelector('.ks-discounted-price, .kaching-subscriptions__card-price, [class*="price"]');
+        const oldEl = container.querySelector('.ks-original-price, [class*="compare"]');
+        const nowCents = readMoneyCents(nowEl?.textContent);
+        const oldCents = readMoneyCents(oldEl?.textContent);
+        if (nowCents==null) return null;
+        return { nowCents, oldCents:(oldCents!=null?oldCents:nowCents) };
+      };
+      
+      const subCont = findSubscribeContainer(kachingBlockEl);
+      const oneCont = findOneTimeContainer(kachingBlockEl);
+      const subPair = readKachingPair(subCont);
+      const onePair = readKachingPair(oneCont);
+      
+      // Calculate ratios based on first variant
+      const refVid = kachingProduct.selectedVariantId || kachingProduct?.variants?.[0]?.id;
+      const refV = (kachingProduct.variants||[]).find(v=>Number(v.id)===Number(refVid));
+      const baseRef = refV ? getVariantBasePriceCents(refV) : basePrice;
+      
+      const makeRatio = (pair) => {
+        if (!pair || !baseRef) return null;
+        const curR = pair.nowCents / baseRef;
+        if (!isFinite(curR) || curR <= 0) return null;
+        return { curR, oldCents: pair.oldCents };
+      };
+      
+      const ratios = {
+        subscribe: makeRatio(subPair),
+        onetime: makeRatio(onePair)
+      };
+      
+      // Calculate prices for current variant
+      let subPriceCents = basePrice;
+      let subOriginalCents = null;
+      let onePriceCents = basePrice;
+      let oneOriginalCents = null;
+      
+      if (isSubscribe()) {
+        if (ratios.subscribe) {
+          subPriceCents = Math.round(basePrice * ratios.subscribe.curR);
+          if (ratios.subscribe.oldCents && ratios.subscribe.oldCents > subPair.nowCents) {
+            // Calculate original price for current variant
+            const refOriginalRatio = ratios.subscribe.oldCents / baseRef;
+            subOriginalCents = Math.round(basePrice * refOriginalRatio);
+          }
+        } else {
+          // Try to get from selling plan
+          const sp = (v.sellingPlans||[]).find(p=>Number(p.id)===Number(v.sellingPlans?.[0]?.id));
+          if (sp) {
+            const candidates = [sp.price, sp.checkoutPrice, sp.currentPrice, sp.firstCyclePrice, sp.recurringPrice, sp.calculatedPrice, sp.perDeliveryPrice, sp.priceV2, sp.checkoutPriceV2, sp.currentPriceV2];
+            for (const c of candidates) {
+              const cents = readMoneyCents(c);
+              if (cents != null) {
+                subPriceCents = cents;
+                break;
+              }
+            }
+          }
+        }
+      } else {
+        if (ratios.onetime) {
+          onePriceCents = Math.round(basePrice * ratios.onetime.curR);
+          if (ratios.onetime.oldCents && ratios.onetime.oldCents > onePair.nowCents) {
+            const refOriginalRatio = ratios.onetime.oldCents / baseRef;
+            oneOriginalCents = Math.round(basePrice * refOriginalRatio);
+          }
+        }
+      }
+      
+      // Update UI
+      const subPrice = cardEl.querySelector('.label-offer[data-offer="subscribe"]');
+      const onePrice = cardEl.querySelector('.label-offer[data-offer="one_time"]');
+      const subOriginal = cardEl.querySelector('[data-original-subscribe]');
+      const oneOriginal = cardEl.querySelector('[data-original-onetime]');
+      
+      if (subPrice) {
+        subPrice.textContent = fmt(subPriceCents);
+        if (subOriginal) {
+          if (subOriginalCents && subOriginalCents > subPriceCents) {
+            subOriginal.textContent = fmt(subOriginalCents);
+          } else {
+            subOriginal.textContent = '';
+          }
+        }
+      }
+      
+      if (onePrice) {
+        onePrice.textContent = fmt(onePriceCents);
+        if (oneOriginal) {
+          if (oneOriginalCents && oneOriginalCents > onePriceCents) {
+            oneOriginal.textContent = fmt(oneOriginalCents);
+          } else {
+            oneOriginal.textContent = '';
+          }
+        }
+      }
+      
+      // Update per-serving display for the selected plan
+      const isSub = isSubscribe();
+      const subscribeLabel = cardEl.querySelector('label[data-plan="subscribe"]');
+      const onetimeLabel = cardEl.querySelector('label[data-plan="one_time"]');
+      const perServingSub = subscribeLabel ? subscribeLabel.querySelector('.bundle-per-serving[data-plan="subscribe"]') : null;
+      const perServingOne = onetimeLabel ? onetimeLabel.querySelector('.bundle-per-serving[data-plan="onetime"]') : null;
+      
+      const perServingEl = isSub ? perServingSub : perServingOne;
+      if (perServingEl) {
+        const servingText = getPerServingForSelectedVariant(mode);
+        if (servingText) {
+          perServingEl.textContent = servingText;
+          perServingEl.hidden = false;
+        } else {
+          perServingEl.hidden = true;
+        }
+      }
+    }
+
+    // --- BENEFITS DYNAMIQUES (2 jeux : subscribe / one_time) ---
+    const benRoot = cardEl.querySelector('.bundle-benefits');
+    const benDataSub  = benRoot ? (parseAttrJSON(benRoot, 'data-benefits-subscribe') || { items: [] }) : { items: [] };
+    const benDataOnce = benRoot ? (parseAttrJSON(benRoot, 'data-benefits-onetime')  || { items: [] }) : { items: [] };
+
+    function paintBenefits(mode){
+      if (!benRoot) return;
+      const list = (mode === 'subscribe') ? (benDataSub.items || []) : (benDataOnce.items || []);
+      if (!Array.isArray(list)) return;
+
+      const fallbackIcon = cardEl.getAttribute('data-check-icon') || '';
+      benRoot.innerHTML = list.map(it => {
+        const t = (it && it.text) ? String(it.text) : '';
+        const ic = (it && it.icon) ? String(it.icon) : '';
+        const iconSize = benRoot ? getComputedStyle(benRoot).getPropertyValue('--benefit-icon-size') || '18' : '18';
+        const imgSrc = ic || fallbackIcon;
+        const img = imgSrc ? `<img src="${imgSrc}" alt="" class="benefit-icon" loading="lazy" width="${iconSize}" height="${iconSize}">` : '<span class="benefit-icon" style="color:#01B91D; font-size:18px;">✓</span>';
+        return `<div class="benefit-item">${img}<span>${t}</span></div>`;
+      }).join('');
+    }
+
+    function toggleBenefitsVisibility(){
+      if (!benRoot) return;
+      const visible = true; // toujours visible par défaut
+      benRoot.hidden = !visible;
+      if (visible) benRoot.removeAttribute('hidden'); else benRoot.setAttribute('hidden','');
+    }
+
+    // --- MAIN PRODUCT IMAGE SWAP (Subscribe / One-time) -----------------
+    function updateMainProductImageFromOffer(){
+      const urlSub = cardEl.getAttribute('data-offer-img-subscribe') || '';
+      const urlOne = cardEl.getAttribute('data-offer-img-onetime')   || '';
+      const url    = isSubscribe() ? urlSub : urlOne;
+
+      const mainImg = document.querySelector(
+        'li.product__media-item.is-active img, .product__media img'
+      );
+      if (!mainImg) return;
+
+      if (!mainImg.dataset.originalSrc){
+        mainImg.dataset.originalSrc    = mainImg.currentSrc || mainImg.src || '';
+        mainImg.dataset.originalSrcset = mainImg.srcset || '';
+      }
+
+      const withWidth = (baseUrl, w) => {
+        if (!baseUrl) return '';
+        try {
+          const u = new URL(baseUrl, window.location.origin);
+          u.searchParams.set('width', w);
+          return u.toString();
+        } catch {
+          return baseUrl;
+        }
+      };
+
+      if (url){
+        const widths = [246,493,600,713,823,990,1100,1206,1346,1426,1646,1946];
+        mainImg.src    = withWidth(url, 1946);
+        mainImg.srcset = widths.map(w => `${withWidth(url, w)} ${w}w`).join(', ');
+      } else {
+        if (mainImg.dataset.originalSrc){
+          mainImg.src    = mainImg.dataset.originalSrc;
+          mainImg.srcset = mainImg.dataset.originalSrcset || '';
+        }
+      }
+    }
+
+    // ---- Selection + events ----
+    function updateSelection(){
+      const v = currentVariant();
+      const variantId = v ? Number(v.id) : null;
+      const sellingPlanId = isSubscribe() ? (v?.sellingPlans && v.sellingPlans[0] ? Number(v.sellingPlans[0].id) : null) : null;
+
+      if (variantId){ bundleSelections.set(product.id,{ variantId, sellingPlanId }); cardEl.classList.add('is-selected'); }
+      else { bundleSelections.delete(product.id); cardEl.classList.remove('is-selected'); }
+
+      document.dispatchEvent(new CustomEvent('bundle:selection-changed'));
+      updateVariantSavingFromMeta();
+      updateVariantMetaSubtextUI();
+      refreshLabelOffers();
+      paintBenefits(isSubscribe() ? 'subscribe' : 'one_time');
+      toggleBenefitsVisibility();
+      togglePerksForTarget();
+      updateMainProductImageFromOffer();
+    }
+
+    variantList.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.variant-pill'); if(!btn) return;
+      if (String(selectedVariantId)===btn.dataset.vid) return;
+      selectedVariantId = Number(btn.dataset.vid);
+      variantList.querySelectorAll('.variant-pill.is-active').forEach(p=>p.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      updateSelection();
+    });
+
+    purchaseGroup.addEventListener('change',(e)=>{
+      if(!e.target.matches('input[type="radio"]')) return;
+      refreshPurchaseUI();
+      updateSelection();
+      togglePerksForTarget();
+    });
+
+    // init
+    refreshPurchaseUI();
+    renderVariantButtons();
+    updateSelection();
+    paintBenefits(isSubscribe() ? 'subscribe' : 'one_time');
+    toggleBenefitsVisibility();
+    togglePerksForTarget();
+  }
+
+  // Populate text labels from schema settings
+  function populateTextLabels(cardEl) {
+    if (!cardEl) return;
+    
+    // Monthly Delivery labels
+    const monthlyLabelEl = cardEl.querySelector('[data-monthly-label]');
+    const monthlySubtextEl = cardEl.querySelector('[data-monthly-subtext]');
+    const monthlyDescEl = cardEl.querySelector('[data-monthly-description]');
+    const monthlyLabelText = cardEl.getAttribute('data-monthly-label') || 'Monthly Delivery';
+    const monthlySubtext = cardEl.getAttribute('data-monthly-subtext') || 'Save more';
+    const monthlyDesc = cardEl.getAttribute('data-monthly-description') || 'Delivered every 4 weeks.';
+    
+    if (monthlyLabelEl) {
+      const titleTextEl = monthlyLabelEl.querySelector('.bundle-plan-title-text');
+      if (titleTextEl) {
+        titleTextEl.textContent = monthlyLabelText;
+      } else {
+        monthlyLabelEl.textContent = monthlyLabelText;
+      }
+    }
+    if (monthlySubtextEl) monthlySubtextEl.textContent = monthlySubtext;
+    if (monthlyDescEl) monthlyDescEl.textContent = monthlyDesc;
+    
+    // One-time Purchase labels
+    const onetimeLabelEl = cardEl.querySelector('[data-onetime-label]');
+    const onetimeDescEl = cardEl.querySelector('[data-onetime-description]');
+    const onetimeLabel = cardEl.getAttribute('data-onetime-label') || 'One time purchase';
+    const onetimeTemplate = cardEl.getAttribute('data-onetime-template') || '1 Jar shipped once.';
+    
+    if (onetimeLabelEl) onetimeLabelEl.textContent = onetimeLabel;
+    if (onetimeDescEl) {
+      onetimeDescEl.setAttribute('data-onetime-template', onetimeTemplate);
+      // Initial value will be updated by togglePerksForTarget
+      const variantList = cardEl.querySelector('.variant-list');
+      if (variantList) {
+        const activePill = variantList.querySelector('.variant-pill.is-active');
+        if (activePill) {
+          const vId = activePill.getAttribute('data-vid');
+          const variants = parseAttrJSON(cardEl, 'product')?.variants || [];
+          const v = variants.find(x => String(x.id) === String(vId));
+          if (v) {
+            const qty = v.options && v.options[0] ? v.options[0].replace(/[^0-9]/g, '') : '1';
+            const description = onetimeTemplate.replace(/\[quantity\]/g, qty);
+            onetimeDescEl.textContent = description;
+          } else {
+            onetimeDescEl.textContent = onetimeTemplate.replace(/\[quantity\]/g, '1');
+          }
+        } else {
+          onetimeDescEl.textContent = onetimeTemplate.replace(/\[quantity\]/g, '1');
+        }
+      } else {
+        onetimeDescEl.textContent = onetimeTemplate.replace(/\[quantity\]/g, '1');
+      }
+    }
+    
+    // Free offer header
+    const freeOfferHeaderEl = cardEl.querySelector('[data-free-offer-header]');
+    const freeOfferHeader = cardEl.getAttribute('data-free-offer-header') || 'FREE Alpha Coffee with your first delivery';
+    if (freeOfferHeaderEl) freeOfferHeaderEl.textContent = freeOfferHeader;
+  }
+
+  // --------------- Mount / Hydrate ---------------
+  function mountUI(){
+    console.log('[BUNDLE] Looking for root element:', ROOT_ID);
+    const mount = document.getElementById(ROOT_ID);
+    if (!mount) {
+      console.error('[BUNDLE] Root element not found:', ROOT_ID);
+      console.log('[BUNDLE] Available elements with bundle-root:', document.querySelectorAll('[id^="bundle-root"]'));
+      return null;
+    }
+    console.log('[BUNDLE] Found root element:', mount);
+    const wrapper = document.createElement('section');
+    wrapper.className = 'bundle';
+    wrapper.innerHTML = `
+      <div class="bundle-loading"><span class="spinner" aria-hidden="true"></span><span>Chargement du bundle…</span></div>
+      <div class="bundle__header" style="display:none;">
+        <h1 class="bundle__product-title" id="bundleProductTitle"></h1>
+        <div class="bundle__payment-info" id="bundlePaymentInfo">
+          <span>4 interest-free payments of $<span id="bundlePaymentAmount">0.00</span>.</span>
+          <a href="#" class="bundle__shop-pay-link">shop Pay</a>
+        </div>
+      </div>
+      <div class="bundle__cards" style="display:none;"></div>
+      <div class="bundle-empty" style="display:none;">Aucun produit Kaching trouvé. Vérifiez que l'app <strong>Kaching Subscriptions</strong> est activée et que son bloc est présent sur cette page produit.</div>
+      <footer class="bundle__footer">
+        <button type="button" class="bundle-submit" id="bundleSubmit">
+          <span class="bundle-submit__text">{{ block.settings.cta | default: 'Add to cart' }}</span>
+          <span class="bundle-submit__price" id="bundleBtnPrice" hidden>• <span id="bundleBtnPriceValue">—</span></span>
+        </button>
+        <div class="bundle__error" id="bundleError"></div>
+      </footer>
+    `;
+    {% if block.settings.purchase_selected_bg %}
+      wrapper.style.setProperty('--selected-bg', "url('{{ block.settings.purchase_selected_bg | image_url: width: 1200 }}')");
+    {% endif %}
+    wrapper.style.setProperty('--selected-bg-size', "{{ block.settings.purchase_selected_bg_size | default: 'cover' }}");
+    wrapper.style.setProperty('--selected-bg-position', "{{ block.settings.purchase_selected_bg_position | default: 'center' }}");
+    mount.replaceChildren(wrapper);
+    return wrapper;
+  }
+
+  function hydrate(wrapper){
+    if (!wrapper) return;
+
+    const loadingEl = wrapper.querySelector('.bundle-loading');
+    const headerEl = wrapper.querySelector('.bundle__header');
+    const productTitleEl = wrapper.querySelector('#bundleProductTitle');
+    const paymentInfoEl = wrapper.querySelector('#bundlePaymentInfo');
+    const paymentAmountEl = wrapper.querySelector('#bundlePaymentAmount');
+    const cardsHost = wrapper.querySelector('.bundle__cards');
+    const emptyMsg  = wrapper.querySelector('.bundle-empty');
+    const btn       = wrapper.querySelector('#bundleSubmit');
+    if (!btn) {
+      console.error('[BUNDLE] Submit button not found in wrapper');
+      return;
+    }
+    const btnText   = btn.querySelector('.bundle-submit__text');
+    const btnPrice  = btn.querySelector('#bundleBtnPrice');
+    const btnPriceValue = btn.querySelector('#bundleBtnPriceValue');
+    const errBox    = wrapper.querySelector('#bundleError');
+
+    emptyMsg.style.display='none';
+
+    const blocks = getAllKachingBlocks();
+    if (!blocks.length){
+      setTimeout(()=>{ if(!getAllKachingBlocks().length){ loadingEl.style.display='none'; emptyMsg.style.display=''; } }, EMPTY_DELAY_MS);
+      return;
+    }
+    
+    // Update header with product info from first block
+    const firstBlock = blocks[0];
+    const product = parseAttrJSON(firstBlock, 'product') || {};
+    if (product.title && productTitleEl) {
+      productTitleEl.textContent = product.title;
+      if (headerEl) headerEl.style.display = '';
+    }
+    
+    // Update payment amount (calculate from first variant price / 4)
+    const firstVariant = product.variants && product.variants[0];
+    if (firstVariant && paymentAmountEl) {
+      const basePrice = getVariantBasePriceCents(firstVariant);
+      const paymentAmount = basePrice / 4 / 100;
+      paymentAmountEl.textContent = paymentAmount.toFixed(2);
+    }
+
+    // cache & hide Kaching widgets
+    blocks.forEach(b=>{ const widget=b.closest('.kaching-subscriptions__widget')||b; if(widget) widget.style.display='none'; });
+
+    const dataList=[];
+    blocks.forEach(b=>{ const data=extractKachingData(b); if(data?.product?.id) dataList.push(data); });
+
+    if (!dataList.length){ loadingEl.style.display='none'; emptyMsg.style.display=''; return; }
+
+    cardsHost.innerHTML = dataList.map(({product})=>renderCardHTML(product)).join('');
+
+    Array.from(cardsHost.querySelectorAll('.bundle-card')).forEach(card=>{
+      const pid = Number(card.getAttribute('data-product-id'));
+      const data = dataList.find(d=>Number(d.product.id)===Number(pid));
+      if (data) {
+        // Populate text labels from schema settings
+        populateTextLabels(card);
+        attachCardLogic(card, data);
+      }
+    });
+
+    // ---------- Price for ATC button ----------
+    const readKachingPair = (container)=>{
+      if (!container) return null;
+      const nowEl = container.querySelector('.ks-discounted-price, .kaching-subscriptions__card-price');
+      const oldEl = container.querySelector('.ks-original-price');
+      const nowCents = readMoneyCents(nowEl?.textContent);
+      const oldCents = readMoneyCents(oldEl?.textContent);
+      if (nowCents==null) return null;
+      return { nowCents, oldCents:(oldCents!=null?oldCents:nowCents) };
+    };
+
+    function ensureRatiosForData(data){
+      if (data.__ratios) return data.__ratios;
+
+      const findVariant=(product,variantId)=> (product.variants||[]).find(v=>Number(v.id)===Number(variantId));
+      const refVid = data.product.selectedVariantId || data.product?.variants?.[0]?.id;
+      const refV = findVariant(data.product, refVid);
+      const baseRef = getVariantBasePriceCents(refV);
+
+      const subCont = findSubscribeContainer(data.blockEl);
+      const oneCont = findOneTimeContainer(data.blockEl);
+      const subPair = readKachingPair(subCont);
+      const onePair = readKachingPair(oneCont);
+
+      const makeRatio=(pair)=>{ if(!pair || !baseRef) return null; const curR=pair.nowCents/baseRef; if(!isFinite(curR)||curR<=0) return null; return { curR }; };
+
+      data.__ratios = {
+        subscribe: makeRatio(subPair),
+        onetime:   makeRatio(onePair)
+      };
+
+      dbg('ratios for product', data.product.id, data.__ratios);
+      return data.__ratios;
+    }
+
+    function getItemPriceCents(data, sel){
+      const v = (data.product.variants||[]).find(x=>Number(x.id)===Number(sel.variantId));
+      if (!v) return 0;
+
+      const base = getVariantBasePriceCents(v);
+      const ratios = ensureRatiosForData(data);
+
+      if (!sel.sellingPlanId){
+        if (ratios.onetime) return Math.round(base * ratios.onetime.curR);
+        return base;
+      }
+
+      if (ratios.subscribe) return Math.round(base * ratios.subscribe.curR);
+
+      const sp = (v.sellingPlans||[]).find(p=>Number(p.id)===Number(sel.sellingPlanId));
+      if (sp){
+        const candidates=[sp.price, sp.checkoutPrice, sp.currentPrice, sp.firstCyclePrice, sp.recurringPrice, sp.calculatedPrice, sp.perDeliveryPrice, sp.priceV2, sp.checkoutPriceV2, sp.currentPriceV2];
+        for (const c of candidates){ const cents=readMoneyCents(c); if (cents!=null) return cents; }
+      }
+      const meta = data.planMeta(sel.sellingPlanId);
+      if (meta && meta.discount){
+        const d = meta.discount;
+        if (d.type==='PERCENTAGE') return Math.max(0, Math.round(base * (1 - Number(d.adjustmentValue||0)/100)));
+        if (d.type==='FIXED_AMOUNT') return Math.max(0, base - Number(d.adjustmentValue||0));
+      }
+      return base;
+    }
+
+    function computeTotalCents(){
+      let sum=0;
+      for (const [pid, sel] of bundleSelections.entries()){
+        const data = dataList.find(d=>Number(d.product.id)===Number(pid));
+        if (!data) continue;
+        sum += getItemPriceCents(data, sel);
+      }
+      return sum;
+    }
+
+    function updateButtonPrice(){
+      const total = computeTotalCents();
+      if (total>0){ 
+        btnPriceValue.textContent = fmt(total); 
+        btnPrice.hidden=false;
+        // Update payment amount in header
+        if (paymentAmountEl) {
+          const paymentAmount = total / 4 / 100;
+          paymentAmountEl.textContent = paymentAmount.toFixed(2);
+        }
+      }
+      else { 
+        btnPrice.hidden=true; 
+        btnPriceValue.textContent='—'; 
+      }
+    }
+
+    document.addEventListener('bundle:selection-changed', updateButtonPrice);
+    updateButtonPrice();
+
+    loadingEl.style.display='none';
+    cardsHost.style.display='';
+
+    // ATC click (OUVERTURE SLIDE CART)
+    btn.onclick = async () => {
+  errBox.textContent='';
+
+  const items = Array.from(bundleSelections.values()).map(sel=>{
+const base = { id: sel.variantId, quantity: 1, properties:{ _bundle:'custom' } };
+    if (sel.sellingPlanId) base.selling_plan = sel.sellingPlanId;
+    return base;
+  });
+  if (!items.length){ errBox.textContent='Aucun produit sélectionné.'; return; }
+
+  // UI
+  btn.disabled = true;
+  btnText.style.display = 'none';
+  btnPrice.hidden = true;
+  const spinner = document.createElement('span');
+  spinner.className = 'spinner';
+  spinner.setAttribute('aria-label','Chargement');
+  btn.appendChild(spinner);
+
+  // Config sections Shopify (adapter si ton thème a d’autres IDs)
+  const SECTION_IDS = ['cart-drawer','cart-icon-bubble','cart-notification'];
+  const SECTIONS_URL = (window.routes && window.routes.cart_url) || '/cart'; // source d’autorité
+
+  // Helpers
+  const replaceSection = (html, selectors) => {
+    if (!html) return null;
+    for (const sel of selectors) {
+      const el = document.querySelector(sel);
+      if (!el) continue;
+      if (el.id && html.includes(el.id)) el.outerHTML = html;
+      else el.innerHTML = html;
+      return document.querySelector(sel);
+    }
+    return null;
+  };
+  const SELECTORS = {
+    'cart-drawer': ['#shopify-section-cart-drawer','cart-drawer','#CartDrawer','.cart-drawer','[data-cart-drawer]'],
+    'cart-icon-bubble': ['#shopify-section-cart-icon-bubble','cart-icon-bubble','.cart-count-bubble','[data-cart-count-bubble]'],
+    'cart-notification': ['#shopify-section-cart-notification','cart-notification','#CartNotification','.cart-notification']
+  };
+  const drawerNode = () =>
+    document.querySelector('cart-drawer') ||
+    document.querySelector('#CartDrawer') ||
+    document.querySelector('.cart-drawer') ||
+    document.querySelector('[data-cart-drawer]');
+  const openDrawer = () => {
+    const d = drawerNode();
+    if (d && typeof d.open === 'function') { d.open(); return; }
+    if (d) { d.classList.add('is-open'); d.setAttribute('open',''); return; }
+    const toggle = document.querySelector('[data-cart-toggle],[data-open-cart],[data-action="open-cart"],[aria-controls="CartDrawer"],a[href="#CartDrawer"],.header__icon--cart');
+    if (toggle) toggle.click();
+    document.dispatchEvent(new CustomEvent('cart:open',{bubbles:true}));
+  };
+
+  try {
+    // 1) Add au panier **avec** sections & sections_url (clé de fiabilité)
+    const addRes = await fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        items,
+        sections: SECTION_IDS,          // demande à Shopify de renvoyer ces sections
+        sections_url: SECTIONS_URL      // d’où calculer le rendu serveur des sections
+      })
+    });
+    if (!addRes.ok) throw new Error(await addRes.text() || 'Erreur add.js');
+
+    const data = await addRes.json();
+
+    // 2) Injecte directement les sections renvoyées par /cart/add.js
+    if (data && data.sections) {
+      replaceSection(data.sections['cart-icon-bubble'], SELECTORS['cart-icon-bubble']);
+      replaceSection(data.sections['cart-drawer'],      SELECTORS['cart-drawer']);
+      replaceSection(data.sections['cart-notification'],SELECTORS['cart-notification']);
+    } else {
+      // Fallback rare
+      const url = `${SECTIONS_URL}?sections=${SECTION_IDS.join(',')}&_=${Date.now()}`;
+      const sec = await fetch(url, { headers:{ 'Accept':'application/json' }, cache:'no-store', credentials:'same-origin' }).then(r=>r.json());
+      replaceSection(sec['cart-icon-bubble'], SELECTORS['cart-icon-bubble']);
+      replaceSection(sec['cart-drawer'],      SELECTORS['cart-drawer']);
+      replaceSection(sec['cart-notification'],SELECTORS['cart-notification']);
+    }
+
+    // 3) Laisse le DOM peindre puis ouvre le drawer
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+    openDrawer();
+
+    // 4) Events de sync
+    document.dispatchEvent(new CustomEvent('cart:refresh',{bubbles:true}));
+    document.dispatchEvent(new CustomEvent('cart:change', {bubbles:true}));
+
+  } catch (e) {
+    errBox.textContent = 'Impossible d’ajouter le bundle : ' + (e?.message||e);
+    btn.disabled = false;
+    btnText.style.display = '';
+    spinner.remove();
+    updateButtonPrice();
+    return;
+  }
+
+  // Reset UI
+  btn.disabled = false;
+  btnText.style.display = '';
+  spinner.remove();
+  updateButtonPrice();
+};
+
+
+    
+  }
+
+    const wrapper = mountUI();
+    if (!wrapper) {
+      console.error('[BUNDLE] mountUI returned null. Root element not found:', ROOT_ID);
+      return;
+    }
+    console.log('[BUNDLE] Mounted wrapper:', wrapper);
+    try{ 
+      hydrate(wrapper);
+      console.log('[BUNDLE] Hydration complete');
+    }catch(e){ 
+      console.error('[BUNDLE] hydrate error',e); 
+      console.error('[BUNDLE] Stack:', e.stack);
+    }
+
+    // Re-hydrate si Kaching monte après
+    const mo = new MutationObserver((mutations)=>{
+      const added = mutations.some(m=>Array.from(m.addedNodes||[]).some(n=> n.nodeType===1 && (n.matches?.('kaching-subscriptions-block[product]') || n.querySelector?.('kaching-subscriptions-block[product]')) ));
+      if (added) hydrate(wrapper);
+    });
+    mo.observe(document.documentElement,{ childList:true, subtree:true });
+  }
+  
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBundle);
+  } else {
+    // DOM already ready, run immediately
+    initBundle();
+  }
+})();
+</script>
