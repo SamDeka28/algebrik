@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -506,3 +507,405 @@ html{
   font-weight: 600;
 }
 /* === End UFCU Showcase Pixel-Perfect Form Styles === */
+
+/* === Algebrik Unwrapped Styles Start === */
+@layer base {
+  /* Override colors for unwrapped page - dark theme with gold accents */
+  body:has(.unwrapped-page) {
+    --background: 240 10% 3%;
+    --foreground: 45 10% 96%;
+    --card: 240 8% 6%;
+    --card-foreground: 45 10% 96%;
+    --primary: 38 92% 55%;
+    --primary-foreground: 240 10% 3%;
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 45 10% 85%;
+    --muted: 240 6% 12%;
+    --muted-foreground: 240 5% 50%;
+    --accent: 32 95% 50%;
+    --accent-foreground: 240 10% 3%;
+    --border: 240 6% 15%;
+  }
+
+  :root {
+    /* === SECTION THEMES - Spotify Wrapped Style === */
+    /* Hero - Deep black with gold pulse */
+    --section-hero-bg: 240 10% 2%;
+    --section-hero-accent: 38 92% 55%;
+    
+    /* What Changed - Purple haze */
+    --section-purple-bg: 270 30% 8%;
+    --section-purple-accent: 280 80% 65%;
+    --section-purple-glow: 280 80% 55%;
+    
+    /* Lending Unwrapped - Teal energy */
+    --section-teal-bg: 180 30% 6%;
+    --section-teal-accent: 175 85% 50%;
+    --section-teal-glow: 175 90% 45%;
+    
+    /* Wow Moment - Electric contrast */
+    --section-electric-bg: 220 40% 6%;
+    --section-electric-accent: 45 100% 60%;
+    --section-electric-glow: 45 100% 50%;
+    
+    /* Ecosystem - Electric blue constellation */
+    --section-blue-bg: 220 40% 5%;
+    --section-blue-accent: 210 100% 60%;
+    --section-blue-glow: 210 100% 50%;
+    
+    /* Client Proof - Warm coral */
+    --section-coral-bg: 10 30% 6%;
+    --section-coral-accent: 15 90% 55%;
+    --section-coral-glow: 15 95% 50%;
+    
+    /* Algebrik One - Golden explosion */
+    --section-gold-bg: 30 25% 5%;
+    --section-gold-accent: 40 100% 55%;
+    --section-gold-glow: 40 100% 50%;
+    
+    /* Final - Full sunrise */
+    --section-sunrise-bg: 25 30% 5%;
+    --section-sunrise-accent: 35 100% 60%;
+    --section-sunrise-glow: 35 100% 55%;
+
+    /* Enhanced design tokens */
+    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(38 92% 55% / 0.15) 0%, transparent 60%);
+    --gradient-card: linear-gradient(145deg, hsl(240 8% 10% / 0.8) 0%, hsl(240 8% 5% / 0.9) 100%);
+    --gradient-card-hover: linear-gradient(145deg, hsl(240 8% 12% / 0.9) 0%, hsl(240 8% 7% / 0.95) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(38 92% 60%) 0%, hsl(25 90% 50%) 50%, hsl(38 92% 55%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(45 10% 98%) 0%, hsl(38 92% 75%) 50%, hsl(32 95% 60%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(38 92% 55% / 0.25) 0%, transparent 70%);
+    
+    --shadow-glow: 0 0 80px hsl(38 92% 55% / 0.2), 0 0 120px hsl(38 92% 55% / 0.1);
+    --shadow-glow-sm: 0 0 30px hsl(38 92% 55% / 0.15);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4), 0 2px 8px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 16px 48px hsl(0 0% 0% / 0.5), 0 4px 16px hsl(0 0% 0% / 0.3), 0 0 40px hsl(38 92% 55% / 0.1);
+    
+    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-snap: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer components {
+  /* === SECTION THEME BACKGROUNDS === */
+  .section-theme-hero {
+    background: hsl(var(--section-hero-bg));
+  }
+  
+  .section-theme-purple {
+    background: hsl(var(--section-purple-bg));
+  }
+  
+  .section-theme-teal {
+    background: hsl(var(--section-teal-bg));
+  }
+  
+  .section-theme-electric {
+    background: hsl(var(--section-electric-bg));
+  }
+  
+  .section-theme-blue {
+    background: hsl(var(--section-blue-bg));
+  }
+  
+  .section-theme-coral {
+    background: hsl(var(--section-coral-bg));
+  }
+  
+  .section-theme-gold {
+    background: hsl(var(--section-gold-bg));
+  }
+  
+  .section-theme-sunrise {
+    background: hsl(var(--section-sunrise-bg));
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-text);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+  
+  /* === THEMED GRADIENT TEXT === */
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(280 90% 75%) 0%, hsl(320 85% 65%) 100%);
+  }
+  
+  .text-gradient-teal {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(175 90% 60%) 0%, hsl(160 85% 50%) 100%);
+  }
+  
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(210 100% 70%) 0%, hsl(190 90% 55%) 100%);
+  }
+  
+  .text-gradient-coral {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(15 95% 65%) 0%, hsl(35 90% 55%) 100%);
+  }
+  
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(45 100% 70%) 0%, hsl(35 100% 55%) 100%);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-gradient-hover {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+
+  .card-gradient-hover:hover {
+    background: var(--gradient-card-hover);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-accent-sm {
+    box-shadow: var(--shadow-glow-sm);
+  }
+
+  .section-container {
+    @apply min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-24 py-24 relative;
+    will-change: transform;
+  }
+  
+  /* === GIANT STAT TYPOGRAPHY === */
+  .stat-giant {
+    @apply font-display font-bold leading-none tracking-tighter;
+    font-size: clamp(6rem, 20vw, 14rem);
+  }
+  
+  .stat-large {
+    @apply font-display font-bold leading-none tracking-tight;
+    font-size: clamp(4rem, 12vw, 8rem);
+  }
+
+  .heading-xl {
+    @apply font-display font-bold text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-[-0.02em];
+    color: hsl(var(--foreground));
+  }
+
+  .heading-lg {
+    @apply font-display font-semibold text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-[-0.02em];
+    color: hsl(var(--foreground));
+  }
+
+  .heading-md {
+    @apply font-display font-semibold text-2xl md:text-3xl lg:text-4xl leading-[1.15] tracking-[-0.01em];
+    color: hsl(var(--foreground));
+  }
+
+  .heading-sm {
+    @apply font-display font-semibold text-xl md:text-2xl leading-[1.2];
+    color: hsl(var(--foreground));
+  }
+
+  .body-lg {
+    @apply font-body text-lg md:text-xl lg:text-2xl leading-relaxed;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .body-md {
+    @apply font-body text-base md:text-lg leading-relaxed;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Ensure text is visible on dark backgrounds */
+  .unwrapped-page .body-lg,
+  .unwrapped-page .body-md {
+    color: hsl(45 10% 85%);
+  }
+
+  .unwrapped-page .text-foreground {
+    color: hsl(45 10% 96%) !important;
+  }
+
+  .unwrapped-page .text-muted-foreground {
+    color: hsl(240 5% 60%) !important;
+  }
+
+  .scroll-indicator {
+    @apply animate-bounce text-muted-foreground/50;
+  }
+
+  /* Enhanced button styles */
+  .btn-primary {
+    @apply relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-full font-display font-semibold text-lg overflow-hidden;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 opacity-0;
+    background: linear-gradient(135deg, hsl(38 92% 70%) 0%, hsl(25 90% 55%) 100%);
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-primary:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-primary > * {
+    @apply relative z-10;
+  }
+
+  /* Animated border gradient */
+  .border-gradient {
+    @apply relative rounded-xl;
+  }
+
+  .border-gradient::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl p-px;
+    background: linear-gradient(135deg, hsl(38 92% 55% / 0.3) 0%, transparent 50%, hsl(38 92% 55% / 0.1) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    @apply pointer-events-none fixed inset-0 z-50 opacity-[0.02];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    will-change: auto;
+  }
+
+  /* Performance optimizations for animations */
+  .unwrapped-page [data-framer-component],
+  .unwrapped-page [data-framer-motion] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .unwrapped-page .section-container > * {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Smooth scrolling */
+  .unwrapped-page {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Snap scroll container */
+  .snap-scroll-container {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    height: 100vh;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Snap scroll sections */
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Ensure sections take full viewport */
+  .snap-section .section-container {
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  /* Smooth snap scrolling */
+  @media (prefers-reduced-motion: no-preference) {
+    .snap-scroll-container {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Optional: Disable snap on mobile for better UX (can be enabled if desired) */
+  @media (max-width: 768px) {
+    .snap-scroll-container {
+      scroll-snap-type: y proximity;
+    }
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-800 { animation-delay: 800ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+  .animation-delay-1200 { animation-delay: 1200ms; }
+  .animation-delay-1500 { animation-delay: 1500ms; }
+
+  /* Stagger children animations */
+  .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+  .stagger-children > *:nth-child(3) { animation-delay: 200ms; }
+  .stagger-children > *:nth-child(4) { animation-delay: 300ms; }
+  .stagger-children > *:nth-child(5) { animation-delay: 400ms; }
+  .stagger-children > *:nth-child(6) { animation-delay: 500ms; }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  .hover-lift:hover {
+    transform: translateY(-8px);
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(38 92% 55% / 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* Typewriter cursor */
+  .typewriter-cursor::after {
+    content: '|';
+    @apply animate-pulse text-primary ml-1;
+  }
+}
+/* === Algebrik Unwrapped Styles End === */
