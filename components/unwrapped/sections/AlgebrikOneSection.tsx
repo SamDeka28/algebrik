@@ -39,12 +39,12 @@ export const AlgebrikOneSection = () => {
           transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
         >
           <motion.h2 
-            className="font-display font-bold text-7xl md:text-9xl lg:text-[12rem] text-gradient-gold mb-8 tracking-tight leading-none"
+            className="font-display font-bold text-7xl md:text-9xl lg:text-[12rem] text-gradient-accent mb-8 tracking-tight leading-none"
             animate={inView ? {
               textShadow: [
-                "0 0 30px hsl(40 100% 55% / 0.3)",
-                "0 0 100px hsl(40 100% 55% / 0.5)",
-                "0 0 30px hsl(40 100% 55% / 0.3)"
+                "0 0 20px #15C3A980",
+                "0 0 60px #15C3A960",
+                "0 0 20px #15C3A980"
               ]
             } : {}}
             transition={{ duration: 2, repeat: Infinity }}
@@ -76,7 +76,7 @@ export const AlgebrikOneSection = () => {
             One data spine.
           </motion.p>
           <motion.p 
-            className="text-xl md:text-2xl font-display text-[hsl(40_100%_55%)] font-bold"
+            className="text-xl md:text-2xl font-display text-[hsl(210_100%_60%)] font-bold"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={inView ? { scale: 1, opacity: 1 } : {}}
             transition={{ delay: 1.2, type: "spring" }}
@@ -89,7 +89,7 @@ export const AlgebrikOneSection = () => {
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
           transition={{ duration: 0.8, delay: 1.4 }}
-          className="w-32 h-1 bg-gradient-to-r from-transparent via-[hsl(40_100%_55%)] to-transparent mx-auto mt-12 rounded-full"
+          className="w-32 h-1 bg-gradient-to-r from-transparent via-[hsl(210_100%_60%)] to-transparent mx-auto mt-12 rounded-full"
         />
       </div>
     </section>

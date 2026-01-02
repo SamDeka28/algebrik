@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Particles } from "../Particles";
+import Link from "next/link";
 
 const modules = [
   {
@@ -9,30 +10,35 @@ const modules = [
     from: "rate shopping",
     to: "relationships",
     icon: "💳",
+    href: "/solutions/omnichannel-point-of-sale",
   },
   {
     title: "Digital Account Opening",
     from: "forms",
     to: "minutes",
     icon: "⚡",
+    href: "/solutions/digital-account-opening",
   },
   {
     title: "Loan Origination (LOS)",
     from: "queues",
     to: "real-time flow",
     icon: "🔄",
+    href: "/solutions/lender-cockpit",
   },
   {
     title: "Decisioning Engine",
     from: "rules",
     to: "reasoning",
     icon: "🧠",
+    href: "/solutions/decisioning",
   },
   {
     title: "Portfolio Analytics",
     from: "hindsight",
     to: "foresight",
     icon: "📊",
+    href: "/solutions/portfolio-analytics",
   },
 ];
 
@@ -53,15 +59,16 @@ const ModuleCard = ({ module, index }: { module: typeof modules[0]; index: numbe
       }}
       className="group relative"
     >
-      <motion.div 
-        className="relative bg-card/80 border border-[hsl(175_85%_50%/0.2)] rounded-2xl p-8 md:p-10 overflow-hidden backdrop-blur-sm"
-        whileHover={{ 
-          scale: 1.02, 
-          borderColor: "hsl(175 85% 50% / 0.5)",
-          boxShadow: "0 0 40px hsl(175 85% 50% / 0.2)"
-        }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
+      <Link href={module.href} className="block" target="_blank">
+        <motion.div 
+          className="relative bg-card/80 border border-[hsl(175_85%_50%/0.2)] rounded-2xl p-8 md:p-10 overflow-hidden backdrop-blur-sm cursor-pointer"
+          whileHover={{ 
+            scale: 1.02, 
+            borderColor: "hsl(175 85% 50% / 0.5)",
+            boxShadow: "0 0 40px hsl(175 85% 50% / 0.2)"
+          }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
         {/* Hover glow effect */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[hsl(175_85%_50%/0.6)] to-transparent" />
@@ -107,7 +114,8 @@ const ModuleCard = ({ module, index }: { module: typeof modules[0]; index: numbe
           </motion.span>
           <span className="text-foreground font-bold">{module.to}</span>
         </div>
-      </motion.div>
+        </motion.div>
+      </Link>
     </motion.div>
   );
 };

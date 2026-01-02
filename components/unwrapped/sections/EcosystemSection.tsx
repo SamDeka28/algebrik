@@ -3,10 +3,16 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { CountUp } from "../CountUp";
 import { Particles } from "../Particles";
+import Image from "next/image";
 
 const integrationLogos = [
-  "Plaid", "Equifax", "Experian", "TransUnion", "FICO",
-  "DocuSign", "Twilio", "Stripe", "FIS", "Jack Henry",
+  { name: "Plaid", image: "/integration_logos/plaid.png" },
+  { name: "Equifax", image: "/integration_logos/equifax.png" },
+  { name: "Experian", image: "/integration_logos/experian.png" },
+  { name: "TransUnion", image: "/integration_logos/transunion.png" },
+  { name: "DocuSign", image: "/integration_logos/docusign.png" },
+  { name: "FIS", image: "/integration_logos/fiserv.png" }, // Using FIServ as FIS
+  { name: "Jack Henry", image: "/integration_logos/jackharry.png" },
 ];
 
 export const EcosystemSection = () => {
@@ -65,7 +71,8 @@ export const EcosystemSection = () => {
               } : {}}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <CountUp end={42} duration={2} />
+              {/* <CountUp end={42} duration={2} /> */}
+              Multiple
             </motion.span>
           </div>
           <motion.p
@@ -79,16 +86,17 @@ export const EcosystemSection = () => {
         </motion.div>
 
         {/* Floating logos in orbit - snapping in */}
-        <div className="relative h-[280px] mt-16 mb-16">
+        <div className="relative h-[400px] mt-16 mb-16">
           {integrationLogos.map((logo, i) => {
-            const angle = (i / 10) * Math.PI * 2 - Math.PI / 2;
-            const radius = 150;
+            const totalLogos = integrationLogos.length;
+            const angle = (i / totalLogos) * Math.PI * 2 - Math.PI / 2;
+            const radius = 200;
             const x = Math.cos(angle) * radius;
             const y = Math.sin(angle) * radius * 0.6;
             
             return (
               <motion.div
-                key={logo}
+                key={logo.name}
                 initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
                 animate={inView ? { 
                   opacity: 1, 
@@ -113,10 +121,20 @@ export const EcosystemSection = () => {
                     ease: "easeInOut",
                     delay: i * 0.15
                   }}
-                  className="px-4 py-2 bg-card/80 border border-[hsl(210_100%_60%/0.2)] rounded-lg backdrop-blur-sm hover:border-[hsl(210_100%_60%/0.5)] hover:bg-[hsl(210_100%_60%/0.1)] transition-all duration-300 cursor-default"
+                  className="px-4 py-2 bg-white/90 border border-[hsl(210_100%_60%/0.2)] rounded-lg backdrop-blur-sm hover:border-[hsl(210_100%_60%/0.5)] hover:bg-white transition-all duration-300 cursor-default flex items-center justify-center shadow-sm"
                   whileHover={{ scale: 1.15 }}
                 >
-                  <span className="text-xs font-medium text-muted-foreground/80 hover:text-foreground transition-colors">{logo}</span>
+                  {logo.image ? (
+                    <Image 
+                      src={logo.image} 
+                      alt={logo.name}
+                      width={80}
+                      height={24}
+                      className="h-6 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                  ) : (
+                    <span className="text-xs font-medium text-muted-foreground/80 hover:text-foreground transition-colors">{logo.name}</span>
+                  )}
                 </motion.div>
               </motion.div>
             );

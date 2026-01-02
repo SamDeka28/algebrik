@@ -4,10 +4,12 @@ import { useInView } from "react-intersection-observer";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Particles, ConfettiBurst } from "../Particles";
 import { useState, useEffect } from "react";
+import Contact from "../../contacts";
 
 export const FinalSection = () => {
   const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   useEffect(() => {
     if (inView) {
@@ -68,11 +70,14 @@ export const FinalSection = () => {
         >
           <div className="absolute inset-0 bg-primary/40 rounded-full blur-2xl animate-breathe" />
           
-          <a href="#" className="btn-primary group relative">
+          <button 
+            onClick={() => setShowContactModal(true)}
+            className="btn-primary group relative"
+          >
             <Sparkles className="w-5 h-5" />
             <span>Explore what's next</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </a>
+          </button>
         </motion.div>
 
         <motion.div
@@ -88,6 +93,7 @@ export const FinalSection = () => {
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         </motion.div>
       </div>
+      <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
     </section>
   );
 };

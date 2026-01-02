@@ -9,7 +9,7 @@ export const WowMomentSection = () => {
 
   const leftItems = ["Disconnected systems", "Manual decisions", "Slow outcomes"];
   const rightItems = [
-    { text: "integrations", count: 42 },
+    { text: "Multiple Integrations", count: null },
     { text: "AI inside every step", count: null },
     { text: "Decisions at speed", count: null },
   ];
