@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Play } from "lucide-react";
 import { Particles } from "../Particles";
 
 const clientOutcomes = [
@@ -67,33 +66,24 @@ export const ClientProofSection = () => {
           ))}
         </div>
 
-        {/* Video placeholder */}
+        {/* YouTube Video Embed */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="relative aspect-video max-w-2xl mx-auto mb-16 rounded-2xl overflow-hidden group cursor-pointer"
+          className="relative aspect-video max-w-2xl mx-auto mb-16 rounded-2xl overflow-hidden"
         >
           <div className="absolute inset-0 rounded-2xl p-px bg-gradient-to-br from-[hsl(15_90%_55%/0.4)] via-transparent to-[hsl(35_90%_55%/0.4)]">
-            <div className="w-full h-full rounded-2xl bg-card" />
+            <div className="w-full h-full rounded-2xl overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/eurUe1zGl98?si=KSAHbFEVWlUL8R-x"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full rounded-2xl"
+              />
+            </div>
           </div>
-          
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div 
-              className="relative"
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              <div className="absolute inset-0 bg-[hsl(15_90%_55%/0.3)] rounded-full blur-xl animate-breathe" />
-              <div className="relative w-20 h-20 rounded-full bg-[hsl(15_90%_55%/0.2)] backdrop-blur-sm border border-[hsl(15_90%_55%/0.4)] flex items-center justify-center">
-                <Play className="w-8 h-8 text-[hsl(15_90%_55%)] ml-1" />
-              </div>
-            </motion.div>
-          </div>
-          
-          <p className="absolute bottom-4 left-4 text-sm text-muted-foreground font-medium">
-            Watch Barbara's story
-          </p>
         </motion.div>
 
         <motion.blockquote

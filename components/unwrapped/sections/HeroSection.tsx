@@ -66,15 +66,15 @@ export const HeroSection = () => {
             type: "spring",
             stiffness: 100
           }}
-          className="overflow-hidden"
+          className=""
         >
           <motion.span 
             className="stat-large text-gradient-accent inline-block"
             animate={{ 
               textShadow: [
-                "0 0 20px hsl(38 92% 55% / 0.3)",
-                "0 0 60px hsl(38 92% 55% / 0.5)",
-                "0 0 20px hsl(38 92% 55% / 0.3)"
+                "0 0 20px #15C3A980",
+                "0 0 60px #15C3A960",
+                "0 0 20px #15C3A980"
               ]
             }}
             transition={{ duration: 2, repeat: Infinity }}
