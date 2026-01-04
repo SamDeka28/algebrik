@@ -232,7 +232,12 @@ export default function Navbar() {
     ...WEBINARS.map(item => item.link + "/")
   ]
 
-  const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname));
+  // Check if current path is a resource-center blog page (dynamic route)
+  const isResourceCenterBlog = pathname.startsWith('/resource-center/') && 
+    pathname !== '/resource-center' && 
+    pathname !== '/resource-center/';
+
+  const isContactOrResourcePage = Boolean(BlueLogoPaths.includes(pathname)) || isResourceCenterBlog;
 
   function getLogo() {
     if (isScrolled) {

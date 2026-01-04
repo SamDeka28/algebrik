@@ -17,7 +17,6 @@ export const metadata:Metadata={
 
 export default function Home({}) {
   const images = getEventImages(); // Directly fetching images
-  console.log({images})
   return (
      <>
       <main className="overflow-x-hidden">
