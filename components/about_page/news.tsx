@@ -4,206 +4,218 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getStrapiMediaUrl, StrapiAPI } from "@/lib/strapi";
 
 export default function NewsSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
-
-  const newsArticles = [
-    {
-      title:"Algebrik AI Partners with Scienaptic AI to Power Inclusive Decisioning in Loan Origination",
-      author: "PR Newswire",
-      source:"PR Newswire",
-      role:"Marketing",
-      description:"Algebrik AI today announced a strategic partnership with Scienaptic AI, a leading provider of AI-powered lending solutions for credit unions.",
-      link:"https://finance.yahoo.com/news/algebrik-ai-partners-scienaptic-ai-132700269.html",
-      image:"/section_images/blog/ya.webp"
-    },
-    {
-      title:"Algebrik AI and Housetable Announce Strategic Partnership and Advisory Engagement",
-      author: "The Credit Union Connection",
-      source:"The Credit Union Connection",
-      role:"Marketing",
-      description:"Algebrik AI today announced a strategic partnership with Housetable, a fast-growing platform dedicated to digital renovation lending.",
-      link:"https://thecreditunionconnection.com/algebrik-ai-and-housetable-announce-strategic-partnership-and-advisory-engagement/",
-      image:"https://thecreditunionconnection.com/wp-content/uploads/2024/10/37B7B312-4939-45D4-9CE0-B07F18E21853-2.jpeg"
-    },
-    {
-      title:"Algebrik AI Partners with Spinwheel to Streamline Debt Data & Payments in Loan Origination",
-      author: "PR Newswire",
-      source:"PR Newswire",
-      role:"Marketing",
-      description:"Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City and pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announces a strategic partnership with Spinwheel, a leading...",
-      link:"https://www.prnewswire.com/news-releases/algebrik-ai-partners-with-spinwheel-to-streamline-debt-data--payments-in-loan-origination-302509571.html",
-      image:"/section_images/blog/prnewswire.jpg"
-    },
-    {
-      title:"Family Financial Credit Union Chooses Algebrik AI's End-to-End Digital Lending Suite: Algebrik ONE; to Enter into the New Era of Agentic AI-Powered Lending",
-      author: "PR Newswire",
-      source:"PR Newswire",
-      role:"Marketing",
-      description:"Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination System (LOS) built for credit unions, today announced that Family Financial Credit Union...",
-      link:"https://www.prnewswire.com/news-releases/family-financial-credit-union-chooses-algebrik-ais-end-to-end-digital-lending-suite-algebrik-one-to-enter-into-the-new-era-of-agentic-ai-powered-lending-302520713.html",
-      image:"/section_images/blog/prnewswire.jpg"
-    },
-    {
-      title:"Algebrik AI and Open Lending Partner to Expand Intelligent Auto Loan Decisioning for Credit Unions",
-      author: "PR Newswire",
-      source:"PR Newswire",
-      role:"Marketing",
-      description:"Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City and pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced an integration with Open Lending Corporation...",
-      link:"https://www.prnewswire.com/news-releases/algebrik-ai-and-open-lending-partner-to-expand-intelligent-auto-loan-decisioning-for-credit-unions-302526459.html",
-      image:"/section_images/blog/prnewswire.jpg"
-    },
-    {
-      title:
-        "United Financial Credit Union Selects AlgebrikAI's Comprehensive Consumer Lending Suite, Algebrik One",
-      author: "PR Newswire",
-      source: "PR Newswire",
-      role: "Marketing",
-      description: "Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS) built for credit unions, today announced that United Financial Credit Union...",
-      link: "https://www.prnewswire.com/news-releases/united-financial-credit-union-selects-algebrikais-comprehensive-consumer-lending-suite-algebrik-one-302504296.html?tc=eml_cleartime",
-      image: "/section_images/blog/prnewswire.jpg",
-    },
-    {
-      title:
-        "Algebrik AI and Kinective Partner to Streamline Lending from Application to Signature",
-      author: "PR Newswire",
-      source: "Yahoo Finance",
-      role: "Marketing",
-      description: "Algebrik AI Inc. today announced a strategic partnership with Kinective, a leading provider of digital connectivity, document workflow, and core integration solutions for the banking sector.",
-      link: "https://finance.yahoo.com/news/algebrik-ai-kinective-partner-streamline-120300510.html?guccounter=1",
-      image: "/section_images/blog/ya.webp",
-    },
-    {
-      title:
-        "Algebrik AI Partners with TruStage™ to Offer Embedded Lending Protection Products Through the Loan Origination Journey",
-      author: "PR Newswire",
-      source: "Yahoo Finance",
-      role: "Marketing",
-      description: "AAlgebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
-      link: "https://www.prnewswire.com/news-releases/united-financial-credit-union-selects-algebrikais-comprehensive-consumer-lending-suite-algebrik-one-302504296.html?tc=eml_cleartime",
-      image: "/section_images/blog/ya.webp",
-    },
-    {
-      title:
-        "Algebrik AI Partners with Equifax® to Power Smarter, Fairer, and Faster Loan Decisions",
-      author: "Team Algebrik",
-      source: "Team Algebrik",
-      role: "Marketing",
-      description: "Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
-      link: "/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/",
-      image: "/section_images/blog/teamalgebrik.webp",
-    },
-    {
-      title:
-        "Algebrik AI Joins the Jack Henry™ Vendor Integration Program",
-      author: "BusinessWire",
-      source: "BusinessWire",
-      role: "Marketing",
-      link: "https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program",
-      image: "/section_images/blog/b.webp",
-    },
-    {
-      title:
-        "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
-      author: "Team Algebrik",
-      role: "Marketing",
-      link: "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
-      image: "/section_images/blog/teamalgebrik.webp",
-    },
-    {
-      title:
-        "Algebrik AI Partners with Carleton to Elevate Lending Accuracy and Compliance",
-      author: "BusinessWire",
-      role: "Marketing",
-      link: "https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance",
-      image: "/section_images/blog/b.webp",
-    },
-    {
-      title:
-        "Algebrik AI and Corelation Announce Integration Agreement to Enhance Personalization, Drive Financial Inclusion & Improve Member Experience ",
-      author: "BusinessWire",
-      role: "Marketing",
-      link: "https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience",
-      image: "/section_images/blog/b.webp",
-    },
-    {
-      title:
-        "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
-      author: "BusinessWire",
-      role: "Marketing",
-      link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
-      image: "/section_images/blog/b.webp",
-    },
-    {
-      title:
-        "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
-      author: "Fintech Futures",
-      role: "Marketing",
-      link: "https://www.fintechfutures.com/2024/09/scienaptic-ai-co-founder-steps-down-to-launch-new-venture-algebrik-ai/",
-      image: "/section_images/blog/ff.webp",
-    },
-    {
-      title:
-        "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
-      author: "BusinessWire",
-      role: "Marketing",
-      link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market",
-      image: "/section_images/blog/b.webp",
-    },
-    {
-      title:
-        "Algebrik AI Expands Founding Leadership Team with the Appointment of Jesse Frugé as VP of Product Management",
-      author: "Yahoo Finance",
-      role: "Marketing",
-      link: "https://finance.yahoo.com/news/algebrik-ai-expands-founding-leadership-120000953.html",
-      image: "/section_images/blog/t.webp",
-    },
-    {
-      title:
-        "Algebrik AI Strengthens Founding Leadership with Appointment of Andrea Silvers as VP of Business Development & Partnerships",
-      author: "BusinessWire",
-      role: "Marketing",
-      link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
-      image: "/section_images/blog/b.webp",
-    },
-    {
-      title:
-        "Algebrik AI: $4 Million (Series A) Raised To Advance Cloud-Native Loan Origination Platform",
-      author: "Pulse 2.0",
-      role: "Marketing",
-      link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
-      image: "/section_images/blog/p.webp",
-    },
-  
-  
-    {
-      title:
-        "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
-      author: "BusinessWire",
-      role: "Marketing",
-      image: "/section_images/blog/b.webp",
-      link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
-    },
-    {
-      title:
-        "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
-      author: "BusinessWire",
-      role: "Marketing",
-      image: "/section_images/blog/b.webp",
-      link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
-    },
-    {
-      title:
-        "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
-      author: "BusinessWire",
-      role: "Marketing",
-      image: "/section_images/blog/b.webp",
-      link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
+  const [newsArticles, setNewsArticles] = useState<any[]>([]);
+  useEffect(() => {
+    const fetchNews = async () => {
+      const news: any = await StrapiAPI.find("news-articles", {
+        populate: "*",
+        sort: ["createdAt:desc"]
+      });
+      setNewsArticles(news);
+      console.log({news});
     }
-  ];
+    fetchNews();
+  }, []);
+  // const newsArticles = [
+  //   {
+  //     title:"Algebrik AI Partners with Scienaptic AI to Power Inclusive Decisioning in Loan Origination",
+  //     author: "PR Newswire",
+  //     source:"PR Newswire",
+  //     role:"Marketing",
+  //     description:"Algebrik AI today announced a strategic partnership with Scienaptic AI, a leading provider of AI-powered lending solutions for credit unions.",
+  //     link:"https://finance.yahoo.com/news/algebrik-ai-partners-scienaptic-ai-132700269.html",
+  //     image:"/section_images/blog/ya.webp"
+  //   },
+  //   {
+  //     title:"Algebrik AI and Housetable Announce Strategic Partnership and Advisory Engagement",
+  //     author: "The Credit Union Connection",
+  //     source:"The Credit Union Connection",
+  //     role:"Marketing",
+  //     description:"Algebrik AI today announced a strategic partnership with Housetable, a fast-growing platform dedicated to digital renovation lending.",
+  //     link:"https://thecreditunionconnection.com/algebrik-ai-and-housetable-announce-strategic-partnership-and-advisory-engagement/",
+  //     image:"https://thecreditunionconnection.com/wp-content/uploads/2024/10/37B7B312-4939-45D4-9CE0-B07F18E21853-2.jpeg"
+  //   },
+  //   {
+  //     title:"Algebrik AI Partners with Spinwheel to Streamline Debt Data & Payments in Loan Origination",
+  //     author: "PR Newswire",
+  //     source:"PR Newswire",
+  //     role:"Marketing",
+  //     description:"Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City and pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announces a strategic partnership with Spinwheel, a leading...",
+  //     link:"https://www.prnewswire.com/news-releases/algebrik-ai-partners-with-spinwheel-to-streamline-debt-data--payments-in-loan-origination-302509571.html",
+  //     image:"/section_images/blog/prnewswire.jpg"
+  //   },
+  //   {
+  //     title:"Family Financial Credit Union Chooses Algebrik AI's End-to-End Digital Lending Suite: Algebrik ONE; to Enter into the New Era of Agentic AI-Powered Lending",
+  //     author: "PR Newswire",
+  //     source:"PR Newswire",
+  //     role:"Marketing",
+  //     description:"Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination System (LOS) built for credit unions, today announced that Family Financial Credit Union...",
+  //     link:"https://www.prnewswire.com/news-releases/family-financial-credit-union-chooses-algebrik-ais-end-to-end-digital-lending-suite-algebrik-one-to-enter-into-the-new-era-of-agentic-ai-powered-lending-302520713.html",
+  //     image:"/section_images/blog/prnewswire.jpg"
+  //   },
+  //   {
+  //     title:"Algebrik AI and Open Lending Partner to Expand Intelligent Auto Loan Decisioning for Credit Unions",
+  //     author: "PR Newswire",
+  //     source:"PR Newswire",
+  //     role:"Marketing",
+  //     description:"Algebrik AI Inc., a Delaware-incorporated company headquartered in New York City and pioneering the world's first cloud-native, AI-powered, digital-era Loan Origination Platform (LOS), today announced an integration with Open Lending Corporation...",
+  //     link:"https://www.prnewswire.com/news-releases/algebrik-ai-and-open-lending-partner-to-expand-intelligent-auto-loan-decisioning-for-credit-unions-302526459.html",
+  //     image:"/section_images/blog/prnewswire.jpg"
+  //   },
+  //   {
+  //     title:
+  //       "United Financial Credit Union Selects AlgebrikAI's Comprehensive Consumer Lending Suite, Algebrik One",
+  //     author: "PR Newswire",
+  //     source: "PR Newswire",
+  //     role: "Marketing",
+  //     description: "Algebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS) built for credit unions, today announced that United Financial Credit Union...",
+  //     link: "https://www.prnewswire.com/news-releases/united-financial-credit-union-selects-algebrikais-comprehensive-consumer-lending-suite-algebrik-one-302504296.html?tc=eml_cleartime",
+  //     image: "/section_images/blog/prnewswire.jpg",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI and Kinective Partner to Streamline Lending from Application to Signature",
+  //     author: "PR Newswire",
+  //     source: "Yahoo Finance",
+  //     role: "Marketing",
+  //     description: "Algebrik AI Inc. today announced a strategic partnership with Kinective, a leading provider of digital connectivity, document workflow, and core integration solutions for the banking sector.",
+  //     link: "https://finance.yahoo.com/news/algebrik-ai-kinective-partner-streamline-120300510.html?guccounter=1",
+  //     image: "/section_images/blog/ya.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI Partners with TruStage™ to Offer Embedded Lending Protection Products Through the Loan Origination Journey",
+  //     author: "PR Newswire",
+  //     source: "Yahoo Finance",
+  //     role: "Marketing",
+  //     description: "AAlgebrik AI, a Delaware-incorporated company headquartered in New York City, pioneering the world's first cloud-native, AI-powered, digital era Loan Origination System (LOS), today announced a partnership with TruStage™, a financially strong insurance and financial services provider.",
+  //     link: "https://www.prnewswire.com/news-releases/united-financial-credit-union-selects-algebrikais-comprehensive-consumer-lending-suite-algebrik-one-302504296.html?tc=eml_cleartime",
+  //     image: "/section_images/blog/ya.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI Partners with Equifax® to Power Smarter, Fairer, and Faster Loan Decisions",
+  //     author: "Team Algebrik",
+  //     source: "Team Algebrik",
+  //     role: "Marketing",
+  //     description: "Algebrik AI, the world’s first cloud-native, AI-powered Loan Origination Platform (LOS), has announced a bureau integration partnership with Equifax®, a global data, analytics, and technology company ",
+  //     link: "/resource-center/algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions/",
+  //     image: "/section_images/blog/teamalgebrik.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI Joins the Jack Henry™ Vendor Integration Program",
+  //     author: "BusinessWire",
+  //     source: "BusinessWire",
+  //     role: "Marketing",
+  //     link: "https://www.businesswire.com/news/home/20250310636612/en/Algebrik-AI-Joins-the-Jack-Henry-Vendor-Integration-Program",
+  //     image: "/section_images/blog/b.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI and Conductiv Elevate Lending with Permissioned Data, Automated Stipulations, and Smarter Underwriting",
+  //     author: "Team Algebrik",
+  //     role: "Marketing",
+  //     link: "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",
+  //     image: "/section_images/blog/teamalgebrik.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI Partners with Carleton to Elevate Lending Accuracy and Compliance",
+  //     author: "BusinessWire",
+  //     role: "Marketing",
+  //     link: "https://www.businesswire.com/news/home/20250210537797/en/Algebrik-AI-Partners-with-Carleton-to-Elevate-Lending-Accuracy-and-Compliance",
+  //     image: "/section_images/blog/b.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI and Corelation Announce Integration Agreement to Enhance Personalization, Drive Financial Inclusion & Improve Member Experience ",
+  //     author: "BusinessWire",
+  //     role: "Marketing",
+  //     link: "https://www.businesswire.com/news/home/20250218309763/en/Algebrik-AI-and-Corelation-Announce-Integration-Agreement-to-Enhance-Personalization-Drive-Financial-Inclusion-Improve-Member-Experience",
+  //     image: "/section_images/blog/b.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI and Plaid Join Forces to Simplify Loan Approvals with Smarter, Faster Data Connectivity ",
+  //     author: "BusinessWire",
+  //     role: "Marketing",
+  //     link: "https://www.businesswire.com/news/home/20250203122111/en/Algebrik-AI-and-Plaid-Join-Forces-to-Simplify-Loan-Approvals-with-Smarter-Faster-Data-Connectivity",
+  //     image: "/section_images/blog/b.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Scienaptic AI co-founder steps down to launch new venture, Algebrik AI",
+  //     author: "Fintech Futures",
+  //     role: "Marketing",
+  //     link: "https://www.fintechfutures.com/2024/09/scienaptic-ai-co-founder-steps-down-to-launch-new-venture-algebrik-ai/",
+  //     image: "/section_images/blog/ff.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI Secures $4M in Series A to Disrupt the Global Loan Origination Software Market",
+  //     author: "BusinessWire",
+  //     role: "Marketing",
+  //     link: "https://www.businesswire.com/news/home/20241104357477/en/Algebrik-AI-Secures-4M-in-Series-A-to-Disrupt-the-Global-Loan-Origination-Software-Market",
+  //     image: "/section_images/blog/b.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI Expands Founding Leadership Team with the Appointment of Jesse Frugé as VP of Product Management",
+  //     author: "Yahoo Finance",
+  //     role: "Marketing",
+  //     link: "https://finance.yahoo.com/news/algebrik-ai-expands-founding-leadership-120000953.html",
+  //     image: "/section_images/blog/t.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI Strengthens Founding Leadership with Appointment of Andrea Silvers as VP of Business Development & Partnerships",
+  //     author: "BusinessWire",
+  //     role: "Marketing",
+  //     link: "https://www.businesswire.com/news/home/20241005942200/en/Algebrik-AI-Strengthens-Founding-Leadership-with-Appointment-of-Andrea-Silvers-as-VP-of-Business-Development-Partnerships",
+  //     image: "/section_images/blog/b.webp",
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI: $4 Million (Series A) Raised To Advance Cloud-Native Loan Origination Platform",
+  //     author: "Pulse 2.0",
+  //     role: "Marketing",
+  //     link: "https://pulse2.com/algebrik-ai-4-million-series-a-raised-to-advance-cloud-native-loan-origination-platform/amp/",
+  //     image: "/section_images/blog/p.webp",
+  //   },
+  
+  
+  //   {
+  //     title:
+  //       "Algebrik AI Announces Visionary Advisory Board to Transform the Future of Lending",
+  //     author: "BusinessWire",
+  //     role: "Marketing",
+  //     image: "/section_images/blog/b.webp",
+  //     link: "https://www.businesswire.com/news/home/20250114864538/en/Algebrik-AI-Announces-Visionary-Advisory-Board-to-Transform-the-Future-of-Lending"
+  //   },
+  //   {
+  //     title:
+  //       "Algebrik AI Partners with Auto Exam to Seamlessly Deliver Auto Loan Protection Solutions",
+  //     author: "BusinessWire",
+  //     role: "Marketing",
+  //     image: "/section_images/blog/b.webp",
+  //     link: "https://www.businesswire.com/news/home/20250127285961/en/Algebrik-AI-Partners-with-Auto-Exam-to-Seamlessly-Deliver-Auto-Loan-Protection-Solutions"
+  //   },
+  //   {
+  //     title:
+  //       "OTTOMOTO® Partners with Algebrik AI to Enhance Embedded Lending with AI-Driven Insights",
+  //     author: "BusinessWire",
+  //     role: "Marketing",
+  //     image: "/section_images/blog/b.webp",
+  //     link: "https://www.businesswire.com/news/home/20250121584404/en/OTTOMOTO"
+  //   }
+  // ];
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % newsArticles.length);
@@ -288,29 +300,30 @@ export default function NewsSection() {
                 <div className="w-full h-auto md:h-[428px] bg-white rounded-[20px] shadow-md flex flex-col">
                   <div className="flex flex-col md:flex-row flex-1 justify-center items-start p-6">
                     <div className="md:w-[273px] h-[153px] md:h-[380px] mb-5 md:mb-0 bg-white rounded-lg overflow-hidden flex items-center justify-center">
-                      <Image
-                        src={newsArticles[currentSlide].image}
+                      {newsArticles?.[currentSlide]?.image && <Image
+                        src={getStrapiMediaUrl(newsArticles?.[currentSlide]?.image)}
                         alt={`News ${currentSlide}`}
                         className="object-contain w-full h-full"
                         width={273}
                         height={280}
                         quality={100}
                       />
+                      }
                     </div>
                     <div className="md:ml-6 md:w-[507px] flex flex-col justify-between gap-[16px]">
                       <h6 className="text-gray-500 text-[14px] font-bold tracking-[4px] uppercase mb-2">
                         News
                       </h6>
-                      <Link href={newsArticles[currentSlide].link} passHref target="_blank">
+                      {newsArticles?.[currentSlide]?.link && <Link href={newsArticles?.[currentSlide]?.link} passHref target="_blank">
                         <p className="text-black text-[20px] font-bold leading-[30px] mb-4 hover:text-[#043071] transition-colors">
-                          {newsArticles[currentSlide].title}
+                          {newsArticles?.[currentSlide]?.title}
                         </p>
-                      </Link>
+                      </Link>}
                       <p className="text-gray-600 text-[16px] leading-[30px] mb-4">
-                        {newsArticles[currentSlide].description}
+                        {newsArticles?.[currentSlide]?.description}
                       </p>
                       <p className="text-black text-[30px] font-bold">
-                        {newsArticles[currentSlide].source}
+                        {newsArticles?.[currentSlide]?.source}
                       </p>
                     </div>
                   </div>
@@ -326,29 +339,29 @@ export default function NewsSection() {
               >
                 <div className="flex flex-col md:flex-row flex-1 justify-center items-start p-3 md:p-4">
                   <div className="md:w-[150px] h-[100px] md:h-[200px] mb-3 md:mb-0 bg-white rounded-lg overflow-hidden flex items-center justify-center">
-                    <Image
-                      src={newsArticles[(currentSlide + 1) % newsArticles.length].image}
+                    {newsArticles?.[(currentSlide + 1) % newsArticles.length]?.image && <Image
+                      src={getStrapiMediaUrl(newsArticles?.[(currentSlide + 1) % newsArticles.length]?.image)}
                       alt={`Next News ${(currentSlide + 1) % newsArticles.length}`}
                       className="object-contain w-full h-full"
                       width={150}
                       height={200}
                       quality={100}
-                    />
+                    />}
                   </div>
                   <div className="md:ml-3 md:w-[200px] flex flex-col justify-between gap-[8px]">
                     <h6 className="text-gray-500 text-[10px] font-bold tracking-[2px] uppercase mb-1">
                       News
                     </h6>
-                    <Link href={newsArticles[(currentSlide + 1) % newsArticles.length].link} passHref target="_blank">
+                    {newsArticles?.[(currentSlide + 1) % newsArticles.length]?.link && <Link href={newsArticles?.[(currentSlide + 1) % newsArticles.length]?.link} passHref target="_blank">
                       <p className="text-black text-[14px] font-bold leading-[18px] mb-2 hover:text-[#043071] transition-colors line-clamp-2">
-                        {newsArticles[(currentSlide + 1) % newsArticles.length].title}
+                        {newsArticles?.[(currentSlide + 1) % newsArticles.length]?.title}
                       </p>
-                    </Link>
+                    </Link>}
                     <p className="text-gray-600 text-[12px] leading-[16px] mb-2 line-clamp-2">
-                      {newsArticles[(currentSlide + 1) % newsArticles.length].description}
+                      {newsArticles?.[(currentSlide + 1) % newsArticles.length]?.description}
                     </p>
                     <p className="text-black text-[18px] font-bold">
-                      {newsArticles[(currentSlide + 1) % newsArticles.length].source}
+                      {newsArticles?.[(currentSlide + 1) % newsArticles.length]?.source}
                     </p>
                   </div>
                 </div>

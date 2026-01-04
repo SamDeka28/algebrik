@@ -1,10 +1,11 @@
 import { Metadata } from "next";
 import { headers } from "next/headers";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     // const headersList = await headers();
     // const pathname = headersList.get("x-invoke-path") || "";
-    const pageData = await fetchPageData(params.slug);
+    const { slug } = await params;
+    const pageData = await fetchPageData(slug);
 
     if (!pageData) {
         return {
