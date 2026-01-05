@@ -4,10 +4,18 @@ import Image from "next/image";
 import logo from "@/public/logo.png";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Contact from "../contacts";
 
 const Footer = () => {
+  const pathname = usePathname();
   const [showContactModal, setShowContactModal] = useState(false);
+  
+  // Hide footer on login and vault pages
+  if (pathname === '/login' || pathname?.startsWith('/vault')) {
+    return null;
+  }
+  
   return (
     <footer className="bg-[#121212] pt-[40px] px-[20px] md:px-0 pb-[20px] font-plus-jakarta md:border md:border-t-1 md:border-[#262932]">
       <hr className="w-full border-none md:border-t text-[#787C91] border-gray-700" />

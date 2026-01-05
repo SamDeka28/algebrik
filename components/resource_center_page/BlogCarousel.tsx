@@ -188,7 +188,10 @@ export default function BlogCarousel() {
       setTools(tools);
     };
     const fetchBlogs = async () => {
-      const blogs = await StrapiAPI.find("blogs",{populate:"*"});
+      const blogs = await StrapiAPI.find("blogs",{
+        populate:"*",
+        sort:["publishedDate:desc"]
+      });
       setBlogs(blogs);
     };
     

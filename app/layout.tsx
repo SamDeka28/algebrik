@@ -27,7 +27,7 @@ const bebas = Bebas_Neue({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-})
+});
 
 
 export const metadata: Metadata = {
@@ -62,19 +62,20 @@ export default function RootLayout({
         <Script
           id="google-analytics"
           strategy="afterInteractive"
-        >
-        {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-7VNDB4K3JH');
-        `}
-        </Script>
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-7VNDB4K3JH');
+            `,
+          }}
+        />
         <Script
           id="storylane-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(){"use strict";function e(t: Document){var r=t.head;if(!r)return;var i=t.querySelector('script[src="https://js.storylane.io/js/v2/storylane.js"]'),n=t.querySelector('script[src="https://js.storylane.io/js/v1/storylane.js"]');if(i||n)return;var s=t.createElement("script");s.type="text/javascript",s.async=!0,s.src="https://js.storylane.io/js/v2/storylane.js",r.appendChild(s)}e(window.document)})()`
+            __html: `(function(){"use strict";function e(t){var r=t.head;if(!r)return;var i=t.querySelector('script[src="https://js.storylane.io/js/v2/storylane.js"]'),n=t.querySelector('script[src="https://js.storylane.io/js/v1/storylane.js"]');if(i||n)return;var s=t.createElement("script");s.type="text/javascript",s.async=!0,s.src="https://js.storylane.io/js/v2/storylane.js",r.appendChild(s)}e(window.document)})()`
           }}
         />
         <Script
