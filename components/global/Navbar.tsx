@@ -19,7 +19,14 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Contact = dynamic(() => import("../contacts"), { ssr: false });
 
 function ContactModalPortal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  if (typeof window === "undefined") return null;
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+  
   return ReactDOM.createPortal(
     <Contact open={open} onClose={onClose} />,
     document.body
@@ -79,6 +86,7 @@ const partnerData: { [key: string]: Partner } = {
 };
 
 export default function Navbar() {
+  // All hooks must be called before any conditional returns
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -95,7 +103,40 @@ export default function Navbar() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [aboutTimeout, setAboutTimeout] = useState<NodeJS.Timeout | null>(null);
-  const isMobile=useIsMobile();
+  const isMobile = useIsMobile();
+  
+  // All useEffect hooks must also be called before conditional returns
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+      setDropdownOpen(false);
+      setAboutOpen(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Persist random blogs only when dropdown is opened
+  useEffect(() => {
+    if (dropdownOpen) {
+      const shuffled = [...blogContent].sort(() => 0.5 - Math.random());
+      setSelectedBlogs(shuffled.slice(0, 2));
+    }
+  }, [dropdownOpen]);
+  
+  // Hide navbar on login and vault pages (after ALL hooks are called)
+  if (pathname?.startsWith('/login')|| pathname?.startsWith('/vault')) {
+    return null;
+  }
+  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -131,32 +172,6 @@ export default function Navbar() {
     }, 200);
     setDropdownTimeout(timeout);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-      setDropdownOpen(false);
-      setAboutOpen(false);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // Persist random blogs only when dropdown is opened
-  useEffect(() => {
-    if (dropdownOpen) {
-      const shuffled = [...blogContent].sort(() => 0.5 - Math.random());
-      setSelectedBlogs(shuffled.slice(0, 2));
-    }
-  }, [dropdownOpen]);
 
   // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource-center" || pathname === "/resource-center/out_of_the_lending_maze" || pathname === "/resource-center/from_fragmentation_to_seamlessness" || pathname === "/resource-center/beyond_decisioning" || pathname === "/resource-center/redefining_borrower";
 
