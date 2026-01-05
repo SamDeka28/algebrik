@@ -71,7 +71,7 @@ export async function trackActivity(
 /**
  * Fallback: Save activity to localStorage
  */
-function saveActivityToLocalStorage(activity: Activity): void {
+function saveActivityToLocalStorage(activity: Omit<Activity, 'id'>): void {
   try {
     const activities: Activity[] = getActivitiesFromLocalStorage();
     activities.unshift({
