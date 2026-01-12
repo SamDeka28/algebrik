@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
+import Image from "next/image";
 
 declare global {
   interface Window {
@@ -209,11 +210,13 @@ function LoginForm() {
         >
           <div className="flex items-center justify-center gap-3 mb-2">
             <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-xl">A</span>
+              <Image src="/vercel.svg" alt="Algebrik Logo" width={48} height={48} />
             </div>
+            <div className="flex flex-col items-start justify-start">
             <h1 className="text-3xl font-bold text-gray-900">Algebrik Vault</h1>
+            <p className="text-sm text-gray-600">Internal Asset Hub</p>
+            </div>
           </div>
-          <p className="text-sm text-gray-600">Internal Asset Hub</p>
         </motion.div>
 
         {/* Login Card */}
@@ -262,17 +265,17 @@ function LoginForm() {
           </button>
 
           {/* Divider */}
-          <div className="relative my-6">
+          {/* <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="px-2 bg-white text-gray-500">OR</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Email Form */}
-          <form onSubmit={handleEmailSignIn} className="space-y-4">
+          {/* <form onSubmit={handleEmailSignIn} className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                 Work Email
@@ -302,7 +305,7 @@ function LoginForm() {
                 "Continue with Email"
               )}
             </button>
-          </form>
+          </form> */}
 
           {/* Error Message */}
           {error && (
