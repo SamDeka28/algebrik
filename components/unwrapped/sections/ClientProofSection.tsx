@@ -82,7 +82,7 @@ export const ClientProofSection = () => {
                 allowFullScreen
                 className="w-full h-full rounded-2xl"
               />
-            </div>
+              </div>
           </div>
         </motion.div>
 

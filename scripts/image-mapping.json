@@ -1,0 +1,12 @@
+{
+  "_comment": "Mapping of local image paths to Strapi media IDs",
+  "/section_images/blog/b.webp": 14,
+  "/section_images/blog/t.webp": 15,
+  "/section_images/blog/ya.webp": 16,
+  "/section_images/blog/p.webp": 17,
+  "/section_images/blog/ff.webp": 18,
+  "/section_images/blog/teamalgebrik.webp": 19,
+  "/section_images/blog/prnewswire.jpg": 20,
+  "https://thecreditunionconnection.com/wp-content/uploads/2024/10/37B7B312-4939-45D4-9CE0-B07F18E21853-2.jpeg": 21
+}
+

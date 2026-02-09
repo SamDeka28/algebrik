@@ -59,14 +59,14 @@ const carouselDataOne = [
 ];
 
 const carouselDataTwo = [
-  {
-    image: "/team_images/david.webp",
-    name: "David Libby",
-    title: "Chief Executive Officer",
-    place: "Town & Country FCU, Maine",
-    bio:"David Libby has worked at Town & Country Federal Credit Union for nearly 35 years and has been President & CEO since 2011. He has spearheaded Maine’s first contactless debit cards, Apple Pay, check-imaging ATMs, and even one of the nation’s earliest Alexa banking skills, all while fostering a “think-beyond-banking” culture.",
-    linkedin:"https://www.linkedin.com/in/david-libby-166a8310/"
-  },
+  // {
+  //   image: "/team_images/david.webp",
+  //   name: "David Libby",
+  //   title: "Chief Executive Officer",
+  //   place: "Town & Country FCU, Maine",
+  //   bio:"David Libby has worked at Town & Country Federal Credit Union for nearly 35 years and has been President & CEO since 2011. He has spearheaded Maine’s first contactless debit cards, Apple Pay, check-imaging ATMs, and even one of the nation’s earliest Alexa banking skills, all while fostering a “think-beyond-banking” culture.",
+  //   linkedin:"https://www.linkedin.com/in/david-libby-166a8310/"
+  // },
   {
     image: "/team_images/hina.webp",
     name: "Hina Khalid",
@@ -88,7 +88,7 @@ const carouselDataTwo = [
     name: "Michael Barnhardt Jr",
     title: "Chief Lending Officer",
     place: "Oklahoma Central Credit Union, Oklahoma",
-    bio:"Michael Barnhardt Jr. is Chief Lending Officer at Oklahoma Central Credit Union with 20+ years in lending strategy and analytics. An MBA/BS graduate of Western Governors University, he also heads the Meridian Trust NorthStar Foundation and advises Junior Achievement, CU 2.0, and Algebrik.",
+    bio:"Michael Barnhardt Jr. is Chief Lending Officer at Community Credit Union of Florida with 20+ years in lending strategy and analytics. An MBA/BS graduate of Western Governors University, he also heads the Meridian Trust NorthStar Foundation and advises Junior Achievement, CU 2.0, and Algebrik.",
     linkedin:"https://www.linkedin.com/in/michael-barnhardt-jr-mba-5136b722/"
   },
   {

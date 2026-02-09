@@ -1,0 +1,27 @@
+[
+  {
+    "_comment": "This is a template for creating seed data files",
+    "_instructions": "1. Copy this file and rename it (e.g., insights.json, tools.json)",
+    "_instructions2": "2. Replace fields with your content type fields",
+    "_instructions3": "3. Remove these _comment and _instructions fields",
+    "_instructions4": "4. Add your actual data",
+    
+    "field1": "value1",
+    "field2": "value2",
+    "booleanField": true,
+    "numberField": 123,
+    "textField": "Some text here...",
+    "linkField": "https://example.com",
+    "imageField": "/path/to/image.jpg"
+  },
+  {
+    "field1": "Another entry",
+    "field2": "Another value",
+    "booleanField": false,
+    "numberField": 456,
+    "textField": "More text...",
+    "linkField": "https://example.com/page2",
+    "imageField": "/path/to/image2.jpg"
+  }
+]
+
