@@ -42,12 +42,12 @@ const carouselDataTwo = [
     title: "Chief Lending Officer",
     place: "PFCU Credit Union, Michigan",
   },
-  {
-    image: "/team_images/david.webp",
-    name: "David Libby",
-    title: "Chief Executive Officer",
-    place: "Town & Country FCU, Maine",
-  },
+  // {
+  //   image: "/team_images/david.webp",
+  //   name: "David Libby",
+  //   title: "Chief Executive Officer",
+  //   place: "Town & Country FCU, Maine",
+  // },
   {
     image: "/team_images/travisBow.webp",
     name: "Shad Edwards",
