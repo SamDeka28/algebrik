@@ -5,7 +5,7 @@ import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
 import Script from "next/script";
 import RouteLoader from "@/components/global/RouteLoader";
-import ConvoaiWidget from "@/components/ConvoaiWidget"
+import ConditionalConvoaiWidget from "@/components/ConditionalConvoaiWidget"
 
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -64,10 +64,10 @@ export default function RootLayout({
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-7VNDB4K3JH');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7VNDB4K3JH');
             `,
           }}
         />
@@ -92,7 +92,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
-          <ConvoaiWidget/>
+          <ConditionalConvoaiWidget/>
         </RouteLoader>
       </body>
     </html>

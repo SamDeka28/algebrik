@@ -8,9 +8,13 @@ import {
   Send, 
   MessageSquare, 
   Lock,
-  ChevronLeft
+  ChevronLeft,
+  Presentation,
+  Monitor,
+  Bot
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { getSession } from "@/lib/auth-client";
 
 interface SidebarProps {
@@ -28,7 +32,10 @@ export default function Sidebar({ activeItem = "dashboard" }: SidebarProps) {
 
   const allMenuItems = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, requiresInternal: false },
-    { id: "pitch-demos", label: "Pitch & Demos", icon: FileText, requiresInternal: false },
+    { id: "chatbots", label: "Chatbots", icon: Bot, requiresInternal: false },
+
+    { id: "pitch-decks", label: "Pitch Deck", icon: Presentation, requiresInternal: false },
+    { id: "demos", label: "Demos", icon: Monitor, requiresInternal: false },
     { id: "one-pagers", label: "One-Pagers", icon: FileText, requiresInternal: false },
     { id: "proof-credibility", label: "Proof & Credibility", icon: Shield, requiresInternal: false },
     { id: "campaigns-content", label: "Campaigns & Content", icon: Send, requiresInternal: false },
@@ -54,8 +61,14 @@ export default function Sidebar({ activeItem = "dashboard" }: SidebarProps) {
       <div className="p-6 border-b border-slate-700/50 bg-slate-800/30 backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <div className="relative">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30">
-              <span className="text-white font-bold text-xl">A</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt="Algebrik Logo"
+                width={48}
+                height={48}
+                className="object-contain p-2"
+              />
             </div>
             {!collapsed && (
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-slate-800 animate-pulse"></div>

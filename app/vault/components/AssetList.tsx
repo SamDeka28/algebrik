@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import AssetCard from "./AssetCard";
 import { Loader2, FolderOpen, Plus } from "lucide-react";
+import { getSession } from "@/lib/auth-client";
 
 interface Asset {
   id: number;
@@ -66,13 +67,27 @@ export default function AssetList({ category, strapiCollection }: AssetListProps
           }
 
           const data = await response.json();
-          const items = data?.data || data || [];
+          let items = data?.data || data || [];
           
           // If no items found, that's fine - just show empty state
           if (!items || items.length === 0) {
             setAssets([]);
             setLoading(false);
             return;
+          }
+          
+          // Get user session to check internal access
+          const userSession = getSession();
+          const isInternal = userSession?.isInternal || false;
+          
+          // Filter out internal-only assets for non-internal users
+          if (!isInternal) {
+            items = items.filter((item: any) => {
+              const attributes = item.attributes || item;
+              const itemIsInternal = attributes.isInternal === true;
+              const itemCategory = attributes.category;
+              return !itemIsInternal && itemCategory !== 'internal-only';
+            });
           }
           
           // Get Strapi URL once for file URL construction
