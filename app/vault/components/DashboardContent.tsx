@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Star, Clock, Sparkles, TrendingUp, Download, Eye, Handshake, User as UserIcon, Trophy, Loader2 } from "lucide-react";
 import Link from "next/link";
 import AssetCard from "./AssetCard";
-// import DealMap from "./DealMap";
 import { getSession, type User } from "@/lib/auth-client";
 import { fetchActivities, formatTimeAgo, type Activity } from "@/lib/activity-tracker";
 
@@ -400,14 +399,6 @@ export default function DashboardContent() {
           );
         })}
       </div>
-
-      {/* Deal Map */}
-      {/* <div>
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          Deal Map
-        </h2>
-        <DealMap />
-      </div> */}
 
       {/* Live Activity and Impact */}
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
