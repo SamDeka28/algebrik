@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Star, Clock, Sparkles, TrendingUp, Download, Eye, Handshake, User as UserIcon, Trophy, Loader2 } from "lucide-react";
 import Link from "next/link";
 import AssetCard from "./AssetCard";
+// import DealMap from "./DealMap";
 import { getSession, type User } from "@/lib/auth-client";
 import { fetchActivities, formatTimeAgo, type Activity } from "@/lib/activity-tracker";
 
@@ -217,13 +218,13 @@ export default function DashboardContent() {
   // Curated for Sales: assets that are sales-focused
   // This includes:
   // 1. Assets with "Sales" tag
-  // 2. Assets in sales-related categories (pitch-demos, objection-handling)
+  // 2. Assets in sales-related categories (pitch-decks, demos, objection-handling)
   // 3. Assets with sales stage tags (Discovery, Late stage, Early stage)
   const curatedForSales = allAssets.filter(asset => {
     const hasSalesTag = asset.tags.some(tag => 
       ['Sales', 'Discovery', 'Late stage', 'Early stage'].includes(tag)
     );
-    const isSalesCategory = asset.category && ['pitch-demos', 'objection-handling'].includes(asset.category);
+    const isSalesCategory = asset.category && ['pitch-decks', 'demos', 'objection-handling'].includes(asset.category);
     return hasSalesTag || isSalesCategory;
   }).length;
   
@@ -400,8 +401,16 @@ export default function DashboardContent() {
         })}
       </div>
 
+      {/* Deal Map */}
+      {/* <div>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          Deal Map
+        </h2>
+        <DealMap />
+      </div> */}
+
       {/* Live Activity and Impact */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
         {/* Live Activity */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col">
           <div className="flex items-center gap-2 mb-4">
@@ -431,7 +440,7 @@ export default function DashboardContent() {
         </div>
 
         {/* Your Impact This Week */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
+        {/* <div className="bg-white rounded-lg border border-gray-200 p-6">
           <div className="flex items-center gap-2 mb-4">
             <Trophy className="w-5 h-5 text-yellow-500" />
             <h2 className="text-lg font-semibold text-gray-900">
@@ -459,7 +468,7 @@ export default function DashboardContent() {
               );
             })}
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Recently Updated */}

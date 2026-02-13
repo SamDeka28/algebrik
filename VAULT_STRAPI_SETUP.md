@@ -23,7 +23,7 @@ Create a collection type called `vault-assets` in Strapi with the following fiel
    - Determines the asset type badge color
 
 4. **category** (Enumeration, required)
-   - Options: `pitch-demos`, `one-pagers`, `proof-credibility`, `campaigns-content`, `objection-handling`, `internal-only`
+   - Options: `pitch-decks`, `demos`, `one-pagers`, `proof-credibility`, `campaigns-content`, `objection-handling`, `chatbots`, `internal-only`
    - Used to filter assets by section
 
 5. **tags** (Text or JSON, optional)
@@ -79,7 +79,7 @@ Create a collection type called `vault-assets` in Strapi with the following fiel
   "title": "Algebrik AI Master Pitch Deck",
   "description": "Complete overview of Algebrik AI platform capabilities for executive presentations",
   "type": "DECK",
-  "category": "pitch-demos",
+  "category": "pitch-decks",
   "tags": ["CEO", "CFO", "CTO", "Discovery"],
   "date": "2024-12-15",
   "actionType": "download",
@@ -90,18 +90,20 @@ Create a collection type called `vault-assets` in Strapi with the following fiel
 
 ## Category Mapping
 
-- `pitch-demos` → `/vault/pitch-demos`
+- `pitch-decks` → `/vault/pitch-decks`
+- `demos` → `/vault/demos`
 - `one-pagers` → `/vault/one-pagers`
 - `proof-credibility` → `/vault/proof-credibility`
 - `campaigns-content` → `/vault/campaigns-content`
 - `objection-handling` → `/vault/objection-handling`
+- `chatbots` → `/vault/chatbots`
 - `internal-only` → `/vault/internal-only`
 
 ## API Endpoint
 
 The pages fetch assets from:
 ```
-GET /api/vault-assets?filters[category][$eq]=pitch-demos&populate=*&sort[0]=createdAt:desc
+GET /api/vault-assets?filters[category][$eq]=pitch-decks&populate=*&sort[0]=createdAt:desc
 ```
 
 ## Permissions
