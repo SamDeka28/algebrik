@@ -6,6 +6,7 @@ import Link from "next/link";
 import AssetCard from "./AssetCard";
 import { getSession, type User } from "@/lib/auth-client";
 import { fetchActivities, formatTimeAgo, type Activity } from "@/lib/activity-tracker";
+import { DealMap } from "./DealMap/DealMap";
 
 interface Asset {
   id: number;
@@ -381,27 +382,37 @@ export default function DashboardContent() {
         </p>
       </div>
 
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {summaryCards.map((card, index) => {
-          const Icon = card.icon;
-          return (
-            <div
-              key={index}
-              className="bg-white rounded-lg border border-gray-200 p-5"
-            >
-              <Icon className={`w-6 h-6 ${card.color} mb-3`} />
-              <div className="text-3xl font-bold text-gray-900 mb-1">
-                {card.value}
-              </div>
-              <div className="text-sm text-gray-600">{card.label}</div>
-            </div>
-          );
-        })}
+      {/* Deal Map */}
+      <div>
+        <DealMap />
       </div>
 
-      {/* Live Activity and Impact */}
-      <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
+      {/* General Analytics and Recent Activities - Two Column Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* General Analytics */}
+        <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+            General Analytics
+          </h2>
+          <div className="grid grid-cols-2 gap-4">
+            {summaryCards.map((card, index) => {
+              const Icon = card.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-lg border border-gray-200 p-4"
+                >
+                  <Icon className={`w-5 h-5 ${card.color} mb-2`} />
+                  <div className="text-2xl font-bold text-gray-900 mb-1">
+                    {card.value}
+                  </div>
+                  <div className="text-xs text-gray-600">{card.label}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Live Activity */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col">
           <div className="flex items-center gap-2 mb-4">
@@ -429,37 +440,6 @@ export default function DashboardContent() {
             })}
           </div>
         </div>
-
-        {/* Your Impact This Week */}
-        {/* <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <Trophy className="w-5 h-5 text-yellow-500" />
-            <h2 className="text-lg font-semibold text-gray-900">
-              Your Impact This Week
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            {impactMetrics.map((metric, index) => {
-              const Icon = metric.icon;
-              return (
-                <div key={index}>
-                  <div className="flex items-center gap-2 mb-1">
-                    <Icon className="w-4 h-4 text-gray-400" />
-                    <span className="text-2xl font-bold text-gray-900">
-                      {metric.value}
-                    </span>
-                    {metric.change && (
-                      <span className="text-sm font-semibold text-green-600">
-                        {metric.change}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-gray-600">{metric.label}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div> */}
       </div>
 
       {/* Recently Updated */}

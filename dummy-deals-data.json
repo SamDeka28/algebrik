@@ -1,0 +1,527 @@
+[
+  {
+    "company": "TechCorp Solutions",
+    "state": "California",
+    "stages": "Demo scheduled",
+    "amount": "125000",
+    "created": "2024-12-15T10:30:00.000Z"
+  },
+  {
+    "company": "Financial Services Inc",
+    "state": "New York",
+    "stages": "Negotiation / final review",
+    "amount": "250000",
+    "created": "2024-12-10T14:20:00.000Z"
+  },
+  {
+    "company": "Healthcare Partners",
+    "state": "Texas",
+    "stages": "Closed (won)",
+    "amount": "180000",
+    "created": "2024-11-28T09:15:00.000Z"
+  },
+  {
+    "company": "Retail Dynamics",
+    "state": "Florida",
+    "stages": "Pricing shared / Rep submitted",
+    "amount": "95000",
+    "created": "2024-12-18T11:45:00.000Z"
+  },
+  {
+    "company": "Manufacturing Co",
+    "state": "Illinois",
+    "stages": "Qualified to buy",
+    "amount": "320000",
+    "created": "2024-12-20T08:00:00.000Z"
+  },
+  {
+    "company": "Education Systems",
+    "state": "Pennsylvania",
+    "stages": "Demo completed",
+    "amount": "145000",
+    "created": "2024-12-12T13:30:00.000Z"
+  },
+  {
+    "company": "Energy Solutions",
+    "state": "Colorado",
+    "stages": "Deep dive demo scheduled",
+    "amount": "275000",
+    "created": "2024-12-08T15:20:00.000Z"
+  },
+  {
+    "company": "Real Estate Group",
+    "state": "Washington",
+    "stages": "Appointment scheduled",
+    "amount": "110000",
+    "created": "2024-12-22T10:10:00.000Z"
+  },
+  {
+    "company": "Logistics Pro",
+    "state": "Georgia",
+    "stages": "Closed (lost)",
+    "amount": "85000",
+    "created": "2024-11-15T12:00:00.000Z"
+  },
+  {
+    "company": "Media Ventures",
+    "state": "North Carolina",
+    "stages": "Prizing questionnaire sent / RSP received",
+    "amount": "165000",
+    "created": "2024-12-14T16:45:00.000Z"
+  },
+  {
+    "company": "Construction Plus",
+    "state": "Michigan",
+    "stages": "Negotiation / final review",
+    "amount": "220000",
+    "created": "2024-12-05T09:30:00.000Z"
+  },
+  {
+    "company": "Food Services LLC",
+    "state": "Ohio",
+    "stages": "Demo scheduled",
+    "amount": "75000",
+    "created": "2024-12-19T14:15:00.000Z"
+  },
+  {
+    "company": "Transportation Hub",
+    "state": "Arizona",
+    "stages": "Closed (won)",
+    "amount": "195000",
+    "created": "2024-11-20T11:00:00.000Z"
+  },
+  {
+    "company": "Insurance Partners",
+    "state": "Massachusetts",
+    "stages": "Demo completed",
+    "amount": "140000",
+    "created": "2024-12-16T10:30:00.000Z"
+  },
+  {
+    "company": "Telecom Solutions",
+    "state": "Tennessee",
+    "stages": "Qualified to buy",
+    "amount": "280000",
+    "created": "2024-12-21T08:45:00.000Z"
+  },
+  {
+    "company": "Banking Systems",
+    "state": "Indiana",
+    "stages": "Pricing shared / Rep submitted",
+    "amount": "155000",
+    "created": "2024-12-11T13:20:00.000Z"
+  },
+  {
+    "company": "Pharmaceutical Inc",
+    "state": "Missouri",
+    "stages": "Deep dive demo scheduled",
+    "amount": "310000",
+    "created": "2024-12-07T15:00:00.000Z"
+  },
+  {
+    "company": "Automotive Group",
+    "state": "Maryland",
+    "stages": "Appointment scheduled",
+    "amount": "120000",
+    "created": "2024-12-17T09:15:00.000Z"
+  },
+  {
+    "company": "Hospitality Services",
+    "state": "Wisconsin",
+    "stages": "Closed (lost)",
+    "amount": "90000",
+    "created": "2024-11-10T12:30:00.000Z"
+  },
+  {
+    "company": "Agriculture Co",
+    "state": "Minnesota",
+    "stages": "Negotiation / final review",
+    "amount": "175000",
+    "created": "2024-12-13T14:00:00.000Z"
+  },
+  {
+    "company": "Aerospace Solutions",
+    "state": "California",
+    "stages": "Closed (won)",
+    "amount": "450000",
+    "created": "2024-11-25T10:00:00.000Z"
+  },
+  {
+    "company": "Software Innovations",
+    "state": "Texas",
+    "stages": "Demo scheduled",
+    "amount": "135000",
+    "created": "2024-12-23T11:30:00.000Z"
+  },
+  {
+    "company": "Consulting Group",
+    "state": "New York",
+    "stages": "Prizing questionnaire sent / RSP received",
+    "amount": "185000",
+    "created": "2024-12-09T16:20:00.000Z"
+  },
+  {
+    "company": "Legal Services",
+    "state": "Florida",
+    "stages": "Demo completed",
+    "amount": "105000",
+    "created": "2024-12-06T08:45:00.000Z"
+  },
+  {
+    "company": "Marketing Agency",
+    "state": "Illinois",
+    "stages": "Qualified to buy",
+    "amount": "95000",
+    "created": "2024-12-24T09:00:00.000Z"
+  },
+  {
+    "company": "Non-Profit Org",
+    "state": "Pennsylvania",
+    "stages": "Appointment scheduled",
+    "amount": "65000",
+    "created": "2024-12-04T13:15:00.000Z"
+  },
+  {
+    "company": "Gaming Studio",
+    "state": "Colorado",
+    "stages": "Deep dive demo scheduled",
+    "amount": "210000",
+    "created": "2024-12-01T15:30:00.000Z"
+  },
+  {
+    "company": "Fitness Chain",
+    "state": "Washington",
+    "stages": "Pricing shared / Rep submitted",
+    "amount": "125000",
+    "created": "2024-12-03T10:20:00.000Z"
+  },
+  {
+    "company": "E-commerce Platform",
+    "state": "Georgia",
+    "stages": "Negotiation / final review",
+    "amount": "290000",
+    "created": "2024-11-30T14:00:00.000Z"
+  },
+  {
+    "company": "Security Systems",
+    "state": "North Carolina",
+    "stages": "Closed (won)",
+    "amount": "160000",
+    "created": "2024-11-18T11:45:00.000Z"
+  },
+  {
+    "company": "Travel Services",
+    "state": "Michigan",
+    "stages": "Demo scheduled",
+    "amount": "115000",
+    "created": "2024-12-02T12:30:00.000Z"
+  },
+  {
+    "company": "Entertainment Corp",
+    "state": "Ohio",
+    "stages": "Closed (lost)",
+    "amount": "80000",
+    "created": "2024-11-12T09:00:00.000Z"
+  },
+  {
+    "company": "Utilities Co",
+    "state": "Arizona",
+    "stages": "Demo completed",
+    "amount": "240000",
+    "created": "2024-11-28T15:15:00.000Z"
+  },
+  {
+    "company": "Investment Firm",
+    "state": "Massachusetts",
+    "stages": "Qualified to buy",
+    "amount": "350000",
+    "created": "2024-12-25T08:30:00.000Z"
+  },
+  {
+    "company": "Research Institute",
+    "state": "Tennessee",
+    "stages": "Prizing questionnaire sent / RSP received",
+    "amount": "195000",
+    "created": "2024-12-26T10:00:00.000Z"
+  },
+  {
+    "company": "Shipping Logistics",
+    "state": "Indiana",
+    "stages": "Deep dive demo scheduled",
+    "amount": "170000",
+    "created": "2024-12-27T11:15:00.000Z"
+  },
+  {
+    "company": "Property Management",
+    "state": "Missouri",
+    "stages": "Appointment scheduled",
+    "amount": "130000",
+    "created": "2024-12-28T13:00:00.000Z"
+  },
+  {
+    "company": "Cleaning Services",
+    "state": "Maryland",
+    "stages": "Negotiation / final review",
+    "amount": "85000",
+    "created": "2024-12-29T14:30:00.000Z"
+  },
+  {
+    "company": "Event Planning Co",
+    "state": "Wisconsin",
+    "stages": "Pricing shared / Rep submitted",
+    "amount": "100000",
+    "created": "2024-12-30T09:45:00.000Z"
+  },
+  {
+    "company": "Pet Care Services",
+    "state": "Minnesota",
+    "stages": "Demo scheduled",
+    "amount": "75000",
+    "created": "2024-12-31T10:20:00.000Z"
+  },
+  {
+    "company": "Home Improvement",
+    "state": "Oregon",
+    "stages": "Closed (won)",
+    "amount": "145000",
+    "created": "2024-11-22T12:00:00.000Z"
+  },
+  {
+    "company": "Beauty Salon Chain",
+    "state": "Nevada",
+    "stages": "Demo completed",
+    "amount": "90000",
+    "created": "2024-12-01T15:00:00.000Z"
+  },
+  {
+    "company": "Restaurant Group",
+    "state": "Utah",
+    "stages": "Qualified to buy",
+    "amount": "110000",
+    "created": "2024-12-05T08:30:00.000Z"
+  },
+  {
+    "company": "Fashion Retail",
+    "state": "Connecticut",
+    "stages": "Appointment scheduled",
+    "amount": "125000",
+    "created": "2024-12-07T11:00:00.000Z"
+  },
+  {
+    "company": "Sports Equipment",
+    "state": "Iowa",
+    "stages": "Prizing questionnaire sent / RSP received",
+    "amount": "140000",
+    "created": "2024-12-09T13:45:00.000Z"
+  },
+  {
+    "company": "Bookstore Chain",
+    "state": "Arkansas",
+    "stages": "Deep dive demo scheduled",
+    "amount": "95000",
+    "created": "2024-12-11T10:15:00.000Z"
+  },
+  {
+    "company": "Jewelry Store",
+    "state": "Mississippi",
+    "stages": "Pricing shared / Rep submitted",
+    "amount": "105000",
+    "created": "2024-12-13T14:20:00.000Z"
+  },
+  {
+    "company": "Toy Manufacturer",
+    "state": "Kansas",
+    "stages": "Negotiation / final review",
+    "amount": "180000",
+    "created": "2024-12-15T09:00:00.000Z"
+  },
+  {
+    "company": "Music Studio",
+    "state": "New Mexico",
+    "stages": "Closed (won)",
+    "amount": "120000",
+    "created": "2024-11-19T16:30:00.000Z"
+  },
+  {
+    "company": "Art Gallery",
+    "state": "Nebraska",
+    "stages": "Demo scheduled",
+    "amount": "85000",
+    "created": "2024-12-17T11:45:00.000Z"
+  },
+  {
+    "company": "Photography Studio",
+    "state": "Idaho",
+    "stages": "Appointment scheduled",
+    "amount": "70000",
+    "created": "2024-12-19T08:15:00.000Z"
+  },
+  {
+    "company": "Veterinary Clinic",
+    "state": "West Virginia",
+    "stages": "Demo completed",
+    "amount": "115000",
+    "created": "2024-12-21T12:00:00.000Z"
+  },
+  {
+    "company": "Dental Practice",
+    "state": "Hawaii",
+    "stages": "Qualified to buy",
+    "amount": "135000",
+    "created": "2024-12-23T14:30:00.000Z"
+  },
+  {
+    "company": "Optometry Center",
+    "state": "New Hampshire",
+    "stages": "Prizing questionnaire sent / RSP received",
+    "amount": "100000",
+    "created": "2024-12-25T09:20:00.000Z"
+  },
+  {
+    "company": "Chiropractic Office",
+    "state": "Maine",
+    "stages": "Deep dive demo scheduled",
+    "amount": "95000",
+    "created": "2024-12-27T10:45:00.000Z"
+  },
+  {
+    "company": "Physical Therapy",
+    "state": "Montana",
+    "stages": "Pricing shared / Rep submitted",
+    "amount": "110000",
+    "created": "2024-12-29T13:15:00.000Z"
+  },
+  {
+    "company": "Mental Health Services",
+    "state": "Rhode Island",
+    "stages": "Negotiation / final review",
+    "amount": "125000",
+    "created": "2024-12-31T15:00:00.000Z"
+  },
+  {
+    "company": "Senior Care Facility",
+    "state": "Delaware",
+    "stages": "Closed (won)",
+    "amount": "200000",
+    "created": "2024-11-14T11:30:00.000Z"
+  },
+  {
+    "company": "Childcare Center",
+    "state": "South Dakota",
+    "stages": "Demo scheduled",
+    "amount": "90000",
+    "created": "2024-12-02T08:00:00.000Z"
+  },
+  {
+    "company": "Fitness Equipment",
+    "state": "North Dakota",
+    "stages": "Appointment scheduled",
+    "amount": "105000",
+    "created": "2024-12-04T10:20:00.000Z"
+  },
+  {
+    "company": "Yoga Studio Chain",
+    "state": "Alaska",
+    "stages": "Demo completed",
+    "amount": "80000",
+    "created": "2024-12-06T12:45:00.000Z"
+  },
+  {
+    "company": "Martial Arts School",
+    "state": "Vermont",
+    "stages": "Qualified to buy",
+    "amount": "75000",
+    "created": "2024-12-08T14:10:00.000Z"
+  },
+  {
+    "company": "Swimming Pool Co",
+    "state": "Wyoming",
+    "stages": "Prizing questionnaire sent / RSP received",
+    "amount": "150000",
+    "created": "2024-12-10T09:30:00.000Z"
+  },
+  {
+    "company": "Landscaping Services",
+    "state": "Kentucky",
+    "stages": "Deep dive demo scheduled",
+    "amount": "95000",
+    "created": "2024-12-12T11:00:00.000Z"
+  },
+  {
+    "company": "Pest Control",
+    "state": "Louisiana",
+    "stages": "Pricing shared / Rep submitted",
+    "amount": "85000",
+    "created": "2024-12-14T13:20:00.000Z"
+  },
+  {
+    "company": "HVAC Services",
+    "state": "Oklahoma",
+    "stages": "Negotiation / final review",
+    "amount": "175000",
+    "created": "2024-12-16T15:45:00.000Z"
+  },
+  {
+    "company": "Plumbing Co",
+    "state": "South Carolina",
+    "stages": "Closed (won)",
+    "amount": "120000",
+    "created": "2024-11-16T10:15:00.000Z"
+  },
+  {
+    "company": "Electrical Services",
+    "state": "Alabama",
+    "stages": "Demo scheduled",
+    "amount": "130000",
+    "created": "2024-12-18T08:30:00.000Z"
+  },
+  {
+    "company": "Roofing Company",
+    "state": "New Jersey",
+    "stages": "Appointment scheduled",
+    "amount": "160000",
+    "created": "2024-12-20T12:00:00.000Z"
+  },
+  {
+    "company": "Window Installation",
+    "state": "Virginia",
+    "stages": "Demo completed",
+    "amount": "140000",
+    "created": "2024-12-22T14:30:00.000Z"
+  },
+  {
+    "company": "Flooring Solutions",
+    "state": "California",
+    "stages": "Qualified to buy",
+    "amount": "115000",
+    "created": "2024-12-24T09:45:00.000Z"
+  },
+  {
+    "company": "Paint Services",
+    "state": "Texas",
+    "stages": "Prizing questionnaire sent / RSP received",
+    "amount": "90000",
+    "created": "2024-12-26T11:15:00.000Z"
+  },
+  {
+    "company": "Carpentry Works",
+    "state": "New York",
+    "stages": "Deep dive demo scheduled",
+    "amount": "125000",
+    "created": "2024-12-28T13:00:00.000Z"
+  },
+  {
+    "company": "Masonry Services",
+    "state": "Florida",
+    "stages": "Pricing shared / Rep submitted",
+    "amount": "155000",
+    "created": "2024-12-30T15:20:00.000Z"
+  },
+  {
+    "company": "Deal deferred / gone cold",
+    "state": "Illinois",
+    "stages": "Deal deferred / gone cold",
+    "amount": "100000",
+    "created": "2024-10-15T10:00:00.000Z"
+  }
+]
