@@ -118,9 +118,15 @@ export function StateDrawer({ isOpen, onClose, stateData, deals }: StateDrawerPr
                     <p className="text-xs font-semibold text-purple-700 uppercase tracking-wide mb-2">
                       Dominant Stage
                     </p>
-                    <p className="text-lg font-bold text-gray-900">
+                    <span
+                      className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium"
+                      style={{
+                        backgroundColor: getStageColor(stateData.dominantStageCategory),
+                        color: '#ffffff',
+                      }}
+                    >
                       {stateData.dominantStage}
-                    </p>
+                    </span>
                   </div>
                 </div>
 
