@@ -26,12 +26,12 @@ const carouselDataOne = [
     title: "VP,Customer Success and Account Management",
     place: "N/A",
   },
-  {
-    image: "/team_images/jesse.webp",
-    name: "JESSE FRUGE",
-    title: "VP, PRODUCT",
-    place: "N/A",
-  },
+  // {
+  //   image: "/team_images/jesse.webp",
+  //   name: "JESSE FRUGE",
+  //   title: "VP, PRODUCT",
+  //   place: "N/A",
+  // },
   {
     image: "/team_images/pankaj.webp",
     name: "PANKAJ JAIN ",
