@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo, useCallback } from 'react';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import { useState, useMemo, useCallback, useEffect } from 'react';
+import { geoAlbersUsa, geoPath } from 'd3-geo';
+import { feature } from 'topojson-client';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   DealsByState,
@@ -10,8 +11,6 @@ import {
   STAGE_COLORS,
   getStageColorWithIntensity,
 } from '@/lib/deals/types';
-
-const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 
 const FIPS_TO_STATE: Record<string, string> = {
   '01': 'AL', '02': 'AK', '04': 'AZ', '05': 'AR', '06': 'CA',
@@ -55,6 +54,21 @@ const LEGEND_ITEMS: { category: MapStageCategory; label: string }[] = [
 
 export function USMap({ dealsByState, maxDeals, onStateClick }: USMapProps) {
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
+  const [geographyData, setGeographyData] = useState<any>(null);
+  const [hoveredState, setHoveredState] = useState<string | null>(null);
+
+  // Load geography data
+  useEffect(() => {
+    fetch('/states-10m.json')
+      .then((res) => res.json())
+      .then((data) => {
+        const states = feature(data, (data as any).objects.states);
+        setGeographyData(states);
+      })
+      .catch((err) => {
+        console.error('Failed to load geography data:', err);
+      });
+  }, []);
 
   const stateDataMap = useMemo(() => {
     const map = new Map<string, DealsByState>();
@@ -64,7 +78,8 @@ export function USMap({ dealsByState, maxDeals, onStateClick }: USMapProps) {
     return map;
   }, [dealsByState]);
 
-  const getStateStyle = useCallback((stateData: DealsByState | null): { fill: string; strokeDasharray?: string } => {
+  const getStateStyle = useCallback((stateCode: string): { fill: string; strokeDasharray?: string } => {
+    const stateData = stateDataMap.get(stateCode);
     if (!stateData || stateData.totalDeals === 0) {
       return { fill: '#e2e8f0' };
     }
@@ -84,13 +99,9 @@ export function USMap({ dealsByState, maxDeals, onStateClick }: USMapProps) {
         maxDeals
       )
     };
-  }, [maxDeals]);
+  }, [maxDeals, stateDataMap]);
 
-  const handleMouseEnter = (geo: any, event: React.MouseEvent) => {
-    const fips = geo.id;
-    const stateCode = FIPS_TO_STATE[fips];
-    if (!stateCode) return;
-
+  const handleMouseEnter = (stateCode: string, event: React.MouseEvent) => {
     const stateData = stateDataMap.get(stateCode);
     const isEmpty = !stateData || stateData.totalDeals === 0;
 
@@ -105,6 +116,7 @@ export function USMap({ dealsByState, maxDeals, onStateClick }: USMapProps) {
       dominantCategory: stateData?.dominantStageCategory || 'other',
       isEmpty,
     });
+    setHoveredState(stateCode);
   };
 
   const handleMouseMove = (event: React.MouseEvent) => {
@@ -115,17 +127,30 @@ export function USMap({ dealsByState, maxDeals, onStateClick }: USMapProps) {
 
   const handleMouseLeave = () => {
     setTooltip(null);
+    setHoveredState(null);
   };
 
-  const handleClick = (geo: any) => {
-    const fips = geo.id;
-    const stateCode = FIPS_TO_STATE[fips];
-    if (stateCode) {
-      const stateData = stateDataMap.get(stateCode);
-      const hasDeals = stateData && stateData.totalDeals > 0;
-      onStateClick(stateCode, !!hasDeals);
-    }
+  const handleClick = (stateCode: string) => {
+    const stateData = stateDataMap.get(stateCode);
+    const hasDeals = stateData && stateData.totalDeals > 0;
+    onStateClick(stateCode, !!hasDeals);
   };
+
+  if (!geographyData) {
+    return (
+      <div className="flex items-center justify-center p-8">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading map...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const width = 960;
+  const height = 600;
+  const projection = geoAlbersUsa().scale(1000).translate([width / 2, height / 2]);
+  const path = geoPath().projection(projection);
 
   return (
     <div className="relative">
@@ -166,49 +191,44 @@ export function USMap({ dealsByState, maxDeals, onStateClick }: USMapProps) {
         </div>
 
         {/* Map */}
-        <div style={{ width: '100%', height: '500px', minHeight: '400px' }}>
-          <ComposableMap
-            projection="geoAlbersUsa"
-            projectionConfig={{ scale: 1000 }}
+        <div style={{ width: '100%', height: '500px', minHeight: '400px', overflow: 'hidden' }}>
+          <svg
+            viewBox={`0 0 ${width} ${height}`}
             style={{ width: '100%', height: '100%' }}
+            preserveAspectRatio="xMidYMid meet"
           >
-            <Geographies geography={geoUrl}>
-              {({ geographies }) =>
-                geographies.map((geo) => {
-                  const fips = geo.id;
-                  const stateCode = FIPS_TO_STATE[fips];
-                  const stateData = stateCode ? stateDataMap.get(stateCode) : null;
-                  const style = getStateStyle(stateData ?? null);
-                  const hasDeals = stateData && stateData.totalDeals > 0;
+            {(geographyData as any).features.map((feature: any) => {
+              const fips = feature.id;
+              const stateCode = FIPS_TO_STATE[fips];
+              if (!stateCode) return null;
 
-                  return (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      fill={style.fill}
-                      stroke="#ffffff"
-                      strokeWidth={0.75}
-                      strokeDasharray={style.strokeDasharray}
-                      style={{
-                        default: { outline: 'none' },
-                        hover: {
-                          outline: 'none',
-                          fill: style.fill,
-                          filter: hasDeals ? 'brightness(1.15)' : 'none',
-                          cursor: hasDeals ? 'pointer' : 'default',
-                        },
-                        pressed: { outline: 'none' },
-                      }}
-                      onMouseEnter={(e) => handleMouseEnter(geo, e)}
-                      onMouseMove={handleMouseMove}
-                      onMouseLeave={handleMouseLeave}
-                      onClick={() => handleClick(geo)}
-                    />
-                  );
-                })
-              }
-            </Geographies>
-          </ComposableMap>
+              const stateData = stateDataMap.get(stateCode);
+              const hasDeals = stateData && stateData.totalDeals > 0;
+              const style = getStateStyle(stateCode);
+              const isHovered = hoveredState === stateCode;
+
+              return (
+                <path
+                  key={fips}
+                  d={path(feature) || ''}
+                  fill={style.fill}
+                  stroke="#ffffff"
+                  strokeWidth={0.75}
+                  strokeDasharray={style.strokeDasharray}
+                  style={{
+                    outline: 'none',
+                    cursor: hasDeals ? 'pointer' : 'default',
+                    filter: isHovered && hasDeals ? 'brightness(1.15)' : 'none',
+                    transition: 'filter 0.2s',
+                  }}
+                  onMouseEnter={(e) => handleMouseEnter(stateCode, e)}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => handleClick(stateCode)}
+                />
+              );
+            })}
+          </svg>
         </div>
       </div>
 
