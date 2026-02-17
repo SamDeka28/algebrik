@@ -44,12 +44,32 @@ interface USMapProps {
   onStateClick: (stateCode: string, hasDeals: boolean) => void;
 }
 
-const LEGEND_ITEMS: { category: MapStageCategory; label: string }[] = [
-  { category: 'demo', label: 'Demo / Discovery' },
-  { category: 'proposal', label: 'Proposal / Evaluation' },
-  { category: 'lateStage', label: 'Late Stage / Negotiation' },
-  { category: 'won', label: 'Closed Won' },
-  { category: 'lost', label: 'Closed Lost' },
+const LEGEND_ITEMS: { category: MapStageCategory; label: string; stages: string[] }[] = [
+  { 
+    category: 'demo', 
+    label: 'Demo / Discovery',
+    stages: ['Qualified to Buy', 'Appointment Scheduled', 'Demo/Presentation Scheduled', 'Demo Completed', 'Deep Dive Demo Scheduled']
+  },
+  { 
+    category: 'proposal', 
+    label: 'Proposal / Evaluation',
+    stages: ['Pricing Questionnaire Sent/RFP Received', 'Pricing Shared/ RFP Submitted']
+  },
+  { 
+    category: 'lateStage', 
+    label: 'Late Stage / Negotiation',
+    stages: ['Negotiation/Final Review']
+  },
+  { 
+    category: 'won', 
+    label: 'Closed-Won!',
+    stages: ['Closed-Won!']
+  },
+  { 
+    category: 'lost', 
+    label: 'Closed-Lost',
+    stages: ['Closed-Lost']
+  },
 ];
 
 export function USMap({ dealsByState, maxDeals, onStateClick }: USMapProps) {
@@ -160,16 +180,26 @@ export function USMap({ dealsByState, maxDeals, onStateClick }: USMapProps) {
           <div className="flex flex-wrap items-start gap-6">
             <div>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
-                Color = Dominant Stage
+                Color = Dominant Stage Category
               </p>
-              <div className="flex flex-wrap gap-3">
-                {LEGEND_ITEMS.map(({ category, label }) => (
-                  <div key={category} className="flex items-center gap-2">
+              <div className="space-y-2">
+                {LEGEND_ITEMS.map(({ category, label, stages }) => (
+                  <div key={category} className="flex items-start gap-2">
                     <div
-                      className="w-4 h-4 rounded"
+                      className="w-4 h-4 rounded mt-0.5 flex-shrink-0"
                       style={{ backgroundColor: STAGE_COLORS[category].base }}
                     />
-                    <span className="text-xs text-gray-900">{label}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs font-medium text-gray-900">{label}</div>
+                      <div className="text-xs text-gray-600 mt-0.5">
+                        {stages.map((stage, idx) => (
+                          <span key={idx}>
+                            {stage}
+                            {idx < stages.length - 1 && <span className="text-gray-400"> • </span>}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>

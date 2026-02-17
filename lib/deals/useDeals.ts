@@ -20,17 +20,17 @@ import { normalizeState, getStateName, ALL_STATE_CODES } from './stateNormalizer
 
 // Strapi stage mapping
 const STRAPI_STAGES = [
-  { id: 'qualified-to-buy', label: 'Qualified to buy' },
-  { id: 'appointment-scheduled', label: 'Appointment scheduled' },
-  { id: 'demo-scheduled', label: 'Demo scheduled' },
-  { id: 'demo-completed', label: 'Demo completed' },
-  { id: 'deep-dive-demo-scheduled', label: 'Deep dive demo scheduled' },
-  { id: 'pricing-questionnaire-sent', label: 'Prizing questionnaire sent / RSP received' },
-  { id: 'pricing-shared', label: 'Pricing shared / Rep submitted' },
-  { id: 'negotiation-final-review', label: 'Negotiation / final review' },
-  { id: 'closed-won', label: 'Closed (won)' },
-  { id: 'closed-lost', label: 'Closed (lost)' },
-  { id: 'deal-deferred', label: 'Deal deferred / gone cold' },
+  { id: 'qualified-to-buy', label: 'Qualified to Buy' },
+  { id: 'appointment-scheduled', label: 'Appointment Scheduled' },
+  { id: 'demo-presentation-scheduled', label: 'Demo/Presentation Scheduled' },
+  { id: 'demo-completed', label: 'Demo Completed' },
+  { id: 'deep-dive-demo-scheduled', label: 'Deep Dive Demo Scheduled' },
+  { id: 'pricing-questionnaire-sent-rfp-received', label: 'Pricing Questionnaire Sent/RFP Received' },
+  { id: 'pricing-shared-rfp-submitted', label: 'Pricing Shared/ RFP Submitted' },
+  { id: 'negotiation-final-review', label: 'Negotiation/Final Review' },
+  { id: 'closed-won', label: 'Closed-Won!' },
+  { id: 'closed-lost', label: 'Closed-Lost' },
+  { id: 'deal-deferred-gone-cold', label: 'Deal Deferred/Gone Cold' },
 ];
 
 export function useDeals(filters: DealFilters) {

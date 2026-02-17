@@ -91,23 +91,25 @@ export function getMapStageCategory(stageLabel: string): MapStageCategory {
   const lower = stageLabel.toLowerCase();
   
   if (lower.includes('qualified to buy') || lower.includes('appointment scheduled') || 
-      lower.includes('demo scheduled') || lower.includes('demo completed') || 
-      lower.includes('deep dive demo')) {
+      lower.includes('demo/presentation scheduled') || lower.includes('demo completed') || 
+      lower.includes('deep dive demo scheduled') || lower.includes('demo scheduled')) {
     return 'demo';
   }
-  if (lower.includes('pricing questionnaire') || lower.includes('pricing shared') || 
-      lower.includes('prizing questionnaire') || lower.includes('rsp received') ||
-      lower.includes('rep submitted')) {
+  if (lower.includes('pricing questionnaire sent/rfp received') || 
+      lower.includes('pricing shared/ rfp submitted') || 
+      lower.includes('pricing questionnaire') || lower.includes('pricing shared') ||
+      lower.includes('rfp received') || lower.includes('rfp submitted')) {
     return 'proposal';
   }
-  if (lower.includes('negotiation') || lower.includes('final review')) {
+  if (lower.includes('negotiation/final review') || lower.includes('negotiation') || 
+      lower.includes('final review')) {
     return 'lateStage';
   }
-  if (lower.includes('closed (won)') || lower.includes('closed won') || 
+  if (lower.includes('closed-won!') || lower.includes('closed-won') || 
       (lower.includes('closed') && lower.includes('won'))) {
     return 'won';
   }
-  if (lower.includes('closed (lost)') || lower.includes('closed lost') || 
+  if (lower.includes('closed-lost') || lower.includes('closed lost') || 
       (lower.includes('closed') && lower.includes('lost'))) {
     return 'lost';
   }
@@ -119,28 +121,31 @@ export function isDemo(stageLabel: string): boolean {
   const lower = stageLabel.toLowerCase();
   return (
     lower.includes('demo') || 
-    lower.includes('qualified') || 
-    lower.includes('appointment scheduled')
+    lower.includes('qualified to buy') || 
+    lower.includes('appointment scheduled') ||
+    lower.includes('presentation scheduled')
   );
 }
 
 export function isLateStage(stageLabel: string): boolean {
   const lower = stageLabel.toLowerCase();
   return (
-    lower.includes('proposal') ||
+    lower.includes('pricing questionnaire sent/rfp received') ||
+    lower.includes('pricing shared/ rfp submitted') ||
+    lower.includes('pricing questionnaire') ||
+    lower.includes('pricing shared') ||
+    lower.includes('rfp received') ||
+    lower.includes('rfp submitted') ||
+    lower.includes('negotiation/final review') ||
     lower.includes('negotiation') ||
-    lower.includes('pricing') ||
-    lower.includes('prizing') || // Handle typo in "Prizing questionnaire"
-    lower.includes('questionnaire') || // "Prizing questionnaire sent / RSP received"
-    lower.includes('rsp received') || // "Prizing questionnaire sent / RSP received"
-    lower.includes('rep submitted') || // "Pricing shared / Rep submitted"
     lower.includes('final review')
   );
 }
 
 export function isWon(stageLabel: string): boolean {
   const lower = stageLabel.toLowerCase();
-  return lower.includes('won') || lower.includes('closed won');
+  return lower.includes('closed-won!') || lower.includes('closed-won') || 
+         lower.includes('won') || lower.includes('closed won');
 }
 
 export function getStageColorWithIntensity(
