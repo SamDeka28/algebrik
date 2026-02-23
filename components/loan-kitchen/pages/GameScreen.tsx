@@ -292,7 +292,7 @@ export function GameScreen({ onMenu }: GameScreenProps) {
         brandEquity={brandEquity}
         gameOverReason={gameOverReason}
         onRestart={startGame}
-        onMenu={() => setGameState('menu')}
+        onMenu={onMenu}
         algebrikActive={Object.values(aiModules).some(Boolean)} />
 
       }
