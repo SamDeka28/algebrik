@@ -80,7 +80,7 @@ type CardProps = {
          className="relative font-plus-jakarta">
          <div className={`absolute bottom-0 md:top-1/2 left-0 w-full h-[40%] rounded-t-[20px] 
           md:rounded-none md:h-1/2 ${isSolutionsPage ? '' : 'bg-[#121212]'} -z-10`}></div>
-        <div className="flex flex-col md:flex-row gap-6 md:mx-auto max-w-7xl mx-[16px] md:px-4 md:py-28 relative z-10 justify-center items-center">
+        <div className="flex flex-col md:flex-row gap-6 md:mx-auto max-w-7xl mx-[16px] md:px-4 md:pt-28 md:pb-8 relative z-10 justify-center items-center">
           <Card
             title="Let’s Build the Future of Lending Together"
             description="Talk to our experts and explore how Algebrik can solve your unique lending challenges."
@@ -99,6 +99,7 @@ type CardProps = {
             imageUrl="/background_images/algebrikFirsthand.webp"
           />
         </div>
+
         <Contact open={showContactModal} onClose={() => setShowContactModal(false)} />
       </motion.div>
     );

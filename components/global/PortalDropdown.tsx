@@ -5,9 +5,10 @@ interface PortalDropdownProps {
   anchorRef: RefObject<HTMLDivElement>;
   children: ReactNode;
   autoWidth?: boolean;
+  alignLeft?: boolean;
 }
 
-export default function PortalDropdown({ anchorRef, children, autoWidth = false }: PortalDropdownProps) {
+export default function PortalDropdown({ anchorRef, children, autoWidth = false, alignLeft = false }: PortalDropdownProps) {
   const [coords, setCoords] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
@@ -34,13 +35,13 @@ export default function PortalDropdown({ anchorRef, children, autoWidth = false 
       style={{
         position: "absolute",
         top: coords.top + 20,
-        left: "50%",
-        transform: "translateX(-50%)",
+        left: (autoWidth && alignLeft) ? coords.left : "50%",
+        transform: (autoWidth && alignLeft) ? "none" : "translateX(-50%)",
         width: autoWidth ? "auto" : "100%",
-        maxWidth: autoWidth ? "1260px" : "auto",
+        maxWidth: autoWidth ? "none" : "1260px",
         zIndex: 9999,
       }}
-      className="mt-2 rounded-[20px] shadow-lg backdrop-blur-3xl bg-black/50 text-white flex flex-col items-start w-full max-w-[1260px] mx-auto"
+      className={`mt-2 rounded-[20px] shadow-lg backdrop-blur-3xl bg-black/50 text-white flex flex-col items-start ${autoWidth ? "" : "w-full max-w-[1260px] mx-auto"}`}
     >
       {children}
     </div>,

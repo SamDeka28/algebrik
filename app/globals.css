@@ -48,6 +48,17 @@ body {
   animation: infinite-scroll-reverse 20s linear infinite;
 }
 
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 html{
   scroll-behavior: smooth;
 }

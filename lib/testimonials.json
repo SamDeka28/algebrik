@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "quote": "With Algebrik AI, we're not just upgrading our tech stack; we're redefining the speed, simplicity, and personalization of lending for the communities we serve.",
+    "name": "DEB DIETZ",
+    "title": "CEO",
+    "organization": "Family Financial Credit Union",
+    "logo": "/partner_icons/ffcu.png",
+    "image": "/team_images/deb.png",
+    "quoteColor": "bg-blue-700",
+    "personBgColor": "bg-white"
+  },
+  {
+    "id": 2,
+    "quote": "For us, this wasn't just about digitizing lending—it was about choosing a partner that understands where the future of lending is headed.",
+    "name": "BARBARA APPOLD",
+    "title": "President & CEO",
+    "organization": "United Financial Credit Union",
+    "logo": "/partner_icons/united-financials.png",
+    "image": "/team_images/barbara.png",
+    "quoteColor": "bg-blue-700",
+    "personBgColor": "bg-white"
+  },
+  {
+    "id": 3,
+    "quote": "Algebrik's ability to streamline our processes is smoother, faster, and more community-first than any solution we've used. It's transformed how we serve our Credit Union members.",
+    "name": "BRENT",
+    "title": "Chief Lending Officer",
+    "organization": "Advantage Plus Credit Union",
+    "logo": "/partner_icons/advantage-plus.png",
+    "image": "/team_images/brent.png",
+    "quoteColor": "bg-blue-700",
+    "personBgColor": "bg-white"
+  },
+  {
+    "id": 4,
+    "quote": "Algebrik One has given us the agility to launch new products in weeks instead of months. Our members love the seamless experience, and our team loves the efficiency.",
+    "name": "DEB DIETZ",
+    "title": "CEO",
+    "organization": "Family Financial Credit Union",
+    "logo": "/partner_icons/ffcu.png",
+    "image": "/team_images/deb.png",
+    "quoteColor": "bg-blue-700",
+    "personBgColor": "bg-white"
+  },
+  {
+    "id": 5,
+    "quote": "The AI-powered decisioning engine has revolutionized our underwriting process. We're approving loans faster while maintaining the highest standards of risk management.",
+    "name": "BARBARA APPOLD",
+    "title": "President & CEO",
+    "organization": "United Financial Credit Union",
+    "logo": "/partner_icons/united-financials.png",
+    "image": "/team_images/barbara.png",
+    "quoteColor": "bg-blue-700",
+    "personBgColor": "bg-white"
+  }
+]

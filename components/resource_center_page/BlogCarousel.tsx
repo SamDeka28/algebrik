@@ -520,6 +520,26 @@ export default function BlogCarousel() {
           {/* Tools */}
           {currentIndex == 4 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
+              {/* LoanKitchen Tool - Hardcoded entry */}
+              <div className="bg-white max-w-[520px] text-gray-900 rounded-[20px] shadow p-4 flex flex-row gap-6">
+                <Image
+                  src="/loan-kitchen-logo.png"
+                  alt="LoanKitchen"
+                  width={120}
+                  height={120}
+                  className="object-cover bg-gray-100 rounded-lg"
+                />
+                <div className="flex flex-col flex-1 gap-2 h-full">
+                  <h3 className="text-[22px] font-bold text-[#2A5FAC]">Algebrik's Loan Kitchen</h3>
+                  <p className="text-[15px] text-[#606060]">A Simulation of Traditional LOS vs Algebrik One Lending Suite</p>
+                  <Link href="/loan-kitchen" target="_blank">
+                    <button className="border border-[#2A5FAC] text-[#2A5FAC] rounded-full px-6 py-2 font-medium hover:bg-[#2A5FAC] hover:text-white transition-all">
+                      Play Now
+                    </button>
+                  </Link>
+                </div>
+              </div>
+              
               {tools?.map((tool: any, index: number) => {
                 // Access Strapi attributes
                 const attrs = tool.attributes || tool;

@@ -18,6 +18,7 @@ const LazyFooterCards = dynamic(() => import("@/components/FooterCards"), { ssr:
 const LazyBorrowerJourney = dynamic(() => import("@/components/home_page/BorrowerJourney"), { ssr: false, loading: () => <div /> });
 const LazyLendingJourney = dynamic(() => import("@/components/home_page/LendingJourney"), { ssr: false, loading: () => <div /> });
 const LazyPotential = dynamic(() => import("@/components/home_page/Potential"), { ssr: false, loading: () => <div /> });
+const LazyTestimonials = dynamic(() => import("@/components/home_page/TestimonialsSection"), { ssr: false, loading: () => <div /> });
 
 const HubSpotPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -129,6 +130,11 @@ export default function Home() {
           {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
         >
           <LazyLendingJourney />
+        </motion.div>
+        <motion.div
+          {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}
+        >
+          <LazyTestimonials />
         </motion.div>
         <motion.div
           {...{...baseMotion, transition: { ...(baseMotion.transition as any), delay: 0.1 }}}

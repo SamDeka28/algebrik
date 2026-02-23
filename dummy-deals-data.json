@@ -1,527 +1,674 @@
 [
   {
-    "company": "TechCorp Solutions",
-    "state": "California",
-    "stages": "Demo/Presentation Scheduled",
-    "amount": "125000",
-    "created": "2024-12-15T10:30:00.000Z"
-  },
-  {
-    "company": "Financial Services Inc",
-    "state": "New York",
-    "stages": "Negotiation/Final Review",
-    "amount": "250000",
-    "created": "2024-12-10T14:20:00.000Z"
-  },
-  {
-    "company": "Healthcare Partners",
-    "state": "Texas",
-    "stages": "Closed-Won!",
-    "amount": "180000",
-    "created": "2024-11-28T09:15:00.000Z"
-  },
-  {
-    "company": "Retail Dynamics",
-    "state": "Florida",
-    "stages": "Pricing Shared/ RFP Submitted",
-    "amount": "95000",
-    "created": "2024-12-18T11:45:00.000Z"
-  },
-  {
-    "company": "Manufacturing Co",
-    "state": "Illinois",
-    "stages": "Qualified to Buy",
-    "amount": "320000",
-    "created": "2024-12-20T08:00:00.000Z"
-  },
-  {
-    "company": "Education Systems",
-    "state": "Pennsylvania",
-    "stages": "Demo Completed",
-    "amount": "145000",
-    "created": "2024-12-12T13:30:00.000Z"
-  },
-  {
-    "company": "Energy Solutions",
-    "state": "Colorado",
-    "stages": "Deep Dive Demo Scheduled",
-    "amount": "275000",
-    "created": "2024-12-08T15:20:00.000Z"
-  },
-  {
-    "company": "Real Estate Group",
-    "state": "Washington",
-    "stages": "Appointment Scheduled",
-    "amount": "110000",
-    "created": "2024-12-22T10:10:00.000Z"
-  },
-  {
-    "company": "Logistics Pro",
-    "state": "Georgia",
-    "stages": "Closed-Lost",
-    "amount": "85000",
-    "created": "2024-11-15T12:00:00.000Z"
-  },
-  {
-    "company": "Media Ventures",
-    "state": "North Carolina",
-    "stages": "Pricing Questionnaire Sent/RFP Received",
-    "amount": "165000",
-    "created": "2024-12-14T16:45:00.000Z"
-  },
-  {
-    "company": "Construction Plus",
-    "state": "Michigan",
-    "stages": "Negotiation/Final Review",
-    "amount": "220000",
-    "created": "2024-12-05T09:30:00.000Z"
-  },
-  {
-    "company": "Food Services LLC",
+    "company": "Pathways Financial Credit Union",
     "state": "Ohio",
-    "stages": "Demo/Presentation Scheduled",
-    "amount": "75000",
-    "created": "2024-12-19T14:15:00.000Z"
-  },
-  {
-    "company": "Transportation Hub",
-    "state": "Arizona",
-    "stages": "Closed-Won!",
-    "amount": "195000",
-    "created": "2024-11-20T11:00:00.000Z"
-  },
-  {
-    "company": "Insurance Partners",
-    "state": "Massachusetts",
     "stages": "Demo Completed",
-    "amount": "140000",
-    "created": "2024-12-16T10:30:00.000Z"
+    "amount": "360000",
+    "created": "2026-02-02T02:35:00.000Z"
   },
   {
-    "company": "Telecom Solutions",
-    "state": "Tennessee",
-    "stages": "Qualified to Buy",
-    "amount": "280000",
-    "created": "2024-12-21T08:45:00.000Z"
-  },
-  {
-    "company": "Banking Systems",
-    "state": "Indiana",
-    "stages": "Pricing Shared/ RFP Submitted",
-    "amount": "155000",
-    "created": "2024-12-11T13:20:00.000Z"
-  },
-  {
-    "company": "Pharmaceutical Inc",
-    "state": "Missouri",
-    "stages": "Deep Dive Demo Scheduled",
-    "amount": "310000",
-    "created": "2024-12-07T15:00:00.000Z"
-  },
-  {
-    "company": "Automotive Group",
-    "state": "Maryland",
-    "stages": "Appointment Scheduled",
-    "amount": "120000",
-    "created": "2024-12-17T09:15:00.000Z"
-  },
-  {
-    "company": "Hospitality Services",
-    "state": "Wisconsin",
-    "stages": "Closed-Lost",
-    "amount": "90000",
-    "created": "2024-11-10T12:30:00.000Z"
-  },
-  {
-    "company": "Agriculture Co",
-    "state": "Minnesota",
-    "stages": "Negotiation/Final Review",
-    "amount": "175000",
-    "created": "2024-12-13T14:00:00.000Z"
-  },
-  {
-    "company": "Aerospace Solutions",
+    "company": "Frontwave Credit Union - New Deal",
     "state": "California",
-    "stages": "Closed-Won!",
-    "amount": "450000",
-    "created": "2024-11-25T10:00:00.000Z"
+    "stages": "Demo Completed",
+    "amount": "180000",
+    "created": "2026-01-23T10:40:00.000Z"
   },
   {
-    "company": "Software Innovations",
-    "state": "Texas",
-    "stages": "Demo/Presentation Scheduled",
-    "amount": "135000",
-    "created": "2024-12-23T11:30:00.000Z"
+    "company": "FiCare Federal Credit Union - New Deal",
+    "state": "Florida",
+    "stages": "Pricing Questionnaire Sent/RFP Received",
+    "amount": "156000",
+    "created": "2026-01-23T09:41:00.000Z"
   },
   {
-    "company": "Consulting Group",
+    "company": "Eagle Community Credit Union - New Deal",
+    "state": "California",
+    "stages": "Demo Completed",
+    "amount": "180000",
+    "created": "2026-01-23T09:36:00.000Z"
+  },
+  {
+    "company": "Truity Federal Credit Union",
+    "state": "Oklahoma",
+    "stages": "Demo Completed",
+    "amount": "180000",
+    "created": "2026-01-23T09:32:00.000Z"
+  },
+  {
+    "company": "Beginnings Credit Union",
     "state": "New York",
     "stages": "Pricing Questionnaire Sent/RFP Received",
-    "amount": "185000",
-    "created": "2024-12-09T16:20:00.000Z"
+    "amount": "180000",
+    "created": "2026-01-13T22:53:00.000Z"
   },
   {
-    "company": "Legal Services",
+    "company": "Filer Credit Union",
+    "state": "Michigan",
+    "stages": "Qualified to Buy",
+    "amount": "",
+    "created": "2025-12-30T06:07:00.000Z"
+  },
+  {
+    "company": "Texas Bay Credit Union",
+    "state": "Texas",
+    "stages": "Demo Completed",
+    "amount": "",
+    "created": "2025-12-30T06:06:00.000Z"
+  },
+  {
+    "company": "iThink Financial Credit Union",
     "state": "Florida",
     "stages": "Demo Completed",
-    "amount": "105000",
-    "created": "2024-12-06T08:45:00.000Z"
+    "amount": "",
+    "created": "2025-12-30T06:02:00.000Z"
   },
   {
-    "company": "Marketing Agency",
-    "state": "Illinois",
-    "stages": "Qualified to Buy",
-    "amount": "95000",
-    "created": "2024-12-24T09:00:00.000Z"
-  },
-  {
-    "company": "Non-Profit Org",
-    "state": "Pennsylvania",
-    "stages": "Appointment Scheduled",
-    "amount": "65000",
-    "created": "2024-12-04T13:15:00.000Z"
-  },
-  {
-    "company": "Gaming Studio",
-    "state": "Colorado",
-    "stages": "Deep Dive Demo Scheduled",
-    "amount": "210000",
-    "created": "2024-12-01T15:30:00.000Z"
-  },
-  {
-    "company": "Fitness Chain",
-    "state": "Washington",
-    "stages": "Pricing Shared/ RFP Submitted",
-    "amount": "125000",
-    "created": "2024-12-03T10:20:00.000Z"
-  },
-  {
-    "company": "E-commerce Platform",
+    "company": "Kinetic Credit Union",
     "state": "Georgia",
-    "stages": "Negotiation/Final Review",
-    "amount": "290000",
-    "created": "2024-11-30T14:00:00.000Z"
-  },
-  {
-    "company": "Security Systems",
-    "state": "North Carolina",
-    "stages": "Closed-Won!",
-    "amount": "160000",
-    "created": "2024-11-18T11:45:00.000Z"
-  },
-  {
-    "company": "Travel Services",
-    "state": "Michigan",
     "stages": "Demo/Presentation Scheduled",
-    "amount": "115000",
-    "created": "2024-12-02T12:30:00.000Z"
+    "amount": "",
+    "created": "2025-12-30T05:49:00.000Z"
   },
   {
-    "company": "Entertainment Corp",
-    "state": "Ohio",
-    "stages": "Closed-Lost",
-    "amount": "80000",
-    "created": "2024-11-12T09:00:00.000Z"
-  },
-  {
-    "company": "Utilities Co",
-    "state": "Arizona",
-    "stages": "Demo Completed",
-    "amount": "240000",
-    "created": "2024-11-28T15:15:00.000Z"
-  },
-  {
-    "company": "Investment Firm",
-    "state": "Massachusetts",
+    "company": "SMW 104 FCU",
+    "state": "California",
     "stages": "Qualified to Buy",
-    "amount": "350000",
-    "created": "2024-12-25T08:30:00.000Z"
+    "amount": "156000",
+    "created": "2025-12-17T20:41:00.000Z"
   },
   {
-    "company": "Research Institute",
-    "state": "Tennessee",
-    "stages": "Pricing Questionnaire Sent/RFP Received",
-    "amount": "195000",
-    "created": "2024-12-26T10:00:00.000Z"
-  },
-  {
-    "company": "Shipping Logistics",
-    "state": "Indiana",
-    "stages": "Deep Dive Demo Scheduled",
-    "amount": "170000",
-    "created": "2024-12-27T11:15:00.000Z"
-  },
-  {
-    "company": "Property Management",
-    "state": "Missouri",
-    "stages": "Appointment Scheduled",
-    "amount": "130000",
-    "created": "2024-12-28T13:00:00.000Z"
-  },
-  {
-    "company": "Cleaning Services",
-    "state": "Maryland",
-    "stages": "Negotiation/Final Review",
-    "amount": "85000",
-    "created": "2024-12-29T14:30:00.000Z"
-  },
-  {
-    "company": "Event Planning Co",
-    "state": "Wisconsin",
-    "stages": "Pricing Shared/ RFP Submitted",
-    "amount": "100000",
-    "created": "2024-12-30T09:45:00.000Z"
-  },
-  {
-    "company": "Pet Care Services",
-    "state": "Minnesota",
-    "stages": "Demo/Presentation Scheduled",
-    "amount": "75000",
-    "created": "2024-12-31T10:20:00.000Z"
-  },
-  {
-    "company": "Home Improvement",
-    "state": "Oregon",
-    "stages": "Closed-Won!",
-    "amount": "145000",
-    "created": "2024-11-22T12:00:00.000Z"
-  },
-  {
-    "company": "Beauty Salon Chain",
-    "state": "Nevada",
-    "stages": "Demo Completed",
-    "amount": "90000",
-    "created": "2024-12-01T15:00:00.000Z"
-  },
-  {
-    "company": "Restaurant Group",
-    "state": "Utah",
-    "stages": "Qualified to Buy",
-    "amount": "110000",
-    "created": "2024-12-05T08:30:00.000Z"
-  },
-  {
-    "company": "Fashion Retail",
-    "state": "Connecticut",
-    "stages": "Appointment Scheduled",
-    "amount": "125000",
-    "created": "2024-12-07T11:00:00.000Z"
-  },
-  {
-    "company": "Sports Equipment",
-    "state": "Iowa",
-    "stages": "Pricing Questionnaire Sent/RFP Received",
-    "amount": "140000",
-    "created": "2024-12-09T13:45:00.000Z"
-  },
-  {
-    "company": "Bookstore Chain",
-    "state": "Arkansas",
-    "stages": "Deep Dive Demo Scheduled",
-    "amount": "95000",
-    "created": "2024-12-11T10:15:00.000Z"
-  },
-  {
-    "company": "Jewelry Store",
-    "state": "Mississippi",
-    "stages": "Pricing Shared/ RFP Submitted",
-    "amount": "105000",
-    "created": "2024-12-13T14:20:00.000Z"
-  },
-  {
-    "company": "Toy Manufacturer",
-    "state": "Kansas",
-    "stages": "Negotiation/Final Review",
-    "amount": "180000",
-    "created": "2024-12-15T09:00:00.000Z"
-  },
-  {
-    "company": "Music Studio",
-    "state": "New Mexico",
-    "stages": "Closed-Won!",
-    "amount": "120000",
-    "created": "2024-11-19T16:30:00.000Z"
-  },
-  {
-    "company": "Art Gallery",
-    "state": "Nebraska",
-    "stages": "Demo/Presentation Scheduled",
-    "amount": "85000",
-    "created": "2024-12-17T11:45:00.000Z"
-  },
-  {
-    "company": "Photography Studio",
+    "company": "Frontier Credit Union",
     "state": "Idaho",
-    "stages": "Appointment Scheduled",
-    "amount": "70000",
-    "created": "2024-12-19T08:15:00.000Z"
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-12-16T23:12:00.000Z"
   },
   {
-    "company": "Veterinary Clinic",
-    "state": "West Virginia",
-    "stages": "Demo Completed",
-    "amount": "115000",
-    "created": "2024-12-21T12:00:00.000Z"
-  },
-  {
-    "company": "Dental Practice",
-    "state": "Hawaii",
+    "company": "Credit Union of Georgia",
+    "state": "Georgia",
     "stages": "Qualified to Buy",
-    "amount": "135000",
-    "created": "2024-12-23T14:30:00.000Z"
+    "amount": "",
+    "created": "2025-12-05T11:26:00.000Z"
   },
   {
-    "company": "Optometry Center",
-    "state": "New Hampshire",
-    "stages": "Pricing Questionnaire Sent/RFP Received",
-    "amount": "100000",
-    "created": "2024-12-25T09:20:00.000Z"
+    "company": "New Cumberland FCU",
+    "state": "Pennsylvania",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-12-01T23:50:00.000Z"
   },
   {
-    "company": "Chiropractic Office",
-    "state": "Maine",
-    "stages": "Deep Dive Demo Scheduled",
-    "amount": "95000",
-    "created": "2024-12-27T10:45:00.000Z"
-  },
-  {
-    "company": "Physical Therapy",
-    "state": "Montana",
-    "stages": "Pricing Shared/ RFP Submitted",
-    "amount": "110000",
-    "created": "2024-12-29T13:15:00.000Z"
-  },
-  {
-    "company": "Mental Health Services",
-    "state": "Rhode Island",
+    "company": "PostCity Financial Credit Union",
+    "state": "California",
     "stages": "Negotiation/Final Review",
-    "amount": "125000",
-    "created": "2024-12-31T15:00:00.000Z"
+    "amount": "156000",
+    "created": "2025-12-01T09:57:00.000Z"
   },
   {
-    "company": "Senior Care Facility",
-    "state": "Delaware",
-    "stages": "Closed-Won!",
-    "amount": "200000",
-    "created": "2024-11-14T11:30:00.000Z"
+    "company": "EFCU Financial FCU",
+    "state": "Louisiana",
+    "stages": "Demo Completed",
+    "amount": "180000",
+    "created": "2025-11-25T05:19:00.000Z"
   },
   {
-    "company": "Childcare Center",
-    "state": "South Dakota",
+    "company": "Community Credit Union of Florida",
+    "state": "Florida",
+    "stages": "Demo Completed",
+    "amount": "",
+    "created": "2025-11-24T05:21:00.000Z"
+  },
+  {
+    "company": "State Employees' Credit Union",
+    "state": "North Carolina",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "180000",
+    "created": "2025-11-23T23:56:00.000Z"
+  },
+  {
+    "company": "Community Choice Credit Union",
+    "state": "Iowa",
     "stages": "Demo/Presentation Scheduled",
-    "amount": "90000",
-    "created": "2024-12-02T08:00:00.000Z"
+    "amount": "360000",
+    "created": "2025-11-23T23:17:00.000Z"
   },
   {
-    "company": "Fitness Equipment",
-    "state": "North Dakota",
-    "stages": "Appointment Scheduled",
-    "amount": "105000",
-    "created": "2024-12-04T10:20:00.000Z"
+    "company": "Safe 1 Credit Union",
+    "state": "California",
+    "stages": "Demo Completed",
+    "amount": "180000",
+    "created": "2025-11-20T05:24:00.000Z"
   },
   {
-    "company": "Yoga Studio Chain",
+    "company": "South Bay Credit Union",
+    "state": "California",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-11-20T02:05:00.000Z"
+  },
+  {
+    "company": "Suncoast Credit Union",
+    "state": "Florida",
+    "stages": "Demo/Presentation Scheduled",
+    "amount": "180000",
+    "created": "2025-11-14T06:47:00.000Z"
+  },
+  {
+    "company": "JG Wentworth",
+    "state": "Pennsylvania",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-11-13T05:15:00.000Z"
+  },
+  {
+    "company": "Tinker Credit Union",
+    "state": "Oklahoma",
+    "stages": "Closed-Lost",
+    "amount": "444000",
+    "created": "2025-11-11T10:41:00.000Z"
+  },
+  {
+    "company": "University Federal Credit Union",
+    "state": "Texas",
+    "stages": "Demo Completed",
+    "amount": "624000",
+    "created": "2025-10-31T12:21:00.000Z"
+  },
+  {
+    "company": "University Credit Union",
+    "state": "California",
+    "stages": "Negotiation/Final Review",
+    "amount": "360000",
+    "created": "2025-10-31T05:20:00.000Z"
+  },
+  {
+    "company": "Westerra Credit Union",
+    "state": "Colorado",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "180000",
+    "created": "2025-10-30T00:30:00.000Z"
+  },
+  {
+    "company": "Columbia Credit Union",
+    "state": "Washington",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-10-30T00:23:00.000Z"
+  },
+  {
+    "company": "Hughes Federal Credit Union",
+    "state": "Arizona",
+    "stages": "Demo Completed",
+    "amount": "180000",
+    "created": "2025-10-24T03:12:00.000Z"
+  },
+  {
+    "company": "OneAZ Credit Union",
+    "state": "Arizona",
+    "stages": "Demo Completed",
+    "amount": "180000",
+    "created": "2025-10-24T03:09:00.000Z"
+  },
+  {
+    "company": "5Point Credit Union",
+    "state": "Texas",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-10-10T04:54:00.000Z"
+  },
+  {
+    "company": "True North Federal Credit Union",
     "state": "Alaska",
     "stages": "Demo Completed",
-    "amount": "80000",
-    "created": "2024-12-06T12:45:00.000Z"
+    "amount": "360000",
+    "created": "2025-10-10T01:55:00.000Z"
   },
   {
-    "company": "Martial Arts School",
-    "state": "Vermont",
-    "stages": "Qualified to Buy",
-    "amount": "75000",
-    "created": "2024-12-08T14:10:00.000Z"
-  },
-  {
-    "company": "Swimming Pool Co",
-    "state": "Wyoming",
-    "stages": "Pricing Questionnaire Sent/RFP Received",
-    "amount": "150000",
-    "created": "2024-12-10T09:30:00.000Z"
-  },
-  {
-    "company": "Landscaping Services",
-    "state": "Kentucky",
-    "stages": "Deep Dive Demo Scheduled",
-    "amount": "95000",
-    "created": "2024-12-12T11:00:00.000Z"
-  },
-  {
-    "company": "Pest Control",
-    "state": "Louisiana",
-    "stages": "Pricing Shared/ RFP Submitted",
-    "amount": "85000",
-    "created": "2024-12-14T13:20:00.000Z"
-  },
-  {
-    "company": "HVAC Services",
-    "state": "Oklahoma",
-    "stages": "Negotiation/Final Review",
-    "amount": "175000",
-    "created": "2024-12-16T15:45:00.000Z"
-  },
-  {
-    "company": "Plumbing Co",
-    "state": "South Carolina",
-    "stages": "Closed-Won!",
-    "amount": "120000",
-    "created": "2024-11-16T10:15:00.000Z"
-  },
-  {
-    "company": "Electrical Services",
-    "state": "Alabama",
-    "stages": "Demo/Presentation Scheduled",
-    "amount": "130000",
-    "created": "2024-12-18T08:30:00.000Z"
-  },
-  {
-    "company": "Roofing Company",
-    "state": "New Jersey",
-    "stages": "Appointment Scheduled",
-    "amount": "160000",
-    "created": "2024-12-20T12:00:00.000Z"
-  },
-  {
-    "company": "Window Installation",
-    "state": "Virginia",
-    "stages": "Demo Completed",
-    "amount": "140000",
-    "created": "2024-12-22T14:30:00.000Z"
-  },
-  {
-    "company": "Flooring Solutions",
-    "state": "California",
-    "stages": "Qualified to Buy",
-    "amount": "115000",
-    "created": "2024-12-24T09:45:00.000Z"
-  },
-  {
-    "company": "Paint Services",
-    "state": "Texas",
-    "stages": "Pricing Questionnaire Sent/RFP Received",
-    "amount": "90000",
-    "created": "2024-12-26T11:15:00.000Z"
-  },
-  {
-    "company": "Carpentry Works",
-    "state": "New York",
-    "stages": "Deep Dive Demo Scheduled",
-    "amount": "125000",
-    "created": "2024-12-28T13:00:00.000Z"
-  },
-  {
-    "company": "Masonry Services",
+    "company": "Gold Coast Federal Credit Union - New Deal",
     "state": "Florida",
-    "stages": "Pricing Shared/ RFP Submitted",
-    "amount": "155000",
-    "created": "2024-12-30T15:20:00.000Z"
+    "stages": "Closed-Won!",
+    "amount": "168000",
+    "created": "2025-10-10T01:34:00.000Z"
   },
   {
-    "company": "Deal deferred / gone cold",
+    "company": "Corporate America Family Credit Union - New Deal",
+    "state": "Illinois",
+    "stages": "Pricing Questionnaire Sent/RFP Received",
+    "amount": "360000",
+    "created": "2025-10-10T01:18:00.000Z"
+  },
+  {
+    "company": "HawaiiUSA Federal Credit Union - New Deal",
+    "state": "Hawaii",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-10-10T00:35:00.000Z"
+  },
+  {
+    "company": "Atlantic Federal Credit Union",
+    "state": "Maine",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-10-09T11:44:00.000Z"
+  },
+  {
+    "company": "Riverfront Federal Credit Union",
+    "state": "Pennsylvania",
+    "stages": "Negotiation/Final Review",
+    "amount": "168000",
+    "created": "2025-10-09T11:41:00.000Z"
+  },
+  {
+    "company": "Pearl Hawaii FCU - New Deal",
+    "state": "Hawaii",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-10-09T03:44:00.000Z"
+  },
+  {
+    "company": "FedChoice Federal Credit Union",
+    "state": "Maryland",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-10-09T03:39:00.000Z"
+  },
+  {
+    "company": "BECU Credit Union - New Deal",
+    "state": "Washington",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-10-09T03:01:00.000Z"
+  },
+  {
+    "company": "Pen Air Credit Union",
+    "state": "Florida",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-10-07T06:28:00.000Z"
+  },
+  {
+    "company": "Achieva Credit Union",
+    "state": "Florida",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-10-06T10:48:00.000Z"
+  },
+  {
+    "company": "Tennessee Valley FCU",
+    "state": "Tennessee",
+    "stages": "Demo Completed",
+    "amount": "240000",
+    "created": "2025-10-06T10:05:00.000Z"
+  },
+  {
+    "company": "OUR Credit Union",
+    "state": "Michigan",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-10-06T06:16:00.000Z"
+  },
+  {
+    "company": "Abri Credit Union",
     "state": "Illinois",
     "stages": "Deal Deferred/Gone Cold",
-    "amount": "100000",
-    "created": "2024-10-15T10:00:00.000Z"
+    "amount": "194000",
+    "created": "2025-10-03T10:50:00.000Z"
+  },
+  {
+    "company": "Alliant Credit Union",
+    "state": "Illinois",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-10-03T10:40:00.000Z"
+  },
+  {
+    "company": "FloridaCentral Credit Union",
+    "state": "Florida",
+    "stages": "Demo Completed",
+    "amount": "240000",
+    "created": "2025-10-03T10:33:00.000Z"
+  },
+  {
+    "company": "Inspire Federal Credit Union",
+    "state": "Pennsylvania",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-10-02T04:36:00.000Z"
+  },
+  {
+    "company": "Finger Lakes FCU",
+    "state": "New York",
+    "stages": "Pricing Questionnaire Sent/RFP Received",
+    "amount": "360000",
+    "created": "2025-09-29T09:20:00.000Z"
+  },
+  {
+    "company": "Chevron Federal Credit Union",
+    "state": "California",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-09-29T07:43:00.000Z"
+  },
+  {
+    "company": "MTC Federal Credit Union",
+    "state": "South Carolina",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-09-29T07:39:00.000Z"
+  },
+  {
+    "company": "Transcend Credit Union - New Deal",
+    "state": "Kentucky",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-09-24T03:19:00.000Z"
+  },
+  {
+    "company": "State Department Federal Credit Union",
+    "state": "Virginia",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-09-05T10:45:00.000Z"
+  },
+  {
+    "company": "Compass Credit Union",
+    "state": "Michigan",
+    "stages": "Closed-Lost",
+    "amount": "194000",
+    "created": "2025-09-03T08:32:00.000Z"
+  },
+  {
+    "company": "Abound Credit Union",
+    "state": "Kentucky",
+    "stages": "Qualified to Buy",
+    "amount": "360000",
+    "created": "2025-09-02T10:58:00.000Z"
+  },
+  {
+    "company": "Education First Federal Credit Union",
+    "state": "Texas",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "360000",
+    "created": "2025-09-02T10:32:00.000Z"
+  },
+  {
+    "company": "Pasadena Federal Credit Union",
+    "state": "California",
+    "stages": "Qualified to Buy",
+    "amount": "360000",
+    "created": "2025-08-28T10:51:00.000Z"
+  },
+  {
+    "company": "Clearview Federal Credit Union",
+    "state": "Pennsylvania",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "360000",
+    "created": "2025-08-28T10:39:00.000Z"
+  },
+  {
+    "company": "Lighthouse Credit Union",
+    "state": "New Hampshire",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-08-28T10:31:00.000Z"
+  },
+  {
+    "company": "Silver State Schools Credit Union",
+    "state": "Nevada",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-08-25T00:22:00.000Z"
+  },
+  {
+    "company": "Sentinel FCU",
+    "state": "South Dakota",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-08-25T00:08:00.000Z"
+  },
+  {
+    "company": "Firstmark Credit Union",
+    "state": "Texas",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-08-13T00:35:00.000Z"
+  },
+  {
+    "company": "UniWyo Federal Credit Union",
+    "state": "Wyoming",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-08-13T00:16:00.000Z"
+  },
+  {
+    "company": "Telco Community Credit Union - New Deal",
+    "state": "North Carolina",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-08-11T06:43:00.000Z"
+  },
+  {
+    "company": "Mid-Hudson Valley Federal Credit Union",
+    "state": "New York",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-07-23T03:28:00.000Z"
+  },
+  {
+    "company": "Marine Federal Credit Union",
+    "state": "North Carolina",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "360000",
+    "created": "2025-07-23T02:29:00.000Z"
+  },
+  {
+    "company": "Mountain America Federal Credit Union - New Deal",
+    "state": "Utah",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-07-16T09:02:00.000Z"
+  },
+  {
+    "company": "Advantage Plus Federal Credit Union - New Deal",
+    "state": "Idaho",
+    "stages": "Closed-Won!",
+    "amount": "360000",
+    "created": "2025-07-08T00:03:00.000Z"
+  },
+  {
+    "company": "Simplicity CU",
+    "state": "Wisconsin",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "360000",
+    "created": "2025-07-03T19:24:00.000Z"
+  },
+  {
+    "company": "Gesa Credit Union",
+    "state": "Washington",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-07-03T19:15:00.000Z"
+  },
+  {
+    "company": "Fort Financial CU",
+    "state": "Indiana",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-07-03T19:14:00.000Z"
+  },
+  {
+    "company": "Empeople Credit Union",
+    "state": "Illinois",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-07-03T19:12:00.000Z"
+  },
+  {
+    "company": "University Of Hawaii Federal Credit Union - New Deal",
+    "state": "Hawaii",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "194000",
+    "created": "2025-07-03T11:19:00.000Z"
+  },
+  {
+    "company": "Team One CU",
+    "state": "Michigan",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-07-03T09:40:00.000Z"
+  },
+  {
+    "company": "Aloha Pacific FCU",
+    "state": "Hawaii",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-07-03T09:22:00.000Z"
+  },
+  {
+    "company": "Primeway FCU",
+    "state": "Texas",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-07-03T08:40:00.000Z"
+  },
+  {
+    "company": "Clark County Credit Union",
+    "state": "Nevada",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "750000",
+    "created": "2025-07-03T08:34:00.000Z"
+  },
+  {
+    "company": "United Financial Credit Union",
+    "state": "Michigan",
+    "stages": "Closed-Won!",
+    "amount": "250000",
+    "created": "2025-07-03T08:28:00.000Z"
+  },
+  {
+    "company": "PSECU",
+    "state": "Pennsylvania",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-07-03T08:26:00.000Z"
+  },
+  {
+    "company": "One Detroit CU",
+    "state": "Michigan",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-07-03T07:51:00.000Z"
+  },
+  {
+    "company": "Harvard Credit Union",
+    "state": "Massachusetts",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-06-24T05:10:00.000Z"
+  },
+  {
+    "company": "People's Alliance Federal Credit Union",
+    "state": "New York",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-06-23T09:18:00.000Z"
+  },
+  {
+    "company": "Pyramid Federal Credit Union",
+    "state": "Arizona",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-06-23T01:55:00.000Z"
+  },
+  {
+    "company": "Diamond Credit Union - New Deal",
+    "state": "Pennsylvania",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-06-22T23:54:00.000Z"
+  },
+  {
+    "company": "Central Willamette Credit Union - New Deal",
+    "state": "Oregon",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-06-09T23:47:00.000Z"
+  },
+  {
+    "company": "Royal Credit Union",
+    "state": "Wisconsin",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "360000",
+    "created": "2025-05-23T07:25:00.000Z"
+  },
+  {
+    "company": "Ironhorse Funding - New Deal",
+    "state": "Massachusetts",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2025-05-22T07:02:00.000Z"
+  },
+  {
+    "company": "Family Financial Credit Union - New Deal",
+    "state": "Michigan",
+    "stages": "Closed-Won!",
+    "amount": "184000",
+    "created": "2025-05-20T06:54:00.000Z"
+  },
+  {
+    "company": "Service Credit Union - New Deal",
+    "state": "New Hampshire",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "1440000",
+    "created": "2025-04-17T01:53:00.000Z"
+  },
+  {
+    "company": "Great Lakes Credit Union - New Deal",
+    "state": "Illinois",
+    "stages": "Demo Completed",
+    "amount": "360000",
+    "created": "2025-03-12T18:20:00.000Z"
+  },
+  {
+    "company": "CPM Federal Credit Union - New Deal",
+    "state": "South Carolina",
+    "stages": "Demo/Presentation Scheduled",
+    "amount": "360000",
+    "created": "2025-02-27T22:04:00.000Z"
+  },
+  {
+    "company": "Arbor Financial Credit Union - New Deal",
+    "state": "Michigan",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-02-26T07:43:00.000Z"
+  },
+  {
+    "company": "University of Michigan Credit Union - New Deal",
+    "state": "Michigan",
+    "stages": "Deal Deferred/Gone Cold",
+    "amount": "360000",
+    "created": "2025-02-18T22:37:00.000Z"
+  },
+  {
+    "company": "Desert Rivers FCU",
+    "state": "Utah",
+    "stages": "Pricing Shared/ RFP Submitted",
+    "amount": "194000",
+    "created": "2025-02-12T04:22:00.000Z"
+  },
+  {
+    "company": "Asbury Management Group - New Deal",
+    "state": "North Carolina",
+    "stages": "Closed-Lost",
+    "amount": "360000",
+    "created": "2024-11-13T04:59:00.000Z"
+  },
+  {
+    "company": "Town & Country Federal Credit Union - New Deal",
+    "state": "Maine",
+    "stages": "Closed-Lost",
+    "amount": "290000",
+    "created": "2024-11-13T03:36:00.000Z"
   }
 ]

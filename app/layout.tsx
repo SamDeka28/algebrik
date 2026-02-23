@@ -43,6 +43,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NKGM3FMJ');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
         <link rel="preload" as="image" href="/background_images/hero_background.webp" />
         <link rel="preload" as="image" href="/blue_logo.webp" />
         <link rel="preload" as="image" href="/background_images/modern_lender.webp" />
@@ -83,11 +94,34 @@ export default function RootLayout({
           src="//js-na2.hs-scripts.com/47671281.js"
           strategy="afterInteractive" // Load after page is interactive
         />
+        {/* Albacross tracking script */}
+        <Script
+          id="albacross-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window._nQc="89180932";`,
+          }}
+        />
+        <Script
+          id="albacross-track"
+          src="https://serve.albacross.com/track.js"
+          strategy="afterInteractive"
+        />
       </head>
 
       <body
         className={`${plusJakartaSans.variable} ${dmSans.variable} ${bebas.variable} ${inter.variable} antialiased !bg-white`}
       >
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NKGM3FMJ"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <RouteLoader>
           <Navbar />
           {children}
