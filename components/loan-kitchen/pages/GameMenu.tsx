@@ -21,7 +21,7 @@ export function GameMenu({ onStart, onHowTo }: GameMenuProps) {
             LOAN<span className="text-blue-200">KITCHEN</span>
           </h1>
           <p className="text-blue-100 font-medium">
-            High-Speed Lending Simulation · Powered by Algebrik AI
+            High-Speed Lending Simulation<br />Powered by Algebrik AI
           </p>
         </div>
 
@@ -133,7 +133,7 @@ export function GameMenu({ onStart, onHowTo }: GameMenuProps) {
         </div>
 
         <div className="bg-slate-50 p-4 text-center text-slate-400 text-xs border-t border-slate-100">
-          v1.0.0 · Magic Patterns Bank Corp
+          v1.0.0 · Algebrik AI Pvt. Ltd.
         </div>
       </div>
     </div>);
