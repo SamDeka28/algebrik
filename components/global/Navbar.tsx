@@ -312,7 +312,7 @@ export default function Navbar() {
         : "bg-transparent"
         } transition-all duration-300`}
     >
-      <div className="container mx-auto px-10 py-6 flex justify-between items-center">
+      <div className="container mx-auto px-10 py-4 flex justify-between items-center">
         {!isScrolled && <Link href="/">
           <Image
             src={getLogo()}
