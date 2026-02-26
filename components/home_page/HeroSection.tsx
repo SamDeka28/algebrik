@@ -71,13 +71,13 @@ export default function HeroSection() {
       <img src="/background_images/ml-single.webp" alt="Hero Background"  className="z-0 lg:hidden absolute top-0 left-0 object-cover w-full h-full" fetchPriority="high" />
       <div className="container pt-[181px] text-center md:mx-auto md:px-6 flex flex-col md:flex-row items-center md:justify-end md:pt-16 gap-0 md:gap-16">
 
-        <div className="flex flex-col gap-6 px-16 md:px-0 max-w-[500px] h-72 w-full">
-          <h1 className="text-white text-[36px] md:text-[56px] font-plus-jakarta font-normal leading-[45.36px] md:leading-tight">
-            Transform Lending into an{" "}
-            <span className="font-semibold">Experience</span>
+        <div className="flex flex-col gap-6 px-6 md:px-0 max-w-[500px] w-full">
+          <h1 className=" text-center lg:text-left text-white text-[36px] md:text-[48px] font-plus-jakarta font-normal leading-[45.36px] md:leading-tight">
+          The Loan Origination Suite {" "}
+            <span className="font-semibold">that actually runs lending.</span>
           </h1>
           <p className="text-white text-[16px] text-center lg:text-left font-normal md:text-[18px] font-plus-jakarta md:font-light opacity-80 leading-relaxed">
-            The World’s First Cloud-native, AI-powered Loan Origination Suite makes lending journeys what they should be- Fast, Intuitive, Seamless.
+          The World's first cloud-native, AI-powered Loan Origination Suite turns disconnected lending steps into one continuous, automated origination process.
           </p>
           <div className="relative md:static -bottom-48 z-20">
             <BookADemo />

@@ -291,7 +291,7 @@ const Footer = () => {
       </div>
       <div className=" mx-auto container mt-8 pt-4 px-0 md:px-28 text-sm flex flex-col-reverse gap-2 md:flex-row justify-between items-center">
         <div className="text-[#3E404C] text-[14.3px]">
-          <p>© 2025 Algebrik. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Algebrik. All rights reserved.</p>
         </div>
         <div className="flex space-x-4 mt-2 md:mt-0">
           <div className="hidden md:block">
