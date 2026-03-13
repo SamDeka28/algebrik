@@ -95,7 +95,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           strategy="afterInteractive" // Load after page is interactive
         />
         {/* Albacross tracking script */}
-        <Script
+        {/**<Script
           id="albacross-config"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -106,7 +106,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           id="albacross-track"
           src="https://serve.albacross.com/track.js"
           strategy="afterInteractive"
-        />
+        />**/}
       </head>
 
       <body
