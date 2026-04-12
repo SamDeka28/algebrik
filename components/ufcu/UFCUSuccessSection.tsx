@@ -5,32 +5,50 @@ const HubspotMeetingEmbed = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const loadMeetings = () => {
-      if (window.HubSpotMeetings) {
-        window.HubSpotMeetings.loadMeetings();
-      } else {
-        setTimeout(loadMeetings, 1000); // Retry after 1 second if not loaded
+    let cancelled = false;
+    let pollId: ReturnType<typeof setInterval> | undefined;
+
+    const runInit = () => {
+      if (cancelled) return false;
+      const MeetingsEmbedCode = (
+        window as Window & { MeetingsEmbedCode?: { init: () => void } }
+      ).MeetingsEmbedCode;
+      if (!MeetingsEmbedCode?.init) return false;
+      try {
+        MeetingsEmbedCode.init();
+        return true;
+      } catch (e) {
+        console.error("MeetingsEmbedCode.init failed:", e);
+        return false;
       }
     };
 
-    // Load the script
-    if (!document.getElementById('hs-meetings-embed-script')) {
-      const script = document.createElement('script');
-      script.id = 'hs-meetings-embed-script';
-      script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
-      script.async = true;
-      script.onload = loadMeetings;
-      document.body.appendChild(script);
+    const tryInit = () => {
+      if (runInit()) return;
+      pollId = setInterval(() => {
+        if (runInit() && pollId) {
+          clearInterval(pollId);
+          pollId = undefined;
+        }
+      }, 400);
+    };
+
+    const existing = document.getElementById("hs-meetings-embed-script");
+    if (existing) {
+      setTimeout(tryInit, 100);
     } else {
-      loadMeetings();
+      const script = document.createElement("script");
+      script.id = "hs-meetings-embed-script";
+      script.src =
+        "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+      script.async = true;
+      script.onload = () => setTimeout(tryInit, 200);
+      document.body.appendChild(script);
     }
 
-    // Cleanup
     return () => {
-      const script = document.getElementById('hs-meetings-embed-script');
-      if (script) {
-        script.remove();
-      }
+      cancelled = true;
+      if (pollId) clearInterval(pollId);
     };
   }, []);
 

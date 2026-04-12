@@ -7,6 +7,13 @@ declare global {
           create: (config: { portalId: string; formId: string; target: string }) => void;
         };
       };
+      /** @deprecated Prefer MeetingsEmbedCode.init() for meetings iframe embeds */
+      HubSpotMeetings?: {
+        loadMeetings: () => void;
+      };
+      MeetingsEmbedCode?: {
+        init: () => void;
+      };
     }
   }
   
