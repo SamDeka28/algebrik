@@ -150,16 +150,27 @@ export default function BlogCarousel() {
         url: news.length > 0 ? (news[0].link || "#") : "#",
         target: "_blank",
       },
-      {
-        header: "Insights",
-        cardTitle: "ONE PAGER",
-        title: insights.length > 0 ? insights[0].title : "Key Insights on Algebrik AI",
-        description: insights.length > 0 ? (insights[0].description || "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.") : "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
-        source: "Algebrik AI",
-        image: "/section_images/place.webp",
-        url: "",
-        target: "_self",
-      },
+      (() => {
+        const i0 = insights.length > 0 ? insights[0].attributes || insights[0] : null;
+        const i0Img = i0?.image || i0?.featuredImage || i0?.thumbnail;
+        const i0Thumb =
+          i0?.link &&
+          `https://img.youtube.com/vi/${String(i0.link).split("/").pop()?.split("?")[0]}/maxresdefault.jpg`;
+        return {
+          header: "Insights",
+          cardTitle: "ONE PAGER",
+          title: i0?.title ?? "Key Insights on Algebrik AI",
+          description:
+            i0?.description ||
+            "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
+          source: "Algebrik AI",
+          image: i0Img
+            ? getStrapiMediaUrl(i0Img)
+            : i0Thumb || "/section_images/place.webp",
+          url: "",
+          target: "_self",
+        };
+      })(),
       {
         header: "Tools",
         cardTitle: "TOOLS",
@@ -582,32 +593,81 @@ export default function BlogCarousel() {
             </div>
           }
 
-          {/* Insights */}
+          {/* Insights — 1920×1080 (16:9) frame; object-contain so client art is never cropped */}
           {currentIndex == 3 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
               {insights?.map((tool: any, index: number) => {
-                // Access Strapi attributes
                 const attrs = tool.attributes || tool;
                 const link = attrs.link;
                 const title = attrs.title;
-                const thumb = link ? `https://img.youtube.com/vi/${link.split("/").pop()?.split("?")[0]}/maxresdefault.jpg` : null;
+                const strapiImage =
+                  attrs.image || attrs.featuredImage || attrs.thumbnail;
+                const clientImageUrl = strapiImage
+                  ? getStrapiMediaUrl(strapiImage)
+                  : null;
+                const videoId = link
+                  ? link.split("/").pop()?.split("?")[0]
+                  : null;
+                const youtubeThumb =
+                  link && videoId
+                    ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                    : null;
+                const posterSrc = clientImageUrl || youtubeThumb;
 
                 return (
-                  <div key={title?.replace(" ","_") + index} className="flex flex-col md:flex-row gap-6 items-start">
-                    <div className="flex-1 flex-col bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
+                  <div
+                    key={(title?.replace(" ", "_") || "insight") + index}
+                    className="flex flex-col gap-4 items-stretch w-full max-w-[640px] mx-auto"
+                  >
+                    <button
+                      type="button"
+                      disabled={!link}
                       onClick={() => link && setVideoModal({ open: true, url: link })}
+                      className={`group relative block w-full overflow-hidden rounded-lg border border-dashed border-[#B0B8C1] bg-[#F2F2F2] text-left p-0 ${link ? "cursor-pointer" : "cursor-default opacity-90"}`}
+                      style={{ aspectRatio: "1920 / 1080" }}
                     >
-                        <>
-                          {thumb && <img src={thumb} alt={title} className="object-cover rounded-lg w-full h-full max-h-[220px]" />}
-                          <div className="absolute rounded-lg inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <circle cx="32" cy="32" r="32" fill="#fff" fillOpacity="0.8" />
-                              <polygon points="26,20 48,32 26,44" fill="#195BD7" />
-                            </svg>
-                          </div>
-                        </>
-                        <p className="text-primary w-full font-medium text-left font-plus-jakarta px-2 py-4">{title}</p>
-                    </div>
+                      {posterSrc ? (
+                        <Image
+                          src={posterSrc}
+                          alt={title || "Insight"}
+                          fill
+                          className="object-contain object-center"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px"
+                          quality={100}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-sm text-[#606060] font-plus-jakarta px-4">
+                          No preview
+                        </div>
+                      )}
+                      {link && (
+                        <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100">
+                          <svg
+                            width="64"
+                            height="64"
+                            viewBox="0 0 64 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden
+                          >
+                            <circle
+                              cx="32"
+                              cy="32"
+                              r="32"
+                              fill="#fff"
+                              fillOpacity="0.8"
+                            />
+                            <polygon
+                              points="26,20 48,32 26,44"
+                              fill="#195BD7"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </button>
+                    <p className="text-primary w-full font-medium text-left font-plus-jakarta px-1">
+                      {title}
+                    </p>
                   </div>
                 );
               })}
