@@ -235,6 +235,14 @@ const Footer = () => {
               <Link href="/privacy-policy" className="">
             Privacy policy
           </Link>
+              <Link
+                href="https://na2.hs-data-privacy.com/request/en5LnGCgOXYrpTC2K4Sf3g"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                <li>Data privacy request</li>
+              </Link>
             </ul>
           </div>
 
@@ -264,6 +272,14 @@ const Footer = () => {
               <Link href="/privacy-policy" className="">
             Privacy policy
           </Link>
+              <Link
+                href="https://na2.hs-data-privacy.com/request/en5LnGCgOXYrpTC2K4Sf3g"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                <li>Data privacy request</li>
+              </Link>
             </ul>
           </div>
           <div>
@@ -285,7 +301,14 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center md:flex-col md:items-center">
+          <Image
+            src="/assets/gdpr_compliant-1024x429.png"
+            alt="GDPR compliant"
+            width={256}
+            height={107}
+            className="h-auto w-full max-w-[220px] object-contain opacity-95"
+          />
           <Image src={"/icons/soc2.png"} alt="soc2" width={100} height={100} />
         </div>
       </div>

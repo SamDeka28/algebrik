@@ -1,15 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
-
-declare global {
-  interface Window {
-    HubSpotMeetings: {
-      loadMeetings: () => void;
-    };
-  }
-}
+import { useState, useEffect } from "react";
 
 export default function Contact({ open, onClose, isModal = true }: { open?: boolean; onClose?: () => void; isModal?: boolean }) {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -21,7 +13,6 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
     email: ""
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
-  const calendarRef = useRef<HTMLDivElement>(null);
 
   // Reset state when modal is closed
   const resetState = () => {
@@ -134,67 +125,6 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
       }));
     }
   };
-
-  // Load HubSpot calendar script
-  // Load HubSpot calendar script with better error handling
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const loadMeetings = () => {
-        if (window.HubSpotMeetings) {
-          try {
-            window.HubSpotMeetings.loadMeetings();
-          } catch (error) {
-            console.error("Error loading HubSpot meetings:", error);
-            // Retry after a delay
-            setTimeout(loadMeetings, 2000);
-          }
-        } else {
-          // Retry after a delay if HubSpotMeetings is not available
-          setTimeout(loadMeetings, 1000);
-        }
-      };
-
-      // Check if script already exists
-      const existingScript = document.getElementById("hs-meetings-embed-script");
-      
-      if (!existingScript) {
-        const script = document.createElement("script");
-        script.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
-        script.type = "text/javascript";
-        script.id = "hs-meetings-embed-script";
-        script.async = true;
-        script.crossOrigin = "anonymous";
-        
-        script.onload = () => {
-          console.log("HubSpot script loaded successfully");
-          // Wait a bit for the script to fully initialize
-          setTimeout(loadMeetings, 500);
-        };
-        
-        script.onerror = (error) => {
-          console.error("Failed to load HubSpot meetings script:", error);
-          // Retry loading the script after a delay
-          setTimeout(() => {
-            const retryScript = document.createElement("script");
-            retryScript.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
-            retryScript.type = "text/javascript";
-            retryScript.id = "hs-meetings-embed-script-retry";
-            retryScript.async = true;
-            retryScript.crossOrigin = "anonymous";
-            retryScript.onload = () => {
-              setTimeout(loadMeetings, 500);
-            };
-            document.body.appendChild(retryScript);
-          }, 3000);
-        };
-        
-        document.body.appendChild(script);
-      } else {
-        // Script already exists, try to load meetings
-        setTimeout(loadMeetings, 500);
-      }
-    }
-  }, []);
 
   // Modal rendering
   if (isModal) {
@@ -400,32 +330,98 @@ export default function Contact({ open, onClose, isModal = true }: { open?: bool
   }
 }
 
+const HUBSPOT_MEETINGS_EMBED_URL =
+  "https://meetings-na2.hubspot.com/algebrik?embed=true";
+const HUBSPOT_MEETINGS_PAGE_URL = "https://meetings-na2.hubspot.com/algebrik";
+
 const HubspotMeetingEmbed = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const handleIframeLoad = () => {
-    setIsLoading(false);
-    setHasError(false);
-  };
+  useEffect(() => {
+    let cancelled = false;
+    let pollId: ReturnType<typeof setInterval> | undefined;
+    let failTimer: ReturnType<typeof setTimeout> | undefined;
 
-  const handleIframeError = () => {
-    setIsLoading(false);
-    setHasError(true);
-  };
+    const runInit = () => {
+      if (cancelled) return false;
+      const MeetingsEmbedCode = (
+        window as Window & {
+          MeetingsEmbedCode?: { init: () => void };
+        }
+      ).MeetingsEmbedCode;
+      if (!MeetingsEmbedCode?.init) return false;
+      try {
+        MeetingsEmbedCode.init();
+        setIsLoading(false);
+        setHasError(false);
+        return true;
+      } catch (e) {
+        console.error("MeetingsEmbedCode.init failed:", e);
+        return false;
+      }
+    };
+
+    const tryInitUntilReady = () => {
+      if (runInit()) return;
+      pollId = setInterval(() => {
+        if (runInit() && pollId) {
+          clearInterval(pollId);
+          pollId = undefined;
+        }
+      }, 400);
+      failTimer = setTimeout(() => {
+        if (pollId) clearInterval(pollId);
+        pollId = undefined;
+        if (!cancelled) {
+          setIsLoading(false);
+          if (!(window as Window & { MeetingsEmbedCode?: { init: () => void } })
+            .MeetingsEmbedCode) {
+            setHasError(true);
+          }
+        }
+      }, 15000);
+    };
+
+    const existing = document.getElementById("hs-meetings-embed-script");
+    if (existing) {
+      setTimeout(tryInitUntilReady, 100);
+    } else {
+      const script = document.createElement("script");
+      script.src =
+        "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+      script.type = "text/javascript";
+      script.id = "hs-meetings-embed-script";
+      script.async = true;
+      script.onload = () => setTimeout(tryInitUntilReady, 200);
+      script.onerror = () => {
+        if (!cancelled) {
+          setHasError(true);
+          setIsLoading(false);
+        }
+      };
+      document.body.appendChild(script);
+    }
+
+    return () => {
+      cancelled = true;
+      if (pollId) clearInterval(pollId);
+      if (failTimer) clearTimeout(failTimer);
+    };
+  }, []);
 
   if (hasError) {
     return (
-      <div className="flex items-center justify-center h-64 bg-white/10 rounded-lg">
+      <div className="flex h-64 items-center justify-center rounded-lg bg-white/10">
         <div className="text-center text-white">
-          <p className="text-sm mb-4">Unable to load calendar</p>
-          <a 
-            href="https://meetings-na2.hubspot.com/algebrik"
+          <p className="mb-4 text-sm">Unable to load calendar</p>
+          <a
+            href={HUBSPOT_MEETINGS_PAGE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-4 py-2 bg-white/20 rounded text-xs hover:bg-white/30 transition-colors"
+            className="inline-block rounded bg-white/20 px-4 py-2 text-xs transition-colors hover:bg-white/30"
           >
-            Open Calendar
+            Open calendar
           </a>
         </div>
       </div>
@@ -433,41 +429,19 @@ const HubspotMeetingEmbed = () => {
   }
 
   return (
-    <div className="relative rounded-lg overflow-hidden" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-      <style jsx>{`
-        div::-webkit-scrollbar {
-          display: none;
-        }
-        iframe::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+    <div className="relative min-h-[400px] overflow-hidden rounded-lg md:min-h-[450px]">
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white/10 rounded-lg z-10">
+        <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-white/10">
           <div className="text-center text-white">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-2"></div>
-            <p className="text-sm">Loading calendar...</p>
+            <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-b-2 border-white" />
+            <p className="text-sm">Loading calendar…</p>
           </div>
         </div>
       )}
-      <iframe
-        src="https://meetings-na2.hubspot.com/algebrik/meeting-with-team-algebrik-v2?embed=true"
-        width="100%"
-        height="650"
-        frameBorder="0"
-        title="Schedule a Meeting"
-        onLoad={handleIframeLoad}
-        onError={handleIframeError}
-        className="rounded-lg"
-        style={{ 
-          border: 'none',
-          overflow: 'hidden',
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none'
-        }}
-        allow="camera; microphone; fullscreen"
-        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
-        scrolling="no"
+      {/* HubSpot Meetings embed — https://meetings-na2.hubspot.com/algebrik */}
+      <div
+        className="meetings-iframe-container min-h-[650px] w-full rounded-lg bg-white"
+        data-src={HUBSPOT_MEETINGS_EMBED_URL}
       />
     </div>
   );
