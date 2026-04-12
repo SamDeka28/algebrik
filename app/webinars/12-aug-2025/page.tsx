@@ -1,16 +1,20 @@
-
 import { Metadata } from "next";
 import SecureYourSpot from "@/components/secure-your-spot/12-aug-2025";
+import WebinarGate from "@/components/webinars/WebinarGate";
 
-
-
-// export const metadata :Metadata={
-//   title:"Algebrik Resource Center: Insights and Updates on AI in Lending",
-//   description:"Stay informed with the latest articles, case studies, and news on AI-driven lending solutions, and discover how Algebrik is leading the industry transformation"
-// }
+export const metadata: Metadata = {
+  title: "Algebrik Webinar — August 12, 2025",
+  description:
+    "Register for the Algebrik live webinar on intelligent lending and credit union innovation.",
+};
 
 export default function Home() {
   return (
-    <SecureYourSpot/>
+    <WebinarGate
+      webinarSlug="12-aug-2025"
+      pageTitle="Webinar — August 12, 2025"
+    >
+      <SecureYourSpot />
+    </WebinarGate>
   );
 }
