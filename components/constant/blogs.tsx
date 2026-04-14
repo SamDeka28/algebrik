@@ -185,7 +185,7 @@ export const blogContent = [
   },
         {
           blogTitle: "Beyond Decisioning: AI's Comprehensive Role in Lending",
-          blogSubtitle: "beyond_decisioning",
+          blogSubtitle: "beyond-decisioning",
           blogImage: "/section_images/blog/beyond.webp",
           authorName: "Prateek Samantaray ",
           authorImage: "/section_images/blog/pra.webp",
@@ -284,7 +284,7 @@ export const blogContent = [
         },
       {
         blogTitle: "From Fragmentation to Seamlessness: Streamlining Lending Journeys",
-        blogSubtitle: "from_fragmentation_to_seamlessness",
+        blogSubtitle: "from-fragmentation-to-seamlessness",
         blogImage: "/section_images/blog/frag.webp",
         authorName: "Prateek Samantaray ",
         authorImage: "/section_images/blog/pra.webp",
@@ -322,7 +322,7 @@ export const blogContent = [
       },
       {
         blogTitle: "Out of the Lending Maze: Why Modern Lending Journeys need a GPS upgrade",
-        blogSubtitle: "out_of_the_lending_maze",
+        blogSubtitle: "out-of-the-lending-maze",
         blogImage: "/section_images/blog/out.webp",
         authorName: "Prateek Samantaray ",
         authorImage: "/section_images/blog/pra.webp",

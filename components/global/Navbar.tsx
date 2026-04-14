@@ -210,16 +210,16 @@ export default function Navbar() {
     setGptDropdownTimeout(timeout);
   };
 
-  // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource-center" || pathname === "/resource-center/out_of_the_lending_maze" || pathname === "/resource-center/from_fragmentation_to_seamlessness" || pathname === "/resource-center/beyond_decisioning" || pathname === "/resource-center/redefining_borrower";
+  // const isContactOrResourcePage = pathname === "/contact" || pathname === "/resource-center" || pathname === "/resource-center/out-of-the-lending-maze" || pathname === "/resource-center/from-fragmentation-to-seamlessness" || pathname === "/resource-center/beyond-decisioning" || pathname === "/resource-center/redefining_borrower";
 
   const BlueLogoPaths = [
     "/vlo", "/vlo/",
     "/roi-calculator", "/roi-calculator/", "/algebrik-webinar1", "/algebrik-webinar1/",
     "/contact", "/contact/", "/privacy-policy", "/privacy-policy/",
     "/resource-center", "/resource-center/",
-    "/resource-center/out_of_the_lending_maze", "/resource-center/out_of_the_lending_maze/",
-    "/resource-center/from_fragmentation_to_seamlessness", "/resource-center/from_fragmentation_to_seamlessness/",
-    "/resource-center/beyond_decisioning", "/resource-center/beyond_decisioning/",
+    "/resource-center/out-of-the-lending-maze", "/resource-center/out-of-the-lending-maze/",
+    "/resource-center/from-fragmentation-to-seamlessness", "/resource-center/from-fragmentation-to-seamlessness/",
+    "/resource-center/beyond-decisioning", "/resource-center/beyond-decisioning/",
     "/resource-center/redefining_borrower", "/resource-center/redefining_borrower/",
     "/thank-you/",
     "/resource-center/algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting",

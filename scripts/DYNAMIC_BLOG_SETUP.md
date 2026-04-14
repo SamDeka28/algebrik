@@ -56,10 +56,10 @@ The system now supports all 22 blogs:
 16. `what-you-will-learn-in-our-intelligent-lending-roundtable`
 17. `credit-union-mergers-are-at-an-all-time-high`
 18. `how-digital-first-credit-unions-are-winning-member-loyalty`
-19. `beyond_decisioning`
+19. `beyond-decisioning`  
 20. `redefining_borrower`
-21. `from_fragmentation_to_seamlessness`
-22. `out_of_the_lending_maze`
+21. `from-fragmentation-to-seamlessness`
+22. `out-of-the-lending-maze`
 
 ## 🔧 **How It Works**
 

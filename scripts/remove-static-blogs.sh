@@ -24,10 +24,10 @@ STATIC_BLOGS=(
   "what-you-will-learn-in-our-intelligent-lending-roundtable"
   "credit-union-mergers-are-at-an-all-time-high"
   "how-digital-first-credit-unions-are-winning-member-loyalty"
-  "beyond_decisioning"
+  "beyond-decisioning"
   "redefining_borrower"
-  "from_fragmentation_to_seamlessness"
-  "out_of_the_lending_maze"
+  "from-fragmentation-to-seamlessness"
+  "out-of-the-lending-maze"
   "algebrik-ai-and-conductiv-elevate-lending-with-permissioned-data-automated-stipulations-and-smarter-underwriting"
   "algebrik-ai-partners-with-equifax-to-power-smarter-fairer-and-faster-loan-decisions"
 )
