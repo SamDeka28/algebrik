@@ -8,6 +8,7 @@ import { USMap } from './USMap';
 import { StateDrawer } from './StateDrawer';
 import { useDeals } from '@/lib/deals/useDeals';
 import { DealFilters, DealsByState } from '@/lib/deals/types';
+import { DealsCsvImport } from './DealsCsvImport';
 
 export function DealMap() {
   const [filters, setFilters] = useState<DealFilters>({
@@ -18,8 +19,9 @@ export function DealMap() {
   });
 
   const [selectedState, setSelectedState] = useState<string | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
-  const { deals, dealsByState, kpiData, comparisonData, maxDealsInState, stages, owners, loading, error } = useDeals(filters);
+  const { deals, dealsByState, kpiData, comparisonData, maxDealsInState, stages, owners, loading, error } = useDeals(filters, refreshKey);
 
   // Get the selected state data
   const selectedStateData = useMemo<DealsByState | null>(() => {
@@ -64,7 +66,7 @@ export function DealMap() {
   }
 
   return (
-    <div className="">
+    <div className="flex flex-col gap-4">
       {/* Header */}
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Deal Momentum Map</h2>
@@ -81,6 +83,9 @@ export function DealMap() {
         owners={owners}
         onFiltersChange={setFilters}
       />
+
+      {/* CSV Import */}
+      <DealsCsvImport onImportComplete={() => setRefreshKey((prev) => prev + 1)} />
 
       {/* Map */}
       <motion.div

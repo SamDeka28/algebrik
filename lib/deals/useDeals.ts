@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { subDays, isAfter } from 'date-fns';
 import {
   Deal,
@@ -33,15 +33,19 @@ const STRAPI_STAGES = [
   { id: 'deal-deferred-gone-cold', label: 'Deal Deferred/Gone Cold' },
 ];
 
-export function useDeals(filters: DealFilters) {
+export function useDeals(filters: DealFilters, refreshKey = 0) {
   const [deals, setDeals] = useState<Deal[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const hasLoadedOnceRef = useRef(false);
 
   useEffect(() => {
     async function fetchDeals() {
       try {
-        setLoading(true);
+        // Keep the current UI visible on background refreshes.
+        if (!hasLoadedOnceRef.current) {
+          setLoading(true);
+        }
         setError(null);
 
         const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
@@ -140,6 +144,7 @@ export function useDeals(filters: DealFilters) {
         });
 
         setDeals(transformedDeals);
+        hasLoadedOnceRef.current = true;
       } catch (err) {
         console.error('Error fetching deals:', err);
         setError('Failed to load deals');
@@ -150,7 +155,7 @@ export function useDeals(filters: DealFilters) {
     }
 
     fetchDeals();
-  }, []);
+  }, [refreshKey]);
 
   const filteredDeals = useMemo(() => {
     let result = [...deals];
