@@ -19,8 +19,8 @@ export default function JackHenry() {
     bio: "20+ years in credit union operations and lending. Former Chief Lending Officer at Pacific Northwest Credit Union with expertise in loan origination processes.",
     image: "/lovable-uploads/40016d77-84b2-4fd7-8e49-fe6355fd7d1b.png"
   }, {
-    name: "Jesse Fruge",
-    initials: "JF",
+    name: "Jeremy Carcich",
+    initials: "JC",
     bio: "AI/ML engineer with 12+ years in financial services. Previously built underwriting models at Experian and risk assessment tools for community banks.",
     image: "/lovable-uploads/22be4814-961e-48aa-b27b-74d2e39b2133.png"
   }, {
