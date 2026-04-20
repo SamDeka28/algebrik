@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -83,10 +82,6 @@ const lendingData = {
 
 
 
-export const metadata: Metadata = {
-  title: "Algebrik | RV Loan Origination & Indirect Lending Updates",
-  description: "Simplify workflows with native indirect lending and robust RV loan origination features. Support dealer portals and recreation finance in one unified system.",
-};
 
 export default function Blog() {
   const pathname = usePathname();

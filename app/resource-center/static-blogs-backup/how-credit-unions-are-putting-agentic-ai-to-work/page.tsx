@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -167,10 +166,6 @@ const lendingData = {
 
 
 
-export const metadata: Metadata = {
-  title: "Credit Union Digital Transformation with AI",
-  description: "Understand how credit unions use agentic AI to drive digital transformation, automate lending, and enhance member experience in 2026.",
-};
 
 export default function Blog() {
   const pathname = usePathname();

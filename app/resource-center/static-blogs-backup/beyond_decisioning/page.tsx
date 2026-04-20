@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -123,10 +122,6 @@ const lendingData = {
 
 
 
-export const metadata: Metadata = {
-  title: "Algebrik: Role of AI in Lending Processes",
-  description: "Discover how AI in lending goes beyond decisioning to automate workflows, improve accuracy, and deliver smarter loan origination outcomes.",
-};
 
 export default function BlogOne() {
   const pathname = usePathname();

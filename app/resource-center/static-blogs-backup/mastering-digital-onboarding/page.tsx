@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -164,10 +163,6 @@ const lendingData = {
 
 
 
-export const metadata: Metadata = {
-  title: "Banking Customer Experience & Digital Onboarding",
-  description: "Improve banking customer experience with digital onboarding strategies that streamline account opening and enhance borrower journeys.",
-};
 
 export default function Blog() {
   const pathname = usePathname();

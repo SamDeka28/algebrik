@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -88,10 +87,6 @@ const lendingData = {
 
 
 
-export const metadata: Metadata = {
-  title: "Algebrik Announces New Partnership with Conductiv to empower credit unions",
-  description: "Algebrik AI leverages Conductiv’s permissioned data pipelines for precise risk assessments, smarter lending decisions, and exceptional borrower experiences.",
-};
 
 export default function Blog() {
   const pathname = usePathname();

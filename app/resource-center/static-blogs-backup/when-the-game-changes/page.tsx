@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -81,10 +80,6 @@ const blogData = {
 }
 
 
-export const metadata: Metadata = {
-  title: "Algebrik AI Powered Digital Account Opening",
-  description: "When the game changes, adapt with fast digital account opening. Simplify workflows, enhance decision-making, and deliver exceptional borrower experiences.",
-};
 
 export default function Blog() {
   const pathname = usePathname();

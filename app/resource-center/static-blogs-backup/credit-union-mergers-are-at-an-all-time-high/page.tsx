@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -99,10 +98,6 @@ const lendingData = {
 
 
 
-export const metadata: Metadata = {
-  title: "Credit Union Mergers Trends & Insights",
-  description: "Discover why credit union mergers are rising and how they impact lending strategies, scalability, and digital transformation initiatives.",
-};
 
 export default function Blog() {
   const pathname = usePathname();

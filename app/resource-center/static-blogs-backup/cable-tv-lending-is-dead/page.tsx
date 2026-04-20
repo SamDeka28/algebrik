@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -134,10 +133,6 @@ const lendingData = {
 
 
 
-export const metadata: Metadata = {
-  title: "Algebrik: Digital Loan Application Trends in Lending",
-  description: "Explore how digital loan applications are replacing legacy systems and enabling faster, smarter, AI-powered lending experiences.",
-};
 
 export default function Blog() {
   const pathname = usePathname();

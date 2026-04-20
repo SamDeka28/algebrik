@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 "use client"
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -107,11 +106,6 @@ interface ROIInputs {
     monthlyRevenue: number; // Step 8
 }
 
-
-export const metadata: Metadata = {
-  title: "Algebrik AI | Lending ROI Calculator",
-  description: "Calculate your returns with Algebrik AI's lending ROI calculator. Transform your lending operations based on data, simplify workflows, and enhance decisions.",
-};
 
 export default function StepperForm() {
     const [step, setStep] = useState(0);
