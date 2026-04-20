@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -147,6 +148,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "Credit Union Industry Trends Q2 Insights: Algebrik",
+  description: "Explore key credit union industry trends from Q2 and how they impact lending, digital transformation, and member growth strategies.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

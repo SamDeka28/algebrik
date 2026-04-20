@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -103,6 +104,12 @@ const blogData = {
     }
   ]
 }
+
+
+export const metadata: Metadata = {
+  title: "Algebrik AI | Balancing Intelligent Tech with Human Trust",
+  description: "Algebrik makes lending faster, but people make it personal. See how our AI handles the \"how fast\" while your team owns the \"why\" to deepen member relationships.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

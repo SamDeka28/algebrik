@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -79,6 +80,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "Digital-First Credit Unions Winning Loyalty",
+  description: "Learn how digital-first credit unions boost member loyalty with faster lending, seamless onboarding, and AI-powered experiences.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

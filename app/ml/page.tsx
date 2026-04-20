@@ -8,8 +8,8 @@ import ReadyToSeeSection from "@/components/ml_page/ReadyToSeeSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Modern Alternative Lenders Asked For | Algebrik AI",
-  description: "Replace rigid stacks with a unified, AI-first platform for Personal, Auto, Credit Card, and HELOC lending. Built for speed, flexibility, and growth."
+  title: "Top Lending Platforms for Credit Unions | AI",
+  description: "Compare top AI-powered lending platforms for credit unions and modern lenders."
 }
 
 export default function MLPage() {

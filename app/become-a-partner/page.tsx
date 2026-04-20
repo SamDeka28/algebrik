@@ -1,4 +1,11 @@
+import { Metadata } from "next";
 import HubSpotMeetingEmbed from "@/components/HubSpotMeetingEmbed";
+
+
+export const metadata: Metadata = {
+  title: "Partner with Algebrik AI: Lending Tech Partnerships",
+  description: "Partner with Algebrik AI to deliver AI-powered lending solutions. Explore referral, integration, and co-selling opportunities for fintech growth.",
+};
 
 export default function BecomeAPartnerPage() {
   return (

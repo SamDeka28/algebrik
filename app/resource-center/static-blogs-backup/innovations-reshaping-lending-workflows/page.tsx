@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -104,6 +105,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "Innovations Reshaping Lending Workflows",
+  description: "Explore key innovations transforming lending workflows, from AI underwriting to automated decisioning and digital loan processing.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

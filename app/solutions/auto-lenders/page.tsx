@@ -12,8 +12,8 @@ import { Metadata } from "next";
  
 
 export const metadata:Metadata={
-  title:"Algebrik for Auto Lenders: Accelerate Approvals with AI Technology",
-  description:"Enhance your auto lending services with Algebrik's AI-powered solutions, speeding up loan approvals and providing seamless borrower experiences"
+  title: "Algebrik | Auto Lending Software with AI Automation",
+  description: "Streamline auto lending with AI-powered software that accelerates approvals, improves accuracy, and enhances borrower experience."
 }
 
 export default function AutoLenders() {

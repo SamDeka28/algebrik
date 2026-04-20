@@ -13,8 +13,8 @@ import AgenticAISection from "@/components/platform_page/AgenticAISection";
 import { Metadata } from "next";
 
 export const metadata :Metadata={
-    title:"Algebrik Platform: Automating Loan Origination with AI Precision",
-    description:"Discover Algebrik's fully automated, AI-first platform that streamlines lending processes, improves accuracy, and personalizes borrower journeys at scale."
+    title: "Algebrik AI | Digital Lending Platform | Loan Origination",
+    description: "Transform lending with Algebrik AI’s digital lending platform for automated loan origination, smarter decisioning, and faster approvals."
 }
 export default function Home(){
     return(

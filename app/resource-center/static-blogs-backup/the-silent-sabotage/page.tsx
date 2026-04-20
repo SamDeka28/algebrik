@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -83,6 +84,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "Algebrik | Automated Loan Processing Flaws & Solutions",
+  description: "Stop the silent sabotage. Perfect your automated loan processing to simplify workflows, enhance decision-making, and deliver exceptional borrower experiences.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

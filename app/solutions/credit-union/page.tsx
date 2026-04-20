@@ -10,8 +10,8 @@ import { Metadata } from "next";
  
 
 export const metadata:Metadata={
-  title:"Algebrik for Credit Unions: AI Solutions for Member-Centric Lending",
-  description:"Transform your credit union's lending operations with Algebrik's AI-driven platform, offering personalized services and improving member satisfaction"
+  title: "Algebrik AI | Credit Union Lending Software",
+  description: "Modernize credit union lending with AI-powered software that streamlines workflows, improves decisions, and enhances member experience."
 }
 
 export default function CreditUnions() {

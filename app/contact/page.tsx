@@ -3,8 +3,8 @@ import ContactUs from "@/components/contacts";
 import { Metadata } from "next";
 
 export const metadata:Metadata={
-    title:"Contact Algebrik AI | Get in Touch for Lending Solutions",
-    description:"Reach out to Algebrik AI for AI-powered lending solutions, product demos, support, and partnership inquiries. Connect with our team today"
+    title: "Contact-Algebrik AI | Lending Platform Experts",
+    description: "Get in touch with Team at Algebrik AI for demos, partnerships, or support on our AI-powered lending platform."
 }
 
 export default function Home(){

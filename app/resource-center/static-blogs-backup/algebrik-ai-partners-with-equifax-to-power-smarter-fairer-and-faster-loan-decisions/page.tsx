@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -94,6 +95,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "Algebrik AI & Equifax Partnership For Faster Loan Decision",
+  description: "Algebrik AI partners with Equifax for smarter loan decisions. Simplify workflows, enhance decision-making, and deliver exceptional borrower experiences.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

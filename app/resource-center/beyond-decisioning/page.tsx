@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 import ReadyToGo from "@/components/about_page/ReadyToGo";
 import { blogContent } from "@/components/constant/blogs";
@@ -118,6 +119,12 @@ const lendingData = {
 }
 
 
+
+
+export const metadata: Metadata = {
+  title: "AI-Powered Lending Platform | Beyond Decisioning",
+  description: "Go beyond decisioning with an AI-powered lending platform that automates workflows.",
+};
 
 export default function BlogOne() {
   return (

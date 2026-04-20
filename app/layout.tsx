@@ -31,8 +31,8 @@ const inter = Inter({
 
 
 export const metadata: Metadata = {
-  title: "Algebrik: AI-Powered Loan Origination Software for Seamless Lending",
-  description: "Experience the future of lending with Algebrik's cloud-native, AI-powered platform. Simplify workflows, enhance decision-making, and deliver exceptional borrower experiences",
+  title: "Algebrik: AI- Powered Loan Origination Software & Lending Platform",
+  description: "Experience Algebrik's cloud-native Lending Software. Simplify workflows & deliver exceptional borrower experiences with our Loan Origination software.",
 };
 
 export default function RootLayout({

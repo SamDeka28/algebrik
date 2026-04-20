@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -126,6 +127,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "Algebrik | Your AI in Banking Strategy",
+  description: "Learn how to build a winning AI in banking strategy. Use our cloud platform to simplify workflows, enhance decisions, and deliver top borrower experiences.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

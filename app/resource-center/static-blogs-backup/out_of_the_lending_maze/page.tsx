@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -6,6 +7,12 @@ import { CustomHeader } from "@/components/CustomHeader";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+
+export const metadata: Metadata = {
+  title: "Modern Lending Journey: Simplify Loan Processes",
+  description: "Simplify the modern lending journey with AI-driven automation that reduces complexity, speeds approvals, and enhances borrower experience.",
+};
 
 export default function BlogFour() {
   const pathname = usePathname();

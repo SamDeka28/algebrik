@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -112,6 +113,12 @@ const toolsData = [{
   buttonLink: '/lending-health-check',
 }]
 
+
+
+export const metadata: Metadata = {
+  title: "Digital Lending Solutions for Banks",
+  description: "Improve member experience with digital lending solutions that streamline loan processes, reduce friction, and boost satisfaction.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

@@ -13,8 +13,8 @@ import { Metadata } from "next";
  
 
 export const metadata:Metadata={
-  title:"Algebrik for Banks: Enhancing Lending Efficiency with AI",
-  description:"Empower your bank with Algebrik's AI-powered loan origination system, streamlining processes, reducing costs, and delivering superior borrower experiences."
+  title: "Algebrik: Digital Lending Platform for Banks",
+  description: "Transform bank lending with a digital platform that automates origination, decisioning, and onboarding for faster, smarter loan processing."
 }
 
 export default function SMBLenders() {

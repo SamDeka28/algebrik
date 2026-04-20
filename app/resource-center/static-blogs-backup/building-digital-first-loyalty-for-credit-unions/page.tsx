@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -113,6 +114,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "Algebrik: Credit Union Digital Experience Strategies",
+  description: "Learn how credit unions enhance digital experience using AI lending tools to boost engagement, loyalty, and long-term member growth.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 "use client"
 import ReadyToGo from "@/components/about_page/ReadyToGo";
@@ -169,6 +170,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "How To Automate Lending Decisions With Algebrik AI OR Algebrik AI | Automating Lending Decisions",
+  description: "Elevate precision by automating lending decisions with Algebrik AI. Simplify workflows, enhance decision-making, and deliver exceptional borrower experiences.",
+};
 
 export default function Blog() {
   const pathname = usePathname();

@@ -1,9 +1,16 @@
+import { Metadata } from "next";
 // pages/index.js
 import ReadyToGo from "@/components/about_page/ReadyToGo";
 import { blogContent } from "@/components/constant/blogs";
 import { CustomHeader } from "@/components/CustomHeader";
 import Image from "next/image";
 import Link from "next/link";
+
+
+export const metadata: Metadata = {
+  title: "Algebrik AI | End-to-End Lending Solutions",
+  description: "Discover how Algebrik AI delivers end-to-end lending solutions to simplify workflows and improve efficiency.",
+};
 
 export default function BlogFour() {
   return (

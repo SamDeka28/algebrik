@@ -11,8 +11,8 @@ import { Metadata } from "next";
 import { getEventImages } from "@/lib/server-utils";
 
 export const metadata:Metadata={
-  title:"About Algebrik: Innovating the Future of Lending Technology",
-  description:"Learn how Algebrik is transforming the lending landscape with cutting-edge AI solutions, empowering financial institutions to offer faster and smarter loan services"
+  title: "About Algebrik: AI Digital Lending Technology Platform",
+  description: "Discover Algebrik’s AI lending platform powering digital lending technology for banks and credit unions with faster, smarter loan origination."
 }
 
 export default function Home({}) {

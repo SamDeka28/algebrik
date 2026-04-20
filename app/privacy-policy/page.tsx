@@ -4,8 +4,8 @@ import { Metadata } from "next";
 
 
 export const metadata :Metadata={
-  title:"Algebrik Resource Center: Insights and Updates on AI in Lending",
-  description:"Stay informed with the latest articles, case studies, and news on AI-driven lending solutions, and discover how Algebrik is leading the industry transformation"
+  title: "Algebrik AI Lending Platform | Privacy Policy",
+  description: "Learn how Algebrik AI collects, uses, and protects your data across our platform."
 }
 
 export default function Home() {

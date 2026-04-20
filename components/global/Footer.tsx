@@ -305,13 +305,13 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center md:flex-col md:items-center">
-          <Image
+          {/* <Image
             src="/assets/gdpr_compliant-1024x429.png"
             alt="GDPR compliant"
             width={256}
             height={107}
             className="h-auto w-full max-w-[220px] object-contain opacity-95"
-          />
+          /> */}
           <Image src={"/icons/soc2.png"} alt="soc2" width={100} height={100} />
         </div>
       </div>

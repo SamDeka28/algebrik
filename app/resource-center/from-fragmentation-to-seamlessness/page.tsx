@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 // pages/index.js
 import ReadyToGo from "@/components/about_page/ReadyToGo";
 import { blogContent } from "@/components/constant/blogs";
@@ -72,6 +73,12 @@ const lendingData = {
   ]
 }
 
+
+
+export const metadata: Metadata = {
+  title: "Lending Journey Automation | Algebrik AI",
+  description: "Automate the lending journey with AI-powered workflows for faster and seamless loan processing.",
+};
 
 export default function BlogOne() {
   return (
