@@ -3,6 +3,7 @@ export default function Head() {
     <>
       <title>Credit Union Digital Transformation with AI</title>
       <meta name="description" content={"Understand how credit unions use agentic AI to drive digital transformation, automate lending, and enhance member experience in 2026."} />
+      <meta name="keywords" content={"Credit Union Digital Transformation"} />
     </>
   );
 }

@@ -124,7 +124,10 @@ const lendingData = {
 export const metadata: Metadata = {
   title: "AI-Powered Lending Platform | Beyond Decisioning",
   description: "Go beyond decisioning with an AI-powered lending platform that automates workflows.",
+  keywords: ["ai powered lending platform"],
 };
+
+;
 
 export default function BlogOne() {
   return (

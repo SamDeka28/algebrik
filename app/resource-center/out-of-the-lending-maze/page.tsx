@@ -10,7 +10,10 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Algebrik AI | End-to-End Lending Solutions",
   description: "Discover how Algebrik AI delivers end-to-end lending solutions to simplify workflows and improve efficiency.",
+  keywords: ["end-to-end lending solutions"],
 };
+
+;
 
 export default function BlogFour() {
   return (

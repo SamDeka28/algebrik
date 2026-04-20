@@ -3,6 +3,7 @@ export default function Head() {
     <>
       <title>Algebrik: Digital Loan Application Trends in Lending</title>
       <meta name="description" content={"Explore how digital loan applications are replacing legacy systems and enabling faster, smarter, AI-powered lending experiences."} />
+      <meta name="keywords" content={"digital loan application"} />
     </>
   );
 }

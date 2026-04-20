@@ -11,10 +11,11 @@ import LendersAchieve from "@/components/auto_lenders/LendersAchieve";
 import { Metadata } from "next";
  
 
-export const metadata:Metadata={
+export const metadata: Metadata = {
   title: "Algebrik | Auto Lending Software with AI Automation",
-  description: "Streamline auto lending with AI-powered software that accelerates approvals, improves accuracy, and enhances borrower experience."
-}
+  description: "Streamline auto lending with AI-powered software that accelerates approvals, improves accuracy, and enhances borrower experience.",
+  keywords: ["Auto lending software"],
+};
 
 export default function AutoLenders() {
   return (

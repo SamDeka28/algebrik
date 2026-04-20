@@ -3,6 +3,7 @@ export default function Head() {
     <>
       <title>Algebrik | Digital Loan Origination Flows</title>
       <meta name="description" content={"Accelerate digital loan origination across channels. Simplify workflows, enhance decision-making, and deliver exceptional omnichannel borrower experiences."} />
+      <meta name="keywords" content={"Digital Loan Origination"} />
     </>
   );
 }

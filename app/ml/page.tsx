@@ -9,8 +9,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Top Lending Platforms for Credit Unions | AI",
-  description: "Compare top AI-powered lending platforms for credit unions and modern lenders."
-}
+  description: "Compare top AI-powered lending platforms for credit unions and modern lenders.",
+  keywords: ["top lending platforms for credit unions"],
+};
 
 export default function MLPage() {
   return (

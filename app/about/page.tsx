@@ -10,10 +10,11 @@ import { Metadata } from "next";
 
 import { getEventImages } from "@/lib/server-utils";
 
-export const metadata:Metadata={
+export const metadata: Metadata = {
   title: "About Algebrik: AI Digital Lending Technology Platform",
-  description: "Discover Algebrik’s AI lending platform powering digital lending technology for banks and credit unions with faster, smarter loan origination."
-}
+  description: "Discover Algebrik\u2019s AI lending platform powering digital lending technology for banks and credit unions with faster, smarter loan origination.",
+  keywords: ["digital lending technology", "AI Lending Platform"],
+};
 
 export default function Home({}) {
   const images = getEventImages(); // Directly fetching images

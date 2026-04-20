@@ -3,6 +3,7 @@ export default function Head() {
     <>
       <title>Banking Customer Experience & Digital Onboarding</title>
       <meta name="description" content={"Improve banking customer experience with digital onboarding strategies that streamline account opening and enhance borrower journeys."} />
+      <meta name="keywords" content={"banking customer experience"} />
     </>
   );
 }

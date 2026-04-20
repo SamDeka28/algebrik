@@ -78,7 +78,10 @@ const lendingData = {
 export const metadata: Metadata = {
   title: "Lending Journey Automation | Algebrik AI",
   description: "Automate the lending journey with AI-powered workflows for faster and seamless loan processing.",
+  keywords: ["Lending journey automation"],
 };
+
+;
 
 export default function BlogOne() {
   return (

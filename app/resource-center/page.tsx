@@ -6,10 +6,11 @@ import { Metadata } from "next";
 
 
 
-export const metadata :Metadata={
+export const metadata: Metadata = {
   title: "Digital Lending Resources & Insights | Algebrik",
-  description: "Explore digital lending resources, blogs, and insights for modern lenders."
-}
+  description: "Explore digital lending resources, blogs, and insights for modern lenders.",
+  keywords: ["Digital Lending Resources"],
+};
 
 export default function Home() {
   return (

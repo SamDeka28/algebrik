@@ -9,10 +9,11 @@ import LoanLifecycle from "@/components/credit_union/LoanLifecycle";
 import { Metadata } from "next";
  
 
-export const metadata:Metadata={
+export const metadata: Metadata = {
   title: "Algebrik AI | Credit Union Lending Software",
-  description: "Modernize credit union lending with AI-powered software that streamlines workflows, improves decisions, and enhances member experience."
-}
+  description: "Modernize credit union lending with AI-powered software that streamlines workflows, improves decisions, and enhances member experience.",
+  keywords: ["credit union lending software"],
+};
 
 export default function CreditUnions() {
   return (

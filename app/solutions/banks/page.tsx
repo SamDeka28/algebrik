@@ -12,10 +12,11 @@ import Unlock from "@/components/smb_lenders_page/Unlock";
 import { Metadata } from "next";
  
 
-export const metadata:Metadata={
+export const metadata: Metadata = {
   title: "Algebrik: Digital Lending Platform for Banks",
-  description: "Transform bank lending with a digital platform that automates origination, decisioning, and onboarding for faster, smarter loan processing."
-}
+  description: "Transform bank lending with a digital platform that automates origination, decisioning, and onboarding for faster, smarter loan processing.",
+  keywords: ["digital lending platforms for banks"],
+};
 
 export default function SMBLenders() {
   return (

@@ -3,6 +3,7 @@ export default function Head() {
     <>
       <title>Algebrik | The First Cloud-Native AI Loan Origination System</title>
       <meta name="description" content={"Replace your legacy \"Frankenstack\" with Algebrik. Discover a cloud-native LOS designed to eliminate lending friction and win back the next generation of members."} />
+      <meta name="keywords" content={"Cloud-Native Loan Origination System"} />
     </>
   );
 }

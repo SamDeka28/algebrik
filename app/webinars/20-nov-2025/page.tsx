@@ -5,7 +5,10 @@ import WebinarGate from "@/components/webinars/WebinarGate";
 export const metadata: Metadata = {
   title: "Algebrik | End-to-End Lending Platform Webinar",
   description: "Discover how an end-to-end lending platform streamlines origination, decisioning, and onboarding in one AI-powered system.",
+  keywords: ["End-to-End Lending Platform"],
 };
+
+;
 
 export default function Home() {
   return (

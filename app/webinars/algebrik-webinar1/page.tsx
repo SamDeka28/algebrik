@@ -4,8 +4,11 @@ import WebinarGate from "@/components/webinars/WebinarGate";
 
 export const metadata: Metadata = {
   title: "Algebrik AI Insights | AI Lending Webinar Series",
-  description: "Watch Algebrik AI’s latest webinar on digital lending, AI automation, and modern loan origination strategies for financial institutions.",
+  description: "Watch Algebrik AI\u2019s latest webinar on digital lending, AI automation, and modern loan origination strategies for financial institutions.",
+  keywords: ["Algebrik Ai's Latest Webinar"],
 };
+
+;
 
 export default function Home() {
   return (

@@ -12,10 +12,12 @@ import HowItWorksSection from "@/components/platform_page/HowItWorksSection";
 import AgenticAISection from "@/components/platform_page/AgenticAISection";
 import { Metadata } from "next";
 
-export const metadata :Metadata={
-    title: "Algebrik AI | Digital Lending Platform | Loan Origination",
-    description: "Transform lending with Algebrik AI’s digital lending platform for automated loan origination, smarter decisioning, and faster approvals."
-}
+export const metadata: Metadata = {
+  title: "Algebrik AI | Digital Lending Platform | Loan Origination",
+  description: "Transform lending with Algebrik AI\u2019s digital lending platform for automated loan origination, smarter decisioning, and faster approvals.",
+  keywords: ["digital lending platform"],
+};
+
 export default function Home(){
     return(
         <>

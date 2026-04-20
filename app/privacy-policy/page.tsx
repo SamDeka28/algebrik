@@ -3,10 +3,11 @@ import { Metadata } from "next";
 
 
 
-export const metadata :Metadata={
+export const metadata: Metadata = {
   title: "Algebrik AI Lending Platform | Privacy Policy",
-  description: "Learn how Algebrik AI collects, uses, and protects your data across our platform."
-}
+  description: "Learn how Algebrik AI collects, uses, and protects your data across our platform.",
+  keywords: ["Algebrik privacy Policy"],
+};
 
 export default function Home() {
   return (
