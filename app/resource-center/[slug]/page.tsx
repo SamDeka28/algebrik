@@ -5,7 +5,6 @@ import Link from "next/link";
 import { StrapiAPI } from "@/lib/strapi";
 import { getStrapiMediaUrl } from "@/lib/strapi/utils";
 import { Metadata } from "next";
-import DebugInfo from "@/components/DebugInfo";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
 // Generate static params for all blog slugs
@@ -439,7 +438,6 @@ export default async function DynamicBlog({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <DebugInfo slug={slug} blogData={blogData} error={error} />
       <div className="container mx-auto px-5 md:px-0 py-36 md:w-[1160px] font-plus-jakarta flex flex-col justify-center items-center">
         <div className="flex flex-col items-start text-left w-full gap-[16px]">
           <CustomHeader
