@@ -122,6 +122,7 @@ function LoginForm() {
               googleId: userInfo.id,
               loggedInAt: new Date().toISOString(),
               isInternal: userAttributes.isInternal || false,
+              enableCSVUploads: userAttributes.enableCSVUploads === true,
             };
             
             localStorage.setItem('vault_session', JSON.stringify(sessionData));

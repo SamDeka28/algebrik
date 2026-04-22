@@ -6,6 +6,12 @@ import { blogContent } from "../constant/blogs";
 import Link from "next/link";
 import { WEBINARS } from "../constant/webinars";
 import { getStrapiMediaUrl, StrapiAPI } from "@/lib/strapi";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+/** Strapi: Studio tab lists legacy one-pager content. Insights tab uses plural API UID `insights-p` (content-type singular `insights-1`). */
+const STRAPI_STUDIO_COLLECTION = "insights";
+const STRAPI_INSIGHTS_CMS_PLURAL = "insights-p";
 
 type CarouselItem = {
   header: string;
@@ -17,6 +23,19 @@ type CarouselItem = {
   url: string;
   target: string;
 };
+
+const HUBSPOT_PORTAL_ID = "47671281";
+const HUBSPOT_FORM_ID = "9313c170-8c23-4d25-a165-53c22fa8e85e";
+const HUBSPOT_SUBMIT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`;
+const webinarStorageKey = (slug: string) => `algebrik_webinar_gate_${slug}`;
+
+const webinarGateValidationSchema = Yup.object({
+  "0-1/firstname": Yup.string().required("First name is required"),
+  "0-1/lastname": Yup.string().required("Last name is required"),
+  "0-1/email": Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+});
 
 const carouselData: CarouselItem[] = [
   {
@@ -52,12 +71,22 @@ const carouselData: CarouselItem[] = [
     target: "_blank",
   },
   {
-    header: "Insights",
+    header: "Studio",
     cardTitle: "ONE PAGER",
     title: "Key Insights on Algebrik AI: A Quick Overview",
     description:
       "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
     source: "BusinessWire",
+    image: "/section_images/place.webp",
+    url: "",
+    target: "_self",
+  },
+  {
+    header: "Insights",
+    cardTitle: "INSIGHTS",
+    title: "Lending insights and resources",
+    description: "Curated insights from Algebrik — trends, analysis, and ideas for modern lenders.",
+    source: "Algebrik AI",
     image: "/section_images/place.webp",
     url: "",
     target: "_self",
@@ -111,14 +140,30 @@ function isPast(dateStr: string) {
 export default function BlogCarousel() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [videoModal, setVideoModal] = useState<{ open: boolean, url?: string }>({ open: false });
+  const [videoGateModal, setVideoGateModal] = useState<{
+    open: boolean;
+    url?: string;
+    webinarSlug?: string;
+    webinarTitle?: string;
+  }>({ open: false });
+  const [videoGateError, setVideoGateError] = useState<string | null>(null);
+  /** One-pager / studio items (Strapi collection `insights`) */
   const [insights, setInsights] = useState<any[]>([]);
+  /** CMS insights (Strapi collection plural UID `insights-p`, singular `insights-1`) */
+  const [cmsInsightsP, setCmsInsightsP] = useState<any[]>([]);
   const [tools, setTools] = useState<any[]>([]);
   const [news, setNews] = useState<any[]>([]);
   const [blogs, setBlogs] = useState<any[]>([]);
   const [dynamicCarouselData, setDynamicCarouselData] = useState<CarouselItem[]>([]);
 
   // Create dynamic carousel data from Strapi content
-  const createDynamicCarouselData = (blogs: any[], news: any[], insights: any[], tools: any[]) => {
+  const createDynamicCarouselData = (
+    blogs: any[],
+    news: any[],
+    studioInsights: any[],
+    tools: any[],
+    cmsInsightsItems: any[]
+  ) => {
     const dynamicData: CarouselItem[] = [
       {
         header: "Blogs",
@@ -151,18 +196,39 @@ export default function BlogCarousel() {
         target: "_blank",
       },
       (() => {
-        const i0 = insights.length > 0 ? insights[0].attributes || insights[0] : null;
+        const i0 = studioInsights.length > 0 ? studioInsights[0].attributes || studioInsights[0] : null;
+        const i0Img = i0?.image || i0?.featuredImage || i0?.thumbnail;
+        const i0Thumb =
+          i0?.link &&
+          `https://img.youtube.com/vi/${String(i0.link).split("/").pop()?.split("?")[0]}/maxresdefault.jpg`;
+        return {
+          header: "Studio",
+          cardTitle: "ONE PAGER",
+          title: i0?.title ?? "Key Insights on Algebrik AI",
+          description:
+            i0?.description ||
+            "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
+          source: "Algebrik AI",
+          image: i0Img
+            ? getStrapiMediaUrl(i0Img)
+            : i0Thumb || "/section_images/place.webp",
+          url: "",
+          target: "_self",
+        };
+      })(),
+      (() => {
+        const i0 = cmsInsightsItems.length > 0 ? cmsInsightsItems[0].attributes || cmsInsightsItems[0] : null;
         const i0Img = i0?.image || i0?.featuredImage || i0?.thumbnail;
         const i0Thumb =
           i0?.link &&
           `https://img.youtube.com/vi/${String(i0.link).split("/").pop()?.split("?")[0]}/maxresdefault.jpg`;
         return {
           header: "Insights",
-          cardTitle: "ONE PAGER",
-          title: i0?.title ?? "Key Insights on Algebrik AI",
+          cardTitle: "INSIGHTS",
+          title: i0?.title ?? "Insights",
           description:
             i0?.description ||
-            "A concise summary of Algebrik AI's innovative platform, highlighting its features, benefits, and market potential.",
+            "Lending insights and resources for modern financial institutions.",
           source: "Algebrik AI",
           image: i0Img
             ? getStrapiMediaUrl(i0Img)
@@ -190,9 +256,17 @@ export default function BlogCarousel() {
       const news = await StrapiAPI.find("news-articles",{populate:"*",sort:["createdAt:desc"]});
       setNews(news);
     };
-    const fetchInsights = async () => {
-      const insights = await StrapiAPI.find("insights",{populate:"*"});
-      setInsights(insights);
+    const fetchStudioInsights = async () => {
+      const data = await StrapiAPI.find(STRAPI_STUDIO_COLLECTION, { populate: "*" });
+      setInsights(data);
+    };
+    const fetchCmsInsights = async () => {
+      try {
+        const data = await StrapiAPI.find(STRAPI_INSIGHTS_CMS_PLURAL, { populate: "*" });
+        setCmsInsightsP(Array.isArray(data) ? data : []);
+      } catch {
+        setCmsInsightsP([]);
+      }
     };
     const fetchTools = async () => {
       const tools = await StrapiAPI.find("tools",{populate:"*"});
@@ -209,7 +283,8 @@ export default function BlogCarousel() {
     const fetchAllData = async () => {
       await Promise.all([
         fetchNews(),
-        fetchInsights(), 
+        fetchStudioInsights(),
+        fetchCmsInsights(),
         fetchTools(),
         fetchBlogs()
       ]);
@@ -220,14 +295,104 @@ export default function BlogCarousel() {
 
   // Update dynamic carousel data when data changes
   useEffect(() => {
-    if (blogs.length > 0 || news.length > 0 || insights.length > 0 || tools.length > 0) {
-      const dynamicData = createDynamicCarouselData(blogs, news, insights, tools);
+    if (
+      blogs.length > 0 ||
+      news.length > 0 ||
+      insights.length > 0 ||
+      cmsInsightsP.length > 0 ||
+      tools.length > 0
+    ) {
+      const dynamicData = createDynamicCarouselData(
+        blogs,
+        news,
+        insights,
+        tools,
+        cmsInsightsP
+      );
       setDynamicCarouselData(dynamicData);
     }
-  }, [blogs, news, insights, tools]);
+  }, [blogs, news, insights, cmsInsightsP, tools]);
 
   const handleHeaderClick = (index: number) => {
     setCurrentIndex(index);
+  };
+
+  const webinarGateFormik = useFormik({
+    initialValues: {
+      "0-1/firstname": "",
+      "0-1/lastname": "",
+      "0-1/email": "",
+    },
+    validationSchema: webinarGateValidationSchema,
+    onSubmit: async (values) => {
+      if (!videoGateModal.webinarSlug || !videoGateModal.url) return;
+      setVideoGateError(null);
+      try {
+        const response = await fetch(HUBSPOT_SUBMIT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fields: Object.keys(values).map((name) => ({
+              name,
+              value: values[name as keyof typeof values],
+            })),
+            context: {
+              pageUri: typeof window !== "undefined" ? window.location.href : "",
+              pageName: videoGateModal.webinarTitle || `Webinar — ${videoGateModal.webinarSlug}`,
+            },
+          }),
+        });
+
+        if (!response.ok) {
+          setVideoGateError("Something went wrong. Please try again.");
+          return;
+        }
+
+        localStorage.setItem(webinarStorageKey(videoGateModal.webinarSlug), "1");
+        setVideoGateModal({ open: false });
+        setVideoModal({ open: true, url: videoGateModal.url });
+        webinarGateFormik.resetForm();
+      } catch {
+        setVideoGateError("Something went wrong. Please try again.");
+      }
+    },
+  });
+
+  const getWebinarSlugFromLink = (link?: string) => {
+    if (!link) return null;
+    const parts = link.split("/").filter(Boolean);
+    return parts[parts.length - 1] || null;
+  };
+
+  const handlePastWebinarVideoClick = (webinar: {
+    link: string;
+    title: string;
+    youtube?: string;
+    linkedin?: string;
+  }) => {
+    if (webinar.linkedin) window.open(webinar.linkedin, "_blank");
+    if (!webinar.youtube) return;
+
+    const webinarSlug = getWebinarSlugFromLink(webinar.link);
+    if (!webinarSlug) {
+      setVideoModal({ open: true, url: webinar.youtube });
+      return;
+    }
+
+    const isUnlocked = localStorage.getItem(webinarStorageKey(webinarSlug)) === "1";
+    if (isUnlocked) {
+      setVideoModal({ open: true, url: webinar.youtube });
+      return;
+    }
+
+    setVideoGateError(null);
+    webinarGateFormik.resetForm();
+    setVideoGateModal({
+      open: true,
+      url: webinar.youtube,
+      webinarSlug,
+      webinarTitle: webinar.title,
+    });
   };
 
   // Use dynamic carousel data if available, otherwise fall back to static data
@@ -239,12 +404,12 @@ export default function BlogCarousel() {
     <div className="container mx-auto p-3 flex flex-col gap-[56px] font-plus-jakarta justify-center items-center relative pb-24">
       <img src="/background_images/ml-single.svg" className="absolute left-0 -translate-x-1/2 translate-y-1/2 bottom-0 z-0" />
 
-      <div className="container px-2 py-[4px] bg-[#EAEDF3] flex justify-between items-center rounded-[36px] drop-shadow-[0_0_60px_0_rgba(0, 0, 0, 0.08)]  md:w-[700px] md:h-[56px]">
+      <div className="container px-2 py-[4px] bg-[#EAEDF3] flex flex-wrap justify-center md:justify-between items-center gap-1 rounded-[36px] drop-shadow-[0_0_60px_0_rgba(0, 0, 0, 0.08)] w-full max-w-[1100px] md:min-h-[56px]">
         {carouselDataToUse.map((item, index: number) => (
           <button
             key={index}
             onClick={() => handleHeaderClick(index)}
-            className={`rounded-md font-plus-jakarta font-medium w-[160px] h-[40px] md:w-[168px] md:h-[40px] ${currentIndex === index
+            className={`rounded-md font-plus-jakarta font-medium w-[100px] sm:w-[120px] md:w-[150px] h-[40px] md:h-[40px] text-[11px] sm:text-xs md:text-[16px] ${currentIndex === index
               ? "!rounded-3xl text-[12px] md:text-[16px] bg-gradient-to-r from-[#1C8DEA] to-[#195BD7] drop-shadow-[0_4px_44px_0_rgba(0, 0, 0, 0.08)] p-1   text-white"
               : "text-black text-[12px] md:text-[16px]"
               }`}
@@ -302,9 +467,7 @@ export default function BlogCarousel() {
                       return (
                         <div key={w.title + idx} className="flex flex-col md:flex-row gap-6 items-start">
                           <div className="flex-1 bg-[#F2F2F2] rounded-lg flex items-center justify-center border border-dashed border-[#B0B8C1] cursor-pointer group relative"
-                            onClick={() =>{ 
-                              w.linkedin && window.open(w.linkedin,"_blank")
-                              w.youtube && setVideoModal({ open: true, url: w.youtube })}}
+                            onClick={() => handlePastWebinarVideoClick(w)}
                           >
                             {w.youtube ? (
                               <>
@@ -528,8 +691,178 @@ export default function BlogCarousel() {
             </div>
           }
 
-          {/* Tools */}
+          {/* Studio (legacy Strapi `insights` collection) */}
+          {currentIndex == 3 &&
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
+              {insights?.map((tool: any, index: number) => {
+                const attrs = tool.attributes || tool;
+                const link = attrs.link;
+                const title = attrs.title;
+                const strapiImage =
+                  attrs.image || attrs.featuredImage || attrs.thumbnail;
+                const clientImageUrl = strapiImage
+                  ? getStrapiMediaUrl(strapiImage)
+                  : null;
+                const videoId = link
+                  ? link.split("/").pop()?.split("?")[0]
+                  : null;
+                const youtubeThumb =
+                  link && videoId
+                    ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                    : null;
+                const posterSrc = clientImageUrl || youtubeThumb;
+
+                return (
+                  <div
+                    key={"studio-" + (title?.replace(" ", "_") || "item") + index}
+                    className="flex flex-col gap-4 items-stretch w-full max-w-[640px] mx-auto"
+                  >
+                    <button
+                      type="button"
+                      disabled={!link}
+                      onClick={() => link && setVideoModal({ open: true, url: link })}
+                      className={`group relative block w-full overflow-hidden rounded-lg border border-dashed border-[#B0B8C1] bg-[#F2F2F2] text-left p-0 ${link ? "cursor-pointer" : "cursor-default opacity-90"}`}
+                      style={{ aspectRatio: "1920 / 1080" }}
+                    >
+                      {posterSrc ? (
+                        <Image
+                          src={posterSrc}
+                          alt={title || "Studio"}
+                          fill
+                          className="object-contain object-center"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px"
+                          quality={100}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-sm text-[#606060] font-plus-jakarta px-4">
+                          No preview
+                        </div>
+                      )}
+                      {link && (
+                        <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100">
+                          <svg
+                            width="64"
+                            height="64"
+                            viewBox="0 0 64 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden
+                          >
+                            <circle
+                              cx="32"
+                              cy="32"
+                              r="32"
+                              fill="#fff"
+                              fillOpacity="0.8"
+                            />
+                            <polygon
+                              points="26,20 48,32 26,44"
+                              fill="#195BD7"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </button>
+                    <p className="text-primary w-full font-medium text-left font-plus-jakarta px-1">
+                      {title}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          }
+
+          {/* Insights (Strapi plural UID `insights-p` / singular `insights-1`) */}
           {currentIndex == 4 &&
+            (cmsInsightsP.length === 0 ? (
+              <div className="w-full max-w-[1160px] py-16 px-4 mb-24 text-center">
+                <p className="text-[#606060] font-plus-jakarta text-base md:text-lg">
+                  No content available in Insights
+                </p>
+              </div>
+            ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
+              {cmsInsightsP?.map((tool: any, index: number) => {
+                const attrs = tool.attributes || tool;
+                const link = attrs.link;
+                const title = attrs.title;
+                const strapiImage =
+                  attrs.image || attrs.featuredImage || attrs.thumbnail;
+                const clientImageUrl = strapiImage
+                  ? getStrapiMediaUrl(strapiImage)
+                  : null;
+                const videoId = link
+                  ? link.split("/").pop()?.split("?")[0]
+                  : null;
+                const youtubeThumb =
+                  link && videoId
+                    ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                    : null;
+                const posterSrc = clientImageUrl || youtubeThumb;
+
+                return (
+                  <div
+                    key={"insight-cms-" + (title?.replace(" ", "_") || "item") + index}
+                    className="flex flex-col gap-4 items-stretch w-full max-w-[640px] mx-auto"
+                  >
+                    <button
+                      type="button"
+                      disabled={!link}
+                      onClick={() => link && setVideoModal({ open: true, url: link })}
+                      className={`group relative block w-full overflow-hidden rounded-lg border border-dashed border-[#B0B8C1] bg-[#F2F2F2] text-left p-0 ${link ? "cursor-pointer" : "cursor-default opacity-90"}`}
+                      style={{ aspectRatio: "1920 / 1080" }}
+                    >
+                      {posterSrc ? (
+                        <Image
+                          src={posterSrc}
+                          alt={title || "Insight"}
+                          fill
+                          className="object-contain object-center"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px"
+                          quality={100}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-sm text-[#606060] font-plus-jakarta px-4">
+                          No preview
+                        </div>
+                      )}
+                      {link && (
+                        <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100">
+                          <svg
+                            width="64"
+                            height="64"
+                            viewBox="0 0 64 64"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden
+                          >
+                            <circle
+                              cx="32"
+                              cy="32"
+                              r="32"
+                              fill="#fff"
+                              fillOpacity="0.8"
+                            />
+                            <polygon
+                              points="26,20 48,32 26,44"
+                              fill="#195BD7"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </button>
+                    <p className="text-primary w-full font-medium text-left font-plus-jakarta px-1">
+                      {title}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+            )
+          )}
+
+          {/* Tools */}
+          {currentIndex == 5 &&
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
               {/* LoanKitchen Tool - Hardcoded entry */}
               <div className="bg-white max-w-[520px] text-gray-900 rounded-[20px] shadow p-4 flex flex-row gap-6">
@@ -593,94 +926,82 @@ export default function BlogCarousel() {
             </div>
           }
 
-          {/* Insights — 1920×1080 (16:9) frame; object-contain so client art is never cropped */}
-          {currentIndex == 3 &&
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 content-between gap-9  mb-24">
-              {insights?.map((tool: any, index: number) => {
-                const attrs = tool.attributes || tool;
-                const link = attrs.link;
-                const title = attrs.title;
-                const strapiImage =
-                  attrs.image || attrs.featuredImage || attrs.thumbnail;
-                const clientImageUrl = strapiImage
-                  ? getStrapiMediaUrl(strapiImage)
-                  : null;
-                const videoId = link
-                  ? link.split("/").pop()?.split("?")[0]
-                  : null;
-                const youtubeThumb =
-                  link && videoId
-                    ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-                    : null;
-                const posterSrc = clientImageUrl || youtubeThumb;
-
-                return (
-                  <div
-                    key={(title?.replace(" ", "_") || "insight") + index}
-                    className="flex flex-col gap-4 items-stretch w-full max-w-[640px] mx-auto"
-                  >
-                    <button
-                      type="button"
-                      disabled={!link}
-                      onClick={() => link && setVideoModal({ open: true, url: link })}
-                      className={`group relative block w-full overflow-hidden rounded-lg border border-dashed border-[#B0B8C1] bg-[#F2F2F2] text-left p-0 ${link ? "cursor-pointer" : "cursor-default opacity-90"}`}
-                      style={{ aspectRatio: "1920 / 1080" }}
-                    >
-                      {posterSrc ? (
-                        <Image
-                          src={posterSrc}
-                          alt={title || "Insight"}
-                          fill
-                          className="object-contain object-center"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px"
-                          quality={100}
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center text-sm text-[#606060] font-plus-jakarta px-4">
-                          No preview
-                        </div>
-                      )}
-                      {link && (
-                        <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100">
-                          <svg
-                            width="64"
-                            height="64"
-                            viewBox="0 0 64 64"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden
-                          >
-                            <circle
-                              cx="32"
-                              cy="32"
-                              r="32"
-                              fill="#fff"
-                              fillOpacity="0.8"
-                            />
-                            <polygon
-                              points="26,20 48,32 26,44"
-                              fill="#195BD7"
-                            />
-                          </svg>
-                        </div>
-                      )}
-                    </button>
-                    <p className="text-primary w-full font-medium text-left font-plus-jakarta px-1">
-                      {title}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          }
-
           {/* {[3].includes(currentIndex) &&
 
             <h2 className="text-black text-[56px] text-center font-plus-jakarta mb-24 font-bold">Just around the corner</h2>
 
 Stay tuned for the upcoming webinnar
           } */}
-           {/* Video Modal */}
+          {videoGateModal.open && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+              <div className="w-full max-w-md rounded-2xl border border-[#E2E8F1] bg-white p-8 shadow-[0px_20px_36px_0px_rgba(10,64,108,0.1)] relative">
+                <button
+                  className="absolute right-3 top-3 text-2xl text-gray-700 hover:text-red-500"
+                  onClick={() => setVideoGateModal({ open: false })}
+                  aria-label="Close gate"
+                >
+                  ×
+                </button>
+                <h3 className="text-center text-xl font-bold text-[#2A5FAC]">Access this webinar</h3>
+                <p className="mt-3 text-center text-sm text-[#292929]">
+                  Enter your details to continue watching this webinar.
+                </p>
+                <form onSubmit={webinarGateFormik.handleSubmit} className="mt-8 flex flex-col gap-4" noValidate>
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-[#292929]">First name</label>
+                    <input
+                      name="0-1/firstname"
+                      type="text"
+                      className="w-full rounded-lg border border-[#B4C7E1] px-4 py-3 text-[#292929] outline-none focus:border-[#2A5FAC]"
+                      value={webinarGateFormik.values["0-1/firstname"]}
+                      onChange={webinarGateFormik.handleChange}
+                      onBlur={webinarGateFormik.handleBlur}
+                    />
+                    {webinarGateFormik.touched["0-1/firstname"] && webinarGateFormik.errors["0-1/firstname"] && (
+                      <p className="mt-1 text-sm text-red-600">{webinarGateFormik.errors["0-1/firstname"]}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-[#292929]">Last name</label>
+                    <input
+                      name="0-1/lastname"
+                      type="text"
+                      className="w-full rounded-lg border border-[#B4C7E1] px-4 py-3 text-[#292929] outline-none focus:border-[#2A5FAC]"
+                      value={webinarGateFormik.values["0-1/lastname"]}
+                      onChange={webinarGateFormik.handleChange}
+                      onBlur={webinarGateFormik.handleBlur}
+                    />
+                    {webinarGateFormik.touched["0-1/lastname"] && webinarGateFormik.errors["0-1/lastname"] && (
+                      <p className="mt-1 text-sm text-red-600">{webinarGateFormik.errors["0-1/lastname"]}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-[#292929]">Work email</label>
+                    <input
+                      name="0-1/email"
+                      type="email"
+                      className="w-full rounded-lg border border-[#B4C7E1] px-4 py-3 text-[#292929] outline-none focus:border-[#2A5FAC]"
+                      value={webinarGateFormik.values["0-1/email"]}
+                      onChange={webinarGateFormik.handleChange}
+                      onBlur={webinarGateFormik.handleBlur}
+                    />
+                    {webinarGateFormik.touched["0-1/email"] && webinarGateFormik.errors["0-1/email"] && (
+                      <p className="mt-1 text-sm text-red-600">{webinarGateFormik.errors["0-1/email"]}</p>
+                    )}
+                  </div>
+                  {videoGateError && <p className="text-center text-sm text-red-600">{videoGateError}</p>}
+                  <button
+                    type="submit"
+                    disabled={webinarGateFormik.isSubmitting}
+                    className="mt-2 w-full rounded-[36px] bg-[#2A5FAC] py-3 text-center text-[16px] font-semibold text-white transition hover:bg-[#1e4a8a] disabled:opacity-60"
+                  >
+                    {webinarGateFormik.isSubmitting ? "Submitting…" : "Continue to webinar"}
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
+          {/* Video Modal */}
            {videoModal.open && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
                       <div className="bg-white rounded-lg shadow-lg p-4 relative max-w-2xl w-full">

@@ -145,13 +145,27 @@ export default function Header() {
             if (strapiUser) {
               const userAttributes = strapiUser.attributes || strapiUser;
               const strapiIsInternal = userAttributes.isInternal || false;
-              
-              // Update session if isInternal status changed
-              if (strapiIsInternal !== isInternal && userSession) {
-                const updatedSession = { ...userSession, isInternal: strapiIsInternal };
-                localStorage.setItem('vault_session', JSON.stringify(updatedSession));
-                isInternal = strapiIsInternal;
-                console.log('Search: Updated isInternal status from Strapi:', strapiIsInternal);
+              const strapiEnableCSVUploads = userAttributes.enableCSVUploads === true;
+
+              if (userSession) {
+                const prevCSV = userSession.enableCSVUploads === true;
+                const needsUpdate =
+                  strapiIsInternal !== (userSession.isInternal || false) ||
+                  strapiEnableCSVUploads !== prevCSV;
+
+                if (needsUpdate) {
+                  const updatedSession = {
+                    ...userSession,
+                    isInternal: strapiIsInternal,
+                    enableCSVUploads: strapiEnableCSVUploads,
+                  };
+                  localStorage.setItem('vault_session', JSON.stringify(updatedSession));
+                  isInternal = strapiIsInternal;
+                  console.log('Search: Updated user flags from Strapi:', {
+                    isInternal: strapiIsInternal,
+                    enableCSVUploads: strapiEnableCSVUploads,
+                  });
+                }
               }
             }
           }

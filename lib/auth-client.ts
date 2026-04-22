@@ -10,6 +10,8 @@ export interface User {
   googleId?: string | null;
   loggedInAt: string;
   isInternal?: boolean;
+  /** Strapi user flag: show Deal Map CSV import when true */
+  enableCSVUploads?: boolean;
 }
 
 export function getSession(): User | null {

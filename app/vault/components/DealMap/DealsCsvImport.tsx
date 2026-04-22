@@ -206,7 +206,7 @@ export function DealsCsvImport({ onImportComplete }: DealsCsvImportProps) {
   const [result, setResult] = useState<ImportResult | null>(null);
 
   const session = getSession();
-  const canImportDeals = session?.isInternal === true;
+  const canImportDeals = session?.enableCSVUploads === true;
 
   if (!canImportDeals) {
     return null;
