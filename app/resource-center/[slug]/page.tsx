@@ -6,52 +6,16 @@ import { StrapiAPI } from "@/lib/strapi";
 import { getStrapiMediaUrl } from "@/lib/strapi/utils";
 import { Metadata } from "next";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import {
+  fetchAllBlogSlugsFromStrapi,
+  KNOWN_RESOURCE_CENTER_BLOG_SLUGS,
+  uniqueSlugParams,
+} from "@/lib/resource-center-blog-slugs";
 
-// Generate static params for all blog slugs
+// Generate static params for all blog slugs (CMS + hardcoded links). With `output: "export"`, every linked slug must appear here.
 export async function generateStaticParams() {
-  console.log('🔍 generateStaticParams: Starting...');
-  
-  // Fallback slugs for when Strapi is not available during build
-  const fallbackSlugs = [
-    'when-the-game-changes',
-    'when-the-game-changes-1',
-    'from-piggy-banks-to-product-hooks-why-credit-unions-need-a-feature-strategy',
-    'year-one-at-algebrik',
-    'credit-union-lessons-from-trendwatch-q2',
-    'mastering-digital-onboarding',
-    'cable-tv-lending-is-dead',
-    'the-future-of-auto-lending',
-    'automating-lending-decisions-with-unprecedented-precision',
-    'building-digital-first-loyalty-for-credit-unions',
-    'how-credit-unions-are-putting-agentic-ai-to-work',
-    'the-silent-sabotage',
-    'is-your-member-experience-broken',
-    'a-product-peek-into-what-is-new-at-algebrik-this-month',
-    'what-driving-the-shift-to-intelligent-lending',
-    'innovations-reshaping-lending-workflows',
-    'what-you-will-learn-in-our-intelligent-lending-roundtable',
-    'credit-union-mergers-are-at-an-all-time-high',
-    'how-digital-first-credit-unions-are-winning-member-loyalty',
-    'beyond-decisioning',
-    'redefining_borrower',
-    'from-fragmentation-to-seamlessness',
-    'out-of-the-lending-maze'
-  ];
-  
-  try {
-    const blogs = await StrapiAPI.find('blogs', { populate: "*" });
-
-    if (blogs && blogs.length > 0) {
-      return blogs.map((blog: any) => ({
-        slug: blog.slug,
-      }));
-    }
-  } catch (error) {
-    console.error('❌ generateStaticParams: Error fetching from Strapi:', error);
-  }
-  
-  // Use fallback slugs if Strapi is not available or returns no data
-  return fallbackSlugs.map(slug => ({ slug }));
+  const fromCms = await fetchAllBlogSlugsFromStrapi();
+  return uniqueSlugParams([...KNOWN_RESOURCE_CENTER_BLOG_SLUGS, ...fromCms]);
 }
 
 // Generate metadata for each blog
