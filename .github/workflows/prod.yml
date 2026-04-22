@@ -1,4 +1,4 @@
-name: Algebrik-website-cicd
+name: Algebrik-website-cicd 
 on:
   push:
     branches:
