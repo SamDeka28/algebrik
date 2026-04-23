@@ -1,6 +1,13 @@
 export const WEBINARS : {image: string, title: string, link: string, eventDate: string, youtube?: string, linkedin?: string}[] = [
     {
         image :"/background_images/20nov.png",
+        title : "The Death of Digital Transformation in Lending",
+        link: "/webinars/20-nov-2025",
+        eventDate: "1 April, 2026",
+        youtube : "https://www.youtube.com/embed/Z96I64C35fo?si=c3SX0m6D58zo-pkc"
+    },
+    {
+        image :"/background_images/20nov.png",
         title : "Make Lending Great Again: Reclaiming the Heart of Credit Union Lending in the Age of AI",
         link: "/webinars/20-nov-2025",
         eventDate: "20 Nov, 2025",
