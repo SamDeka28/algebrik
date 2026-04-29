@@ -1,2 +1,9 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://storage.googleapis.com blob:; connect-src *; img-src * blob: data:; style-src 'self' 'unsafe-inline'; worklet-src 'self' blob:; frame-src *; 
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://storage.googleapis.com blob:; connect-src *; img-src * blob: data:; style-src 'self' 'unsafe-inline'; worklet-src 'self' blob:; frame-src *;
+
+/
+  Link: </.well-known/api-catalog.json>; rel="api-catalog"
+  Link: </.well-known/agent-guide.md>; rel="service-doc"
+
+/.well-known/agent-guide.md
+  Content-Type: text/markdown; charset=utf-8

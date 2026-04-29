@@ -1,0 +1,17 @@
+{
+  "name": "Algebrik Public Web Catalog",
+  "description": "Machine-readable discovery entry points for Algebrik web resources.",
+  "version": "1.0.0",
+  "links": [
+    {
+      "rel": "service-doc",
+      "href": "https://algebrik.ai/.well-known/agent-guide.md",
+      "type": "text/markdown"
+    },
+    {
+      "rel": "describedby",
+      "href": "https://algebrik.ai/sitemap.xml",
+      "type": "application/xml"
+    }
+  ]
+}
