@@ -309,6 +309,10 @@ export default function Navbar() {
     return null;
   }
 
+  if (pathname === "/Solr26" || pathname === "/Solr26/") {
+    return null;
+  }
+
   if (pathname === "/gac-conference-dinner/") {
     return null;
   }

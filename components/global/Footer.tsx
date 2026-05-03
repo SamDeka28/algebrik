@@ -12,8 +12,15 @@ const Footer = () => {
   const [showContactModal, setShowContactModal] = useState(false);
   const hideAiSummarySection = pathname === "/unwrapped" || pathname === "/unwrapped/";
   
-  // Hide footer on login, vault, and loan-kitchen pages
-  if (pathname === '/login' || pathname?.startsWith('/vault') || pathname === '/loan-kitchen' || pathname === '/loan-kitchen/') {
+  // Hide footer on login, vault, loan-kitchen, and Solr26 landing pages
+  if (
+    pathname === "/login" ||
+    pathname?.startsWith("/vault") ||
+    pathname === "/loan-kitchen" ||
+    pathname === "/loan-kitchen/" ||
+    pathname === "/Solr26" ||
+    pathname === "/Solr26/"
+  ) {
     return null;
   }
   

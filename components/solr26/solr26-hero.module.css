@@ -1,0 +1,154 @@
+.scene {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Slightly tighter art on very small screens so cage travel stays in frame */
+.sceneMobile {
+  max-width: min(100%, 360px);
+}
+
+@media (min-width: 400px) {
+  .sceneMobile {
+    max-width: min(100%, 400px);
+  }
+}
+
+@media (min-width: 640px) {
+  .sceneMobile {
+    max-width: 420px;
+  }
+}
+
+.bank {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cage {
+  position: absolute;
+  left: 0;
+  top: -120%;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  animation: solr26CageDrop 1s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
+  animation-delay: 2s;
+}
+
+@keyframes solr26CageDrop {
+  0% {
+    top: -120%;
+    transform: scaleY(1);
+  }
+  70% {
+    top: 5%;
+    transform: scaleY(1);
+  }
+  85% {
+    top: -2%;
+    transform: scaleY(0.97);
+  }
+  100% {
+    top: 0%;
+    transform: scaleY(1);
+  }
+}
+
+/* Shorter drop + snap on narrow viewports — less clip against overflow-hidden */
+@media (max-width: 639px) {
+  .cage {
+    animation: solr26CageDropMobile 0.9s cubic-bezier(0.25, 0.9, 0.3, 1.15) 1.6s
+      forwards;
+  }
+
+  .shadow {
+    bottom: -6px;
+    height: 22px;
+    transform: scaleX(0.85);
+    animation: solr26ShadowPop 0.35s ease-out 2.35s forwards;
+  }
+}
+
+@keyframes solr26CageDropMobile {
+  0% {
+    top: -92%;
+    transform: scaleY(1);
+  }
+  68% {
+    top: 4%;
+    transform: scaleY(1);
+  }
+  84% {
+    top: -1.5%;
+    transform: scaleY(0.98);
+  }
+  100% {
+    top: 0%;
+    transform: scaleY(1);
+  }
+}
+
+.shadow {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: radial-gradient(rgba(0, 0, 0, 0.35), transparent 70%);
+  opacity: 0;
+  transform: scaleX(0.8);
+  animation: solr26ShadowPop 0.4s ease-out 2.8s forwards;
+  pointer-events: none;
+}
+
+@keyframes solr26ShadowPop {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cage {
+    animation: none !important;
+    top: 0;
+  }
+
+  .shadow {
+    animation: none !important;
+    opacity: 0.85;
+    transform: scaleX(1);
+  }
+}
+
+/* Marquee strip: vertical fill + 1px brand border + soft blue glow (Figma). */
+.tickerStrip {
+  background-image: linear-gradient(180deg, #2a5fac 0%, #2a5fac 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 6px 24px rgba(42, 95, 172, 0.25);
+}
+
+.gridBg {
+  background-color: #fafafa;
+  /* First layer = top: wash + grid; last = bottom: photo (MDN: first list item paints on top). */
+  background-image: linear-gradient(
+      135deg,
+      rgba(232, 239, 248, 0.72) 0%,
+      rgba(255, 255, 255, 0.88) 38%,
+      rgba(250, 250, 250, 0.78) 58%,
+      rgba(250, 250, 250, 0.35) 100%
+    ),
+    linear-gradient(rgba(42, 95, 172, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 95, 172, 0.07) 1px, transparent 1px),
+    url("/background_images/modern_lender.webp");
+  background-size: auto, 48px 48px, 48px 48px, cover;
+  background-position: 0 0, 0 0, 0 0, 90% center;
+  background-repeat: no-repeat, repeat, repeat, no-repeat;
+}
