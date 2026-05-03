@@ -47,7 +47,7 @@ export default function Solr26Navbar() {
   return (
     <>
       <motion.nav
-        className={`fixed top-8 inset-x-0 z-50 md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${
+        className={`fixed z-[100000] top-8 inset-x-0  md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${
           isScrolled ? pillClass : "bg-transparent"
         } transition-all duration-300`}
       >
