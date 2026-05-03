@@ -47,7 +47,7 @@ export default function Solr26Navbar() {
   return (
     <>
       <motion.nav
-        className={`fixed z-[100000] top-8 inset-x-0  md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${
+        className={`fixed z-[100000] top-8 inset-x-0 g md:max-w-[1260px] lg:w-5/6 h-[84px] mx-auto ${
           isScrolled ? pillClass : "bg-transparent"
         } transition-all duration-300`}
       >
@@ -112,7 +112,7 @@ export default function Solr26Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden fixed top-0 left-0 right-0 bottom-0 w-[100vw] min-h-[100dvh] bg-white z-[100] flex flex-col font-plus-jakarta pt-6 pb-10 px-5 overflow-y-auto text-black"
+              className="md:hidden fixed top-0 left-0 right-0 bottom-0 z-[200] flex min-h-[100dvh] w-[100vw] flex-col overflow-y-auto bg-white px-5 pb-10 pt-6 font-plus-jakarta text-black"
             >
               <div className="flex items-center justify-between mb-8 px-1">
                 <Link href="/" onClick={() => setMenuOpen(false)}>

@@ -18,7 +18,7 @@ const TICKER_ITEMS = [
 export default function Solr26Hero() {
   return (
     <section
-      className={`relative isolate overflow-hidden ${styles.gridBg}`}
+      className={`relative z-[100] isolate overflow-hidden ${styles.gridBg}`}
       style={{ paddingTop: "calc(2rem + 106px)" }}
     >
       {/* Figma: linear #1C8DEA → #195BD7, layer blur 228 — soft orb on the left */}

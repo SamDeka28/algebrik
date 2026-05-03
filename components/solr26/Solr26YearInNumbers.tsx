@@ -165,7 +165,7 @@ export default function Solr26YearInNumbers() {
   return (
     <section
       id="year-in-numbers"
-      className="py-16 md:py-24 bg-white border-y border-slate-100 font-plus-jakarta"
+      className="relative z-0 border-y border-slate-100 bg-white py-16 font-plus-jakarta md:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="text-center max-w-4xl mx-auto mb-12 md:mb-14">
