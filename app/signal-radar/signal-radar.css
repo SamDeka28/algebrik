@@ -1,0 +1,36 @@
+/* Scoped Signal Radar + Leaflet (dark dashboard under marketing shell) */
+
+.signal-radar-root .leaflet-container {
+  background: #1e293b !important;
+}
+
+.signal-radar-root .leaflet-tooltip {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(100, 116, 139, 0.5) !important;
+  border-radius: 8px !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 10px !important;
+}
+
+.signal-radar-root .leaflet-tooltip::before {
+  border-top-color: rgba(100, 116, 139, 0.5) !important;
+}
+
+.signal-radar-root ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.signal-radar-root ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.signal-radar-root ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 999px;
+}
+
+.signal-radar-root ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}

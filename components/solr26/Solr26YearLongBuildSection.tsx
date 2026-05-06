@@ -1,6 +1,9 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import Solr26AmbientOrbsBackground from "@/components/solr26/Solr26AmbientOrbsBackground";
+import Solr26Reveal from "@/components/solr26/Solr26Reveal";
 
 const TITLE = "This wasn't a Q4 surprise – It was a year-long build";
 const SUBTITLE =
@@ -26,12 +29,28 @@ const RED_ACCENT = "#EF4444";
 const RESPONSE_TITLE_BLUE = "#1D4E89";
 
 export default function Solr26YearLongBuildSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const inView = useInView(sectionRef, { once: false, amount: 0.35 });
+  const [animateCharts, setAnimateCharts] = useState(false);
+
+  useEffect(() => {
+    if (!inView) {
+      setAnimateCharts(false);
+      return;
+    }
+    const t = window.setTimeout(() => setAnimateCharts(true), 150);
+    return () => window.clearTimeout(t);
+  }, [inView]);
+
   return (
-    <section className="relative bg-white py-16 md:py-24">
+    <section
+      className="relative bg-white py-16 md:py-24"
+      ref={sectionRef}
+    >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Solr26AmbientOrbsBackground />
 
-        <div className="relative z-10">
+        <Solr26Reveal className="relative z-10">
           <header className="mb-12 text-center md:mb-14">
             <h2 className="text-3xl font-bold leading-tight text-[#1f4f95] md:text-[40px]">
               {TITLE}
@@ -69,7 +88,7 @@ export default function Solr26YearLongBuildSection() {
                         <div
                           className="flex h-7 min-w-0 items-center justify-end rounded-br-[4px] rounded-tr-[4px] pr-2 transition-[width] duration-300 sm:h-8 sm:pr-3"
                           style={{
-                            width: `max(${pct}%, 3.5rem)`,
+                            width: animateCharts ? `max(${pct}%, 3.5rem)` : "3.5rem",
                             background:
                               "linear-gradient(90deg, rgba(147, 197, 253, 0.35) 0%, rgba(125, 211, 252, 0.55) 100%)",
                             boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12)",
@@ -117,7 +136,7 @@ export default function Solr26YearLongBuildSection() {
               </div>
             </div>
           </div>
-        </div>
+        </Solr26Reveal>
       </div>
     </section>
   );

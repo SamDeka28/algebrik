@@ -1,5 +1,7 @@
 "use client";
 
+import Solr26Reveal from "@/components/solr26/Solr26Reveal";
+
 const TITLE = "5 Paired Truths From the Data";
 const SUBTITLE =
   "Where NCUA hard numbers and SOLR leader sentiment align — and what that means for 2026 strategy.";
@@ -50,24 +52,23 @@ export default function Solr26PairedTruthsSection() {
   return (
     <section className="py-16 md:py-24 bg-[#f4f6fa]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center max-w-7xl mx-auto mb-10 md:mb-14">
-          <h2 className="text-3xl md:text-[40px] font-bold leading-tight text-[#1f4f95]">
-            {TITLE}
-          </h2>
-          <p className="mt-4 text-base md:text-xl leading-relaxed text-[#606060]">
-            {SUBTITLE}
-          </p>
-        </header>
+        <Solr26Reveal>
+          <header className="text-center max-w-7xl mx-auto mb-10 md:mb-14">
+            <h2 className="text-3xl md:text-[40px] font-bold leading-tight text-[#1f4f95]">
+              {TITLE}
+            </h2>
+            <p className="mt-4 text-base md:text-xl leading-relaxed text-[#606060]">
+              {SUBTITLE}
+            </p>
+          </header>
 
-        <div className="flex flex-col gap-4 md:gap-5">
-          {TRUTHS.map((item, index) => (
-            <article
-              key={item.n}
-              className={`relative rounded-2xl px-6 py-7 md:px-8 md:py-8  ${index % 2 === 0 ? "bg-[#F6FAFF] shadow-sm border border-slate-200/40" : "bg-transparent"}`}
-              style={{
-                backgroundColor: index % 2 === 0 ? CARD_BG_ODD : CARD_BG_EVEN,
-              }}
-            >
+          <div className="flex flex-col gap-4 md:gap-5">
+            {TRUTHS.map((item, index) => (
+              <Solr26Reveal
+                key={item.n}
+                delayMs={index * 160}
+                className={`relative rounded-2xl px-6 py-7 md:px-8 md:py-8 ${index % 2 === 0 ? "bg-[#F6FAFF] shadow-sm border border-slate-200/40" : "bg-transparent"}`}
+              >
               <span
                 className="absolute top-5 right-5 md:top-6 md:right-8 text-[3.25rem] sm:text-6xl md:text-6xl font-bold leading-none tabular-nums pointer-events-none select-none text-[#C7D7ED]"
                 aria-hidden
@@ -89,9 +90,10 @@ export default function Solr26PairedTruthsSection() {
                   {item.body}
                 </p>
               </div>
-            </article>
-          ))}
-        </div>
+              </Solr26Reveal>
+            ))}
+          </div>
+        </Solr26Reveal>
       </div>
     </section>
   );

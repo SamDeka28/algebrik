@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import {
   Cell,
   Pie,
@@ -7,7 +8,9 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import { motion, useInView } from "framer-motion";
 import Solr26AmbientOrbsBackground from "./Solr26AmbientOrbsBackground";
+import Solr26Reveal from "@/components/solr26/Solr26Reveal";
 
 const TITLE = "51% Expect decisions in under 4 hours";
 const SUB_A =
@@ -148,132 +151,158 @@ function DonutTooltip({ active, payload }: DonutTooltipProps) {
 }
 
 export default function Solr26SpeedExpectationsSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const inView = useInView(sectionRef, { once: false, amount: 0.35 });
+  const [animateCharts, setAnimateCharts] = useState(false);
+
+  useEffect(() => {
+    if (!inView) {
+      setAnimateCharts(false);
+      return;
+    }
+    const t = window.setTimeout(() => setAnimateCharts(true), 150);
+    return () => window.clearTimeout(t);
+  }, [inView]);
+
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center max-w-3xl mx-auto mb-12 md:mb-14">
-          <h2
-            className="text-3xl md:text-[40px] font-bold text-[#1f4f95] leading-tight"
-            style={{ color: HEADING_BLUE }}
-          >
-            {TITLE}
-          </h2>
-          <p className="mt-4 text-base md:text-xl leading-relaxed text-[#606060]">
-            {SUB_A}
-          </p>
-          <p className="mt-2 text-base md:text-xl leading-relaxed text-[#606060]" style={{ color: MUTED }}>
-            {SUB_B}
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 justify-center">
-          <Solr26AmbientOrbsBackground />
-          <div className="rounded-[20px] bg-white p-6 md:p-8 shadow-md border border-slate-100/80">
-            <h3
-              className="text-lg font-bold"
+        <Solr26Reveal>
+          <header className="text-center max-w-3xl mx-auto mb-12 md:mb-14">
+            <h2
+              className="text-3xl md:text-[40px] font-bold text-[#1f4f95] leading-tight"
               style={{ color: HEADING_BLUE }}
             >
-              Member approval speed expectations
-            </h3>
-            <p className="mt-1 text-sm md:text-[15px] leading-relaxed" style={{ color: MUTED }}>
-              More than half expect a decision before business close the same day.
+              {TITLE}
+            </h2>
+            <p className="mt-4 text-base md:text-xl leading-relaxed text-[#606060]">
+              {SUB_A}
             </p>
+            <p
+              className="mt-2 text-base md:text-xl leading-relaxed text-[#606060]"
+              style={{ color: MUTED }}
+            >
+              {SUB_B}
+            </p>
+          </header>
 
-            <div className="h-[240px] w-full max-w-[340px] mx-auto mt-4 [&_.recharts-surface]:drop-shadow-[0_2px_8px_rgba(15,23,42,0.08)]">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
-                  <Pie
-                    data={pieSlices}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    innerRadius="52%"
-                    outerRadius="78%"
-                    startAngle={90}
-                    endAngle={-270}
-                    paddingAngle={0}
-                    cornerRadius={0}
-                    stroke="none"
-                    isAnimationActive={true}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 justify-center">
+            <Solr26AmbientOrbsBackground />
+            <div className="rounded-[20px] bg-white p-6 md:p-8 shadow-md border border-slate-100/80">
+              <h3 className="text-lg font-bold" style={{ color: HEADING_BLUE }}>
+                Member approval speed expectations
+              </h3>
+              <p
+                className="mt-1 text-sm md:text-[15px] leading-relaxed"
+                style={{ color: MUTED }}
+              >
+                More than half expect a decision before business close the same day.
+              </p>
+
+              <div className="h-[240px] w-full max-w-[340px] mx-auto mt-4 [&_.recharts-surface]:drop-shadow-[0_2px_8px_rgba(15,23,42,0.08)]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart
+                    key={
+                      animateCharts
+                        ? "solr26-speed-donut-animate"
+                        : "solr26-speed-donut-idle"
+                    }
+                    margin={{ top: 4, right: 4, bottom: 4, left: 4 }}
                   >
-                    {pieSlices.map((entry) => (
-                      <Cell key={entry.name} fill={entry.fill} stroke="none" />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    content={DonutTooltip}
-                    cursor={{ stroke: "transparent", fill: "transparent" }}
-                    wrapperStyle={{ outline: "none", zIndex: 20 }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
+                    <Pie
+                      data={pieSlices}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      innerRadius="52%"
+                      outerRadius="78%"
+                      startAngle={90}
+                      endAngle={-270}
+                      paddingAngle={0}
+                      cornerRadius={0}
+                      stroke="none"
+                      isAnimationActive={animateCharts}
+                      animationDuration={900}
+                    >
+                      {pieSlices.map((entry) => (
+                        <Cell key={entry.name} fill={entry.fill} stroke="none" />
+                      ))}
+                    </Pie>
+                    <Tooltip
+                      content={DonutTooltip}
+                      cursor={{ stroke: "transparent", fill: "transparent" }}
+                      wrapperStyle={{ outline: "none", zIndex: 20 }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
-              {DONUT.map((d) => (
-                <div key={d.name} className="flex items-center gap-2 min-w-0">
-                  <span
-                    className="h-2.5 w-2.5 rounded-full shrink-0 ring-1 ring-slate-300/80"
-                    style={{
-                      backgroundColor: d.color,
-                      boxShadow:
-                        d.color === "#E8ECF5"
-                          ? "inset 0 0 0 1px rgba(42, 95, 172, 0.12)"
-                          : undefined,
-                    }}
-                    aria-hidden
-                  />
-                  <span className="text-slate-700 truncate">{d.legend}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[20px] bg-white p-6 md:p-8 shadow-md border border-slate-100/80">
-            <h3
-              className="text-lg font-bold"
-              style={{ color: HEADING_BLUE }}
-            >
-              Approval speed breakdown – all segments
-            </h3>
-            <p className="mt-1 text-sm md:text-[15px] leading-relaxed" style={{ color: MUTED }}>
-              Mapped across all leader responses. Sub-4hr expectations dominate.
-            </p>
-
-            <div className="mt-8 space-y-5">
-              {BARS.map((row) => (
-                <div
-                  key={row.label}
-                  className="flex flex-col sm:flex-col sm:items-center gap-2 sm:gap-3"
-                >
-                  <div className="flex flex-row items-center justify-between gap-2 w-full">
-                    <span className="text-sm w-max text-slate-800 font-medium leading-snug">
-                      {row.label}
-                    </span>
-                    <span className="text-sm text-slate-900 font-bold tabular-nums w-10 text-right shrink-0">
-                      {row.pct}%
-                    </span>
-                  </div>
-                  <div className="flex flex-1 items-center gap-3 min-w-0 w-full">
-                    <div className="h-2 flex-1 rounded-full bg-slate-200/90 overflow-hidden min-w-[80px]">
-                      <div
-                        className="h-full rounded-full transition-[width] duration-500 ease-out"
-                        style={{
-                          width: `${row.pct}%`,
-                          backgroundColor: row.color,
-                          boxShadow: row.barOutline
-                            ? "inset 0 0 0 1px rgba(42, 95, 172, 0.18)"
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
+                {DONUT.map((d) => (
+                  <div key={d.name} className="flex items-center gap-2 min-w-0">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full shrink-0 ring-1 ring-slate-300/80"
+                      style={{
+                        backgroundColor: d.color,
+                        boxShadow:
+                          d.color === "#E8ECF5"
+                            ? "inset 0 0 0 1px rgba(42, 95, 172, 0.12)"
                             : undefined,
-                        }}
-                      />
+                      }}
+                      aria-hidden
+                    />
+                    <span className="text-slate-700 truncate">{d.legend}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[20px] bg-white p-6 md:p-8 shadow-md border border-slate-100/80">
+              <h3 className="text-lg font-bold" style={{ color: HEADING_BLUE }}>
+                Approval speed breakdown – all segments
+              </h3>
+              <p
+                className="mt-1 text-sm md:text-[15px] leading-relaxed"
+                style={{ color: MUTED }}
+              >
+                Mapped across all leader responses. Sub-4hr expectations dominate.
+              </p>
+
+              <div className="mt-8 space-y-5">
+                {BARS.map((row) => (
+                  <div
+                    key={row.label}
+                    className="flex flex-col sm:flex-col sm:items-center gap-2 sm:gap-3"
+                  >
+                    <div className="flex flex-row items-center justify-between gap-2 w-full">
+                      <span className="text-sm w-max text-slate-800 font-medium leading-snug">
+                        {row.label}
+                      </span>
+                      <span className="text-sm text-slate-900 font-bold tabular-nums w-10 text-right shrink-0">
+                        {row.pct}%
+                      </span>
+                    </div>
+                    <div className="flex flex-1 items-center gap-3 min-w-0 w-full">
+                      <div className="h-2 flex-1 rounded-full bg-slate-200/90 overflow-hidden min-w-[80px]">
+                        <div
+                          className="h-full rounded-full transition-[width] duration-700 ease-out"
+                          style={{
+                            width: animateCharts ? `${row.pct}%` : "0%",
+                            backgroundColor: row.color,
+                            boxShadow: row.barOutline
+                              ? "inset 0 0 0 1px rgba(42, 95, 172, 0.18)"
+                              : undefined,
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </Solr26Reveal>
       </div>
     </section>
   );

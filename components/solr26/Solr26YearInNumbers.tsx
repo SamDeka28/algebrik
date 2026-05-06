@@ -1,5 +1,9 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import Solr26Reveal from "@/components/solr26/Solr26Reveal";
+
 const TITLE = "The year in numbers – 4 quarters, 1 story";
 const SUBTITLE =
   "Stronger Balance Sheets Rising Risk. 2025 was the year credit unions turned a financial corner – and immediately hit a new one. Every metric told two stories at once.";
@@ -162,138 +166,159 @@ function StatCard({
 }
 
 export default function Solr26YearInNumbers() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const inView = useInView(sectionRef, { once: false, amount: 0.35 });
+  const [animateCharts, setAnimateCharts] = useState(false);
+
+  useEffect(() => {
+    if (!inView) {
+      setAnimateCharts(false);
+      return;
+    }
+    const t = window.setTimeout(() => setAnimateCharts(true), 150);
+    return () => window.clearTimeout(t);
+  }, [inView]);
+
   return (
     <section
       id="year-in-numbers"
       className="relative z-0 border-y border-slate-100 bg-white py-16 font-plus-jakarta md:py-24"
+      ref={sectionRef}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <header className="text-center max-w-4xl mx-auto mb-12 md:mb-14">
-          <h2 className="text-3xl md:text-[40px] font-bold text-[#1f4f95] leading-tight">
-            {TITLE}
-          </h2>
-          <p className="mt-4 md:mt-5 text-base md:text-xl text-[#606060] leading-relaxed">
-            {SUBTITLE}
-          </p>
-        </header>
-
-        <div
-          className="
-            grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2 lg:gap-6 lg:min-h-[520px] lg:items-stretch
-          "
-        >
-          <div className="grid min-h-0 grid-cols-2 gap-4 sm:gap-5 lg:auto-rows-fr">
-            {STAT_CARDS.map((card) => (
-              <StatCard key={card.label} {...card} />
-            ))}
-          </div>
+        <Solr26Reveal>
+          <header className="text-center max-w-4xl mx-auto mb-12 md:mb-14">
+            <h2 className="text-3xl md:text-[40px] font-bold text-[#1f4f95] leading-tight">
+              {TITLE}
+            </h2>
+            <p className="mt-4 md:mt-5 text-base md:text-xl text-[#606060] leading-relaxed">
+              {SUBTITLE}
+            </p>
+          </header>
 
           <div
             className="
+            grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2 lg:gap-6 lg:min-h-[520px] lg:items-stretch
+          "
+          >
+            <div className="grid min-h-0 grid-cols-2 gap-4 sm:gap-5 lg:auto-rows-fr">
+              {STAT_CARDS.map((card) => (
+                <StatCard key={card.label} {...card} />
+              ))}
+            </div>
+
+            <div
+              className="
               relative flex min-h-[400px] min-w-0 flex-col rounded-[20px]
               p-6 text-white sm:min-h-[420px] md:p-8 lg:min-h-0 lg:p-9
             "
-            style={{
-              backgroundColor: "#050a14",
-              backgroundImage: `
+              style={{
+                backgroundColor: "#050a14",
+                backgroundImage: `
                 radial-gradient(ellipse 110% 70% at 50% 0%, rgba(55, 120, 200, 0.45) 0%, transparent 58%),
                 linear-gradient(175deg, #122a45 0%, #0a1628 42%, #020408 100%)
               `,
-              boxShadow: `
+                boxShadow: `
                 0 0 0 1px rgba(125, 211, 252, 0.28),
                 0 0 36px rgba(56, 130, 246, 0.14),
                 0 12px 40px rgba(0, 0, 0, 0.35),
                 inset 0 1px 0 rgba(255, 255, 255, 0.07)
               `,
-            }}
-          >
-            <div className="relative z-[1] mb-6 md:mb-8 shrink-0 text-left">
-              <h3 className="text-lg md:text-xl font-bold text-white leading-snug tracking-tight">
-                Delinquency kept rising – all year long
-              </h3>
-              <p className="mt-2.5 text-sm md:text-[15px] text-slate-300 leading-relaxed max-w-xl">
-                Not a Q4 event. An unbroken upward arc across every quarter of
-                2025.
-              </p>
-            </div>
+              }}
+            >
+              <div className="relative z-[1] mb-6 md:mb-8 shrink-0 text-left">
+                <h3 className="text-lg md:text-xl font-bold text-white leading-snug tracking-tight">
+                  Delinquency kept rising – all year long
+                </h3>
+                <p className="mt-2.5 text-sm md:text-[15px] text-slate-300 leading-relaxed max-w-xl">
+                  Not a Q4 event. An unbroken upward arc across every quarter of
+                  2025.
+                </p>
+              </div>
 
-            <div className="relative z-[1] flex min-h-[220px] flex-1 flex-col justify-end overflow-visible pb-1 pt-2">
-              <div
-                className="flex items-end justify-between gap-2 sm:gap-4 md:gap-5 px-0 sm:px-1"
-                style={{ height: CHART_INNER_PX + 48 }}
-              >
-                {DELINQUENCY_BARS.map((row) => {
-                  const barH = Math.round((row.bps / MAX_BPS) * CHART_INNER_PX);
-                  return (
-                    <div
-                      key={row.q}
-                      className="group/bar flex h-full min-h-0 flex-1 flex-col items-center justify-end min-w-0"
-                    >
+              <div className="relative z-[1] flex min-h-[220px] flex-1 flex-col justify-end overflow-visible pb-1 pt-2">
+                <div
+                  className="flex items-end justify-between gap-2 sm:gap-4 md:gap-5 px-0 sm:px-1"
+                  style={{ height: CHART_INNER_PX + 48 }}
+                >
+                  {DELINQUENCY_BARS.map((row) => {
+                    const barH = Math.round((row.bps / MAX_BPS) * CHART_INNER_PX);
+                    return (
                       <div
-                        className="mx-auto flex w-full max-w-[min(100%,5.5rem)] flex-1 flex-col justify-end sm:max-w-[6.5rem] lg:max-w-[min(100%,8.5rem)]"
-                        style={{ maxHeight: CHART_INNER_PX + 24 }}
+                        key={row.q}
+                        className="group/bar flex h-full min-h-0 flex-1 flex-col items-center justify-end min-w-0"
                       >
                         <div
-                          className="relative w-full shrink-0 transition-[box-shadow,transform] duration-300 ease-out motion-safe:group-hover/bar:-translate-y-0.5"
-                          style={{
-                            height: Math.max(barH, 52),
-                            minHeight: 52,
-                            boxShadow: BAR_DROP_SHADOW,
-                          }}
+                          className="mx-auto flex w-full max-w-[min(100%,5.5rem)] flex-1 flex-col justify-end sm:max-w-[6.5rem] lg:max-w-[min(100%,8.5rem)]"
+                          style={{ maxHeight: CHART_INNER_PX + 24 }}
                         >
-                          {/* Bar face only — overflow hidden so rounded tops clip; tooltip is a sibling below */}
-                          <div className="absolute inset-0 flex flex-col items-center justify-end overflow-hidden rounded-t-[16px] pb-2.5 sm:pb-3">
-                            <div
-                              className="pointer-events-none absolute inset-0 transition-opacity duration-300 ease-out group-hover/bar:opacity-0"
-                              style={{
-                                background: BAR_FILL_IDLE,
-                                boxShadow: BAR_INSET_HIGHLIGHT,
-                              }}
-                              aria-hidden
-                            />
-                            <div
-                              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover/bar:opacity-100"
-                              style={{
-                                background: BAR_FILL_HOVER,
-                                boxShadow: BAR_INSET_HIGHLIGHT,
-                              }}
-                              aria-hidden
-                            />
-                            <span className="pointer-events-none relative z-10 px-1 text-center text-[11px] font-bold leading-tight text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.5)] sm:text-sm">
-                              {row.bps} bps
-                            </span>
-                          </div>
-                          {/* Sibling of overflow-hidden face — not clipped */}
-                          <div
-                            className="pointer-events-none w-max absolute bottom-full left-1/2 z-[60] mb-6 -translate-x-1/2 rounded-lg bg-white px-3 py-2.5 text-center opacity-0 shadow-[0_8px_30px_rgba(0,0,0,0.2)] ring-1 ring-black/5 transition-opacity duration-200 ease-out group-hover/bar:opacity-100 sm:px-4"
-                            role="tooltip"
+                          <motion.div
+                            className="relative w-full shrink-0 transition-[box-shadow,transform] duration-300 ease-out motion-safe:group-hover/bar:-translate-y-0.5"
+                            style={{ minHeight: 52, boxShadow: BAR_DROP_SHADOW }}
+                            initial={false}
+                            animate={{
+                              height: animateCharts ? Math.max(barH, 52) : 52,
+                            }}
+                            transition={{
+                              duration: 0.8,
+                              ease: "easeOut",
+                              delay: 0.08,
+                            }}
                           >
-                            <p className="text-[11px] font-medium leading-tight text-[#5c6570] sm:text-xs">
-                              {row.q} 2025
-                            </p>
-                            <p className="mt-1.5 text-lg font-bold leading-none text-black tabular-nums sm:text-xl">
-                              {row.bps} bps
-                            </p>
-                            <p className="mt-1.5 text-[11px] font-medium leading-snug text-[#5c6570] sm:text-xs w-max">
-                              {row.tooltipTagline}
-                            </p>
+                            {/* Bar face only — overflow hidden so rounded tops clip; tooltip is a sibling below */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-end overflow-hidden rounded-t-[16px] pb-2.5 sm:pb-3">
+                              <div
+                                className="pointer-events-none absolute inset-0 transition-opacity duration-300 ease-out group-hover/bar:opacity-0"
+                                style={{
+                                  background: BAR_FILL_IDLE,
+                                  boxShadow: BAR_INSET_HIGHLIGHT,
+                                }}
+                                aria-hidden
+                              />
+                              <div
+                                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover/bar:opacity-100"
+                                style={{
+                                  background: BAR_FILL_HOVER,
+                                  boxShadow: BAR_INSET_HIGHLIGHT,
+                                }}
+                                aria-hidden
+                              />
+                              <span className="pointer-events-none relative z-10 px-1 text-center text-[11px] font-bold leading-tight text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.5)] sm:text-sm">
+                                {row.bps} bps
+                              </span>
+                            </div>
+                            {/* Sibling of overflow-hidden face — not clipped */}
                             <div
-                              className="absolute left-1/2 top-full -mt-px h-0 w-0 -translate-x-1/2 border-x-[7px] border-x-transparent border-t-[8px] border-t-white"
-                              aria-hidden
-                            />
-                          </div>
+                              className="pointer-events-none w-max absolute bottom-full left-1/2 z-[60] mb-6 -translate-x-1/2 rounded-lg bg-white px-3 py-2.5 text-center opacity-0 shadow-[0_8px_30px_rgba(0,0,0,0.2)] ring-1 ring-black/5 transition-opacity duration-200 ease-out group-hover/bar:opacity-100 sm:px-4"
+                              role="tooltip"
+                            >
+                              <p className="text-[11px] font-medium leading-tight text-[#5c6570] sm:text-xs">
+                                {row.q} 2025
+                              </p>
+                              <p className="mt-1.5 text-lg font-bold leading-none text-black tabular-nums sm:text-xl">
+                                {row.bps} bps
+                              </p>
+                              <p className="mt-1.5 text-[11px] font-medium leading-snug text-[#5c6570] sm:text-xs w-max">
+                                {row.tooltipTagline}
+                              </p>
+                              <div
+                                className="absolute left-1/2 top-full -mt-px h-0 w-0 -translate-x-1/2 border-x-[7px] border-x-transparent border-t-[8px] border-t-white"
+                                aria-hidden
+                              />
+                            </div>
+                          </motion.div>
                         </div>
+                        <span className="mt-3 text-xs sm:text-sm font-semibold text-white">
+                          {row.q}
+                        </span>
                       </div>
-                      <span className="mt-3 text-xs sm:text-sm font-semibold text-white">
-                        {row.q}
-                      </span>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Solr26Reveal>
       </div>
     </section>
   );

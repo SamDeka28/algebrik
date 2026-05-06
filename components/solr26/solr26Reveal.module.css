@@ -1,0 +1,16 @@
+.reveal {
+  opacity: 0;
+  transition: opacity 1.4s ease-out;
+  transition-delay: var(--rev-delay, 0ms);
+  will-change: opacity;
+}
+
+.revealIn {
+  opacity: 1;
+}
+
+/* If JS/IntersectionObserver hasn't initialized, show everything */
+:global(html:not(.solr26-reveal-ready)) .reveal {
+  opacity: 1;
+}
+

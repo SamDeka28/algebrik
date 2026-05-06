@@ -153,8 +153,12 @@ export default function Navbar() {
     }
   }, [dropdownOpen]);
 
-  // Hide navbar on login and vault pages (after ALL hooks are called)
-  if (pathname?.startsWith('/login') || pathname?.startsWith('/vault')) {
+  // Hide navbar on login, vault, and Signal Radar (full-bleed dashboard)
+  if (
+    pathname?.startsWith('/login') ||
+    pathname?.startsWith('/vault') ||
+    pathname?.startsWith('/signal-radar')
+  ) {
     return null;
   }
 

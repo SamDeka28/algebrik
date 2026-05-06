@@ -1,5 +1,7 @@
 "use client";
 
+import Solr26Reveal from "@/components/solr26/Solr26Reveal";
+
 const INTRO_TITLE = "Built for the Exact Inflection point the data reveals";
 const INTRO_SUB =
   "Three capabilities — engineered for the Growth Trap, the Delinquency Build, and the Speed Deficit that 2025 exposed.";
@@ -135,43 +137,45 @@ export default function Solr26CapabilitiesSection() {
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-[2.1rem] font-bold text-white leading-tight tracking-tight">
-            {INTRO_TITLE}
-          </h2>
-          <p
-            className="mt-4 md:mt-5 text-base md:text-lg leading-relaxed"
-            style={{ color: BODY_MUTED }}
-          >
-            {INTRO_SUB}
-          </p>
-        </header>
-
-        <div className="flex flex-col gap-20 md:gap-28 lg:gap-32">
-          {ROWS.map((row) => (
-            <div
-              key={row.tag}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center"
+        <Solr26Reveal>
+          <header className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
+            <h2 className="text-3xl md:text-[2.1rem] font-bold text-white leading-tight tracking-tight">
+              {INTRO_TITLE}
+            </h2>
+            <p
+              className="mt-4 md:mt-5 text-base md:text-lg leading-relaxed"
+              style={{ color: BODY_MUTED }}
             >
-              <div className={row.imageLeft ? "lg:order-2" : ""}>
-                <FeatureBadge label={row.tag} />
-                <h3 className="mt-5 text-2xl md:text-[1.85rem] lg:text-[2rem] font-bold text-white leading-tight">
-                  {row.title}
-                </h3>
-                <p
-                  className="mt-4 text-base md:text-lg leading-relaxed"
-                  style={{ color: BODY_MUTED }}
-                >
-                  {row.body}
-                </p>
-                <StatPair stats={row.stats} />
+              {INTRO_SUB}
+            </p>
+          </header>
+
+          <div className="flex flex-col gap-20 md:gap-28 lg:gap-32">
+            {ROWS.map((row) => (
+              <div
+                key={row.tag}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center"
+              >
+                <div className={row.imageLeft ? "lg:order-2" : ""}>
+                  <FeatureBadge label={row.tag} />
+                  <h3 className="mt-5 text-2xl md:text-[1.85rem] lg:text-[2rem] font-bold text-white leading-tight">
+                    {row.title}
+                  </h3>
+                  <p
+                    className="mt-4 text-base md:text-lg leading-relaxed"
+                    style={{ color: BODY_MUTED }}
+                  >
+                    {row.body}
+                  </p>
+                  <StatPair stats={row.stats} />
+                </div>
+                <div className={row.imageLeft ? "lg:order-1" : ""}>
+                  <FeatureVisual image={row.image} callout={row.callout} />
+                </div>
               </div>
-              <div className={row.imageLeft ? "lg:order-1" : ""}>
-                <FeatureVisual image={row.image} callout={row.callout} />
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Solr26Reveal>
       </div>
     </section>
   );
