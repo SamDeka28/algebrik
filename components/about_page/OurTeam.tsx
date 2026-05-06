@@ -8,18 +8,18 @@ import Advisory from "./Advisory";
 import { FaLinkedin } from "react-icons/fa";
 
 const carouselDataOne = [
-  {
-    image: "/team_images/jeremy.jpg",
-    name: "Jeremy Carcich",
-    title: "Regional VP, Business Development ",
-    place: "N/A",
-  },
-  {
-    image: "/team_images/andrea.webp",
-    name: "ANDREA SILVERS",
-    title: "VP, BD & Partnerships",
-    place: "N/A",
-  },
+  // {
+  //   image: "/team_images/jeremy.jpg",
+  //   name: "Jeremy Carcich",
+  //   title: "Regional VP, Business Development ",
+  //   place: "N/A",
+  // },
+  // {
+  //   image: "/team_images/andrea.webp",
+  //   name: "ANDREA SILVERS",
+  //   title: "VP, BD & Partnerships",
+  //   place: "N/A",
+  // },
   {
     image: "/team_images/Jennifer.jpeg",
     name: "JENNIFER HERNANDEZ",
